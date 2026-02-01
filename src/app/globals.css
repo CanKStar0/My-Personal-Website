@@ -1,0 +1,650 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --cosmic-black: #000000;
+  --cosmic-dark: #0a0a0f;
+  --cosmic-purple: #1a1a2e;
+  --cosmic-blue: #16213e;
+  --cosmic-accent: #4a90a4;
+  --cosmic-light: #e8e8e8;
+  --cosmic-gold: #c9a227;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  overflow-x: hidden;
+  background-color: var(--cosmic-black);
+  color: var(--cosmic-light);
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  scroll-behavior: smooth;
+}
+
+/* Intro animasyonları */
+@keyframes letter-appear {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-letter-appear {
+  animation: letter-appear 0.4s ease-out forwards;
+}
+
+@keyframes expand-line {
+  0% {
+    width: 0;
+    opacity: 0;
+  }
+  100% {
+    width: 100%;
+    opacity: 1;
+  }
+}
+
+.animate-expand-line {
+  animation: expand-line 0.8s ease-out forwards;
+}
+
+@keyframes twinkle {
+  0%, 100% {
+    opacity: 0.2;
+  }
+  50% {
+    opacity: 0.8;
+  }
+}
+
+.intro-glow {
+  animation: intro-pulse 2s ease-in-out infinite;
+}
+
+@keyframes intro-pulse {
+  0%, 100% {
+    filter: brightness(1);
+  }
+  50% {
+    filter: brightness(1.3);
+  }
+}
+
+/* Sinematik efektler */
+.cinematic-fade {
+  animation: cinematicFade 2s ease-out forwards;
+}
+
+@keyframes cinematicFade {
+  0% {
+    opacity: 0;
+    filter: blur(10px);
+  }
+  100% {
+    opacity: 1;
+    filter: blur(0);
+  }
+}
+
+/* Harf düşme animasyonu */
+.letter-fall {
+  animation: letterFall 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+@keyframes letterFall {
+  0% {
+    transform: translateY(-100vh) rotate(0deg);
+    opacity: 0;
+  }
+  60% {
+    transform: translateY(20px) rotate(10deg);
+    opacity: 1;
+  }
+  80% {
+    transform: translateY(-10px) rotate(-5deg);
+  }
+  100% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 1;
+  }
+}
+
+/* Dağılan harf animasyonu */
+.letter-scatter {
+  animation: letterScatter 1s ease-out forwards;
+}
+
+@keyframes letterScatter {
+  0% {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(50px) translateX(var(--scatter-x, 50px)) scale(0.5) rotate(45deg);
+    opacity: 0;
+  }
+}
+
+/* Glitch efekti */
+.glitch-effect {
+  animation: glitch 0.5s ease-in-out;
+}
+
+@keyframes glitch {
+  0%, 100% {
+    transform: translate(0);
+    filter: none;
+  }
+  10% {
+    transform: translate(-3px, 2px);
+    filter: hue-rotate(90deg);
+  }
+  20% {
+    transform: translate(3px, -2px);
+    filter: hue-rotate(180deg);
+  }
+  30% {
+    transform: translate(-3px, -2px);
+  }
+  40% {
+    transform: translate(3px, 2px);
+    filter: hue-rotate(270deg);
+  }
+  50% {
+    transform: translate(-2px, 3px);
+  }
+  60% {
+    transform: translate(2px, -3px);
+    filter: hue-rotate(360deg);
+  }
+  70% {
+    transform: translate(-1px, 1px);
+  }
+  80% {
+    transform: translate(1px, -1px);
+  }
+  90% {
+    transform: translate(0);
+    filter: none;
+  }
+}
+
+/* Yıldız parıltısı */
+.star-twinkle {
+  animation: twinkle 3s ease-in-out infinite;
+  animation-delay: var(--twinkle-delay, 0s);
+}
+
+@keyframes twinkle {
+  0%, 100% {
+    opacity: 0.3;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+}
+
+/* Göz kırpma animasyonu */
+.eye-blink {
+  animation: eyeBlink 0.15s ease-in-out;
+}
+
+@keyframes eyeBlink {
+  0%, 100% {
+    transform: scaleY(1);
+  }
+  50% {
+    transform: scaleY(0.1);
+  }
+}
+
+/* Kayan yıldız */
+.shooting-star {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background: white;
+  border-radius: 50%;
+  animation: shootingStar 1.5s linear forwards;
+}
+
+@keyframes shootingStar {
+  0% {
+    transform: translateX(0) translateY(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(300px) translateY(300px);
+    opacity: 0;
+  }
+}
+
+.shooting-star::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100px;
+  height: 1px;
+  background: linear-gradient(90deg, white, transparent);
+  transform: translateX(-100%) rotate(-45deg);
+  transform-origin: right;
+}
+
+/* Buton stilleri */
+.cosmic-button {
+  position: relative;
+  padding: 16px 32px;
+  background: transparent;
+  border: 1px solid rgba(74, 144, 164, 0.3);
+  color: var(--cosmic-light);
+  font-size: 1rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  cursor: pointer;
+  overflow: hidden;
+  transition: all 0.4s ease;
+}
+
+.cosmic-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(74, 144, 164, 0.2), transparent);
+  transition: left 0.5s ease;
+}
+
+.cosmic-button:hover {
+  border-color: var(--cosmic-accent);
+  box-shadow: 0 0 20px rgba(74, 144, 164, 0.3);
+}
+
+.cosmic-button:hover::before {
+  left: 100%;
+}
+
+/* Kart stilleri */
+.cosmic-card {
+  background: rgba(10, 10, 15, 0.8);
+  border: 1px solid rgba(74, 144, 164, 0.2);
+  backdrop-filter: blur(10px);
+  transition: all 0.4s ease;
+}
+
+.cosmic-card:hover {
+  border-color: rgba(74, 144, 164, 0.5);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+  transform: translateY(-5px);
+}
+
+/* Easter egg mesajı */
+.easter-egg-message {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  padding: 20px 30px;
+  background: rgba(10, 10, 15, 0.95);
+  border: 1px solid var(--cosmic-gold);
+  color: var(--cosmic-gold);
+  font-size: 1rem;
+  animation: slideInRight 0.5s ease-out, fadeOutDelayed 0.5s ease-out 3s forwards;
+  z-index: 1000;
+}
+
+@keyframes slideInRight {
+  0% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOutDelayed {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    pointer-events: none;
+  }
+}
+
+/* Titreşim efekti (DevTools tepkisi) */
+.screen-shake {
+  animation: screenShake 0.5s ease-in-out;
+}
+
+@keyframes screenShake {
+  0%, 100% {
+    transform: translate(0);
+  }
+  10%, 90% {
+    transform: translate(-1px, 1px);
+  }
+  20%, 80% {
+    transform: translate(2px, -1px);
+  }
+  30%, 70% {
+    transform: translate(-2px, 1px);
+  }
+  40%, 60% {
+    transform: translate(1px, -1px);
+  }
+  50% {
+    transform: translate(-1px, 2px);
+  }
+}
+
+/* Karanlık overlay */
+.darkness-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  animation: flashDark 0.3s ease-in-out;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+@keyframes flashDark {
+  0%, 100% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+/* Scroll bar özelleştirme */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--cosmic-black);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--cosmic-purple);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--cosmic-accent);
+}
+
+/* Text glow efekti */
+.text-glow {
+  text-shadow: 0 0 10px rgba(74, 144, 164, 0.5),
+               0 0 20px rgba(74, 144, 164, 0.3),
+               0 0 30px rgba(74, 144, 164, 0.2);
+}
+
+/* Transition sınıfları */
+.page-transition-enter {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.page-transition-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: all 0.5s ease;
+}
+
+.page-transition-exit {
+  opacity: 1;
+}
+
+.page-transition-exit-active {
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: all 0.5s ease;
+}
+
+/* Sosyal medya linkleri */
+.social-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border: 1px solid rgba(74, 144, 164, 0.3);
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+.social-link:hover {
+  border-color: var(--cosmic-accent);
+  background: rgba(74, 144, 164, 0.1);
+  transform: translateY(-3px);
+  box-shadow: 0 0 20px rgba(74, 144, 164, 0.3);
+}
+
+/* Işıldayan kenar buton */
+.glow-button {
+  position: relative;
+  padding: 16px 40px;
+  background: transparent;
+  border: none;
+  color: var(--cosmic-light);
+  font-size: 0.95rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.glow-button-border {
+  position: absolute;
+  inset: 0;
+  border-radius: 4px;
+  padding: 2px;
+  background: linear-gradient(90deg, 
+    transparent, 
+    var(--cosmic-accent), 
+    transparent
+  );
+  background-size: 200% 100%;
+  -webkit-mask: 
+    linear-gradient(#fff 0 0) content-box, 
+    linear-gradient(#fff 0 0);
+  mask: 
+    linear-gradient(#fff 0 0) content-box, 
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  animation: glowBorderMove 3s linear infinite;
+  opacity: 0.6;
+  transition: opacity 0.3s ease;
+}
+
+.glow-button:hover .glow-button-border {
+  opacity: 1;
+  animation: glowBorderMove 1.5s linear infinite;
+}
+
+.glow-button-text {
+  position: relative;
+  z-index: 1;
+  transition: all 0.3s ease;
+}
+
+.glow-button:hover .glow-button-text {
+  text-shadow: 0 0 10px rgba(74, 144, 164, 0.8);
+}
+
+.glow-button::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(74, 144, 164, 0.05);
+  border-radius: 4px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.glow-button:hover::before {
+  opacity: 1;
+}
+
+@keyframes glowBorderMove {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* Cosmic accent renk */
+.text-cosmic-accent {
+  color: var(--cosmic-accent);
+}
+
+/* Başarım sistemi animasyonları */
+@keyframes screen-shake {
+  0%, 100% { transform: translateX(0) translateY(0); }
+  10% { transform: translateX(-8px) translateY(-2px); }
+  20% { transform: translateX(8px) translateY(2px); }
+  30% { transform: translateX(-6px) translateY(-4px); }
+  40% { transform: translateX(6px) translateY(4px); }
+  50% { transform: translateX(-4px) translateY(-2px); }
+  60% { transform: translateX(4px) translateY(2px); }
+  70% { transform: translateX(-2px) translateY(-1px); }
+  80% { transform: translateX(2px) translateY(1px); }
+  90% { transform: translateX(-1px) translateY(0); }
+}
+
+.animate-screen-shake {
+  animation: screen-shake 0.5s ease-in-out;
+}
+
+@keyframes scan-line {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(100vh); }
+}
+
+.animate-scan-line {
+  animation: scan-line 2s linear infinite;
+}
+
+@keyframes glow-line {
+  0%, 100% { 
+    background-position: -200% center;
+    opacity: 0.5;
+  }
+  50% { 
+    background-position: 200% center;
+    opacity: 1;
+  }
+}
+
+.animate-glow-line {
+  animation: glow-line 3s ease-in-out infinite;
+}
+
+@keyframes bounce-slow {
+  0%, 100% { 
+    transform: translateY(0);
+  }
+  50% { 
+    transform: translateY(-5px);
+  }
+}
+
+.animate-bounce-slow {
+  animation: bounce-slow 2s ease-in-out infinite;
+}
+
+@keyframes pulse-slow {
+  0%, 100% { 
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% { 
+    opacity: 0.8;
+    transform: scale(1.05);
+  }
+}
+
+.animate-pulse-slow {
+  animation: pulse-slow 2s ease-in-out infinite;
+}
+
+@keyframes slide-in-up {
+  0% {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.animate-slide-in-up {
+  animation: slide-in-up 0.5s ease-out forwards;
+}
+
+@keyframes achievement-pop {
+  0% {
+    transform: scale(0.5);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.animate-achievement-pop {
+  animation: achievement-pop 0.5s ease-out forwards;
+}
+
+/* Başarım rozeti pixel border efekti */
+.pixel-border {
+  box-shadow: 
+    inset 0 0 0 1px rgba(74, 144, 164, 0.3),
+    inset 2px 2px 0 rgba(255, 255, 255, 0.1),
+    inset -2px -2px 0 rgba(0, 0, 0, 0.3);
+}
+
+/* Retro scan line overlay */
+.scan-lines::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0.1) 0px,
+    rgba(0, 0, 0, 0.1) 1px,
+    transparent 1px,
+    transparent 2px
+  );
+  pointer-events: none;
+  z-index: 10;
+}
