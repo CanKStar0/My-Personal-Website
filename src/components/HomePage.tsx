@@ -14,9 +14,9 @@ import { useSiteStore, useEasterEggStore, useDevToolsStore, useAchievementStore 
 
 // Sosyal medya bilgileri - buradan kolayca düzenlenebilir
 const socialLinks = {
-  github: 'https://github.com/canpolatkaya',
-  linkedin: 'https://linkedin.com/in/canpolatkaya',
-  email: 'canpolatkaya@email.com',
+  github: 'https://github.com/CanKStar0',
+  linkedin: 'https://www.linkedin.com/in/canpolat-kaya/',
+  email: 'canpolatkaya4@gmail.com',
 };
 
 type Section = 'home' | 'technologies' | 'projects' | 'about';
