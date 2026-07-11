@@ -31,6 +31,23 @@ export default function RootLayout({
       className={`${inter.variable} ${plusJakartaSans.variable}`}
       suppressHydrationWarning
     >
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              try {
+                if (typeof window !== 'undefined') {
+                  window.history.scrollRestoration = 'manual';
+                  window.scrollTo(0, 0);
+                  if (window.location.hash) {
+                    window.history.replaceState(null, "", window.location.pathname + window.location.search);
+                  }
+                }
+              } catch (e) {}
+            `,
+          }}
+        />
+      </head>
       <body className="min-h-screen antialiased bg-background text-foreground transition-colors duration-300" suppressHydrationWarning>
         <ThemeProvider>
           <div className="relative flex min-h-screen flex-col">
