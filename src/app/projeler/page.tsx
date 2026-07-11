@@ -1,19 +1,12 @@
 import { Navbar } from "@/components/navbar";
-import { HeroAnimation } from "@/components/hero-animation";
-import { MarqueeSection } from "@/components/marquee-section";
+import { ProjectsSection } from "@/components/projects-section";
 
-export default function Home() {
+export default function ProjelerPage() {
   return (
     <>
       <Navbar />
-      <main className="flex-1">
-        {/* Hero Section */}
-        <section className="w-full">
-          <HeroAnimation />
-        </section>
-
-        {/* Competencies Ticker */}
-        <MarqueeSection />
+      <main className="flex-1 pt-12">
+        <ProjectsSection />
       </main>
 
       {/* Footer */}

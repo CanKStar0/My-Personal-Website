@@ -3,10 +3,12 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { useTheme } from "next-themes";
+import { usePathname } from "next/navigation";
 import { Sun, Moon, Menu, X } from "lucide-react";
 
 export function Navbar() {
   const { resolvedTheme, setTheme } = useTheme();
+  const pathname = usePathname();
   const [mounted, setMounted] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [visible, setVisible] = useState(false);
@@ -23,22 +25,33 @@ export function Navbar() {
 
   useEffect(() => {
     setMounted(true);
-    const timer = setTimeout(() => setVisible(true), 2000);
-    return () => clearTimeout(timer);
-  }, []);
+    const isHome = pathname === "/";
+    if (!isHome) {
+      setVisible(true);
+    } else {
+      const timer = setTimeout(() => setVisible(true), 2000);
+      return () => clearTimeout(timer);
+    }
+  }, [pathname]);
 
   const navLinks = [
-    { name: "Hakkımda", href: "#hakkimda" },
-    { name: "Projeler", href: "#projeler" },
-    { name: "Araçlar", href: "#araclar" },
-    { name: "İletişim", href: "#iletisim" },
+    { name: "Ana Sayfa", href: "/" },
+    { name: "Projeler", href: "/projeler" },
+    { name: "İletişim", href: "/iletisim" },
   ];
+
+  const isHome = pathname === "/";
+  const transitionClass = isHome
+    ? `transition-all duration-700 ${
+        visible ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-4 pointer-events-none"
+      }`
+    : `transition-opacity duration-300 ${
+        visible ? "opacity-100" : "opacity-0 pointer-events-none"
+      }`;
 
   return (
     <header
-      className={`sticky top-0 z-50 w-full transition-all duration-700 ${
-        visible ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-4 pointer-events-none"
-      } ${
+      className={`sticky top-0 z-50 w-full ${transitionClass} ${
         scrolled
           ? "border-b border-border/20 bg-background/70 backdrop-blur-md shadow-xs"
           : "bg-transparent"
