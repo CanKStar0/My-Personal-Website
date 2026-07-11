@@ -8,33 +8,21 @@ export function HeroAnimation() {
   const name = "CANPOLAT KAYA";
   const nameLetters = name.split("");
 
-  const skills = [
-    "Frontend",
-    "Backend",
-    "Web Scraping",
-    "AI Automation",
-    "Next.js",
-    "Tailwind CSS",
-    "TypeScript",
-    "Node.js",
-    "Python",
-    "PostgreSQL",
-  ];
-
-  // Double skills list to ensure seamless infinite horizontal loop
-  const doubledSkills = [...skills, ...skills, ...skills, ...skills];
-
   useEffect(() => {
     setMounted(true);
+    // Force browser to scroll to top on page refresh and ignore cached scroll positions
+    if (typeof window !== "undefined") {
+      window.history.scrollRestoration = "manual";
+      window.scrollTo(0, 0);
+    }
   }, []);
 
-  // Clean, professional reveal timing
   const lineSweepDuration = 1.4;
   const lineDelay = 0.4;
 
   if (!mounted) {
     return (
-      <div className="flex min-h-[calc(100vh-4rem)] w-full flex-col items-center justify-center bg-background">
+      <div className="flex min-h-screen w-full flex-col items-center justify-center bg-background">
         <div className="flex flex-col items-center pt-8">
           <h1 className="text-3xl font-extrabold tracking-wider sm:text-5xl md:text-6xl font-jakarta text-foreground opacity-0">
             {name}
@@ -45,7 +33,7 @@ export function HeroAnimation() {
   }
 
   return (
-    <div className="relative flex min-h-[calc(100vh-4rem)] w-full flex-col items-center justify-center overflow-hidden select-none px-4 bg-background transition-colors duration-300">
+    <div className="relative flex min-h-screen w-full flex-col items-center justify-center overflow-hidden select-none px-4 bg-background transition-colors duration-300">
       
       {/* Noble Red Background Glow */}
       <motion.div
@@ -102,26 +90,6 @@ export function HeroAnimation() {
             Fullstack Developer & AI Otomasyon Uzmanı
           </motion.p>
         </div>
-      </div>
-
-      {/* Infinite Skills Marquee (Flowing Left-to-Right) */}
-      <div className="absolute bottom-12 left-0 w-full overflow-hidden py-3 border-y border-border/5 bg-background/30 backdrop-blur-xs">
-        <motion.div
-          animate={{ x: ["-50%", "0%"] }}
-          transition={{
-            ease: "linear",
-            duration: 25,
-            repeat: Infinity,
-          }}
-          className="flex whitespace-nowrap gap-8 text-lg md:text-xl font-semibold text-zinc-500/25 dark:text-zinc-600/30 uppercase tracking-widest"
-        >
-          {doubledSkills.map((skill, i) => (
-            <span key={i} className="flex items-center gap-8">
-              <span>{skill}</span>
-              <span className="text-brand-red/25 dark:text-brand-red/30">•</span>
-            </span>
-          ))}
-        </motion.div>
       </div>
 
     </div>

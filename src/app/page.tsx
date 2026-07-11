@@ -1,5 +1,7 @@
 import { Navbar } from "@/components/navbar";
 import { HeroAnimation } from "@/components/hero-animation";
+import { ProjectsSection } from "@/components/projects-section";
+import { MarqueeSection } from "@/components/marquee-section";
 
 export default function Home() {
   return (
@@ -11,22 +13,18 @@ export default function Home() {
           <HeroAnimation />
         </section>
 
+        {/* Competencies Ticker */}
+        <MarqueeSection />
+
+        {/* Projeler Section */}
+        <ProjectsSection />
+
         {/* Hakkımda Section */}
         <section id="hakkimda" className="mx-auto max-w-7xl px-6 py-20 sm:px-8 border-t border-border/10">
           <div className="mx-auto max-w-2xl lg:mx-0">
             <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl font-jakarta">Hakkımda</h2>
             <p className="mt-6 text-lg leading-8 text-muted-foreground">
               Yazılım geliştirme serüvenimde hem yerel esnafların dijitalleşme ihtiyaçlarını (kolay randevu sistemleri, SEO uyumlu kurumsal sayfalar) hem de kurumsal şirketlerin kompleks backend altyapılarını (PostgreSQL veritabanı optimizasyonları, asenkron kuyruk yönetimi vb.) çözmeye odaklanıyorum.
-            </p>
-          </div>
-        </section>
-
-        {/* Projeler Section */}
-        <section id="projeler" className="mx-auto max-w-7xl px-6 py-20 sm:px-8 border-t border-border/10">
-          <div className="mx-auto max-w-2xl lg:mx-0">
-            <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl font-jakarta">Projeler</h2>
-            <p className="mt-6 text-lg leading-8 text-muted-foreground">
-              BIST AI finansal veri işleme boru hattı, anti-bot korumalı kazıma motorları ve açık kaynak katkılarım da dahil olmak üzere geliştirdiğim bazı projeler yakında burada sergilenecektir.
             </p>
           </div>
         </section>
