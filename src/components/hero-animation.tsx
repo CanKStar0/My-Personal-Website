@@ -33,7 +33,7 @@ export function HeroAnimation() {
   }
 
   return (
-    <div className="relative flex min-h-screen w-full flex-col items-center justify-center overflow-hidden select-none px-4 bg-background transition-colors duration-300">
+    <div className="relative flex min-h-screen w-full flex-col items-center justify-center overflow-hidden select-none px-4 pb-20 md:pb-32 bg-background transition-colors duration-300">
       
       {/* Noble Red Background Glow */}
       <motion.div

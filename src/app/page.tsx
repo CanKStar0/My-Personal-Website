@@ -1,6 +1,8 @@
 import { Navbar } from "@/components/navbar";
 import { HeroAnimation } from "@/components/hero-animation";
 import { MarqueeSection } from "@/components/marquee-section";
+import { AboutSection } from "@/components/about-section";
+import { TechStackSection } from "@/components/tech-stack-section";
 
 export default function Home() {
   return (
@@ -14,6 +16,12 @@ export default function Home() {
 
         {/* Competencies Ticker */}
         <MarqueeSection />
+
+        {/* About Section */}
+        <AboutSection />
+
+        {/* Tech Stack Section */}
+        <TechStackSection />
       </main>
 
       {/* Footer */}

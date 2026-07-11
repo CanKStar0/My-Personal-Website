@@ -53,6 +53,8 @@ export function Navbar() {
 
   const navLinks = [
     { name: "Ana Sayfa", href: "/" },
+    { name: "Hakkımda", href: "/#hakkimda" },
+    { name: "Araçlar", href: "/#araclar" },
     { name: "Projeler", href: "/projeler" },
     { name: "İletişim", href: "/iletisim" },
   ];
@@ -78,6 +80,12 @@ export function Navbar() {
         {/* Logo / Brand Name */}
         <Link
           href="/"
+          onClick={(e) => {
+            if (pathname === "/") {
+              e.preventDefault();
+              window.scrollTo({ top: 0, behavior: "smooth" });
+            }
+          }}
           className="group flex items-center space-x-2 font-jakarta text-lg font-bold tracking-tight text-foreground transition-all duration-200"
         >
           <span className="bg-linear-to-r from-foreground via-foreground/90 to-foreground/75 bg-clip-text text-transparent group-hover:opacity-90">
@@ -94,6 +102,12 @@ export function Navbar() {
             <Link
               key={link.name}
               href={link.href}
+              onClick={(e) => {
+                if (pathname === link.href) {
+                  e.preventDefault();
+                  window.scrollTo({ top: 0, behavior: "smooth" });
+                }
+              }}
               className="relative text-sm font-medium text-foreground/80 transition-colors duration-200 hover:text-foreground group py-1"
             >
               {link.name}
@@ -165,7 +179,13 @@ export function Navbar() {
               <Link
                 key={link.name}
                 href={link.href}
-                onClick={() => setMobileMenuOpen(false)}
+                onClick={(e) => {
+                  if (pathname === link.href) {
+                    e.preventDefault();
+                    window.scrollTo({ top: 0, behavior: "smooth" });
+                  }
+                  setMobileMenuOpen(false);
+                }}
                 className="text-base font-medium text-foreground/80 hover:text-brand-red transition-colors duration-200"
               >
                 {link.name}

@@ -1,8 +1,6 @@
-"use client";
-
 import Link from "next/link";
-import { motion } from "framer-motion";
 import { Star } from "lucide-react";
+import { ScrollReveal } from "./scroll-reveal";
 
 interface Project {
   title: string;
@@ -57,45 +55,24 @@ export function ProjectsSection() {
       <div className="max-w-5xl mx-auto">
         
         {/* Section Header (Centered) */}
-        <div className="mb-16 text-center flex flex-col items-center">
-          <motion.span
-            initial={{ opacity: 0, y: 10 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="text-xs font-bold tracking-[0.2em] text-brand-red uppercase block mb-3 font-sans text-center"
-          >
+        <ScrollReveal className="mb-16 text-center flex flex-col items-center">
+          <span className="text-xs font-bold tracking-[0.2em] text-brand-red uppercase block mb-3 font-sans text-center">
             Portfolyo
-          </motion.span>
-          <motion.h2
-            initial={{ opacity: 0, y: 15 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-            className="text-3xl md:text-4xl font-extrabold tracking-tight font-jakarta text-foreground mb-4 text-center"
-          >
+          </span>
+          <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight font-jakarta text-foreground mb-4 text-center">
             Öne Çıkan Çalışmalar
-          </motion.h2>
-          <motion.p
-            initial={{ opacity: 0, y: 15 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="text-sm md:text-base text-muted-foreground/80 font-sans font-light max-w-xl leading-relaxed text-center"
-          >
+          </h2>
+          <p className="text-sm md:text-base text-muted-foreground/80 font-sans font-light max-w-xl leading-relaxed text-center">
             Esnaflar ve işletmeler için yüksek dönüşümlü somut fayda; yazılım ekipleri ve İK uzmanları için temiz kod ve sürdürülebilir mimari.
-          </motion.p>
-        </div>
+          </p>
+        </ScrollReveal>
 
         {/* Projects Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {projects.map((project, index) => (
-            <motion.div
+            <ScrollReveal
               key={project.slug}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.6, delay: index * 0.15 }}
+              delay={index * 0.2}
               className="h-full"
             >
               <Link href={`/projeler/${project.slug}`} className="group block h-full">
@@ -135,29 +112,26 @@ export function ProjectsSection() {
 
                 </div>
               </Link>
-            </motion.div>
+            </ScrollReveal>
           ))}
         </div>
 
         {/* Open Source Section (Centered) */}
-        <div className="mt-28 mb-16 text-center flex flex-col items-center">
+        <ScrollReveal className="mt-28 mb-16 text-center flex flex-col items-center">
           <h2 className="text-2xl md:text-3xl font-extrabold tracking-tight font-jakarta text-foreground mb-4 text-center">
             Açık Kaynak & Repolar
           </h2>
           <p className="text-sm md:text-base text-muted-foreground/80 font-sans font-light max-w-xl leading-relaxed text-center">
             Geliştirici topluluğuna sunduğum açık kaynaklı projeler, kütüphaneler ve hazır entegrasyonlar.
           </p>
-        </div>
+        </ScrollReveal>
 
         {/* Repos Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {repos.map((repo, index) => (
-            <motion.div
+            <ScrollReveal
               key={repo.slug}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.6, delay: index * 0.12 }}
+              delay={index * 0.2}
               className="h-full"
             >
               <Link href={`/projeler/${repo.slug}`} className="group block h-full">
@@ -196,7 +170,7 @@ export function ProjectsSection() {
 
                 </div>
               </Link>
-            </motion.div>
+            </ScrollReveal>
           ))}
         </div>
 
