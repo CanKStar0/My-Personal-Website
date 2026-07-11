@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Star } from "lucide-react";
 import { ScrollReveal } from "./scroll-reveal";
+import { GithubRepos } from "./github-repos";
 
 interface Project {
   title: string;
@@ -30,23 +31,6 @@ export function ProjectsSection() {
       description: "Milyonlarca finansal veriyi sıfır hatayla işleyen analiz sistemi.",
       technologies: ["Python", "FastAPI", "Redis", "PostgreSQL", "Docker", "Tailwind CSS"],
       slug: "bist-ai",
-    },
-  ];
-
-  const repos: Repo[] = [
-    {
-      name: "ai-vision-scraper",
-      description: "Anti-bot engellerini yapay zeka ile aşan, ML destekli akıllı web veri kazıma motoru.",
-      technologies: ["Python", "Puppeteer", "TensorFlow"],
-      stars: 12,
-      slug: "ai-vision-scraper",
-    },
-    {
-      name: "API Showcase",
-      description: "Hızlı entegrasyonlar için geliştirilmiş, dökümantasyonu hazır REST API mimarisi.",
-      technologies: ["TypeScript", "Express", "Swagger"],
-      stars: 5,
-      slug: "api-showcase",
     },
   ];
 
@@ -127,52 +111,7 @@ export function ProjectsSection() {
         </ScrollReveal>
 
         {/* Repos Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {repos.map((repo, index) => (
-            <ScrollReveal
-              key={repo.slug}
-              delay={index * 0.2}
-              className="h-full"
-            >
-              <Link href={`/projeler/${repo.slug}`} className="group block h-full">
-                <div className="p-6 rounded-xl border border-zinc-200/50 dark:border-zinc-800/50 bg-[#FAF9F6] dark:bg-zinc-950 flex flex-col justify-between h-full min-h-[190px] shadow-xs transition-all duration-300 hover:-translate-y-1 hover:border-brand-red/30 dark:hover:border-brand-red/30 hover:shadow-md dark:hover:shadow-[0_8px_30px_rgba(0,0,0,0.12)]">
-                  
-                  {/* Top Part: Title & Stars */}
-                  <div>
-                    <div className="flex items-center justify-between gap-4 mb-3">
-                      <h3 className="text-lg font-bold font-jakarta text-foreground group-hover:text-brand-red transition-colors duration-200 leading-tight">
-                        {repo.name}
-                      </h3>
-                      {/* Premium Star Icon */}
-                      <div className="flex items-center gap-1.5 text-zinc-500 dark:text-zinc-400 group-hover:text-brand-red dark:group-hover:text-brand-red transition-colors duration-200">
-                        <Star className="w-4 h-4 fill-zinc-400/10 dark:fill-zinc-600/10 group-hover:fill-brand-red/10 stroke-[1.5]" />
-                        <span className="text-xs font-semibold font-sans leading-none">{repo.stars}</span>
-                      </div>
-                    </div>
-                    <p className="text-muted-foreground/90 text-xs md:text-sm leading-relaxed font-sans font-light">
-                      {repo.description}
-                    </p>
-                  </div>
-
-                  {/* Tech Badges */}
-                  <div className="border-t border-zinc-200/40 dark:border-zinc-800/40 pt-4 mt-6">
-                    <div className="flex flex-wrap gap-2">
-                      {repo.technologies.map((tech) => (
-                        <span
-                          key={tech}
-                          className="px-2 py-0.5 rounded-md text-[10px] md:text-xs font-medium bg-zinc-100 dark:bg-zinc-900/50 text-zinc-600 dark:text-zinc-400 border border-zinc-200/30 dark:border-zinc-800/40 transition-colors duration-200 group-hover:bg-brand-red/5 dark:group-hover:bg-brand-red/5 group-hover:text-brand-red dark:group-hover:text-brand-red/90 group-hover:border-brand-red/10"
-                        >
-                          {tech}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-
-                </div>
-              </Link>
-            </ScrollReveal>
-          ))}
-        </div>
+        <GithubRepos />
 
       </div>
     </section>
