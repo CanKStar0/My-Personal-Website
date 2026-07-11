@@ -5,6 +5,7 @@
   --color-foreground: var(--foreground);
   --color-primary: var(--primary);
   --color-primary-foreground: var(--primary-foreground);
+  --color-brand-red: var(--brand-red);
   
   --color-card: var(--card);
   --color-card-foreground: var(--card-foreground);
@@ -30,6 +31,7 @@
 }
 
 :root {
+  --brand-red: #9e0a2b; /* Asil Kırmızı */
   --background: #F9F9F6; /* Kağıt matlığında kemik rengi */
   --foreground: #1c1917; /* Slate/stone koyu gri */
   
@@ -59,6 +61,7 @@
 }
 
 .dark {
+  --brand-red: #e11d48; /* Biraz daha parlak asil kırmızı, karanlıkta parlaması için */
   --background: #09090b; /* Tok siyah */
   --foreground: #fafafa; /* Temiz beyaz */
   

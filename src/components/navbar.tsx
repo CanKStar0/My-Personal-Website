@@ -23,7 +23,7 @@ export function Navbar() {
 
   useEffect(() => {
     setMounted(true);
-    const timer = setTimeout(() => setVisible(true), 2200);
+    const timer = setTimeout(() => setVisible(true), 2000);
     return () => clearTimeout(timer);
   }, []);
 
@@ -53,7 +53,7 @@ export function Navbar() {
           <span className="bg-linear-to-r from-foreground via-foreground/90 to-foreground/75 bg-clip-text text-transparent group-hover:opacity-90">
             Canpolat Kaya
           </span>
-          <span className="hidden text-xs font-semibold text-muted-foreground/60 sm:inline-block">
+          <span className="hidden text-xs font-semibold text-muted-foreground/60 sm:inline-block group-hover:text-brand-red transition-colors duration-200">
             / Dev
           </span>
         </Link>
@@ -67,7 +67,7 @@ export function Navbar() {
               className="relative text-sm font-medium text-foreground/80 transition-colors duration-200 hover:text-foreground group py-1"
             >
               {link.name}
-              <span className="absolute bottom-0 left-0 h-0.5 w-0 bg-primary transition-all duration-200 group-hover:w-full" />
+              <span className="absolute bottom-0 left-0 h-0.5 w-0 bg-brand-red transition-all duration-200 group-hover:w-full" />
             </Link>
           ))}
         </nav>
@@ -115,7 +115,7 @@ export function Navbar() {
                 key={link.name}
                 href={link.href}
                 onClick={() => setMobileMenuOpen(false)}
-                className="text-base font-medium text-foreground/80 hover:text-foreground transition-colors duration-200"
+                className="text-base font-medium text-foreground/80 hover:text-brand-red transition-colors duration-200"
               >
                 {link.name}
               </Link>
