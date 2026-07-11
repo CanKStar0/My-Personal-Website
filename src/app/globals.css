@@ -1,0 +1,105 @@
+@import "tailwindcss";
+
+@theme {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --font-inter: var(--font-inter);
+  --font-jakarta: var(--font-plus-jakarta);
+}
+
+:root {
+  --background: #F9F9F6; /* Kağıt matlığında kemik rengi */
+  --foreground: #1c1917; /* Slate/stone koyu gri */
+  
+  --primary: #1c1917;
+  --primary-foreground: #F9F9F6;
+  
+  --card: #ffffff;
+  --card-foreground: #1c1917;
+  
+  --popover: #ffffff;
+  --popover-foreground: #1c1917;
+  
+  --muted: #f4f4f5;
+  --muted-foreground: #71717a;
+  
+  --accent: #f4f4f5;
+  --accent-foreground: #1c1917;
+  
+  --destructive: #ef4444;
+  --destructive-foreground: #f8fafc;
+  
+  --border: #e4e4e7;
+  --input: #e4e4e7;
+  --ring: #1c1917;
+  
+  --font-sans: var(--font-plus-jakarta), sans-serif;
+}
+
+.dark {
+  --background: #09090b; /* Tok siyah */
+  --foreground: #fafafa; /* Temiz beyaz */
+  
+  --primary: #fafafa;
+  --primary-foreground: #09090b;
+  
+  --card: #18181b; /* Koyu gri card background */
+  --card-foreground: #fafafa;
+  
+  --popover: #09090b;
+  --popover-foreground: #fafafa;
+  
+  --muted: #27272a;
+  --muted-foreground: #a1a1aa;
+  
+  --accent: #27272a;
+  --accent-foreground: #fafafa;
+  
+  --destructive: #7f1d1d;
+  --destructive-foreground: #f8fafc;
+  
+  --border: #27272a;
+  --input: #27272a;
+  --ring: #d4d4d8;
+  
+  --font-sans: var(--font-inter), sans-serif;
+}
+
+@layer base {
+  * {
+    border-color: var(--border);
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-sans);
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+}
