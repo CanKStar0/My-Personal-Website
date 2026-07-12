@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { Rocket, Mouse } from "lucide-react";
+import { Rocket, Mouse, Box } from "lucide-react";
 
 export function HeroAnimation() {
   const [mounted, setMounted] = useState(false);
@@ -52,7 +52,21 @@ export function HeroAnimation() {
         
         {/* Name Header (Stagger Reveal) */}
         <div className="relative py-4 px-8 flex items-center justify-center w-fit">
-          <h1 className="text-3xl font-extrabold tracking-wider sm:text-5xl md:text-6xl font-jakarta text-foreground flex whitespace-nowrap leading-none">
+          <h1 className="relative text-3xl font-extrabold tracking-wider sm:text-5xl md:text-6xl font-jakarta text-foreground flex whitespace-nowrap leading-none">
+            {/* 3D Spinning Red Cube */}
+            <motion.div
+              className="absolute top-1/2 -mt-4 md:-mt-5 w-8 h-8 md:w-10 md:h-10 z-20 text-brand-red drop-shadow-[0_0_12px_rgba(220,38,38,0.8)]"
+              initial={{ left: "0%", opacity: 0, rotate: 0 }}
+              animate={{ left: "100%", opacity: [0, 1, 1, 0], rotate: 360 }}
+              transition={{
+                left: { duration: lineSweepDuration * 0.45, delay: lineDelay, ease: "easeOut" },
+                rotate: { duration: lineSweepDuration * 0.9, delay: lineDelay, ease: "linear" },
+                opacity: { duration: lineSweepDuration * 0.9, delay: lineDelay, times: [0, 0.05, 0.95, 1] }
+              }}
+            >
+              <Box className="w-full h-full" strokeWidth={1} />
+            </motion.div>
+
             {nameLetters.map((char, index) => {
               const progress = index / nameLetters.length;
               const letterDelay = lineDelay + progress * (lineSweepDuration * 0.7);

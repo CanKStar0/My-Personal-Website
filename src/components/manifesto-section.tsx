@@ -12,8 +12,8 @@ export function ManifestoSection() {
         </ScrollReveal>
 
         <ScrollReveal delay={0.2}>
-          <p className="text-lg md:text-2xl text-zinc-400 font-sans font-light leading-relaxed max-w-3xl">
-            Estetik arayüzleri, sağlam bir veritabanı altyapısıyla harmanlayarak dijital dünyada fark yaratan yapılar kuruyorum. Güçlü <span className="text-brand-red font-medium">PostgreSQL</span> mimarilerini ve kesintisiz <span className="text-brand-red font-medium">Full-Stack</span> süreçleri merkeze alıyor; <span className="text-brand-red font-medium">Yapay Zeka</span> entegrasyonları ve <span className="text-brand-red font-medium">Otonom Sistemler</span> ile manuel iş gücünü sıfıra indiriyorum.
+          <p className="text-lg md:text-xl text-zinc-400 font-light leading-relaxed max-w-4xl mx-auto md:mx-0">
+            Kodlar herkes tarafından kopyalanabilir, ancak bir <span className="text-red-500 font-medium">vizyon</span> kopyalanamaz. Ben, karmaşık fikirleri alıp onları kusursuz işleyen dijital ürünlere dönüştüren bir mekanizmayım. Estetiği, <span className="text-red-500 font-medium">ağır mühendislikle</span> birleştiriyorum. Amacım sadece &quot;çalışan&quot; bir şeyler yapmak değil; piyasaya çıktığı an kendi başının çaresine bakabilen, güçlü ve <span className="text-red-500 font-medium">otonom sistemler</span> yaratmak.
           </p>
         </ScrollReveal>
       </div>

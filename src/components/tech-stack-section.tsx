@@ -4,22 +4,22 @@ export function TechStackSection() {
   const categories = [
     {
       title: "Frontend",
-      technologies: ["TypeScript", "Next.js", "React", "Tailwind CSS"],
+      technologies: ["TypeScript", "Framer Notion", "Next.js", "React", "Tailwind CSS"],
     },
     {
       title: "Backend",
-      technologies: ["JavaScript", "Python", "Node.js"],
+      technologies: ["JavaScript", "Redis", "Playwright", "Python", "Node.js", "RESTAPI", "FastAPI"],
     },
     {
       title: "Veritabanı & Altyapı",
-      technologies: ["PostgreSQL", "MongoDB", "Supabase"],
+      technologies: ["PostgreSQL", "MySQL", "MongoDB", "Supabase", "Docker", "Git"],
     },
   ];
 
   return (
     <section id="araclar" className="w-full pb-24 md:pb-32 px-6 bg-background flex justify-center scroll-mt-16">
       <div className="max-w-5xl w-full flex flex-col items-center">
-        
+
         <ScrollReveal>
           <h2 className="text-2xl md:text-4xl font-extrabold tracking-tight font-jakarta text-foreground mb-16 text-center">
             Kullandığım Teknolojiler
@@ -36,7 +36,7 @@ export function TechStackSection() {
               <h3 className="text-lg font-bold font-jakarta text-foreground mb-6 text-center md:text-left">
                 {category.title}
               </h3>
-              
+
               <div className="flex flex-wrap justify-center md:justify-start gap-3">
                 {category.technologies.map((tech) => (
                   <span
