@@ -33,7 +33,7 @@ export function HeroAnimation() {
   }
 
   return (
-    <div className="relative flex min-h-screen w-full flex-col items-center justify-center overflow-hidden select-none px-4 pb-20 md:pb-32 bg-background transition-colors duration-300">
+    <div className="relative flex min-h-screen w-full flex-col items-center justify-center overflow-hidden select-none px-4 pb-20 md:pb-32 bg-background dark:bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] dark:from-zinc-900/40 dark:via-zinc-950 dark:to-black transition-colors duration-300">
       
       {/* Noble Red Background Glow */}
       <motion.div
@@ -90,6 +90,25 @@ export function HeroAnimation() {
             Fullstack Developer & AI Otomasyon Uzmanı
           </motion.p>
         </div>
+
+        {/* Ghost Button */}
+        <motion.div
+          initial={{ opacity: 0, y: 12 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{
+            delay: lineDelay + lineSweepDuration + 0.4,
+            duration: 0.8,
+            ease: "easeOut",
+          }}
+          className="mt-10"
+        >
+          <a
+            href="/projeler"
+            className="inline-flex items-center justify-center px-8 py-3 rounded-full text-xs sm:text-sm font-medium tracking-[0.2em] uppercase transition-all duration-300 border border-zinc-300 dark:border-zinc-800/80 text-zinc-600 dark:text-zinc-400 hover:bg-zinc-100 hover:text-zinc-900 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-200"
+          >
+            Projeleri Keşfet
+          </a>
+        </motion.div>
       </div>
 
     </div>

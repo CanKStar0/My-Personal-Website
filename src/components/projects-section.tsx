@@ -8,6 +8,7 @@ interface Project {
   description: string;
   technologies: string[];
   slug: string;
+  imagePath?: string;
 }
 
 interface Repo {
@@ -31,6 +32,7 @@ export function ProjectsSection() {
       description: "Milyonlarca finansal veriyi sıfır hatayla işleyen analiz sistemi.",
       technologies: ["Python", "FastAPI", "Redis", "PostgreSQL", "Docker", "Tailwind CSS"],
       slug: "bist-ai",
+      imagePath: "/images/bist-ai-1.png",
     },
   ];
 
@@ -64,13 +66,23 @@ export function ProjectsSection() {
                   
                   {/* Card Content */}
                   <div>
-                    {/* Visual Card Image Placeholder */}
-                    <div className="w-full aspect-video rounded-lg bg-zinc-200/40 dark:bg-zinc-900/50 border border-zinc-200/60 dark:border-zinc-800/40 mb-6 flex items-center justify-center overflow-hidden relative">
-                      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_transparent_0%,_rgba(0,0,0,0.03)_100%)] dark:bg-[radial-gradient(circle_at_center,_transparent_0%,_rgba(0,0,0,0.25)_100%)] pointer-events-none" />
-                      <span className="text-zinc-400/50 dark:text-zinc-600/50 text-[10px] md:text-xs font-semibold tracking-widest uppercase font-sans">
-                        Görsel Hazırlanıyor
-                      </span>
-                    </div>
+                    {/* Visual Card Image */}
+                    {project.imagePath ? (
+                      <div className="w-full aspect-video rounded-lg bg-zinc-100 dark:bg-zinc-900/50 border border-zinc-200/60 dark:border-zinc-800/40 mb-6 flex items-center justify-center overflow-hidden">
+                        <img 
+                          src={project.imagePath} 
+                          alt={project.title} 
+                          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                        />
+                      </div>
+                    ) : (
+                      <div className="w-full aspect-video rounded-lg bg-zinc-200/40 dark:bg-zinc-900/50 border border-zinc-200/60 dark:border-zinc-800/40 mb-6 flex items-center justify-center overflow-hidden relative">
+                        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_transparent_0%,_rgba(0,0,0,0.03)_100%)] dark:bg-[radial-gradient(circle_at_center,_transparent_0%,_rgba(0,0,0,0.25)_100%)] pointer-events-none" />
+                        <span className="text-zinc-400/50 dark:text-zinc-600/50 text-[10px] md:text-xs font-semibold tracking-widest uppercase font-sans">
+                          Görsel Hazırlanıyor
+                        </span>
+                      </div>
+                    )}
 
                     <h3 className="text-xl font-bold font-jakarta text-foreground group-hover:text-brand-red transition-colors duration-200 mb-3 leading-tight">
                       {project.title}

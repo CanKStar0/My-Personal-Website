@@ -1,8 +1,7 @@
 import { Navbar } from "@/components/navbar";
 import { HeroAnimation } from "@/components/hero-animation";
 import { MarqueeSection } from "@/components/marquee-section";
-import { AboutSection } from "@/components/about-section";
-import { TechStackSection } from "@/components/tech-stack-section";
+import { BentoGridSection } from "@/components/bento-grid";
 
 export default function Home() {
   return (
@@ -17,11 +16,8 @@ export default function Home() {
         {/* Competencies Ticker */}
         <MarqueeSection />
 
-        {/* About Section */}
-        <AboutSection />
-
-        {/* Tech Stack Section */}
-        <TechStackSection />
+        {/* Bento Grid Architecture */}
+        <BentoGridSection />
       </main>
 
       {/* Footer */}

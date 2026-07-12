@@ -9,21 +9,51 @@ const PROJECTS_DATA = [
     slug: "berber-otomasyonu",
     title: "Berber Otomasyonu",
     summary: "Telefon trafiğini bitiren, 7/24 otonom randevu ve müşteri yönetim sistemi.",
+    coverImage: "/images/berber-cover.png",
     problem: "Yerel esnaflar, özellikle berberler ve kuaförler, gün içinde sürekli çalan telefonlar yüzünden işlerine odaklanamıyor ve randevu çakışmaları yaşıyorlardı. Manuel defter tutma sistemi müşteri kayıplarına yol açıyordu.",
     solution: "Müşterilerin 7/24 online randevu alabildiği, boş saatleri otomatik hesaplayan ve WhatsApp üzerinden hatırlatma SMS'leri gönderen otonom bir sistem inşa ettim. Esnaf paneli sayesinde tüm dükkanın geliri ve müşteri istatistikleri tek ekrandan yönetilebilir hale geldi.",
     techStack: ["Next.js", "TypeScript", "Tailwind CSS", "PostgreSQL", "Node.js"],
     liveUrl: "https://example.com",
     githubUrl: "https://github.com/CanKStar0",
+    features: [
+      { title: "Randevu Sistemi", description: "Müşterileriniz 7/24 randevu alabilir.", imagePath: "/images/berber-1.png" },
+      { title: "SMS Hatırlatmaları", description: "Randevulardan önce otomatik hatırlatma.", imagePath: "/images/berber-2.png" },
+      { title: "Gelir Takibi", description: "Günlük, haftalık, aylık kazanç analizleri.", imagePath: "/images/berber-3.png" },
+      { title: "Müşteri Veritabanı", description: "Sadık müşterilerinizin analiz raporları.", imagePath: "/images/berber-4.png" }
+    ]
   },
   {
     slug: "bist-ai",
     title: "BIST AI",
     summary: "Milyonlarca finansal veriyi sıfır hatayla işleyen analiz sistemi.",
+    coverImage: "/images/bist-ai-cover.png",
     problem: "Borsa İstanbul'daki şirketlerin anlık temel ve teknik analiz verilerinin, dağınık kaynaklardan çekilip saniyeler içinde işlenmesi gerekiyordu. Mevcut yapılar yavaş ve maliyetliydi.",
     solution: "Python ve FastAPI kullanarak yüksek performanslı bir veri hattı (pipeline) kurdum. Milyonlarca satır veri Redis ile önbelleğe alınarak sıfır gecikme ile frontend tarafına aktarıldı. Makine öğrenmesi algoritmaları ile trend tahminleri eklendi.",
     techStack: ["Python", "FastAPI", "Redis", "PostgreSQL", "Docker", "Tailwind CSS"],
     liveUrl: "https://example.com",
     githubUrl: "https://github.com/CanKStar0",
+    features: [
+      {
+        title: "Gelişmiş Analiz ve Karar Destek",
+        description: "Borsa İstanbul verilerini yapay zeka ile analiz ederek rasyonel kararlar almanızı sağlayan detaylı Dashboard ekranı.",
+        imagePath: "/images/bist-ai-1.png"
+      },
+      {
+        title: "Akıllı Portföy Yönetimi",
+        description: "Varlıklarınızın sektörel dağılımını, yapay zeka sağlık skorunu ve risk oranlarını tek bir ekrandan yönetin.",
+        imagePath: "/images/bist-ai-2.png"
+      },
+      {
+        title: "Teknik ve Temel Analiz Birleşimi",
+        description: "Hisse senedi özelinde hedef fiyat, stop-loss ve RSI momentum değerlerini içeren kapsamlı finansal bültenler.",
+        imagePath: "/images/bist-ai-3.png"
+      },
+      {
+        title: "Şeffaf Fiyatlandırma Modeli",
+        description: "Farklı yatırımcı profillerine uygun, gizli ücret içermeyen bireysel ve kurumsal abonelik paketleri.",
+        imagePath: "/images/bist-ai-4.png"
+      }
+    ]
   }
 ];
 
@@ -72,38 +102,68 @@ export default async function ProjeDetayPage({ params }: PageProps) {
         </div>
 
         {/* Hero Section */}
-        <ScrollReveal className="max-w-4xl mx-auto px-6 text-center mb-24">
-          <h1 className="text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-tight font-jakarta text-foreground mb-6 leading-tight">
+        <ScrollReveal className="max-w-4xl mx-auto px-6 text-center mb-16">
+          <h1 className="text-3xl md:text-4xl font-extrabold tracking-tight font-jakarta text-foreground mb-4 leading-tight">
             {project.title}
           </h1>
-          <p className="text-xl md:text-2xl text-muted-foreground/80 font-light font-sans max-w-2xl mx-auto leading-relaxed">
+          <p className="text-base md:text-lg text-muted-foreground/80 font-light font-sans max-w-2xl mx-auto leading-relaxed">
             {project.summary}
           </p>
         </ScrollReveal>
 
-        <div className="max-w-3xl mx-auto px-6 space-y-20">
-          
-          {/* Meydan Okuma (Problem) */}
-          <ScrollReveal>
-            <h2 className="text-2xl font-bold font-jakarta text-foreground mb-5 flex items-center gap-3">
-              <span className="flex h-8 w-8 items-center justify-center rounded-full bg-brand-red/10 text-brand-red text-sm font-bold">1</span>
-              Meydan Okuma
-            </h2>
-            <p className="text-base md:text-lg text-zinc-600 dark:text-zinc-400 leading-relaxed font-light">
-              {project.problem}
-            </p>
+        {/* Cover Image */}
+        {project.coverImage && (
+          <ScrollReveal className="max-w-6xl mx-auto px-6 mb-24">
+            <div className="w-full aspect-[21/9] sm:aspect-[16/9] rounded-2xl md:rounded-3xl overflow-hidden shadow-[0_20px_60px_rgba(0,0,0,0.15)] border border-zinc-200/50 dark:border-zinc-800/50 flex items-center justify-center bg-zinc-50 dark:bg-zinc-900/30">
+              <img 
+                src={project.coverImage} 
+                alt={`${project.title} Cover`}
+                className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
+              />
+            </div>
           </ScrollReveal>
+        )}
 
-          {/* Çözüm ve Mimari */}
-          <ScrollReveal>
-            <h2 className="text-2xl font-bold font-jakarta text-foreground mb-5 flex items-center gap-3">
-              <span className="flex h-8 w-8 items-center justify-center rounded-full bg-brand-red/10 text-brand-red text-sm font-bold">2</span>
-              Mimari ve Çözüm
-            </h2>
-            <p className="text-base md:text-lg text-zinc-600 dark:text-zinc-400 leading-relaxed font-light">
-              {project.solution}
-            </p>
-          </ScrollReveal>
+        <div className="max-w-5xl mx-auto px-6 space-y-16">
+          
+          {/* Adım 1 ve 2 Kaldırıldı */}
+
+          {/* Özellikler ve Görseller (Alternatif Düzen) */}
+          {project.features && project.features.length > 0 && (
+            <div className="space-y-32 py-10 max-w-6xl mx-auto">
+              {project.features.map((feature, index) => {
+                const isEven = index % 2 === 0; // Çift indeksler: Görsel Solda, Metin Sağda
+                return (
+                  <ScrollReveal key={index} className={`flex flex-col lg:flex-row gap-16 lg:gap-32 items-center ${isEven ? "" : "lg:flex-row-reverse"}`}>
+                    
+                    {/* Görsel Sütunu */}
+                    <div className="w-full lg:w-[60%] flex items-center justify-center">
+                      <img 
+                        src={feature.imagePath} 
+                        alt={feature.title}
+                        className="w-full h-auto rounded-xl shadow-[0_8px_30px_rgba(0,0,0,0.12)] border border-zinc-200/40 dark:border-zinc-800/50"
+                        style={{ objectFit: "contain" }}
+                      />
+                    </div>
+
+                    {/* Metin Sütunu */}
+                    <div className="w-full lg:w-[40%] flex flex-col justify-center text-left">
+                      <span className="text-zinc-500 font-mono text-sm tracking-widest block mb-2">
+                        {String(index + 1).padStart(2, '0')}
+                      </span>
+                      <h3 className="text-2xl md:text-3xl font-bold font-jakarta text-foreground mb-4">
+                        {feature.title}
+                      </h3>
+                      <p className="text-base md:text-lg text-zinc-600 dark:text-zinc-400 leading-relaxed font-light">
+                        {feature.description}
+                      </p>
+                    </div>
+
+                  </ScrollReveal>
+                );
+              })}
+            </div>
+          )}
 
           {/* Teknoloji Yığını */}
           <ScrollReveal>
