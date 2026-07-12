@@ -9,13 +9,6 @@ export function BentoGridSection() {
           {/* Card 1: Yapay Zeka & Otomasyon (Geniş - 2 Kolon) */}
           <ScrollReveal delay={0} className="md:col-span-2 lg:col-span-2 group">
             <div className="relative h-full p-8 md:p-10 rounded-3xl border border-zinc-800/50 bg-zinc-900/40 hover:border-red-900/60 hover:bg-red-950/10 hover:shadow-[0_0_20px_rgba(220,38,38,0.05)] hover:-translate-y-1 transition-all duration-500 overflow-hidden">
-              <div
-                className="absolute inset-0 opacity-[0.03] pointer-events-none"
-                style={{
-                  backgroundImage: `url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0h40v40H0V0zm20 20h20v20H20V20zM0 20h20v20H0V20z' fill='%23FFFFFF' fill-opacity='1' fill-rule='evenodd'/%3E%3C/svg%3E")`,
-                  backgroundSize: '40px 40px'
-                }}
-              />
               <div className="relative z-10">
                 <h3 className="text-xl md:text-2xl font-bold font-jakarta text-foreground mb-4">
                   Yapay Zeka & Otomasyon

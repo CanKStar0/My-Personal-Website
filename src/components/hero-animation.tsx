@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { Rocket, Mouse, Box } from "lucide-react";
+import { SpotlightButton } from "./spotlight-button";
 
 export function HeroAnimation() {
   const [mounted, setMounted] = useState(false);
@@ -118,7 +119,7 @@ export function HeroAnimation() {
           </motion.p>
         </div>
 
-        {/* Ghost Button */}
+        {/* Magnetic Ghost Button */}
         <motion.div
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
@@ -129,13 +130,13 @@ export function HeroAnimation() {
           }}
           className="mt-10"
         >
-          <a
+          <SpotlightButton
             href="/projeler"
-            className="group inline-flex items-center justify-center px-8 py-3 rounded-full text-xs sm:text-sm font-medium tracking-[0.2em] uppercase transition-all duration-300 border border-zinc-300 dark:border-zinc-800/80 text-zinc-600 dark:text-zinc-400 hover:border-brand-red/50 hover:text-brand-red dark:hover:border-brand-red/60 dark:hover:text-brand-red hover:shadow-[0_0_20px_rgba(220,38,38,0.15)] dark:hover:bg-brand-red/5"
+            className="text-xs sm:text-sm tracking-[0.2em] uppercase hover:text-white"
           >
-            <Rocket className="w-4 h-4 mr-2 transition-transform duration-300 group-hover:-translate-y-1 group-hover:translate-x-1" />
+            <Rocket className="w-4 h-4 transition-transform duration-300 group-hover:-translate-y-1 group-hover:translate-x-1" />
             Çalışmaları Keşfet
-          </a>
+          </SpotlightButton>
         </motion.div>
       </div>
 

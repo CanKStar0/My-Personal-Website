@@ -3,7 +3,6 @@ import { HeroAnimation } from "@/components/hero-animation";
 import { MarqueeSection } from "@/components/marquee-section";
 import { BentoGridSection } from "@/components/bento-grid";
 import { ManifestoSection } from "@/components/manifesto-section";
-import { TechStackSection } from "@/components/tech-stack-section";
 
 export default function Home() {
   return (
@@ -21,11 +20,13 @@ export default function Home() {
         {/* Engineering Manifesto */}
         <ManifestoSection />
 
+        {/* Dynamic Hover Separator */}
+        <div className="w-full flex justify-center py-4 bg-background group cursor-default">
+          <div className="h-[2px] w-12 bg-zinc-800/80 rounded-full transition-all duration-700 ease-out group-hover:w-40 group-hover:bg-brand-red/60" />
+        </div>
+
         {/* Bento Grid Architecture */}
         <BentoGridSection />
-
-        {/* Tech Stack */}
-        <TechStackSection />
       </main>
 
       {/* Footer */}
