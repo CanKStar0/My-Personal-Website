@@ -28,12 +28,12 @@ export function MarqueeSection() {
           duration: 25,
           repeat: Infinity,
         }}
-        className="flex whitespace-nowrap gap-8 text-lg md:text-xl font-semibold text-zinc-500/25 dark:text-zinc-600/30 uppercase tracking-widest"
+        className="flex whitespace-nowrap gap-8 text-lg md:text-xl font-semibold text-zinc-400 dark:text-zinc-300 uppercase tracking-widest"
       >
         {doubledSkills.map((skill, i) => (
-          <span key={i} className="flex items-center gap-8">
-            <span>{skill}</span>
-            <span className="text-brand-red/25 dark:text-brand-red/30">•</span>
+          <span key={i} className="flex items-center gap-8 group cursor-default">
+            <span className="transition-colors duration-300 group-hover:text-red-500">{skill}</span>
+            <span className="text-brand-red/30">•</span>
           </span>
         ))}
       </motion.div>

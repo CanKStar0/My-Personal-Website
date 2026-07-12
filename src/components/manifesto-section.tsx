@@ -2,7 +2,7 @@ import { ScrollReveal } from "./scroll-reveal";
 
 export function ManifestoSection() {
   return (
-    <section className="w-full py-24 md:py-32 px-6 md:px-12 bg-background border-t border-border/5">
+    <section id="hakkimda" className="w-full py-24 md:py-32 px-6 md:px-12 bg-background border-t border-border/5 scroll-mt-16">
       <div className="max-w-4xl mx-auto text-center md:text-left flex flex-col gap-8">
         <ScrollReveal>
           <h2 className="text-3xl md:text-5xl lg:text-6xl font-extrabold tracking-tight font-jakarta text-foreground leading-tight">

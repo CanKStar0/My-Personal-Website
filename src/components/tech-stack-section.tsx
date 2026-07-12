@@ -17,8 +17,8 @@ export function TechStackSection() {
   ];
 
   return (
-    <section id="araclar" className="w-full pb-24 md:pb-32 px-6 bg-background flex justify-center scroll-mt-16">
-      <div className="max-w-5xl w-full flex flex-col items-center">
+    <section id="araclar" className="w-full py-20 px-6 bg-background flex justify-center scroll-mt-16">
+      <div className="max-w-6xl w-full flex flex-col items-center">
 
         <ScrollReveal>
           <h2 className="text-2xl md:text-4xl font-extrabold tracking-tight font-jakarta text-foreground mb-16 text-center">
@@ -31,7 +31,7 @@ export function TechStackSection() {
             <ScrollReveal
               key={category.title}
               delay={index * 0.2}
-              className="flex flex-col items-center md:items-start p-8 rounded-2xl border border-zinc-200/60 dark:border-zinc-800/60 bg-zinc-50/50 dark:bg-zinc-900/20 backdrop-blur-sm"
+              className="flex flex-col items-center md:items-start p-8 rounded-3xl border border-zinc-200 dark:border-zinc-800/50 bg-white dark:bg-zinc-900/40 shadow-sm dark:shadow-none hover:border-red-900/40 hover:-translate-y-1 transition-all duration-300"
             >
               <h3 className="text-lg font-bold font-jakarta text-foreground mb-6 text-center md:text-left">
                 {category.title}
@@ -41,7 +41,7 @@ export function TechStackSection() {
                 {category.technologies.map((tech) => (
                   <span
                     key={tech}
-                    className="px-4 py-2 rounded-lg text-sm font-medium bg-white dark:bg-zinc-950 text-zinc-700 dark:text-zinc-300 border border-zinc-200/80 dark:border-zinc-800/80 shadow-xs transition-colors hover:border-brand-red/40 dark:hover:border-brand-red/40 hover:text-brand-red dark:hover:text-brand-red"
+                    className="px-4 py-2 rounded-xl text-sm font-medium bg-zinc-100 dark:bg-zinc-950/50 text-zinc-800 dark:text-zinc-300 border border-zinc-200 dark:border-zinc-800/80 transition-colors hover:border-red-500 hover:text-red-600 dark:hover:border-red-900/60 dark:hover:text-red-500"
                   >
                     {tech}
                   </span>

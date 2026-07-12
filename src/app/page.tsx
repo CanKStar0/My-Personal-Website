@@ -3,6 +3,7 @@ import { HeroAnimation } from "@/components/hero-animation";
 import { MarqueeSection } from "@/components/marquee-section";
 import { BentoGridSection } from "@/components/bento-grid";
 import { ManifestoSection } from "@/components/manifesto-section";
+import { TechStackSection } from "@/components/tech-stack-section";
 
 export default function Home() {
   return (
@@ -14,14 +15,17 @@ export default function Home() {
           <HeroAnimation />
         </section>
 
-        {/* Engineering Manifesto */}
-        <ManifestoSection />
-
         {/* Competencies Ticker */}
         <MarqueeSection />
 
+        {/* Engineering Manifesto */}
+        <ManifestoSection />
+
         {/* Bento Grid Architecture */}
         <BentoGridSection />
+
+        {/* Tech Stack */}
+        <TechStackSection />
       </main>
 
       {/* Footer */}
