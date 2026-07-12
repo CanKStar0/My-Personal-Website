@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
+import { Rocket, Mouse } from "lucide-react";
 
 export function HeroAnimation() {
   const [mounted, setMounted] = useState(false);
@@ -33,7 +34,7 @@ export function HeroAnimation() {
   }
 
   return (
-    <div className="relative flex min-h-screen w-full flex-col items-center justify-center overflow-hidden select-none px-4 pb-20 md:pb-32 bg-background dark:bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] dark:from-zinc-900/40 dark:via-zinc-950 dark:to-black transition-colors duration-300">
+    <div className="relative flex min-h-screen w-full flex-col items-center justify-center overflow-hidden select-none px-4 pb-20 md:pb-32 bg-background dark:bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] dark:from-red-950/20 dark:via-zinc-950 dark:to-black transition-colors duration-300">
       
       {/* Noble Red Background Glow */}
       <motion.div
@@ -75,8 +76,20 @@ export function HeroAnimation() {
           </h1>
         </div>
 
+        {/* Subtle Red Separator */}
+        <motion.div
+          initial={{ opacity: 0, scaleX: 0 }}
+          animate={{ opacity: 1, scaleX: 1 }}
+          transition={{
+            delay: lineDelay + lineSweepDuration + 0.1,
+            duration: 0.8,
+            ease: "easeOut",
+          }}
+          className="w-12 h-[2px] bg-brand-red/40 rounded-full mt-6"
+        />
+
         {/* Subtitle / Title Description */}
-        <div className="h-10 mt-6 overflow-hidden flex items-center justify-center">
+        <div className="h-10 mt-4 overflow-hidden flex items-center justify-center">
           <motion.p
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
@@ -104,12 +117,23 @@ export function HeroAnimation() {
         >
           <a
             href="/projeler"
-            className="inline-flex items-center justify-center px-8 py-3 rounded-full text-xs sm:text-sm font-medium tracking-[0.2em] uppercase transition-all duration-300 border border-zinc-300 dark:border-zinc-800/80 text-zinc-600 dark:text-zinc-400 hover:bg-zinc-100 hover:text-zinc-900 dark:hover:bg-zinc-800/50 dark:hover:text-zinc-200"
+            className="group inline-flex items-center justify-center px-8 py-3 rounded-full text-xs sm:text-sm font-medium tracking-[0.2em] uppercase transition-all duration-300 border border-zinc-300 dark:border-zinc-800/80 text-zinc-600 dark:text-zinc-400 hover:border-brand-red/50 hover:text-brand-red dark:hover:border-brand-red/60 dark:hover:text-brand-red hover:shadow-[0_0_20px_rgba(220,38,38,0.15)] dark:hover:bg-brand-red/5"
           >
-            Projeleri Keşfet
+            <Rocket className="w-4 h-4 mr-2 transition-transform duration-300 group-hover:-translate-y-1 group-hover:translate-x-1" />
+            Çalışmaları Keşfet
           </a>
         </motion.div>
       </div>
+
+      {/* Scroll Down Icon */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: lineDelay + lineSweepDuration + 0.8, duration: 1 }}
+        className="absolute bottom-16 sm:bottom-24 flex flex-col items-center justify-center animate-bounce"
+      >
+        <Mouse className="w-6 h-6 text-brand-red/50 dark:text-brand-red/60 opacity-80" strokeWidth={1.5} />
+      </motion.div>
 
     </div>
   );

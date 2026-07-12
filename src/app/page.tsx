@@ -2,6 +2,7 @@ import { Navbar } from "@/components/navbar";
 import { HeroAnimation } from "@/components/hero-animation";
 import { MarqueeSection } from "@/components/marquee-section";
 import { BentoGridSection } from "@/components/bento-grid";
+import { ManifestoSection } from "@/components/manifesto-section";
 
 export default function Home() {
   return (
@@ -12,6 +13,9 @@ export default function Home() {
         <section className="w-full">
           <HeroAnimation />
         </section>
+
+        {/* Engineering Manifesto */}
+        <ManifestoSection />
 
         {/* Competencies Ticker */}
         <MarqueeSection />
