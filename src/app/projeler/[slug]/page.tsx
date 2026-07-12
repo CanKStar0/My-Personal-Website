@@ -9,9 +9,9 @@ const PROJECTS_DATA = [
     slug: "haber-portali",
     title: "Haber Portalı",
     summary: "Bulut tabanlı otonom haber toplama motoru ve yüksek performanslı veri sunum (DaaS) platformu.",
-    techStack: ["Next.js", "TypeScript", "Node.js", "PostgreSQL", "Redis", "GZIP"],
+    techStack: ["Next.js", "TypeScript", "Node.js", "axios", "cheerio", "Playwright", "node-cron", "helmet", "MongoDB", "Mongoose", "Redis", "GZIP", "FetchAPI", "Session Storage"],
     liveUrl: "https://haber-portali.up.railway.app/",
-    githubUrl: "https://github.com/CanKStar0/haber-portali",
+    githubUrl: "/gizli-repo",
     features: [
       {
         title: "Otonom Scraping Mimarisi",
@@ -42,9 +42,9 @@ const PROJECTS_DATA = [
     coverImage: "/images/bist-ai-cover.png",
     problem: "Borsa İstanbul'daki şirketlerin anlık temel ve teknik analiz verilerinin, dağınık kaynaklardan çekilip saniyeler içinde işlenmesi gerekiyordu. Mevcut yapılar yavaş ve maliyetliydi.",
     solution: "Python ve FastAPI kullanarak yüksek performanslı bir veri hattı (pipeline) kurdum. Milyonlarca satır veri Redis ile önbelleğe alınarak sıfır gecikme ile frontend tarafına aktarıldı. Makine öğrenmesi algoritmaları ile trend tahminleri eklendi.",
-    techStack: ["Python", "FastAPI", "Redis", "PostgreSQL", "Docker", "Tailwind CSS"],
-    liveUrl: "https://example.com",
-    githubUrl: "https://github.com/CanKStar0",
+    techStack: ["Python", "FastAPI", "Redis", "NodeJS", "NextJS", "React", "Playwright", "Recharts", "Supabase", "PostreSQL", "Docker", "Tailwind CSS "],
+    liveUrl: "/canli-yok",
+    githubUrl: "/gizli-repo",
     features: [
       {
         title: "Gelişmiş Analiz ve Karar Destek",
@@ -183,24 +183,24 @@ export default async function ProjeDetayPage({ params }: PageProps) {
           {/* Action Links */}
           <ScrollReveal className="pt-12 border-t border-zinc-200/40 dark:border-zinc-800/40 flex flex-wrap gap-4">
             {project.liveUrl && (
-              <a
+              <Link
                 href={project.liveUrl}
-                target="_blank"
-                rel="noopener noreferrer"
+                target={project.liveUrl.startsWith("http") ? "_blank" : undefined}
+                rel={project.liveUrl.startsWith("http") ? "noopener noreferrer" : undefined}
                 className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-foreground text-background font-semibold hover:bg-foreground/90 transition-colors"
               >
                 Canlı Proje <ExternalLink className="w-4 h-4" />
-              </a>
+              </Link>
             )}
             {project.githubUrl && (
-              <a
+              <Link
                 href={project.githubUrl}
-                target="_blank"
-                rel="noopener noreferrer"
+                target={project.githubUrl.startsWith("http") ? "_blank" : undefined}
+                rel={project.githubUrl.startsWith("http") ? "noopener noreferrer" : undefined}
                 className="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-zinc-200 dark:border-zinc-800 text-foreground font-semibold hover:bg-zinc-100 dark:hover:bg-zinc-900 transition-colors"
               >
                 GitHub Repo <GithubIcon className="w-4 h-4" />
-              </a>
+              </Link>
             )}
           </ScrollReveal>
 
