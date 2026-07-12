@@ -22,17 +22,18 @@ interface Repo {
 export function ProjectsSection() {
   const projects: Project[] = [
     {
-      title: "Berber Otomasyonu",
-      description: "Telefon trafiğini bitiren, 7/24 otonom randevu ve müşteri yönetim sistemi.",
-      technologies: ["Next.js", "TypeScript", "Tailwind CSS", "PostgreSQL", "Node.js"],
-      slug: "berber-otomasyonu",
+      title: "Haber Portalı",
+      description: "Bulut tabanlı otonom haber toplama motoru ve yüksek performanslı veri sunum (DaaS) platformu.",
+      technologies: ["Next.js", "TypeScript", "Node.js", "PostgreSQL", "Redis", "GZIP"],
+      slug: "haber-portali",
+      imagePath: "/images/haber-cover.png",
     },
     {
       title: "BIST AI",
       description: "Milyonlarca finansal veriyi sıfır hatayla işleyen analiz sistemi.",
       technologies: ["Python", "FastAPI", "Redis", "PostgreSQL", "Docker", "Tailwind CSS"],
       slug: "bist-ai",
-      imagePath: "/images/bist-ai-1.png",
+      imagePath: "/images/bist-ai-cover.png",
     },
   ];
 

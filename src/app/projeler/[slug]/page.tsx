@@ -6,20 +6,33 @@ import Link from "next/link";
 
 const PROJECTS_DATA = [
   {
-    slug: "berber-otomasyonu",
-    title: "Berber Otomasyonu",
-    summary: "Telefon trafiğini bitiren, 7/24 otonom randevu ve müşteri yönetim sistemi.",
-    coverImage: "/images/berber-cover.png",
-    problem: "Yerel esnaflar, özellikle berberler ve kuaförler, gün içinde sürekli çalan telefonlar yüzünden işlerine odaklanamıyor ve randevu çakışmaları yaşıyorlardı. Manuel defter tutma sistemi müşteri kayıplarına yol açıyordu.",
-    solution: "Müşterilerin 7/24 online randevu alabildiği, boş saatleri otomatik hesaplayan ve WhatsApp üzerinden hatırlatma SMS'leri gönderen otonom bir sistem inşa ettim. Esnaf paneli sayesinde tüm dükkanın geliri ve müşteri istatistikleri tek ekrandan yönetilebilir hale geldi.",
-    techStack: ["Next.js", "TypeScript", "Tailwind CSS", "PostgreSQL", "Node.js"],
-    liveUrl: "https://example.com",
-    githubUrl: "https://github.com/CanKStar0",
+    slug: "haber-portali",
+    title: "Haber Portalı",
+    summary: "Bulut tabanlı otonom haber toplama motoru ve yüksek performanslı veri sunum (DaaS) platformu.",
+    techStack: ["Next.js", "TypeScript", "Node.js", "PostgreSQL", "Redis", "GZIP"],
+    liveUrl: "https://haber-portali.up.railway.app/",
+    githubUrl: "https://github.com/CanKStar0/haber-portali",
     features: [
-      { title: "Randevu Sistemi", description: "Müşterileriniz 7/24 randevu alabilir.", imagePath: "/images/berber-1.png" },
-      { title: "SMS Hatırlatmaları", description: "Randevulardan önce otomatik hatırlatma.", imagePath: "/images/berber-2.png" },
-      { title: "Gelir Takibi", description: "Günlük, haftalık, aylık kazanç analizleri.", imagePath: "/images/berber-3.png" },
-      { title: "Müşteri Veritabanı", description: "Sadık müşterilerinizin analiz raporları.", imagePath: "/images/berber-4.png" }
+      {
+        title: "Otonom Scraping Mimarisi",
+        description: "Sunucu tarafında (server-side) çalışan, bulut ortamlarına tam entegre otonom web kazıma motoru. Kesintisiz veri akışı sağlarken IP engellemeleri ve zaman aşımı (timeout) gibi kronik sorunları aşmak için özel olarak tasarlandı.",
+        imagePath: "/images/haber-1.png"
+      },
+      {
+        title: "In-Memory Caching ile Sıfır Darboğaz",
+        description: "Mükerrer URL'leri ve anlık trafik dalgalanmalarını veritabanına yansıtmadan sönümleyen bellek içi (in-memory) önbellekleme mekanizması. Veritabanı üzerindeki okuma/yazma yükünü ve darboğazları (bottleneck) ortadan kaldıran mühendislik çözümü.",
+        imagePath: "/images/haber-2.png"
+      },
+      {
+        title: "Maksimum Frontend Performansı",
+        description: "Devasa metin ve medya içeriklerinin tarayıcıyı dondurmasını engellemek için uygulanan GZIP sıkıştırması ve Lazy Loading (tembel yükleme) stratejileri. Kullanıcı tarafında pürüzsüz ve sıfır gecikmeli bir okuma deneyimi.",
+        imagePath: "/images/haber-3.png"
+      },
+      {
+        title: "Data-as-a-Service (DaaS) Altyapısı",
+        description: "Toplanan, temizlenen ve kategorize edilen binlerce satır güncel haber verisinin, istenilen başka bir platforma veya API'ye anında servis edilebileceği, ölçeklenebilir ve bağımsız veri mimarisi.",
+        imagePath: "/images/haber-4.png"
+      }
     ]
   },
   {
@@ -81,7 +94,7 @@ interface PageProps {
 
 export default async function ProjeDetayPage({ params }: PageProps) {
   const { slug } = await params;
-  
+
   const project = PROJECTS_DATA.find((p) => p.slug === slug);
 
   if (!project) {
@@ -92,7 +105,7 @@ export default async function ProjeDetayPage({ params }: PageProps) {
     <>
       <Navbar />
       <main className="flex-1 bg-background pt-12 pb-32">
-        
+
         {/* Back Link */}
         <div className="max-w-4xl mx-auto px-6 mb-12">
           <Link href="/projeler" className="inline-flex items-center text-sm font-medium text-muted-foreground hover:text-foreground transition-colors group">
@@ -111,21 +124,8 @@ export default async function ProjeDetayPage({ params }: PageProps) {
           </p>
         </ScrollReveal>
 
-        {/* Cover Image */}
-        {project.coverImage && (
-          <ScrollReveal className="max-w-6xl mx-auto px-6 mb-24">
-            <div className="w-full aspect-[21/9] sm:aspect-[16/9] rounded-2xl md:rounded-3xl overflow-hidden shadow-[0_20px_60px_rgba(0,0,0,0.15)] border border-zinc-200/50 dark:border-zinc-800/50 flex items-center justify-center bg-zinc-50 dark:bg-zinc-900/30">
-              <img 
-                src={project.coverImage} 
-                alt={`${project.title} Cover`}
-                className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
-              />
-            </div>
-          </ScrollReveal>
-        )}
-
         <div className="max-w-5xl mx-auto px-6 space-y-16">
-          
+
           {/* Adım 1 ve 2 Kaldırıldı */}
 
           {/* Özellikler ve Görseller (Alternatif Düzen) */}
@@ -135,11 +135,11 @@ export default async function ProjeDetayPage({ params }: PageProps) {
                 const isEven = index % 2 === 0; // Çift indeksler: Görsel Solda, Metin Sağda
                 return (
                   <ScrollReveal key={index} className={`flex flex-col lg:flex-row gap-16 lg:gap-32 items-center ${isEven ? "" : "lg:flex-row-reverse"}`}>
-                    
+
                     {/* Görsel Sütunu */}
                     <div className="w-full lg:w-[60%] flex items-center justify-center">
-                      <img 
-                        src={feature.imagePath} 
+                      <img
+                        src={feature.imagePath}
                         alt={feature.title}
                         className="w-full h-auto rounded-xl shadow-[0_8px_30px_rgba(0,0,0,0.12)] border border-zinc-200/40 dark:border-zinc-800/50"
                         style={{ objectFit: "contain" }}
