@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { ScrollReveal } from "./scroll-reveal";
 import { GithubRepos } from "./github-repos";
 import { useLanguage } from "./language-context";
@@ -56,8 +57,8 @@ export function ProjectsSection() {
                 <div className="p-6 rounded-xl border border-zinc-200/50 dark:border-zinc-800/50 bg-[#FAF9F6] dark:bg-zinc-950 flex flex-col justify-between h-full min-h-[380px] shadow-xs transition-all duration-300 hover:-translate-y-1 hover:border-brand-red/30 dark:hover:border-brand-red/30 hover:shadow-md dark:hover:shadow-[0_8px_30px_rgba(0,0,0,0.12)]">
                   <div>
                     {project.imagePath ? (
-                      <div className="w-full aspect-video rounded-lg bg-zinc-100 dark:bg-zinc-900/50 border border-zinc-200/60 dark:border-zinc-800/40 mb-6 flex items-center justify-center overflow-hidden">
-                        <img src={project.imagePath} alt={t(project.titleKey)} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                      <div className="w-full aspect-video rounded-lg bg-zinc-100 dark:bg-zinc-900/50 border border-zinc-200/60 dark:border-zinc-800/40 mb-6 flex items-center justify-center overflow-hidden relative">
+                        <Image src={project.imagePath} alt={t(project.titleKey)} fill className="object-cover transition-transform duration-500 group-hover:scale-105" sizes="(max-width: 768px) 100vw, 50vw" />
                       </div>
                     ) : (
                       <div className="w-full aspect-video rounded-lg bg-zinc-200/40 dark:bg-zinc-900/50 border border-zinc-200/60 dark:border-zinc-800/40 mb-6 flex items-center justify-center overflow-hidden relative">
