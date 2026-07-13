@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { useTheme } from "next-themes";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { Sun, Moon, Menu, X } from "lucide-react";
 import { motion } from "framer-motion";
 import { useLanguage } from "./language-context";
@@ -76,6 +76,7 @@ function LanguageToggle() {
 export function Navbar() {
   const { resolvedTheme, setTheme } = useTheme();
   const pathname = usePathname();
+  const router = useRouter();
   const { t } = useLanguage();
   const [mounted, setMounted] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -154,17 +155,20 @@ export function Navbar() {
               key={link.href}
               href={link.href}
               onClick={(e) => {
-                if (pathname === link.href) {
-                  e.preventDefault();
-                  window.scrollTo({ top: 0, behavior: "smooth" });
-                }
-                if (link.href.startsWith("/#") && pathname === "/") {
-                  e.preventDefault();
-                  const targetId = link.href.split("#")[1];
-                  const element = document.getElementById(targetId);
-                  if (element) {
-                    element.scrollIntoView({ behavior: "smooth" });
+                e.preventDefault();
+                if (link.href.startsWith("/#")) {
+                  const sectionId = link.href.split("#")[1];
+                  if (pathname === "/") {
+                    // Aynı sayfadayken smooth scroll
+                    document.getElementById(sectionId)?.scrollIntoView({ behavior: "smooth" });
+                  } else {
+                    // Başka sayfadayken query param ile navigate et
+                    router.push(`/?scrollTo=${sectionId}`);
                   }
+                } else if (pathname === link.href) {
+                  window.scrollTo({ top: 0, behavior: "smooth" });
+                } else {
+                  router.push(link.href);
                 }
               }}
               className="relative text-sm font-medium text-foreground/80 transition-colors duration-200 hover:text-foreground group py-1"
@@ -243,19 +247,20 @@ export function Navbar() {
                 key={link.href}
                 href={link.href}
                 onClick={(e) => {
-                  if (pathname === link.href) {
-                    e.preventDefault();
-                    window.scrollTo({ top: 0, behavior: "smooth" });
-                  }
-                  if (link.href.startsWith("/#") && pathname === "/") {
-                    e.preventDefault();
-                    const targetId = link.href.split("#")[1];
-                    const element = document.getElementById(targetId);
-                    if (element) {
-                      element.scrollIntoView({ behavior: "smooth" });
-                    }
-                  }
+                  e.preventDefault();
                   setMobileMenuOpen(false);
+                  if (link.href.startsWith("/#")) {
+                    const sectionId = link.href.split("#")[1];
+                    if (pathname === "/") {
+                      document.getElementById(sectionId)?.scrollIntoView({ behavior: "smooth" });
+                    } else {
+                      router.push(`/?scrollTo=${sectionId}`);
+                    }
+                  } else if (pathname === link.href) {
+                    window.scrollTo({ top: 0, behavior: "smooth" });
+                  } else {
+                    router.push(link.href);
+                  }
                 }}
                 className="text-base font-medium text-foreground/80 hover:text-brand-red transition-colors duration-200 block w-full"
               >

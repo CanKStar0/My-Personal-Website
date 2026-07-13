@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect } from "react";
 import { Navbar } from "@/components/navbar";
 import { HeroAnimation } from "@/components/hero-animation";
 import { MarqueeSection } from "@/components/marquee-section";
@@ -10,6 +11,29 @@ import { translations } from "@/lib/translations";
 
 export default function Home() {
   const { t } = useLanguage();
+
+  // Başka sayfadan /#hakkimda veya /#araclar ile gelindiğinde
+  // animasyonsuz direkt section'a scroll yap, sonra URL'i temizle
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const scrollTo = params.get("scrollTo");
+    if (!scrollTo) return;
+
+    // URL'den parametreyi temizle (geri tuşu / yenileme sorunları için)
+    const cleanUrl = window.location.pathname;
+    window.history.replaceState(null, "", cleanUrl);
+
+    // DOM hazır olana kadar kısa bekle, sonra instant scroll
+    const tryScroll = (attempts = 0) => {
+      const el = document.getElementById(scrollTo);
+      if (el) {
+        el.scrollIntoView({ behavior: "instant" });
+      } else if (attempts < 10) {
+        setTimeout(() => tryScroll(attempts + 1), 100);
+      }
+    };
+    tryScroll();
+  }, []);
 
   return (
     <>
