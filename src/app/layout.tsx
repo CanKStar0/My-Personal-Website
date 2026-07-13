@@ -51,7 +51,7 @@ export const metadata: Metadata = {
       "Karmaşık fikirleri otonom sistemlere ve kusursuz dijital ürünlere dönüştüren Full-Stack Geliştirici. SaaS, DaaS ve ağır mühendislik çözümleri.",
     images: [
       {
-        url: "/og-image.jpg",
+        url: `${siteUrl}/og-image.jpg`,
         width: 1200,
         height: 630,
         alt: "Canpolat Kaya - Full-Stack Developer & Girişimci",
@@ -63,7 +63,7 @@ export const metadata: Metadata = {
     title: "Canpolat Kaya | Full-Stack Developer & Girişimci",
     description:
       "Karmaşık fikirleri otonom sistemlere ve kusursuz dijital ürünlere dönüştüren Full-Stack Geliştirici. SaaS, DaaS ve ağır mühendislik çözümleri.",
-    images: ["/og-image.jpg"],
+    images: [`${siteUrl}/og-image.jpg`],
   },
   robots: {
     index: true,
