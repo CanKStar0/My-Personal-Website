@@ -166,7 +166,7 @@ export default function ProjeDetayPage() {
                 target={project.liveUrl.startsWith("http") ? "_blank" : undefined}
                 rel={project.liveUrl.startsWith("http") ? "noopener noreferrer" : undefined}
                 onClick={() => trackEvent("project_link_click", { type: "live", project: project.slug })}
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-foreground text-background font-semibold hover:bg-foreground/90 transition-colors"
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-foreground text-background font-semibold hover:bg-foreground/90 transition-colors relative z-10 cursor-pointer"
               >
                 {t(translations.projectDetail.liveProject)} <ExternalLink className="w-4 h-4" />
               </Link>
@@ -177,7 +177,7 @@ export default function ProjeDetayPage() {
                 target={project.githubUrl.startsWith("http") ? "_blank" : undefined}
                 rel={project.githubUrl.startsWith("http") ? "noopener noreferrer" : undefined}
                 onClick={() => trackEvent("project_link_click", { type: "github", project: project.slug })}
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-zinc-200 dark:border-zinc-800 text-foreground font-semibold hover:bg-zinc-100 dark:hover:bg-zinc-900 transition-colors"
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-zinc-200 dark:border-zinc-800 text-foreground font-semibold hover:bg-zinc-100 dark:hover:bg-zinc-900 transition-colors relative z-10 cursor-pointer"
               >
                 {t(translations.projectDetail.githubRepo)} <GithubIcon className="w-4 h-4" />
               </Link>
@@ -191,7 +191,7 @@ export default function ProjeDetayPage() {
             </p>
             <Link
               href="/iletisim"
-              className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-brand-red text-white font-bold hover:bg-red-700 transition-colors shadow-lg hover:shadow-brand-red/25"
+              className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-brand-red text-white font-bold hover:bg-red-700 transition-colors shadow-lg hover:shadow-brand-red/25 relative z-10 cursor-pointer"
             >
               {t(translations.navbar.contact)}
             </Link>

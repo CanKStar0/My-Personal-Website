@@ -228,7 +228,7 @@ export function Navbar() {
 
       {/* Mobile Drawer Menu */}
       {mobileMenuOpen && (
-        <div className="absolute top-16 left-0 w-full border-b border-border/20 bg-background/95 backdrop-blur-lg transition-all duration-300 md:hidden animate-in fade-in slide-in-from-top-4 duration-200">
+        <div className="absolute top-16 left-0 w-full border-b border-border/20 bg-background/95 backdrop-blur-lg transition-all duration-300 md:hidden animate-in fade-in slide-in-from-top-4 duration-200 z-50 shadow-xl">
           <nav className="flex flex-col space-y-4 px-6 py-8">
             {navLinks.map((link) => (
               <Link
@@ -239,9 +239,17 @@ export function Navbar() {
                     e.preventDefault();
                     window.scrollTo({ top: 0, behavior: "smooth" });
                   }
+                  if (link.href.startsWith("/#") && pathname === "/") {
+                    e.preventDefault();
+                    const targetId = link.href.split("#")[1];
+                    const element = document.getElementById(targetId);
+                    if (element) {
+                      element.scrollIntoView({ behavior: "smooth" });
+                    }
+                  }
                   setMobileMenuOpen(false);
                 }}
-                className="text-base font-medium text-foreground/80 hover:text-brand-red transition-colors duration-200"
+                className="text-base font-medium text-foreground/80 hover:text-brand-red transition-colors duration-200 block w-full"
               >
                 {link.name}
               </Link>

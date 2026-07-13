@@ -37,16 +37,17 @@ export function SpotlightButton({ children, className = "", href, onClick }: Spo
     setIsHovered(true);
   };
 
-  const content = (
-    <div
-      ref={ref}
-      onMouseMove={handleMouseMove}
-      onMouseLeave={handleMouseLeave}
-      onMouseEnter={handleMouseEnter}
-      onClick={onClick}
-      className={`relative overflow-hidden bg-transparent border border-zinc-800 hover:border-brand-red/60 text-zinc-300 rounded-full px-8 py-3 font-medium transition-colors duration-300 group ${className}`}
-    >
-      {/* Spotlight Effect */}
+  const commonProps = {
+    ref,
+    onMouseMove: handleMouseMove,
+    onMouseLeave: handleMouseLeave,
+    onMouseEnter: handleMouseEnter,
+    onClick,
+    className: `relative overflow-hidden bg-transparent border border-zinc-800 hover:border-brand-red/60 text-zinc-300 rounded-full px-8 py-3 font-medium transition-colors duration-300 group cursor-pointer inline-flex items-center justify-center ${className}`
+  };
+
+  const innerContent = (
+    <>
       <motion.div
         className="pointer-events-none absolute -inset-px transition-opacity duration-500 z-0"
         style={{
@@ -54,21 +55,23 @@ export function SpotlightButton({ children, className = "", href, onClick }: Spo
           background: useMotionTemplate`radial-gradient(150px circle at ${mouseX}px ${mouseY}px, rgba(220, 38, 38, 0.15), transparent 80%)`,
         }}
       />
-      
-      {/* Content */}
       <div className="relative z-10 flex items-center justify-center gap-2">
         {children}
       </div>
-    </div>
+    </>
   );
 
   if (href) {
     return (
-      <Link href={href} className="inline-block">
-        {content}
+      <Link href={href} {...commonProps}>
+        {innerContent}
       </Link>
     );
   }
 
-  return <div className="inline-block">{content}</div>;
+  return (
+    <button {...commonProps}>
+      {innerContent}
+    </button>
+  );
 }

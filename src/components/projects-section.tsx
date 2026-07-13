@@ -53,7 +53,7 @@ export function ProjectsSection() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {projects.map((project, index) => (
             <ScrollReveal key={project.slug} delay={index * 0.2} className="h-full">
-              <Link href={`/projeler/${project.slug}`} className="group block h-full">
+              <Link href={`/projeler/${project.slug}`} className="group block h-full relative z-10 cursor-pointer">
                 <div className="p-6 rounded-xl border border-zinc-200/50 dark:border-zinc-800/50 bg-[#FAF9F6] dark:bg-zinc-950 flex flex-col justify-between h-full min-h-[380px] shadow-xs transition-all duration-300 hover:-translate-y-1 hover:border-brand-red/30 dark:hover:border-brand-red/30 hover:shadow-md dark:hover:shadow-[0_8px_30px_rgba(0,0,0,0.12)]">
                   <div>
                     {project.imagePath ? (
