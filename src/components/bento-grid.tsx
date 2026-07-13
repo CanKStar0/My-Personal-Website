@@ -13,27 +13,26 @@ interface Tech {
 }
 
 const FRONTEND: Tech[] = [
-  { name: "TypeScript",    icon: `${CDN}/typescript/typescript-original.svg` },
-  { name: "React",         icon: `${CDN}/react/react-original.svg` },
-  { name: "Next.js",       icon: `${CDN}/nextjs/nextjs-original.svg`, invert: true },
-  { name: "Tailwind CSS",  icon: `${CDN}/tailwindcss/tailwindcss-original.svg` },
+  { name: "TypeScript", icon: `${CDN}/typescript/typescript-original.svg` },
+  { name: "React", icon: `${CDN}/react/react-original.svg` },
+  { name: "Next.js", icon: `${CDN}/nextjs/nextjs-original.svg`, invert: true },
+  { name: "Tailwind CSS", icon: `${CDN}/tailwindcss/tailwindcss-original.svg` },
   { name: "Framer Motion", icon: `${CDN}/framermotion/framermotion-original.svg` },
 ];
 
 const BACKEND: Tech[] = [
-  { name: "Python",   icon: `${CDN}/python/python-original.svg` },
-  { name: "Node.js",  icon: `${CDN}/nodejs/nodejs-original.svg` },
-  { name: "FastAPI",  icon: `${CDN}/fastapi/fastapi-original.svg` },
+  { name: "Python", icon: `${CDN}/python/python-original.svg` },
+  { name: "Node.js", icon: `${CDN}/nodejs/nodejs-original.svg` },
+  { name: "FastAPI", icon: `${CDN}/fastapi/fastapi-original.svg` },
   { name: "Playwright", icon: `${CDN}/playwright/playwright-original.svg` },
-  { name: "Redis",    icon: `${CDN}/redis/redis-original.svg` },
+  { name: "Redis", icon: `${CDN}/redis/redis-original.svg` },
 ];
 
 const DATA: Tech[] = [
-  { name: "PostgreSQL",    icon: `${CDN}/postgresql/postgresql-original.svg` },
-  { name: "MongoDB",       icon: `${CDN}/mongodb/mongodb-original.svg` },
-  { name: "MySQL",         icon: `${CDN}/mysql/mysql-original.svg` },
-  { name: "Supabase",      icon: `${CDN}/supabase/supabase-original.svg` },
-  { name: "ElasticSearch", icon: `${CDN}/elasticsearch/elasticsearch-original.svg` },
+  { name: "PostgreSQL", icon: `${CDN}/postgresql/postgresql-original.svg` },
+  { name: "MongoDB", icon: `${CDN}/mongodb/mongodb-original.svg` },
+  { name: "MySQL", icon: `${CDN}/mysql/mysql-original.svg` },
+  { name: "Supabase", icon: `${CDN}/supabase/supabase-original.svg` },
 ];
 
 /** Frontend / Backend: Icons stacked vertically, name appears as tooltip on hover */
