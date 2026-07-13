@@ -49,7 +49,7 @@ export default function IletisimPage() {
           <div className="mt-12 flex justify-center cursor-pointer">
             <SpotlightButton
               onClick={handleCopy}
-              className="text-base sm:text-lg md:text-xl font-semibold font-jakarta group-hover:text-white"
+              className="text-base sm:text-lg md:text-xl font-semibold font-jakarta"
             >
               {/* Red accent dot */}
               <span className="relative flex h-2.5 w-2.5 flex-shrink-0">

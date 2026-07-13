@@ -137,7 +137,7 @@ export function HeroAnimation() {
           <SpotlightButton
             href="/projeler"
             onClick={() => trackEvent("cta_click", { location: "hero" })}
-            className="text-xs sm:text-sm tracking-[0.2em] uppercase hover:text-white"
+            className="text-xs sm:text-sm tracking-[0.2em] uppercase"
           >
             <Rocket className="w-4 h-4 transition-transform duration-300 group-hover:-translate-y-1 group-hover:translate-x-1" />
             {t(translations.hero.cta)}

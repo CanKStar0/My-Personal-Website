@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import { ScrollReveal } from "./scroll-reveal";
 import { useLanguage } from "./language-context";
 import { translations } from "@/lib/translations";
@@ -10,7 +9,7 @@ const CDN = "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons";
 interface Tech {
   name: string;
   icon: string;
-  invert?: boolean; // next.js & playwright iconları light'ta görünmez
+  invert?: boolean; // next.js & playwright icons need invert in dark mode
 }
 
 const FRONTEND: Tech[] = [
@@ -37,28 +36,22 @@ const DATA: Tech[] = [
   { name: "ElasticSearch", icon: `${CDN}/elasticsearch/elasticsearch-original.svg` },
 ];
 
-/** Frontend / Backend: ikon dikey, hover'da isim sağa açılır */
+/** Frontend / Backend: Icons stacked vertically, name appears as tooltip on hover */
 function IconStack({ techs }: { techs: Tech[] }) {
   return (
-    <div className="flex flex-col gap-4 flex-1 justify-center">
+    <div className="flex flex-col gap-6 flex-1 items-center justify-center py-4">
       {techs.map((tech) => (
-        <div key={tech.name} className="relative flex items-center gap-3 group/item cursor-default">
+        <div key={tech.name} className="relative group/item flex items-center justify-center cursor-default">
           {/* Icon */}
-          <div className="w-7 h-7 flex-shrink-0 relative">
-            <Image
+          <div className="w-10 h-10 relative flex items-center justify-center transition-transform duration-300 group-hover/item:scale-125">
+            <img
               src={tech.icon}
               alt={tech.name}
-              fill
-              className={`object-contain transition-all duration-200 ${
-                tech.invert
-                  ? "dark:invert group-hover/item:scale-110"
-                  : "group-hover/item:scale-110"
-              }`}
-              unoptimized
+              className={`w-full h-full object-contain ${tech.invert ? "dark:invert" : ""}`}
             />
           </div>
-          {/* İsim — hover'da görünür */}
-          <span className="text-sm font-medium font-sans text-foreground/0 group-hover/item:text-foreground/80 transition-colors duration-200 whitespace-nowrap overflow-hidden max-w-0 group-hover/item:max-w-[160px] transition-[max-width] duration-300">
+          {/* Tooltip */}
+          <span className="absolute left-full ml-4 opacity-0 group-hover/item:opacity-100 transition-all duration-300 -translate-x-2 group-hover/item:translate-x-0 text-sm font-medium font-sans text-foreground/90 whitespace-nowrap pointer-events-none bg-background/95 px-3 py-1.5 rounded-lg border border-border/60 shadow-sm backdrop-blur-md z-20">
             {tech.name}
           </span>
         </div>
@@ -67,22 +60,20 @@ function IconStack({ techs }: { techs: Tech[] }) {
   );
 }
 
-/** Data card: ikon üstte, isim altta */
+/** Data card: Icons on top, names below */
 function IconGrid({ techs }: { techs: Tech[] }) {
   return (
-    <div className="flex flex-wrap gap-5 opacity-80 group-hover:opacity-100 transition-opacity">
+    <div className="flex flex-wrap justify-center sm:justify-start gap-8 sm:gap-10 opacity-90 group-hover:opacity-100 transition-opacity mt-6 lg:mt-0">
       {techs.map((tech) => (
-        <div key={tech.name} className="flex flex-col items-center gap-1.5 group/item cursor-default">
-          <div className="w-8 h-8 relative transition-transform duration-200 group-hover/item:scale-110">
-            <Image
+        <div key={tech.name} className="flex flex-col items-center gap-3 group/item cursor-default">
+          <div className="w-10 h-10 relative transition-transform duration-300 group-hover/item:scale-110">
+            <img
               src={tech.icon}
               alt={tech.name}
-              fill
-              className={`object-contain ${tech.invert ? "dark:invert" : ""}`}
-              unoptimized
+              className={`w-full h-full object-contain ${tech.invert ? "dark:invert" : ""}`}
             />
           </div>
-          <span className="font-mono text-[10px] text-zinc-500 dark:text-zinc-400 group-hover/item:text-brand-red transition-colors duration-200 whitespace-nowrap">
+          <span className="font-mono text-xs text-zinc-500 dark:text-zinc-400 group-hover/item:text-brand-red transition-colors duration-300 whitespace-nowrap">
             {tech.name}
           </span>
         </div>
@@ -97,7 +88,7 @@ export function BentoGridSection() {
   return (
     <section id="araclar" className="relative w-full py-20 px-6 md:px-12 bg-background">
       <div className="max-w-6xl mx-auto relative z-10">
-        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
 
           {/* Card 1: AI & Otomasyon (2 kolon) */}
           <ScrollReveal delay={0} className="md:col-span-2 lg:col-span-2 group">
@@ -115,8 +106,8 @@ export function BentoGridSection() {
 
           {/* Card 2: Frontend */}
           <ScrollReveal delay={0.1} className="md:col-span-1 lg:col-span-1 group">
-            <div className="h-full p-8 rounded-3xl border border-zinc-300/80 dark:border-zinc-800/50 bg-zinc-50 dark:bg-zinc-900/40 hover:border-brand-red/50 dark:hover:border-red-900/60 hover:bg-red-50/30 dark:hover:bg-red-950/10 hover:shadow-[0_0_20px_rgba(220,38,38,0.05)] hover:-translate-y-1 transition-all duration-500 flex flex-col min-h-[260px]">
-              <h3 className="text-xl font-bold font-jakarta text-foreground mb-6">
+            <div className="h-full p-8 rounded-3xl border border-zinc-300/80 dark:border-zinc-800/50 bg-zinc-50 dark:bg-zinc-900/40 hover:border-brand-red/50 dark:hover:border-red-900/60 hover:bg-red-50/30 dark:hover:bg-red-950/10 hover:shadow-[0_0_20px_rgba(220,38,38,0.05)] hover:-translate-y-1 transition-all duration-500 flex flex-col min-h-[300px]">
+              <h3 className="text-xl font-bold font-jakarta text-foreground mb-2 text-center">
                 {t(translations.bento.frontendTitle)}
               </h3>
               <IconStack techs={FRONTEND} />
@@ -125,8 +116,8 @@ export function BentoGridSection() {
 
           {/* Card 3: Backend */}
           <ScrollReveal delay={0.2} className="md:col-span-1 lg:col-span-1 group">
-            <div className="h-full p-8 rounded-3xl border border-zinc-300/80 dark:border-zinc-800/50 bg-zinc-50 dark:bg-zinc-900/40 hover:border-brand-red/50 dark:hover:border-red-900/60 hover:bg-red-50/30 dark:hover:bg-red-950/10 hover:shadow-[0_0_20px_rgba(220,38,38,0.05)] hover:-translate-y-1 transition-all duration-500 flex flex-col min-h-[260px]">
-              <h3 className="text-xl font-bold font-jakarta text-foreground mb-6">
+            <div className="h-full p-8 rounded-3xl border border-zinc-300/80 dark:border-zinc-800/50 bg-zinc-50 dark:bg-zinc-900/40 hover:border-brand-red/50 dark:hover:border-red-900/60 hover:bg-red-50/30 dark:hover:bg-red-950/10 hover:shadow-[0_0_20px_rgba(220,38,38,0.05)] hover:-translate-y-1 transition-all duration-500 flex flex-col min-h-[300px]">
+              <h3 className="text-xl font-bold font-jakarta text-foreground mb-2 text-center">
                 {t(translations.bento.backendTitle)}
               </h3>
               <IconStack techs={BACKEND} />
@@ -134,7 +125,7 @@ export function BentoGridSection() {
           </ScrollReveal>
 
           {/* Card 4: Veri & Altyapı (4 kolon) */}
-          <ScrollReveal delay={0.3} className="md:col-span-3 lg:col-span-4 group">
+          <ScrollReveal delay={0.3} className="md:col-span-2 lg:col-span-4 group">
             <div className="h-full p-8 md:p-10 rounded-3xl border border-zinc-300/80 dark:border-zinc-800/50 bg-zinc-50 dark:bg-zinc-900/40 hover:border-brand-red/50 dark:hover:border-red-900/60 hover:bg-red-50/30 dark:hover:bg-red-950/10 hover:shadow-[0_0_20px_rgba(220,38,38,0.05)] hover:-translate-y-1 transition-all duration-500">
               <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8">
                 <div className="max-w-2xl">
@@ -155,3 +146,4 @@ export function BentoGridSection() {
     </section>
   );
 }
+
