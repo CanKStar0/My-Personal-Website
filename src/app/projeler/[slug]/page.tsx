@@ -1,12 +1,14 @@
 "use client";
 
 import { Navbar } from "@/components/navbar";
+import Image from "next/image";
 import { notFound, useParams } from "next/navigation";
 import { ScrollReveal } from "@/components/scroll-reveal";
 import { ArrowLeft, ExternalLink } from "lucide-react";
 import Link from "next/link";
 import { useLanguage } from "@/components/language-context";
 import { translations } from "@/lib/translations";
+import { trackEvent } from "@/lib/analytics";
 
 function GithubIcon({ className }: { className?: string }) {
   return (
@@ -117,12 +119,13 @@ export default function ProjeDetayPage() {
                 return (
                   <ScrollReveal key={index} className={`flex flex-col lg:flex-row gap-16 lg:gap-32 items-center ${isEven ? "" : "lg:flex-row-reverse"}`}>
                     {/* Görsel Sütunu */}
-                    <div className="w-full lg:w-[60%] flex items-center justify-center">
-                      <img
+                    <div className="w-full lg:w-[60%] flex items-center justify-center relative aspect-[4/3] rounded-xl shadow-[0_8px_30px_rgba(0,0,0,0.12)] border border-zinc-200/40 dark:border-zinc-800/50 overflow-hidden bg-zinc-100 dark:bg-zinc-900/50">
+                      <Image
                         src={feature.imagePath}
                         alt={t(feature.titleKey)}
-                        className="w-full h-auto rounded-xl shadow-[0_8px_30px_rgba(0,0,0,0.12)] border border-zinc-200/40 dark:border-zinc-800/50"
-                        style={{ objectFit: "contain" }}
+                        fill
+                        className="object-contain"
+                        sizes="(max-width: 1024px) 100vw, 60vw"
                       />
                     </div>
                     {/* Metin Sütunu */}
@@ -162,6 +165,7 @@ export default function ProjeDetayPage() {
                 href={project.liveUrl}
                 target={project.liveUrl.startsWith("http") ? "_blank" : undefined}
                 rel={project.liveUrl.startsWith("http") ? "noopener noreferrer" : undefined}
+                onClick={() => trackEvent("project_link_click", { type: "live", project: project.slug })}
                 className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-foreground text-background font-semibold hover:bg-foreground/90 transition-colors"
               >
                 {t(translations.projectDetail.liveProject)} <ExternalLink className="w-4 h-4" />
@@ -172,11 +176,25 @@ export default function ProjeDetayPage() {
                 href={project.githubUrl}
                 target={project.githubUrl.startsWith("http") ? "_blank" : undefined}
                 rel={project.githubUrl.startsWith("http") ? "noopener noreferrer" : undefined}
+                onClick={() => trackEvent("project_link_click", { type: "github", project: project.slug })}
                 className="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-zinc-200 dark:border-zinc-800 text-foreground font-semibold hover:bg-zinc-100 dark:hover:bg-zinc-900 transition-colors"
               >
                 {t(translations.projectDetail.githubRepo)} <GithubIcon className="w-4 h-4" />
               </Link>
             )}
+          </ScrollReveal>
+
+          {/* Bottom CTA */}
+          <ScrollReveal className="pt-16 pb-8 text-center flex flex-col items-center">
+            <p className="text-muted-foreground mb-6 font-light">
+              {t({ tr: "Bu proje ilginizi çekti mi? Birlikte çalışalım.", en: "Interested in this project? Let's work together." })}
+            </p>
+            <Link
+              href="/iletisim"
+              className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-brand-red text-white font-bold hover:bg-red-700 transition-colors shadow-lg hover:shadow-brand-red/25"
+            >
+              {t(translations.navbar.contact)}
+            </Link>
           </ScrollReveal>
 
         </div>
