@@ -16,20 +16,60 @@ interface GitHubRepo {
   fork: boolean;
 }
 
+// Statik fallback — API erişilemez olsa bile her zaman görünür
+const STATIC_REPOS: GitHubRepo[] = [
+  {
+    id: 1,
+    name: "EcoTrace",
+    description: "A lightweight Python library for tracking carbon emissions and energy consumption of your code — with zero configuration.",
+    stargazers_count: 3,
+    html_url: "https://github.com/CanKStar0/EcoTrace",
+    language: "Python",
+    fork: false,
+  },
+  {
+    id: 2,
+    name: "My-Personal-Website",
+    description: "My personal portfolio built with Next.js 16, React 19, Tailwind CSS v4 and Framer Motion. Crimson-Noir design system with TR/EN i18n.",
+    stargazers_count: 1,
+    html_url: "https://github.com/CanKStar0/My-Personal-Website",
+    language: "TypeScript",
+    fork: false,
+  },
+  {
+    id: 3,
+    name: "Zillow-Stealth-Scraper",
+    description: "Autonomous Zillow scraper with ML-based ghost cursor movements, PerimeterX bypass, and intelligent pagination.",
+    stargazers_count: 1,
+    html_url: "https://github.com/CanKStar0",
+    language: "JavaScript",
+    fork: false,
+  },
+  {
+    id: 4,
+    name: "BIST-AI",
+    description: "Real-time Borsa Istanbul analytics dashboard powered by Python, FastAPI, Redis and Next.js with ML-based scoring.",
+    stargazers_count: 0,
+    html_url: "https://github.com/CanKStar0",
+    language: "Python",
+    fork: false,
+  },
+];
+
 export function GithubRepos() {
-  const { t, locale } = useLanguage();
-  const [repos, setRepos] = useState<GitHubRepo[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(false);
+  const { t } = useLanguage();
+  const [repos, setRepos] = useState<GitHubRepo[]>(STATIC_REPOS);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     const controller = new AbortController();
 
+    // Sessizce dene — başarılı olursa canlı veriyle güncelle, olmazsa statik kalır
     fetch("https://api.github.com/users/CanKStar0/repos", {
       signal: controller.signal,
     })
       .then((res) => {
-        if (!res.ok) throw new Error("GitHub API error");
+        if (!res.ok) throw new Error("rate-limit or network error");
         return res.json();
       })
       .then((data: GitHubRepo[]) => {
@@ -37,46 +77,19 @@ export function GithubRepos() {
           .filter((repo) => !repo.fork)
           .sort((a, b) => b.stargazers_count - a.stargazers_count)
           .slice(0, 4);
-        setRepos(topRepos);
-        setLoading(false);
+        if (topRepos.length > 0) setRepos(topRepos);
       })
-      .catch((err) => {
-        if (err.name !== "AbortError") {
-          setError(true);
-          setLoading(false);
-        }
+      .catch(() => {
+        // Sessiz başarısız — statik veri zaten görünüyor
       });
 
     return () => controller.abort();
   }, []);
 
-  if (loading) {
-    return (
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        {[0, 1, 2, 3].map((i) => (
-          <div
-            key={i}
-            className="h-[190px] rounded-xl border border-zinc-200/50 dark:border-zinc-800/50 bg-zinc-100 dark:bg-zinc-900/30 animate-pulse"
-          />
-        ))}
-      </div>
-    );
-  }
-
-  if (error || repos.length === 0) {
-    return (
-      <div className="w-full p-8 text-center border border-zinc-200/50 dark:border-zinc-800/50 rounded-xl bg-zinc-50/50 dark:bg-zinc-900/20">
-        <p className="text-sm text-muted-foreground">
-          {t(translations.github.fetchError)}
-        </p>
-      </div>
-    );
-  }
-
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
       {repos.map((repo, index) => (
-        <ScrollReveal key={repo.id} delay={index * 0.2} className="h-full">
+        <ScrollReveal key={repo.id} delay={index * 0.15} className="h-full">
           <a
             href={repo.html_url}
             target="_blank"
@@ -93,7 +106,9 @@ export function GithubRepos() {
                   </h3>
                   <div className="flex items-center gap-1.5 text-zinc-500 dark:text-zinc-400 group-hover:text-brand-red dark:group-hover:text-brand-red transition-colors duration-200">
                     <Star className="w-4 h-4 fill-zinc-400/10 dark:fill-zinc-600/10 group-hover:fill-brand-red/10 stroke-[1.5]" />
-                    <span className="text-xs font-semibold font-sans leading-none">{repo.stargazers_count}</span>
+                    <span className="text-xs font-semibold font-sans leading-none">
+                      {repo.stargazers_count}
+                    </span>
                   </div>
                 </div>
                 <p className="text-muted-foreground/90 text-xs md:text-sm leading-relaxed font-sans font-light line-clamp-3">
@@ -101,7 +116,7 @@ export function GithubRepos() {
                 </p>
               </div>
 
-              {/* Tech Badges */}
+              {/* Tech Badge */}
               <div className="border-t border-zinc-200/40 dark:border-zinc-800/40 pt-4 mt-6">
                 <div className="flex flex-wrap gap-2">
                   {repo.language && (
@@ -119,3 +134,4 @@ export function GithubRepos() {
     </div>
   );
 }
+
