@@ -35,7 +35,7 @@ export function SpotlightButton({ children, className = "", href, onClick }: Spo
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
       onMouseEnter={handleMouseEnter}
-      className={`relative overflow-hidden bg-transparent border border-zinc-800 hover:border-brand-red/60 text-zinc-300 rounded-full px-8 py-3 font-medium transition-colors duration-300 group cursor-pointer ${className}`}
+      className={`relative overflow-hidden bg-transparent border border-zinc-400 dark:border-zinc-700 hover:border-brand-red/70 dark:hover:border-brand-red/60 text-foreground/75 dark:text-zinc-300 rounded-full px-8 py-3 font-medium transition-colors duration-300 group cursor-pointer ${className}`}
     >
       {/* Spotlight Effect */}
       <motion.div
