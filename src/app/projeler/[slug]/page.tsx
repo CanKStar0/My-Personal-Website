@@ -47,23 +47,23 @@ const PROJECTS_DATA = [
     githubUrl: "/gizli-repo",
     features: [
       {
-        title: "Gelişmiş Analiz ve Karar Destek",
-        description: "Borsa İstanbul verilerini yapay zeka ile analiz ederek rasyonel kararlar almanızı sağlayan detaylı Dashboard ekranı.",
+        title: "Otonom Veri Akışı ve Dashboard Merkezi",
+        description: "Standart finans uygulamalarındaki statik verileri unutun. Arka planda çalışan otonom botlar (Playwright) ve iş kuyruklarıyla (BullMQ) Borsa İstanbul'un nabzını tutan, Next.js ile render edilmiş yüksek performanslı bir komuta merkezi.",
         imagePath: "/images/bist-ai-1.png"
       },
       {
-        title: "Akıllı Portföy Yönetimi",
-        description: "Varlıklarınızın sektörel dağılımını, yapay zeka sağlık skorunu ve risk oranlarını tek bir ekrandan yönetin.",
+        title: "Acımasız Portföy Algoritmaları",
+        description: "Duygusal ve amatör kararları ortadan kaldıran analitik bir yargıç. PostgreSQL üzerinde koşan karmaşık hesaplamalar sayesinde; varlık dağılımınızı, sektörel yığılmaları ve portföy sağlığınızı anında analiz ederek sizi olası çöküşlere karşı uyarır.",
         imagePath: "/images/bist-ai-2.png"
       },
       {
-        title: "Teknik ve Temel Analiz Birleşimi",
-        description: "Hisse senedi özelinde hedef fiyat, stop-loss ve RSI momentum değerlerini içeren kapsamlı finansal bültenler.",
+        title: "Dinamik Sentetik Bültenler",
+        description: "Her hisse için manuel grafik çizme ameleliğine son. Momentum, RSI ve hareketli ortalamalar gibi kritik metrikleri milisaniyeler içinde tarayıp, hedefleri ve stop-loss noktaları net bir şekilde çizilmiş mühendislik raporları sunar.",
         imagePath: "/images/bist-ai-3.png"
       },
       {
-        title: "Şeffaf Fiyatlandırma Modeli",
-        description: "Farklı yatırımcı profillerine uygun, gizli ücret içermeyen bireysel ve kurumsal abonelik paketleri.",
+        title: "Ölçeklenebilir SaaS Altyapısı",
+        description: "Bu sadece bir arayüz değil; Supabase ve TypeScript tabanlı sağlam bir abonelik ekosistemi. Farklı kullanıcı profillerinin API limitlerini, veritabanı yükünü ve arka plan işlem güçlerini pürüzsüzce yöneten tam teşekküllü bir B2B/B2C altyapısı.",
         imagePath: "/images/bist-ai-4.png"
       }
     ]
