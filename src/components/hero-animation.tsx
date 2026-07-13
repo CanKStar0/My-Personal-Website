@@ -6,6 +6,7 @@ import { Rocket, Mouse, Box } from "lucide-react";
 import { SpotlightButton } from "./spotlight-button";
 import { useLanguage } from "./language-context";
 import { translations } from "@/lib/translations";
+import { trackEvent } from "@/lib/analytics";
 
 export function HeroAnimation() {
   const [mounted, setMounted] = useState(false);
@@ -135,6 +136,7 @@ export function HeroAnimation() {
         >
           <SpotlightButton
             href="/projeler"
+            onClick={() => trackEvent("cta_click", { location: "hero" })}
             className="text-xs sm:text-sm tracking-[0.2em] uppercase hover:text-white"
           >
             <Rocket className="w-4 h-4 transition-transform duration-300 group-hover:-translate-y-1 group-hover:translate-x-1" />

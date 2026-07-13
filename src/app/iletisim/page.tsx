@@ -7,6 +7,7 @@ import { ScrollReveal } from "@/components/scroll-reveal";
 import { SpotlightButton } from "@/components/spotlight-button";
 import { useLanguage } from "@/components/language-context";
 import { translations } from "@/lib/translations";
+import { trackEvent } from "@/lib/analytics";
 
 export default function IletisimPage() {
   const email = "canpolatkaya4@gmail.com";
@@ -14,6 +15,7 @@ export default function IletisimPage() {
 
   const handleCopy = () => {
     navigator.clipboard.writeText(email);
+    trackEvent("email_copied", { location: "contact_page" });
     toast(t(translations.contact.toast));
   };
 
