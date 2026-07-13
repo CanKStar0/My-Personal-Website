@@ -2,7 +2,6 @@
 
 import { Navbar } from "@/components/navbar";
 import { Mail } from "lucide-react";
-import { toast } from "sonner";
 import { ScrollReveal } from "@/components/scroll-reveal";
 import { SpotlightButton } from "@/components/spotlight-button";
 import { useLanguage } from "@/components/language-context";
@@ -13,10 +12,8 @@ export default function IletisimPage() {
   const email = "canpolatkaya4@gmail.com";
   const { t } = useLanguage();
 
-  const handleCopy = () => {
-    navigator.clipboard.writeText(email);
-    trackEvent("email_copied", { location: "contact_page" });
-    toast(t(translations.contact.toast));
+  const handleMailClick = () => {
+    trackEvent("email_clicked", { location: "contact_page" });
   };
 
   return (
@@ -48,7 +45,8 @@ export default function IletisimPage() {
         <ScrollReveal>
           <div className="mt-12 flex justify-center cursor-pointer">
             <SpotlightButton
-              onClick={handleCopy}
+              href={`mailto:${email}`}
+              onClick={handleMailClick}
               className="text-base sm:text-lg md:text-xl font-semibold font-jakarta"
             >
               {/* Red accent dot */}
