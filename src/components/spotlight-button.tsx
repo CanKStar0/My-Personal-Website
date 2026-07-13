@@ -12,38 +12,29 @@ interface SpotlightButtonProps {
 }
 
 export function SpotlightButton({ children, className = "", href, onClick }: SpotlightButtonProps) {
-  const ref = useRef<HTMLElement>(null);
+  const ref = useRef<HTMLDivElement>(null);
   const [isHovered, setIsHovered] = useState(false);
 
-  // Mouse position relative to the button's top-left (for spotlight)
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
 
-  const handleMouseMove = (e: React.MouseEvent<HTMLElement>) => {
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     if (!ref.current) return;
     const { clientX, clientY } = e;
     const { left, top } = ref.current.getBoundingClientRect();
-    
-    // Spotlight position
     mouseX.set(clientX - left);
     mouseY.set(clientY - top);
   };
 
-  const handleMouseLeave = () => {
-    setIsHovered(false);
-  };
+  const handleMouseLeave = () => setIsHovered(false);
+  const handleMouseEnter = () => setIsHovered(true);
 
-  const handleMouseEnter = () => {
-    setIsHovered(true);
-  };
-
-  const content = (
+  const innerContent = (
     <div
-      ref={ref as any}
+      ref={ref}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
       onMouseEnter={handleMouseEnter}
-      onClick={onClick}
       className={`relative overflow-hidden bg-transparent border border-zinc-800 hover:border-brand-red/60 text-zinc-300 rounded-full px-8 py-3 font-medium transition-colors duration-300 group cursor-pointer ${className}`}
     >
       {/* Spotlight Effect */}
@@ -54,7 +45,6 @@ export function SpotlightButton({ children, className = "", href, onClick }: Spo
           background: useMotionTemplate`radial-gradient(150px circle at ${mouseX}px ${mouseY}px, rgba(220, 38, 38, 0.15), transparent 80%)`,
         }}
       />
-      
       {/* Content */}
       <div className="relative z-10 flex items-center justify-center gap-2">
         {children}
@@ -64,11 +54,19 @@ export function SpotlightButton({ children, className = "", href, onClick }: Spo
 
   if (href) {
     return (
-      <Link href={href} className="inline-block cursor-pointer">
-        {content}
+      <Link
+        href={href}
+        onClick={onClick}
+        className="inline-block cursor-pointer"
+      >
+        {innerContent}
       </Link>
     );
   }
 
-  return <div className="inline-block cursor-pointer">{content}</div>;
+  return (
+    <div className="inline-block cursor-pointer" onClick={onClick}>
+      {innerContent}
+    </div>
+  );
 }
