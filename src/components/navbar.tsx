@@ -158,6 +158,14 @@ export function Navbar() {
                   e.preventDefault();
                   window.scrollTo({ top: 0, behavior: "smooth" });
                 }
+                if (link.href.startsWith("/#") && pathname === "/") {
+                  e.preventDefault();
+                  const targetId = link.href.split("#")[1];
+                  const element = document.getElementById(targetId);
+                  if (element) {
+                    element.scrollIntoView({ behavior: "smooth" });
+                  }
+                }
               }}
               className="relative text-sm font-medium text-foreground/80 transition-colors duration-200 hover:text-foreground group py-1"
             >
