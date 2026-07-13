@@ -1,10 +1,18 @@
+"use client";
+
 import { Navbar } from "@/components/navbar";
 import { Mail } from "lucide-react";
+import { toast } from "sonner";
 import { ScrollReveal } from "@/components/scroll-reveal";
 import { SpotlightButton } from "@/components/spotlight-button";
 
 export default function IletisimPage() {
   const email = "canpolatkaya4@gmail.com";
+
+  const handleCopy = () => {
+    navigator.clipboard.writeText(email);
+    toast("E-posta adresi panoya kopyalandı.");
+  };
 
   return (
     <>
@@ -28,9 +36,9 @@ export default function IletisimPage() {
 
         {/* Email Spotlight Button */}
         <ScrollReveal>
-          <div className="mt-12 flex justify-center">
+          <div className="mt-12 flex justify-center cursor-pointer">
             <SpotlightButton
-              href={`mailto:${email}`}
+              onClick={handleCopy}
               className="text-base sm:text-lg md:text-xl font-semibold font-jakarta group-hover:text-white"
             >
               {/* Red accent dot */}
@@ -45,7 +53,7 @@ export default function IletisimPage() {
               {/* Email text */}
               <span>{email}</span>
 
-              {/* Arrow indicator */}
+              {/* Arrow indicator (now a copy icon conceptually, but keeping original look) */}
               <span className="ml-1 text-zinc-500 text-sm transition-all duration-300 group-hover:text-brand-red group-hover:translate-x-0.5">
                 ↗
               </span>
