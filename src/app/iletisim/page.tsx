@@ -5,13 +5,16 @@ import { Mail } from "lucide-react";
 import { toast } from "sonner";
 import { ScrollReveal } from "@/components/scroll-reveal";
 import { SpotlightButton } from "@/components/spotlight-button";
+import { useLanguage } from "@/components/language-context";
+import { translations } from "@/lib/translations";
 
 export default function IletisimPage() {
   const email = "canpolatkaya4@gmail.com";
+  const { t } = useLanguage();
 
   const handleCopy = () => {
     navigator.clipboard.writeText(email);
-    toast("E-posta adresi panoya kopyalandı.");
+    toast(t(translations.contact.toast));
   };
 
   return (
@@ -21,17 +24,22 @@ export default function IletisimPage() {
 
         {/* Eyebrow */}
         <span className="uppercase tracking-[0.3em] text-[10px] sm:text-xs font-semibold text-zinc-500 select-none mb-5">
-          İletişim
+          {t(translations.contact.eyebrow)}
         </span>
 
         {/* Heading */}
         <h1 className="text-3xl sm:text-5xl md:text-6xl font-extrabold tracking-tight font-jakarta text-foreground leading-tight max-w-2xl">
-          Yeni bir projeniz<br />mi var?
+          {t(translations.contact.heading).split("\n").map((line, i) => (
+            <span key={i}>
+              {line}
+              {i === 0 && <br />}
+            </span>
+          ))}
         </h1>
 
         {/* Subtitle */}
         <p className="mt-5 text-sm md:text-base text-muted-foreground/80 font-sans font-light leading-relaxed max-w-md">
-          Detayları konuşmak, fiyat teklifi almak veya sadece merhaba demek için bana ulaşın.
+          {t(translations.contact.subtitle)}
         </p>
 
         {/* Email Spotlight Button */}
@@ -53,7 +61,7 @@ export default function IletisimPage() {
               {/* Email text */}
               <span>{email}</span>
 
-              {/* Arrow indicator (now a copy icon conceptually, but keeping original look) */}
+              {/* Arrow indicator */}
               <span className="ml-1 text-zinc-500 text-sm transition-all duration-300 group-hover:text-brand-red group-hover:translate-x-0.5">
                 ↗
               </span>

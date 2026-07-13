@@ -1,10 +1,16 @@
+"use client";
+
 import { Navbar } from "@/components/navbar";
 import { HeroAnimation } from "@/components/hero-animation";
 import { MarqueeSection } from "@/components/marquee-section";
 import { BentoGridSection } from "@/components/bento-grid";
 import { ManifestoSection } from "@/components/manifesto-section";
+import { useLanguage } from "@/components/language-context";
+import { translations } from "@/lib/translations";
 
 export default function Home() {
+  const { t } = useLanguage();
+
   return (
     <>
       <Navbar />
@@ -32,8 +38,7 @@ export default function Home() {
       {/* Footer */}
       <footer className="border-t border-border/10 bg-background/50">
         <div className="mx-auto max-w-7xl px-6 py-6 sm:px-8 flex items-center justify-between text-xs text-muted-foreground">
-          <p>© {new Date().getFullYear()} Canpolat Kaya. Tüm Hakları Saklıdır.</p>
-
+          <p>© {new Date().getFullYear()} Canpolat Kaya. {t(translations.footer.rights)}</p>
         </div>
       </footer>
     </>

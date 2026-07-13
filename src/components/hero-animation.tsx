@@ -4,9 +4,12 @@ import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { Rocket, Mouse, Box } from "lucide-react";
 import { SpotlightButton } from "./spotlight-button";
+import { useLanguage } from "./language-context";
+import { translations } from "@/lib/translations";
 
 export function HeroAnimation() {
   const [mounted, setMounted] = useState(false);
+  const { t } = useLanguage();
   const name = "CANPOLAT KAYA";
   const nameLetters = name.split("");
 
@@ -115,7 +118,7 @@ export function HeroAnimation() {
             }}
             className="text-xs font-light tracking-[0.2em] sm:tracking-[0.3em] md:tracking-[0.4em] sm:text-sm md:text-base text-muted-foreground font-sans text-center px-4 uppercase"
           >
-            Fullstack Developer & AI Otomasyon Uzmanı
+            {t(translations.hero.subtitle)}
           </motion.p>
         </div>
 
@@ -135,7 +138,7 @@ export function HeroAnimation() {
             className="text-xs sm:text-sm tracking-[0.2em] uppercase hover:text-white"
           >
             <Rocket className="w-4 h-4 transition-transform duration-300 group-hover:-translate-y-1 group-hover:translate-x-1" />
-            Çalışmaları Keşfet
+            {t(translations.hero.cta)}
           </SpotlightButton>
         </motion.div>
       </div>

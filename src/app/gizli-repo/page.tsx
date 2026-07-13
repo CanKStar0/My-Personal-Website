@@ -1,9 +1,15 @@
+"use client";
+
 import { ScrollReveal } from "@/components/scroll-reveal";
 import { Shield, ArrowLeft } from "lucide-react";
 import Link from "next/link";
 import { Navbar } from "@/components/navbar";
+import { useLanguage } from "@/components/language-context";
+import { translations } from "@/lib/translations";
 
 export default function GizliRepoPage() {
+  const { t } = useLanguage();
+
   return (
     <>
       <Navbar />
@@ -16,12 +22,12 @@ export default function GizliRepoPage() {
 
           {/* Title */}
           <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight font-jakarta text-foreground mb-6">
-            Top Secret // Gizli Repo
+            {t(translations.gizliRepo.title)}
           </h1>
 
           {/* Description */}
           <p className="text-lg md:text-xl text-muted-foreground font-sans font-light leading-relaxed mb-12">
-            Bazı mimariler açık kaynak yapılamayacak kadar değerlidir veya ticari sırlar (NDA) içerir. Bu projenin kaynak kodları dijital bir kasanın içinde kilitli.
+            {t(translations.gizliRepo.description)}
           </p>
 
           {/* Action Button */}
@@ -30,7 +36,7 @@ export default function GizliRepoPage() {
             className="group inline-flex items-center gap-3 px-8 py-4 rounded-full border border-zinc-200 dark:border-zinc-800 text-foreground font-medium hover:bg-zinc-100 dark:hover:bg-zinc-900 transition-colors"
           >
             <ArrowLeft className="w-5 h-5 transition-transform group-hover:-translate-x-1" />
-            Portfolyoya Geri Dön
+            {t(translations.gizliRepo.backButton)}
           </Link>
         </ScrollReveal>
       </main>

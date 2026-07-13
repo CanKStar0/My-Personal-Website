@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Script from "next/script";
 import { Inter, Plus_Jakarta_Sans } from "next/font/google";
 import { ThemeProvider } from "@/components/theme-provider";
+import { LanguageProvider } from "@/components/language-context";
 import { Toaster } from "sonner";
 import "./globals.css";
 
@@ -125,21 +126,23 @@ export default function RootLayout({
           }}
         />
         <ThemeProvider>
-          <div className="relative flex min-h-screen flex-col">
-            {children}
-          </div>
-          <Toaster 
-            theme="dark" 
-            position="bottom-center"
-            toastOptions={{
-              style: {
-                background: "rgba(9, 9, 11, 0.9)",
-                border: "1px solid rgba(220, 38, 38, 0.4)",
-                color: "#f4f4f5",
-                backdropFilter: "blur(8px)",
-              }
-            }}
-          />
+          <LanguageProvider>
+            <div className="relative flex min-h-screen flex-col">
+              {children}
+            </div>
+            <Toaster 
+              theme="dark" 
+              position="bottom-center"
+              toastOptions={{
+                style: {
+                  background: "rgba(9, 9, 11, 0.9)",
+                  border: "1px solid rgba(220, 38, 38, 0.4)",
+                  color: "#f4f4f5",
+                  backdropFilter: "blur(8px)",
+                }
+              }}
+            />
+          </LanguageProvider>
         </ThemeProvider>
       </body>
     </html>

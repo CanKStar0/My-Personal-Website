@@ -5,6 +5,9 @@ import Link from "next/link";
 import { useTheme } from "next-themes";
 import { usePathname } from "next/navigation";
 import { Sun, Moon, Menu, X } from "lucide-react";
+import { motion } from "framer-motion";
+import { useLanguage } from "./language-context";
+import { translations } from "@/lib/translations";
 
 // Inline brand SVGs (not available in this lucide-react version)
 function GithubIcon({ className }: { className?: string }) {
@@ -23,9 +26,57 @@ function LinkedInIcon({ className }: { className?: string }) {
   );
 }
 
+function LanguageToggle() {
+  const { locale, setLocale } = useLanguage();
+
+  return (
+    <div
+      className="relative flex items-center h-9 rounded-full border border-border/20 bg-background/50 overflow-hidden select-none"
+      role="radiogroup"
+      aria-label="Language selector"
+    >
+      {/* Sliding red pill indicator */}
+      <motion.div
+        className="absolute top-0.5 bottom-0.5 w-[calc(50%-2px)] rounded-full bg-brand-red/90 shadow-[0_0_12px_rgba(220,38,38,0.3)]"
+        layout
+        transition={{ type: "spring", stiffness: 500, damping: 35 }}
+        style={{
+          left: locale === "tr" ? "2px" : "calc(50%)",
+        }}
+      />
+
+      <button
+        role="radio"
+        aria-checked={locale === "tr"}
+        onClick={() => setLocale("tr")}
+        className={`relative z-10 flex items-center justify-center w-[38px] h-full text-xs font-bold tracking-wide cursor-pointer transition-colors duration-200 focus:outline-hidden ${
+          locale === "tr"
+            ? "text-white"
+            : "text-foreground/60 hover:text-foreground"
+        }`}
+      >
+        TR
+      </button>
+      <button
+        role="radio"
+        aria-checked={locale === "en"}
+        onClick={() => setLocale("en")}
+        className={`relative z-10 flex items-center justify-center w-[38px] h-full text-xs font-bold tracking-wide cursor-pointer transition-colors duration-200 focus:outline-hidden ${
+          locale === "en"
+            ? "text-white"
+            : "text-foreground/60 hover:text-foreground"
+        }`}
+      >
+        EN
+      </button>
+    </div>
+  );
+}
+
 export function Navbar() {
   const { resolvedTheme, setTheme } = useTheme();
   const pathname = usePathname();
+  const { t } = useLanguage();
   const [mounted, setMounted] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [visible, setVisible] = useState(false);
@@ -52,11 +103,11 @@ export function Navbar() {
   }, [pathname]);
 
   const navLinks = [
-    { name: "Ana Sayfa", href: "/" },
-    { name: "Hakkımda", href: "/#hakkimda" },
-    { name: "Araçlar", href: "/#araclar" },
-    { name: "Projeler", href: "/projeler" },
-    { name: "İletişim", href: "/iletisim" },
+    { name: t(translations.navbar.home), href: "/" },
+    { name: t(translations.navbar.about), href: "/#hakkimda" },
+    { name: t(translations.navbar.tools), href: "/#araclar" },
+    { name: t(translations.navbar.projects), href: "/projeler" },
+    { name: t(translations.navbar.contact), href: "/iletisim" },
   ];
 
   const isHome = pathname === "/";
@@ -100,7 +151,7 @@ export function Navbar() {
         <nav className="hidden md:flex items-center space-x-8">
           {navLinks.map((link) => (
             <Link
-              key={link.name}
+              key={link.href}
               href={link.href}
               onClick={(e) => {
                 if (pathname === link.href) {
@@ -116,7 +167,7 @@ export function Navbar() {
           ))}
         </nav>
 
-        {/* Theme Toggle & Social Icons & Mobile Menu Controls */}
+        {/* Theme Toggle & Language Toggle & Social Icons & Mobile Menu Controls */}
         <div className="flex items-center space-x-2">          
           {/* GitHub */}
           <a
@@ -139,11 +190,15 @@ export function Navbar() {
           >
             <LinkedInIcon className="h-[18px] w-[18px]" />
           </a>
+
+          {/* Language Toggle (TR/EN) */}
+          <LanguageToggle />
+
           {/* Theme Toggle Button */}
           <button
             onClick={() => setTheme(resolvedTheme === "dark" ? "light" : "dark")}
             className="flex h-9 w-9 items-center justify-center rounded-full border border-border/20 bg-background/50 hover:bg-muted/80 text-foreground transition-all duration-200 cursor-pointer focus:outline-hidden"
-            aria-label="Karanlık/Aydınlık mod geçişi"
+            aria-label={t(translations.navbar.themeToggle)}
           >
             {mounted ? (
               resolvedTheme === "dark" ? (
@@ -160,7 +215,7 @@ export function Navbar() {
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             className="flex h-9 w-9 items-center justify-center rounded-full border border-border/20 bg-background/50 hover:bg-muted/80 text-foreground transition-all duration-200 md:hidden cursor-pointer focus:outline-hidden"
-            aria-label="Menüyü Aç/Kapat"
+            aria-label={t(translations.navbar.menuToggle)}
           >
             {mobileMenuOpen ? (
               <X className="h-4.5 w-4.5 transition-transform duration-200" />
@@ -177,7 +232,7 @@ export function Navbar() {
           <nav className="flex flex-col space-y-4 px-6 py-8">
             {navLinks.map((link) => (
               <Link
-                key={link.name}
+                key={link.href}
                 href={link.href}
                 onClick={(e) => {
                   if (pathname === link.href) {

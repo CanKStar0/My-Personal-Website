@@ -1,5 +1,7 @@
 import { Star } from "lucide-react";
 import { ScrollReveal } from "./scroll-reveal";
+import type { Locale } from "@/lib/translations";
+import { translations, getTranslation } from "@/lib/translations";
 
 interface GitHubRepo {
   id: number;
@@ -11,7 +13,7 @@ interface GitHubRepo {
   fork: boolean;
 }
 
-export async function GithubRepos() {
+export async function GithubRepos({ locale = "tr" }: { locale?: Locale }) {
   try {
     const res = await fetch("https://api.github.com/users/CanKStar0/repos", {
       next: { revalidate: 3600 }, // Saatte bir güncelle
@@ -48,7 +50,7 @@ export async function GithubRepos() {
                     </div>
                   </div>
                   <p className="text-muted-foreground/90 text-xs md:text-sm leading-relaxed font-sans font-light line-clamp-3">
-                    {repo.description || "Açıklama bulunmuyor."}
+                    {repo.description || getTranslation(translations.github.noDescription, locale)}
                   </p>
                 </div>
 
@@ -73,7 +75,7 @@ export async function GithubRepos() {
     console.error("Failed to fetch GitHub repos:", error);
     return (
       <div className="w-full p-8 text-center border border-zinc-200/50 dark:border-zinc-800/50 rounded-xl bg-zinc-50/50 dark:bg-zinc-900/20">
-        <p className="text-sm text-muted-foreground">Şu an GitHub repolarına ulaşılamıyor.</p>
+        <p className="text-sm text-muted-foreground">{getTranslation(translations.github.fetchError, locale)}</p>
       </div>
     );
   }

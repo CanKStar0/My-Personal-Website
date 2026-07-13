@@ -1,9 +1,15 @@
+"use client";
+
 import { ScrollReveal } from "@/components/scroll-reveal";
 import { Coffee, ArrowLeft } from "lucide-react";
 import Link from "next/link";
 import { Navbar } from "@/components/navbar";
+import { useLanguage } from "@/components/language-context";
+import { translations } from "@/lib/translations";
 
 export default function CanliYokPage() {
+  const { t } = useLanguage();
+
   return (
     <>
       <Navbar />
@@ -16,12 +22,12 @@ export default function CanliYokPage() {
 
           {/* Title */}
           <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight font-jakarta text-foreground mb-6">
-            Sunucular Kahve Molasında
+            {t(translations.canliYok.title)}
           </h1>
 
           {/* Description */}
           <p className="text-lg md:text-xl text-muted-foreground font-sans font-light leading-relaxed mb-12">
-            Bu projenin canlı ortam fişi şimdilik çekilmiş durumda veya sunucular dinleniyor. Ancak merak etmeyin, kodlar arkada sapasağlam.
+            {t(translations.canliYok.description)}
           </p>
 
           {/* Action Button */}
@@ -30,7 +36,7 @@ export default function CanliYokPage() {
             className="group inline-flex items-center gap-3 px-8 py-4 rounded-full bg-foreground text-background font-medium hover:bg-foreground/90 transition-colors"
           >
             <ArrowLeft className="w-5 h-5 transition-transform group-hover:-translate-x-1" />
-            Portfolyoya Geri Dön
+            {t(translations.canliYok.backButton)}
           </Link>
         </ScrollReveal>
       </main>

@@ -1,6 +1,12 @@
+"use client";
+
 import { ScrollReveal } from "./scroll-reveal";
+import { useLanguage } from "./language-context";
+import { translations } from "@/lib/translations";
 
 export function BentoGridSection() {
+  const { t } = useLanguage();
+
   return (
     <section className="relative w-full py-20 px-6 md:px-12 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-red-950/10 via-zinc-950/50 to-transparent">
       <div className="max-w-6xl mx-auto relative z-10">
@@ -11,10 +17,10 @@ export function BentoGridSection() {
             <div className="relative h-full p-8 md:p-10 rounded-3xl border border-zinc-800/50 bg-zinc-900/40 hover:border-red-900/60 hover:bg-red-950/10 hover:shadow-[0_0_20px_rgba(220,38,38,0.05)] hover:-translate-y-1 transition-all duration-500 overflow-hidden">
               <div className="relative z-10">
                 <h3 className="text-xl md:text-2xl font-bold font-jakarta text-foreground mb-4">
-                  Yapay Zeka & Otomasyon
+                  {t(translations.bento.aiTitle)}
                 </h3>
                 <p className="text-zinc-400 font-sans font-light leading-relaxed">
-                  Zaman alan manuel süreçleri botlar ve veri kazıma (scraping) algoritmalarıyla sıfıra indiriyorum. LLM entegrasyonları ile sadece işleyen değil, düşünen ve kendi kararını alabilen otonom sistemler inşa ediyorum.
+                  {t(translations.bento.aiDesc)}
                 </p>
               </div>
             </div>
@@ -24,7 +30,7 @@ export function BentoGridSection() {
           <ScrollReveal delay={0.1} className="md:col-span-1 lg:col-span-1 group">
             <div className="h-full p-8 rounded-3xl border border-zinc-800/50 bg-zinc-900/40 hover:border-red-900/60 hover:bg-red-950/10 hover:shadow-[0_0_20px_rgba(220,38,38,0.05)] hover:-translate-y-1 transition-all duration-500 flex flex-col">
               <h3 className="text-xl font-bold font-jakarta text-foreground mb-6">
-                Frontend Mimarisi
+                {t(translations.bento.frontendTitle)}
               </h3>
               <div className="flex flex-col gap-3 flex-1 justify-center">
                 {["TypeScript", "React", "Next.js", "Tailwind CSS", "Framer Motion"].map((tech) => (
@@ -43,7 +49,7 @@ export function BentoGridSection() {
           <ScrollReveal delay={0.2} className="md:col-span-1 lg:col-span-1 group">
             <div className="h-full p-8 rounded-3xl border border-zinc-800/50 bg-zinc-900/40 hover:border-red-900/60 hover:bg-red-950/10 hover:shadow-[0_0_20px_rgba(220,38,38,0.05)] hover:-translate-y-1 transition-all duration-500 flex flex-col">
               <h3 className="text-xl font-bold font-jakarta text-foreground mb-6">
-                Backend Gücü
+                {t(translations.bento.backendTitle)}
               </h3>
               <div className="flex flex-col gap-3 flex-1 justify-center">
                 {["Python", "Node.js", "REST API", "FastAPI", "Playwright", "Redis"].map((tech) => (
@@ -64,10 +70,10 @@ export function BentoGridSection() {
               <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8">
                 <div className="max-w-2xl">
                   <h3 className="text-2xl md:text-3xl font-bold font-jakarta text-foreground mb-4">
-                    Veri & Altyapı Yönetimi
+                    {t(translations.bento.dataTitle)}
                   </h3>
                   <p className="text-zinc-400 font-sans font-light leading-relaxed">
-                    Uygulamaların kalbi veridir. Milyonlarca satırlık işlemleri darboğazsız yürütmek için PostgreSQL ve MongoDB odaklı, ölçeklenebilir ve güvenlik merkezli bulut veritabanı mimarileri tasarlıyorum.
+                    {t(translations.bento.dataDesc)}
                   </p>
                 </div>
                 <div className="flex gap-4 opacity-70 group-hover:opacity-100 transition-opacity">
