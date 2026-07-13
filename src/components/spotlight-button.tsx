@@ -12,14 +12,14 @@ interface SpotlightButtonProps {
 }
 
 export function SpotlightButton({ children, className = "", href, onClick }: SpotlightButtonProps) {
-  const ref = useRef<HTMLDivElement>(null);
+  const ref = useRef<HTMLElement>(null);
   const [isHovered, setIsHovered] = useState(false);
 
   // Mouse position relative to the button's top-left (for spotlight)
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
 
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+  const handleMouseMove = (e: React.MouseEvent<HTMLElement>) => {
     if (!ref.current) return;
     const { clientX, clientY } = e;
     const { left, top } = ref.current.getBoundingClientRect();
@@ -38,7 +38,7 @@ export function SpotlightButton({ children, className = "", href, onClick }: Spo
   };
 
   const commonProps = {
-    ref,
+    ref: ref as any,
     onMouseMove: handleMouseMove,
     onMouseLeave: handleMouseLeave,
     onMouseEnter: handleMouseEnter,
