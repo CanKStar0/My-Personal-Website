@@ -3,7 +3,6 @@
 import Link from "next/link";
 import Image from "next/image";
 import { ScrollReveal } from "./scroll-reveal";
-import { GithubRepos } from "./github-repos";
 import { useLanguage } from "./language-context";
 import { translations } from "@/lib/translations";
 
@@ -15,7 +14,11 @@ interface Project {
   imagePath?: string;
 }
 
-export function ProjectsSection() {
+interface ProjectsSectionProps {
+  githubReposNode?: React.ReactNode;
+}
+
+export function ProjectsSection({ githubReposNode }: ProjectsSectionProps = {}) {
   const { t, locale } = useLanguage();
 
   const projects: Project[] = [
@@ -99,7 +102,7 @@ export function ProjectsSection() {
           </p>
         </ScrollReveal>
 
-        <GithubRepos locale={locale} />
+        {githubReposNode}
       </div>
     </section>
   );

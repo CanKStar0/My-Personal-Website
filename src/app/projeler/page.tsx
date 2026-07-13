@@ -2,6 +2,7 @@
 
 import { Navbar } from "@/components/navbar";
 import { ProjectsSection } from "@/components/projects-section";
+import { GithubRepos } from "@/components/github-repos";
 import { useLanguage } from "@/components/language-context";
 import { translations } from "@/lib/translations";
 
@@ -12,7 +13,7 @@ export default function ProjelerPage() {
     <>
       <Navbar />
       <main className="flex-1 pt-12">
-        <ProjectsSection />
+        <ProjectsSection githubReposNode={<GithubRepos />} />
       </main>
 
       {/* Footer */}

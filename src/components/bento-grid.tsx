@@ -8,7 +8,7 @@ export function BentoGridSection() {
   const { t } = useLanguage();
 
   return (
-    <section className="relative w-full py-20 px-6 md:px-12 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-red-950/10 via-zinc-950/50 to-transparent">
+    <section id="araclar" className="relative w-full py-20 px-6 md:px-12 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-red-950/10 via-zinc-950/50 to-transparent">
       <div className="max-w-6xl mx-auto relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4">
 
