@@ -4,6 +4,7 @@ import { Inter, Plus_Jakarta_Sans } from "next/font/google";
 import { ThemeProvider } from "@/components/theme-provider";
 import { LanguageProvider } from "@/components/language-context";
 import { Toaster } from "sonner";
+import SplashCursor from "@/components/SplashCursor";
 import "./globals.css";
 
 const inter = Inter({
@@ -141,6 +142,15 @@ export default function RootLayout({
                   backdropFilter: "blur(8px)",
                 }
               }}
+            />
+            <SplashCursor
+              DENSITY_DISSIPATION={1.5}
+              PRESSURE={0.2}
+              CURL={10}
+              SPLAT_RADIUS={0.22}
+              SPLAT_FORCE={5500}
+              COLOR_UPDATE_SPEED={11}
+              COLOR="#9e0a2b"
             />
           </LanguageProvider>
         </ThemeProvider>
