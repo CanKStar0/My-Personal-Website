@@ -57,10 +57,10 @@ export function HeroAnimation() {
         
         {/* Name Header (Stagger Reveal) */}
         <div className="relative py-4 px-8 flex items-center justify-center w-fit">
-          <h1 className="relative text-3xl font-extrabold tracking-wider sm:text-5xl md:text-6xl font-jakarta text-foreground flex whitespace-nowrap leading-none">
+          <h1 className="relative text-2xl font-extrabold tracking-wider sm:text-4xl md:text-6xl font-jakarta text-foreground flex whitespace-nowrap leading-none">
             {/* 3D Spinning Red Cube */}
             <motion.div
-              className="absolute top-1/2 -mt-4 md:-mt-5 w-8 h-8 md:w-10 md:h-10 z-20 text-brand-red drop-shadow-[0_0_12px_rgba(220,38,38,0.8)]"
+              className="absolute top-1/2 -mt-3 sm:-mt-4 md:-mt-5 w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10 z-20 text-brand-red drop-shadow-[0_0_12px_rgba(220,38,38,0.8)]"
               initial={{ left: "0%", opacity: 0, rotate: 0 }}
               animate={{ left: "100%", opacity: [0, 1, 1, 0], rotate: 360 }}
               transition={{
@@ -117,7 +117,7 @@ export function HeroAnimation() {
               duration: 0.8,
               ease: "easeOut",
             }}
-            className="text-xs font-light tracking-[0.2em] sm:tracking-[0.3em] md:tracking-[0.4em] sm:text-sm md:text-base text-muted-foreground font-sans text-center px-4 uppercase"
+            className="text-xs font-light tracking-[0.1em] sm:tracking-[0.2em] md:tracking-[0.4em] sm:text-sm md:text-base text-muted-foreground font-sans text-center px-4 uppercase"
           >
             {t(translations.hero.subtitle)}
           </motion.p>

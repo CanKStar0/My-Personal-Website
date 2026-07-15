@@ -180,7 +180,7 @@ export function Navbar() {
         </nav>
 
         {/* Theme Toggle & Language Toggle & Social Icons & Mobile Menu Controls */}
-        <div className="flex items-center space-x-2">          
+        <div className="flex items-center space-x-1 sm:space-x-2">          
           {/* GitHub */}
           <a
             href="https://github.com/CanKStar0"

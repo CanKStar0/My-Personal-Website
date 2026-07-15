@@ -38,7 +38,7 @@ const DATA: Tech[] = [
 /** Frontend / Backend: Icons stacked vertically, name appears as tooltip on hover */
 function IconStack({ techs }: { techs: Tech[] }) {
   return (
-    <div className="flex flex-col gap-6 flex-1 items-center justify-center py-4">
+    <div className="flex flex-row flex-wrap md:flex-col gap-4 md:gap-6 flex-1 items-center justify-center py-2 md:py-4">
       {techs.map((tech) => (
         <div key={tech.name} className="relative group/item flex items-center justify-center cursor-default">
           {/* Icon */}
@@ -105,7 +105,7 @@ export function BentoGridSection() {
 
           {/* Card 2: Frontend */}
           <ScrollReveal delay={0.1} className="md:col-span-1 lg:col-span-1 group">
-            <div className="h-full p-8 rounded-3xl border border-zinc-300/80 dark:border-zinc-800/50 bg-zinc-50 dark:bg-zinc-900/40 hover:border-brand-red/50 dark:hover:border-red-900/60 hover:bg-red-50/30 dark:hover:bg-red-950/10 hover:shadow-[0_0_20px_rgba(220,38,38,0.05)] hover:-translate-y-1 transition-all duration-500 flex flex-col min-h-[300px]">
+            <div className="h-full p-6 md:p-8 rounded-3xl border border-zinc-300/80 dark:border-zinc-800/50 bg-zinc-50 dark:bg-zinc-900/40 hover:border-brand-red/50 dark:hover:border-red-900/60 hover:bg-red-50/30 dark:hover:bg-red-950/10 hover:shadow-[0_0_20px_rgba(220,38,38,0.05)] hover:-translate-y-1 transition-all duration-500 flex flex-col min-h-[auto] md:min-h-[300px]">
               <h3 className="text-xl font-bold font-jakarta text-foreground mb-2 text-center">
                 {t(translations.bento.frontendTitle)}
               </h3>
@@ -115,7 +115,7 @@ export function BentoGridSection() {
 
           {/* Card 3: Backend */}
           <ScrollReveal delay={0.2} className="md:col-span-1 lg:col-span-1 group">
-            <div className="h-full p-8 rounded-3xl border border-zinc-300/80 dark:border-zinc-800/50 bg-zinc-50 dark:bg-zinc-900/40 hover:border-brand-red/50 dark:hover:border-red-900/60 hover:bg-red-50/30 dark:hover:bg-red-950/10 hover:shadow-[0_0_20px_rgba(220,38,38,0.05)] hover:-translate-y-1 transition-all duration-500 flex flex-col min-h-[300px]">
+            <div className="h-full p-6 md:p-8 rounded-3xl border border-zinc-300/80 dark:border-zinc-800/50 bg-zinc-50 dark:bg-zinc-900/40 hover:border-brand-red/50 dark:hover:border-red-900/60 hover:bg-red-50/30 dark:hover:bg-red-950/10 hover:shadow-[0_0_20px_rgba(220,38,38,0.05)] hover:-translate-y-1 transition-all duration-500 flex flex-col min-h-[auto] md:min-h-[300px]">
               <h3 className="text-xl font-bold font-jakarta text-foreground mb-2 text-center">
                 {t(translations.bento.backendTitle)}
               </h3>
