@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { ScrollReveal } from "./scroll-reveal";
 import { useLanguage } from "./language-context";
 import { translations } from "@/lib/translations";
@@ -43,9 +44,11 @@ function IconStack({ techs }: { techs: Tech[] }) {
         <div key={tech.name} className="relative group/item flex items-center justify-center cursor-default">
           {/* Icon */}
           <div className="w-10 h-10 relative flex items-center justify-center transition-transform duration-300 group-hover/item:scale-125">
-            <img
+            <Image
               src={tech.icon}
               alt={tech.name}
+              width={40}
+              height={40}
               className={`w-full h-full object-contain ${tech.invert ? "dark:invert" : ""}`}
             />
           </div>
@@ -66,9 +69,11 @@ function IconGrid({ techs }: { techs: Tech[] }) {
       {techs.map((tech) => (
         <div key={tech.name} className="flex flex-col items-center gap-3 group/item cursor-default">
           <div className="w-10 h-10 relative transition-transform duration-300 group-hover/item:scale-110">
-            <img
+            <Image
               src={tech.icon}
               alt={tech.name}
+              width={40}
+              height={40}
               className={`w-full h-full object-contain ${tech.invert ? "dark:invert" : ""}`}
             />
           </div>

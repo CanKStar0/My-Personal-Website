@@ -59,7 +59,6 @@ const STATIC_REPOS: GitHubRepo[] = [
 export function GithubRepos() {
   const { t } = useLanguage();
   const [repos, setRepos] = useState<GitHubRepo[]>(STATIC_REPOS);
-  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     const controller = new AbortController();

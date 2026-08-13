@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { motion } from "framer-motion";
 import { Rocket, Mouse, Box } from "lucide-react";
 import { SpotlightButton } from "./spotlight-button";
@@ -9,13 +9,11 @@ import { translations } from "@/lib/translations";
 import { trackEvent } from "@/lib/analytics";
 
 export function HeroAnimation() {
-  const [mounted, setMounted] = useState(false);
   const { t } = useLanguage();
   const name = "CANPOLAT KAYA";
   const nameLetters = name.split("");
 
   useEffect(() => {
-    setMounted(true);
     // Force browser to scroll to top on page refresh and ignore cached scroll positions
     if (typeof window !== "undefined") {
       window.history.scrollRestoration = "manual";
@@ -25,18 +23,6 @@ export function HeroAnimation() {
 
   const lineSweepDuration = 1.4;
   const lineDelay = 0.4;
-
-  if (!mounted) {
-    return (
-      <div className="flex min-h-screen w-full flex-col items-center justify-center bg-background">
-        <div className="flex flex-col items-center pt-8">
-          <h1 className="text-3xl font-extrabold tracking-wider sm:text-5xl md:text-6xl font-jakarta text-foreground opacity-0">
-            {name}
-          </h1>
-        </div>
-      </div>
-    );
-  }
 
   return (
     <div className="relative flex min-h-screen w-full flex-col items-center justify-center overflow-hidden select-none px-4 pb-20 md:pb-32 bg-background dark:bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] dark:from-red-950/20 dark:via-zinc-950 dark:to-black transition-colors duration-300">
@@ -136,7 +122,7 @@ export function HeroAnimation() {
         >
           <SpotlightButton
             href="/projeler"
-            onClick={() => trackEvent("cta_click", { location: "hero" })}
+            onClick={() => trackEvent("project_case_study_click", { location: "hero" })}
             className="text-xs sm:text-sm tracking-[0.2em] uppercase"
           >
             <Rocket className="w-4 h-4 transition-transform duration-300 group-hover:-translate-y-1 group-hover:translate-x-1" />

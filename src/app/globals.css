@@ -62,7 +62,7 @@
 }
 
 .dark {
-  --brand-red: #e11d48; /* Biraz daha parlak asil kırmızı, karanlıkta parlaması için */
+  --brand-red: #e11d48; /* Koyu temadaki ana marka ve buton rengi */
   --background: #09090b; /* Tok siyah */
   --foreground: #fafafa; /* Temiz beyaz */
   
