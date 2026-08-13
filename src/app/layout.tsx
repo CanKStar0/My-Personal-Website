@@ -3,8 +3,9 @@ import Script from "next/script";
 import { Inter, Plus_Jakarta_Sans } from "next/font/google";
 import { ThemeProvider } from "@/components/theme-provider";
 import { LanguageProvider } from "@/components/language-context";
+import { SiteEffects } from "@/components/site-effects";
+import { AnalyticsTracker } from "@/components/analytics-tracker";
 import { Toaster } from "sonner";
-import SplashCursor from "@/components/SplashCursor";
 import "./globals.css";
 
 const inter = Inter({
@@ -20,26 +21,22 @@ const plusJakartaSans = Plus_Jakarta_Sans({
 });
 
 const siteUrl = "https://canpolatkaya.com";
+const gaId = process.env.NEXT_PUBLIC_GA_ID ?? "G-JLWJFQ732B";
+const googleSiteVerification = process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION;
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "Canpolat Kaya | Full-Stack Developer & Girişimci",
+    default: "Canpolat Kaya | Full-Stack Developer & Özel Yazılım",
     template: "%s | Canpolat Kaya",
   },
   description:
-    "Karmaşık fikirleri otonom sistemlere ve kusursuz dijital ürünlere dönüştüren Full-Stack Geliştirici. SaaS, DaaS ve ağır mühendislik çözümleri.",
-  keywords: [
-    "Canpolat Kaya",
-    "Full Stack Developer",
-    "Next.js",
-    "Python",
-    "PostgreSQL",
-    "Web Otomasyon",
-    "SaaS",
-    "DaaS",
-    "Yapay Zeka",
-  ],
+    "Özel yazılım, web scraping, yapay zekâ otomasyonu, API ve Next.js geliştirme alanlarında ürün odaklı Full-Stack Developer.",
+  alternates: {
+    canonical: siteUrl,
+    languages: { tr: siteUrl, en: `${siteUrl}/en`, "x-default": siteUrl },
+  },
+  verification: googleSiteVerification ? { google: googleSiteVerification } : undefined,
   authors: [{ name: "Canpolat Kaya", url: siteUrl }],
   creator: "Canpolat Kaya",
   openGraph: {
@@ -47,23 +44,23 @@ export const metadata: Metadata = {
     locale: "tr_TR",
     url: siteUrl,
     siteName: "Canpolat Kaya",
-    title: "Canpolat Kaya | Full-Stack Developer & Girişimci",
+    title: "Canpolat Kaya | Full-Stack Developer & Özel Yazılım",
     description:
-      "Karmaşık fikirleri otonom sistemlere ve kusursuz dijital ürünlere dönüştüren Full-Stack Geliştirici. SaaS, DaaS ve ağır mühendislik çözümleri.",
+      "Özel yazılım, web scraping, yapay zekâ otomasyonu, API ve Next.js geliştirme alanlarında ürün odaklı Full-Stack Developer.",
     images: [
       {
         url: `${siteUrl}/og-image.jpg`,
         width: 1200,
         height: 630,
-        alt: "Canpolat Kaya - Full-Stack Developer & Girişimci",
+        alt: "Canpolat Kaya - Full-Stack Developer ve Özel Yazılım",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Canpolat Kaya | Full-Stack Developer & Girişimci",
+    title: "Canpolat Kaya | Full-Stack Developer & Özel Yazılım",
     description:
-      "Karmaşık fikirleri otonom sistemlere ve kusursuz dijital ürünlere dönüştüren Full-Stack Geliştirici. SaaS, DaaS ve ağır mühendislik çözümleri.",
+      "Özel yazılım, web scraping, yapay zekâ otomasyonu, API ve Next.js geliştirme alanlarında ürün odaklı Full-Stack Developer.",
     images: [`${siteUrl}/og-image.jpg`],
   },
   robots: {
@@ -87,6 +84,7 @@ export default function RootLayout({
   return (
     <html
       lang="tr"
+      data-scroll-behavior="smooth"
       className={`${inter.variable} ${plusJakartaSans.variable}`}
       suppressHydrationWarning
     >
@@ -96,6 +94,7 @@ export default function RootLayout({
             __html: `
               try {
                 if (typeof window !== 'undefined') {
+                  document.documentElement.lang = window.location.pathname === '/en' || window.location.pathname.startsWith('/en/') ? 'en' : 'tr';
                   window.history.scrollRestoration = 'manual';
                   window.scrollTo(0, 0);
                   if (window.location.hash) {
@@ -108,24 +107,24 @@ export default function RootLayout({
         />
       </head>
       <body className="min-h-screen antialiased bg-background text-foreground transition-colors duration-300" suppressHydrationWarning>
-        <Script
-          strategy="afterInteractive"
-          src="https://www.googletagmanager.com/gtag/js?id=G-JLWJFQ732B"
-        />
-        <Script
-          id="google-analytics"
-          strategy="afterInteractive"
-          dangerouslySetInnerHTML={{
-            __html: `
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('js', new Date());
-              gtag('config', 'G-JLWJFQ732B', {
-                page_path: window.location.pathname,
-              });
-            `,
-          }}
-        />
+        {process.env.NODE_ENV === "production" && (
+          <>
+            <Script strategy="afterInteractive" src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`} />
+            <Script
+              id="google-analytics"
+              strategy="afterInteractive"
+              dangerouslySetInnerHTML={{
+                __html: `
+                  window.dataLayer = window.dataLayer || [];
+                  function gtag(){dataLayer.push(arguments);}
+                  gtag('js', new Date());
+                  gtag('config', '${gaId}', { send_page_view: false });
+                `,
+              }}
+            />
+            <AnalyticsTracker />
+          </>
+        )}
         <ThemeProvider>
           <LanguageProvider>
             <div className="relative flex min-h-screen flex-col">
@@ -143,15 +142,7 @@ export default function RootLayout({
                 }
               }}
             />
-            <SplashCursor
-              DENSITY_DISSIPATION={1.5}
-              PRESSURE={0.2}
-              CURL={10}
-              SPLAT_RADIUS={0.22}
-              SPLAT_FORCE={5500}
-              COLOR_UPDATE_SPEED={11}
-              COLOR="#9e0a2b"
-            />
+            <SiteEffects />
           </LanguageProvider>
         </ThemeProvider>
       </body>

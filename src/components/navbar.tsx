@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useSyncExternalStore } from "react";
 import Link from "next/link";
 import { useTheme } from "next-themes";
 import { usePathname, useRouter } from "next/navigation";
@@ -8,6 +8,7 @@ import { Sun, Moon, Menu, X } from "lucide-react";
 import { motion } from "framer-motion";
 import { useLanguage } from "./language-context";
 import { translations } from "@/lib/translations";
+import { trackEvent } from "@/lib/analytics";
 
 // Inline brand SVGs (not available in this lucide-react version)
 function GithubIcon({ className }: { className?: string }) {
@@ -37,7 +38,7 @@ function LanguageToggle() {
     >
       {/* Sliding red pill indicator */}
       <motion.div
-        className="absolute top-0.5 bottom-0.5 w-[calc(50%-2px)] rounded-full bg-brand-red/90 shadow-[0_0_12px_rgba(220,38,38,0.3)]"
+        className="absolute top-0.5 bottom-0.5 w-[calc(50%-2px)] rounded-full bg-brand-red shadow-[0_0_12px_rgba(220,38,38,0.3)]"
         layout
         transition={{ type: "spring", stiffness: 500, damping: 35 }}
         style={{
@@ -48,7 +49,7 @@ function LanguageToggle() {
       <button
         role="radio"
         aria-checked={locale === "tr"}
-        onClick={() => setLocale("tr")}
+        onClick={() => { trackEvent("language_switch", { from: locale, to: "tr" }); setLocale("tr"); }}
         className={`relative z-10 flex items-center justify-center w-[38px] h-full text-xs font-bold tracking-wide cursor-pointer transition-colors duration-200 focus:outline-hidden ${
           locale === "tr"
             ? "text-white"
@@ -60,7 +61,7 @@ function LanguageToggle() {
       <button
         role="radio"
         aria-checked={locale === "en"}
-        onClick={() => setLocale("en")}
+        onClick={() => { trackEvent("language_switch", { from: locale, to: "en" }); setLocale("en"); }}
         className={`relative z-10 flex items-center justify-center w-[38px] h-full text-xs font-bold tracking-wide cursor-pointer transition-colors duration-200 focus:outline-hidden ${
           locale === "en"
             ? "text-white"
@@ -77,10 +78,11 @@ export function Navbar() {
   const { resolvedTheme, setTheme } = useTheme();
   const pathname = usePathname();
   const router = useRouter();
-  const { t } = useLanguage();
-  const [mounted, setMounted] = useState(false);
+  const { t, locale } = useLanguage();
+  const homeHref = locale === "en" ? "/en" : "/";
+  const mounted = useSyncExternalStore(() => () => {}, () => true, () => false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [visible, setVisible] = useState(false);
+  const [homeVisible, setHomeVisible] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
   // Monitor scroll to add deeper styling on scroll
@@ -93,25 +95,32 @@ export function Navbar() {
   }, []);
 
   useEffect(() => {
-    setMounted(true);
-    const isHome = pathname === "/";
-    if (!isHome) {
-      setVisible(true);
-    } else {
-      const timer = setTimeout(() => setVisible(true), 2000);
-      return () => clearTimeout(timer);
-    }
-  }, [pathname]);
+    if (pathname !== homeHref) return;
+    const timer = setTimeout(() => setHomeVisible(true), 2000);
+    return () => clearTimeout(timer);
+  }, [homeHref, pathname]);
 
-  const navLinks = [
-    { name: t(translations.navbar.home), href: "/" },
-    { name: t(translations.navbar.about), href: "/#hakkimda" },
-    { name: t(translations.navbar.tools), href: "/#araclar" },
-    { name: t(translations.navbar.projects), href: "/projeler" },
-    { name: t(translations.navbar.contact), href: "/iletisim" },
-  ];
+  const visible = pathname !== homeHref || homeVisible;
 
-  const isHome = pathname === "/";
+  const navLinks = locale === "en"
+    ? [
+        { name: t(translations.navbar.home), href: "/en" },
+        { name: t(translations.navbar.about), href: "/en/about" },
+        { name: t(translations.navbar.services), href: "/en/services" },
+        { name: t(translations.navbar.projects), href: "/en/projects" },
+        { name: t(translations.navbar.blog), href: "/en/blog" },
+        { name: t(translations.navbar.contact), href: "/en/contact" },
+      ]
+    : [
+        { name: t(translations.navbar.home), href: "/" },
+        { name: t(translations.navbar.about), href: "/hakkimda" },
+        { name: t(translations.navbar.services), href: "/hizmetler" },
+        { name: t(translations.navbar.projects), href: "/projeler" },
+        { name: t(translations.navbar.blog), href: "/blog" },
+        { name: t(translations.navbar.contact), href: "/iletisim" },
+      ];
+
+  const isHome = pathname === homeHref;
   const transitionClass = isHome
     ? `transition-all duration-700 ${
         visible ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-4 pointer-events-none"
@@ -131,9 +140,9 @@ export function Navbar() {
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-6 sm:px-8">
         {/* Logo / Brand Name */}
         <Link
-          href="/"
+          href={homeHref}
           onClick={(e) => {
-            if (pathname === "/") {
+            if (pathname === homeHref) {
               e.preventDefault();
               window.scrollTo({ top: 0, behavior: "smooth" });
             }
@@ -143,29 +152,20 @@ export function Navbar() {
           <span className="bg-linear-to-r from-foreground via-foreground/90 to-foreground/75 bg-clip-text text-transparent group-hover:opacity-90">
             Canpolat Kaya
           </span>
-          <span className="hidden text-xs font-semibold text-muted-foreground/60 sm:inline-block group-hover:text-brand-red transition-colors duration-200">
+          <span className="hidden text-xs font-semibold text-muted-foreground sm:inline-block group-hover:text-brand-red transition-colors duration-200">
             / Dev
           </span>
         </Link>
 
         {/* Desktop Navigation Links */}
-        <nav className="hidden md:flex items-center space-x-8">
+        <nav className="hidden lg:flex items-center space-x-6">
           {navLinks.map((link) => (
             <Link
               key={link.href}
               href={link.href}
               onClick={(e) => {
                 e.preventDefault();
-                if (link.href.startsWith("/#")) {
-                  const sectionId = link.href.split("#")[1];
-                  if (pathname === "/") {
-                    // Aynı sayfadayken smooth scroll
-                    document.getElementById(sectionId)?.scrollIntoView({ behavior: "smooth" });
-                  } else {
-                    // Başka sayfadayken query param ile navigate et
-                    router.push(`/?scrollTo=${sectionId}`);
-                  }
-                } else if (pathname === link.href) {
+                if (pathname === link.href) {
                   window.scrollTo({ top: 0, behavior: "smooth" });
                 } else {
                   router.push(link.href);
@@ -226,7 +226,7 @@ export function Navbar() {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="flex h-9 w-9 items-center justify-center rounded-full border border-border/20 bg-background/50 hover:bg-muted/80 text-foreground transition-all duration-200 md:hidden cursor-pointer focus:outline-hidden"
+            className="flex h-9 w-9 items-center justify-center rounded-full border border-border/20 bg-background/50 hover:bg-muted/80 text-foreground transition-all duration-200 lg:hidden cursor-pointer focus:outline-hidden"
             aria-label={t(translations.navbar.menuToggle)}
           >
             {mobileMenuOpen ? (
@@ -240,7 +240,7 @@ export function Navbar() {
 
       {/* Mobile Drawer Menu */}
       {mobileMenuOpen && (
-        <div className="absolute top-16 left-0 w-full border-b border-border/20 bg-background/95 backdrop-blur-lg transition-all duration-300 md:hidden animate-in fade-in slide-in-from-top-4 duration-200 z-50 shadow-xl">
+        <div className="absolute top-16 left-0 w-full border-b border-border/20 bg-background/95 backdrop-blur-lg transition-all duration-300 lg:hidden animate-in fade-in slide-in-from-top-4 duration-200 z-50 shadow-xl">
           <nav className="flex flex-col space-y-4 px-6 py-8">
             {navLinks.map((link) => (
               <Link
@@ -249,14 +249,7 @@ export function Navbar() {
                 onClick={(e) => {
                   e.preventDefault();
                   setMobileMenuOpen(false);
-                  if (link.href.startsWith("/#")) {
-                    const sectionId = link.href.split("#")[1];
-                    if (pathname === "/") {
-                      document.getElementById(sectionId)?.scrollIntoView({ behavior: "smooth" });
-                    } else {
-                      router.push(`/?scrollTo=${sectionId}`);
-                    }
-                  } else if (pathname === link.href) {
+                  if (pathname === link.href) {
                     window.scrollTo({ top: 0, behavior: "smooth" });
                   } else {
                     router.push(link.href);

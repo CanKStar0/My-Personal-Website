@@ -1,7 +1,9 @@
 "use client";
 
-import { createContext, useContext, useState, useEffect, useCallback } from "react";
+import { createContext, useContext, useEffect, useCallback } from "react";
+import { usePathname, useRouter } from "next/navigation";
 import type { Locale } from "@/lib/translations";
+import { getLocalizedPath, localeFromPathname } from "@/lib/i18n";
 
 interface LanguageContextValue {
   locale: Locale;
@@ -11,34 +13,20 @@ interface LanguageContextValue {
 
 const LanguageContext = createContext<LanguageContextValue | undefined>(undefined);
 
-const STORAGE_KEY = "site-locale";
-
 export function LanguageProvider({ children }: { children: React.ReactNode }) {
-  const [locale, setLocaleState] = useState<Locale>("tr");
-  const [mounted, setMounted] = useState(false);
-
-  // Load saved locale from localStorage on mount
-  useEffect(() => {
-    const saved = localStorage.getItem(STORAGE_KEY) as Locale | null;
-    if (saved === "en" || saved === "tr") {
-      setLocaleState(saved);
-    }
-    setMounted(true);
-  }, []);
+  const pathname = usePathname();
+  const router = useRouter();
+  const locale = localeFromPathname(pathname);
 
   // Update localStorage and html lang attribute on locale change
   const setLocale = useCallback((newLocale: Locale) => {
-    setLocaleState(newLocale);
-    localStorage.setItem(STORAGE_KEY, newLocale);
-    document.documentElement.lang = newLocale;
-  }, []);
+    router.push(getLocalizedPath(pathname, newLocale));
+  }, [pathname, router]);
 
-  // Sync html lang on mount
+  // Sync html lang when the active language changes
   useEffect(() => {
-    if (mounted) {
-      document.documentElement.lang = locale;
-    }
-  }, [mounted, locale]);
+    document.documentElement.lang = locale;
+  }, [locale]);
 
   // Translation helper
   const t = useCallback(
