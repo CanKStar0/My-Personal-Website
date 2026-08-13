@@ -7,13 +7,14 @@ import { SpotlightButton } from "@/components/spotlight-button";
 import { useLanguage } from "@/components/language-context";
 import { translations } from "@/lib/translations";
 import { trackEvent } from "@/lib/analytics";
+import { SiteFooter } from "@/components/site-footer";
 
 export default function IletisimPage() {
   const email = "canpolatkaya4@gmail.com";
   const { t } = useLanguage();
 
   const handleMailClick = () => {
-    trackEvent("email_clicked", { location: "contact_page" });
+    trackEvent("contact_email_click", { location: "contact_page" });
   };
 
   return (
@@ -70,6 +71,7 @@ export default function IletisimPage() {
         </ScrollReveal>
 
       </main>
+      <SiteFooter />
     </>
   );
 }

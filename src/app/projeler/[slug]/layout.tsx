@@ -1,4 +1,7 @@
-import { Metadata } from "next";
+import type { Metadata } from "next";
+import { JsonLd } from "@/components/json-ld";
+import { createMetadata } from "@/lib/seo";
+import { SITE_NAME, SITE_URL } from "@/lib/site";
 
 const PROJECTS_METADATA: Record<string, { title: string; description: string; image: string }> = {
   "haber-portali": {
@@ -8,7 +11,7 @@ const PROJECTS_METADATA: Record<string, { title: string; description: string; im
   },
   "bist-ai": {
     title: "BIST AI - Finansal Veri Analiz Sistemi",
-    description: "Milyonlarca finansal veriyi sıfır hatayla işleyen Borsa İstanbul analiz sistemi.",
+    description: "Finansal verileri doğrulama, önbellekleme ve analiz katmanlarıyla işleyen Borsa İstanbul analiz sistemi.",
     image: "/images/bist-ai-cover.png",
   },
 };
@@ -30,38 +33,43 @@ export async function generateMetadata(
     };
   }
 
-  const siteUrl = "https://canpolatkaya.com";
-
-  return {
-    title: project.title,
-    description: project.description,
-    openGraph: {
-      title: `${project.title} | Canpolat Kaya`,
-      description: project.description,
-      url: `${siteUrl}/projeler/${slug}`,
-      type: "article",
-      images: [
-        {
-          url: `${siteUrl}${project.image}`,
-          width: 1200,
-          height: 630,
-          alt: project.title,
-        },
-      ],
-    },
-    twitter: {
-      card: "summary_large_image",
-      title: `${project.title} | Canpolat Kaya`,
-      description: project.description,
-      images: [`${siteUrl}${project.image}`],
-    },
-  };
+  return createMetadata({ title: project.title, description: project.description, path: `/projeler/${slug}`, image: project.image, type: "article" });
 }
 
-export default function ProjectLayout({
-  children,
-}: {
+export function generateStaticParams() {
+  return Object.keys(PROJECTS_METADATA).map((slug) => ({ slug }));
+}
+
+export default async function ProjectLayout({ children, params }: {
   children: React.ReactNode;
+  params: Promise<{ slug: string }>;
 }) {
-  return <>{children}</>;
+  const { slug } = await params;
+  const project = PROJECTS_METADATA[slug];
+  if (!project) return children;
+
+  return (
+    <>
+      <JsonLd data={{
+        "@context": "https://schema.org",
+        "@type": "CreativeWork",
+        name: project.title,
+        description: project.description,
+        url: `${SITE_URL}/projeler/${slug}`,
+        image: `${SITE_URL}${project.image}`,
+        creator: { "@type": "Person", name: SITE_NAME, url: SITE_URL },
+        inLanguage: "tr-TR",
+      }} />
+      <JsonLd data={{
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Ana Sayfa", item: SITE_URL },
+          { "@type": "ListItem", position: 2, name: "Projeler", item: `${SITE_URL}/projeler` },
+          { "@type": "ListItem", position: 3, name: project.title, item: `${SITE_URL}/projeler/${slug}` },
+        ],
+      }} />
+      {children}
+    </>
+  );
 }

@@ -8,7 +8,7 @@ import { useLanguage } from "@/components/language-context";
 import { translations } from "@/lib/translations";
 
 export default function CanliYokPage() {
-  const { t } = useLanguage();
+  const { t, locale } = useLanguage();
 
   return (
     <>
@@ -32,7 +32,7 @@ export default function CanliYokPage() {
 
           {/* Action Button */}
           <Link 
-            href="/projeler" 
+            href={locale === "en" ? "/en/projects" : "/projeler"}
             className="group inline-flex items-center gap-3 px-8 py-4 rounded-full bg-foreground text-background font-medium hover:bg-foreground/90 transition-colors"
           >
             <ArrowLeft className="w-5 h-5 transition-transform group-hover:-translate-x-1" />

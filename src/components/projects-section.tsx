@@ -5,6 +5,8 @@ import Image from "next/image";
 import { ScrollReveal } from "./scroll-reveal";
 import { useLanguage } from "./language-context";
 import { translations } from "@/lib/translations";
+import { ArrowRight } from "lucide-react";
+import { localizedProjectPath, localizedServicePath } from "@/lib/i18n";
 
 interface Project {
   titleKey: { tr: string; en: string };
@@ -45,9 +47,9 @@ export function ProjectsSection({ githubReposNode }: ProjectsSectionProps = {}) 
           <span className="text-xs font-bold tracking-[0.2em] text-brand-red uppercase block mb-3 font-sans text-center">
             {t(translations.projects.eyebrow)}
           </span>
-          <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight font-jakarta text-foreground mb-4 text-center">
+          <h1 className="text-3xl md:text-4xl font-extrabold tracking-tight font-jakarta text-foreground mb-4 text-center">
             {t(translations.projects.heading)}
-          </h2>
+          </h1>
           <p className="text-sm md:text-base text-muted-foreground/80 font-sans font-light max-w-xl leading-relaxed text-center">
             {t(translations.projects.subheading)}
           </p>
@@ -56,7 +58,7 @@ export function ProjectsSection({ githubReposNode }: ProjectsSectionProps = {}) 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {projects.map((project, index) => (
             <ScrollReveal key={project.slug} delay={index * 0.2} className="h-full">
-              <Link href={`/projeler/${project.slug}`} className="group block h-full relative z-10 cursor-pointer">
+              <Link href={localizedProjectPath(project.slug, locale)} className="group block h-full relative z-10 cursor-pointer">
                 <div className="p-6 rounded-xl border border-zinc-300/80 dark:border-zinc-800/50 bg-[#FAF9F6] dark:bg-zinc-950 flex flex-col justify-between h-full min-h-[380px] shadow-xs transition-all duration-300 hover:-translate-y-1 hover:border-brand-red/50 dark:hover:border-brand-red/40 hover:shadow-md dark:hover:shadow-[0_8px_30px_rgba(0,0,0,0.12)]">
                   <div>
                     {project.imagePath ? (
@@ -92,6 +94,16 @@ export function ProjectsSection({ githubReposNode }: ProjectsSectionProps = {}) 
             </ScrollReveal>
           ))}
         </div>
+
+        <ScrollReveal className="mt-12 rounded-2xl border border-brand-red/20 bg-brand-red/[0.04] p-7 md:p-9">
+          <h2 className="font-jakarta text-2xl font-bold text-foreground">{locale === "en" ? "The service approach behind the projects" : "Projelerin arkasındaki hizmet yaklaşımı"}</h2>
+          <p className="mt-3 max-w-3xl leading-7 text-muted-foreground">{locale === "en" ? "The News Portal provides technical context for data collection and web scraping, while BIST AI demonstrates API, backend, and AI-assisted analytics systems." : "Haber Portalı veri toplama ve web scraping; BIST AI ise API, backend ve AI destekli analiz sistemleri için gerçek teknik bağlam sunuyor."}</p>
+          <div className="mt-6 flex flex-wrap gap-x-6 gap-y-3 text-sm font-semibold">
+            <Link href={localizedServicePath("web-scraping", locale)} className="inline-flex items-center gap-2 hover:text-brand-red">{locale === "en" ? "Web Scraping Services" : "Web Scraping Hizmeti"} <ArrowRight className="h-4 w-4" /></Link>
+            <Link href={localizedServicePath("api-gelistirme", locale)} className="inline-flex items-center gap-2 hover:text-brand-red">{locale === "en" ? "API Development" : "API Geliştirme"} <ArrowRight className="h-4 w-4" /></Link>
+            <Link href={localizedServicePath("yapay-zeka-otomasyon", locale)} className="inline-flex items-center gap-2 hover:text-brand-red">{locale === "en" ? "AI Automation" : "AI Otomasyon"} <ArrowRight className="h-4 w-4" /></Link>
+          </div>
+        </ScrollReveal>
 
         <ScrollReveal className="mt-28 mb-16 text-center flex flex-col items-center">
           <h2 className="text-2xl md:text-3xl font-extrabold tracking-tight font-jakarta text-foreground mb-4 text-center">

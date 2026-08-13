@@ -7,6 +7,8 @@ export const translations = {
   navbar: {
     home: { tr: "Ana Sayfa", en: "Home" } as TranslationValue,
     about: { tr: "Hakkımda", en: "About" } as TranslationValue,
+    services: { tr: "Hizmetler", en: "Services" } as TranslationValue,
+    blog: { tr: "Blog", en: "Blog" } as TranslationValue,
     tools: { tr: "Araçlar", en: "Tools" } as TranslationValue,
     projects: { tr: "Projeler", en: "Projects" } as TranslationValue,
     contact: { tr: "İletişim", en: "Contact" } as TranslationValue,
@@ -41,8 +43,8 @@ export const translations = {
     backendTitle: { tr: "Backend Gücü", en: "Backend Power" } as TranslationValue,
     dataTitle: { tr: "Veri & Altyapı Yönetimi", en: "Data & Infrastructure" } as TranslationValue,
     dataDesc: {
-      tr: "Uygulamaların kalbi veridir. Milyonlarca satırlık işlemleri darboğazsız yürütmek için PostgreSQL ve MongoDB odaklı, ölçeklenebilir ve güvenlik merkezli bulut veritabanı mimarileri tasarlıyorum.",
-      en: "Data is the heart of applications. I design scalable, security-focused cloud database architectures centered on PostgreSQL and MongoDB to run millions of operations without bottlenecks.",
+      tr: "Uygulamaların kalbi veridir. Yüksek hacimli işlemleri güvenilir biçimde yürütmek için PostgreSQL ve MongoDB odaklı, ölçeklenebilir ve güvenlik merkezli bulut veritabanı mimarileri tasarlıyorum.",
+      en: "Data is the heart of applications. I design scalable, security-focused cloud database architectures centered on PostgreSQL and MongoDB for reliable high-volume processing.",
     } as TranslationValue,
   },
 
@@ -68,8 +70,8 @@ export const translations = {
     } as TranslationValue,
     bistTitle: { tr: "BIST AI", en: "BIST AI" } as TranslationValue,
     bistDesc: {
-      tr: "Milyonlarca finansal veriyi sıfır hatayla işleyen analiz sistemi.",
-      en: "An analysis system that processes millions of financial data points with zero errors.",
+      tr: "Finansal verileri doğrulama katmanlarıyla işleyen analiz sistemi.",
+      en: "An analytics system that processes financial data through validation layers.",
     } as TranslationValue,
   },
 
@@ -122,20 +124,20 @@ export const translations = {
       tr: "Sunucu tarafında (server-side) çalışan, bulut ortamlarına tam entegre otonom web kazıma motoru. Kesintisiz veri akışı sağlarken IP engellemeleri ve zaman aşımı (timeout) gibi kronik sorunları aşmak için özel olarak tasarlandı.",
       en: "A server-side autonomous web scraping engine fully integrated with cloud environments. Specially designed to overcome chronic issues like IP blocks and timeouts while ensuring uninterrupted data flow.",
     } as TranslationValue,
-    haberFeature2Title: { tr: "In-Memory Caching ile Sıfır Darboğaz", en: "Zero Bottleneck with In-Memory Caching" } as TranslationValue,
+    haberFeature2Title: { tr: "In-Memory Caching ile Dengeli Veri Akışı", en: "Balanced Data Flow with In-Memory Caching" } as TranslationValue,
     haberFeature2Desc: {
-      tr: "Mükerrer URL'leri ve anlık trafik dalgalanmalarını veritabanına yansıtmadan sönümleyen bellek içi (in-memory) önbellekleme mekanizması. Veritabanı üzerindeki okuma/yazma yükünü ve darboğazları (bottleneck) ortadan kaldıran mühendislik çözümü.",
-      en: "An in-memory caching mechanism that absorbs duplicate URLs and instant traffic spikes without reflecting them to the database. An engineering solution that eliminates read/write load and bottlenecks on the database.",
+      tr: "Mükerrer URL'leri ve anlık trafik dalgalanmalarını veritabanına yansıtmadan sönümleyen bellek içi (in-memory) önbellekleme mekanizması. Veritabanı üzerindeki gereksiz okuma/yazma yükünü azaltan bir mühendislik katmanı.",
+      en: "An in-memory caching mechanism that absorbs duplicate URLs and traffic fluctuations before they reach the database, reducing unnecessary read/write load.",
     } as TranslationValue,
     haberFeature3Title: { tr: "Maksimum Frontend Performansı", en: "Maximum Frontend Performance" } as TranslationValue,
     haberFeature3Desc: {
-      tr: "Devasa metin ve medya içeriklerinin tarayıcıyı dondurmasını engellemek için uygulanan GZIP sıkıştırması ve Lazy Loading (tembel yükleme) stratejileri. Kullanıcı tarafında pürüzsüz ve sıfır gecikmeli bir okuma deneyimi.",
-      en: "GZIP compression and lazy loading strategies implemented to prevent massive text and media content from freezing the browser. A smooth, zero-latency reading experience on the user side.",
+      tr: "Yoğun metin ve medya içeriklerinin tarayıcı yükünü azaltmak için uygulanan GZIP sıkıştırması ve Lazy Loading stratejileri. Kullanıcı tarafında daha akıcı bir okuma deneyimi hedeflenir.",
+      en: "GZIP compression and lazy-loading strategies reduce browser load from text and media-heavy content, supporting a smoother reading experience.",
     } as TranslationValue,
     haberFeature4Title: { tr: "Data-as-a-Service (DaaS) Altyapısı", en: "Data-as-a-Service (DaaS) Infrastructure" } as TranslationValue,
     haberFeature4Desc: {
-      tr: "Toplanan, temizlenen ve kategorize edilen binlerce satır güncel haber verisinin, istenilen başka bir platforma veya API'ye anında servis edilebileceği, ölçeklenebilir ve bağımsız veri mimarisi.",
-      en: "A scalable and independent data architecture where thousands of rows of collected, cleaned, and categorized news data can be instantly served to any desired platform or API.",
+      tr: "Toplanan, temizlenen ve kategorize edilen güncel haber verisinin başka bir platforma veya API'ye aktarılabildiği, ölçeklenebilir ve bağımsız veri mimarisi.",
+      en: "A scalable, independent data architecture that can deliver collected, cleaned, and categorized news data to another platform or API.",
     } as TranslationValue,
     // BIST AI features
     bistFeature1Title: { tr: "Otonom Veri Akışı ve Dashboard Merkezi", en: "Autonomous Data Flow & Dashboard Hub" } as TranslationValue,
@@ -150,8 +152,8 @@ export const translations = {
     } as TranslationValue,
     bistFeature3Title: { tr: "Dinamik Sentetik Bültenler", en: "Dynamic Synthetic Reports" } as TranslationValue,
     bistFeature3Desc: {
-      tr: "Her hisse için manuel grafik çizme ameleliğine son. Momentum, RSI ve hareketli ortalamalar gibi kritik metrikleri milisaniyeler içinde tarayıp, hedefleri ve stop-loss noktaları net bir şekilde çizilmiş mühendislik raporları sunar.",
-      en: "No more manual chart drawing for every stock. Scans critical metrics like Momentum, RSI, and moving averages in milliseconds, delivering engineering reports with clearly drawn targets and stop-loss points.",
+      tr: "Momentum, RSI ve hareketli ortalamalar gibi kritik metrikleri sistematik biçimde tarayıp hedef ve risk seviyelerini görünür hale getiren analiz raporları sunar.",
+      en: "It systematically scans metrics such as momentum, RSI, and moving averages to present analysis reports with visible target and risk levels.",
     } as TranslationValue,
     bistFeature4Title: { tr: "Ölçeklenebilir SaaS Altyapısı", en: "Scalable SaaS Infrastructure" } as TranslationValue,
     bistFeature4Desc: {
@@ -164,8 +166,8 @@ export const translations = {
       en: "Real-time fundamental and technical analysis data from Borsa Istanbul companies needed to be pulled from scattered sources and processed in seconds. Existing solutions were slow and expensive.",
     } as TranslationValue,
     bistSolution: {
-      tr: "Python ve FastAPI kullanarak yüksek performanslı bir veri hattı (pipeline) kurdum. Milyonlarca satır veri Redis ile önbelleğe alınarak sıfır gecikme ile frontend tarafına aktarıldı. Makine öğrenmesi algoritmaları ile trend tahminleri eklendi.",
-      en: "I built a high-performance data pipeline using Python and FastAPI. Millions of data rows were cached with Redis and delivered to the frontend with zero latency. Machine learning algorithms were added for trend predictions.",
+      tr: "Python ve FastAPI ile bir veri hattı kurdum. İşlenen kayıtlar Redis ile önbelleğe alınarak frontend tarafına kontrollü API yanıtlarıyla aktarıldı; analiz katmanında trend sinyallerini değerlendiren modeller kullanıldı.",
+      en: "I built a data pipeline with Python and FastAPI. Processed records were cached with Redis and delivered to the frontend through controlled API responses, with models evaluating trend signals in the analytics layer.",
     } as TranslationValue,
   },
 

@@ -9,6 +9,8 @@ import Link from "next/link";
 import { useLanguage } from "@/components/language-context";
 import { translations } from "@/lib/translations";
 import { trackEvent } from "@/lib/analytics";
+import { SiteFooter } from "@/components/site-footer";
+import { getLocalizedPath, localizedServicePath } from "@/lib/i18n";
 
 function GithubIcon({ className }: { className?: string }) {
   return (
@@ -42,6 +44,13 @@ interface ProjectData {
   liveUrl: string;
   githubUrl: string;
   features: ProjectFeature[];
+  caseStudy: {
+    problem: { tr: string; en: string };
+    solution: { tr: string; en: string };
+    architecture: { tr: string; en: string };
+    dataFlow: { tr: string; en: string };
+  };
+  relatedServices: { label: { tr: string; en: string }; href: string }[];
 }
 
 const PROJECTS_DATA: ProjectData[] = [
@@ -58,12 +67,22 @@ const PROJECTS_DATA: ProjectData[] = [
       { titleKey: translations.projectDetail.haberFeature3Title, descKey: translations.projectDetail.haberFeature3Desc, imagePath: "/images/haber-3.png" },
       { titleKey: translations.projectDetail.haberFeature4Title, descKey: translations.projectDetail.haberFeature4Desc, imagePath: "/images/haber-4.png" },
     ],
+    caseStudy: {
+      problem: { tr: "Farklı haber kaynaklarındaki güncel içeriklerin elle takip edilmesi yavaş, tekrar eden ve tutarsız bir süreçti. Kaynak yapıları değişirken veri akışının sürdürülebilir kalması gerekiyordu.", en: "Manually tracking current content across different news sources was slow, repetitive, and inconsistent. The data flow also needed to remain maintainable as source structures changed." },
+      solution: { tr: "Node.js, Cheerio ve Playwright tabanlı toplama katmanı; zamanlanmış görevler, tekrar kontrolü, MongoDB depolama ve Redis önbellekleme ile tek bir veri hattında birleştirildi.", en: "A Node.js, Cheerio, and Playwright collection layer was combined with scheduled jobs, duplicate checks, MongoDB storage, and Redis caching in one data pipeline." },
+      architecture: { tr: "Kaynak seçimi → scraping katmanı → doğrulama ve temizleme → MongoDB → Redis önbellek → Next.js sunum katmanı.", en: "Source selection → scraping layer → validation and cleaning → MongoDB → Redis cache → Next.js presentation layer." },
+      dataFlow: { tr: "Toplanan kayıtlar normalize edilir, mükerrer URL'ler ayıklanır, kategorize edilir ve arayüzün ya da başka bir API tüketicisinin kullanabileceği yapıya dönüştürülür.", en: "Collected records are normalized, duplicate URLs are removed, records are categorized, and transformed into a structure consumable by the interface or another API client." },
+    },
+    relatedServices: [
+      { label: { tr: "Web Scraping Hizmeti", en: "Web Scraping Service" }, href: "/hizmetler/web-scraping" },
+      { label: { tr: "API Geliştirme", en: "API Development" }, href: "/hizmetler/api-gelistirme" },
+    ],
   },
   {
     slug: "bist-ai",
     titleKey: translations.projects.bistTitle,
     summaryKey: translations.projects.bistDesc,
-    techStack: ["Python", "FastAPI", "Redis", "NodeJS", "NextJS", "React", "Playwright", "Recharts", "Supabase", "PostreSQL", "Docker", "Tailwind CSS "],
+    techStack: ["Python", "FastAPI", "Redis", "Node.js", "Next.js", "React", "Playwright", "Recharts", "Supabase", "PostgreSQL", "Docker", "Tailwind CSS"],
     liveUrl: "/canli-yok",
     githubUrl: "/gizli-repo",
     features: [
@@ -72,13 +91,26 @@ const PROJECTS_DATA: ProjectData[] = [
       { titleKey: translations.projectDetail.bistFeature3Title, descKey: translations.projectDetail.bistFeature3Desc, imagePath: "/images/bist-ai-3.png" },
       { titleKey: translations.projectDetail.bistFeature4Title, descKey: translations.projectDetail.bistFeature4Desc, imagePath: "/images/bist-ai-4.png" },
     ],
+    caseStudy: {
+      problem: translations.projectDetail.bistProblem,
+      solution: { tr: "Python ve FastAPI veri hattı; PostgreSQL veri katmanı, Redis önbellek, arka plan görevleri ve Next.js arayüzüyle birleştirildi. Analiz sonuçları arayüzün kullanabileceği API sözleşmeleriyle sunuldu.", en: "A Python and FastAPI data pipeline was combined with PostgreSQL, Redis caching, background jobs, and a Next.js interface. Analysis results were delivered through API contracts consumable by the frontend." },
+      architecture: { tr: "Playwright veri kaynakları → Python/FastAPI işleme → PostgreSQL kalıcı veri → Redis önbellek → API → Next.js analiz paneli.", en: "Playwright data sources → Python/FastAPI processing → PostgreSQL persistent data → Redis cache → API → Next.js analytics dashboard." },
+      dataFlow: { tr: "Finansal kayıtlar kaynaklardan alınır, doğrulanır, analitik hesaplamalardan geçirilir ve istemciye uygun özet modellere dönüştürülür.", en: "Financial records are collected from sources, validated, processed through analytical calculations, and transformed into summary models for the client." },
+    },
+    relatedServices: [
+      { label: { tr: "API Geliştirme", en: "API Development" }, href: "/hizmetler/api-gelistirme" },
+      { label: { tr: "Yapay Zekâ Otomasyon", en: "AI Automation" }, href: "/hizmetler/yapay-zeka-otomasyon" },
+      { label: { tr: "Özel Yazılım Geliştirme", en: "Custom Software Development" }, href: "/hizmetler/ozel-yazilim-gelistirme" },
+    ],
   },
 ];
 
 export default function ProjeDetayPage() {
   const params = useParams();
   const slug = params.slug as string;
-  const { t } = useLanguage();
+  const { t, locale } = useLanguage();
+  const projectsHref = locale === "en" ? "/en/projects" : "/projeler";
+  const homeHref = locale === "en" ? "/en" : "/";
 
   const project = PROJECTS_DATA.find((p) => p.slug === slug);
 
@@ -93,7 +125,10 @@ export default function ProjeDetayPage() {
 
         {/* Back Link */}
         <div className="max-w-4xl mx-auto px-6 mb-12">
-          <Link href="/projeler" className="inline-flex items-center text-sm font-medium text-muted-foreground hover:text-foreground transition-colors group">
+          <nav aria-label={t({ tr: "Sayfa yolu", en: "Breadcrumb" })} className="mb-8 flex flex-wrap items-center gap-2 text-sm text-muted-foreground">
+            <Link href={homeHref} className="hover:text-foreground">{t({ tr: "Ana Sayfa", en: "Home" })}</Link><span aria-hidden="true">/</span><Link href={projectsHref} className="hover:text-foreground">{t({ tr: "Projeler", en: "Projects" })}</Link><span aria-hidden="true">/</span><span className="text-foreground" aria-current="page">{t(project.titleKey)}</span>
+          </nav>
+          <Link href={projectsHref} className="inline-flex items-center text-sm font-medium text-muted-foreground hover:text-foreground transition-colors group">
             <ArrowLeft className="w-4 h-4 mr-2 transition-transform group-hover:-translate-x-1" />
             {t(translations.projectDetail.backLink)}
           </Link>
@@ -111,6 +146,27 @@ export default function ProjeDetayPage() {
 
         <div className="max-w-5xl mx-auto px-6 space-y-16">
 
+          <ScrollReveal className="grid gap-5 md:grid-cols-2">
+            <section className="rounded-2xl border border-zinc-200/50 bg-zinc-50/60 p-6 dark:border-zinc-800/50 dark:bg-zinc-900/30">
+              <p className="mb-2 text-xs font-bold uppercase tracking-[0.2em] text-brand-red">{t({ tr: "Problem", en: "Problem" })}</p>
+              <h2 className="font-jakarta text-xl font-bold text-foreground">{t({ tr: "Çözülmesi gereken ihtiyaç", en: "The challenge" })}</h2>
+              <p className="mt-4 leading-7 text-muted-foreground">{t(project.caseStudy.problem)}</p>
+            </section>
+            <section className="rounded-2xl border border-zinc-200/50 bg-zinc-50/60 p-6 dark:border-zinc-800/50 dark:bg-zinc-900/30">
+              <p className="mb-2 text-xs font-bold uppercase tracking-[0.2em] text-brand-red">{t({ tr: "Çözüm", en: "Solution" })}</p>
+              <h2 className="font-jakarta text-xl font-bold text-foreground">{t({ tr: "Uygulanan yaklaşım", en: "Implemented approach" })}</h2>
+              <p className="mt-4 leading-7 text-muted-foreground">{t(project.caseStudy.solution)}</p>
+            </section>
+            <section className="rounded-2xl border border-zinc-200/50 bg-zinc-50/60 p-6 dark:border-zinc-800/50 dark:bg-zinc-900/30">
+              <h2 className="font-jakarta text-xl font-bold text-foreground">{t({ tr: "Teknik mimari", en: "Technical architecture" })}</h2>
+              <p className="mt-4 leading-7 text-muted-foreground">{t(project.caseStudy.architecture)}</p>
+            </section>
+            <section className="rounded-2xl border border-zinc-200/50 bg-zinc-50/60 p-6 dark:border-zinc-800/50 dark:bg-zinc-900/30">
+              <h2 className="font-jakarta text-xl font-bold text-foreground">{t({ tr: "Veri akışı", en: "Data flow" })}</h2>
+              <p className="mt-4 leading-7 text-muted-foreground">{t(project.caseStudy.dataFlow)}</p>
+            </section>
+          </ScrollReveal>
+
           {/* Özellikler ve Görseller (Alternatif Düzen) */}
           {project.features && project.features.length > 0 && (
             <div className="space-y-32 py-10 max-w-6xl mx-auto">
@@ -124,6 +180,7 @@ export default function ProjeDetayPage() {
                         src={feature.imagePath}
                         alt={t(feature.titleKey)}
                         fill
+                        priority={index === 0}
                         className="object-contain"
                         sizes="(max-width: 1024px) 100vw, 60vw"
                       />
@@ -158,14 +215,22 @@ export default function ProjeDetayPage() {
             </div>
           </ScrollReveal>
 
+          <ScrollReveal className="rounded-2xl border border-brand-red/20 bg-brand-red/[0.04] p-7">
+            <h2 className="text-xl font-bold font-jakarta text-foreground">{t({ tr: "İlgili hizmetler", en: "Related services" })}</h2>
+            <p className="mt-3 text-muted-foreground">{t({ tr: "Bu projede kullanılan yaklaşımın hizmet kapsamlarını inceleyin.", en: "Explore the service areas demonstrated by this project." })}</p>
+            <div className="mt-5 flex flex-wrap gap-3">
+              {project.relatedServices.map((service) => <Link key={service.href} href={localizedServicePath(service.href.split("/").pop()!, locale)} className="rounded-full border border-brand-red/30 px-4 py-2 text-sm font-semibold text-foreground hover:bg-brand-red hover:text-white">{t(service.label)}</Link>)}
+            </div>
+          </ScrollReveal>
+
           {/* Action Links */}
           <ScrollReveal className="pt-12 border-t border-zinc-200/40 dark:border-zinc-800/40 flex flex-wrap gap-4">
             {project.liveUrl && (
               <Link
-                href={project.liveUrl}
+                href={project.liveUrl.startsWith("/") ? getLocalizedPath(project.liveUrl, locale) : project.liveUrl}
                 target={project.liveUrl.startsWith("http") ? "_blank" : undefined}
                 rel={project.liveUrl.startsWith("http") ? "noopener noreferrer" : undefined}
-                onClick={() => trackEvent("project_link_click", { type: "live", project: project.slug })}
+                onClick={() => trackEvent("project_external_link_click", { type: "live", project: project.slug })}
                 className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-foreground text-background font-semibold hover:bg-foreground/90 transition-colors relative z-10 cursor-pointer"
               >
                 {t(translations.projectDetail.liveProject)} <ExternalLink className="w-4 h-4" />
@@ -173,10 +238,10 @@ export default function ProjeDetayPage() {
             )}
             {project.githubUrl && (
               <Link
-                href={project.githubUrl}
+                href={project.githubUrl.startsWith("/") ? getLocalizedPath(project.githubUrl, locale) : project.githubUrl}
                 target={project.githubUrl.startsWith("http") ? "_blank" : undefined}
                 rel={project.githubUrl.startsWith("http") ? "noopener noreferrer" : undefined}
-                onClick={() => trackEvent("project_link_click", { type: "github", project: project.slug })}
+                onClick={() => trackEvent("project_external_link_click", { type: "github", project: project.slug })}
                 className="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-zinc-200 dark:border-zinc-800 text-foreground font-semibold hover:bg-zinc-100 dark:hover:bg-zinc-900 transition-colors relative z-10 cursor-pointer"
               >
                 {t(translations.projectDetail.githubRepo)} <GithubIcon className="w-4 h-4" />
@@ -190,7 +255,7 @@ export default function ProjeDetayPage() {
               {t({ tr: "Bu proje ilginizi çekti mi? Birlikte çalışalım.", en: "Interested in this project? Let's work together." })}
             </p>
             <Link
-              href="/iletisim"
+              href={locale === "en" ? "/en/contact" : "/iletisim"}
               className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-brand-red text-white font-bold hover:bg-red-700 transition-colors shadow-lg hover:shadow-brand-red/25 relative z-10 cursor-pointer"
             >
               {t(translations.navbar.contact)}
@@ -200,12 +265,7 @@ export default function ProjeDetayPage() {
         </div>
       </main>
 
-      {/* Footer */}
-      <footer className="border-t border-border/10 bg-background/50">
-        <div className="mx-auto max-w-7xl px-6 py-6 sm:px-8 flex items-center justify-between text-xs text-muted-foreground">
-          <p>© {new Date().getFullYear()} Canpolat Kaya. {t(translations.footer.rights)}</p>
-        </div>
-      </footer>
+      <SiteFooter />
     </>
   );
 }
