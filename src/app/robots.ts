@@ -9,5 +9,6 @@ export default function robots(): MetadataRoute.Robots {
       },
     ],
     sitemap: "https://canpolatkaya.com/sitemap.xml",
+    host: "https://canpolatkaya.com",
   };
 }
