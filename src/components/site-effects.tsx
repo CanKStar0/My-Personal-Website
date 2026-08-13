@@ -1,17 +1,12 @@
 "use client";
 
 import dynamic from "next/dynamic";
-import { usePathname } from "next/navigation";
 
 const SplashCursor = dynamic(() => import("@/components/SplashCursor"), {
   ssr: false,
 });
 
 export function SiteEffects() {
-  const pathname = usePathname();
-
-  if (pathname !== "/" && pathname !== "/en") return null;
-
   return (
     <SplashCursor
       DENSITY_DISSIPATION={1.5}
