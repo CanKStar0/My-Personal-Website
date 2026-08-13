@@ -19,7 +19,8 @@ function SplashCursor({
   RAINBOW_MODE = false,
   COLOR = '#9e0a2b',
   MAX_DEVICE_PIXEL_RATIO = 1.5,
-  IDLE_FPS = 30
+  IDLE_FPS = 30,
+  IDLE_TIMEOUT = 8000
 }) {
   const canvasRef = useRef(null);
   const animationFrameId = useRef(null);
@@ -689,19 +690,43 @@ function SplashCursor({
     let lastFrameTime = 0;
     let lastInteractionTime = performance.now();
     let colorUpdateTimer = 0.0;
+    let isSleeping = false;
+    let resizePending = true;
+
+    function requestNextFrame() {
+      if (!isActive || document.hidden || animationFrameId.current) return;
+      animationFrameId.current = requestAnimationFrame(updateFrame);
+    }
+
+    function registerInteraction() {
+      lastInteractionTime = performance.now();
+      if (!isSleeping) return;
+
+      isSleeping = false;
+      lastUpdateTime = Date.now();
+      lastFrameTime = 0;
+      requestNextFrame();
+    }
 
     function updateFrame(timestamp) {
       if (!isActive) return;
 
+      animationFrameId.current = null;
+
       if (document.hidden) {
-        animationFrameId.current = null;
         return;
       }
 
-      const isInteracting = timestamp - lastInteractionTime < 500;
+      const idleDuration = timestamp - lastInteractionTime;
+      if (idleDuration >= IDLE_TIMEOUT) {
+        isSleeping = true;
+        return;
+      }
+
+      const isInteracting = idleDuration < 500;
       const targetFrameTime = 1000 / (isInteracting ? 60 : IDLE_FPS);
       if (timestamp - lastFrameTime < targetFrameTime) {
-        animationFrameId.current = requestAnimationFrame(updateFrame);
+        requestNextFrame();
         return;
       }
 
@@ -712,7 +737,7 @@ function SplashCursor({
       applyInputs();
       step(dt);
       render(null);
-      animationFrameId.current = requestAnimationFrame(updateFrame);
+      requestNextFrame();
     }
 
     function calcDeltaTime() {
@@ -724,6 +749,9 @@ function SplashCursor({
     }
 
     function resizeCanvas() {
+      if (!resizePending) return false;
+      resizePending = false;
+
       let width = scaleByPixelRatio(canvas.clientWidth);
       let height = scaleByPixelRatio(canvas.clientHeight);
       if (canvas.width !== width || canvas.height !== height) {
@@ -735,6 +763,8 @@ function SplashCursor({
     }
 
     function updateColors(dt) {
+      if (!config.RAINBOW_MODE) return;
+
       colorUpdateTimer += dt * config.COLOR_UPDATE_SPEED;
       if (colorUpdateTimer >= 1) {
         colorUpdateTimer = wrap(colorUpdateTimer, 0, 1);
@@ -1006,7 +1036,7 @@ function SplashCursor({
 
     // Named event handlers for proper cleanup
     function handleMouseDown(e) {
-      lastInteractionTime = performance.now();
+      registerInteraction();
       let pointer = pointers[0];
       let posX = scaleByPixelRatio(e.clientX);
       let posY = scaleByPixelRatio(e.clientY);
@@ -1016,7 +1046,7 @@ function SplashCursor({
 
     let firstMouseMoveHandled = false;
     function handleMouseMove(e) {
-      lastInteractionTime = performance.now();
+      registerInteraction();
       let pointer = pointers[0];
       let posX = scaleByPixelRatio(e.clientX);
       let posY = scaleByPixelRatio(e.clientY);
@@ -1030,7 +1060,7 @@ function SplashCursor({
     }
 
     function handleTouchStart(e) {
-      lastInteractionTime = performance.now();
+      registerInteraction();
       const touches = e.targetTouches;
       let pointer = pointers[0];
       for (let i = 0; i < touches.length; i++) {
@@ -1041,7 +1071,7 @@ function SplashCursor({
     }
 
     function handleTouchMove(e) {
-      lastInteractionTime = performance.now();
+      registerInteraction();
       const touches = e.targetTouches;
       let pointer = pointers[0];
       for (let i = 0; i < touches.length; i++) {
@@ -1060,11 +1090,20 @@ function SplashCursor({
     }
 
     function handleVisibilityChange() {
-      if (!document.hidden && isActive && !animationFrameId.current) {
+      if (!document.hidden && isActive && !isSleeping) {
         lastUpdateTime = Date.now();
         lastFrameTime = 0;
-        animationFrameId.current = requestAnimationFrame(updateFrame);
+        requestNextFrame();
       }
+    }
+
+    function handleResize() {
+      resizePending = true;
+      if (isSleeping) {
+        isSleeping = false;
+        lastInteractionTime = performance.now();
+      }
+      requestNextFrame();
     }
 
     // Add event listeners
@@ -1073,9 +1112,10 @@ function SplashCursor({
     window.addEventListener('touchstart', handleTouchStart, { passive: true });
     window.addEventListener('touchmove', handleTouchMove, { passive: true });
     window.addEventListener('touchend', handleTouchEnd);
+    window.addEventListener('resize', handleResize, { passive: true });
     document.addEventListener('visibilitychange', handleVisibilityChange);
 
-    updateFrame();
+    requestNextFrame();
 
     // Cleanup function
     return () => {
@@ -1093,6 +1133,7 @@ function SplashCursor({
       window.removeEventListener('touchstart', handleTouchStart);
       window.removeEventListener('touchmove', handleTouchMove);
       window.removeEventListener('touchend', handleTouchEnd);
+      window.removeEventListener('resize', handleResize);
       document.removeEventListener('visibilitychange', handleVisibilityChange);
       gl.getExtension('WEBGL_lose_context')?.loseContext();
     };
@@ -1115,8 +1156,8 @@ function SplashCursor({
         ref={canvasRef}
         id="fluid"
         style={{
-          width: '100vw',
-          height: '100vh',
+          width: '100%',
+          height: '100%',
           display: 'block'
         }}
       />
