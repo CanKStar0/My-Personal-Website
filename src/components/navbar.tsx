@@ -50,7 +50,7 @@ function LanguageToggle() {
         role="radio"
         aria-checked={locale === "tr"}
         onClick={() => { trackEvent("language_switch", { from: locale, to: "tr" }); setLocale("tr"); }}
-        className={`relative z-10 flex items-center justify-center w-[38px] h-full text-xs font-bold tracking-wide cursor-pointer transition-colors duration-200 focus:outline-hidden ${
+        className={`relative z-10 flex items-center justify-center w-[38px] h-full text-xs font-bold tracking-wide cursor-pointer transition-colors duration-200 ${
           locale === "tr"
             ? "text-white"
             : "text-foreground/60 hover:text-foreground"
@@ -62,7 +62,7 @@ function LanguageToggle() {
         role="radio"
         aria-checked={locale === "en"}
         onClick={() => { trackEvent("language_switch", { from: locale, to: "en" }); setLocale("en"); }}
-        className={`relative z-10 flex items-center justify-center w-[38px] h-full text-xs font-bold tracking-wide cursor-pointer transition-colors duration-200 focus:outline-hidden ${
+        className={`relative z-10 flex items-center justify-center w-[38px] h-full text-xs font-bold tracking-wide cursor-pointer transition-colors duration-200 ${
           locale === "en"
             ? "text-white"
             : "text-foreground/60 hover:text-foreground"
@@ -90,7 +90,7 @@ export function Navbar() {
     const handleScroll = () => {
       setScrolled(window.scrollY > 20);
     };
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
@@ -209,7 +209,7 @@ export function Navbar() {
           {/* Theme Toggle Button */}
           <button
             onClick={() => setTheme(resolvedTheme === "dark" ? "light" : "dark")}
-            className="flex h-9 w-9 items-center justify-center rounded-full border border-border/20 bg-background/50 hover:bg-muted/80 text-foreground transition-all duration-200 cursor-pointer focus:outline-hidden"
+            className="flex h-9 w-9 items-center justify-center rounded-full border border-border/20 bg-background/50 hover:bg-muted/80 text-foreground transition-all duration-200 cursor-pointer"
             aria-label={t(translations.navbar.themeToggle)}
           >
             {mounted ? (
@@ -226,8 +226,10 @@ export function Navbar() {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="flex h-9 w-9 items-center justify-center rounded-full border border-border/20 bg-background/50 hover:bg-muted/80 text-foreground transition-all duration-200 lg:hidden cursor-pointer focus:outline-hidden"
+            className="flex h-9 w-9 items-center justify-center rounded-full border border-border/20 bg-background/50 hover:bg-muted/80 text-foreground transition-all duration-200 lg:hidden cursor-pointer"
             aria-label={t(translations.navbar.menuToggle)}
+            aria-expanded={mobileMenuOpen}
+            aria-controls="mobile-navigation"
           >
             {mobileMenuOpen ? (
               <X className="h-4.5 w-4.5 transition-transform duration-200" />
@@ -240,7 +242,7 @@ export function Navbar() {
 
       {/* Mobile Drawer Menu */}
       {mobileMenuOpen && (
-        <div className="absolute top-16 left-0 w-full border-b border-border/20 bg-background/95 backdrop-blur-lg transition-all duration-300 lg:hidden animate-in fade-in slide-in-from-top-4 duration-200 z-50 shadow-xl">
+        <div id="mobile-navigation" className="absolute top-16 left-0 w-full border-b border-border/20 bg-background/95 backdrop-blur-lg transition-all duration-300 lg:hidden animate-in fade-in slide-in-from-top-4 duration-200 z-50 shadow-xl">
           <nav className="flex flex-col space-y-4 px-6 py-8">
             {navLinks.map((link) => (
               <Link

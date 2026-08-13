@@ -53,7 +53,7 @@ function IconStack({ techs }: { techs: Tech[] }) {
             />
           </div>
           {/* Tooltip */}
-          <span className="absolute left-full ml-4 opacity-0 group-hover/item:opacity-100 transition-all duration-300 -translate-x-2 group-hover/item:translate-x-0 text-sm font-medium font-sans text-foreground/90 whitespace-nowrap pointer-events-none bg-background/95 px-3 py-1.5 rounded-lg border border-border/60 shadow-sm backdrop-blur-md z-20">
+          <span aria-hidden="true" className="absolute left-full ml-4 hidden opacity-0 transition-all duration-300 -translate-x-2 pointer-events-none whitespace-nowrap rounded-lg border border-border/60 bg-background/95 px-3 py-1.5 font-sans text-sm font-medium text-foreground/90 shadow-sm backdrop-blur-md z-20 md:block md:group-hover/item:translate-x-0 md:group-hover/item:opacity-100">
             {tech.name}
           </span>
         </div>
