@@ -27,8 +27,8 @@ export const translations = {
     headingPart1: { tr: "Sadece Kod Yazmıyor,", en: "I Don't Just Write Code," } as TranslationValue,
     headingPart2: { tr: "Sistem İnşa Ediyorum.", en: "I Build Systems." } as TranslationValue,
     description: {
-      tr: 'Kodlar herkes tarafından kopyalanabilir, ancak bir <vision>vizyon</vision> kopyalanamaz. Ben, karmaşık fikirleri alıp onları kusursuz işleyen dijital ürünlere dönüştüren bir mekanizmayım. Estetiği, <highlight>ağır mühendislikle</highlight> birleştiriyorum. Amacım sadece "çalışan" bir şeyler yapmak değil; piyasaya çıktığı an kendi başının çaresine bakabilen, güçlü ve <highlight>otonom sistemler</highlight> yaratmak.',
-      en: 'Code can be copied by anyone, but a <vision>vision</vision> cannot. I am a mechanism that takes complex ideas and transforms them into flawlessly functioning digital products. I merge aesthetics with <highlight>heavy engineering</highlight>. My goal is not just to build something that "works"; it\'s to create powerful and <highlight>autonomous systems</highlight> that can fend for themselves the moment they hit the market.',
+      tr: 'Kodlar herkes tarafından kopyalanabilir, ancak bir <vision>vizyon</vision> kopyalanamaz. Karmaşık fikirleri sürdürülebilir dijital ürünlere dönüştürürken estetiği <highlight>sağlam mühendislikle</highlight> birleştiriyorum. Amacım yalnızca çalışan bir çıktı üretmek değil; izlenebilir, geliştirilebilir ve operasyon yükünü azaltan <highlight>otonom sistemler</highlight> kurmak.',
+      en: 'Code can be copied by anyone, but a <vision>vision</vision> cannot. I turn complex ideas into maintainable digital products by combining aesthetics with <highlight>sound engineering</highlight>. My goal is not only to ship working software, but to build observable, extensible <highlight>autonomous systems</highlight> that reduce operational work.',
     } as TranslationValue,
   },
 
@@ -36,8 +36,8 @@ export const translations = {
   bento: {
     aiTitle: { tr: "Yapay Zeka & Otomasyon", en: "AI & Automation" } as TranslationValue,
     aiDesc: {
-      tr: "Zaman alan manuel süreçleri botlar ve veri kazıma (scraping) algoritmalarıyla sıfıra indiriyorum. LLM entegrasyonları ile sadece işleyen değil, düşünen ve kendi kararını alabilen otonom sistemler inşa ediyorum.",
-      en: "I eliminate time-consuming manual processes with bots and web scraping algorithms. With LLM integrations, I build autonomous systems that don't just run — they think and make their own decisions.",
+      tr: "Zaman alan manuel süreçleri botlar, web scraping akışları ve kontrollü otomasyonlarla azaltıyorum. LLM entegrasyonlarını doğrulama, izleme ve insan kontrolüyle birlikte kullanarak sürdürülebilir sistemler geliştiriyorum.",
+      en: "I reduce time-consuming manual work with bots, web scraping pipelines, and controlled automation. I combine LLM integrations with validation, monitoring, and human oversight to build maintainable systems.",
     } as TranslationValue,
     frontendTitle: { tr: "Frontend Mimarisi", en: "Frontend Architecture" } as TranslationValue,
     backendTitle: { tr: "Backend Gücü", en: "Backend Power" } as TranslationValue,

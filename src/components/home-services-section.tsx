@@ -12,7 +12,7 @@ export function HomeServicesSection({ locale = "tr" }: { locale?: Locale }) {
     <section className="w-full border-t border-border/10 bg-background px-6 py-24 md:px-12" aria-labelledby="home-services-heading">
       <div className="mx-auto max-w-6xl">
         <div className="max-w-3xl">
-          <p className="text-xs font-bold uppercase tracking-[0.25em] text-brand-red">{isEnglish ? "From expertise to solutions" : "Uzmanlıktan çözüme"}</p>
+          <p className="text-xs font-bold uppercase tracking-[0.25em] text-brand-red dark:text-rose-400">{isEnglish ? "From expertise to solutions" : "Uzmanlıktan çözüme"}</p>
           <h2 id="home-services-heading" className="mt-4 font-jakarta text-3xl font-extrabold tracking-tight text-foreground md:text-5xl">{isEnglish ? "I turn business problems into working digital systems." : "İş problemlerini çalışan dijital sistemlere dönüştürüyorum."}</h2>
           <p className="mt-5 leading-7 text-muted-foreground">{isEnglish ? "Data collection, AI automation, backend/API, and modern web development work together under a custom software approach." : "Özel yazılım ana yaklaşımı altında veri toplama, AI otomasyon, backend/API ve modern web geliştirme yetkinlikleri birlikte çalışır."}</p>
         </div>
@@ -26,9 +26,9 @@ export function HomeServicesSection({ locale = "tr" }: { locale?: Locale }) {
           ))}
         </div>
         <div className="mt-10 flex flex-wrap gap-6 text-sm font-semibold">
-          <Link href={isEnglish ? "/en/services" : "/hizmetler"} className="inline-flex items-center gap-2 hover:text-brand-red">{isEnglish ? "All services" : "Tüm hizmetler"} <ArrowRight className="h-4 w-4" /></Link>
-          <Link href={isEnglish ? "/en/blog" : "/blog"} className="inline-flex items-center gap-2 hover:text-brand-red">{isEnglish ? "Knowledge center" : "Bilgi merkezi"} <ArrowRight className="h-4 w-4" /></Link>
-          <Link href={isEnglish ? "/en/contact" : "/iletisim"} className="inline-flex items-center gap-2 hover:text-brand-red">{isEnglish ? "Discuss your project" : "Projenizi konuşalım"} <ArrowRight className="h-4 w-4" /></Link>
+          <Link href={isEnglish ? "/en/services" : "/hizmetler"} className="inline-flex items-center gap-2 py-1 hover:text-brand-red">{isEnglish ? "All services" : "Tüm hizmetler"} <ArrowRight className="h-4 w-4" /></Link>
+          <Link href={isEnglish ? "/en/blog" : "/blog"} className="inline-flex items-center gap-2 py-1 hover:text-brand-red">{isEnglish ? "Knowledge center" : "Bilgi merkezi"} <ArrowRight className="h-4 w-4" /></Link>
+          <Link href={isEnglish ? "/en/contact" : "/iletisim"} className="inline-flex items-center gap-2 py-1 hover:text-brand-red">{isEnglish ? "Discuss your project" : "Projenizi konuşalım"} <ArrowRight className="h-4 w-4" /></Link>
         </div>
       </div>
     </section>

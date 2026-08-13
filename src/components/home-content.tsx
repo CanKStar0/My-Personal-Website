@@ -1,6 +1,3 @@
-"use client";
-
-import { useEffect } from "react";
 import { Navbar } from "@/components/navbar";
 import { HeroAnimation } from "@/components/hero-animation";
 import { MarqueeSection } from "@/components/marquee-section";
@@ -9,38 +6,27 @@ import { ManifestoSection } from "@/components/manifesto-section";
 import { HomeServicesSection } from "@/components/home-services-section";
 import { JsonLd } from "@/components/json-ld";
 import { SiteFooter } from "@/components/site-footer";
+import { ScrollToQuery } from "@/components/scroll-to-query";
 import { SITE_URL, SOCIAL_LINKS } from "@/lib/site";
 import type { Locale } from "@/lib/translations";
 
 export function HomeContent({ locale }: { locale: Locale }) {
   const isEnglish = locale === "en";
 
-  useEffect(() => {
-    const params = new URLSearchParams(window.location.search);
-    const scrollTo = params.get("scrollTo");
-    if (!scrollTo) return;
-    window.history.replaceState(null, "", window.location.pathname);
-    const tryScroll = (attempts = 0) => {
-      const element = document.getElementById(scrollTo);
-      if (element) element.scrollIntoView({ behavior: "instant" });
-      else if (attempts < 10) setTimeout(() => tryScroll(attempts + 1), 100);
-    };
-    tryScroll();
-  }, []);
-
   return (
     <>
+      <ScrollToQuery />
       <JsonLd data={[
         {
-          "@context": "https://schema.org", "@type": "Person", name: "Canpolat Kaya", url: SITE_URL,
+          "@context": "https://schema.org", "@type": "Person", "@id": `${SITE_URL}/#person`, name: "Canpolat Kaya", url: SITE_URL,
           jobTitle: "Full-Stack Developer", sameAs: [SOCIAL_LINKS.github, SOCIAL_LINKS.linkedin],
           knowsAbout: isEnglish
             ? ["Custom Software Development", "Web Scraping", "AI Automation", "API Development", "Next.js"]
             : ["Özel Yazılım Geliştirme", "Web Scraping", "Yapay Zekâ Otomasyonu", "API Geliştirme", "Next.js"],
         },
         {
-          "@context": "https://schema.org", "@type": "WebSite", name: "Canpolat Kaya",
-          url: isEnglish ? `${SITE_URL}/en` : SITE_URL, inLanguage: locale,
+          "@context": "https://schema.org", "@type": "WebSite", "@id": `${SITE_URL}/#website`, name: "Canpolat Kaya",
+          url: SITE_URL, inLanguage: ["tr", "en"], author: { "@id": `${SITE_URL}/#person` },
         },
       ]} />
       <Navbar />

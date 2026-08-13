@@ -9,7 +9,7 @@ import { translations } from "@/lib/translations";
 import { trackEvent } from "@/lib/analytics";
 
 export function HeroAnimation() {
-  const { t } = useLanguage();
+  const { locale, t } = useLanguage();
   const name = "CANPOLAT KAYA";
   const nameLetters = name.split("");
 
@@ -96,7 +96,7 @@ export function HeroAnimation() {
         {/* Subtitle / Title Description */}
         <div className="h-10 mt-4 overflow-hidden flex items-center justify-center">
           <motion.p
-            initial={{ opacity: 0, y: 12 }}
+            initial={{ opacity: 1, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{
               delay: lineDelay + lineSweepDuration + 0.2,
@@ -121,7 +121,7 @@ export function HeroAnimation() {
           className="mt-10"
         >
           <SpotlightButton
-            href="/projeler"
+            href={locale === "en" ? "/en/projects" : "/projeler"}
             onClick={() => trackEvent("project_case_study_click", { location: "hero" })}
             className="text-xs sm:text-sm tracking-[0.2em] uppercase"
           >
