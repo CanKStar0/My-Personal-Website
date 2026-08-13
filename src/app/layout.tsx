@@ -127,7 +127,8 @@ export default function RootLayout({
         )}
         <ThemeProvider>
           <LanguageProvider>
-            <div className="relative flex min-h-screen flex-col">
+            <SiteEffects />
+            <div className="relative z-10 flex min-h-screen flex-col">
               {children}
             </div>
             <Toaster 
@@ -142,7 +143,6 @@ export default function RootLayout({
                 }
               }}
             />
-            <SiteEffects />
           </LanguageProvider>
         </ThemeProvider>
       </body>

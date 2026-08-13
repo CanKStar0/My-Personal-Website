@@ -3,12 +3,12 @@ import { useEffect, useRef } from 'react';
 
 function SplashCursor({
   SIM_RESOLUTION = 128,
-  DYE_RESOLUTION = 1440,
+  DYE_RESOLUTION = 1024,
   CAPTURE_RESOLUTION = 512,
   DENSITY_DISSIPATION = 2,
   VELOCITY_DISSIPATION = 2,
   PRESSURE = 0.1,
-  PRESSURE_ITERATIONS = 20,
+  PRESSURE_ITERATIONS = 14,
   CURL = 10,
   SPLAT_RADIUS = 0.22,
   SPLAT_FORCE = 6000,
@@ -17,7 +17,9 @@ function SplashCursor({
   BACK_COLOR = { r: 0.5, g: 0, b: 0 },
   TRANSPARENT = true,
   RAINBOW_MODE = false,
-  COLOR = '#9e0a2b'
+  COLOR = '#9e0a2b',
+  MAX_DEVICE_PIXEL_RATIO = 1.5,
+  IDLE_FPS = 30
 }) {
   const canvasRef = useRef(null);
   const animationFrameId = useRef(null);
@@ -65,6 +67,7 @@ function SplashCursor({
     let pointers = [new pointerPrototype()];
 
     const { gl, ext } = getWebGLContext(canvas);
+    if (!gl || !ext.halfFloatTexType || !ext.formatRGBA || !ext.formatRG || !ext.formatR) return;
     if (!ext.supportLinearFiltering) {
       config.DYE_RESOLUTION = 256;
       config.SHADING = false;
@@ -82,6 +85,13 @@ function SplashCursor({
       const isWebGL2 = !!gl;
       if (!isWebGL2) gl = canvas.getContext('webgl', params) || canvas.getContext('experimental-webgl', params);
 
+      if (!gl) {
+        return {
+          gl: null,
+          ext: { formatRGBA: null, formatRG: null, formatR: null, halfFloatTexType: null, supportLinearFiltering: false }
+        };
+      }
+
       let halfFloat;
       let supportLinearFiltering;
       if (isWebGL2) {
@@ -91,7 +101,7 @@ function SplashCursor({
         halfFloat = gl.getExtension('OES_texture_half_float');
         supportLinearFiltering = gl.getExtension('OES_texture_half_float_linear');
       }
-      gl.clearColor(0.0, 0.0, 0.0, 1.0);
+      gl.clearColor(0.0, 0.0, 0.0, TRANSPARENT ? 0.0 : 1.0);
 
       const halfFloatTexType = isWebGL2 ? gl.HALF_FLOAT : halfFloat && halfFloat.HALF_FLOAT_OES;
       let formatRGBA;
@@ -676,10 +686,26 @@ function SplashCursor({
     updateKeywords();
     initFramebuffers();
     let lastUpdateTime = Date.now();
+    let lastFrameTime = 0;
+    let lastInteractionTime = performance.now();
     let colorUpdateTimer = 0.0;
 
-    function updateFrame() {
+    function updateFrame(timestamp) {
       if (!isActive) return;
+
+      if (document.hidden) {
+        animationFrameId.current = null;
+        return;
+      }
+
+      const isInteracting = timestamp - lastInteractionTime < 500;
+      const targetFrameTime = 1000 / (isInteracting ? 60 : IDLE_FPS);
+      if (timestamp - lastFrameTime < targetFrameTime) {
+        animationFrameId.current = requestAnimationFrame(updateFrame);
+        return;
+      }
+
+      lastFrameTime = timestamp;
       const dt = calcDeltaTime();
       if (resizeCanvas()) initFramebuffers();
       updateColors(dt);
@@ -692,7 +718,7 @@ function SplashCursor({
     function calcDeltaTime() {
       let now = Date.now();
       let dt = (now - lastUpdateTime) / 1000;
-      dt = Math.min(dt, 0.016666);
+      dt = Math.min(dt, 1 / IDLE_FPS);
       lastUpdateTime = now;
       return dt;
     }
@@ -964,7 +990,7 @@ function SplashCursor({
     }
 
     function scaleByPixelRatio(input) {
-      const pixelRatio = window.devicePixelRatio || 1;
+      const pixelRatio = Math.min(window.devicePixelRatio || 1, MAX_DEVICE_PIXEL_RATIO);
       return Math.floor(input * pixelRatio);
     }
 
@@ -980,6 +1006,7 @@ function SplashCursor({
 
     // Named event handlers for proper cleanup
     function handleMouseDown(e) {
+      lastInteractionTime = performance.now();
       let pointer = pointers[0];
       let posX = scaleByPixelRatio(e.clientX);
       let posY = scaleByPixelRatio(e.clientY);
@@ -989,6 +1016,7 @@ function SplashCursor({
 
     let firstMouseMoveHandled = false;
     function handleMouseMove(e) {
+      lastInteractionTime = performance.now();
       let pointer = pointers[0];
       let posX = scaleByPixelRatio(e.clientX);
       let posY = scaleByPixelRatio(e.clientY);
@@ -1002,6 +1030,7 @@ function SplashCursor({
     }
 
     function handleTouchStart(e) {
+      lastInteractionTime = performance.now();
       const touches = e.targetTouches;
       let pointer = pointers[0];
       for (let i = 0; i < touches.length; i++) {
@@ -1012,6 +1041,7 @@ function SplashCursor({
     }
 
     function handleTouchMove(e) {
+      lastInteractionTime = performance.now();
       const touches = e.targetTouches;
       let pointer = pointers[0];
       for (let i = 0; i < touches.length; i++) {
@@ -1029,12 +1059,21 @@ function SplashCursor({
       }
     }
 
+    function handleVisibilityChange() {
+      if (!document.hidden && isActive && !animationFrameId.current) {
+        lastUpdateTime = Date.now();
+        lastFrameTime = 0;
+        animationFrameId.current = requestAnimationFrame(updateFrame);
+      }
+    }
+
     // Add event listeners
     window.addEventListener('mousedown', handleMouseDown);
-    window.addEventListener('mousemove', handleMouseMove);
-    window.addEventListener('touchstart', handleTouchStart);
-    window.addEventListener('touchmove', handleTouchMove, false);
+    window.addEventListener('mousemove', handleMouseMove, { passive: true });
+    window.addEventListener('touchstart', handleTouchStart, { passive: true });
+    window.addEventListener('touchmove', handleTouchMove, { passive: true });
     window.addEventListener('touchend', handleTouchEnd);
+    document.addEventListener('visibilitychange', handleVisibilityChange);
 
     updateFrame();
 
@@ -1054,6 +1093,8 @@ function SplashCursor({
       window.removeEventListener('touchstart', handleTouchStart);
       window.removeEventListener('touchmove', handleTouchMove);
       window.removeEventListener('touchend', handleTouchEnd);
+      document.removeEventListener('visibilitychange', handleVisibilityChange);
+      gl.getExtension('WEBGL_lose_context')?.loseContext();
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -1064,7 +1105,7 @@ function SplashCursor({
         position: 'fixed',
         top: 0,
         left: 0,
-        zIndex: 50,
+        zIndex: 20,
         pointerEvents: 'none',
         width: '100%',
         height: '100%'
