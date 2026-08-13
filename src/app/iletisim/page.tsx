@@ -23,7 +23,7 @@ export default function IletisimPage() {
       <main className="flex-1 flex flex-col items-center justify-center min-h-[calc(100vh-4rem)] bg-background px-6 text-center">
 
         {/* Eyebrow */}
-        <span className="uppercase tracking-[0.3em] text-[10px] sm:text-xs font-semibold text-zinc-500 select-none mb-5">
+        <span className="uppercase tracking-[0.3em] text-[10px] sm:text-xs font-semibold text-zinc-600 dark:text-zinc-400 select-none mb-5">
           {t(translations.contact.eyebrow)}
         </span>
 

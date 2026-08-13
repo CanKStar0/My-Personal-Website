@@ -44,7 +44,7 @@ export function ProjectsSection({ githubReposNode }: ProjectsSectionProps = {}) 
     <section id="projeler" className="w-full py-24 px-6 md:px-12 bg-background">
       <div className="max-w-5xl mx-auto">
         <ScrollReveal className="mb-16 text-center flex flex-col items-center">
-          <span className="text-xs font-bold tracking-[0.2em] text-brand-red uppercase block mb-3 font-sans text-center">
+          <span className="text-xs font-bold tracking-[0.2em] text-brand-red dark:text-rose-400 uppercase block mb-3 font-sans text-center">
             {t(translations.projects.eyebrow)}
           </span>
           <h1 className="text-3xl md:text-4xl font-extrabold tracking-tight font-jakarta text-foreground mb-4 text-center">

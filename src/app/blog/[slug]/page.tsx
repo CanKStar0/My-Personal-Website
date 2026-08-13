@@ -55,7 +55,7 @@ export default async function BlogPostPage({ params }: Props) {
         <article className="mx-auto max-w-4xl">
           <Breadcrumbs items={[{ label: "Ana Sayfa", href: "/" }, { label: "Blog", href: "/blog" }, { label: post.title, href: `/blog/${post.slug}` }]} />
           <header className="border-b border-border/60 pb-12">
-            <p className="text-xs font-bold uppercase tracking-[0.2em] text-brand-red">{post.category}</p>
+            <p className="text-xs font-bold uppercase tracking-[0.2em] text-brand-red dark:text-rose-400">{post.category}</p>
             <h1 className="mt-5 font-jakarta text-4xl font-extrabold tracking-tight text-foreground sm:text-5xl md:text-6xl md:leading-[1.08]">{post.title}</h1>
             <p className="mt-6 max-w-3xl text-lg font-light leading-8 text-muted-foreground">{post.description}</p>
             <div className="mt-6 flex flex-wrap items-center gap-4 text-sm text-muted-foreground"><time dateTime={post.publishedAt}>13 Ağustos 2026</time><span aria-hidden="true">•</span><span className="inline-flex items-center gap-1.5"><Clock className="h-4 w-4" />{post.readingTime}</span></div>
@@ -74,7 +74,7 @@ export default async function BlogPostPage({ params }: Props) {
           </div>
 
           <aside className="rounded-3xl border border-brand-red/20 bg-brand-red/[0.04] p-7 md:p-10">
-            <p className="text-xs font-bold uppercase tracking-[0.2em] text-brand-red">Uygulama desteği</p>
+            <p className="text-xs font-bold uppercase tracking-[0.2em] text-brand-red dark:text-rose-400">Uygulama desteği</p>
             <h2 className="mt-3 font-jakarta text-2xl font-bold text-foreground">Bu konuyu çalışan bir sisteme dönüştürün.</h2>
             <p className="mt-4 leading-7 text-muted-foreground">İhtiyacınız öğrenmekten öte üretim ortamında güvenilir bir çözüm kurmaksa, ilgili hizmet yaklaşımını ve proje kanıtlarını inceleyin.</p>
             <TrackedLink eventName="blog_to_service_click" eventParams={{ article: post.slug }} href={post.serviceHref} className="mt-6 inline-flex items-center gap-2 font-semibold text-foreground hover:text-brand-red">{post.serviceAnchor} <ArrowRight className="h-4 w-4" /></TrackedLink>

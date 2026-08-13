@@ -20,7 +20,7 @@ export default function AboutPage() {
         <article className="mx-auto max-w-5xl">
           <Breadcrumbs items={[{ label: "Ana Sayfa", href: "/" }, { label: "Hakkımda", href: "/hakkimda" }]} />
           <header className="max-w-4xl">
-            <p className="text-xs font-bold uppercase tracking-[0.25em] text-brand-red">Canpolat Kaya / Full-Stack Developer</p>
+            <p className="text-xs font-bold uppercase tracking-[0.25em] text-brand-red dark:text-rose-400">Canpolat Kaya / Full-Stack Developer</p>
             <h1 className="mt-5 font-jakarta text-4xl font-extrabold tracking-tight text-foreground sm:text-5xl md:text-6xl">Sadece kod değil, kendi başına çalışabilen sistemler inşa ediyorum.</h1>
             <p className="mt-7 max-w-3xl text-lg font-light leading-8 text-muted-foreground">Özel yazılım, veri toplama, yapay zekâ otomasyonu, backend ve modern web geliştirme alanlarında fikirleri çalışan dijital ürünlere dönüştürüyorum.</p>
           </header>

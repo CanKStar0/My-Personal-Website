@@ -21,7 +21,7 @@ export default function ServicesPage() {
         <div className="mx-auto max-w-6xl">
           <Breadcrumbs items={[{ label: "Ana Sayfa", href: "/" }, { label: "Hizmetler", href: "/hizmetler" }]} />
           <header className="max-w-4xl">
-            <p className="text-xs font-bold uppercase tracking-[0.25em] text-brand-red">Çözüm alanları</p>
+            <p className="text-xs font-bold uppercase tracking-[0.25em] text-brand-red dark:text-rose-400">Çözüm alanları</p>
             <h1 className="mt-5 font-jakarta text-4xl font-extrabold tracking-tight text-foreground sm:text-5xl md:text-6xl">Fikri, çalışan ve sürdürülebilir bir sisteme dönüştüren hizmetler.</h1>
             <p className="mt-7 max-w-3xl text-base font-light leading-8 text-muted-foreground md:text-lg">Her hizmet ayrı bir teknoloji listesi değil, belirli bir iş problemini çözen uçtan uca yaklaşım sunar. Gerektiğinde bu alanlar tek bir özel yazılım projesinde birlikte çalışır.</p>
           </header>
@@ -30,7 +30,7 @@ export default function ServicesPage() {
             <h2 id="services-heading" className="sr-only">Yazılım geliştirme hizmetleri</h2>
             {services.map((service, index) => (
               <Link key={service.slug} href={`/hizmetler/${service.slug}`} className={`group rounded-3xl border border-border/70 bg-card/40 p-7 transition-all hover:-translate-y-1 hover:border-brand-red/40 hover:bg-brand-red/[0.03] md:p-9 ${index === 0 ? "md:col-span-2" : ""}`}>
-                <p className="text-xs font-bold uppercase tracking-[0.2em] text-brand-red">{service.eyebrow}</p>
+                <p className="text-xs font-bold uppercase tracking-[0.2em] text-brand-red dark:text-rose-400">{service.eyebrow}</p>
                 <h2 className="mt-4 font-jakarta text-2xl font-bold text-foreground md:text-3xl">{service.shortTitle}</h2>
                 <p className="mt-4 max-w-3xl leading-7 text-muted-foreground">{service.description}</p>
                 <span className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-foreground group-hover:text-brand-red">Hizmeti inceleyin <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" /></span>
@@ -50,4 +50,3 @@ export default function ServicesPage() {
     </>
   );
 }
-
