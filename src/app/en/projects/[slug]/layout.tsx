@@ -4,7 +4,7 @@ import { createMetadata } from "@/lib/seo";
 import { SITE_NAME, SITE_URL } from "@/lib/site";
 
 const projects: Record<string, { title: string; description: string; image: string }> = {
-  "haber-portali": { title: "News Portal - Autonomous Web Scraping Engine", description: "A cloud-based news collection engine and maintainable data-delivery platform.", image: "/images/haber-cover.png" },
+  "haber-portali": { title: "News Portal - Autonomous Web Scraping Engine", description: "A cloud-based news collection engine and maintainable data-delivery platform.", image: "/images/haber-cover-v2.png" },
   "bist-ai": { title: "BIST AI - Financial Data Analytics System", description: "A Borsa Istanbul analytics system combining validation, caching, backend, and data-processing layers.", image: "/images/bist-ai-cover.png" },
 };
 

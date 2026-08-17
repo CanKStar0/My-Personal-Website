@@ -7,7 +7,7 @@ const PROJECTS_METADATA: Record<string, { title: string; description: string; im
   "haber-portali": {
     title: "Haber Portalı - Otonom Web Kazıma Motoru",
     description: "Bulut tabanlı otonom haber toplama motoru ve yüksek performanslı veri sunum (DaaS) platformu.",
-    image: "/images/haber-cover.png",
+    image: "/images/haber-cover-v2.png",
   },
   "bist-ai": {
     title: "BIST AI - Finansal Veri Analiz Sistemi",

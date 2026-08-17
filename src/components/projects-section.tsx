@@ -29,7 +29,7 @@ export function ProjectsSection({ githubReposNode }: ProjectsSectionProps = {}) 
       descriptionKey: translations.projects.haberDesc,
       technologies: ["Next.js 15", "React 19", "Tailwind CSS v4", "TypeScript", "MongoDB Atlas", "Playwright", "Telegram Bot API", "Google News SEO"],
       slug: "haber-portali",
-      imagePath: "/images/haber-cover.png",
+      imagePath: "/images/haber-cover-v2.png",
     },
     {
       titleKey: translations.projects.bistTitle,

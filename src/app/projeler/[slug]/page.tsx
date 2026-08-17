@@ -84,7 +84,7 @@ const PROJECTS_DATA: ProjectData[] = [
           tr: "Next.js 15, React 19 ve Tailwind CSS v4 ile inşa edilen ana sayfa; The Verge tarzı modern asimetrik Bento Grid düzeniyle en sıcak haberleri 2x2 vitrin kartında toplar. Derin antrasit zemin (#080c14) ve asil kırmızı vurgular, kullanıcının görsel hiyerarşide kaybolmadan en önemli gelişmelere odaklanmasını sağlar.",
           en: "Built with Next.js 15, React 19, and Tailwind CSS v4, the homepage gathers breaking headlines in a modern The Verge-inspired asymmetric 2x2 Bento Grid showcase. Deep anthracite surfaces (#080c14) paired with crimson accents ensure seamless visual hierarchy and high readability.",
         },
-        imagePath: "/images/haber-cover.png",
+        imagePath: "/images/haber-cover-v2.png",
       },
       {
         titleKey: {
@@ -95,7 +95,7 @@ const PROJECTS_DATA: ProjectData[] = [
           tr: "Haber detay sayfalarında okuma verimliliğini maksimize etmek için geliştirilen LLM destekli '30 Saniyelik AI Hap Bilgi' kutusu, uzun haber metinlerini 3 kilit maddeye indirger. Sayfa bazında dinamik enjekte edilen Google News NewsArticle ve BreadcrumbList JSON-LD şemaları sayesinde arama motorlarında ve Keşfet panellerinde anında indekslenme kabiliyeti sunar.",
           en: "Designed to maximize reading efficiency, the LLM-powered '30-Second AI Quick Summary' box distills long news articles into 3 key takeaways. Page-level dynamic Google News NewsArticle and BreadcrumbList JSON-LD schemas enable instantaneous indexing across search engines and Google Discover feeds.",
         },
-        imagePath: "/images/haber-1.png",
+        imagePath: "/images/haber-1-v2.png",
       },
       {
         titleKey: {
@@ -106,7 +106,7 @@ const PROJECTS_DATA: ProjectData[] = [
           tr: "Gündem, Ekonomi, Teknoloji, Kripto ve Spor gibi dikey kategorilerde çalışan veri filtreleme katmanı, Vercel Serverless ve Mongoose Connection Pooling altyapısı ile MongoDB'den sıfır gecikmeyle veri çeker. Sayfalar 60 saniyelik ISR (Incremental Static Regeneration) ile hem sunucu yükünü minimumda tutar hem de anlık güncellik sağlar.",
           en: "Operating across vertical categories including Politics, Economy, Tech, Crypto, and Sports, the filtering layer fetches data with zero latency from MongoDB Atlas via Vercel Serverless and Mongoose Connection Pooling. 60-second ISR (Incremental Static Regeneration) guarantees near real-time freshness while minimizing server overhead.",
         },
-        imagePath: "/images/haber-2.png",
+        imagePath: "/images/haber-2-v2.png",
       },
       {
         titleKey: {
@@ -117,7 +117,7 @@ const PROJECTS_DATA: ProjectData[] = [
           tr: "Regex tabanlı optimize edilmiş MongoDB arama katmanı, binlerce haber metni ve başlığı arasında 30ms'nin altında filtreleme gerçekleştirir. Mobil ve masaüstünde akıcı arama çekmecesi ve 'noindex' SEO kurallarıyla temiz bir dizinleme hiyerarşisi oluşturur.",
           en: "An optimized regex-powered MongoDB search layer performs sub-30ms filtering across thousands of news articles and headlines. A responsive slide-out search drawer paired with strict 'noindex' SEO rules preserves clean crawl hierarchy.",
         },
-        imagePath: "/images/haber-3.png",
+        imagePath: "/images/haber-3-v2.png",
       },
       {
         titleKey: {
@@ -128,7 +128,7 @@ const PROJECTS_DATA: ProjectData[] = [
           tr: "Sistemin sürdürülebilirliğini korumak için 14 günden eski haberler otomatik olarak .json veri kümesine dönüştürülüp Telegram Bot API (sendDocument) üzerinden geliştiricinin Telegram hesabına arşivlenir ve veritabanı temizlenir. 5651 Sayılı Yer Sağlayıcı Bildirimi ve KVKK aydınlatma metinleriyle kurumsal bir yayıncılık altyapısı sunar.",
           en: "To maintain sustainable database sizing, news records older than 14 days are automatically converted into .json datasets, backed up to the developer's Telegram account via Telegram Bot API (sendDocument), and pruned from the primary database. Full compliance with data privacy regulations provides enterprise-grade publishing reliability.",
         },
-        imagePath: "/images/haber-4.png",
+        imagePath: "/images/haber-4-v2.png",
       },
     ],
     caseStudy: {
