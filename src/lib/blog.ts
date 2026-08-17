@@ -168,7 +168,7 @@ class CodeAuditResult(BaseModel):
 client = genai.Client()
 
 response = client.models.generate_content(
-    model="gemini-2.0-flash",
+    model="gemini-3.7-flash",
     contents="Aşağıdaki FastAPI endpoint'ini güvenlik açıkları için denetle: ...",
     config=types.GenerateContentConfig(
         response_mime_type="application/json",
@@ -313,7 +313,7 @@ client = genai.Client()
 async def stream_ai_response(prompt: str):
     async def event_generator():
         response = client.models.generate_content_stream(
-            model="gemini-2.0-flash",
+            model="gemini-3.7-flash",
             contents=prompt,
         )
         for chunk in response:
@@ -470,7 +470,7 @@ from google.genai import types
 client = genai.Client()
 
 response = client.models.generate_content(
-    model="gemini-2.0-flash-thinking-exp",
+    model="gemini-3.7-flash",
     contents="Verilen dağıtık veritabanı loglarındaki yarış durumunu (race condition) analiz et ve deadlock senaryosunu kanıtla: ...",
     config=types.GenerateContentConfig(
         thinking_config=types.ThinkingConfig(thinking_budget=4096),
@@ -618,7 +618,7 @@ print(f"Satıcı: {invoice.vendor}, Toplam: USD {invoice.total}")`
       {
         title: "Tedarikçi Bağımlılığından (Vendor Lock-in) Kurtulma",
         paragraphs: [
-          "Her sağlayıcının kendi kütüphanesini öğrenmek yerine `litellm.completion()` çağrısıyla `claude-3-7-sonnet`, `gemini/gemini-2.0-flash` veya `ollama/qwen` modellerini aynı arayüzle çağırabilirsiniz."
+          "Her sağlayıcının kendi kütüphanesini öğrenmek yerine `litellm.completion()` çağrısıyla `claude-sonnet-5`, `gemini/gemini-3.7-flash` veya `ollama/deepseek-r1` modellerini aynı arayüzle çağırabilirsiniz."
         ]
       }
     ]
@@ -1816,7 +1816,7 @@ export async function POST(req: Request) {
   const { messages } = await req.json();
 
   const result = streamText({
-    model: google("gemini-2.0-flash"),
+    model: google("gemini-3.7-flash"),
     messages,
   });
 
