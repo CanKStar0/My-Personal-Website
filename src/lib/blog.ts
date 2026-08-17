@@ -490,21 +490,21 @@ print(response.text)`
     ]
   },
   {
-    slug: "claude-3-7-sonnet-hybrid-reasoning",
-    title: "Claude 3.7 Sonnet Hybrid Reasoning: Hızlı Çıktı ve Derin Düşünme Dengesi",
-    description: "Anthropic'in ilk hibrit akıl yürütme modeli Claude 3.7 Sonnet'in standart mod ve thinking mod arasındaki esnek geçiş mimarisi.",
+    slug: "claude-sonnet-5-ve-claude-opus-5-rehberi",
+    title: "Claude Sonnet 5 & Claude Opus 5: Yeni Nesil Agentic Coding ve Akıl Yürütme Mimarisi",
+    description: "Anthropic'in en yeni Claude 5 jenerasyonu (Sonnet 5, Opus 5 ve Fable 5) ile agentic kodlama, 1M token bağlam penceresi ve otonom yazılım geliştirme rehberi.",
     publishedAt: "2026-08-17",
     modifiedAt: "2026-08-17",
     category: "LLM & AI Modelleri",
     readingTime: "9 dk",
     serviceHref: "/hizmetler/yapay-zeka-otomasyon",
-    serviceAnchor: "Claude API ve akıllı iş akışları danışmanlığı",
+    serviceAnchor: "Claude 5 ve otonom yapay zekâ entegrasyonu danışmanlığı",
     sections: [
       {
-        title: "Hibrit Akıl Yürütme Paradigması",
+        title: "Claude 5 Ailesi: Sonnet 5, Opus 5 ve Fable 5",
         paragraphs: [
-          "Geliştiriciler artık hızlı yanıt veren modeller ile derin akıl yürüten modeller arasında seçim yapmak zorunda değildir.",
-          "Claude 3.7 Sonnet tek bir model üzerinde API çağrısı sırasında thinking parametresi tanımlayarak duruma göre hız veya derin analiz seçeneği sunar."
+          "Anthropic'in 2026 amiral gemisi Claude 5 serisi; kodlama, otonom çoklu dosya refactor süreçleri ve uzun soluklu akıl yürütme (long-horizon reasoning) alanında yeni bir standart belirlemiştir.",
+          "Claude Sonnet 5 geliştiriciler için günlük yüksek hızlı kodlama motoru olarak öne çıkarken; Claude Opus 5 devasa 1M token bağlamı ve derin reasoning kapasitesiyle en karmaşık kurumsal mimari tasarım problemlerini çözer. Claude Fable 5 ise araştırma ve yüksek güvenlikli ajan iş akışlarına odaklanır."
         ]
       }
     ]
@@ -1983,9 +1983,9 @@ export async function POST(req: Request) {
   // ADIM 8: MODERN GELİŞTİRİCİ ARAÇLARI & MODELLER BİREBİR VS SERİSİ
   // ==============================================================
   {
-    slug: "gemini-3-7-flash-vs-claude-3-7-sonnet",
-    title: "Gemini 3.7 Flash vs Claude 3.7 Sonnet: Kodlama ve Akıl Yürütmede (Reasoning) Hangisi Üstün?",
-    description: "Google ve Anthropic'in en yeni akıl yürütme modellerinin kod üretimi, SWE-bench puanları, token maliyetleri ve gecikme (latency) testleri.",
+    slug: "gemini-3-7-flash-vs-claude-sonnet-5",
+    title: "Gemini 3.7 Flash vs Claude Sonnet 5 & Opus 5: 2026'nın En Güçlü AI Modelleri Karşılaştırması",
+    description: "Google'ın ultra hızlı Gemini 3.7 Flash modeli ile Anthropic'in en yeni amiral gemileri Claude Sonnet 5, Opus 5 ve Fable 5 modellerinin kodlama, SWE-bench ve maliyet kıyaslaması.",
     publishedAt: "2026-08-17",
     modifiedAt: "2026-08-17",
     category: "Karşılaştırma",
@@ -1994,21 +1994,18 @@ export async function POST(req: Request) {
     serviceAnchor: "Model seçimi ve kurumsal LLM entegrasyonu danışmanlığı",
     sections: [
       {
-        title: "Hız vs Derinlik: Karşılaştırmalı Benchmark",
+        title: "Hız, Ajan Yetenekleri ve SWE-bench Karşılaştırması",
         paragraphs: [
-          "Gemini 3.7 Flash, 'Thinking Mode' aktifken dahi milisaniyelik token üretim hızları ve 1M+ multimodal bağlam penceresiyle yüksek hacimli görevlerde liderdir.",
-          "Claude 3.7 Sonnet ise karmaşık mimari refactor süreçlerinde ve karmaşık mantık adımlarında (SWE-bench coding) en yüksek doğruluk oranına sahiptir."
+          "Gemini 3.7 Flash; düşük gecikme süresi, multimodal anlama ve yüksek hacimli agentic döngülerde maliyet/performans liderliğini sürdürmektedir.",
+          "Claude Sonnet 5 ve Claude Opus 5 ise derin kodlama, 1M token bağlamda karmaşık mimari analiz ve otonom hata ayıklama süreçlerinde sektörün en yüksek doğruluk oranlarını sunar."
         ]
       },
       {
-        title: "Maliyet ve Hız Tablosu",
+        title: "Kullanım ve Tercih Matrisi",
         paragraphs: [
-          "Milyon token başına girdi ve çıktı maliyeti:"
-        ],
-        items: [
-          "Gemini 3.7 Flash: ~$0.15 / 1M Girdi, ~$0.60 / 1M Çıktı (Düşük maliyet şampiyonu).",
-          "Claude 3.7 Sonnet: ~$3.00 / 1M Girdi, ~$15.00 / 1M Çıktı (Üst segment doğruluk).",
-          "Kullanım Önerisi: Hızlı API ve otomatik agent döngülerinde Gemini Flash; kritik mimari tasarımda Claude Sonnet."
+          "1. Yüksek Hacimli API & Streaming: `Gemini 3.7 Flash` (Ultra hızlı yanıt ve düşük maliyet).",
+          "2. Günlük Agentic Kodlama & Refactor: `Claude Sonnet 5` (Hız ve derin kodlama dengesi).",
+          "3. Kritik Kurumsal Mimari & Zorlu Akıl Yürütme: `Claude Opus 5` (En üst düzey reasoning kapasitesi)."
         ]
       }
     ]
