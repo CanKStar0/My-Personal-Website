@@ -999,6 +999,261 @@ CMD ["gunicorn", "main:app", "-w", "4", "-k", "uvicorn.workers.UvicornWorker", "
     ]
   },
 
+  // ==============================================================
+  // ADIM 4: AI DESTEKLİ WEB KAZIMA & AKILLI VERİ OTOMASYONU
+  // ==============================================================
+  {
+    slug: "crawl4ai-ile-llm-icin-web-kazima",
+    title: "Crawl4AI Rehberi: LLM ve RAG Sistemleri İçin Temiz Markdown ve JSON Kazıma",
+    description: "Açık kaynak Crawl4AI kütüphanesi ile web sayfalarını HTML çöplerinden arındırıp LLM dostu temiz Markdown ve yapılandırılmış JSON formatında kazıma rehberi.",
+    publishedAt: "2026-08-17",
+    modifiedAt: "2026-08-17",
+    category: "Web Scraping",
+    readingTime: "8 dk",
+    serviceHref: "/hizmetler/web-scraping",
+    serviceAnchor: "Crawl4AI ve LLM veri toplama çözümlerimizi inceleyin",
+    sections: [
+      {
+        title: "Crawl4AI Neden Standart Scraper'lardan Farklıdır?",
+        paragraphs: [
+          "Geleneksel web kazıma araçları ham HTML döner. Bir LLM'e 50.000 satırlık karmaşık bir DOM ağacını vermek token bütçesini tüketir.",
+          "Crawl4AI; menüleri, reklamları, script etiketlerini ve CSS çöplerini otomatik temizler ve fit-markdown algoritmasıyla sadece ana içeriği saf Markdown olarak çıkarır."
+        ],
+        codeSnippet: {
+          language: "python",
+          filename: "crawl_example.py",
+          code: `import asyncio
+from crawl4ai import AsyncWebCrawler
+
+async def main():
+    async with AsyncWebCrawler(verbose=True) as crawler:
+        result = await crawler.arun(url="https://news.ycombinator.com")
+        print("Temiz Markdown Çıktısı:")
+        print(result.markdown[:500])
+
+asyncio.run(main())`
+        }
+      }
+    ],
+    faqs: [
+      {
+        question: "Crawl4AI JavaScript render desteğine sahip mi?",
+        answer: "Evet, arka planda Playwright motoru kullanarak SPA (React, Vue) sitelerini tam render edip kazıyabilir."
+      }
+    ]
+  },
+  {
+    slug: "playwright-stealth-ve-anti-bot-atlatma",
+    title: "Playwright Stealth ile Cloudflare ve DataDome Bot Korumalarını Aşma (2026)",
+    description: "Headless Chrome parmak izi (fingerprint) gizleme, TLS fingerprinting, WebGL/Canvas spoofing ve Cloudflare Challenge atlatma teknikleri.",
+    publishedAt: "2026-08-17",
+    modifiedAt: "2026-08-17",
+    category: "Web Scraping",
+    readingTime: "10 dk",
+    serviceHref: "/hizmetler/web-scraping",
+    serviceAnchor: "Anti-bot korumalı sitelerden veri toplama hizmetimiz",
+    sections: [
+      {
+        title: "Bot Korumaları Bir Tarayıcıyı Nasıl Tespit Eder?",
+        paragraphs: [
+          "Cloudflare ve DataDome gibi modern koruma kalkanları yalnızca IP adresinize bakmaz; `navigator.webdriver` bayrağı, WebGL donanım kimliği, font listesi, TLS Client Hello parmak izi (JA3/JA4) ve fare hareketlerinin insan doğallığını inceler."
+        ],
+        codeSnippet: {
+          language: "python",
+          filename: "stealth_scraper.py",
+          code: `import asyncio
+from playwright.async_api import async_playwright
+from playwright_stealth import stealth_async
+
+async def run():
+    async with async_playwright() as p:
+        browser = await p.chromium.launch(headless=True)
+        context = await browser.new_context(
+            user_agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36",
+            locale="tr-TR",
+            viewport={"width": 1920, "height": 1080}
+        )
+        page = await context.new_page()
+        await stealth_async(page)
+        await page.goto("https://bot.sannysoft.com")
+        print("Stealth koruması devrede!")
+        await browser.close()
+
+asyncio.run(run())`
+        }
+      }
+    ]
+  },
+  {
+    slug: "browserbase-ve-cloud-browser-mimarisi",
+    title: "Browserbase ve Headless Browser Cloud: Sunucusuz Web Kazıma ve Otomasyon",
+    description: "Yerel sunucularda Chromium bellek sızıntıları ve CPU yüküyle uğraşmadan, bulutta yönetilen binlerce headless tarayıcı oturumu çalıştırma mimarisi.",
+    publishedAt: "2026-08-17",
+    modifiedAt: "2026-08-17",
+    category: "Web Scraping",
+    readingTime: "8 dk",
+    serviceHref: "/hizmetler/web-scraping",
+    serviceAnchor: "Bulut tabanlı ölçeklenebilir web scraping altyapıları",
+    sections: [
+      {
+        title: "Neden Cloud Browser Altyapısı?",
+        paragraphs: [
+          "Büyük ölçekte 500 adet Chromium sekmesi açmak bir VPS sunucusunda 30GB+ RAM tüketir ve crash'lere yol açar.",
+          "Browserbase veya benzeri bulut browser sağlayıcıları; proxy rotasyonu, parmak izi yönetimi, captcha çözümü ve canlı session debugger'ı tek bir WebSocket URL'i ile sunar."
+        ]
+      }
+    ]
+  },
+  {
+    slug: "playwright-async-pool-ve-yuksek-hizli-scraping",
+    title: "Playwright Async Pool: Python ile Eşzamanlı (Concurrent) 100+ Sayfa Kazıma",
+    description: "BrowserContext yeniden kullanımı, resim ve font bloklama (Request Interception) ile kazıma hızını 5 kata çıkarma ve bellek optimizasyonu.",
+    publishedAt: "2026-08-17",
+    modifiedAt: "2026-08-17",
+    category: "Web Scraping",
+    readingTime: "9 dk",
+    serviceHref: "/hizmetler/web-scraping",
+    serviceAnchor: "Yüksek hızlı büyük veri kazıma çözümlerimiz",
+    sections: [
+      {
+        title: "Gereksiz İstekleri Bloklama ile Hız Artışı",
+        paragraphs: [
+          "Bir sayfa açılırken resimler, fontlar, Google Analytics ve reklam scriptleri bant genişliğinin %80'ini tüketir. `page.route()` ile bu istekleri iptal ederek sayfa yükleme süresini 3 saniyeden 300 milisaniyeye indirebilirsiniz."
+        ],
+        codeSnippet: {
+          language: "python",
+          filename: "speed_scraper.py",
+          code: `async def route_interceptor(route):
+    if route.request.resource_type in ["image", "media", "font", "stylesheet"]:
+        await route.abort()
+    else:
+        await route.continue_()
+
+# page.route("**/*", route_interceptor)`
+        }
+      }
+    ]
+  },
+  {
+    slug: "residential-proxy-rotasyonu-ve-sticky-session",
+    title: "Residential Proxy Rotasyonu ve Sticky Session Mimarisi: IP Ban Sorununu Çözme",
+    description: "Datacenter IP'lerinin anında engellendiği e-ticaret ve kamu portallarında Residential (Ev) ve Mobil proxy ağlarını yönetme stratejisi.",
+    publishedAt: "2026-08-17",
+    modifiedAt: "2026-08-17",
+    category: "Web Scraping",
+    readingTime: "9 dk",
+    serviceHref: "/hizmetler/web-scraping",
+    serviceAnchor: "Kesintisiz proxy ve veri toplama mimarisi danışmanlığı",
+    sections: [
+      {
+        title: "Sticky vs Rotating Proxy Ayrımı",
+        paragraphs: [
+          "Kullanıcı girişi veya sepet adımlarında aynı IP ile kalmak (Sticky Session) gerekirken, milyonlarca ürün sayfasını gezerken her istekte IP değiştirmek (Rotating Proxy) en optimum yaklaşımdır."
+        ]
+      }
+    ]
+  },
+  {
+    slug: "playwright-ile-dinamik-spa-ve-infinite-scroll",
+    title: "Playwright ile Dinamik SPA, Shadow DOM ve Infinite Scroll Kazıma Teknikleri",
+    description: "Aşağı kaydırdıkça yüklenen (infinite scroll) sayfalar, Shadow DOM kapsülleme katmanları ve network idle olaylarını bekleme stratejileri.",
+    publishedAt: "2026-08-17",
+    modifiedAt: "2026-08-17",
+    category: "Web Scraping",
+    readingTime: "8 dk",
+    serviceHref: "/hizmetler/web-scraping",
+    serviceAnchor: "Karmaşık JavaScript SPA uygulamalarından veri kazıma",
+    sections: [
+      {
+        title: "Infinite Scroll Sayfaları Nasıl Çözülür?",
+        paragraphs: [
+          "Sabit beklemeler (`sleep(5)`) yerine `page.evaluate` ile sayfa scroll yüksekliğini kontrol eden ve yeni element geldikçe devam eden dinamik döngüler kurulmalıdır."
+        ]
+      }
+    ]
+  },
+  {
+    slug: "ai-vision-ile-otomatik-captcha-cozme",
+    title: "AI Vision ve OCR ile CAPTCHA ve Cloudflare Turnstile Çözme Yaklaşımları",
+    description: "Görsel tabanlı doğrulama sorularını (resim seçme, metin okuma, puzzle kaydırma) multimodal yapay zekâ modelleriyle otomatik tamamlama yöntemleri.",
+    publishedAt: "2026-08-17",
+    modifiedAt: "2026-08-17",
+    category: "Web Scraping",
+    readingTime: "8 dk",
+    serviceHref: "/hizmetler/yapay-zeka-otomasyon",
+    serviceAnchor: "Akıllı görsel tanıma ve bot otomasyonu çözümlerimiz",
+    sections: [
+      {
+        title: "Multimodal Modellerin Rolü",
+        paragraphs: [
+          "Yeni nesil Gemini Flash ve GPT-4o-mini modelleri, CAPTCHA ekran görüntüsündeki nesnelerin koordinatlarını (bounding box) milisaniyeler içinde tespit ederek fare tıklama hareketini simüle eder."
+        ]
+      }
+    ]
+  },
+  {
+    slug: "beautifulsoup-vs-playwright-vs-scrapy",
+    title: "BeautifulSoup vs Scrapy vs Playwright: 2026'da Hangi Scraping Aracını Seçmelisiniz?",
+    description: "Statik sayfalar için BeautifulSoup, devasa tarama projeleri için Scrapy ve JavaScript render gerektiren modern web için Playwright analizi.",
+    publishedAt: "2026-08-17",
+    modifiedAt: "2026-08-17",
+    category: "Karşılaştırma",
+    readingTime: "9 dk",
+    serviceHref: "/hizmetler/web-scraping",
+    serviceAnchor: "Doğru veri kazıma teknolojisi seçimi ve mimari danışmanlık",
+    sections: [
+      {
+        title: "Karar Matrisi",
+        paragraphs: [
+          "1. Statik HTML + Yüksek Hız: `httpx + BeautifulSoup` (En hafif, düşük RAM).",
+          "2. Milyonlarca Sayfa Dağıtık Tarama: `Scrapy + Redis` (En olgun crawler mimarisi).",
+          "3. React/Next.js/Cloudflare: `Playwright / Crawl4AI` (JavaScript render zorunlu)."
+        ]
+      }
+    ]
+  },
+  {
+    slug: "web-scraping-ve-veri-boruhatti-data-pipeline",
+    title: "Kazınan Veriyi PostgreSQL ve Supabase'e Aktarma: Güvenilir Data Pipeline Mimarisi",
+    description: "Toplanan ham verileri Pydantic ile doğrulama, tekrar eden kayıtları (deduplication) ayıklama ve toplu (batch) upsert ile veritabanına aktarma.",
+    publishedAt: "2026-08-17",
+    modifiedAt: "2026-08-17",
+    category: "Veri & Altyapı",
+    readingTime: "10 dk",
+    serviceHref: "/hizmetler/ozel-yazilim-gelistirme",
+    serviceAnchor: "Veri boru hatları (data pipeline) ve veritabanı mimarisi",
+    sections: [
+      {
+        title: "İdempotent Veri Kaydı Prensibi",
+        paragraphs: [
+          "Scraper yarıda kesilip tekrar çalıştığında aynı ürün veya haber kaydı tekrar yazılmamalıdır. `ON CONFLICT (source_url) DO UPDATE` şeması ile idempotent kayıt garantisi sağlanmalıdır."
+        ]
+      }
+    ]
+  },
+  {
+    slug: "web-scraping-hukuki-ve-etik-sinirlar",
+    title: "Web Scraping Hukuki ve Etik Standartları: Robots.txt, Kamusal Veri ve KVKK/GDPR",
+    description: "Yasal sınırlar içinde veri toplama, telif hakları, kişisel verilerin korunması kanunu (KVKK) ve sunucuları yormayan etik scraping standartları.",
+    publishedAt: "2026-08-17",
+    modifiedAt: "2026-08-17",
+    category: "Web Scraping",
+    readingTime: "7 dk",
+    serviceHref: "/hizmetler/web-scraping",
+    serviceAnchor: "Etik ve yasal uyumlu veri toplama danışmanlığı",
+    sections: [
+      {
+        title: "Etik ve Yasal Scraping İlkeleri",
+        paragraphs: [
+          "1. Kamuya açık bilgileri toplamak (hiq vs LinkedIn davası emsali).",
+          "2. Giriş şifresi veya ödeme duvarı arkasındaki verileri ihlal etmemek.",
+          "3. Hedef sunucunun hizmetini aksatmayacak şekilde makul istek aralıkları (rate limit) bırakmak.",
+          "4. Kişisel verileri (KVKK/GDPR) izinsiz depolamamak veya anonimleştirmek."
+        ]
+      }
+    ]
+  },
+
   // ==========================================
   // ORİJİNAL İÇERİKLER
   // ==========================================
