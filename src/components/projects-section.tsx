@@ -27,7 +27,7 @@ export function ProjectsSection({ githubReposNode }: ProjectsSectionProps = {}) 
     {
       titleKey: translations.projects.haberTitle,
       descriptionKey: translations.projects.haberDesc,
-      technologies: ["Next.js", "TypeScript", "Node.js", "PostgreSQL", "Redis", "GZIP"],
+      technologies: ["Next.js 15", "React 19", "Tailwind CSS v4", "TypeScript", "MongoDB Atlas", "Playwright", "Telegram Bot API", "Google News SEO"],
       slug: "haber-portali",
       imagePath: "/images/haber-cover.png",
     },
