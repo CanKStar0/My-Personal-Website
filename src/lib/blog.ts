@@ -36,6 +36,9 @@ export type BlogPost = {
 };
 
 export const blogPosts: BlogPost[] = [
+  // ==========================================
+  // ADIM 1: AGENTIC CODING & TERMINAL AJANLARI
+  // ==========================================
   {
     slug: "claude-code-cli-rehberi",
     title: "Claude Code CLI ile Terminal Odaklı Agentic Coding: Kurulum ve Best Practices",
@@ -437,7 +440,271 @@ asyncio.run(run())`
       }
     ]
   },
-  // Orijinal içerikler korunur
+
+  // ==============================================================
+  // ADIM 2: SON NESİL MODELLER & GELİŞTİRİCİ MİMARİLERİ (REASONING)
+  // ==============================================================
+  {
+    slug: "gemini-thinking-mode-ve-akil-yurutme",
+    title: "Gemini Thinking Mode Nedir? Akıl Yürütme Bütçesi ile Karmaşık Algoritmalar Çözme",
+    description: "Google Gemini 2.0 ve 3.7 modellerinde sunulan Thinking Mode akıl yürütme bütçesinin (budget) nasıl çalıştığını ve zorlu algoritmik problemlerde nasıl kullanıldığını öğrenin.",
+    publishedAt: "2026-08-17",
+    modifiedAt: "2026-08-17",
+    category: "LLM & AI Modelleri",
+    readingTime: "8 dk",
+    serviceHref: "/hizmetler/yapay-zeka-otomasyon",
+    serviceAnchor: "Gemini ve akıl yürütme modelleri entegrasyonu çözümlerimizi inceleyin",
+    sections: [
+      {
+        title: "Thinking Budget (Düşünme Bütçesi) Nedir?",
+        paragraphs: [
+          "Klasik LLM'ler her gelen istekte anında token üretmeye başlar. Thinking Mode ise modelin kullanıcıya nihai cevabı vermeden önce dahili bir akıl yürütme zinciri (hidden thinking tokens) kurmasına olanak tanır.",
+          "Geliştirici olarak `thinking_budget` parametresini belirleyerek (örneğin 0 ile 8192 token arası) modelin problem üzerinde ne kadar derin düşüneceğini siz yönetirsiniz."
+        ],
+        codeSnippet: {
+          language: "python",
+          filename: "gemini_thinking.py",
+          code: `from google import genai
+from google.genai import types
+
+client = genai.Client()
+
+response = client.models.generate_content(
+    model="gemini-2.0-flash-thinking-exp",
+    contents="Verilen dağıtık veritabanı loglarındaki yarış durumunu (race condition) analiz et ve deadlock senaryosunu kanıtla: ...",
+    config=types.GenerateContentConfig(
+        thinking_config=types.ThinkingConfig(thinking_budget=4096),
+        temperature=0.7
+    )
+)
+
+print(response.text)`
+        }
+      }
+    ],
+    faqs: [
+      {
+        question: "Thinking mode ne zaman kapatılmalıdır?",
+        answer: "Hızlı sınıflandırma, basit metin çevirisi veya temel özetleme gibi düşük gecikme gerektiren işlerde thinking_budget=0 yapılarak maksimum hız elde edilir."
+      }
+    ]
+  },
+  {
+    slug: "claude-3-7-sonnet-hybrid-reasoning",
+    title: "Claude 3.7 Sonnet Hybrid Reasoning: Hızlı Çıktı ve Derin Düşünme Dengesi",
+    description: "Anthropic'in ilk hibrit akıl yürütme modeli Claude 3.7 Sonnet'in standart mod ve thinking mod arasındaki esnek geçiş mimarisi.",
+    publishedAt: "2026-08-17",
+    modifiedAt: "2026-08-17",
+    category: "LLM & AI Modelleri",
+    readingTime: "9 dk",
+    serviceHref: "/hizmetler/yapay-zeka-otomasyon",
+    serviceAnchor: "Claude API ve akıllı iş akışları danışmanlığı",
+    sections: [
+      {
+        title: "Hibrit Akıl Yürütme Paradigması",
+        paragraphs: [
+          "Geliştiriciler artık hızlı yanıt veren modeller ile derin akıl yürüten modeller arasında seçim yapmak zorunda değildir.",
+          "Claude 3.7 Sonnet tek bir model üzerinde API çağrısı sırasında `thinking: { type: 'enabled', budget_tokens: 2000 }` tanımlayarak duruma göre hız veya derin analiz seçeneği sunar."
+        ]
+      }
+    ]
+  },
+  {
+    slug: "deepseek-r1-ve-acik-kaynak-reasoning",
+    title: "DeepSeek-R1 ve Açık Kaynak Reasoning Modellerini Yerelde Çalıştırma (Ollama & vLLM)",
+    description: "DeepSeek-R1 ve damıtılmış (distilled) açık kaynak modelleri kendi sunucunuzda vLLM veya Ollama ile sıfır API maliyetiyle nasıl çalıştıracağınızı öğrenin.",
+    publishedAt: "2026-08-17",
+    modifiedAt: "2026-08-17",
+    category: "AI Altyapısı",
+    readingTime: "11 dk",
+    serviceHref: "/hizmetler/ozel-yazilim-gelistirme",
+    serviceAnchor: "Özel sunucu ve açık kaynak AI altyapı kurulumu çözümlerimiz",
+    sections: [
+      {
+        title: "Açık Kaynak Akıl Yürütme Devrimi",
+        paragraphs: [
+          "DeepSeek-R1, kapalı kaynak reasoning modellerinin performansını açık ağırlıklı (open-weights) olarak sunarak yerel geliştirme ortamlarında çığır açmıştır.",
+          "Ollama ile tek bir komutla 7B, 14B veya 32B boyutundaki damıtılmış modelleri çalıştırabilirsiniz:"
+        ],
+        codeSnippet: {
+          language: "bash",
+          filename: "terminal",
+          code: `# Ollama ile DeepSeek-R1 14B modelini yerelde çalıştırın
+ollama run deepseek-r1:14b
+
+# vLLM ile yüksek throughput'lu OpenAI uyumlu sunucu başlatın
+python3 -m vllm.entrypoints.openai.api_server --model deepseek-ai/DeepSeek-R1-Distill-Qwen-14B --port 8000`
+        }
+      }
+    ]
+  },
+  {
+    slug: "llm-structured-outputs-pydantic-v2",
+    title: "LLM Structured Outputs: Pydantic v2 ve JSON Schema ile Sıfır Hatalı Çıktı Üretimi",
+    description: "LLM çıktılarının kırılmasını önlemek için Pydantic v2, Instructor ve yerel JSON Schema modları ile %100 tip güvenli veri çıkarma rehberi.",
+    publishedAt: "2026-08-17",
+    modifiedAt: "2026-08-17",
+    category: "API & Backend",
+    readingTime: "8 dk",
+    serviceHref: "/hizmetler/api-gelistirme",
+    serviceAnchor: "Tip güvenli API ve veri doğrulama çözümlerimiz",
+    sections: [
+      {
+        title: "Neden Normal Regex veya String Parser Yetmez?",
+        paragraphs: [
+          "LLM'ler bazen JSON'ın başına '```json' ekler veya eksik virgül bırakır. 'Structured Outputs' özelliği, modelin gramer tabanlı örnekleme (grammar-constrained sampling) ile sadece şemaya uyan token'ları üretmesini garanti eder."
+        ],
+        codeSnippet: {
+          language: "python",
+          filename: "structured_output.py",
+          code: `from pydantic import BaseModel, Field
+import instructor
+from openai import OpenAI
+
+class InvoiceItem(BaseModel):
+    name: str
+    price: float = Field(gt=0)
+    quantity: int = Field(default=1)
+
+class InvoiceExtraction(BaseModel):
+    vendor: str
+    items: list[InvoiceItem]
+    total: float
+
+client = instructor.from_openai(OpenAI())
+
+invoice = client.chat.completions.create(
+    model="gpt-4o-mini",
+    response_model=InvoiceExtraction,
+    messages=[{"role": "user", "content": "Fatura metni: Acme Corp 2 adet sunucu $500, 1 adet domain $20"}],
+)
+
+print(f"Satıcı: {invoice.vendor}, Toplam: USD {invoice.total}")`
+        }
+      }
+    ]
+  },
+  {
+    slug: "prompt-caching-ile-maliyet-dusurme",
+    title: "Prompt Caching Mimarisi: Anthropic ve Gemini API Maliyetlerini %90 Düşürme",
+    description: "Tekrarlanan sistem promptları, uzun API dokümantasyonları ve kod tabanı yüklemelerinde Prompt Caching kullanarak faturaları ve gecikmeyi radikal şekilde azaltın.",
+    publishedAt: "2026-08-17",
+    modifiedAt: "2026-08-17",
+    category: "AI Mimarisi",
+    readingTime: "7 dk",
+    serviceHref: "/hizmetler/yapay-zeka-otomasyon",
+    serviceAnchor: "AI maliyet optimizasyonu ve üretim danışmanlığı",
+    sections: [
+      {
+        title: "Prompt Caching Nasıl Çalışır?",
+        paragraphs: [
+          "Büyük bir kod tabanını (örneğin 50.000 token) her kullanıcı sorusunda baştan iletmek hem maliyetli hem de yavaştır.",
+          "Prompt Caching ile ilk istekte sunucu tarafında işlenen KV-cache bellekte tutulur ve sonraki isteklerde %90 indirimli fiyatla ve neredeyse anında okunur."
+        ]
+      }
+    ]
+  },
+  {
+    slug: "litellm-ile-coklu-model-yonetimi",
+    title: "LiteLLM ile 100+ LLM Modelini Tek Bir OpenAI Uyumlu Proxy ile Yönetme",
+    description: "OpenAI, Anthropic, Gemini, Bedrock ve yerel modelleri tek bir standart API formatında birleştiren, otomatik fallback ve rate-limit yönetimi sunan LiteLLM rehberi.",
+    publishedAt: "2026-08-17",
+    modifiedAt: "2026-08-17",
+    category: "AI Altyapısı",
+    readingTime: "8 dk",
+    serviceHref: "/hizmetler/api-gelistirme",
+    serviceAnchor: "Çoklu model ve proxy mimarisi geliştirme hizmetlerimiz",
+    sections: [
+      {
+        title: "Tedarikçi Bağımlılığından (Vendor Lock-in) Kurtulma",
+        paragraphs: [
+          "Her sağlayıcının kendi kütüphanesini öğrenmek yerine `litellm.completion()` çağrısıyla `claude-3-7-sonnet`, `gemini/gemini-2.0-flash` veya `ollama/qwen` modellerini aynı arayüzle çağırabilirsiniz."
+        ]
+      }
+    ]
+  },
+  {
+    slug: "function-calling-ve-tool-use-mimarisi",
+    title: "Function Calling ve Tool Use: LLM'leri Harici API'ler ve Veritabanlarıyla Buluşturma",
+    description: "Büyük dil modellerine veritabanı sorgulama, hava durumu öğrenme veya e-posta gönderme araçları tanımlama ve döngüsel çalıştırma (agent loop) prensipleri.",
+    publishedAt: "2026-08-17",
+    modifiedAt: "2026-08-17",
+    category: "AI Mimarisi",
+    readingTime: "9 dk",
+    serviceHref: "/hizmetler/api-gelistirme",
+    serviceAnchor: "Function calling ve araç entegrasyonu çözümlerimiz",
+    sections: [
+      {
+        title: "Ajan Döngüsünün (Agent Loop) Temel Mantığı",
+        paragraphs: [
+          "LLM'ler fonksiyonu doğrudan çalıştırmaz; fonksiyonun adını ve JSON argümanlarını üretir. Geliştirici backend'de bu fonksiyonu çalıştırır ve sonucunu 'tool' rolüyle tekrar modele iletir."
+        ]
+      }
+    ]
+  },
+  {
+    slug: "rag-vs-long-context-karsilastirmasi",
+    title: "RAG mı Yoksa 2M Token Long-Context mi? Hangi Senaryoda Hangisi Seçilmeli?",
+    description: "Vektör veritabanı tabanlı RAG (Retrieval-Augmented Generation) mimarisi ile Gemini'nin 2M token'lık devasa bağlam pencerelerinin maliyet, doğruluk ve hız karşılaştırması.",
+    publishedAt: "2026-08-17",
+    modifiedAt: "2026-08-17",
+    category: "Karşılaştırma",
+    readingTime: "8 dk",
+    serviceHref: "/hizmetler/yapay-zeka-otomasyon",
+    serviceAnchor: "RAG ve bilgi tabanı sistemleri danışmanlığı",
+    sections: [
+      {
+        title: "Karşılaştırma Kriterleri",
+        paragraphs: [
+          "Milyonlarca dokümanlık devasa kütüphanelerde RAG hala en ucuz ve en hızlı yaklaşımdır. Ancak 5-10 PDF'lik bir analiz veya tek bir git reposu denetiminde Long-Context doğrudan tüm bağlamı kavrayarak 'Needle in a Haystack' başarısını maksimize eder."
+        ]
+      }
+    ]
+  },
+  {
+    slug: "ai-agent-memory-ve-session-yonetimi",
+    title: "AI Ajanlarında Bellek Mimarisi: Kısa Süreli, Uzun Süreli ve Epizodik Hafıza",
+    description: "Sohbetler arası kullanıcı tercihlerini hatırlayan, geçmiş başarıları ve hataları hafızasında tutan otonom AI bellek mimarisi kurulumu.",
+    publishedAt: "2026-08-17",
+    modifiedAt: "2026-08-17",
+    category: "AI Mimarisi",
+    readingTime: "9 dk",
+    serviceHref: "/hizmetler/yapay-zeka-otomasyon",
+    serviceAnchor: "Kişiselleştirilmiş AI asistan ve bellek çözümleri",
+    sections: [
+      {
+        title: "Bellek Katmanları",
+        paragraphs: [
+          "1. Çalışma Belleği (Working Memory): Mevcut context penceresi.",
+          "2. Epizodik Bellek (Episodic Memory): Geçmiş olayların özetleri.",
+          "3. Semantik Bellek (Semantic Memory): Vektör veritabanında saklanan genel bilgi havuzu."
+        ]
+      }
+    ]
+  },
+  {
+    slug: "llm-evals-ve-sentetik-test-surecleri",
+    title: "LLM Evals: Üretimdeki AI Çıktılarını Otomatik Değerlendirme ve Skorlama",
+    description: "Prompt değişikliklerinin kaliteyi bozup bozmadığını anlamak için Ragas, DeepEval ve sentetik veri setleriyle otomatik LLM test süreçleri kurma.",
+    publishedAt: "2026-08-17",
+    modifiedAt: "2026-08-17",
+    category: "AI Altyapısı",
+    readingTime: "10 dk",
+    serviceHref: "/hizmetler/yapay-zeka-otomasyon",
+    serviceAnchor: "AI kalite kontrol ve değerlendirme altyapısı çözümlerimiz",
+    sections: [
+      {
+        title: "Üretime AI Çıkarken Test Güvenliği",
+        paragraphs: [
+          "Geleneksel birim (unit) testleri deterministik fonksiyonlar için çalışırken, LLM çıktılarının halüsinasyon veya alaka oranını ölçmek için 'LLM-as-a-Judge' tabanlı Eval çerçeveleri kullanılmalıdır."
+        ]
+      }
+    ]
+  },
+
+  // ==========================================
+  // ORİJİNAL İÇERİKLER
+  // ==========================================
   {
     slug: "web-scraping-nedir",
     title: "Web Scraping Nedir? Nasıl Çalışır?",
