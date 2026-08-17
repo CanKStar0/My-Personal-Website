@@ -3,12 +3,13 @@
 import { useState, useEffect, useSyncExternalStore } from "react";
 import Link from "next/link";
 import { useTheme } from "next-themes";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
 import { Sun, Moon, Menu, X } from "lucide-react";
 import { motion } from "framer-motion";
 import { useLanguage } from "./language-context";
 import { translations } from "@/lib/translations";
 import { trackEvent } from "@/lib/analytics";
+import { getLocalizedPath } from "@/lib/i18n";
 
 // Inline brand SVGs (not available in this lucide-react version)
 function GithubIcon({ className }: { className?: string }) {
@@ -28,12 +29,12 @@ function LinkedInIcon({ className }: { className?: string }) {
 }
 
 function LanguageToggle() {
-  const { locale, setLocale } = useLanguage();
+  const pathname = usePathname();
+  const { locale } = useLanguage();
 
   return (
-    <div
+    <nav
       className="relative flex items-center h-9 rounded-full border border-border/20 bg-background/50 overflow-hidden select-none"
-      role="radiogroup"
       aria-label="Language selector"
     >
       {/* Sliding red pill indicator */}
@@ -46,10 +47,11 @@ function LanguageToggle() {
         }}
       />
 
-      <button
-        role="radio"
-        aria-checked={locale === "tr"}
-        onClick={() => { trackEvent("language_switch", { from: locale, to: "tr" }); setLocale("tr"); }}
+      <Link
+        href={getLocalizedPath(pathname, "tr")}
+        aria-current={locale === "tr" ? "page" : undefined}
+        aria-label="Türkçe"
+        onClick={() => trackEvent("language_switch", { from: locale, to: "tr" })}
         className={`relative z-10 flex items-center justify-center w-[38px] h-full text-xs font-bold tracking-wide cursor-pointer transition-colors duration-200 ${
           locale === "tr"
             ? "text-white"
@@ -57,11 +59,12 @@ function LanguageToggle() {
         }`}
       >
         TR
-      </button>
-      <button
-        role="radio"
-        aria-checked={locale === "en"}
-        onClick={() => { trackEvent("language_switch", { from: locale, to: "en" }); setLocale("en"); }}
+      </Link>
+      <Link
+        href={getLocalizedPath(pathname, "en")}
+        aria-current={locale === "en" ? "page" : undefined}
+        aria-label="English"
+        onClick={() => trackEvent("language_switch", { from: locale, to: "en" })}
         className={`relative z-10 flex items-center justify-center w-[38px] h-full text-xs font-bold tracking-wide cursor-pointer transition-colors duration-200 ${
           locale === "en"
             ? "text-white"
@@ -69,15 +72,14 @@ function LanguageToggle() {
         }`}
       >
         EN
-      </button>
-    </div>
+      </Link>
+    </nav>
   );
 }
 
 export function Navbar() {
   const { resolvedTheme, setTheme } = useTheme();
   const pathname = usePathname();
-  const router = useRouter();
   const { t, locale } = useLanguage();
   const homeHref = locale === "en" ? "/en" : "/";
   const mounted = useSyncExternalStore(() => () => {}, () => true, () => false);
@@ -141,12 +143,6 @@ export function Navbar() {
         {/* Logo / Brand Name */}
         <Link
           href={homeHref}
-          onClick={(e) => {
-            if (pathname === homeHref) {
-              e.preventDefault();
-              window.scrollTo({ top: 0, behavior: "smooth" });
-            }
-          }}
           className="group flex items-center space-x-2 font-jakarta text-lg font-bold tracking-tight text-foreground transition-all duration-200"
         >
           <span className="bg-linear-to-r from-foreground via-foreground/90 to-foreground/75 bg-clip-text text-transparent group-hover:opacity-90">
@@ -163,14 +159,6 @@ export function Navbar() {
             <Link
               key={link.href}
               href={link.href}
-              onClick={(e) => {
-                e.preventDefault();
-                if (pathname === link.href) {
-                  window.scrollTo({ top: 0, behavior: "smooth" });
-                } else {
-                  router.push(link.href);
-                }
-              }}
               className="relative text-sm font-medium text-foreground/80 transition-colors duration-200 hover:text-foreground group py-1"
             >
               {link.name}
@@ -248,14 +236,8 @@ export function Navbar() {
               <Link
                 key={link.href}
                 href={link.href}
-                onClick={(e) => {
-                  e.preventDefault();
+                onClick={() => {
                   setMobileMenuOpen(false);
-                  if (pathname === link.href) {
-                    window.scrollTo({ top: 0, behavior: "smooth" });
-                  } else {
-                    router.push(link.href);
-                  }
                 }}
                 className="text-base font-medium text-foreground/80 hover:text-brand-red transition-colors duration-200 block w-full"
               >

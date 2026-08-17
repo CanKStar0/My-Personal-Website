@@ -1,13 +1,12 @@
 "use client";
 
 import { createContext, useContext, useEffect, useCallback } from "react";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
 import type { Locale } from "@/lib/translations";
-import { getLocalizedPath, localeFromPathname } from "@/lib/i18n";
+import { localeFromPathname } from "@/lib/i18n";
 
 interface LanguageContextValue {
   locale: Locale;
-  setLocale: (locale: Locale) => void;
   t: (value: { tr: string; en: string }) => string;
 }
 
@@ -15,13 +14,7 @@ const LanguageContext = createContext<LanguageContextValue | undefined>(undefine
 
 export function LanguageProvider({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
-  const router = useRouter();
   const locale = localeFromPathname(pathname);
-
-  // Update localStorage and html lang attribute on locale change
-  const setLocale = useCallback((newLocale: Locale) => {
-    router.push(getLocalizedPath(pathname, newLocale));
-  }, [pathname, router]);
 
   // Sync html lang when the active language changes
   useEffect(() => {
@@ -35,7 +28,7 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
   );
 
   return (
-    <LanguageContext.Provider value={{ locale, setLocale, t }}>
+    <LanguageContext.Provider value={{ locale, t }}>
       {children}
     </LanguageContext.Provider>
   );

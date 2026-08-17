@@ -1,12 +1,37 @@
 "use client";
 
 import dynamic from "next/dynamic";
+import { useEffect, useState } from "react";
 
 const SplashCursor = dynamic(() => import("@/components/SplashCursor"), {
   ssr: false,
 });
 
 export function SiteEffects() {
+  const [enabled, setEnabled] = useState(false);
+
+  useEffect(() => {
+    const enable = () => setEnabled(true);
+    const idleWindow = window as Window & {
+      requestIdleCallback?: (callback: () => void, options?: { timeout: number }) => number;
+      cancelIdleCallback?: (id: number) => void;
+    };
+    const idleId = idleWindow.requestIdleCallback?.(enable, { timeout: 1500 });
+    const timeoutId = idleId === undefined ? window.setTimeout(enable, 1500) : undefined;
+
+    window.addEventListener("pointermove", enable, { once: true, passive: true });
+    window.addEventListener("touchstart", enable, { once: true, passive: true });
+
+    return () => {
+      if (idleId !== undefined) idleWindow.cancelIdleCallback?.(idleId);
+      if (timeoutId !== undefined) window.clearTimeout(timeoutId);
+      window.removeEventListener("pointermove", enable);
+      window.removeEventListener("touchstart", enable);
+    };
+  }, []);
+
+  if (!enabled) return null;
+
   return (
     <SplashCursor
       DENSITY_DISSIPATION={1.5}
