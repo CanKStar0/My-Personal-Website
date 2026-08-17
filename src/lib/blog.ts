@@ -1254,6 +1254,257 @@ asyncio.run(run())`
     ]
   },
 
+  // ==============================================================
+  // ADIM 5: ÇOKLU AJAN (MULTI-AGENT) SİSTEMLERİ & İŞ AKIŞLARI
+  // ==============================================================
+  {
+    slug: "langgraph-ile-dongusel-stateful-ajan-mimarisi",
+    title: "LangGraph ile Döngüsel ve Stateful Ajan Mimarisi: StateGraph ve MemorySaver",
+    description: "LangChain ekibinin geliştirdiği LangGraph ile durum yönetimi (state management), döngüsel grafikler (cycles) ve kontrol edilebilir otonom AI ajanları inşa etme rehberi.",
+    publishedAt: "2026-08-17",
+    modifiedAt: "2026-08-17",
+    category: "AI Otomasyon",
+    readingTime: "10 dk",
+    serviceHref: "/hizmetler/yapay-zeka-otomasyon",
+    serviceAnchor: "LangGraph ve kurumsal AI ajan mimarisi hizmetlerimiz",
+    sections: [
+      {
+        title: "Neden Doğrusal (DAG) Zincirler Yetersiz Kalır?",
+        paragraphs: [
+          "Geleneksel LLM zincirleri A -> B -> C adımlarını takip eder. Ancak bir ajan hata yaptığında veya bir testi geçemediğinde bir önceki adıma dönüp hatayı düzeltmesi (döngü/cycle) gerekir.",
+          "LangGraph, durumu (State) koruyan ve şartlı kenarlar (conditional edges) ile döngüsel karar ağaçları kuran endüstri standardı bir çerçevedir."
+        ],
+        codeSnippet: {
+          language: "python",
+          filename: "agent_graph.py",
+          code: `from typing import TypedDict, Annotated, Sequence
+from langchain_core.messages import BaseMessage
+from langgraph.graph import StateGraph, END
+from langgraph.checkpoint.memory import MemorySaver
+
+class AgentState(TypedDict):
+    messages: Sequence[BaseMessage]
+    iteration_count: int
+
+workflow = StateGraph(AgentState)
+
+# Düğümleri (Nodes) tanımla
+workflow.add_node("coder", lambda state: {"messages": ["Kod üretildi"], "iteration_count": state["iteration_count"] + 1})
+workflow.add_node("tester", lambda state: {"messages": ["Test çalıştırıldı"]})
+
+# Şartlı kenar (Conditional Edge): Test geçtiyse bitir, geçmediyse koda geri dön
+def should_continue(state: AgentState):
+    if state["iteration_count"] > 3:
+        return END
+    return "coder"
+
+workflow.add_edge("coder", "tester")
+workflow.add_conditional_edges("tester", should_continue)
+workflow.set_entry_point("coder")
+
+app = workflow.compile(checkpointer=MemorySaver())`
+        }
+      }
+    ],
+    faqs: [
+      {
+        question: "MemorySaver nedir?",
+        answer: "Her adımda durumu hafızada (veya PostgreSQL/Redis'te) kontrol noktası (checkpoint) olarak saklayarak kesinti anında ajanın kaldığı yerden devam etmesini sağlar."
+      }
+    ]
+  },
+  {
+    slug: "crewai-ile-hiyerarsik-gorev-yonetimi",
+    title: "CrewAI ile Hiyerarşik Ajan Mimarisi: Manager LLM ve Görev Delegasyonu",
+    description: "CrewAI'da rol tabanlı ajanlar, yönetici (Manager) LLM koordinasyonu ve görevlerin uzmanlaşmış ajanlara otomatik dağıtılması mimarisi.",
+    publishedAt: "2026-08-17",
+    modifiedAt: "2026-08-17",
+    category: "AI Otomasyon",
+    readingTime: "9 dk",
+    serviceHref: "/hizmetler/yapay-zeka-otomasyon",
+    serviceAnchor: "CrewAI çoklu ajan iş akışları kurulumu",
+    sections: [
+      {
+        title: "Hiyerarşik Süreç (Hierarchical Process) Nasıl Çalışır?",
+        paragraphs: [
+          "Sıralı (sequential) süreçte ajanlar sabit bir sırayla çalışırken, Hiyerarşik süreçte bir 'Manager Ajan' projenin genel hedefine göre hangi görevi kime atayacağını ve çıktıyı onaylayıp onaylamayacağını dinamik olarak yönetir."
+        ],
+        codeSnippet: {
+          language: "python",
+          filename: "crew_manager.py",
+          code: `from crewai import Agent, Crew, Process, Task
+
+researcher = Agent(role="Kıdemli Piyasa Araştırmacısı", goal="Borsa verilerini derinlemesine analiz et", backstory="Finansal veri uzmanı")
+writer = Agent(role="Finans Yazarı", goal="Anlaşılır özet bültenler oluştur", backstory="Ekonomi editörü")
+
+task1 = Task(description="BIST 100 teknoloji hisselerini analiz et", expected_output="Rapor taslağı", agent=researcher)
+task2 = Task(description="Yatırımcılar için özet bülten yaz", expected_output="Son bülten metni", agent=writer)
+
+crew = Crew(
+    agents=[researcher, writer],
+    tasks=[task1, task2],
+    process=Process.hierarchical, # Manager LLM otomatik atanır
+    verbose=True
+)`
+        }
+      }
+    ]
+  },
+  {
+    slug: "autogen-ve-kod-yuruten-ajan-gruplari",
+    title: "Microsoft AutoGen ile Kod Yürüten ve Hata Ayıklayan Ajan Grupları (Docker Sandbox)",
+    description: "Microsoft AutoGen kullanarak Python kodu yazan, güvenli Docker izole ortamında yürüten ve derleyici hatalarını kendi kendine düzelten ajanlar.",
+    publishedAt: "2026-08-17",
+    modifiedAt: "2026-08-17",
+    category: "Agentic Coding",
+    readingTime: "9 dk",
+    serviceHref: "/hizmetler/ozel-yazilim-gelistirme",
+    serviceAnchor: "İzole kod yürütme ve test sandbox sistemleri",
+    sections: [
+      {
+        title: "Docker Sandbox Güvenliği",
+        paragraphs: [
+          "Bir AI modelinin doğrudan ana sunucuda Python kodu çalıştırması güvenlik açığıdır. AutoGen, kod bloklarını geçici bir Docker konteynerinde yürüterek tam sistem izolasyonu sağlar."
+        ]
+      }
+    ]
+  },
+  {
+    slug: "agent-swarms-ve-peer-to-peer-isbirligi",
+    title: "Agent Swarms: Merkezi Olmayan (P2P) ve Handoff Tabanlı Hafif Ajan Mimarisi",
+    description: "Ağır koordinatörler olmadan, kullanıcı niyetine göre sohbeti bir uzmandan diğerine devreden (handoff) yüksek hızlı ajan sürüleri.",
+    publishedAt: "2026-08-17",
+    modifiedAt: "2026-08-17",
+    category: "AI Mimarisi",
+    readingTime: "8 dk",
+    serviceHref: "/hizmetler/yapay-zeka-otomasyon",
+    serviceAnchor: "Hafif ve ölçeklenebilir AI swarm sistemleri",
+    sections: [
+      {
+        title: "Handoff Modeli Nedir?",
+        paragraphs: [
+          "Müşteri 'Ödeme yapmak istiyorum' dediğinde Karşılama Ajanı hemen 'Ödeme Ajanı' fonksiyonunu çağırarak bağlamı devreder. Her ajan sadece kendi dar alanında uzmanlaşır."
+        ]
+      }
+    ]
+  },
+  {
+    slug: "human-in-the-loop-hitl-ajan-onay-sistemleri",
+    title: "Human-in-the-Loop (HITL): Kritik AI Ajan Kararlarında İnsan Onayı Mimarisi",
+    description: "Veritabanı silme, para transferi veya e-posta gönderimi gibi geri dönüşü olmayan işlemlerde ajanın duraklayıp insan onayını beklemesi.",
+    publishedAt: "2026-08-17",
+    modifiedAt: "2026-08-17",
+    category: "AI Mimarisi",
+    readingTime: "8 dk",
+    serviceHref: "/hizmetler/yapay-zeka-otomasyon",
+    serviceAnchor: "Güvenli ve denetlenebilir AI süreç danışmanlığı",
+    sections: [
+      {
+        title: "Kesinti ve Duraklama (Interrupt) Mekanizması",
+        paragraphs: [
+          "LangGraph'ta `interrupt_before=['send_email_node']` tanımlayarak durum veritabanına yazılır. Yönetici Slack veya panelden onay verdiğinde grafik kaldığı yerden çalışmaya devam eder."
+        ]
+      }
+    ]
+  },
+  {
+    slug: "coklu-ajan-sistemlerinde-maliyet-ve-sonsuz-dongu-korumasi",
+    title: "Çoklu Ajan Sistemlerinde Maliyet ve Sonsuz Döngü Koruması: Max Iterations ve Circuit Breakers",
+    description: "İki ajanın birbirine sürekli soru sorduğu sonsuz döngü tuzaklarını engellemek ve API faturalarını korumak için sigorta (circuit breaker) desenleri.",
+    publishedAt: "2026-08-17",
+    modifiedAt: "2026-08-17",
+    category: "AI Altyapısı",
+    readingTime: "7 dk",
+    serviceHref: "/hizmetler/yapay-zeka-otomasyon",
+    serviceAnchor: "AI maliyet kontrolü ve güvenlik guardrail çözümleri",
+    sections: [
+      {
+        title: "Sonsuz Döngü Riski",
+        paragraphs: [
+          "Ajan A 'Kodu incele' der, Ajan B 'Şurayı düzelt' der ve bu döngü binlerce dolar API faturası çıkana kadar sürebilir. Kesin limitler (`max_iterations=5`) ve bütçe sigortaları zorunludur."
+        ]
+      }
+    ]
+  },
+  {
+    slug: "rag-destekli-arastirmaci-ve-yazar-ajan-pipeline",
+    title: "RAG Destekli Araştırmacı ve Rapor Yazarı Ajan Pipeline'ı Kurulumu",
+    description: "Vektör veritabanından veri çeken Araştırmacı Ajan, bulguları doğrulayan Hakem Ajan ve nihai raporu derleyen Yazar Ajan akışı.",
+    publishedAt: "2026-08-17",
+    modifiedAt: "2026-08-17",
+    category: "AI Otomasyon",
+    readingTime: "9 dk",
+    serviceHref: "/hizmetler/yapay-zeka-otomasyon",
+    serviceAnchor: "Otomatik araştırma ve raporlama sistemleri",
+    sections: [
+      {
+        title: "Çapraz Doğrulama (Cross-Validation) Modeli",
+        paragraphs: [
+          "Yazar ajan doğrudan metni üretmez; Hakem Ajan (Critic) araştırmacının kaynaklarında bu bilginin gerçekten olup olmadığını kontrol ederek halüsinasyonu sıfıra indirir."
+        ]
+      }
+    ]
+  },
+  {
+    slug: "multi-agent-debugging-ve-tracing-langsmith",
+    title: "LangSmith ve Langfuse ile Çoklu Ajan Sistemlerinde Hata Ayıklama ve Gözlemlenebilirlik",
+    description: "10 adımlık karmaşık bir ajan zincirinde hangi ajanın ne kadar token harcadığını, hangi tool çağrısının başarısız olduğunu görselleştiren tracing araçları.",
+    publishedAt: "2026-08-17",
+    modifiedAt: "2026-08-17",
+    category: "AI Altyapısı",
+    readingTime: "8 dk",
+    serviceHref: "/hizmetler/yapay-zeka-otomasyon",
+    serviceAnchor: "AI sistemleri gözlemlenebilirlik ve loglama altyapısı",
+    sections: [
+      {
+        title: "Şelale (Waterfall) Ağacı ile Hata Tespiti",
+        paragraphs: [
+          "LangSmith, her ajan kararını ve tool çağrısını bir ağaç görünümünde göstererek darboğazları ve prompt zayıflıklarını tek tıkla analiz etmenizi sağlar."
+        ]
+      }
+    ]
+  },
+  {
+    slug: "deterministic-workflow-vs-autonomous-agent",
+    title: "Deterministik İş Akışları vs Otonom Ajanlar: Hangisi Ne Zaman Tercih Edilmeli?",
+    description: "Her iş süreci için otonom ajan kullanma çılgınlığına karşı; kurallı kod, DAG akışları ve otonom ajanların doğru mimari karşılaştırması.",
+    publishedAt: "2026-08-17",
+    modifiedAt: "2026-08-17",
+    category: "Karşılaştırma",
+    readingTime: "8 dk",
+    serviceHref: "/hizmetler/ozel-yazilim-gelistirme",
+    serviceAnchor: "Doğru yazılım ve otomasyon mimarisi danışmanlığı",
+    sections: [
+      {
+        title: "Altın Kural: Determinizm Önceliktir",
+        paragraphs: [
+          "Girdi ve çıktı kuralları %100 belliyse Python kodu yazın. Sadece serbest metin anlama veya değişken araç seçimi gereken belirsiz noktalarda ajanlara yetki verin."
+        ]
+      }
+    ]
+  },
+  {
+    slug: "e-ticaret-ve-musteri-destegi-icin-multi-agent-sistemi",
+    title: "E-Ticaret ve Müşteri Desteğinde Çoklu Ajan: Sipariş, İade ve Canlı Stok Ajanları",
+    description: "Müşterinin kargo takibi, fatura talebi ve ürün iade süreçlerini ERP ve CRM sistemlerine bağlanarak otomatik tamamlayan çoklu ajan kurgusu.",
+    publishedAt: "2026-08-17",
+    modifiedAt: "2026-08-17",
+    category: "AI Otomasyon",
+    readingTime: "10 dk",
+    serviceHref: "/hizmetler/yapay-zeka-otomasyon",
+    serviceAnchor: "E-ticaret ve müşteri deneyimi otomasyonu çözümlerimiz",
+    sections: [
+      {
+        title: "Örnek E-Ticaret Ajan Ekibi",
+        paragraphs: [
+          "1. Yönlendirici (Router): Müşteri niyetini tespit eder.",
+          "2. Sipariş Ajanı: Kargo ve kurye API'sine bağlanır.",
+          "3. İade Ajanı: İade politikasını kontrol edip kargo kodu üretir."
+        ]
+      }
+    ]
+  },
+
   // ==========================================
   // ORİJİNAL İÇERİKLER
   // ==========================================
