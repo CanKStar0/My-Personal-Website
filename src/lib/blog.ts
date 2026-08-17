@@ -1505,6 +1505,244 @@ crew = Crew(
     ]
   },
 
+  // ==============================================================
+  // ADIM 6: RAG, BELLEK & VEKTÖR VERİTABANLARI
+  // ==============================================================
+  {
+    slug: "supabase-pgvector-ile-vektor-arama-rehberi",
+    title: "Supabase pgvector Rehberi: PostgreSQL ile Vektör Arama ve Benzerlik Sorguları",
+    description: "Ayrı bir vektör veritabanı satın almadan PostgreSQL ve pgvector eklentisi ile HNSW indeksleri ve kosinüs benzerliği (cosine distance) sorgulama rehberi.",
+    publishedAt: "2026-08-17",
+    modifiedAt: "2026-08-17",
+    category: "Veri & Altyapı",
+    readingTime: "9 dk",
+    serviceHref: "/hizmetler/ozel-yazilim-gelistirme",
+    serviceAnchor: "Supabase ve PostgreSQL veritabanı mimarisi çözümlerimiz",
+    sections: [
+      {
+        title: "Neden Tek Bir PostgreSQL Veritabanı Yeterlidir?",
+        paragraphs: [
+          "Pinecone veya Qdrant gibi harici vektör servisleri kullandığınızda kullanıcı verileri ile vektörler iki ayrı veritabanına bölünür (senkronizasyon ve veri tutarlılığı zorlaşır).",
+          "Supabase pgvector sayesinde ilişkisel tablolarınız (kullanıcılar, siparişler, izinler) ile embedding vektörleri aynı ACID uyumlu PostgreSQL içinde yaşar."
+        ],
+        codeSnippet: {
+          language: "sql",
+          filename: "schema.sql",
+          code: `-- pgvector eklentisini aktif et
+create extension if not exists vector;
+
+-- Döküman tablosu ve 1536 boyutlu embedding kolonu
+create table documents (
+  id bigserial primary key,
+  content text,
+  metadata jsonb,
+  embedding vector(1536)
+);
+
+-- HNSW indeksi oluştur (Milisaniyelik arama hızı için)
+create index on documents using hnsw (embedding vector_cosine_ops);
+
+-- Benzerlik arama SQL fonksiyonu
+create or replace function match_documents (
+  query_embedding vector(1536),
+  match_threshold float,
+  match_count int
+)
+returns table (id bigint, content text, similarity float)
+language sql stable
+as $$
+  select id, content, 1 - (documents.embedding <=> query_embedding) as similarity
+  from documents
+  where 1 - (documents.embedding <=> query_embedding) > match_threshold
+  order by documents.embedding <=> query_embedding
+  limit match_count;
+$$;`
+        }
+      }
+    ],
+    faqs: [
+      {
+        question: "HNSW indeksi IVFFlat indeksinden neden daha iyidir?",
+        answer: "HNSW (Hierarchical Navigable Small World), veri kümesi büyüdükçe çok daha yüksek recall (arama doğruluğu) ve milisaniyelik sorgu hızları sunar; yeniden eğitim gerektirmez."
+      }
+    ]
+  },
+  {
+    slug: "hibrit-arama-hybrid-search-bm25-ve-vektor",
+    title: "Hibrit Arama (Hybrid Search): BM25 Anahtar Kelime ve Semantik Vektör Aramasını Birleştirme",
+    description: "Vektör aramasının kısaltmalar ve tam eşleşmelerdeki (Örn: Hata kodları, ürün SKU) zayıflıklarını BM25 anahtar kelime araması ve RRF ile çözme mimarisi.",
+    publishedAt: "2026-08-17",
+    modifiedAt: "2026-08-17",
+    category: "Veri & Altyapı",
+    readingTime: "10 dk",
+    serviceHref: "/hizmetler/yapay-zeka-otomasyon",
+    serviceAnchor: "Hibrit arama ve kurumsal RAG sistemleri kurulumu",
+    sections: [
+      {
+        title: "Vektör Aramasının Kör Noktası",
+        paragraphs: [
+          "Vektör modelleri genel anlamı (semantik) çok iyi yakalar. Ancak kullanıcı 'ERR_404_DATABASE' veya 'iPhone 16 Pro Max 256GB' aradığında tam eşleşmeyi kaçırabilir.",
+          "Hibrit arama; hem klasik tam metin (Full-Text / BM25) aramasını hem de vektör aramasını paralel çalıştırıp Reciprocal Rank Fusion (RRF) algoritması ile skorları birleştirir."
+        ]
+      }
+    ]
+  },
+  {
+    slug: "cohere-ve-cross-encoder-ile-re-ranking",
+    title: "Cohere Rerank ve Cross-Encoder ile RAG Doğruluğunu %40 Artırma",
+    description: "Vektör veritabanından çekilen ilk 20 dokümanı Cross-Encoder modelleriyle yeniden sıralayarak (Re-ranking) LLM'e sadece en alakalı 3 parçayı iletme stratejisi.",
+    publishedAt: "2026-08-17",
+    modifiedAt: "2026-08-17",
+    category: "AI Mimarisi",
+    readingTime: "8 dk",
+    serviceHref: "/hizmetler/yapay-zeka-otomasyon",
+    serviceAnchor: "RAG doğruluk optimizasyonu ve re-ranking danışmanlığı",
+    sections: [
+      {
+        title: "İki Kademeli Arama (Two-Stage Retrieval)",
+        paragraphs: [
+          "1. Kademe: Vektör araması (Bi-Encoder) hızlıca 20-50 aday doküman çeker.",
+          "2. Kademe: Reranker (Cross-Encoder), soru ile dokümanı birlikte değerlendirerek alaka düzeyine göre sıralar ve en üstteki 3 dokümanı LLM'e iletir."
+        ]
+      }
+    ]
+  },
+  {
+    slug: "rag-chunking-stratejileri-ve-dokuman-parcalama",
+    title: "RAG Chunking Stratejileri: Semantik, Recursive ve Belge Tabanlı Parçalama",
+    description: "Sabit karakterli bölmeler yerine başlık hiyerarşisi, Markdown yapısı ve anlamsal cümle kayması (semantic chunking) ile parçalama rehberi.",
+    publishedAt: "2026-08-17",
+    modifiedAt: "2026-08-17",
+    category: "Veri & Altyapı",
+    readingTime: "9 dk",
+    serviceHref: "/hizmetler/yapay-zeka-otomasyon",
+    serviceAnchor: "Veri ön işleme ve chunking mimarisi danışmanlığı",
+    sections: [
+      {
+        title: "Chunk Boyutu ve Örtüşme (Chunk Overlap)",
+        paragraphs: [
+          "Çok küçük parçalar (100 token) bağlamı kaybeder; çok büyük parçalar (2000 token) gereksiz gürültü taşır. İdeal başlangıç noktası 512 token boyut ve %10-15 örtüşmedir (overlap)."
+        ]
+      }
+    ]
+  },
+  {
+    slug: "parent-document-retriever-ve-kucuk-parca-buyuk-baglam",
+    title: "Parent Document Retriever: Küçük Parçalarla Arayıp Büyük Bağlam Döndürme",
+    description: "Vektör benzerliğini yakalamak için 200 karakterlik küçük parçalar kullanırken, LLM'e cevap üretmesi için bu parçanın ait olduğu büyük bölümü iletme tekniği.",
+    publishedAt: "2026-08-17",
+    modifiedAt: "2026-08-17",
+    category: "AI Mimarisi",
+    readingTime: "8 dk",
+    serviceHref: "/hizmetler/yapay-zeka-otomasyon",
+    serviceAnchor: "Gelişmiş retriever mimarileri kurulumu",
+    sections: [
+      {
+        title: "Small-to-Big Retrieval Prensibi",
+        paragraphs: [
+          "Küçük parçalar spesifik sorgularda yüksek kosinüs benzerliği verir. Ancak LLM'in cevabı tam anlaması için cümlenin etrafındaki tüm paragrafa (Parent Document) ihtiyacı vardır."
+        ]
+      }
+    ]
+  },
+  {
+    slug: "graphrag-vs-vektor-rag-bilgi-graflari",
+    title: "GraphRAG vs Vektör RAG: Bilgi Grafları (Knowledge Graphs) ile Derin İlişkisel Arama",
+    description: "Microsoft'un popülerleştirdiği GraphRAG mimarisinin dokümanlar arasındaki gizli varlık (entity) ve ilişki bağlarını nasıl ortaya çıkardığını öğrenin.",
+    publishedAt: "2026-08-17",
+    modifiedAt: "2026-08-17",
+    category: "Karşılaştırma",
+    readingTime: "10 dk",
+    serviceHref: "/hizmetler/yapay-zeka-otomasyon",
+    serviceAnchor: "GraphRAG ve bilgi grafı sistemleri geliştirme",
+    sections: [
+      {
+        title: "Vektör RAG Nerede Yetersiz Kalır?",
+        paragraphs: [
+          "Vektör RAG 'Tüm raporda adı geçen şirketlerin ortak tedarikçisi kimdir?' gibi çok sekmeli (multi-hop) ilişkisel sorulara cevap veremez. GraphRAG, varlık düğümleri ve ilişkilerle bu bağlantıyı kurar."
+        ]
+      }
+    ]
+  },
+  {
+    slug: "self-query-ve-metadata-filtreleme",
+    title: "Self-Querying Retriever: LLM ile Doğal Dilden SQL/Metadata Filtreleri Üretme",
+    description: "Kullanıcı '2024 sonrası çıkan 1000 TL altı kulaklıkları listele' dediğinde, LLM'in bu sorguyu hem anlamsal aramaya hem de metadata filtrelerine dönüştürmesi.",
+    publishedAt: "2026-08-17",
+    modifiedAt: "2026-08-17",
+    category: "Veri & Altyapı",
+    readingTime: "8 dk",
+    serviceHref: "/hizmetler/api-gelistirme",
+    serviceAnchor: "Akıllı arama ve dinamik filtreleme sistemleri",
+    sections: [
+      {
+        title: "Dinamik Filtre Çıkarımı",
+        paragraphs: [
+          "Self-query mantığında model tek bir prompt ile: 1. Arama Metni ('kulaklık'), 2. Filtre ('year >= 2024 AND price < 1000') üretir ve veritabanına hedefe yönelik sorgu atar."
+        ]
+      }
+    ]
+  },
+  {
+    slug: "embedding-model-karsilastirmasi-2026",
+    title: "En İyi Embedding Modelleri (2026): OpenAI text-embedding-3 vs Cohere vs BGE vs Voyage AI",
+    description: "MTEB (Massive Text Embedding Benchmark) liderleri, boyut kısaltma (Matryoshka Representation), Türkçe anlama performansı ve token maliyetleri.",
+    publishedAt: "2026-08-17",
+    modifiedAt: "2026-08-17",
+    category: "Karşılaştırma",
+    readingTime: "9 dk",
+    serviceHref: "/hizmetler/yapay-zeka-otomasyon",
+    serviceAnchor: "Vektör embedding modeli seçimi ve entegrasyonu",
+    sections: [
+      {
+        title: "Matryoshka Boyut Kısaltma Avantajı",
+        paragraphs: [
+          "OpenAI `text-embedding-3-large`, 3072 boyutlu vektörü doğruluk kaybı neredeyse olmadan 1024 boyuta indirmenize olanak tanıyarak veritabanı depolama maliyetinizi %66 düşürür."
+        ]
+      }
+    ]
+  },
+  {
+    slug: "rag-triad-ve-halusinasyon-olcum-metrikleri",
+    title: "RAG Triad Metrikleri: Context Relevance, Groundedness ve Answer Relevance",
+    description: "RAG sisteminizdeki halüsinasyonları matematiksel olarak ölçmek ve üretim ortamındaki kaliteyi denetlemek için RAG Triad prensipleri.",
+    publishedAt: "2026-08-17",
+    modifiedAt: "2026-08-17",
+    category: "AI Altyapısı",
+    readingTime: "8 dk",
+    serviceHref: "/hizmetler/yapay-zeka-otomasyon",
+    serviceAnchor: "RAG kalite denetimi ve metrik izleme sistemleri",
+    sections: [
+      {
+        title: "3 Temel Değerlendirme Ekseni",
+        paragraphs: [
+          "1. Bağlam Uygunluğu (Context Relevance): Çekilen dokümanlar soruyla alakalı mı?",
+          "2. Temellendirilme (Groundedness): Cevap sadece çekilen dokümanlara mı dayanıyor?",
+          "3. Cevap Uygunluğu (Answer Relevance): Üretilen metin kullanıcının sorusuna doğrudan yanıt veriyor mu?"
+        ]
+      }
+    ]
+  },
+  {
+    slug: "yerel-vektor-veritabani-chromadb-ve-qdrant",
+    title: "Yerel ve Hızlı Vektör Veritabanları: ChromaDB vs Qdrant vs Milvus",
+    description: "Prototip geliştirirken ChromaDB, yüksek throughput ve Rust performansı gerektiren üretim ortamlarında Qdrant dağıtımı yapma rehberi.",
+    publishedAt: "2026-08-17",
+    modifiedAt: "2026-08-17",
+    category: "Veri & Altyapı",
+    readingTime: "9 dk",
+    serviceHref: "/hizmetler/ozel-yazilim-gelistirme",
+    serviceAnchor: "Vektör veritabanı kurulumu ve altyapı yönetimi",
+    sections: [
+      {
+        title: "Qdrant'ın Rust Performansı",
+        paragraphs: [
+          "Qdrant; bellek dostu mimarisi, dahili payload filtreleme yeteneği ve Rust ile yazılmış olması sayesinde saniyede on binlerce vektör aramasını düşük gecikmeyle yanıtlar."
+        ]
+      }
+    ]
+  },
+
   // ==========================================
   // ORİJİNAL İÇERİKLER
   // ==========================================
