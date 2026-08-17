@@ -1743,6 +1743,242 @@ $$;`
     ]
   },
 
+  // ==============================================================
+  // ADIM 7: MODERN FULL-STACK & GENERATIVE UI (NEXT.JS 15 & AI SDK)
+  // ==============================================================
+  {
+    slug: "nextjs-15-app-router-ve-turbopack-performans",
+    title: "Next.js 15 App Router ve Turbopack: 2026'da Üretim Seviyesinde Performans Optimizasyonu",
+    description: "Next.js 15 ve React 19 ile gelen asenkron params/cookies mimarisi, Turbopack ile anında derleme ve sıfır JavaScript yükü sunan RSC optimizasyonları.",
+    publishedAt: "2026-08-17",
+    modifiedAt: "2026-08-17",
+    category: "Full-Stack Web",
+    readingTime: "9 dk",
+    serviceHref: "/hizmetler/modern-web-gelistirme",
+    serviceAnchor: "Next.js 15 ve modern frontend geliştirme hizmetlerimiz",
+    sections: [
+      {
+        title: "Next.js 15'te Neler Değişti?",
+        paragraphs: [
+          "Next.js 15 ile birlikte `cookies()`, `headers()` ve sayfa parametreleri (`params`, `searchParams`) artık tamamen asenkron (`Promise`) hale gelmiştir.",
+          "Bu değişiklik, sunucunun istekleri daha dinamik ve streaming dostu işlemesini sağlayarak TTFB (Time to First Byte) sürelerini %30'a kadar iyileştirir."
+        ],
+        codeSnippet: {
+          language: "typescript",
+          filename: "page.tsx",
+          code: `// Next.js 15 Asenkron Props Standardı
+type Props = { params: Promise<{ slug: string }> };
+
+export default async function ProjectDetailPage({ params }: Props) {
+  const { slug } = await params;
+  const project = await fetchProjectBySlug(slug);
+
+  return (
+    <main className="max-w-4xl mx-auto p-6">
+      <h1 className="text-3xl font-bold">{project.title}</h1>
+      <p className="mt-4 text-zinc-400">{project.description}</p>
+    </main>
+  );
+}`
+        }
+      }
+    ],
+    faqs: [
+      {
+        question: "Turbopack varsayılan olarak mı geliyor?",
+        answer: "Evet, Next.js 15 ile birlikte Turbopack hem geliştirme (next dev) hem de üretim derlemelerinde (next build) tam kararlı ve varsayılan olarak desteklenmektedir."
+      }
+    ]
+  },
+  {
+    slug: "vercel-ai-sdk-core-ve-react-streaming",
+    title: "Vercel AI SDK Core: useChat, streamText ve React UI Streaming Entegrasyonu",
+    description: "Vercel AI SDK 4.0 kullanarak Next.js üzerinde OpenAI, Anthropic ve Gemini modellerinden kesintisiz token akışı ve sohbet arayüzü kurma.",
+    publishedAt: "2026-08-17",
+    modifiedAt: "2026-08-17",
+    category: "Full-Stack Web",
+    readingTime: "8 dk",
+    serviceHref: "/hizmetler/modern-web-gelistirme",
+    serviceAnchor: "AI arayüzleri ve streaming web uygulamaları çözümlerimiz",
+    sections: [
+      {
+        title: "streamText ve Route Handler Entegrasyonu",
+        paragraphs: [
+          "`ai` paketi sayesinde tek bir satırla modeller arası geçiş yapabilir ve `toDataStreamResponse()` ile anında React istemcisine veri akıtabilirsiniz."
+        ],
+        codeSnippet: {
+          language: "typescript",
+          filename: "api/chat/route.ts",
+          code: `import { streamText } from "ai";
+import { google } from "@ai-sdk/google";
+
+export async function POST(req: Request) {
+  const { messages } = await req.json();
+
+  const result = streamText({
+    model: google("gemini-2.0-flash"),
+    messages,
+  });
+
+  return result.toDataStreamResponse();
+}`
+        }
+      }
+    ]
+  },
+  {
+    slug: "generative-ui-ile-dinamik-react-bilesenleri",
+    title: "Generative UI Rehberi: LLM Yanıtlarında Canlı React Bileşenleri Render Etme",
+    description: "Kullanıcı soru sorduğunda salt metin yerine etkileşimli grafikler, rezervasyon kartları ve ödeme butonları akıtan Generative UI mimarisi.",
+    publishedAt: "2026-08-17",
+    modifiedAt: "2026-08-17",
+    category: "Full-Stack Web",
+    readingTime: "10 dk",
+    serviceHref: "/hizmetler/modern-web-gelistirme",
+    serviceAnchor: "İnteraktif Generative UI ve React bileşen geliştirme",
+    sections: [
+      {
+        title: "Metinden Bileşene (Component Streaming)",
+        paragraphs: [
+          "LLM bir 'getWeather' aracı çağırdığında standart metin yanıtı vermek yerine hava durumu kartı JSX bileşenini doğrudan istemci ekranına stream edebilirsiniz."
+        ]
+      }
+    ]
+  },
+  {
+    slug: "react-server-components-ve-server-actions",
+    title: "React Server Components (RSC) vs Server Actions: Veri Çekme ve Form Yönetimi",
+    description: "İstemciye sıfır JavaScript yükü getiren Server Components ile API rotalarına gerek bırakmayan Server Actions form mutasyonları.",
+    publishedAt: "2026-08-17",
+    modifiedAt: "2026-08-17",
+    category: "Full-Stack Web",
+    readingTime: "8 dk",
+    serviceHref: "/hizmetler/modern-web-gelistirme",
+    serviceAnchor: "Full-Stack Next.js ve Server Actions mimari danışmanlığı",
+    sections: [
+      {
+        title: "API Rotalarına Son: 'use server'",
+        paragraphs: [
+          "Bir form gönderildiğinde `fetch('/api/submit')` yazmak yerine doğrudan sunucu fonksiyonunu çağırmak kod karmaşasını ve tip tanımlarını yarı yarıya azaltır."
+        ]
+      }
+    ]
+  },
+  {
+    slug: "supabase-row-level-security-rls-guvenlik",
+    title: "Supabase Row Level Security (RLS) ve Next.js: Veritabanını Frontend'den Güvenle Sorgulama",
+    description: "Backend API yazmadan doğrudan Next.js istemcisinden veya Server Component'ten veritabanına sorgu atarken RLS politikalarıyla veri güvenliğini sağlama.",
+    publishedAt: "2026-08-17",
+    modifiedAt: "2026-08-17",
+    category: "Veri & Altyapı",
+    readingTime: "9 dk",
+    serviceHref: "/hizmetler/ozel-yazilim-gelistirme",
+    serviceAnchor: "Supabase RLS güvenlik ve yetkilendirme danışmanlığı",
+    sections: [
+      {
+        title: "auth.uid() ile Kullanıcı İzolasyonu",
+        paragraphs: [
+          "`create policy 'Users can only view own documents' on documents for select using (auth.uid() = user_id);` tanımlandığında başka hiçbir kullanıcı başkasının verisine erişemez."
+        ]
+      }
+    ]
+  },
+  {
+    slug: "nextjs-middleware-ile-multi-tenant-routing",
+    title: "Next.js Middleware ile Çoklu Alan Adı (Multi-Tenant) ve Dinamik Alt Alan Adı Yönlendirme",
+    description: "SaaS platformlarında her müşteriye özel alt alan adı (ornek.platform.com) veya özel domain (custom domain) yönlendirmesi kurma mimarisi.",
+    publishedAt: "2026-08-17",
+    modifiedAt: "2026-08-17",
+    category: "Full-Stack Web",
+    readingTime: "9 dk",
+    serviceHref: "/hizmetler/modern-web-gelistirme",
+    serviceAnchor: "Multi-tenant SaaS mimarisi ve altyapı geliştirme",
+    sections: [
+      {
+        title: "Middleware Rewrite Prensibi",
+        paragraphs: [
+          "Next.js Middleware gelen isteğin hostname bilgisini okur ve arka planda kullanıcıya hissettirmeden `/sites/[subdomain]/page` rotasına yönlendirir (rewrite)."
+        ]
+      }
+    ]
+  },
+  {
+    slug: "tanstack-query-vs-server-components",
+    title: "TanStack Query (React Query) vs React Server Components: Ne Zaman Hangisi?",
+    description: "İstemci tarafında anlık refetch, polling ve sonsuz kaydırma için TanStack Query ile ilk sayfa yükleme hızı için RSC karşılaştırması.",
+    publishedAt: "2026-08-17",
+    modifiedAt: "2026-08-17",
+    category: "Karşılaştırma",
+    readingTime: "8 dk",
+    serviceHref: "/hizmetler/modern-web-gelistirme",
+    serviceAnchor: "Frontend durum yönetimi ve performans analizi",
+    sections: [
+      {
+        title: "Doğru Hibrit Kullanım",
+        paragraphs: [
+          "Sayfanın ilk verisini Server Component ile çekip HTML olarak sunmak, ardından istemcide canlı filtreleme veya polling için TanStack Query'e hydration yapmak en iyi kullanıcı deneyimini sunar."
+        ]
+      }
+    ]
+  },
+  {
+    slug: "nextjs-image-ve-font-optimizasyonu-lcp",
+    title: "Next.js Image ve Font Optimizasyonu: 100/100 Core Web Vitals ve LCP İpuçları",
+    description: "LCP (Largest Contentful Paint) ve CLS (Cumulative Layout Shift) skorlarını mükemmelleştirmek için WebP/AVIF dönüşümü ve yerel font yükleme.",
+    publishedAt: "2026-08-17",
+    modifiedAt: "2026-08-17",
+    category: "Full-Stack Web",
+    readingTime: "7 dk",
+    serviceHref: "/hizmetler/modern-web-gelistirme",
+    serviceAnchor: "Core Web Vitals ve web hız optimizasyonu çözümlerimiz",
+    sections: [
+      {
+        title: "next/image Neden Standart <img>'dan İyidir?",
+        paragraphs: [
+          "Görseli kullanıcının ekran boyutuna göre anında sıkıştırır, WebP formatına çevirir, lazy-loading uygular ve layout shift oluşmasını önler."
+        ]
+      }
+    ]
+  },
+  {
+    slug: "shadcn-ui-ve-tailwind-css-v4-mimarisi",
+    title: "shadcn/ui ve Tailwind CSS v4 Mimarisi: Modern Tasarım Sistemleri İnşa Etme",
+    description: "NPM paketi yüklemek yerine kopyalanabilir Radix UI bileşenleri, CSS değişkenleri ve Tailwind CSS v4'ün yeni tema motoru ile tasarım sistemi kurma.",
+    publishedAt: "2026-08-17",
+    modifiedAt: "2026-08-17",
+    category: "Full-Stack Web",
+    readingTime: "8 dk",
+    serviceHref: "/hizmetler/modern-web-gelistirme",
+    serviceAnchor: "Tasarım sistemleri ve modern UI/UX geliştirme",
+    sections: [
+      {
+        title: "Neden shadcn/ui Sektör Standardı Oldu?",
+        paragraphs: [
+          "Kapalı bir kütüphaneye bağımlı kalmak yerine kodun mülkiyeti sizdedir. İstediğiniz animasyonu veya erişilebilirlik (Aria) kuralını doğrudan bileşenin kaynak kodundan değiştirebilirsiniz."
+        ]
+      }
+    ]
+  },
+  {
+    slug: "nextjs-edge-runtime-ve-gecikme-dusurme",
+    title: "Next.js Edge Runtime: Vercel Edge Middleware ve Düşük Gecikmeli Coğrafi Dağıtım",
+    description: "Node.js cold-start sürelerini sıfıra indiren ve dünyanın dört bir yanındaki edge lokasyonlarında çalışan V8 tabanlı Edge Runtime mimarisi.",
+    publishedAt: "2026-08-17",
+    modifiedAt: "2026-08-17",
+    category: "DevOps & Altyapı",
+    readingTime: "8 dk",
+    serviceHref: "/hizmetler/modern-web-gelistirme",
+    serviceAnchor: "Edge computing ve küresel düşük gecikmeli mimariler",
+    sections: [
+      {
+        title: "Edge Runtime Ne Zaman Kullanılmalı?",
+        paragraphs: [
+          "Coğrafi konum tespiti, anlık A/B test yönlendirmeleri, kimlik doğrulama kontrolleri ve hafif API istekleri için Edge Runtime rakipsiz hız sağlar."
+        ]
+      }
+    ]
+  },
+
   // ==========================================
   // ORİJİNAL İÇERİKLER
   // ==========================================
