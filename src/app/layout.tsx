@@ -3,6 +3,7 @@ import Script from "next/script";
 import { Inter, Plus_Jakarta_Sans } from "next/font/google";
 import { ThemeProvider } from "@/components/theme-provider";
 import { LanguageProvider } from "@/components/language-context";
+import { FluidCanvasToggle } from "@/components/fluid-canvas-toggle";
 import { SiteEffects } from "@/components/site-effects";
 import { AnalyticsTracker } from "@/components/analytics-tracker";
 import { Toaster } from "sonner";
@@ -128,6 +129,7 @@ export default function RootLayout({
         <ThemeProvider>
           <LanguageProvider>
             <SiteEffects />
+            <FluidCanvasToggle />
             <div className="relative z-10 flex min-h-screen flex-col">
               {children}
             </div>
