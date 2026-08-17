@@ -378,7 +378,7 @@ async def stream_ai_response(prompt: str):
       {
         title: "Görsel (Vision) Destekli Akıllı Seçiciler",
         paragraphs: [
-          "Siteler HTML yapılarını veya class isimlerini sık sık değiştirir. AI destekli scraping yaklaşımı, ekran görüntüsünü ve erişilebilirlik ağacını (AOM) analiz ederek insan gibi butonları ve tabloları tespit eder."
+          "Siteler HTML yapılarını veya class isimlerini sık intermittent olarak değiştirir. AI destekli scraping yaklaşımı, ekran görüntüsünü ve erişilebilirlik ağacını (AOM) analiz ederek insan gibi butonları ve tabloları tespit eder."
         ],
         codeSnippet: {
           language: "python",
@@ -504,7 +504,7 @@ print(response.text)`
         title: "Hibrit Akıl Yürütme Paradigması",
         paragraphs: [
           "Geliştiriciler artık hızlı yanıt veren modeller ile derin akıl yürüten modeller arasında seçim yapmak zorunda değildir.",
-          "Claude 3.7 Sonnet tek bir model üzerinde API çağrısı sırasında `thinking: { type: 'enabled', budget_tokens: 2000 }` tanımlayarak duruma göre hız veya derin analiz seçeneği sunar."
+          "Claude 3.7 Sonnet tek bir model üzerinde API çağrısı sırasında thinking parametresi tanımlayarak duruma göre hız veya derin analiz seçeneği sunar."
         ]
       }
     ]
@@ -552,7 +552,7 @@ python3 -m vllm.entrypoints.openai.api_server --model deepseek-ai/DeepSeek-R1-Di
       {
         title: "Neden Normal Regex veya String Parser Yetmez?",
         paragraphs: [
-          "LLM'ler bazen JSON'ın başına '```json' ekler veya eksik virgül bırakır. 'Structured Outputs' özelliği, modelin gramer tabanlı örnekleme (grammar-constrained sampling) ile sadece şemaya uyan token'ları üretmesini garanti eder."
+          "LLM'ler bazen JSON'ın başına tırnak ekler veya eksik virgül bırakır. 'Structured Outputs' özelliği, modelin gramer tabanlı örnekleme (grammar-constrained sampling) ile sadece şemaya uyan token'ları üretmesini garanti eder."
         ],
         codeSnippet: {
           language: "python",
@@ -576,7 +576,7 @@ client = instructor.from_openai(OpenAI())
 invoice = client.chat.completions.create(
     model="gpt-4o-mini",
     response_model=InvoiceExtraction,
-    messages=[{"role": "user", "content": "Fatura metni: Acme Corp 2 adet sunucu $500, 1 adet domain $20"}],
+    messages=[{"role": "user", "content": "Fatura metni: Acme Corp 2 adet sunucu USD 500, 1 adet domain USD 20"}],
 )
 
 print(f"Satıcı: {invoice.vendor}, Toplam: USD {invoice.total}")`
@@ -697,6 +697,303 @@ print(f"Satıcı: {invoice.vendor}, Toplam: USD {invoice.total}")`
         title: "Üretime AI Çıkarken Test Güvenliği",
         paragraphs: [
           "Geleneksel birim (unit) testleri deterministik fonksiyonlar için çalışırken, LLM çıktılarının halüsinasyon veya alaka oranını ölçmek için 'LLM-as-a-Judge' tabanlı Eval çerçeveleri kullanılmalıdır."
+        ]
+      }
+    ]
+  },
+
+  // ==============================================================
+  // ADIM 3: MODERN PYTHON & ASYNC AI API MİMARİLERİ (FASTAPI)
+  // ==============================================================
+  {
+    slug: "fastapi-async-mimarisi-ve-event-loop",
+    title: "FastAPI Async Mimarisi: Asyncio Event Loop ve Yüksek Eşzamanlılık (Concurrency)",
+    description: "FastAPI'de async def ve def fonksiyonlarının nasıl çalıştığını, threadpool tuzaklarını ve saniyede on binlerce isteği bloklanmadan yönetme tekniklerini öğrenin.",
+    publishedAt: "2026-08-17",
+    modifiedAt: "2026-08-17",
+    category: "API & Backend",
+    readingTime: "9 dk",
+    serviceHref: "/hizmetler/api-gelistirme",
+    serviceAnchor: "Yüksek performanslı FastAPI backend çözümlerimizi inceleyin",
+    sections: [
+      {
+        title: "async def vs def: En Yaygın Hata",
+        paragraphs: [
+          "Birçok geliştirici FastAPI'de her endpoint'in başına düşünmeden `async def` yazar. Eğer fonksiyon içinde bloklayıcı bir işlem (örneğin `time.sleep` veya senkron `requests.get`) yaparsanız, asyncio Event Loop kilitlenir ve tüm sunucu donar.",
+          "FastAPI, senkron `def` fonksiyonlarını otomatik olarak harici bir AnyIO Threadpool üzerinde çalıştırarak Event Loop'u korur."
+        ],
+        codeSnippet: {
+          language: "python",
+          filename: "concurrency_example.py",
+          code: `import httpx
+from fastapi import FastAPI
+
+app = FastAPI()
+
+# DOĞRU: Asenkron non-blocking HTTP isteği
+@app.get("/async-fetch")
+async def async_fetch():
+    async with httpx.AsyncClient() as client:
+        res = await client.get("https://api.example.com/data")
+        return res.json()
+
+# DOĞRU: Senkron CPU-heavy veya bloklayıcı işlem (FastAPI threadpool'a atar)
+@app.get("/sync-compute")
+def sync_compute():
+    import time
+    time.sleep(1) # Threadpool'da çalışır, Event Loop'u kilitlemez
+    return {"status": "ok"}`
+        }
+      }
+    ],
+    faqs: [
+      {
+        question: "uvloop nedir ve FastAPI'yi nasıl hızlandırır?",
+        answer: "uvloop, Node.js libuv üzerine yazılmış ultra hızlı bir asyncio event loop kütüphanesidir ve FastAPI performansını 2 ila 4 kat artırır."
+      }
+    ]
+  },
+  {
+    slug: "fastapi-dependency-injection-sistemi",
+    title: "FastAPI Dependency Injection (DI) ile Temiz ve Test Edilebilir Mimari Kurulumu",
+    description: "FastAPI'nin Depends mekanizmasını kullanarak veritabanı oturumlarını, kimlik doğrulama katmanlarını ve servis bağımlılıklarını izole etme rehberi.",
+    publishedAt: "2026-08-17",
+    modifiedAt: "2026-08-17",
+    category: "API & Backend",
+    readingTime: "8 dk",
+    serviceHref: "/hizmetler/api-gelistirme",
+    serviceAnchor: "Modüler API mimarisi ve refactor danışmanlığı",
+    sections: [
+      {
+        title: "Depends() ile Bağımlılık Yönetimi",
+        paragraphs: [
+          "Kod tekrarını önlemek ve birim testlerinde veritabanını kolayca mock'layabilmek için FastAPI'nin Dependency Injection sistemi kullanılır."
+        ],
+        codeSnippet: {
+          language: "python",
+          filename: "dependencies.py",
+          code: `from fastapi import Depends, FastAPI, HTTPException, status
+from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
+
+app = FastAPI()
+security = HTTPBearer()
+
+async def get_current_user(creds: HTTPAuthorizationCredentials = Depends(security)):
+    token = creds.credentials
+    if token != "secret-token":
+        raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Geçersiz Token")
+    return {"user_id": "usr_123", "role": "admin"}
+
+@app.get("/protected-dashboard")
+async def dashboard(user: dict = Depends(get_current_user)):
+    return {"message": f"Hoş geldiniz {user['user_id']}"}`
+        }
+      }
+    ]
+  },
+  {
+    slug: "pydantic-v2-performans-ve-validator-rehberi",
+    title: "Pydantic v2 ile Rust Destekli Validasyon ve Custom Validator Teknikleri",
+    description: "Pydantic v2'nin Rust tabanlı pydantic-core çekirdeği ile 20 kata varan hız artışları, @field_validator ve model_validator kullanım desenleri.",
+    publishedAt: "2026-08-17",
+    modifiedAt: "2026-08-17",
+    category: "API & Backend",
+    readingTime: "8 dk",
+    serviceHref: "/hizmetler/api-gelistirme",
+    serviceAnchor: "Python veri doğrulama ve şema tasarımı çözümlerimiz",
+    sections: [
+      {
+        title: "Pydantic v2'deki Kritik Değişiklikler",
+        paragraphs: [
+          "Eski `@validator` dekoratörü yerine `@field_validator(mode='before'|'after')` ve tüm modeli doğrulayan `@model_validator` gelmiştir."
+        ],
+        codeSnippet: {
+          language: "python",
+          filename: "schema.py",
+          code: `from pydantic import BaseModel, field_validator, model_validator
+
+class UserRegisterSchema(BaseModel):
+    username: str
+    password: str
+    confirm_password: str
+
+    @field_validator("username")
+    @classmethod
+    def validate_username(cls, v: str) -> str:
+        if not v.isalnum():
+            raise ValueError("Kullanıcı adı sadece alfanümerik olmalıdır")
+        return v.lower()
+
+    @model_validator(mode="after")
+    def check_passwords_match(self) -> "UserRegisterSchema":
+        if self.password != self.confirm_password:
+            raise ValueError("Şifreler birbiriyle eşleşmiyor")
+        return self`
+        }
+      }
+    ]
+  },
+  {
+    slug: "fastapi-ve-redis-ile-rate-limiting",
+    title: "FastAPI ve Redis ile Token Bucket / Leaky Bucket Rate Limiting Mimarisi",
+    description: "API uç noktalarınızı DDoS saldırılarına ve maliyet patlamalarına karşı korumak için Redis destekli kayan pencere (sliding window) rate limiting kurulumu.",
+    publishedAt: "2026-08-17",
+    modifiedAt: "2026-08-17",
+    category: "API & Backend",
+    readingTime: "9 dk",
+    serviceHref: "/hizmetler/api-gelistirme",
+    serviceAnchor: "API güvenlik ve altyapı koruma çözümlerimiz",
+    sections: [
+      {
+        title: "Neden Bellek İçi (In-Memory) Rate Limiter Yetmez?",
+        paragraphs: [
+          "Çoklu sunucu (multi-instance) veya Kubernetes ortamında istekler farklı pod'lara dağılır. Ortak bir Redis havuzu olmadan tutarlı rate limit uygulanamaz."
+        ]
+      }
+    ]
+  },
+  {
+    slug: "fastapi-background-tasks-vs-celery",
+    title: "FastAPI Background Tasks vs Celery: Arka Plan İşleri Ne Zaman Hangi Araçla Yapılmalı?",
+    description: "E-posta gönderimi ve hafif veri loglama için dahili BackgroundTasks ile ağır video işleme ve scraping kuyrukları için Celery/Redis karşılaştırması.",
+    publishedAt: "2026-08-17",
+    modifiedAt: "2026-08-17",
+    category: "Karşılaştırma",
+    readingTime: "8 dk",
+    serviceHref: "/hizmetler/ozel-yazilim-gelistirme",
+    serviceAnchor: "Dağıtık arka plan kuyrukları ve asenkron mimari kurulumu",
+    sections: [
+      {
+        title: "Doğru Aracı Seçme Kılavuzu",
+        paragraphs: [
+          "FastAPI `BackgroundTasks`: Sıfır bağımlılık, aynı işlem içinde çalışır, sunucu çökerse iş kaybolur. (Kullanım: E-posta, audit log).",
+          "Celery + Redis/RabbitMQ: Dağıtık kuyruk, hata durumunda tekrar deneme (retry), iş garantisi. (Kullanım: AI model eğitimi, PDF/Video işleme, web kazıma)."
+        ]
+      }
+    ]
+  },
+  {
+    slug: "server-sent-events-sse-vs-websockets-fastapi",
+    title: "FastAPI ile SSE vs WebSockets: Gerçek Zamanlı AI ve Veri İletişiminde Hangisi?",
+    description: "LLM streaming çıktıları ve finansal veri akışları için Server-Sent Events (SSE) ile çift yönlü WebSockets protokollerinin performans ve karmaşıklık analizi.",
+    publishedAt: "2026-08-17",
+    modifiedAt: "2026-08-17",
+    category: "API & Backend",
+    readingTime: "9 dk",
+    serviceHref: "/hizmetler/api-gelistirme",
+    serviceAnchor: "Gerçek zamanlı websocket ve SSE akış sistemleri",
+    sections: [
+      {
+        title: "Neden LLM Streaming İçin SSE Tercih Edilir?",
+        paragraphs: [
+          "SSE standart HTTP/2 üzerinden çalışır, özel proxy veya firewall yapılandırması gerektirmez, dahili yeniden bağlanma (reconnection) desteği vardır ve tek yönlü veri akışı için WebSockets'e göre çok daha hafiftir."
+        ]
+      }
+    ]
+  },
+  {
+    slug: "fastapi-ile-jwt-ve-oauth2-guvenlik-mimarisi",
+    title: "FastAPI ile JWT ve OAuth2: Güvenli Yetkilendirme ve Token Refresh Mimarisi",
+    description: "Access token ve Refresh token rotasyonu ile güvenli, çalınmaya karşı korumalı ve statik oturum yönetimi sunan modern kimlik doğrulama mimarisi.",
+    publishedAt: "2026-08-17",
+    modifiedAt: "2026-08-17",
+    category: "API & Backend",
+    readingTime: "10 dk",
+    serviceHref: "/hizmetler/api-gelistirme",
+    serviceAnchor: "Kurumsal seviyede API güvenlik ve kimlik doğrulama mimarisi",
+    sections: [
+      {
+        title: "Token Rotasyonu (Token Rotation) Prensibi",
+        paragraphs: [
+          "Kısa ömürlü Access Token (15 dk) ve veritabanında tek kullanımlık olarak tutulan Refresh Token (7 gün) kombinasyonu ile en yüksek güvenlik sağlanır."
+        ]
+      }
+    ]
+  },
+  {
+    slug: "sqlalchemy-2-async-ve-alembic-migrasyon",
+    title: "SQLAlchemy 2.0 Async Session ve Alembic ile Sıfır Kesintili Veritabanı Migrasyonu",
+    description: "SQLAlchemy 2.0'ın modern select() sözdizimi, AsyncEngine bağlantı havuzu yönetimi ve Alembic ile otomatik şema migrasyonu rehberi.",
+    publishedAt: "2026-08-17",
+    modifiedAt: "2026-08-17",
+    category: "API & Backend",
+    readingTime: "9 dk",
+    serviceHref: "/hizmetler/ozel-yazilim-gelistirme",
+    serviceAnchor: "Asenkron veritabanı mimarisi ve PostgreSQL optimizasyonu",
+    sections: [
+      {
+        title: "SQLAlchemy 2.0 Async Sözdizimi",
+        paragraphs: [
+          "`async_sessionmaker` ve `asyncpg` sürücüsü kullanarak sorguları bloklanmadan çalıştırma:"
+        ],
+        codeSnippet: {
+          language: "python",
+          filename: "db.py",
+          code: `from sqlalchemy import select
+from sqlalchemy.ext.asyncio import AsyncSession, create_async_engine, async_sessionmaker
+
+engine = create_async_engine("postgresql+asyncpg://user:pass@localhost/app_db", pool_size=20)
+AsyncSessionFactory = async_sessionmaker(engine, expire_on_commit=False)
+
+async def get_user_by_email(session: AsyncSession, email: str):
+    stmt = select(User).where(User.email == email)
+    result = await session.execute(stmt)
+    return result.scalar_one_or_none()`
+        }
+      }
+    ]
+  },
+  {
+    slug: "fastapi-ve-docker-production-deployment",
+    title: "FastAPI ve Docker: Gunicorn Uvicorn Workerları ile Production Dağıtım Mimarisi",
+    description: "FastAPI uygulamalarını multi-stage Dockerfile, non-root kullanıcı ve Gunicorn worker process yöneticisi ile güvenli ve ölçeklenebilir şekilde sunucuya alma.",
+    publishedAt: "2026-08-17",
+    modifiedAt: "2026-08-17",
+    category: "DevOps & Altyapı",
+    readingTime: "8 dk",
+    serviceHref: "/hizmetler/ozel-yazilim-gelistirme",
+    serviceAnchor: "Docker, CI/CD ve bulut sunucu dağıtım danışmanlığı",
+    sections: [
+      {
+        title: "Production Dockerfile Standardı",
+        paragraphs: [
+          "Hafif ve güvenli bir Docker imajı için multi-stage build ve non-root kullanıcı tanımlaması:"
+        ],
+        codeSnippet: {
+          language: "dockerfile",
+          filename: "Dockerfile",
+          code: `FROM python:3.12-slim as builder
+WORKDIR /app
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+FROM python:3.12-slim
+WORKDIR /app
+COPY --from=builder /usr/local/lib/python3.12/site-packages /usr/local/lib/python3.12/site-packages
+COPY . .
+RUN useradd -m appuser && chown -R appuser /app
+USER appuser
+
+CMD ["gunicorn", "main:app", "-w", "4", "-k", "uvicorn.workers.UvicornWorker", "-b", "0.0.0.0:8000"]`
+        }
+      }
+    ]
+  },
+  {
+    slug: "fastapi-open-telemetry-ve-observability",
+    title: "FastAPI ve OpenTelemetry: Dağıtık İzleme (Tracing), Prometheus Metrikleri ve Grafana",
+    description: "API gecikmelerini ve SQL darboğazlarını milisaniyelik hassasiyetle tespit etmek için OpenTelemetry, Prometheus ve Grafana entegrasyonu.",
+    publishedAt: "2026-08-17",
+    modifiedAt: "2026-08-17",
+    category: "DevOps & Altyapı",
+    readingTime: "10 dk",
+    serviceHref: "/hizmetler/api-gelistirme",
+    serviceAnchor: "Sistem gözlemlenebilirliği (observability) ve performans analizi",
+    sections: [
+      {
+        title: "Observability Neden Şarttır?",
+        paragraphs: [
+          "Bir API isteği 3 saniye sürdüğünde problemin LLM çağrısında mı, PostgreSQL sorgusunda mı yoksa Redis kilidinde mi olduğunu OpenTelemetry distributed tracing (span) şeması anında gösterir."
         ]
       }
     ]
