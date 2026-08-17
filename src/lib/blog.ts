@@ -1979,6 +1979,219 @@ export async function POST(req: Request) {
     ]
   },
 
+  // ==============================================================
+  // ADIM 8: MODERN GELİŞTİRİCİ ARAÇLARI & MODELLER BİREBİR VS SERİSİ
+  // ==============================================================
+  {
+    slug: "gemini-3-7-flash-vs-claude-3-7-sonnet",
+    title: "Gemini 3.7 Flash vs Claude 3.7 Sonnet: Kodlama ve Akıl Yürütmede (Reasoning) Hangisi Üstün?",
+    description: "Google ve Anthropic'in en yeni akıl yürütme modellerinin kod üretimi, SWE-bench puanları, token maliyetleri ve gecikme (latency) testleri.",
+    publishedAt: "2026-08-17",
+    modifiedAt: "2026-08-17",
+    category: "Karşılaştırma",
+    readingTime: "10 dk",
+    serviceHref: "/hizmetler/yapay-zeka-otomasyon",
+    serviceAnchor: "Model seçimi ve kurumsal LLM entegrasyonu danışmanlığı",
+    sections: [
+      {
+        title: "Hız vs Derinlik: Karşılaştırmalı Benchmark",
+        paragraphs: [
+          "Gemini 3.7 Flash, 'Thinking Mode' aktifken dahi milisaniyelik token üretim hızları ve 1M+ multimodal bağlam penceresiyle yüksek hacimli görevlerde liderdir.",
+          "Claude 3.7 Sonnet ise karmaşık mimari refactor süreçlerinde ve karmaşık mantık adımlarında (SWE-bench coding) en yüksek doğruluk oranına sahiptir."
+        ]
+      },
+      {
+        title: "Maliyet ve Hız Tablosu",
+        paragraphs: [
+          "Milyon token başına girdi ve çıktı maliyeti:"
+        ],
+        items: [
+          "Gemini 3.7 Flash: ~$0.15 / 1M Girdi, ~$0.60 / 1M Çıktı (Düşük maliyet şampiyonu).",
+          "Claude 3.7 Sonnet: ~$3.00 / 1M Girdi, ~$15.00 / 1M Çıktı (Üst segment doğruluk).",
+          "Kullanım Önerisi: Hızlı API ve otomatik agent döngülerinde Gemini Flash; kritik mimari tasarımda Claude Sonnet."
+        ]
+      }
+    ]
+  },
+  {
+    slug: "claude-code-vs-windsurf-vs-cursor",
+    title: "Claude Code vs Cursor Agent vs Windsurf: 2026'nın En İyi AI Kodlama Aracı Hangisi?",
+    description: "Terminal tabanlı otonom ajan Claude Code, VS Code tabanlı lider Cursor ve Cascade akışlı Windsurf araçlarının derinlemesine karşılaştırması.",
+    publishedAt: "2026-08-17",
+    modifiedAt: "2026-08-17",
+    category: "Karşılaştırma",
+    readingTime: "10 dk",
+    serviceHref: "/hizmetler/yapay-zeka-otomasyon",
+    serviceAnchor: "Geliştirici verimliliği ve AI araçları optimizasyonu",
+    sections: [
+      {
+        title: "3 Farklı Geliştirici Deneyimi",
+        paragraphs: [
+          "1. Cursor: Görsel arayüz, hızlı satır içi kod tamamlama ve Composer ile çoklu dosya düzenleme.",
+          "2. Claude Code: Terminalden ayrılmadan tüm depoda bash komutları, testler ve git işlemlerini yöneten saf agentic CLI.",
+          "3. Windsurf: Codebase indekslemesini gerçek zamanlı bağlam akışıyla birleştiren Cascade teknolojisi."
+        ]
+      }
+    ]
+  },
+  {
+    slug: "openai-o3-mini-vs-deepseek-r1",
+    title: "OpenAI o3-mini vs DeepSeek-R1: Akıl Yürütme (Reasoning) Modelleri Karşılaştırması",
+    description: "Kapalı kaynak lideri OpenAI o3-mini ile açık ağırlıklı devrim yaratan DeepSeek-R1'in matematik, mantık ve algoritma çözme yetenekleri.",
+    publishedAt: "2026-08-17",
+    modifiedAt: "2026-08-17",
+    category: "Karşılaştırma",
+    readingTime: "9 dk",
+    serviceHref: "/hizmetler/yapay-zeka-otomasyon",
+    serviceAnchor: "Reasoning modelleri ve özel AI altyapı danışmanlığı",
+    sections: [
+      {
+        title: "Açık Kaynak vs Proprietary API",
+        paragraphs: [
+          "DeepSeek-R1'in en büyük gücü kendi sunucunuzda (on-premise) çalıştırılabilmesi ve düşünme zincirini (thought process) sansürsüz şeffaf sunmasıdır.",
+          "OpenAI o3-mini ise API gecikmesi, fonksiyon çağırma (tool use) kararlılığı ve JSON yapılandırılmış çıktı güvenilirliğinde öne çıkar."
+        ]
+      }
+    ]
+  },
+  {
+    slug: "playwright-vs-selenium-2026",
+    title: "Playwright vs Selenium (2026): Modern Web Kazıma ve E2E Testlerde Neden Playwright Kazandı?",
+    description: "Otomatik bekleme (auto-waiting), ağ trafiği manipülasyonu, hafif izole context mimarisi ve hız testleriyle Playwright vs Selenium analizi.",
+    publishedAt: "2026-08-17",
+    modifiedAt: "2026-08-17",
+    category: "Karşılaştırma",
+    readingTime: "9 dk",
+    serviceHref: "/hizmetler/web-scraping",
+    serviceAnchor: "Playwright tabanlı web otomasyonu ve test çözümlerimiz",
+    sections: [
+      {
+        title: "Mimari Üstünlük: WebDriver vs CDP/WebSocket",
+        paragraphs: [
+          "Selenium her istekte HTTP üzerinden WebDriver ile haberleşirken gecikme yaşar. Playwright, doğrudan Chromium/WebKit WebSocket bağlantısı kurarak tek bir tarayıcı örneğinde binlerce bağımsız sekme açar."
+        ]
+      }
+    ]
+  },
+  {
+    slug: "fastapi-vs-go-fiber-vs-nestjs",
+    title: "FastAPI vs Go Fiber vs NestJS: AI Backend ve Mikroservis Mimarilerinde Hangi Dil ve Framework?",
+    description: "Python'un AI ekosistemi gücüyle FastAPI, Go'nun mikrosaniyelik ham CPU hızıyla Fiber ve TypeScript'in tam tip güvenliğiyle NestJS karşılaştırması.",
+    publishedAt: "2026-08-17",
+    modifiedAt: "2026-08-17",
+    category: "Karşılaştırma",
+    readingTime: "10 dk",
+    serviceHref: "/hizmetler/api-gelistirme",
+    serviceAnchor: "Backend mimarisi ve teknoloji seçimi danışmanlığı",
+    sections: [
+      {
+        title: "Hangi Projede Hangi Teknoloji?",
+        paragraphs: [
+          "1. AI & Veri İşleme Odaklı Backend: `FastAPI` (PyTorch, LangChain, Pydantic ekosistemi tartışmasız lider).",
+          "2. Ultra Düşük Gecikmeli Finans/I/O: `Go Fiber` (Sıfır bellek tahsisi, mikrosaniyelik hız).",
+          "3. Kurumsal TypeScript Monorepo: `NestJS` (Next.js ile ortak DTO ve şema paylaşımı)."
+        ]
+      }
+    ]
+  },
+  {
+    slug: "supabase-pgvector-vs-pinecone",
+    title: "Supabase pgvector vs Pinecone: Vektör Veritabanı Karşılaştırması ve Maliyet Analizi",
+    description: "İlişkisel verilerle vektörleri aynı ACID havuzunda birleştiren Supabase pgvector ile sunucusuz özel vektör motoru Pinecone analizi.",
+    publishedAt: "2026-08-17",
+    modifiedAt: "2026-08-17",
+    category: "Karşılaştırma",
+    readingTime: "8 dk",
+    serviceHref: "/hizmetler/ozel-yazilim-gelistirme",
+    serviceAnchor: "Veritabanı seçimi ve vektör arama altyapısı çözümlerimiz",
+    sections: [
+      {
+        title: "İlişkisel Bütünlük (Relational Integrity) Avantajı",
+        paragraphs: [
+          "Pinecone'da kullanıcı silindiğinde vektörleri ayrıca silmek gerekir. Supabase pgvector'de `ON DELETE CASCADE` ile tüm ilişkili embedding'ler otomatik temizlenir."
+        ]
+      }
+    ]
+  },
+  {
+    slug: "crawl4ai-vs-firecrawl",
+    title: "Crawl4AI vs Firecrawl: LLM İçin Web Kazıma ve Veri Ayıklamada Hangisi Daha Verimli?",
+    description: "Kendi sunucunuzda sıfır maliyetle çalışan açık kaynak Crawl4AI ile bulut tabanlı hazır web crawling API'si Firecrawl'ın hız ve kalite testi.",
+    publishedAt: "2026-08-17",
+    modifiedAt: "2026-08-17",
+    category: "Karşılaştırma",
+    readingTime: "8 dk",
+    serviceHref: "/hizmetler/web-scraping",
+    serviceAnchor: "LLM ve RAG için otomatik veri toplama sistemleri",
+    sections: [
+      {
+        title: "Açık Kaynak Esnekliği vs Yönetilen Bulut",
+        paragraphs: [
+          "Crawl4AI; yerel Python ortamınızda tam kontrol, özel Playwright hook'ları ve sıfır API faturası sunar.",
+          "Firecrawl ise proxy, captcha ve tarayıcı altyapısıyla uğraşmak istemeyen ekipler için tek tıkla Markdown URL API'si sağlar."
+        ]
+      }
+    ]
+  },
+  {
+    slug: "langgraph-vs-crewai-karsilastirma",
+    title: "LangGraph vs CrewAI: Karmaşık Çoklu Ajan (Multi-Agent) Projelerinde Hangisi Seçilmeli?",
+    description: "Durum makineleri ve döngüsel grafikler sunan LangGraph ile rol tabanlı yönetici orkestrasyonu sunan CrewAI'ın detaylı karar analizi.",
+    publishedAt: "2026-08-17",
+    modifiedAt: "2026-08-17",
+    category: "Karşılaştırma",
+    readingTime: "9 dk",
+    serviceHref: "/hizmetler/yapay-zeka-otomasyon",
+    serviceAnchor: "Çoklu ajan çerçevesi seçimi ve mimari danışmanlık",
+    sections: [
+      {
+        title: "Kontrol Seviyesi Farkı",
+        paragraphs: [
+          "CrewAI hızlı prototip üretmek ve rol tabanlı iş birlikleri kurmak için son derece pratiktir.",
+          "LangGraph ise her state değişimini, hata durumunu ve insan onayını (HITL) deterministik kontrol etmek isteyen kurumsal projelerin tercihidir."
+        ]
+      }
+    ]
+  },
+  {
+    slug: "nextjs-app-router-vs-remix-react-router-7",
+    title: "Next.js 15 App Router vs React Router 7 (Remix): 2026'da Modern React Mimarisi",
+    description: "Vercel ekosistemi ve RSC gücüyle Next.js 15 ile web standartları ve Vite tabanlı sade yapısıyla React Router v7 karşılaştırması.",
+    publishedAt: "2026-08-17",
+    modifiedAt: "2026-08-17",
+    category: "Karşılaştırma",
+    readingTime: "9 dk",
+    serviceHref: "/hizmetler/modern-web-gelistirme",
+    serviceAnchor: "React ve frontend mimarisi teknoloji seçimi",
+    sections: [
+      {
+        title: "Vite Sadeliği vs RSC Ekosistemi",
+        paragraphs: [
+          "React Router v7 standart fetch API'leri ve Vite hızıyla son derece temiz bir mimari sunar. Next.js 15 ise Server Components, Turbopack ve geniş hosting desteğiyle kurumsal projelerde ağırlığını korur."
+        ]
+      }
+    ]
+  },
+  {
+    slug: "tailwind-css-v4-vs-tailwind-css-v3",
+    title: "Tailwind CSS v4 vs v3: Yeni CSS Motoru, @theme Direktifi ve Performans Farkları",
+    description: "tailwind.config.js dosyasına veda eden, Rust tabanlı Oxide derleyicisiyle 10 kat hızlanan Tailwind CSS v4'e geçiş rehberi.",
+    publishedAt: "2026-08-17",
+    modifiedAt: "2026-08-17",
+    category: "Karşılaştırma",
+    readingTime: "7 dk",
+    serviceHref: "/hizmetler/modern-web-gelistirme",
+    serviceAnchor: "Tailwind CSS v4 migrasyonu ve tasarım sistemi kurulumu",
+    sections: [
+      {
+        title: "CSS-First Konfigürasyon",
+        paragraphs: [
+          "Tailwind v4'te artık JavaScript konfigürasyon dosyası yoktur. Tüm renkler ve breakpoint'ler doğrudan CSS içinde `@theme` direktifiyle tanımlanır."
+        ]
+      }
+    ]
+  },
+
   // ==========================================
   // ORİJİNAL İÇERİKLER
   // ==========================================
