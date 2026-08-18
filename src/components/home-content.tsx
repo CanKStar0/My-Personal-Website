@@ -18,15 +18,99 @@ export function HomeContent({ locale }: { locale: Locale }) {
       <ScrollToQuery />
       <JsonLd data={[
         {
-          "@context": "https://schema.org", "@type": "Person", "@id": `${SITE_URL}/#person`, name: "Canpolat Kaya", url: SITE_URL,
-          jobTitle: "Full-Stack Developer", sameAs: [SOCIAL_LINKS.github, SOCIAL_LINKS.linkedin],
+          "@context": "https://schema.org",
+          "@type": "Person",
+          "@id": `${SITE_URL}/#person`,
+          name: "Canpolat Kaya",
+          jobTitle: isEnglish ? "Full-Stack Developer & AI Automation Specialist" : "Full-Stack Developer & Yapay Zekâ Otomasyon Uzmanı",
+          url: SITE_URL,
+          sameAs: [SOCIAL_LINKS.github, SOCIAL_LINKS.linkedin],
+          description: isEnglish
+            ? "Full-Stack Developer specializing in autonomous web scraping architectures, custom AI automations, scalable REST APIs, and Next.js applications."
+            : "Özel yazılım, otonom web scraping, yapay zekâ otomasyonu, API ve Next.js geliştirme alanlarında uzmanlaşmış Full-Stack Developer.",
           knowsAbout: isEnglish
-            ? ["Custom Software Development", "Web Scraping", "AI Automation", "API Development", "Next.js"]
-            : ["Özel Yazılım Geliştirme", "Web Scraping", "Yapay Zekâ Otomasyonu", "API Geliştirme", "Next.js"],
+            ? [
+                "Web Scraping",
+                "AI Automation",
+                "Large Language Models",
+                "Next.js",
+                "React",
+                "TypeScript",
+                "Python",
+                "FastAPI",
+                "REST API Architecture",
+                "Playwright Automation",
+                "Generative Engine Optimization (GEO)",
+              ]
+            : [
+                "Web Scraping",
+                "Yapay Zekâ Otomasyonu",
+                "Büyük Dil Modelleri (LLM)",
+                "Next.js",
+                "React",
+                "TypeScript",
+                "Python",
+                "FastAPI",
+                "REST API Mimarisi",
+                "Playwright Otomasyonu",
+                "Generative Engine Optimization (GEO)",
+              ],
         },
         {
-          "@context": "https://schema.org", "@type": "WebSite", "@id": `${SITE_URL}/#website`, name: "Canpolat Kaya",
-          url: SITE_URL, inLanguage: ["tr", "en"], author: { "@id": `${SITE_URL}/#person` },
+          "@context": "https://schema.org",
+          "@type": "ProfessionalService",
+          "@id": `${SITE_URL}/#website`,
+          name: "Canpolat Kaya Dev Services",
+          url: SITE_URL,
+          provider: { "@id": `${SITE_URL}/#person` },
+          areaServed: "Global",
+          inLanguage: ["tr", "en"],
+          hasOfferCatalog: {
+            "@type": "OfferCatalog",
+            name: isEnglish ? "Software & Automation Services" : "Yazılım ve Otomasyon Hizmetleri",
+            itemListElement: [
+              {
+                "@type": "Offer",
+                itemOffered: {
+                  "@type": "Service",
+                  name: isEnglish ? "Web Scraping Systems" : "Web Scraping Sistemleri",
+                  url: `${SITE_URL}/hizmetler/web-scraping`,
+                },
+              },
+              {
+                "@type": "Offer",
+                itemOffered: {
+                  "@type": "Service",
+                  name: isEnglish ? "AI Automation & Workflows" : "Yapay Zekâ Otomasyon Çözümleri",
+                  url: `${SITE_URL}/hizmetler/yapay-zeka-otomasyon`,
+                },
+              },
+              {
+                "@type": "Offer",
+                itemOffered: {
+                  "@type": "Service",
+                  name: isEnglish ? "Custom Software Development" : "Özel Yazılım Geliştirme",
+                  url: `${SITE_URL}/hizmetler/ozel-yazilim-gelistirme`,
+                },
+              },
+              {
+                "@type": "Offer",
+                itemOffered: {
+                  "@type": "Service",
+                  name: isEnglish ? "High-Performance API Development" : "API Geliştirme ve Entegrasyon",
+                  url: `${SITE_URL}/hizmetler/api-gelistirme`,
+                },
+              },
+              {
+                "@type": "Offer",
+                itemOffered: {
+                  "@type": "Service",
+                  name: isEnglish ? "Next.js Web Application Development" : "Next.js Web Geliştirme",
+                  url: `${SITE_URL}/hizmetler/nextjs-gelistirme`,
+                },
+              },
+            ],
+          },
         },
       ]} />
       <Navbar />

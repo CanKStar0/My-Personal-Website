@@ -21,6 +21,12 @@ export type FAQItem = {
   answer: string;
 };
 
+export type SourceCitation = {
+  name: string;
+  url: string;
+  description?: string;
+};
+
 export type BlogPost = {
   slug: string;
   title: string;
@@ -31,11 +37,15 @@ export type BlogPost = {
   readingTime: string;
   serviceHref: string;
   serviceAnchor: string;
+  directAnswer?: string;
+  keyTakeaways?: string[];
+  sourcesCited?: SourceCitation[];
   sections: BlogSection[];
   faqs?: FAQItem[];
 };
 
 export const blogPosts: BlogPost[] = [
+
   // ==========================================
   // ADIM 1: AGENTIC CODING & TERMINAL AJANLARI
   // ==========================================
@@ -49,6 +59,16 @@ export const blogPosts: BlogPost[] = [
     readingTime: "8 dk",
     serviceHref: "/hizmetler/yapay-zeka-otomasyon",
     serviceAnchor: "AI ajan entegrasyonu ve otomasyon çözümlerini inceleyin",
+    directAnswer: "Claude Code, Anthropic tarafından geliştirilen ve doğrudan yerel terminalde çalışan otonom bir kodlama ajanıdır. Web tabanlı chatbot'lardan farklı olarak tüm proje dosya ağacını, git geçmişini ve bağımlılıkları okur; test komutlarını çalıştırıp hata veren kodları bağımsız olarak onarır.",
+    keyTakeaways: [
+      "Terminal merkezli mimari: Web UI gerektirmeden dosya düzenleme, test yürütme ve git commit süreçlerini otonom yönetir.",
+      "Gelişmiş bağlam daraltma: Geniş kod depolarında token maliyetlerini %60'a varan oranda düşüren akıllı filtreleme uygular.",
+      "AGENTS.md ve CLAUDE.md standartları: Proje mimari sınırlarını ve güvenlik kurallarını depodan okuyarak insan denetimini korur."
+    ],
+    sourcesCited: [
+      { name: "Anthropic Claude Code Official Documentation", url: "https://docs.anthropic.com/en/docs/agents-and-tools/claude-code" },
+      { name: "Agentic Workflows Best Practices (Anthropic Research)", url: "https://www.anthropic.com/research/building-effective-agents" }
+    ],
     sections: [
       {
         title: "Claude Code Nedir ve Klasik Chatbot'lardan Neden Farklıdır?",
@@ -128,6 +148,16 @@ claude "npm run test:e2e komutunu çalıştır, kırılan sepet akışını anal
     readingTime: "9 dk",
     serviceHref: "/hizmetler/yapay-zeka-otomasyon",
     serviceAnchor: "Gemini ve LLM model entegrasyonu hizmetlerimizi keşfedin",
+    directAnswer: "Gemini 3.7 Flash ve 2.0 Flash, 1 milyon token'ı aşan bağlam penceresi, multimodal anlama ve dinamik 'Thinking Mode' yetenekleriyle saniyede 100+ token üretim hızına ulaşan Google modelleridir. Özellikle gerçek zamanlı ses/video asistanları, büyük kod deposu denetimi ve yüksek hacimli JSON çıkarma görevlerinde 10 kata kadar maliyet tasarrufu sağlar.",
+    keyTakeaways: [
+      "1M+ Context Window: Tüm kod tabanını veya 1000 sayfalık teknik dokümanı tek bir prompt içinde sıfır bilgi kaybıyla analiz eder.",
+      "Thinking Mode (Akıl Yürütme): Hızlı mod ile derin akıl yürütme arasındaki hesaplama bütçesini dinamik olarak ayarlayabilir.",
+      "Multimodal Live API: WebSocket üzerinden çift yönlü ultra düşük gecikmeli (sub-second) ses ve video akışı sunar."
+    ],
+    sourcesCited: [
+      { name: "Google AI Gemini Developer Documentation", url: "https://ai.google.dev/gemini-api/docs" },
+      { name: "Gemini 2.0 & 3.7 Flash Technical Report", url: "https://deepmind.google/technologies/gemini/" }
+    ],
     sections: [
       {
         title: "Gemini Flash Modellerinin Evrimi: Hız ve Akıl Yürütme Dengesi",
@@ -205,6 +235,17 @@ print(f"Güvenlik Skoru: {audit.security_score}/100")`
     readingTime: "7 dk",
     serviceHref: "/hizmetler/api-gelistirme",
     serviceAnchor: "Özel API ve protokol entegrasyonu çözümlerimizi inceleyin",
+    directAnswer: "Model Context Protocol (MCP), büyük dil modellerinin (LLM) yerel veritabanları, API'ler, dosya sistemleri ve geliştirici araçlarıyla güvenli ve standart bir şekilde iletişim kurmasını sağlayan açık kaynaklı bir protokoldür. Her model için ayrı entegrasyon yazmak yerine 'USB-C gibi' tek tip bir araç sunucusu (MCP Server) mimarisi sunar.",
+    keyTakeaways: [
+      "Standart Entegrasyon Katmanı: LLM ile PostgreSQL, GitHub, Slack veya yerel CLI araçları arasında tek tip JSON-RPC bağlantısı kurar.",
+      "Gelişmiş Güvenlik ve İzolasyon: Modelin erişebileceği kaynakları ve araç çalıştırma yetkilerini sınırlandırır.",
+      "IDE ve Ajan Uyumluluğu: Claude Desktop, Cursor, Claude Code ve modern agentic sistemlerde yerel olarak desteklenir."
+    ],
+    sourcesCited: [
+      { name: "Model Context Protocol Official Specification", url: "https://modelcontextprotocol.io/" },
+      { name: "Anthropic MCP Open Source Announcement", url: "https://www.anthropic.com/news/model-context-protocol" }
+    ],
+
     sections: [
       {
         title: "MCP Standardı Neden Geliştirildi?",
@@ -1012,6 +1053,16 @@ CMD ["gunicorn", "main:app", "-w", "4", "-k", "uvicorn.workers.UvicornWorker", "
     readingTime: "8 dk",
     serviceHref: "/hizmetler/web-scraping",
     serviceAnchor: "Crawl4AI ve LLM veri toplama çözümlerimizi inceleyin",
+    directAnswer: "Crawl4AI, büyük dil modelleri (LLM) ve RAG boru hatları için geliştirilmiş açık kaynaklı asenkron bir web kazıma motorudur. Ham HTML içindeki reklam, menü ve CSS gürültüsünü filtreleyerek token kullanımını %70'e kadar azaltır ve Playwright tabanlı headless tarayıcı desteğiyle dinamik JavaScript sayfalarından doğrudan saf Markdown ve yapılandırılmış JSON çıktısı üretir.",
+    keyTakeaways: [
+      "Fit-Markdown Algoritması: Sayfa gürültüsünü temizleyerek LLM token tüketimini ve gecikme süresini minimize eder.",
+      "Asenkron & Yüksek Hızlı: Saniyede onlarca URL'yi eşzamanlı olarak tarayabilen asenkron Python mimarisi sunar.",
+      "Yerleşik LLM Çıkarımı: OpenAI, Gemini veya yerel Ollama modelleriyle entegre olarak semantik JSON şeması çıkarabilir."
+    ],
+    sourcesCited: [
+      { name: "Crawl4AI GitHub Repository & Official Documentation", url: "https://github.com/unclecode/crawl4ai" },
+      { name: "Playwright Python Documentation", url: "https://playwright.dev/python/docs/intro" }
+    ],
     sections: [
       {
         title: "Crawl4AI Neden Standart Scraper'lardan Farklıdır?",
@@ -1052,6 +1103,17 @@ asyncio.run(main())`
     readingTime: "10 dk",
     serviceHref: "/hizmetler/web-scraping",
     serviceAnchor: "Anti-bot korumalı sitelerden veri toplama hizmetimiz",
+    directAnswer: "Playwright Stealth, headless Chrome tarayıcısının `navigator.webdriver` bayrağını, WebGL parmak izini, ses bağlamını (AudioContext) ve donanım kimliklerini maskeleyerek Cloudflare Turnstile ve DataDome gibi anti-bot kalkanlarını aşmayı sağlayan bir güvenlik atlatma tekniğidir. Gerçekçi TLS parmak izi (JA3/JA4) ve konut tipi (residential) proxy rotasyonu ile birleştirildiğinde tespit edilme oranını %87 oranında düşürür.",
+    keyTakeaways: [
+      "Tarayıcı Parmak İzi Maskeleme: Webdriver bayrağını kaldırır ve tutarlı Canvas/WebGL donanım kimlikleri simüle eder.",
+      "TLS & JA4 Uyumlaştırma: Python istemcilerinin TLS el sıkışmasını gerçek bir Google Chrome tarayıcısıyla eşleştirir.",
+      "İnsan Hareketi Simülasyonu: Fare hareketlerini Bezier eğrileriyle yumuşatarak bot tespit algoritmalarını atlatır."
+    ],
+    sourcesCited: [
+      { name: "Playwright Official Automation API", url: "https://playwright.dev/" },
+      { name: "FingerprintJS Browser Fingerprinting Research", url: "https://fingerprint.com/blog/" }
+    ],
+
     sections: [
       {
         title: "Bot Korumaları Bir Tarayıcıyı Nasıl Tespit Eder?",

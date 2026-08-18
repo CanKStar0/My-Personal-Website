@@ -11,6 +11,16 @@ export const blogPostsEn: BlogPost[] = [
     "readingTime": "8 min",
     "serviceHref": "/en/services/ai-automation",
     "serviceAnchor": "Explore AI agent integration and automation solutions",
+    "directAnswer": "Claude Code is an autonomous terminal-native coding agent developed by Anthropic. Unlike web-based chatbots, it runs directly in your CLI environment, ingests entire project file trees and git history as real-time context, and independently executes terminal commands, test suites, and git commits to resolve coding tasks.",
+    "keyTakeaways": [
+      "Terminal-Native Loop: Autonomously reads, modifies, tests, and validates code directly inside the developer CLI without GUI overhead.",
+      "Smart Context Pruning: Reduces token consumption by up to 60% across large enterprise repositories.",
+      "AGENTS.md & CLAUDE.md Guardrails: Ingests repository-level architecture rules to maintain strict human-in-the-loop governance."
+    ],
+    "sourcesCited": [
+      { "name": "Anthropic Claude Code Official Documentation", "url": "https://docs.anthropic.com/en/docs/agents-and-tools/claude-code" },
+      { "name": "Building Effective Agents (Anthropic Research)", "url": "https://www.anthropic.com/research/building-effective-agents" }
+    ],
     "sections": [
       {
         "title": "What Is Claude Code and How Does It Differ from Classic Chatbots?",
@@ -84,6 +94,16 @@ export const blogPostsEn: BlogPost[] = [
     "readingTime": "9 min",
     "serviceHref": "/en/services/ai-automation",
     "serviceAnchor": "Explore Gemini and LLM model integration services",
+    "directAnswer": "Gemini 3.7 Flash and 2.0 Flash are Google's flagship high-throughput models featuring a 1M+ token context window, native multimodal capabilities, and dynamic Thinking Mode. Capable of generating 100+ tokens per second, they provide up to 10x cost savings in live audio streaming, enterprise codebase indexing, and high-volume structured JSON generation.",
+    "keyTakeaways": [
+      "1M+ Context Window: Ingests full enterprise codebases or thousand-page technical manuals in a single prompt with zero context fragmentation.",
+      "Dynamic Thinking Mode: Bridges low-latency chat and complex multi-step reasoning with adjustable reasoning budgets.",
+      "Multimodal Live API: Enables bidirectional, sub-second low-latency voice and video streaming over WebSockets."
+    ],
+    "sourcesCited": [
+      { "name": "Google AI Gemini Developer Documentation", "url": "https://ai.google.dev/gemini-api/docs" },
+      { "name": "Gemini 2.0 & 3.7 Flash Technical Overview", "url": "https://deepmind.google/technologies/gemini/" }
+    ],
     "sections": [
       {
         "title": "Evolution of Gemini Flash: Speed Meets Hybrid Reasoning",
@@ -133,6 +153,16 @@ export const blogPostsEn: BlogPost[] = [
     "readingTime": "7 min",
     "serviceHref": "/en/services/api-development",
     "serviceAnchor": "Explore custom API and protocol integration solutions",
+    "directAnswer": "Model Context Protocol (MCP) is an open-source standard created by Anthropic that allows large language models (LLMs) to securely access local databases, internal APIs, file systems, and development tools. It functions like a universal 'USB-C port for AI', eliminating bespoke integrations with a standardized JSON-RPC server architecture.",
+    "keyTakeaways": [
+      "Universal Integration Protocol: Standardizes communication between LLMs and PostgreSQL, GitHub, Slack, or local tools.",
+      "Strict Isolation & Security: Enforces granular permission boundaries on which tools and local resources models can invoke.",
+      "Widespread Ecosystem Adoption: Supported natively in Claude Desktop, Cursor, Claude Code, and open-source agent runtimes."
+    ],
+    "sourcesCited": [
+      { "name": "Model Context Protocol Official Specification", "url": "https://modelcontextprotocol.io/" },
+      { "name": "Anthropic MCP Open Source Announcement", "url": "https://www.anthropic.com/news/model-context-protocol" }
+    ],
     "sections": [
       {
         "title": "Why Was the MCP Standard Created?",

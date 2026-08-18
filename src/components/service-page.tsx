@@ -36,10 +36,16 @@ export function ServicePage({ service, locale = "tr", path = `/hizmetler/${servi
     name: service.title,
     description: service.description,
     url: `${SITE_URL}${path}`,
-    provider: { "@type": "Person", name: SITE_NAME, url: SITE_URL },
-    areaServed: "TR",
+    provider: {
+      "@type": "Person",
+      "@id": `${SITE_URL}/#person`,
+      name: SITE_NAME,
+      url: SITE_URL,
+    },
+    areaServed: "Global",
     inLanguage: isEnglish ? "en" : "tr",
   };
+
 
   return (
     <>

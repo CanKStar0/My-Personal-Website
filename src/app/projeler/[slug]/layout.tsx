@@ -57,7 +57,12 @@ export default async function ProjectLayout({ children, params }: {
         description: project.description,
         url: `${SITE_URL}/projeler/${slug}`,
         image: `${SITE_URL}${project.image}`,
-        creator: { "@type": "Person", name: SITE_NAME, url: SITE_URL },
+        creator: {
+          "@type": "Person",
+          "@id": `${SITE_URL}/#person`,
+          name: SITE_NAME,
+          url: SITE_URL,
+        },
         inLanguage: "tr-TR",
       }} />
       <JsonLd data={{

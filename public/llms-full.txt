@@ -1,0 +1,73 @@
+# Canpolat Kaya - Full Technical Architecture, Services & Documentation
+
+## Executive Overview
+Canpolat Kaya is a Full-Stack Developer & AI Automation Specialist who builds resilient web scraping systems, enterprise LLM workflow automations, custom software architectures, and high-performance Next.js web applications.
+
+- **Website**: https://canpolatkaya.com
+- **GitHub**: https://github.com/CanKStar0
+- **LinkedIn**: https://www.linkedin.com/in/canpolat-kaya/
+- **Primary Tech Stack**: Python (FastAPI, Playwright, BeautifulSoup, Celery), TypeScript/JavaScript (Next.js 16, React 19, Node.js), Databases & Caching (PostgreSQL, MongoDB, Redis), Cloud & Containers (Docker, Linux).
+
+---
+
+## 1. Web Scraping & Autonomous Data Collection Systems
+### Problem Scope
+Collecting public web data at scale requires dealing with dynamic single-page applications, client-side rendering, anti-bot mechanisms (Cloudflare Turnstile, PerimeterX/Human Security, DataDome), rate limits, IP bans, and schema alterations.
+
+### Architectural Solutions
+- **Browser Automation**: Playwright and Puppeteer orchestrations for JavaScript-heavy targets, dynamic form filling, infinite scroll handling, and shadow DOM parsing.
+- **Headless & HTTP Clients**: High-throughput asynchronous HTTP clients (httpx, aiohttp, requests) for low-overhead REST/JSON data ingestion.
+- **Anti-Bot Mitigation**: Residential/mobile proxy pool rotation, TLS fingerprint spoofing, user-agent randomization, ML-assisted human-like mouse cursor movements, and intelligent backoff algorithms.
+- **Data Pipeline**: Raw data extraction -> schema validation -> deduplication -> PostgreSQL / MongoDB persistence -> Redis caching -> REST API delivery.
+
+---
+
+## 2. Artificial Intelligence & Agentic Automations
+### Problem Scope
+Modern businesses require generative AI to be integrated safely with their proprietary data and tools without hallucinations, infinite token loops, or security vulnerabilities.
+
+### Architectural Solutions
+- **Agent Workflows**: Deterministic multi-step reasoning chains with human-in-the-loop safeguards using Python, FastAPI, and leading LLM APIs.
+- **Retrieval-Augmented Generation (RAG)**: Chunking strategies, semantic embedding vector search (Pgvector, Pinecone), hybrid keyword-dense rerankers, and citation-backed knowledge retrieval.
+- **Operational Automations**: Automated document parsing, classification pipelines, intelligent data enrichment, and seamless API bridges between ERP/CRM platforms and AI models.
+
+---
+
+## 3. Custom Software & Full-Stack Systems
+### Problem Scope
+Off-the-shelf software often fails to adapt to specific business logic, requiring custom-tailored architectures that scale cleanly without technical debt.
+
+### Architectural Solutions
+- **Frontend Architecture**: Modern React 19 and Next.js 16 with Server Components, edge caching, zero-layout-shift UI, accessibility, and Crimson-Noir design systems.
+- **Backend Services**: Asynchronous FastAPI (Python) and Express/NestJS (Node.js) microservices with strict Pydantic/Zod schema validation.
+- **Database Engineering**: Normalized relational PostgreSQL schemas, indexed MongoDB document stores, and Redis cache-aside caching layers.
+
+---
+
+## 4. Featured Case Studies & Production Proofs
+
+### Haber Portalı
+- **Domain**: Cloud-based autonomous news aggregation engine and DaaS platform.
+- **Stack**: Next.js, Node.js, Redis, PostgreSQL, Playwright.
+- **Key Capabilities**: 24/7 autonomous feed scraping, automated deduplication, topic clustering, sub-second API responses via Redis cache.
+
+### BIST AI
+- **Domain**: Real-time financial analytics dashboard for Borsa Istanbul equities.
+- **Stack**: Python, FastAPI, Redis, PostgreSQL, Docker, Machine Learning.
+- **Key Capabilities**: High-frequency ticker data ingestion, validation pipelines, automated technical and fundamental indicator scoring.
+
+### EcoTrace
+- **Domain**: Open-source lightweight carbon emission and energy consumption tracker for Python code.
+- **Stack**: Python, Open Source.
+- **Repository**: https://github.com/CanKStar0/EcoTrace
+
+### Zillow-Stealth-Scraper
+- **Domain**: Enterprise real estate scraper with ML ghost cursor movements and anti-bot mitigation.
+- **Stack**: JavaScript, Playwright, Machine Learning heuristics.
+
+---
+
+## 5. Contact & Consulting
+For technical consultations, custom software architecture inquiries, or automated scraping solutions:
+- **Contact Page**: https://canpolatkaya.com/iletisim
+- **Email**: canpolatkaya4@gmail.com

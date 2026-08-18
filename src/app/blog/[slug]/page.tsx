@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { ArrowRight, Clock, HelpCircle, Info, Lightbulb, AlertTriangle } from "lucide-react";
+import { ArrowRight, Clock, HelpCircle, Info, Lightbulb, AlertTriangle, Bookmark, CheckCircle2, ExternalLink } from "lucide-react";
 import { Breadcrumbs } from "@/components/breadcrumbs";
 import { JsonLd } from "@/components/json-ld";
 import { Navbar } from "@/components/navbar";
@@ -44,8 +44,18 @@ export default async function BlogPostPage({ params }: Props) {
       datePublished: post.publishedAt,
       dateModified: post.modifiedAt,
       mainEntityOfPage: `${SITE_URL}/blog/${post.slug}`,
-      author: { "@type": "Person", name: SITE_NAME, url: SITE_URL },
-      publisher: { "@type": "Person", name: SITE_NAME, url: SITE_URL },
+      author: {
+        "@type": "Person",
+        "@id": `${SITE_URL}/#person`,
+        name: SITE_NAME,
+        url: SITE_URL,
+      },
+      publisher: {
+        "@type": "Person",
+        "@id": `${SITE_URL}/#person`,
+        name: SITE_NAME,
+        url: SITE_URL,
+      },
       inLanguage: "tr-TR",
     }
   ];
@@ -97,6 +107,35 @@ export default async function BlogPostPage({ params }: Props) {
               </span>
             </div>
           </header>
+
+          {/* GEO / RAG BLUF Doğrudan Çözüm Özeti */}
+          {post.directAnswer && (
+            <section
+              aria-label="Doğrudan Çözüm ve Özet"
+              className="my-10 rounded-3xl border border-brand-red/30 bg-brand-red/[0.03] p-6 md:p-8 backdrop-blur-xs dark:border-red-900/40 dark:bg-red-950/20"
+            >
+              <div className="flex items-center gap-2 text-brand-red dark:text-rose-400">
+                <Bookmark className="h-5 w-5" />
+                <h2 className="text-xs font-bold uppercase tracking-[0.2em]">Özet & Doğrudan Çözüm (TL;DR)</h2>
+              </div>
+              <p className="mt-3.5 text-base font-medium leading-relaxed text-foreground md:text-lg">
+                {post.directAnswer}
+              </p>
+              {post.keyTakeaways && post.keyTakeaways.length > 0 && (
+                <div className="mt-6 border-t border-brand-red/15 pt-5 dark:border-red-900/30">
+                  <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">Önemli Çıkarımlar:</p>
+                  <ul className="mt-3 space-y-2.5 text-sm text-foreground/90">
+                    {post.keyTakeaways.map((takeaway, idx) => (
+                      <li key={idx} className="flex items-start gap-2.5">
+                        <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-brand-red dark:text-rose-400" />
+                        <span>{takeaway}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+            </section>
+          )}
 
           <div className="space-y-12 py-12">
             {post.sections.map((section) => (
@@ -165,6 +204,31 @@ export default async function BlogPostPage({ params }: Props) {
                   </div>
                 ))}
               </div>
+            </div>
+          )}
+
+          {/* Otoriter Kaynaklar ve Referanslar (GEO Cite Sources) */}
+          {post.sourcesCited && post.sourcesCited.length > 0 && (
+            <div className="my-10 rounded-3xl border border-border/80 bg-card/30 p-6 md:p-8">
+              <div className="flex items-center gap-2 text-muted-foreground">
+                <ExternalLink className="h-4 w-4 text-brand-red dark:text-rose-400" />
+                <h3 className="text-xs font-bold uppercase tracking-[0.2em] text-foreground">Doğrulanmış Kaynaklar ve Dokümantasyon</h3>
+              </div>
+              <ul className="mt-4 divide-y divide-border/40 text-sm">
+                {post.sourcesCited.map((source, idx) => (
+                  <li key={idx} className="flex flex-wrap items-center justify-between gap-3 py-3">
+                    <span className="font-medium text-foreground">{source.name}</span>
+                    <a
+                      href={source.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 text-xs font-semibold text-brand-red hover:underline dark:text-rose-400"
+                    >
+                      Resmi Doküman <ExternalLink className="h-3.5 w-3.5" />
+                    </a>
+                  </li>
+                ))}
+              </ul>
             </div>
           )}
 

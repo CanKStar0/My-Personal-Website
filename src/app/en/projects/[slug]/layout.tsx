@@ -17,6 +17,35 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function EnglishProjectLayout({ children, params }: { children: React.ReactNode; params: Promise<{ slug: string }> }) {
   const { slug } = await params; const project = projects[slug]; if (!project) return children;
-  return <><JsonLd data={{ "@context": "https://schema.org", "@type": "CreativeWork", name: project.title, description: project.description, url: `${SITE_URL}/en/projects/${slug}`, image: `${SITE_URL}${project.image}`, creator: { "@type": "Person", name: SITE_NAME, url: SITE_URL }, inLanguage: "en" }} /><JsonLd data={{ "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [{ "@type": "ListItem", position: 1, name: "Home", item: `${SITE_URL}/en` }, { "@type": "ListItem", position: 2, name: "Projects", item: `${SITE_URL}/en/projects` }, { "@type": "ListItem", position: 3, name: project.title, item: `${SITE_URL}/en/projects/${slug}` }] }} />{children}</>;
+  return (
+    <>
+      <JsonLd data={{
+        "@context": "https://schema.org",
+        "@type": "CreativeWork",
+        name: project.title,
+        description: project.description,
+        url: `${SITE_URL}/en/projects/${slug}`,
+        image: `${SITE_URL}${project.image}`,
+        creator: {
+          "@type": "Person",
+          "@id": `${SITE_URL}/#person`,
+          name: SITE_NAME,
+          url: SITE_URL,
+        },
+        inLanguage: "en",
+      }} />
+      <JsonLd data={{
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Home", item: `${SITE_URL}/en` },
+          { "@type": "ListItem", position: 2, name: "Projects", item: `${SITE_URL}/en/projects` },
+          { "@type": "ListItem", position: 3, name: project.title, item: `${SITE_URL}/en/projects/${slug}` },
+        ],
+      }} />
+      {children}
+    </>
+  );
 }
+
 

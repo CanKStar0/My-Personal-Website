@@ -1,0 +1,31 @@
+# Canpolat Kaya - Full-Stack Developer & AI Automation Specialist
+
+> Canpolat Kaya specializes in high-performance web scraping architectures, custom AI automations, scalable REST APIs, and production-grade Next.js web applications.
+
+## Core Technical Services
+
+- [Web Scraping & Data Harvesting Systems](https://canpolatkaya.com/hizmetler/web-scraping): Autonomous data collection, Playwright/Python browser automation, proxy rotation, anti-bot bypass strategies (PerimeterX, Cloudflare), and structured data pipelines.
+- [AI Automation & Agent Workflows](https://canpolatkaya.com/hizmetler/yapay-zeka-otomasyon): Enterprise LLM integrations, deterministic AI agent workflows, business process automations, and custom API-driven intelligence layers.
+- [Custom Software Development](https://canpolatkaya.com/hizmetler/ozel-yazilim-gelistirme): Tailored web applications, internal operational dashboards, robust backend microservices, and end-to-end software architectures.
+- [High-Performance API Development](https://canpolatkaya.com/hizmetler/api-gelistirme): Production RESTful APIs built with Python FastAPI and Node.js, Redis caching layers, PostgreSQL/MongoDB schemas, and secure authentication.
+- [Modern Next.js Web Development](https://canpolatkaya.com/hizmetler/nextjs-gelistirme): Accessible, lightning-fast, and GEO/SEO-optimized web applications with Next.js App Router, React 19, and TypeScript.
+
+## Featured Portfolio Projects
+
+- [Haber Portalı](https://canpolatkaya.com/projeler/haber-portali): Cloud-based autonomous news aggregation engine and DaaS (Data as a Service) platform built with Next.js, Node.js, Redis, and PostgreSQL.
+- [BIST AI](https://canpolatkaya.com/projeler/bist-ai): Real-time stock market data analytics platform processing Borsa Istanbul ticker data with machine learning scoring using Python, FastAPI, Docker, and Redis.
+- [EcoTrace](https://github.com/CanKStar0/EcoTrace): Open-source Python library to track code execution carbon emissions and energy consumption with zero configuration.
+- [Zillow-Stealth-Scraper](https://github.com/CanKStar0): JavaScript/Playwright scraper engine featuring ML-based ghost cursor movements and anti-bot mitigation.
+
+## Knowledge Base & Architecture Guides
+
+- [Web Scraping Architecture & Anti-Bot Bypass](https://canpolatkaya.com/blog): Comprehensive technical guides on Playwright, anti-bot handling, proxy distribution, and scalable scraping pipelines.
+- [AI Integration & Agentic Systems](https://canpolatkaya.com/blog): Architecture blueprints for connecting large language models (LLMs) to enterprise databases and microservices.
+- [Next.js & Modern Frontend Engineering](https://canpolatkaya.com/blog): Production performance optimization, React 19 Server Components, and Generative Engine Optimization (GEO).
+
+## Developer Profile & Contact
+
+- [Official Website](https://canpolatkaya.com): Canpolat Kaya's primary portfolio and technical publication platform.
+- [GitHub Profile](https://github.com/CanKStar0): Open-source repositories, developer tools, and architectural codebases.
+- [LinkedIn Profile](https://www.linkedin.com/in/canpolat-kaya/): Professional background, technical consulting, and enterprise project engagements.
+- [Direct Contact & Project Inquiries](https://canpolatkaya.com/iletisim): Consultation on custom software, scraping pipelines, and AI automation systems.
