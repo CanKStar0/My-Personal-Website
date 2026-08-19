@@ -16,42 +16,51 @@ interface GitHubRepo {
   fork: boolean;
 }
 
-// Statik fallback — API erişilemez olsa bile her zaman görünür
+// Statik fallback — API erişilemez veya rate-limit olsa bile her zaman en çok yıldız alan kendi repoları görünür
 const STATIC_REPOS: GitHubRepo[] = [
   {
     id: 1,
-    name: "EcoTrace",
-    description: "A lightweight Python library for tracking carbon emissions and energy consumption of your code — with zero configuration.",
-    stargazers_count: 3,
-    html_url: "https://github.com/CanKStar0/EcoTrace",
-    language: "Python",
-    fork: false,
-  },
-  {
-    id: 2,
-    name: "My-Personal-Website",
-    description: "My personal portfolio built with Next.js 16, React 19, Tailwind CSS v4 and Framer Motion. Crimson-Noir design system with TR/EN i18n.",
-    stargazers_count: 1,
-    html_url: "https://github.com/CanKStar0/My-Personal-Website",
+    name: "Free-API",
+    description: "Free-API is a modern web application that helps developers discover free APIs for their projects. Whether you're building a weather app, a crypto tracker, or a gaming dashboard, you'll find the right API here.",
+    stargazers_count: 33,
+    html_url: "https://github.com/CanKStar0/Free-API",
     language: "TypeScript",
     fork: false,
   },
   {
+    id: 2,
+    name: "Akakce-Scraper",
+    description: "Akakce.com'dan ürün fiyat geçmişi verilerini otomatik olarak toplayan güçlü bir scraper. Headless Chrome ile çalışır ve anti-bot korumasını bypass eder. Başarılı bir şekilde ML yapabilirsiniz.",
+    stargazers_count: 7,
+    html_url: "https://github.com/CanKStar0/Akakce-Scraper",
+    language: "JavaScript",
+    fork: false,
+  },
+  {
     id: 3,
-    name: "Zillow-Stealth-Scraper",
-    description: "Autonomous Zillow scraper with ML-based ghost cursor movements, PerimeterX bypass, and intelligent pagination.",
-    stargazers_count: 1,
-    html_url: "https://github.com/CanKStar0",
+    name: "Cosmic-Explorer",
+    description: "Interaktif bir astronomi deneyimi - Three.js ile yapılmış profesyonel bir 3D gezegen görselleştirme uygulaması.",
+    stargazers_count: 6,
+    html_url: "https://github.com/CanKStar0/Cosmic-Explorer",
     language: "JavaScript",
     fork: false,
   },
   {
     id: 4,
-    name: "BIST-AI",
-    description: "Real-time Borsa Istanbul analytics dashboard powered by Python, FastAPI, Redis and Next.js with ML-based scoring.",
-    stargazers_count: 0,
-    html_url: "https://github.com/CanKStar0",
-    language: "Python",
+    name: "My-Personal-Website",
+    description: "Kurumsal tasarımda zarif renk tonları ve framer animasyonlarıyla freelance işlerde beni tanıtacak kişisel websitesi.",
+    stargazers_count: 5,
+    html_url: "https://github.com/CanKStar0/My-Personal-Website",
+    language: "TypeScript",
+    fork: false,
+  },
+  {
+    id: 5,
+    name: "AI-Vision-Scrape",
+    description: "Sürekli değişen DOM yapısıyla korunan websitelerinden prompt ve URL vererek kesintisiz veri toplayan akıllı web scraping SDK'sı.",
+    stargazers_count: 1,
+    html_url: "https://github.com/CanKStar0/AI-Vision-Scrape",
+    language: "JavaScript",
     fork: false,
   },
 ];
@@ -63,8 +72,8 @@ export function GithubRepos() {
   useEffect(() => {
     const controller = new AbortController();
 
-    // Sessizce dene — başarılı olursa canlı veriyle güncelle, olmazsa statik kalır
-    fetch("https://api.github.com/users/CanKStar0/repos", {
+    // Canlı GitHub verisini çek — en çok yıldız alan kendi repolarını (fork olmayanları) en başa koy
+    fetch("https://api.github.com/users/CanKStar0/repos?per_page=100", {
       signal: controller.signal,
     })
       .then((res) => {
@@ -72,14 +81,15 @@ export function GithubRepos() {
         return res.json();
       })
       .then((data: GitHubRepo[]) => {
+        if (!Array.isArray(data)) return;
         const topRepos = data
           .filter((repo) => !repo.fork)
           .sort((a, b) => b.stargazers_count - a.stargazers_count)
-          .slice(0, 4);
+          .slice(0, 6);
         if (topRepos.length > 0) setRepos(topRepos);
       })
       .catch(() => {
-        // Sessiz başarısız — statik veri zaten görünüyor
+        // Sessiz fallback — STATIC_REPOS zaten en çok yıldız alan kendi repoları
       });
 
     return () => controller.abort();
@@ -133,4 +143,3 @@ export function GithubRepos() {
     </div>
   );
 }
-
