@@ -8,7 +8,7 @@ export const blogPostsEn: BlogPost[] = [
     "publishedAt": "2026-08-17",
     "modifiedAt": "2026-08-17",
     "category": "Agentic Coding",
-    "readingTime": "8 min",
+    "readingTime": "3 min",
     "serviceHref": "/en/services/ai-automation",
     "serviceAnchor": "Explore AI agent integration and automation solutions",
     "directAnswer": "Claude Code is an autonomous terminal-native coding agent developed by Anthropic. Unlike web-based chatbots, it runs directly in your CLI environment, ingests entire project file trees and git history as real-time context, and independently executes terminal commands, test suites, and git commits to resolve coding tasks.",
@@ -91,7 +91,7 @@ export const blogPostsEn: BlogPost[] = [
     "publishedAt": "2026-08-17",
     "modifiedAt": "2026-08-17",
     "category": "LLM & AI Models",
-    "readingTime": "9 min",
+    "readingTime": "3 min",
     "serviceHref": "/en/services/ai-automation",
     "serviceAnchor": "Explore Gemini and LLM model integration services",
     "directAnswer": "Gemini 3.7 Flash and 2.0 Flash are Google's flagship high-throughput models featuring a 1M+ token context window, native multimodal capabilities, and dynamic Thinking Mode. Capable of generating 100+ tokens per second, they provide up to 10x cost savings in live audio streaming, enterprise codebase indexing, and high-volume structured JSON generation.",
@@ -150,7 +150,7 @@ export const blogPostsEn: BlogPost[] = [
     "publishedAt": "2026-08-17",
     "modifiedAt": "2026-08-17",
     "category": "AI Architecture",
-    "readingTime": "7 min",
+    "readingTime": "3 min",
     "serviceHref": "/en/services/api-development",
     "serviceAnchor": "Explore custom API and protocol integration solutions",
     "directAnswer": "Model Context Protocol (MCP) is an open-source standard created by Anthropic that allows large language models (LLMs) to securely access local databases, internal APIs, file systems, and development tools. It functions like a universal 'USB-C port for AI', eliminating bespoke integrations with a standardized JSON-RPC server architecture.",
@@ -197,7 +197,7 @@ export const blogPostsEn: BlogPost[] = [
     "publishedAt": "2026-08-17",
     "modifiedAt": "2026-08-17",
     "category": "Comparisons",
-    "readingTime": "8 min",
+    "readingTime": "3 min",
     "serviceHref": "/en/services/custom-software-development",
     "serviceAnchor": "Explore modern software architecture and tooling consulting",
     "sections": [
@@ -222,7 +222,7 @@ export const blogPostsEn: BlogPost[] = [
     "publishedAt": "2026-08-17",
     "modifiedAt": "2026-08-17",
     "category": "API & Backend",
-    "readingTime": "9 min",
+    "readingTime": "3 min",
     "serviceHref": "/en/services/api-development",
     "serviceAnchor": "Explore high-performance FastAPI backend solutions",
     "sections": [
@@ -246,7 +246,7 @@ export const blogPostsEn: BlogPost[] = [
     "publishedAt": "2026-08-17",
     "modifiedAt": "2026-08-17",
     "category": "Agentic Coding",
-    "readingTime": "7 min",
+    "readingTime": "3 min",
     "serviceHref": "/en/services/ai-automation",
     "serviceAnchor": "Learn how we build autonomous agentic workflows",
     "sections": [
@@ -266,7 +266,7 @@ export const blogPostsEn: BlogPost[] = [
     "publishedAt": "2026-08-17",
     "modifiedAt": "2026-08-17",
     "category": "LLM & AI Models",
-    "readingTime": "8 min",
+    "readingTime": "3 min",
     "serviceHref": "/en/services/ai-automation",
     "serviceAnchor": "Explore reasoning model integrations for complex workflows",
     "sections": [
@@ -285,7 +285,7 @@ export const blogPostsEn: BlogPost[] = [
     "publishedAt": "2026-08-17",
     "modifiedAt": "2026-08-17",
     "category": "Web Scraping",
-    "readingTime": "9 min",
+    "readingTime": "3 min",
     "serviceHref": "/en/services/web-scraping",
     "serviceAnchor": "Explore resilient AI-powered web scraping solutions",
     "sections": [
@@ -309,7 +309,7 @@ export const blogPostsEn: BlogPost[] = [
     "publishedAt": "2026-08-17",
     "modifiedAt": "2026-08-17",
     "category": "Full-Stack Web",
-    "readingTime": "9 min",
+    "readingTime": "3 min",
     "serviceHref": "/en/services/custom-software-development",
     "serviceAnchor": "Explore modern Next.js 15 full-stack development",
     "sections": [
@@ -328,7 +328,7 @@ export const blogPostsEn: BlogPost[] = [
     "publishedAt": "2026-08-17",
     "modifiedAt": "2026-08-17",
     "category": "AI Automation",
-    "readingTime": "10 min",
+    "readingTime": "4 min",
     "serviceHref": "/en/services/ai-automation",
     "serviceAnchor": "Explore multi-agent system architecture and implementation",
     "sections": [
@@ -347,7 +347,7 @@ export const blogPostsEn: BlogPost[] = [
     "publishedAt": "2026-08-17",
     "modifiedAt": "2026-08-17",
     "category": "LLM & AI Models",
-    "readingTime": "10 min",
+    "readingTime": "4 min",
     "serviceHref": "/en/services/ai-automation",
     "serviceAnchor": "Explore Gemini reasoning integration services",
     "sections": [
@@ -371,7 +371,7 @@ export const blogPostsEn: BlogPost[] = [
     "publishedAt": "2026-08-17",
     "modifiedAt": "2026-08-17",
     "category": "LLM & AI Models",
-    "readingTime": "9 min",
+    "readingTime": "3 min",
     "serviceHref": "/en/services/ai-automation",
     "serviceAnchor": "Explore Claude 5 and autonomous AI consulting",
     "sections": [
@@ -391,7 +391,7 @@ export const blogPostsEn: BlogPost[] = [
     "publishedAt": "2026-08-17",
     "modifiedAt": "2026-08-17",
     "category": "AI Infrastructure",
-    "readingTime": "11 min",
+    "readingTime": "4 min",
     "serviceHref": "/en/services/custom-software-development",
     "serviceAnchor": "Explore private on-premise AI deployment solutions",
     "sections": [
@@ -415,7 +415,7 @@ export const blogPostsEn: BlogPost[] = [
     "publishedAt": "2026-08-17",
     "modifiedAt": "2026-08-17",
     "category": "API & Backend",
-    "readingTime": "8 min",
+    "readingTime": "3 min",
     "serviceHref": "/en/services/api-development",
     "serviceAnchor": "Explore structured backend AI integrations",
     "sections": [
@@ -439,7 +439,7 @@ export const blogPostsEn: BlogPost[] = [
     "publishedAt": "2026-08-17",
     "modifiedAt": "2026-08-17",
     "category": "AI Architecture",
-    "readingTime": "7 min",
+    "readingTime": "3 min",
     "serviceHref": "/en/services/ai-automation",
     "serviceAnchor": "Explore enterprise LLM FinOps and cost optimization",
     "sections": [
@@ -458,7 +458,7 @@ export const blogPostsEn: BlogPost[] = [
     "publishedAt": "2026-08-17",
     "modifiedAt": "2026-08-17",
     "category": "AI Infrastructure",
-    "readingTime": "8 min",
+    "readingTime": "3 min",
     "serviceHref": "/en/services/api-development",
     "serviceAnchor": "Explore multi-model proxy architecture solutions",
     "sections": [
@@ -477,7 +477,7 @@ export const blogPostsEn: BlogPost[] = [
     "publishedAt": "2026-08-17",
     "modifiedAt": "2026-08-17",
     "category": "AI Architecture",
-    "readingTime": "9 min",
+    "readingTime": "3 min",
     "serviceHref": "/en/services/api-development",
     "serviceAnchor": "Explore tool integration and function calling architecture",
     "sections": [
@@ -496,7 +496,7 @@ export const blogPostsEn: BlogPost[] = [
     "publishedAt": "2026-08-17",
     "modifiedAt": "2026-08-17",
     "category": "Comparisons",
-    "readingTime": "9 min",
+    "readingTime": "3 min",
     "serviceHref": "/en/services/ai-automation",
     "serviceAnchor": "Explore enterprise RAG and search architecture",
     "sections": [
@@ -515,7 +515,7 @@ export const blogPostsEn: BlogPost[] = [
     "publishedAt": "2026-08-17",
     "modifiedAt": "2026-08-17",
     "category": "AI Architecture",
-    "readingTime": "10 min",
+    "readingTime": "4 min",
     "serviceHref": "/en/services/ai-automation",
     "serviceAnchor": "Explore persistent agent memory systems",
     "sections": [
@@ -534,7 +534,7 @@ export const blogPostsEn: BlogPost[] = [
     "publishedAt": "2026-08-17",
     "modifiedAt": "2026-08-17",
     "category": "AI Infrastructure",
-    "readingTime": "9 min",
+    "readingTime": "3 min",
     "serviceHref": "/en/services/custom-software-development",
     "serviceAnchor": "Explore AI testing and evaluation pipelines",
     "sections": [
@@ -553,7 +553,7 @@ export const blogPostsEn: BlogPost[] = [
     "publishedAt": "2026-08-17",
     "modifiedAt": "2026-08-17",
     "category": "API & Backend",
-    "readingTime": "9 min",
+    "readingTime": "3 min",
     "serviceHref": "/en/services/api-development",
     "serviceAnchor": "Explore high-concurrency FastAPI backend solutions",
     "sections": [
@@ -584,7 +584,7 @@ export const blogPostsEn: BlogPost[] = [
     "publishedAt": "2026-08-17",
     "modifiedAt": "2026-08-17",
     "category": "API & Backend",
-    "readingTime": "8 min",
+    "readingTime": "3 min",
     "serviceHref": "/en/services/api-development",
     "serviceAnchor": "Explore clean backend architecture services",
     "sections": [
@@ -608,7 +608,7 @@ export const blogPostsEn: BlogPost[] = [
     "publishedAt": "2026-08-17",
     "modifiedAt": "2026-08-17",
     "category": "API & Backend",
-    "readingTime": "8 min",
+    "readingTime": "3 min",
     "serviceHref": "/en/services/api-development",
     "serviceAnchor": "Explore robust data validation and backend architecture",
     "sections": [
@@ -632,7 +632,7 @@ export const blogPostsEn: BlogPost[] = [
     "publishedAt": "2026-08-17",
     "modifiedAt": "2026-08-17",
     "category": "API & Backend",
-    "readingTime": "9 min",
+    "readingTime": "3 min",
     "serviceHref": "/en/services/api-development",
     "serviceAnchor": "Explore API security and rate-limiting infrastructure",
     "sections": [
@@ -651,7 +651,7 @@ export const blogPostsEn: BlogPost[] = [
     "publishedAt": "2026-08-17",
     "modifiedAt": "2026-08-17",
     "category": "Comparisons",
-    "readingTime": "8 min",
+    "readingTime": "3 min",
     "serviceHref": "/en/services/custom-software-development",
     "serviceAnchor": "Explore distributed queue and async backend engineering",
     "sections": [
@@ -671,7 +671,7 @@ export const blogPostsEn: BlogPost[] = [
     "publishedAt": "2026-08-17",
     "modifiedAt": "2026-08-17",
     "category": "API & Backend",
-    "readingTime": "8 min",
+    "readingTime": "3 min",
     "serviceHref": "/en/services/api-development",
     "serviceAnchor": "Explore real-time streaming backend solutions",
     "sections": [
@@ -690,7 +690,7 @@ export const blogPostsEn: BlogPost[] = [
     "publishedAt": "2026-08-17",
     "modifiedAt": "2026-08-17",
     "category": "API & Backend",
-    "readingTime": "10 min",
+    "readingTime": "4 min",
     "serviceHref": "/en/services/api-development",
     "serviceAnchor": "Explore enterprise authentication and security architecture",
     "sections": [
@@ -709,7 +709,7 @@ export const blogPostsEn: BlogPost[] = [
     "publishedAt": "2026-08-17",
     "modifiedAt": "2026-08-17",
     "category": "API & Backend",
-    "readingTime": "9 min",
+    "readingTime": "3 min",
     "serviceHref": "/en/services/api-development",
     "serviceAnchor": "Explore PostgreSQL and asynchronous ORM architecture",
     "sections": [
@@ -733,7 +733,7 @@ export const blogPostsEn: BlogPost[] = [
     "publishedAt": "2026-08-17",
     "modifiedAt": "2026-08-17",
     "category": "DevOps & Infrastructure",
-    "readingTime": "9 min",
+    "readingTime": "3 min",
     "serviceHref": "/en/services/custom-software-development",
     "serviceAnchor": "Explore containerized backend infrastructure solutions",
     "sections": [
@@ -757,7 +757,7 @@ export const blogPostsEn: BlogPost[] = [
     "publishedAt": "2026-08-17",
     "modifiedAt": "2026-08-17",
     "category": "DevOps & Infrastructure",
-    "readingTime": "10 min",
+    "readingTime": "4 min",
     "serviceHref": "/en/services/api-development",
     "serviceAnchor": "Explore system observability and performance telemetry",
     "sections": [
@@ -776,7 +776,7 @@ export const blogPostsEn: BlogPost[] = [
     "publishedAt": "2026-08-17",
     "modifiedAt": "2026-08-17",
     "category": "Web Scraping",
-    "readingTime": "9 min",
+    "readingTime": "3 min",
     "serviceHref": "/en/services/web-scraping",
     "serviceAnchor": "Explore Crawl4AI and LLM data extraction solutions",
     "sections": [
@@ -807,7 +807,7 @@ export const blogPostsEn: BlogPost[] = [
     "publishedAt": "2026-08-17",
     "modifiedAt": "2026-08-17",
     "category": "Web Scraping",
-    "readingTime": "10 min",
+    "readingTime": "4 min",
     "serviceHref": "/en/services/web-scraping",
     "serviceAnchor": "Explore anti-bot scraping solutions for protected targets",
     "sections": [
@@ -831,7 +831,7 @@ export const blogPostsEn: BlogPost[] = [
     "publishedAt": "2026-08-17",
     "modifiedAt": "2026-08-17",
     "category": "Web Scraping",
-    "readingTime": "8 min",
+    "readingTime": "3 min",
     "serviceHref": "/en/services/web-scraping",
     "serviceAnchor": "Explore cloud browser infrastructure and scaling services",
     "sections": [
@@ -850,7 +850,7 @@ export const blogPostsEn: BlogPost[] = [
     "publishedAt": "2026-08-17",
     "modifiedAt": "2026-08-17",
     "category": "Web Scraping",
-    "readingTime": "9 min",
+    "readingTime": "3 min",
     "serviceHref": "/en/services/web-scraping",
     "serviceAnchor": "Explore high-speed web scraping pipeline engineering",
     "sections": [
@@ -874,7 +874,7 @@ export const blogPostsEn: BlogPost[] = [
     "publishedAt": "2026-08-17",
     "modifiedAt": "2026-08-17",
     "category": "Web Scraping",
-    "readingTime": "8 min",
+    "readingTime": "3 min",
     "serviceHref": "/en/services/web-scraping",
     "serviceAnchor": "Explore enterprise proxy management and rotation services",
     "sections": [
@@ -893,7 +893,7 @@ export const blogPostsEn: BlogPost[] = [
     "publishedAt": "2026-08-17",
     "modifiedAt": "2026-08-17",
     "category": "Web Scraping",
-    "readingTime": "9 min",
+    "readingTime": "3 min",
     "serviceHref": "/en/services/web-scraping",
     "serviceAnchor": "Explore SPA and dynamic web scraping solutions",
     "sections": [
@@ -912,7 +912,7 @@ export const blogPostsEn: BlogPost[] = [
     "publishedAt": "2026-08-17",
     "modifiedAt": "2026-08-17",
     "category": "Web Scraping",
-    "readingTime": "8 min",
+    "readingTime": "3 min",
     "serviceHref": "/en/services/web-scraping",
     "serviceAnchor": "Explore automated data extraction and vision pipelines",
     "sections": [
@@ -931,7 +931,7 @@ export const blogPostsEn: BlogPost[] = [
     "publishedAt": "2026-08-17",
     "modifiedAt": "2026-08-17",
     "category": "Comparisons",
-    "readingTime": "9 min",
+    "readingTime": "3 min",
     "serviceHref": "/en/services/web-scraping",
     "serviceAnchor": "Explore web scraping architecture and framework selection",
     "sections": [
@@ -950,7 +950,7 @@ export const blogPostsEn: BlogPost[] = [
     "publishedAt": "2026-08-17",
     "modifiedAt": "2026-08-17",
     "category": "Data & Infrastructure",
-    "readingTime": "8 min",
+    "readingTime": "3 min",
     "serviceHref": "/en/services/web-scraping",
     "serviceAnchor": "Explore automated data pipeline and ETL engineering",
     "sections": [
@@ -969,7 +969,7 @@ export const blogPostsEn: BlogPost[] = [
     "publishedAt": "2026-08-17",
     "modifiedAt": "2026-08-17",
     "category": "Web Scraping",
-    "readingTime": "7 min",
+    "readingTime": "3 min",
     "serviceHref": "/en/services/web-scraping",
     "serviceAnchor": "Explore compliant and ethical web data extraction",
     "sections": [
@@ -988,7 +988,7 @@ export const blogPostsEn: BlogPost[] = [
     "publishedAt": "2026-08-17",
     "modifiedAt": "2026-08-17",
     "category": "AI Automation",
-    "readingTime": "10 min",
+    "readingTime": "4 min",
     "serviceHref": "/en/services/ai-automation",
     "serviceAnchor": "Explore LangGraph and enterprise AI agent engineering",
     "sections": [
@@ -1013,7 +1013,7 @@ export const blogPostsEn: BlogPost[] = [
     "publishedAt": "2026-08-17",
     "modifiedAt": "2026-08-17",
     "category": "AI Automation",
-    "readingTime": "9 min",
+    "readingTime": "3 min",
     "serviceHref": "/en/services/ai-automation",
     "serviceAnchor": "Explore CrewAI and multi-agent workflow solutions",
     "sections": [
@@ -1037,7 +1037,7 @@ export const blogPostsEn: BlogPost[] = [
     "publishedAt": "2026-08-17",
     "modifiedAt": "2026-08-17",
     "category": "AI Automation",
-    "readingTime": "9 min",
+    "readingTime": "3 min",
     "serviceHref": "/en/services/ai-automation",
     "serviceAnchor": "Explore AutoGen and sandboxed AI execution services",
     "sections": [
@@ -1056,7 +1056,7 @@ export const blogPostsEn: BlogPost[] = [
     "publishedAt": "2026-08-17",
     "modifiedAt": "2026-08-17",
     "category": "AI Architecture",
-    "readingTime": "8 min",
+    "readingTime": "3 min",
     "serviceHref": "/en/services/ai-automation",
     "serviceAnchor": "Explore lightweight agent swarm implementations",
     "sections": [
@@ -1075,7 +1075,7 @@ export const blogPostsEn: BlogPost[] = [
     "publishedAt": "2026-08-17",
     "modifiedAt": "2026-08-17",
     "category": "AI Architecture",
-    "readingTime": "9 min",
+    "readingTime": "3 min",
     "serviceHref": "/en/services/ai-automation",
     "serviceAnchor": "Explore enterprise agent governance and safety systems",
     "sections": [
@@ -1094,7 +1094,7 @@ export const blogPostsEn: BlogPost[] = [
     "publishedAt": "2026-08-17",
     "modifiedAt": "2026-08-17",
     "category": "AI Infrastructure",
-    "readingTime": "8 min",
+    "readingTime": "3 min",
     "serviceHref": "/en/services/ai-automation",
     "serviceAnchor": "Explore agent observability and cost control services",
     "sections": [
@@ -1113,7 +1113,7 @@ export const blogPostsEn: BlogPost[] = [
     "publishedAt": "2026-08-17",
     "modifiedAt": "2026-08-17",
     "category": "AI Automation",
-    "readingTime": "10 min",
+    "readingTime": "4 min",
     "serviceHref": "/en/services/ai-automation",
     "serviceAnchor": "Explore multi-agent RAG pipeline solutions",
     "sections": [
@@ -1132,7 +1132,7 @@ export const blogPostsEn: BlogPost[] = [
     "publishedAt": "2026-08-17",
     "modifiedAt": "2026-08-17",
     "category": "DevOps & Infrastructure",
-    "readingTime": "8 min",
+    "readingTime": "3 min",
     "serviceHref": "/en/services/custom-software-development",
     "serviceAnchor": "Explore system observability and telemetry engineering",
     "sections": [
@@ -1151,7 +1151,7 @@ export const blogPostsEn: BlogPost[] = [
     "publishedAt": "2026-08-17",
     "modifiedAt": "2026-08-17",
     "category": "AI Architecture",
-    "readingTime": "8 min",
+    "readingTime": "3 min",
     "serviceHref": "/en/services/custom-software-development",
     "serviceAnchor": "Explore software architecture and business logic optimization",
     "sections": [
@@ -1170,7 +1170,7 @@ export const blogPostsEn: BlogPost[] = [
     "publishedAt": "2026-08-17",
     "modifiedAt": "2026-08-17",
     "category": "AI Automation",
-    "readingTime": "10 min",
+    "readingTime": "4 min",
     "serviceHref": "/en/services/ai-automation",
     "serviceAnchor": "Explore e-commerce automation and CRM integrations",
     "sections": [
@@ -1189,7 +1189,7 @@ export const blogPostsEn: BlogPost[] = [
     "publishedAt": "2026-08-17",
     "modifiedAt": "2026-08-17",
     "category": "Data & Infrastructure",
-    "readingTime": "9 min",
+    "readingTime": "3 min",
     "serviceHref": "/en/services/custom-software-development",
     "serviceAnchor": "Explore Supabase and PostgreSQL database architecture",
     "sections": [
@@ -1214,7 +1214,7 @@ export const blogPostsEn: BlogPost[] = [
     "publishedAt": "2026-08-17",
     "modifiedAt": "2026-08-17",
     "category": "Data & Infrastructure",
-    "readingTime": "10 min",
+    "readingTime": "4 min",
     "serviceHref": "/en/services/custom-software-development",
     "serviceAnchor": "Explore hybrid search and retrieval engineering",
     "sections": [
@@ -1233,7 +1233,7 @@ export const blogPostsEn: BlogPost[] = [
     "publishedAt": "2026-08-17",
     "modifiedAt": "2026-08-17",
     "category": "AI Architecture",
-    "readingTime": "8 min",
+    "readingTime": "3 min",
     "serviceHref": "/en/services/ai-automation",
     "serviceAnchor": "Explore advanced RAG precision and re-ranking services",
     "sections": [
@@ -1252,7 +1252,7 @@ export const blogPostsEn: BlogPost[] = [
     "publishedAt": "2026-08-17",
     "modifiedAt": "2026-08-17",
     "category": "Data & Infrastructure",
-    "readingTime": "9 min",
+    "readingTime": "3 min",
     "serviceHref": "/en/services/ai-automation",
     "serviceAnchor": "Explore data pre-processing and chunking consulting",
     "sections": [
@@ -1271,7 +1271,7 @@ export const blogPostsEn: BlogPost[] = [
     "publishedAt": "2026-08-17",
     "modifiedAt": "2026-08-17",
     "category": "AI Architecture",
-    "readingTime": "8 min",
+    "readingTime": "3 min",
     "serviceHref": "/en/services/ai-automation",
     "serviceAnchor": "Explore advanced retriever architectures",
     "sections": [
@@ -1290,7 +1290,7 @@ export const blogPostsEn: BlogPost[] = [
     "publishedAt": "2026-08-17",
     "modifiedAt": "2026-08-17",
     "category": "Comparisons",
-    "readingTime": "10 min",
+    "readingTime": "4 min",
     "serviceHref": "/en/services/ai-automation",
     "serviceAnchor": "Explore GraphRAG and knowledge graph implementations",
     "sections": [
@@ -1309,7 +1309,7 @@ export const blogPostsEn: BlogPost[] = [
     "publishedAt": "2026-08-17",
     "modifiedAt": "2026-08-17",
     "category": "AI Architecture",
-    "readingTime": "8 min",
+    "readingTime": "3 min",
     "serviceHref": "/en/services/api-development",
     "serviceAnchor": "Explore intelligent metadata filtering solutions",
     "sections": [
@@ -1328,7 +1328,7 @@ export const blogPostsEn: BlogPost[] = [
     "publishedAt": "2026-08-17",
     "modifiedAt": "2026-08-17",
     "category": "Comparisons",
-    "readingTime": "9 min",
+    "readingTime": "3 min",
     "serviceHref": "/en/services/custom-software-development",
     "serviceAnchor": "Explore vector embedding models and benchmarking",
     "sections": [
@@ -1347,7 +1347,7 @@ export const blogPostsEn: BlogPost[] = [
     "publishedAt": "2026-08-17",
     "modifiedAt": "2026-08-17",
     "category": "AI Infrastructure",
-    "readingTime": "9 min",
+    "readingTime": "3 min",
     "serviceHref": "/en/services/custom-software-development",
     "serviceAnchor": "Explore RAG observability and evaluation engineering",
     "sections": [
@@ -1366,7 +1366,7 @@ export const blogPostsEn: BlogPost[] = [
     "publishedAt": "2026-08-17",
     "modifiedAt": "2026-08-17",
     "category": "Data & Infrastructure",
-    "readingTime": "9 min",
+    "readingTime": "3 min",
     "serviceHref": "/en/services/custom-software-development",
     "serviceAnchor": "Explore vector database installation and management",
     "sections": [
@@ -1385,7 +1385,7 @@ export const blogPostsEn: BlogPost[] = [
     "publishedAt": "2026-08-17",
     "modifiedAt": "2026-08-17",
     "category": "Full-Stack Web",
-    "readingTime": "9 min",
+    "readingTime": "3 min",
     "serviceHref": "/en/services/custom-software-development",
     "serviceAnchor": "Explore Next.js 15 and modern frontend engineering",
     "sections": [
@@ -1409,7 +1409,7 @@ export const blogPostsEn: BlogPost[] = [
     "publishedAt": "2026-08-17",
     "modifiedAt": "2026-08-17",
     "category": "Full-Stack Web",
-    "readingTime": "8 min",
+    "readingTime": "3 min",
     "serviceHref": "/en/services/custom-software-development",
     "serviceAnchor": "Explore Vercel AI SDK and Next.js frontend solutions",
     "sections": [
@@ -1433,7 +1433,7 @@ export const blogPostsEn: BlogPost[] = [
     "publishedAt": "2026-08-17",
     "modifiedAt": "2026-08-17",
     "category": "Full-Stack Web",
-    "readingTime": "9 min",
+    "readingTime": "3 min",
     "serviceHref": "/en/services/custom-software-development",
     "serviceAnchor": "Explore modern Generative UI and frontend development",
     "sections": [
@@ -1452,7 +1452,7 @@ export const blogPostsEn: BlogPost[] = [
     "publishedAt": "2026-08-17",
     "modifiedAt": "2026-08-17",
     "category": "Full-Stack Web",
-    "readingTime": "9 min",
+    "readingTime": "3 min",
     "serviceHref": "/en/services/custom-software-development",
     "serviceAnchor": "Explore RSC and full-stack web architecture",
     "sections": [
@@ -1471,7 +1471,7 @@ export const blogPostsEn: BlogPost[] = [
     "publishedAt": "2026-08-17",
     "modifiedAt": "2026-08-17",
     "category": "Data & Infrastructure",
-    "readingTime": "8 min",
+    "readingTime": "3 min",
     "serviceHref": "/en/services/custom-software-development",
     "serviceAnchor": "Explore Supabase RLS and database security architecture",
     "sections": [
@@ -1490,7 +1490,7 @@ export const blogPostsEn: BlogPost[] = [
     "publishedAt": "2026-08-17",
     "modifiedAt": "2026-08-17",
     "category": "Full-Stack Web",
-    "readingTime": "8 min",
+    "readingTime": "3 min",
     "serviceHref": "/en/services/custom-software-development",
     "serviceAnchor": "Explore multi-tenant SaaS architecture and development",
     "sections": [
@@ -1509,7 +1509,7 @@ export const blogPostsEn: BlogPost[] = [
     "publishedAt": "2026-08-17",
     "modifiedAt": "2026-08-17",
     "category": "Comparisons",
-    "readingTime": "8 min",
+    "readingTime": "3 min",
     "serviceHref": "/en/services/custom-software-development",
     "serviceAnchor": "Explore frontend state management and caching consulting",
     "sections": [
@@ -1528,7 +1528,7 @@ export const blogPostsEn: BlogPost[] = [
     "publishedAt": "2026-08-17",
     "modifiedAt": "2026-08-17",
     "category": "Full-Stack Web",
-    "readingTime": "7 min",
+    "readingTime": "3 min",
     "serviceHref": "/en/services/seo-performance",
     "serviceAnchor": "Explore Core Web Vitals and SEO performance optimization",
     "sections": [
@@ -1547,7 +1547,7 @@ export const blogPostsEn: BlogPost[] = [
     "publishedAt": "2026-08-17",
     "modifiedAt": "2026-08-17",
     "category": "Full-Stack Web",
-    "readingTime": "8 min",
+    "readingTime": "3 min",
     "serviceHref": "/en/services/custom-software-development",
     "serviceAnchor": "Explore modern UI/UX and design system engineering",
     "sections": [
@@ -1566,7 +1566,7 @@ export const blogPostsEn: BlogPost[] = [
     "publishedAt": "2026-08-17",
     "modifiedAt": "2026-08-17",
     "category": "Full-Stack Web",
-    "readingTime": "8 min",
+    "readingTime": "3 min",
     "serviceHref": "/en/services/custom-software-development",
     "serviceAnchor": "Explore global edge deployment and performance tuning",
     "sections": [
@@ -1585,7 +1585,7 @@ export const blogPostsEn: BlogPost[] = [
     "publishedAt": "2026-08-17",
     "modifiedAt": "2026-08-17",
     "category": "Comparisons",
-    "readingTime": "10 min",
+    "readingTime": "4 min",
     "serviceHref": "/en/services/ai-automation",
     "serviceAnchor": "Explore model selection and enterprise LLM integration consulting",
     "sections": [
@@ -1611,7 +1611,7 @@ export const blogPostsEn: BlogPost[] = [
     "publishedAt": "2026-08-17",
     "modifiedAt": "2026-08-17",
     "category": "Comparisons",
-    "readingTime": "9 min",
+    "readingTime": "3 min",
     "serviceHref": "/en/services/custom-software-development",
     "serviceAnchor": "Explore AI developer tooling and productivity consulting",
     "sections": [
@@ -1630,7 +1630,7 @@ export const blogPostsEn: BlogPost[] = [
     "publishedAt": "2026-08-17",
     "modifiedAt": "2026-08-17",
     "category": "Comparisons",
-    "readingTime": "9 min",
+    "readingTime": "3 min",
     "serviceHref": "/en/services/ai-automation",
     "serviceAnchor": "Explore reasoning model evaluation and deployment",
     "sections": [
@@ -1649,7 +1649,7 @@ export const blogPostsEn: BlogPost[] = [
     "publishedAt": "2026-08-17",
     "modifiedAt": "2026-08-17",
     "category": "Comparisons",
-    "readingTime": "8 min",
+    "readingTime": "3 min",
     "serviceHref": "/en/services/web-scraping",
     "serviceAnchor": "Explore modern browser automation engineering",
     "sections": [
@@ -1668,7 +1668,7 @@ export const blogPostsEn: BlogPost[] = [
     "publishedAt": "2026-08-17",
     "modifiedAt": "2026-08-17",
     "category": "Comparisons",
-    "readingTime": "10 min",
+    "readingTime": "4 min",
     "serviceHref": "/en/services/api-development",
     "serviceAnchor": "Explore enterprise backend stack selection consulting",
     "sections": [
@@ -1687,7 +1687,7 @@ export const blogPostsEn: BlogPost[] = [
     "publishedAt": "2026-08-17",
     "modifiedAt": "2026-08-17",
     "category": "Comparisons",
-    "readingTime": "9 min",
+    "readingTime": "3 min",
     "serviceHref": "/en/services/custom-software-development",
     "serviceAnchor": "Explore database and vector storage consulting",
     "sections": [
@@ -1706,7 +1706,7 @@ export const blogPostsEn: BlogPost[] = [
     "publishedAt": "2026-08-17",
     "modifiedAt": "2026-08-17",
     "category": "Comparisons",
-    "readingTime": "8 min",
+    "readingTime": "3 min",
     "serviceHref": "/en/services/web-scraping",
     "serviceAnchor": "Explore custom web scraping and crawler development",
     "sections": [
@@ -1725,7 +1725,7 @@ export const blogPostsEn: BlogPost[] = [
     "publishedAt": "2026-08-17",
     "modifiedAt": "2026-08-17",
     "category": "Comparisons",
-    "readingTime": "9 min",
+    "readingTime": "3 min",
     "serviceHref": "/en/services/ai-automation",
     "serviceAnchor": "Explore multi-agent framework selection and engineering",
     "sections": [
@@ -1744,7 +1744,7 @@ export const blogPostsEn: BlogPost[] = [
     "publishedAt": "2026-08-17",
     "modifiedAt": "2026-08-17",
     "category": "Comparisons",
-    "readingTime": "9 min",
+    "readingTime": "3 min",
     "serviceHref": "/en/services/custom-software-development",
     "serviceAnchor": "Explore modern React full-stack framework consulting",
     "sections": [
@@ -1763,7 +1763,7 @@ export const blogPostsEn: BlogPost[] = [
     "publishedAt": "2026-08-17",
     "modifiedAt": "2026-08-17",
     "category": "Comparisons",
-    "readingTime": "8 min",
+    "readingTime": "3 min",
     "serviceHref": "/en/services/custom-software-development",
     "serviceAnchor": "Explore frontend styling and design system optimization",
     "sections": [
@@ -1782,7 +1782,7 @@ export const blogPostsEn: BlogPost[] = [
     "publishedAt": "2026-08-17",
     "modifiedAt": "2026-08-17",
     "category": "Enterprise AI Security",
-    "readingTime": "10 min",
+    "readingTime": "4 min",
     "serviceHref": "/en/services/custom-software-development",
     "serviceAnchor": "Explore enterprise AI security and defensive architecture",
     "sections": [
@@ -1802,7 +1802,7 @@ export const blogPostsEn: BlogPost[] = [
     "publishedAt": "2026-08-17",
     "modifiedAt": "2026-08-17",
     "category": "Enterprise AI Security",
-    "readingTime": "9 min",
+    "readingTime": "3 min",
     "serviceHref": "/en/services/custom-software-development",
     "serviceAnchor": "Explore NeMo Guardrails and AI governance engineering",
     "sections": [
@@ -1821,7 +1821,7 @@ export const blogPostsEn: BlogPost[] = [
     "publishedAt": "2026-08-17",
     "modifiedAt": "2026-08-17",
     "category": "Enterprise AI Security",
-    "readingTime": "9 min",
+    "readingTime": "3 min",
     "serviceHref": "/en/services/custom-software-development",
     "serviceAnchor": "Explore enterprise privacy and PII masking solutions",
     "sections": [
@@ -1840,7 +1840,7 @@ export const blogPostsEn: BlogPost[] = [
     "publishedAt": "2026-08-17",
     "modifiedAt": "2026-08-17",
     "category": "Enterprise AI Security",
-    "readingTime": "11 min",
+    "readingTime": "4 min",
     "serviceHref": "/en/services/custom-software-development",
     "serviceAnchor": "Explore OWASP AI compliance and vulnerability audits",
     "sections": [
@@ -1859,7 +1859,7 @@ export const blogPostsEn: BlogPost[] = [
     "publishedAt": "2026-08-17",
     "modifiedAt": "2026-08-17",
     "category": "Enterprise AI Security",
-    "readingTime": "10 min",
+    "readingTime": "4 min",
     "serviceHref": "/en/services/custom-software-development",
     "serviceAnchor": "Explore secure sandboxed execution environments",
     "sections": [
@@ -1878,7 +1878,7 @@ export const blogPostsEn: BlogPost[] = [
     "publishedAt": "2026-08-17",
     "modifiedAt": "2026-08-17",
     "category": "Enterprise AI Security",
-    "readingTime": "9 min",
+    "readingTime": "3 min",
     "serviceHref": "/en/services/custom-software-development",
     "serviceAnchor": "Explore AI red-teaming and security penetration testing",
     "sections": [
@@ -1897,7 +1897,7 @@ export const blogPostsEn: BlogPost[] = [
     "publishedAt": "2026-08-17",
     "modifiedAt": "2026-08-17",
     "category": "Enterprise AI Security",
-    "readingTime": "8 min",
+    "readingTime": "3 min",
     "serviceHref": "/en/services/custom-software-development",
     "serviceAnchor": "Explore secrets management and cloud infrastructure security",
     "sections": [
@@ -1916,7 +1916,7 @@ export const blogPostsEn: BlogPost[] = [
     "publishedAt": "2026-08-17",
     "modifiedAt": "2026-08-17",
     "category": "Enterprise AI Security",
-    "readingTime": "9 min",
+    "readingTime": "3 min",
     "serviceHref": "/en/services/custom-software-development",
     "serviceAnchor": "Explore secure multi-tenant RAG architectures",
     "sections": [
@@ -1935,7 +1935,7 @@ export const blogPostsEn: BlogPost[] = [
     "publishedAt": "2026-08-17",
     "modifiedAt": "2026-08-17",
     "category": "Enterprise AI Security",
-    "readingTime": "8 min",
+    "readingTime": "3 min",
     "serviceHref": "/en/services/ai-automation",
     "serviceAnchor": "Explore secure AI agent privilege modeling",
     "sections": [
@@ -1954,7 +1954,7 @@ export const blogPostsEn: BlogPost[] = [
     "publishedAt": "2026-08-17",
     "modifiedAt": "2026-08-17",
     "category": "Enterprise AI Security",
-    "readingTime": "9 min",
+    "readingTime": "3 min",
     "serviceHref": "/en/services/custom-software-development",
     "serviceAnchor": "Explore hallucination detection and verification pipelines",
     "sections": [
@@ -1973,7 +1973,7 @@ export const blogPostsEn: BlogPost[] = [
     "publishedAt": "2026-08-17",
     "modifiedAt": "2026-08-17",
     "category": "AI Deployment & SRE",
-    "readingTime": "10 min",
+    "readingTime": "4 min",
     "serviceHref": "/en/services/custom-software-development",
     "serviceAnchor": "Explore private vLLM infrastructure deployment",
     "sections": [
@@ -1997,7 +1997,7 @@ export const blogPostsEn: BlogPost[] = [
     "publishedAt": "2026-08-17",
     "modifiedAt": "2026-08-17",
     "category": "AI Deployment & SRE",
-    "readingTime": "10 min",
+    "readingTime": "4 min",
     "serviceHref": "/en/services/custom-software-development",
     "serviceAnchor": "Explore GPU cluster inference optimization",
     "sections": [
@@ -2016,7 +2016,7 @@ export const blogPostsEn: BlogPost[] = [
     "publishedAt": "2026-08-17",
     "modifiedAt": "2026-08-17",
     "category": "FinOps & Cost Optimization",
-    "readingTime": "9 min",
+    "readingTime": "3 min",
     "serviceHref": "/en/services/ai-automation",
     "serviceAnchor": "Explore AI FinOps and token cost reduction consulting",
     "sections": [
@@ -2035,7 +2035,7 @@ export const blogPostsEn: BlogPost[] = [
     "publishedAt": "2026-08-17",
     "modifiedAt": "2026-08-17",
     "category": "DevOps & Infrastructure",
-    "readingTime": "9 min",
+    "readingTime": "3 min",
     "serviceHref": "/en/services/custom-software-development",
     "serviceAnchor": "Explore Prometheus metrics and Grafana dashboard engineering",
     "sections": [
@@ -2054,7 +2054,7 @@ export const blogPostsEn: BlogPost[] = [
     "publishedAt": "2026-08-17",
     "modifiedAt": "2026-08-17",
     "category": "DevOps & Infrastructure",
-    "readingTime": "10 min",
+    "readingTime": "4 min",
     "serviceHref": "/en/services/custom-software-development",
     "serviceAnchor": "Explore Kubernetes GPU orchestration and autoscaling",
     "sections": [
@@ -2073,7 +2073,7 @@ export const blogPostsEn: BlogPost[] = [
     "publishedAt": "2026-08-17",
     "modifiedAt": "2026-08-17",
     "category": "AI Infrastructure",
-    "readingTime": "9 min",
+    "readingTime": "3 min",
     "serviceHref": "/en/services/api-development",
     "serviceAnchor": "Explore enterprise LLM gateway deployment",
     "sections": [
@@ -2092,7 +2092,7 @@ export const blogPostsEn: BlogPost[] = [
     "publishedAt": "2026-08-17",
     "modifiedAt": "2026-08-17",
     "category": "AI Deployment & SRE",
-    "readingTime": "8 min",
+    "readingTime": "3 min",
     "serviceHref": "/en/services/custom-software-development",
     "serviceAnchor": "Explore speculative decoding and inference acceleration",
     "sections": [
@@ -2111,7 +2111,7 @@ export const blogPostsEn: BlogPost[] = [
     "publishedAt": "2026-08-17",
     "modifiedAt": "2026-08-17",
     "category": "AI Infrastructure",
-    "readingTime": "9 min",
+    "readingTime": "3 min",
     "serviceHref": "/en/services/custom-software-development",
     "serviceAnchor": "Explore model quantization and edge deployment",
     "sections": [
@@ -2130,7 +2130,7 @@ export const blogPostsEn: BlogPost[] = [
     "publishedAt": "2026-08-17",
     "modifiedAt": "2026-08-17",
     "category": "DevOps & Infrastructure",
-    "readingTime": "9 min",
+    "readingTime": "3 min",
     "serviceHref": "/en/services/custom-software-development",
     "serviceAnchor": "Explore AI SRE and mission-critical availability consulting",
     "sections": [
@@ -2149,7 +2149,7 @@ export const blogPostsEn: BlogPost[] = [
     "publishedAt": "2026-08-17",
     "modifiedAt": "2026-08-17",
     "category": "FinOps & Cost Optimization",
-    "readingTime": "8 min",
+    "readingTime": "3 min",
     "serviceHref": "/en/services/ai-automation",
     "serviceAnchor": "Explore batch AI data pipelines and cost optimization",
     "sections": [
@@ -2168,7 +2168,7 @@ export const blogPostsEn: BlogPost[] = [
     "publishedAt": "2026-08-13",
     "modifiedAt": "2026-08-13",
     "category": "Web Scraping",
-    "readingTime": "6 min",
+    "readingTime": "2 min",
     "serviceHref": "/en/services/web-scraping",
     "serviceAnchor": "Explore web scraping and data collection services",
     "sections": [
@@ -2214,7 +2214,7 @@ export const blogPostsEn: BlogPost[] = [
     "publishedAt": "2026-08-13",
     "modifiedAt": "2026-08-13",
     "category": "AI Automation",
-    "readingTime": "7 min",
+    "readingTime": "3 min",
     "serviceHref": "/en/services/ai-automation",
     "serviceAnchor": "Explore AI automation and integration services",
     "sections": [
@@ -2260,7 +2260,7 @@ export const blogPostsEn: BlogPost[] = [
     "publishedAt": "2026-08-13",
     "modifiedAt": "2026-08-13",
     "category": "API & Backend",
-    "readingTime": "6 min",
+    "readingTime": "2 min",
     "serviceHref": "/en/services/api-development",
     "serviceAnchor": "Explore API development and system integration services",
     "sections": [
