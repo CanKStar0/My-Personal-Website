@@ -7,11 +7,11 @@ const nextConfig: NextConfig = {
   async headers() {
     const contentSecurityPolicy = [
       "default-src 'self'",
-      "script-src 'self' 'unsafe-inline' https://www.googletagmanager.com",
+      "script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://*.google-analytics.com",
       "style-src 'self' 'unsafe-inline'",
-      "img-src 'self' data: blob: https://cdn.jsdelivr.net https://www.google-analytics.com",
+      "img-src 'self' data: blob: https://cdn.jsdelivr.net https://*.google-analytics.com https://*.googletagmanager.com https://*.google.com https://*.google.com.tr",
       "font-src 'self'",
-      "connect-src 'self' https://www.google-analytics.com https://region1.google-analytics.com",
+      "connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com https://*.google.com https://*.google.com.tr https://stats.g.doubleclick.net",
       "worker-src 'self' blob:",
       "object-src 'none'",
       "base-uri 'self'",
