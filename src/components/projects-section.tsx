@@ -25,6 +25,13 @@ export function ProjectsSection({ githubReposNode }: ProjectsSectionProps = {}) 
 
   const projects: Project[] = [
     {
+      titleKey: translations.projects.freeapiTitle,
+      descriptionKey: translations.projects.freeapiDesc,
+      technologies: ["Next.js 15", "TypeScript", "Tailwind CSS v4", "Framer Motion", "Serverless Edge", "Anti-Scraping Shield", "REST API", "Lucide React"],
+      slug: "free-api",
+      imagePath: "/images/freeapi-cover.png",
+    },
+    {
       titleKey: translations.projects.haberTitle,
       descriptionKey: translations.projects.haberDesc,
       technologies: ["Next.js 15", "React 19", "Tailwind CSS v4", "TypeScript", "MongoDB Atlas", "Playwright", "Telegram Bot API", "Google News SEO"],
@@ -39,6 +46,7 @@ export function ProjectsSection({ githubReposNode }: ProjectsSectionProps = {}) 
       imagePath: "/images/bist-ai-cover.png",
     },
   ];
+
 
   return (
     <section id="projeler" className="w-full py-24 px-6 md:px-12 bg-background">

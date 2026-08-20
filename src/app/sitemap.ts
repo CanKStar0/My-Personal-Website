@@ -230,7 +230,34 @@ export default function sitemap(): MetadataRoute.Sitemap {
         },
       },
     },
+    {
+      url: absoluteUrl("/projeler/free-api"),
+      lastModified: SITE_CONTENT_UPDATED_AT,
+      changeFrequency: "weekly",
+      priority: 0.9,
+      alternates: {
+        languages: {
+          tr: absoluteUrl("/projeler/free-api"),
+          en: absoluteUrl("/en/projects/free-api"),
+          "x-default": absoluteUrl("/projeler/free-api"),
+        },
+      },
+    },
+    {
+      url: absoluteUrl("/en/projects/free-api"),
+      lastModified: SITE_CONTENT_UPDATED_AT,
+      changeFrequency: "weekly",
+      priority: 0.9,
+      alternates: {
+        languages: {
+          tr: absoluteUrl("/projeler/free-api"),
+          en: absoluteUrl("/en/projects/free-api"),
+          "x-default": absoluteUrl("/projeler/free-api"),
+        },
+      },
+    },
   ];
+
 
   // Service items
   const serviceRoutes: MetadataRoute.Sitemap = services.map((s) => ({

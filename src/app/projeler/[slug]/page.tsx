@@ -55,7 +55,96 @@ interface ProjectData {
 
 const PROJECTS_DATA: ProjectData[] = [
   {
+    slug: "free-api",
+    titleKey: translations.projects.freeapiTitle,
+    summaryKey: translations.projects.freeapiDesc,
+    techStack: [
+      "Next.js 15",
+      "TypeScript",
+      "Tailwind CSS v4",
+      "Framer Motion",
+      "Serverless Edge",
+      "Anti-Scraping Shield",
+      "REST API",
+      "Lucide React",
+      "Railway Cloud",
+      "i18n Multi-Language",
+      "SSRF Guard"
+    ],
+    liveUrl: "https://api.canpolatkaya.com",
+    githubUrl: "https://github.com/CanKStar0/Free-API",
+    features: [
+      {
+        titleKey: {
+          tr: "01 - IDE Syntax Highlighting & Canlı Terminal Sandbox",
+          en: "01 - IDE Syntax Highlighting & Live Terminal Sandbox",
+        },
+        descKey: {
+          tr: "Geliştiricilerin sayfadan ayrılmadan API endpoint'lerini test edebilmesi için macOS/Linux terminal görünümünde inşa edilen interaktif kod konsolu. Renkli sözdizimi vurgulaması (Syntax Highlighting), anlık JSON yanıt gösterimi ve tek tıkla kopyalanabilir cURL, Fetch (JS/TS) ve Python kod blokları sunar.",
+          en: "An interactive code console styled like a macOS/Linux terminal, allowing developers to test API endpoints without leaving the page. Features colored syntax highlighting, instant live JSON response preview, and one-click copyable cURL, Fetch (JS/TS), and Python snippets.",
+        },
+        imagePath: "/images/freeapi-1.png",
+      },
+      {
+        titleKey: {
+          tr: "02 - 46 Çift Dilli Kategori & Bento Metrik Matrisi",
+          en: "02 - 46 Bilingual Categories & Bento Metrics Matrix",
+        },
+        descKey: {
+          tr: "Hava Durumu, Finans, Kripto, Yapay Zekâ ve Siber Güvenlik dahil 46 farklı kategoride yapılandırılmış kapsamlı dizin. Canlı metrik rozetleri, anlık arama senkronizasyonu ve yaylı kayan kırmızı hap (Language Toggle) anahtarıyla tam TR/EN dil desteği sağlar.",
+          en: "A structured directory spanning 46 distinct categories including Weather, Finance, Crypto, AI, and Cybersecurity. Features live metric badges, instant search synchronization, and seamless TR/EN language switching via a spring-physics red pill toggle.",
+        },
+        imagePath: "/images/freeapi-2.png",
+      },
+      {
+        titleKey: {
+          tr: "03 - 500+ Doğrulanmış REST API & Canlı Sandbox Çekmecesi",
+          en: "03 - 500+ Verified REST APIs & Live Sandbox Drawer",
+        },
+        descKey: {
+          tr: "Her API kartı için rate limit rozetleri, Zero-Auth (kayıtsız kullanım) işaretleri ve detaylı dokümantasyon bağlantıları. Kart bazında açılan alt çekmece sayesinde doğrudan çağrılabilir REST endpoint'leriyle hızlı prototipleme imkanı tanır.",
+          en: "Every API card includes rate limit badges, Zero-Auth indicators, and direct documentation links. Slide-out bottom code drawers enable immediate prototyping with live callable REST endpoints.",
+        },
+        imagePath: "/images/freeapi-3.png",
+      },
+      {
+        titleKey: {
+          tr: "04 - Topluluk API Önerme & 5 Katmanlı Askeri Anti-Scraping Kalkanı",
+          en: "04 - Community API Submission & 5-Layer Military Anti-Scraping Shield",
+        },
+        descKey: {
+          tr: "Geliştiricilerin yeni API önerebildiği Discord Webhook entegreli lüks cam modal formu. Veri hırsızlığına karşı; gizli Honeypot tuzakları, Edge Middleware IP rate-limiting, AI bot engelleme (robots.txt noai) ve bot User-Agent filtreleme katmanlarıyla askeri düzeyde koruma sağlar.",
+          en: "A glassmorphism modal with Discord webhook pipeline for community API submissions. Protected by a military-grade 5-layer defense shield including invisible Honeypot traps, Edge Middleware rate limiting, AI crawler blocks, and scraper User-Agent filtering.",
+        },
+        imagePath: "/images/freeapi-4.png",
+      },
+    ],
+    caseStudy: {
+      problem: {
+        tr: "Geliştiricilerin hızlı prototip ve üretim aşamasında ihtiyaç duyduğu açık/ücretsiz API'ler internette dağınık, kırık linklerle dolu ve test etmesi zahmetli bir haldeydi. Ayrıca derlenen listelerin botlar tarafından çalınması ciddi bir güvenlik açığı oluşturuyordu.",
+        en: "Public and free APIs required by developers during prototyping were scattered, riddled with dead links, and tedious to test. Furthermore, curated catalogs were vulnerable to automated scraper theft.",
+      },
+      solution: {
+        tr: "500+ doğrulanmış API'yi 46 çift dilli kategoride toplayan, tarayıcı üzerinden doğrudan çağrı yapabilen terminal sandbox konsolu ve veritabanını scraper'lara karşı koruyan 5 katmanlı Anti-Scraping Kalkanı içeren modern bir Next.js 15 platformu inşa ettim.",
+        en: "I built a modern Next.js 15 platform organizing 500+ verified APIs across 46 bilingual categories, equipped with a browser-executable terminal sandbox and a 5-layer Anti-Scraping Shield protecting the data assets.",
+      },
+      architecture: {
+        tr: "Next.js 15 App Router → Edge Middleware (Bot & Honeypot Guard) → Serverless Proxy Gateway & Health Checker → Dynamic i18n & Search Engine → Framer Motion Glassmorphism UI.",
+        en: "Next.js 15 App Router → Edge Middleware (Bot & Honeypot Guard) → Serverless Proxy Gateway & Health Checker → Dynamic i18n & Search Engine → Framer Motion Glassmorphism UI.",
+      },
+      dataFlow: {
+        tr: "İstemci istekleri Edge güvenlik süzgecinden geçer, çift dilli arama motoruyla eşleştirilir, terminal üzerinden yapılan canlı testler CORS-free proxy gateway üzerinden güvenle iletilir.",
+        en: "Client requests pass through the Edge security filter, match against the bilingual search engine, and live sandbox calls resolve securely via the CORS-free serverless proxy.",
+      },
+    },
+    relatedServices: [
+      { label: { tr: "API Geliştirme", en: "API Development" }, href: "/hizmetler/api-gelistirme" },
+      { label: { tr: "Özel Yazılım Geliştirme", en: "Custom Software Development" }, href: "/hizmetler/ozel-yazilim-gelistirme" },
+    ],
+  },
+  {
     slug: "haber-portali",
+
     titleKey: translations.projects.haberTitle,
     summaryKey: translations.projects.haberDesc,
     techStack: [

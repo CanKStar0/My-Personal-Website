@@ -4,6 +4,11 @@ import { createMetadata } from "@/lib/seo";
 import { SITE_NAME, SITE_URL } from "@/lib/site";
 
 const PROJECTS_METADATA: Record<string, { title: string; description: string; image: string }> = {
+  "free-api": {
+    title: "FreeAPI Directory - 500+ Açık REST API & Canlı Sandbox Platformu",
+    description: "500+ doğrulanmış ücretsiz REST API, canlı terminal sandbox konsolu ve askeri düzeyde anti-scraping koruması sunan küresel geliştirici platformu.",
+    image: "/images/freeapi-cover.png",
+  },
   "haber-portali": {
     title: "Haber Portalı - Otonom Web Kazıma Motoru",
     description: "Bulut tabanlı otonom haber toplama motoru ve yüksek performanslı veri sunum (DaaS) platformu.",
@@ -15,6 +20,7 @@ const PROJECTS_METADATA: Record<string, { title: string; description: string; im
     image: "/images/bist-ai-cover.png",
   },
 };
+
 
 type Props = {
   params: Promise<{ slug: string }>;

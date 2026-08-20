@@ -1,4 +1,4 @@
-export type Locale = "tr" | "en";
+﻿export type Locale = "tr" | "en";
 
 type TranslationValue = { tr: string; en: string };
 
@@ -63,6 +63,11 @@ export const translations = {
     } as TranslationValue,
     imagePreparing: { tr: "Görsel Hazırlanıyor", en: "Image Preparing" } as TranslationValue,
     // Project cards
+    freeapiTitle: { tr: "FreeAPI Directory", en: "FreeAPI Directory" } as TranslationValue,
+    freeapiDesc: {
+      tr: "500+ doğrulanmış ücretsiz REST API, canlı terminal sandbox konsolu ve askeri düzeyde anti-scraping koruması sunan küresel geliştirici platformu.",
+      en: "A global developer directory featuring 500+ curated public REST APIs, live terminal sandbox playground, and edge anti-scraping shield.",
+    } as TranslationValue,
     haberTitle: { tr: "Haber Portalı", en: "News Portal" } as TranslationValue,
     haberDesc: {
       tr: "Bulut tabanlı otonom haber toplama motoru ve yüksek performanslı veri sunum (DaaS) platformu.",
@@ -73,12 +78,6 @@ export const translations = {
       tr: "Finansal verileri doğrulama katmanlarıyla işleyen analiz sistemi.",
       en: "An analytics system that processes financial data through validation layers.",
     } as TranslationValue,
-  },
-
-  // ─── GitHub Repos ────────────────────────────────────
-  github: {
-    noDescription: { tr: "Açıklama bulunmuyor.", en: "No description available." } as TranslationValue,
-    fetchError: { tr: "Şu an GitHub repolarına ulaşılamıyor.", en: "Unable to reach GitHub repos at this time." } as TranslationValue,
   },
 
   // ─── Contact Page ────────────────────────────────────
@@ -110,6 +109,12 @@ export const translations = {
       en: "Some architectures are too valuable to open-source or contain trade secrets (NDA). This project's source code is locked inside a digital vault.",
     } as TranslationValue,
     backButton: { tr: "Portfolyoya Geri Dön", en: "Back to Portfolio" } as TranslationValue,
+  },
+
+  // ─── GitHub Repos ────────────────────────────────────
+  github: {
+    noDescription: { tr: "Açıklama bulunmuyor.", en: "No description available." } as TranslationValue,
+    fetchError: { tr: "Şu an GitHub repolarına ulaşılamıyor.", en: "Unable to reach GitHub repos at this time." } as TranslationValue,
   },
 
   // ─── Project Detail Page ─────────────────────────────
