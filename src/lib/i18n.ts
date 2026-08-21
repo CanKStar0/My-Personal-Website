@@ -10,6 +10,7 @@ const routePairs = [
   ["/hizmetler/api-gelistirme", "/en/services/api-development"],
   ["/hizmetler/nextjs-gelistirme", "/en/services/nextjs-development"],
   ["/projeler", "/en/projects"],
+  ["/projeler/free-api", "/en/projects/free-api"],
   ["/projeler/haber-portali", "/en/projects/haber-portali"],
   ["/projeler/bist-ai", "/en/projects/bist-ai"],
   ["/blog", "/en/blog"],
@@ -31,9 +32,34 @@ export function localeFromPathname(pathname: string): Locale {
 }
 
 export function getLocalizedPath(pathname: string, targetLocale: Locale): string {
-  if (targetLocale === "en") return trToEn.get(pathname) ?? pathname;
-  return enToTr.get(pathname) ?? pathname;
+  if (targetLocale === "en") {
+    const direct = trToEn.get(pathname);
+    if (direct) return direct;
+    if (pathname.startsWith("/projeler/")) return `/en/projects/${pathname.slice(10)}`;
+    if (pathname.startsWith("/hizmetler/")) return `/en/services/${pathname.slice(11)}`;
+    if (pathname.startsWith("/blog/")) return `/en/blog/${pathname.slice(6)}`;
+    if (pathname === "/projeler") return "/en/projects";
+    if (pathname === "/hizmetler") return "/en/services";
+    if (pathname === "/hakkimda") return "/en/about";
+    if (pathname === "/iletisim") return "/en/contact";
+    if (pathname.startsWith("/en")) return pathname;
+    return `/en${pathname === "/" ? "" : pathname}`;
+  } else {
+    const direct = enToTr.get(pathname);
+    if (direct) return direct;
+    if (pathname.startsWith("/en/projects/")) return `/projeler/${pathname.slice(13)}`;
+    if (pathname.startsWith("/en/services/")) return `/hizmetler/${pathname.slice(13)}`;
+    if (pathname.startsWith("/en/blog/")) return `/blog/${pathname.slice(9)}`;
+    if (pathname === "/en/projects") return "/projeler";
+    if (pathname === "/en/services") return "/hizmetler";
+    if (pathname === "/en/about") return "/hakkimda";
+    if (pathname === "/en/contact") return "/iletisim";
+    if (pathname === "/en") return "/";
+    if (pathname.startsWith("/en/")) return pathname.replace(/^\/en/, "") || "/";
+    return pathname;
+  }
 }
+
 
 export function alternatePathFor(pathname: string): string | undefined {
   return trToEn.get(pathname) ?? enToTr.get(pathname);
