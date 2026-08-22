@@ -33,7 +33,7 @@ function GithubIcon({ className }: { className?: string }) {
 interface ProjectFeature {
   titleKey: { tr: string; en: string };
   descKey: { tr: string; en: string };
-  imagePath: string;
+  imagePath: string | { tr: string; en: string };
 }
 
 interface ProjectData {
@@ -83,7 +83,10 @@ const PROJECTS_DATA: ProjectData[] = [
           tr: "Geliştiricilerin sayfadan ayrılmadan API endpoint'lerini test edebilmesi için macOS/Linux terminal görünümünde inşa edilen interaktif kod konsolu. Renkli sözdizimi vurgulaması (Syntax Highlighting), anlık JSON yanıt gösterimi ve tek tıkla kopyalanabilir cURL, Fetch (JS/TS) ve Python kod blokları sunar.",
           en: "An interactive code console styled like a macOS/Linux terminal, allowing developers to test API endpoints without leaving the page. Features colored syntax highlighting, instant live JSON response preview, and one-click copyable cURL, Fetch (JS/TS), and Python snippets.",
         },
-        imagePath: "/images/freeapi-1.png",
+        imagePath: {
+          tr: "/images/freeapi-1.png",
+          en: "/images/freeapi-1-en.png",
+        },
       },
       {
         titleKey: {
@@ -94,7 +97,10 @@ const PROJECTS_DATA: ProjectData[] = [
           tr: "Hava Durumu, Finans, Kripto, Yapay Zekâ ve Siber Güvenlik dahil 46 farklı kategoride yapılandırılmış kapsamlı dizin. Canlı metrik rozetleri, anlık arama senkronizasyonu ve yaylı kayan kırmızı hap (Language Toggle) anahtarıyla tam TR/EN dil desteği sağlar.",
           en: "A structured directory spanning 46 distinct categories including Weather, Finance, Crypto, AI, and Cybersecurity. Features live metric badges, instant search synchronization, and seamless TR/EN language switching via a spring-physics red pill toggle.",
         },
-        imagePath: "/images/freeapi-2.png",
+        imagePath: {
+          tr: "/images/freeapi-2.png",
+          en: "/images/freeapi-2-en.png",
+        },
       },
       {
         titleKey: {
@@ -105,7 +111,10 @@ const PROJECTS_DATA: ProjectData[] = [
           tr: "Her API kartı için rate limit rozetleri, Zero-Auth (kayıtsız kullanım) işaretleri ve detaylı dokümantasyon bağlantıları. Kart bazında açılan alt çekmece sayesinde doğrudan çağrılabilir REST endpoint'leriyle hızlı prototipleme imkanı tanır.",
           en: "Every API card includes rate limit badges, Zero-Auth indicators, and direct documentation links. Slide-out bottom code drawers enable immediate prototyping with live callable REST endpoints.",
         },
-        imagePath: "/images/freeapi-3.png",
+        imagePath: {
+          tr: "/images/freeapi-3.png",
+          en: "/images/freeapi-3-en.png",
+        },
       },
       {
         titleKey: {
@@ -116,7 +125,10 @@ const PROJECTS_DATA: ProjectData[] = [
           tr: "Geliştiricilerin yeni API önerebildiği Discord Webhook entegreli lüks cam modal formu. Veri hırsızlığına karşı; gizli Honeypot tuzakları, Edge Middleware IP rate-limiting, AI bot engelleme (robots.txt noai) ve bot User-Agent filtreleme katmanlarıyla askeri düzeyde koruma sağlar.",
           en: "A glassmorphism modal with Discord webhook pipeline for community API submissions. Protected by a military-grade 5-layer defense shield including invisible Honeypot traps, Edge Middleware rate limiting, AI crawler blocks, and scraper User-Agent filtering.",
         },
-        imagePath: "/images/freeapi-4.png",
+        imagePath: {
+          tr: "/images/freeapi-4.png",
+          en: "/images/freeapi-4-en.png",
+        },
       },
     ],
     caseStudy: {
@@ -173,7 +185,10 @@ const PROJECTS_DATA: ProjectData[] = [
           tr: "Next.js 15, React 19 ve Tailwind CSS v4 ile inşa edilen ana sayfa; The Verge tarzı modern asimetrik Bento Grid düzeniyle en sıcak haberleri 2x2 vitrin kartında toplar. Derin antrasit zemin (#080c14) ve asil kırmızı vurgular, kullanıcının görsel hiyerarşide kaybolmadan en önemli gelişmelere odaklanmasını sağlar.",
           en: "Built with Next.js 15, React 19, and Tailwind CSS v4, the homepage gathers breaking headlines in a modern The Verge-inspired asymmetric 2x2 Bento Grid showcase. Deep anthracite surfaces (#080c14) paired with crimson accents ensure seamless visual hierarchy and high readability.",
         },
-        imagePath: "/images/haber-cover-v2.png",
+        imagePath: {
+          tr: "/images/haber-cover-v2.png",
+          en: "/images/haber-cover-v2-en.png",
+        },
       },
       {
         titleKey: {
@@ -184,7 +199,10 @@ const PROJECTS_DATA: ProjectData[] = [
           tr: "Haber detay sayfalarında okuma verimliliğini maksimize etmek için geliştirilen LLM destekli '30 Saniyelik AI Hap Bilgi' kutusu, uzun haber metinlerini 3 kilit maddeye indirger. Sayfa bazında dinamik enjekte edilen Google News NewsArticle ve BreadcrumbList JSON-LD şemaları sayesinde arama motorlarında ve Keşfet panellerinde anında indekslenme kabiliyeti sunar.",
           en: "Designed to maximize reading efficiency, the LLM-powered '30-Second AI Quick Summary' box distills long news articles into 3 key takeaways. Page-level dynamic Google News NewsArticle and BreadcrumbList JSON-LD schemas enable instantaneous indexing across search engines and Google Discover feeds.",
         },
-        imagePath: "/images/haber-1-v2.png",
+        imagePath: {
+          tr: "/images/haber-1-v2.png",
+          en: "/images/haber-1-v2-en.png",
+        },
       },
       {
         titleKey: {
@@ -195,7 +213,10 @@ const PROJECTS_DATA: ProjectData[] = [
           tr: "Gündem, Ekonomi, Teknoloji, Kripto ve Spor gibi dikey kategorilerde çalışan veri filtreleme katmanı, Vercel Serverless ve Mongoose Connection Pooling altyapısı ile MongoDB'den sıfır gecikmeyle veri çeker. Sayfalar 60 saniyelik ISR (Incremental Static Regeneration) ile hem sunucu yükünü minimumda tutar hem de anlık güncellik sağlar.",
           en: "Operating across vertical categories including Politics, Economy, Tech, Crypto, and Sports, the filtering layer fetches data with zero latency from MongoDB Atlas via Vercel Serverless and Mongoose Connection Pooling. 60-second ISR (Incremental Static Regeneration) guarantees near real-time freshness while minimizing server overhead.",
         },
-        imagePath: "/images/haber-2-v2.png",
+        imagePath: {
+          tr: "/images/haber-2-v2.png",
+          en: "/images/haber-2-v2-en.png",
+        },
       },
       {
         titleKey: {
@@ -206,7 +227,10 @@ const PROJECTS_DATA: ProjectData[] = [
           tr: "Regex tabanlı optimize edilmiş MongoDB arama katmanı, binlerce haber metni ve başlığı arasında 30ms'nin altında filtreleme gerçekleştirir. Mobil ve masaüstünde akıcı arama çekmecesi ve 'noindex' SEO kurallarıyla temiz bir dizinleme hiyerarşisi oluşturur.",
           en: "An optimized regex-powered MongoDB search layer performs sub-30ms filtering across thousands of news articles and headlines. A responsive slide-out search drawer paired with strict 'noindex' SEO rules preserves clean crawl hierarchy.",
         },
-        imagePath: "/images/haber-3-v2.png",
+        imagePath: {
+          tr: "/images/haber-3-v2.png",
+          en: "/images/haber-3-v2-en.png",
+        },
       },
       {
         titleKey: {
@@ -217,7 +241,10 @@ const PROJECTS_DATA: ProjectData[] = [
           tr: "Sistemin sürdürülebilirliğini korumak için 14 günden eski haberler otomatik olarak .json veri kümesine dönüştürülüp Telegram Bot API (sendDocument) üzerinden geliştiricinin Telegram hesabına arşivlenir ve veritabanı temizlenir. 5651 Sayılı Yer Sağlayıcı Bildirimi ve KVKK aydınlatma metinleriyle kurumsal bir yayıncılık altyapısı sunar.",
           en: "To maintain sustainable database sizing, news records older than 14 days are automatically converted into .json datasets, backed up to the developer's Telegram account via Telegram Bot API (sendDocument), and pruned from the primary database. Full compliance with data privacy regulations provides enterprise-grade publishing reliability.",
         },
-        imagePath: "/images/haber-4-v2.png",
+        imagePath: {
+          tr: "/images/haber-4-v2.png",
+          en: "/images/haber-4-v2-en.png",
+        },
       },
     ],
     caseStudy: {
@@ -239,10 +266,38 @@ const PROJECTS_DATA: ProjectData[] = [
     liveUrl: "/canli-yok",
     githubUrl: "/gizli-repo",
     features: [
-      { titleKey: translations.projectDetail.bistFeature1Title, descKey: translations.projectDetail.bistFeature1Desc, imagePath: "/images/bist-ai-1.png" },
-      { titleKey: translations.projectDetail.bistFeature2Title, descKey: translations.projectDetail.bistFeature2Desc, imagePath: "/images/bist-ai-2.png" },
-      { titleKey: translations.projectDetail.bistFeature3Title, descKey: translations.projectDetail.bistFeature3Desc, imagePath: "/images/bist-ai-3.png" },
-      { titleKey: translations.projectDetail.bistFeature4Title, descKey: translations.projectDetail.bistFeature4Desc, imagePath: "/images/bist-ai-4.png" },
+      {
+        titleKey: translations.projectDetail.bistFeature1Title,
+        descKey: translations.projectDetail.bistFeature1Desc,
+        imagePath: {
+          tr: "/images/bist-ai-1.png",
+          en: "/images/bist-ai-1-en.png",
+        },
+      },
+      {
+        titleKey: translations.projectDetail.bistFeature2Title,
+        descKey: translations.projectDetail.bistFeature2Desc,
+        imagePath: {
+          tr: "/images/bist-ai-2.png",
+          en: "/images/bist-ai-2-en.png",
+        },
+      },
+      {
+        titleKey: translations.projectDetail.bistFeature3Title,
+        descKey: translations.projectDetail.bistFeature3Desc,
+        imagePath: {
+          tr: "/images/bist-ai-3.png",
+          en: "/images/bist-ai-3-en.png",
+        },
+      },
+      {
+        titleKey: translations.projectDetail.bistFeature4Title,
+        descKey: translations.projectDetail.bistFeature4Desc,
+        imagePath: {
+          tr: "/images/bist-ai-4.png",
+          en: "/images/bist-ai-4-en.png",
+        },
+      },
     ],
     caseStudy: {
       problem: translations.projectDetail.bistProblem,
@@ -329,14 +384,22 @@ export default function ProjeDetayPage() {
                   <ScrollReveal key={index} className={`flex flex-col lg:flex-row gap-16 lg:gap-32 items-center ${isEven ? "" : "lg:flex-row-reverse"}`}>
                     {/* Görsel Sütunu */}
                     <div className="w-full lg:w-[60%] flex items-center justify-center relative aspect-[4/3] rounded-xl shadow-[0_8px_30px_rgba(0,0,0,0.12)] border border-zinc-200/40 dark:border-zinc-800/50 overflow-hidden bg-zinc-100 dark:bg-zinc-900/50">
-                      <Image
-                        src={feature.imagePath}
-                        alt={t(feature.titleKey)}
-                        fill
-                        priority={index === 0}
-                        className="object-contain"
-                        sizes="(max-width: 1024px) 100vw, 60vw"
-                      />
+                      {(() => {
+                        const currentImagePath = typeof feature.imagePath === "object"
+                          ? (feature.imagePath[locale] || feature.imagePath.tr)
+                          : feature.imagePath;
+
+                        return (
+                          <Image
+                            src={currentImagePath}
+                            alt={t(feature.titleKey)}
+                            fill
+                            priority={index === 0}
+                            className="object-contain"
+                            sizes="(max-width: 1024px) 100vw, 60vw"
+                          />
+                        );
+                      })()}
                     </div>
                     {/* Metin Sütunu */}
                     <div className="w-full lg:w-[40%] flex flex-col justify-center text-left">

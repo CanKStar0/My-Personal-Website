@@ -13,7 +13,7 @@ interface Project {
   descriptionKey: { tr: string; en: string };
   technologies: string[];
   slug: string;
-  imagePath?: string;
+  imagePath?: string | { tr: string; en: string };
 }
 
 interface ProjectsSectionProps {
@@ -29,21 +29,30 @@ export function ProjectsSection({ githubReposNode }: ProjectsSectionProps = {}) 
       descriptionKey: translations.projects.freeapiDesc,
       technologies: ["Next.js 15", "TypeScript", "Tailwind CSS v4", "Framer Motion", "Serverless Edge", "Anti-Scraping Shield", "REST API", "Lucide React"],
       slug: "free-api",
-      imagePath: "/images/freeapi-cover.png",
+      imagePath: {
+        tr: "/images/freeapi-cover.png",
+        en: "/images/freeapi-cover-en.png",
+      },
     },
     {
       titleKey: translations.projects.haberTitle,
       descriptionKey: translations.projects.haberDesc,
       technologies: ["Next.js 15", "React 19", "Tailwind CSS v4", "TypeScript", "MongoDB Atlas", "Playwright", "Telegram Bot API", "Google News SEO"],
       slug: "haber-portali",
-      imagePath: "/images/haber-cover-v2.png",
+      imagePath: {
+        tr: "/images/haber-cover-v2.png",
+        en: "/images/haber-cover-v2-en.png",
+      },
     },
     {
       titleKey: translations.projects.bistTitle,
       descriptionKey: translations.projects.bistDesc,
       technologies: ["Python", "FastAPI", "Redis", "PostgreSQL", "Docker", "Tailwind CSS"],
       slug: "bist-ai",
-      imagePath: "/images/bist-ai-cover.png",
+      imagePath: {
+        tr: "/images/bist-ai-cover.png",
+        en: "/images/bist-ai-cover-en.png",
+      },
     },
   ];
 
@@ -64,14 +73,19 @@ export function ProjectsSection({ githubReposNode }: ProjectsSectionProps = {}) 
         </ScrollReveal>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {projects.map((project, index) => (
+          {projects.map((project, index) => {
+            const currentImagePath = typeof project.imagePath === "object"
+              ? (project.imagePath[locale] || project.imagePath.tr)
+              : project.imagePath;
+
+            return (
             <ScrollReveal key={project.slug} delay={index * 0.2} className="h-full">
               <Link href={localizedProjectPath(project.slug, locale)} className="group block h-full relative z-10 cursor-pointer">
                 <div className="p-6 rounded-xl border border-zinc-300/80 dark:border-zinc-800/50 bg-[#FAF9F6] dark:bg-zinc-950 flex flex-col justify-between h-full min-h-[380px] shadow-xs transition-all duration-300 hover:-translate-y-1 hover:border-brand-red/50 dark:hover:border-brand-red/40 hover:shadow-md dark:hover:shadow-[0_8px_30px_rgba(0,0,0,0.12)]">
                   <div>
-                    {project.imagePath ? (
+                    {currentImagePath ? (
                       <div className="w-full aspect-video rounded-lg bg-zinc-100 dark:bg-zinc-900/50 border border-zinc-300/70 dark:border-zinc-800/40 mb-6 flex items-center justify-center overflow-hidden relative">
-                        <Image src={project.imagePath} alt={t(project.titleKey)} fill className="object-cover transition-transform duration-500 group-hover:scale-105" sizes="(max-width: 768px) 100vw, 50vw" />
+                        <Image src={currentImagePath} alt={t(project.titleKey)} fill className="object-cover transition-transform duration-500 group-hover:scale-105" sizes="(max-width: 768px) 100vw, 50vw" />
                       </div>
                     ) : (
                       <div className="w-full aspect-video rounded-lg bg-zinc-200/40 dark:bg-zinc-900/50 border border-zinc-300/70 dark:border-zinc-800/40 mb-6 flex items-center justify-center overflow-hidden relative">
@@ -100,7 +114,8 @@ export function ProjectsSection({ githubReposNode }: ProjectsSectionProps = {}) 
                 </div>
               </Link>
             </ScrollReveal>
-          ))}
+          );
+          })}
         </div>
 
         <ScrollReveal className="mt-12 rounded-2xl border border-brand-red/20 bg-brand-red/[0.04] p-7 md:p-9">

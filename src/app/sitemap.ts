@@ -5,13 +5,6 @@ import { services } from "@/lib/services";
 import { servicesEn } from "@/lib/services-en";
 import { SITE_CONTENT_UPDATED_AT, SITE_URL } from "@/lib/site";
 
-const noindexPaths = new Set([
-  "/gizli-repo",
-  "/canli-yok",
-  "/en/private-repository",
-  "/en/demo-unavailable",
-]);
-
 function absoluteUrl(path: string) {
   return path === "/" ? SITE_URL : new URL(path, SITE_URL).toString();
 }

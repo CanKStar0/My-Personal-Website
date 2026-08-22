@@ -35,7 +35,7 @@ export default async function BlogPostPage({ params }: Props) {
   const post = blogPostBySlug[slug];
   if (!post) notFound();
 
-  const schemas: any[] = [
+  const schemas: Record<string, unknown>[] = [
     {
       "@context": "https://schema.org",
       "@type": "BlogPosting",
