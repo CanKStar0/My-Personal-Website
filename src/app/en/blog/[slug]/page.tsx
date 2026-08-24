@@ -6,6 +6,10 @@ import { CodeBlock } from "@/components/code-block";
 import { JsonLd } from "@/components/json-ld";
 import { Navbar } from "@/components/navbar";
 import { SiteFooter } from "@/components/site-footer";
+import { ReadingProgress } from "@/components/reading-progress";
+import { TableOfContents } from "@/components/table-of-contents";
+import { slugify } from "@/lib/slug";
+import { BlogContextualCTA } from "@/components/blog-contextual-cta";
 import { blogPostEnBySlug, blogPostsEn } from "@/lib/blog-en";
 import { createMetadata } from "@/lib/seo";
 import { SITE_NAME, SITE_URL } from "@/lib/site";
@@ -61,7 +65,6 @@ export default async function EnglishBlogPostPage({ params }: Props) {
     },
   ];
 
-
   if (post.faqs && post.faqs.length > 0) {
     schemas.push({
       "@context": "https://schema.org",
@@ -79,6 +82,7 @@ export default async function EnglishBlogPostPage({ params }: Props) {
 
   return (
     <>
+      <ReadingProgress />
       <JsonLd data={schemas} />
       <Navbar />
       <main className="flex-1 bg-background px-6 pb-24 pt-14 md:px-12 md:pt-20">
@@ -135,10 +139,13 @@ export default async function EnglishBlogPostPage({ params }: Props) {
             </section>
           )}
 
+          {/* Sticky & Interactive Table of Contents */}
+          <TableOfContents sections={post.sections} title="Table of Contents" />
+
           <div className="space-y-12 py-12">
             {post.sections.map((section) => (
-              <section key={section.title}>
-                <h2 className="font-jakarta text-2xl font-bold text-foreground md:text-3xl">
+              <section key={section.title} id={`sec-${slugify(section.title)}`}>
+                <h2 className="scroll-mt-24 font-jakarta text-2xl font-bold text-foreground md:text-3xl">
                   {section.title}
                 </h2>
 
@@ -186,6 +193,9 @@ export default async function EnglishBlogPostPage({ params }: Props) {
               </section>
             ))}
           </div>
+
+          {/* Contextual In-Article Service CTA */}
+          <BlogContextualCTA category={post.category} locale="en" />
 
           {/* Frequently Asked Questions (FAQ) */}
           {post.faqs && post.faqs.length > 0 && (
