@@ -3,12 +3,26 @@ import { JsonLd } from "@/components/json-ld";
 import { createMetadata } from "@/lib/seo";
 import { SITE_NAME, SITE_URL } from "@/lib/site";
 
-const projects: Record<string, { title: string; description: string; image: string }> = {
-  "free-api": { title: "FreeAPI Directory - 500+ Public REST APIs & Live Sandbox", description: "A global developer directory featuring 500+ curated public REST APIs, live terminal sandbox playground, and edge anti-scraping shield.", image: "/images/freeapi-cover-en.png" },
-  "haber-portali": { title: "News Portal - Autonomous Web Scraping Engine", description: "A cloud-based news collection engine and maintainable data-delivery platform.", image: "/images/haber-cover-v2-en.png" },
-  "bist-ai": { title: "BIST AI - Financial Data Analytics System", description: "A Borsa Istanbul analytics system combining validation, caching, backend, and data-processing layers.", image: "/images/bist-ai-cover-en.png" },
+const projects: Record<string, { title: string; description: string; image: string; category: string }> = {
+  "free-api": {
+    title: "FreeAPI Directory - 500+ Public REST APIs & Live Sandbox",
+    description: "A global developer directory featuring 500+ curated public REST APIs, live terminal sandbox playground, and edge anti-scraping shield.",
+    image: "/images/freeapi-cover-en.png",
+    category: "DeveloperApplication",
+  },
+  "haber-portali": {
+    title: "News Portal - Autonomous Web Scraping Engine",
+    description: "A cloud-based news collection engine and maintainable data-delivery platform.",
+    image: "/images/haber-cover-v2-en.png",
+    category: "WebApplication",
+  },
+  "bist-ai": {
+    title: "BIST AI - Financial Data Analytics System",
+    description: "A Borsa Istanbul analytics system combining validation, caching, backend, and data-processing layers.",
+    image: "/images/bist-ai-cover-en.png",
+    category: "FinanceApplication",
+  },
 };
-
 
 type Props = { params: Promise<{ slug: string }> };
 export function generateStaticParams() { return Object.keys(projects).map((slug) => ({ slug })); }
@@ -23,11 +37,24 @@ export default async function EnglishProjectLayout({ children, params }: { child
     <>
       <JsonLd data={{
         "@context": "https://schema.org",
-        "@type": "CreativeWork",
+        "@type": ["SoftwareApplication", "WebApplication"],
         name: project.title,
         description: project.description,
         url: `${SITE_URL}/en/projects/${slug}`,
         image: `${SITE_URL}${project.image}`,
+        applicationCategory: project.category,
+        operatingSystem: "All / Web Browser",
+        offers: {
+          "@type": "Offer",
+          price: "0",
+          priceCurrency: "USD",
+        },
+        author: {
+          "@type": "Person",
+          "@id": `${SITE_URL}/#person`,
+          name: SITE_NAME,
+          url: SITE_URL,
+        },
         creator: {
           "@type": "Person",
           "@id": `${SITE_URL}/#person`,
@@ -49,5 +76,3 @@ export default async function EnglishProjectLayout({ children, params }: { child
     </>
   );
 }
-
-

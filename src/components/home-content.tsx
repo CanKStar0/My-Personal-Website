@@ -1,22 +1,44 @@
+"use client";
+
+import { useLanguage } from "@/components/language-context";
 import { Navbar } from "@/components/navbar";
 import { HeroAnimation } from "@/components/hero-animation";
 import { MarqueeSection } from "@/components/marquee-section";
-import { BentoGridSection } from "@/components/bento-grid";
 import { ManifestoSection } from "@/components/manifesto-section";
+import { BentoGridSection } from "@/components/bento-grid";
 import { HomeServicesSection } from "@/components/home-services-section";
-import { JsonLd } from "@/components/json-ld";
 import { SiteFooter } from "@/components/site-footer";
+import { JsonLd } from "@/components/json-ld";
 import { ScrollToQuery } from "@/components/scroll-to-query";
-import { SITE_URL, SOCIAL_LINKS } from "@/lib/site";
+import { SITE_NAME, SITE_URL, SOCIAL_LINKS } from "@/lib/site";
+
 import type { Locale } from "@/lib/translations";
 
-export function HomeContent({ locale }: { locale: Locale }) {
+export function HomeContent({ locale: propLocale }: { locale?: Locale } = {}) {
+  const { locale: contextLocale } = useLanguage();
+  const locale = propLocale ?? contextLocale;
   const isEnglish = locale === "en";
 
   return (
     <>
       <ScrollToQuery />
       <JsonLd data={[
+        {
+          "@context": "https://schema.org",
+          "@type": "WebSite",
+          "@id": `${SITE_URL}/#website-schema`,
+          name: SITE_NAME,
+          url: SITE_URL,
+          publisher: { "@id": `${SITE_URL}/#person` },
+          potentialAction: {
+            "@type": "SearchAction",
+            target: {
+              "@type": "EntryPoint",
+              urlTemplate: `${SITE_URL}/${isEnglish ? "en/" : ""}blog?q={search_term_string}`,
+            },
+            "query-input": "required name=search_term_string",
+          },
+        },
         {
           "@context": "https://schema.org",
           "@type": "Person",
@@ -59,7 +81,7 @@ export function HomeContent({ locale }: { locale: Locale }) {
         {
           "@context": "https://schema.org",
           "@type": "ProfessionalService",
-          "@id": `${SITE_URL}/#website`,
+          "@id": `${SITE_URL}/#professionalservice`,
           name: "Canpolat Kaya Dev Services",
           url: SITE_URL,
           provider: { "@id": `${SITE_URL}/#person` },
