@@ -30,7 +30,7 @@ ${services
 
 ## Featured Projects
 - [Haber Portalı](${SITE_URL}/projeler/haber-portali): Autonomous DaaS news scraping engine monitoring 150+ concurrent publishers. Stored 60,000+ rich articles in an ultra-lean 200MB MongoDB footprint with compound full-text indexing (<50ms lookups), pre-hydration protocol interception, self-healing workers, and automated Telegram JSON archival.
-- [BİST AI Finans Terminali](${SITE_URL}/projeler/bist-ai): AI-powered financial data processing, stock technical analysis, balance sheet scoring, and real-time visualization.
+- [BİST AI Finans Terminali](${SITE_URL}/projeler/bist-ai): AI-powered financial market terminal across 500+ BIST equities. Built with Python/FastAPI and vectorized NumPy analytics computing 10+ technical indicators (RSI, MACD, Bollinger) in milliseconds, Redis hot-cache delivering <20ms API latency, and deterministic guardrails for 0%-hallucination quarterly balance sheet scoring.
 - [Free API Projeleri](${SITE_URL}/projeler/free-api): High-performance, open developer APIs with rate limiting, caching, and comprehensive OpenAPI/Swagger documentation.
 
 ## Technical Expertise & Knowledge Graph

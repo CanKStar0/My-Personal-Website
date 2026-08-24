@@ -14,6 +14,7 @@ import { getLocalizedPath, localizedServicePath } from "@/lib/i18n";
 import {
   ProjectEngineeringCaseStudy,
   HABER_PORTALI_ENGINEERING_DATA,
+  BIST_AI_ENGINEERING_DATA,
 } from "@/components/project-engineering-case-study";
 
 function GithubIcon({ className }: { className?: string }) {
@@ -361,6 +362,11 @@ export default function ProjeDetayPage() {
           {project.slug === "haber-portali" ? (
             <ProjectEngineeringCaseStudy
               data={HABER_PORTALI_ENGINEERING_DATA}
+              locale={locale}
+            />
+          ) : project.slug === "bist-ai" ? (
+            <ProjectEngineeringCaseStudy
+              data={BIST_AI_ENGINEERING_DATA}
               locale={locale}
             />
           ) : (

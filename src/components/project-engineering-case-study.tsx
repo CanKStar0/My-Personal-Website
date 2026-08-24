@@ -210,6 +210,183 @@ export const HABER_PORTALI_ENGINEERING_DATA: EngineeringCaseStudyData = {
   ],
 };
 
+export const BIST_AI_ENGINEERING_DATA: EngineeringCaseStudyData = {
+  metrics: [
+    {
+      value: "500+",
+      label: { tr: "BIST Hisse Kapsamı", en: "Tracked Equities" },
+      subtext: { tr: "Tüm Borsa İstanbul Hisselerinde Anlık İzleme", en: "Real-Time Market Data Across All BIST Equities" },
+      icon: Layers,
+      color: "blue",
+    },
+    {
+      value: "<20 ms",
+      label: { tr: "API Yanıt Süresi", en: "API Latency" },
+      subtext: { tr: "Redis Bellek İçi Hot-Cache Mimarisi", en: "Redis In-Memory Hot Cache Layer" },
+      icon: Zap,
+      color: "emerald",
+    },
+    {
+      value: "10+",
+      label: { tr: "Teknik İndikatör", en: "Technical Indicators" },
+      subtext: { tr: "RSI, MACD, Bollinger, EMA, SMA, Stochastic", en: "Vectorized Multi-Period Mathematical Engine" },
+      icon: Cpu,
+      color: "amber",
+    },
+    {
+      value: "0%",
+      label: { tr: "LLM Halüsinasyon Riski", en: "LLM Hallucination Rate" },
+      subtext: { tr: "Deterministik Finansal Oran ve JSON Guardrail", en: "Deterministic Financial Guardrails & Strict JSON" },
+      icon: ShieldCheck,
+      color: "purple",
+    },
+    {
+      value: "100%",
+      label: { tr: "Otonom Bilanço Ayrıştırma", en: "Autonomous Balance Parsing" },
+      subtext: { tr: "KAP ve Çeyreklik Finansal Rapor Motoru", en: "Automated Quarterly Financial Statement Parser" },
+      icon: Database,
+      color: "red",
+    },
+  ],
+  architectureSteps: [
+    {
+      step: "01",
+      title: { tr: "Anlık Piyasa & KAP Veri Girişi", en: "Live Market & Disclosure Ingestion" },
+      desc: {
+        tr: "500'den fazla hissenin fiyat akışları, derinlik verileri ve KAP bildirimleri asenkron tarayıcı ve API protokolleriyle toplanır.",
+        en: "Asynchronous stream ingestion pulling price feeds, market depth, and corporate disclosures across 500+ equities.",
+      },
+      badge: { tr: "Veri Girişi", en: "Market Feed" },
+    },
+    {
+      step: "02",
+      title: { tr: "Python / FastAPI Analitik Motoru", en: "Python / FastAPI Analytics Engine" },
+      desc: {
+        tr: "Vektörize matematiksel dizilerle (NumPy/Pandas) RSI, MACD ve hareketli ortalamalar milisaniyeler içinde hesaplanır.",
+        en: "Vectorized mathematical processing computing RSI, MACD, Bollinger Bands, and moving averages in milliseconds.",
+      },
+      badge: { tr: "Hesaplama", en: "Vector Engine" },
+    },
+    {
+      step: "03",
+      title: { tr: "Deterministik Oranlar & LLM Bilanço Analizi", en: "Deterministic Ratios & LLM Analysis" },
+      desc: {
+        tr: "Tüm finansal rasyolar (F/K, PD/DD, FAVÖK) matematiksel olarak doğrulanır; yapılandırılmış JSON istemleriyle LLM yorumu üretilir.",
+        en: "Deterministic validation of all financial ratios (P/E, P/B, EBITDA) fed into structured JSON schemas for AI commentary.",
+      },
+      badge: { tr: "AI & Analiz", en: "AI Reasoning" },
+    },
+    {
+      step: "04",
+      title: { tr: "PostgreSQL & Redis Hot-Cache", en: "PostgreSQL & Redis Hot-Cache" },
+      desc: {
+        tr: "Geçmiş veri PostgreSQL'de saklanırken, anlık finansal göstergeler Redis üzerinde <20ms erişim için önbelleklenir.",
+        en: "Historical time-series persisted in PostgreSQL; hot analytical snapshots cached in Redis for <20ms query velocity.",
+      },
+      badge: { tr: "Hibrit Bellek", en: "Storage & Cache" },
+    },
+    {
+      step: "05",
+      title: { tr: "Reaktif Next.js Finans Terminali", en: "Reactive Next.js Financial Terminal" },
+      desc: {
+        tr: "Recharts ve dinamik veri bağlama ile hisse filtreleme, teknik puanlama ve görsel analizler sıfır gecikmeyle sunulur.",
+        en: "Dynamic Recharts charting, instant stock screening, and interactive financial scorecards delivered with zero UI lag.",
+      },
+      badge: { tr: "Canlı Terminal", en: "Terminal UI" },
+    },
+  ],
+  warStories: [
+    {
+      title: {
+        tr: "Redis Hot-Cache ile 500+ Hissede <20ms API Yanıt Süresi",
+        en: "Sub-20ms API Response via Redis Hot Cache Across 500+ Equities",
+      },
+      subtitle: {
+        tr: "Piyasa Saatlerinde SQL Darboğazını Sıfırlayan Önbellek Mimarisi",
+        en: "Eliminating Database Bottlenecks During Peak Trading Hours",
+      },
+      problem: {
+        tr: "Piyasa açıkken 500'den fazla hissenin anlık teknik göstergelerini doğrudan veritabanından hesaplamak 800ms'lik gecikmelere ve CPU kilitlenmelerine yol açıyordu.",
+        en: "Calculating real-time indicators directly from relational SQL queries during market hours caused 800ms+ latency spikes and severe CPU bottlenecks.",
+      },
+      solution: {
+        tr: "Redis üzerinde çok katmanlı TTL önbellekleme kurgulandı. Önceden hesaplanan teknik özetler serialize edilmiş bellek içi arabelleklerde (in-memory buffer) tutuldu ve sadece veri değiştiğinde geçersiz kılındı.",
+        en: "Engineered a tiered Redis TTL caching strategy. Pre-computed analytical snapshots are stored in memory, invalidating only upon verified new tick intervals.",
+      },
+      impact: {
+        tr: "API yanıt süreleri 800ms'den 20ms'nin altına indirildi (%97.5 hızlanma); binlerce eşzamanlı sorgu sıfır sunucu yorgunluğuyla karşılandı.",
+        en: "Slashed API response times from 800ms to under 20ms (97.5% improvement), handling concurrent requests effortlessly.",
+      },
+    },
+    {
+      title: {
+        tr: "Vektörize Analitik Motoru: 10+ Teknik Göstergeyi Milisaniyede Hesaplama",
+        en: "Vectorized Indicator Pipeline: 10+ Technical Indicators in Milliseconds",
+      },
+      subtitle: {
+        tr: "Python Döngü Yavaşlığını Ortadan Kaldıran Matematiksel Mimari",
+        en: "Bypassing Python Loop Overhead via Vectorized Math Arrays",
+      },
+      problem: {
+        tr: "Geleneksel Python for-loop döngüleriyle RSI, MACD, Bollinger ve hareketli ortalamaları 500 hisse için hesaplamak saniyeler sürüyordu.",
+        en: "Traditional Python iterative loops computing multi-period RSI, MACD, and Bollinger Bands took several seconds across large ticker universes.",
+      },
+      solution: {
+        tr: "Hesaplama motoru vektörize matematiksel matrisler (NumPy/Pandas) üzerine yeniden inşa edildi ve asenkron FastAPI uç noktalarıyla birleştirildi.",
+        en: "Rebuilt the calculation pipeline utilizing vectorized array operations (NumPy/Pandas) integrated into non-blocking asynchronous FastAPI endpoints.",
+      },
+      impact: {
+        tr: "10'dan fazla karmaşık teknik indikatör tüm BIST hisseleri için tek haneli milisaniyelerde hesaplandı.",
+        en: "Computed 10+ complex technical indicators across the entire market universe in single-digit milliseconds.",
+      },
+    },
+    {
+      title: {
+        tr: "Sıfır Halüsinasyon: Deterministik Guardrail ile Güvenilir Bilanço Analizi",
+        en: "Zero-Hallucination AI: Deterministic Guardrails for Financial Statements",
+      },
+      subtitle: {
+        tr: "Yapay Zekânın Yanılsamasını Engelleyen İki Aşamalı Finansal Doğrulama",
+        en: "Two-Stage Pipeline Guaranteeing Audit-Grade Balance Sheet Scoring",
+      },
+      problem: {
+        tr: "Ham finansal tablolar doğrudan genel LLM modellerine verildiğinde kâr rakamlarını uydurma, rasyoları yanlış hesaplama ve kritik finansal yanılsamalar (hallucination) yaşanır.",
+        en: "Feeding raw balance sheets directly into generic LLMs frequently causes fabricated financial ratios, distorted EBITDA calculations, and dangerous hallucinations.",
+      },
+      solution: {
+        tr: "İki aşamalı hibrit bir boru hattı kuruldu: Önce deterministik Python motoru tüm rasyoları (F/K, PD/DD, Net Borç/FAVÖK) matematiksel olarak hesaplar; ardından bu doğrulanmış kesin sayılar yapılandırılmış katı JSON şemasıyla LLM'e sadece yorumlatılır.",
+        en: "Constructed a strict two-stage pipeline: a deterministic mathematical engine first computes exact financial metrics, then feeds verified structured JSON payloads to the LLM solely for qualitative executive synthesis.",
+      },
+      impact: {
+        tr: "Bilanço puanlamasında %0 halüsinasyon oranı sağlandı; yatırımcıya ve analiste güvenilir, kurumsal düzeyde özetler üretildi.",
+        en: "Achieved a 0% hallucination rate in balance sheet scoring, delivering enterprise-grade financial summaries.",
+      },
+    },
+    {
+      title: {
+        tr: "Otonom KAP Bildirimi ve Çeyreklik Bilanço Çıkarım Motoru",
+        en: "Autonomous Corporate Disclosure & Quarterly Statement Parser",
+      },
+      subtitle: {
+        tr: "Karmaşık Finansal Tabloları Standartlaştıran Otomasyon",
+        en: "Automating Unstructured Financial Table Normalization",
+      },
+      problem: {
+        tr: "Farklı şirketlerin çeyreklik finansal raporları, dipnotları ve KAP bildirimleri standart olmayan karmaşık tablo yapılarında yayınlanır.",
+        en: "Public disclosure reports arrive with inconsistent accounting item naming, nested table layouts, and irregular publishing schedules.",
+      },
+      solution: {
+        tr: "Düzensiz finansal kalemleri eşleştiren, dönemsel karşılaştırmaları (YoY ve QoQ) otomatik çıkaran ve veritabanına normalize edilmiş şemayla yazan otonom bir ayrıştırma motoru geliştirildi.",
+        en: "Engineered an intelligent parser that reconciles disparate accounting line items, calculates year-over-year (YoY) and quarter-over-quarter (QoQ) deltas, and stores normalized models.",
+      },
+      impact: {
+        tr: "Çeyreklik bilançolar yayınlandığı anda sıfır insan müdahalesiyle dakikalar içinde işlenip puanlandı.",
+        en: "Quarterly statements are ingested, parsed, and scored within minutes of publication with 100% autonomy.",
+      },
+    },
+  ],
+};
+
 interface Props {
   data: EngineeringCaseStudyData;
   locale?: Locale;

@@ -64,11 +64,16 @@ ${s.sections.map((sec) => `  - **${sec.title}**: ${sec.body}`).join("\n")}
   - Pre-Hydration Interception: Ingests publisher data streams at the network protocol layer, processing articles before target websites finish client-side DOM hydration.
   - Zero Extra Infrastructure Bloat: Self-healing worker queues and automated Telegram JSON archival pruning aged data to keep database operations 100% cost-efficient.
 
-### BİST AI Finans Terminali
+### BİST AI Finans Terminali (Autonomous Financial Market Terminal & LLM Scoring)
 - URL (TR): ${SITE_URL}/projeler/bist-ai
 - URL (EN): ${SITE_URL}/en/projects/bist-ai
-- Tech: Python, FastAPI, React, Next.js, Pandas, Technical Analysis Indicators, LLM Analysis
-- Scope: Real-time Borsa Istanbul market data aggregation, automated financial balance sheet scoring, AI-assisted sentiment analysis.
+- Tech: Python, FastAPI, TypeScript, React 19, Next.js 16, Redis Hot-Cache, PostgreSQL (Time-series), NumPy/Pandas, Recharts, LLM Guardrails
+- Production Engineering Benchmarks:
+  - 500+ BIST Equities Monitored: Real-time price feeds, depth data, and corporate disclosures processed across the entire exchange.
+  - <20ms API Response Time: Multi-tier Redis TTL hot-caching delivering instantaneous analytical queries during peak trading hours.
+  - Vectorized Mathematical Indicator Engine: 10+ multi-period indicators (RSI, MACD, Bollinger Bands, EMA/SMA, Stochastic) computed in single-digit milliseconds via NumPy array vectorization.
+  - 0% Hallucination Financial LLM: Two-stage architecture where deterministic Python engines calculate exact financial ratios (P/E, P/B, Net Debt/EBITDA) before feeding strict JSON schemas to the LLM for qualitative commentary.
+  - Autonomous Quarterly Balance Sheet Parser: Ingests unstructured public disclosure tables (KAP) and converts them into standardized financial statement models with YoY/QoQ growth metrics.
 
 ### Free API
 - URL (TR): ${SITE_URL}/projeler/free-api
