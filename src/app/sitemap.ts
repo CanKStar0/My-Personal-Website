@@ -4,6 +4,7 @@ import { blogPostsEn } from "@/lib/blog-en";
 import { services } from "@/lib/services";
 import { servicesEn } from "@/lib/services-en";
 import { SITE_CONTENT_UPDATED_AT, SITE_URL } from "@/lib/site";
+import { getLocalizedPath } from "@/lib/i18n";
 
 function absoluteUrl(path: string) {
   return path === "/" ? SITE_URL : new URL(path, SITE_URL).toString();
@@ -251,37 +252,80 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
   ];
 
+  // Service items (TR & EN with reciprocal alternates)
+  const serviceRoutes: MetadataRoute.Sitemap = services.map((s) => {
+    const trPath = `/hizmetler/${s.slug}`;
+    const enPath = getLocalizedPath(trPath, "en");
+    return {
+      url: absoluteUrl(trPath),
+      lastModified: SITE_CONTENT_UPDATED_AT,
+      changeFrequency: "weekly",
+      priority: 0.85,
+      alternates: {
+        languages: {
+          tr: absoluteUrl(trPath),
+          en: absoluteUrl(enPath),
+          "x-default": absoluteUrl(trPath),
+        },
+      },
+    };
+  });
 
-  // Service items
-  const serviceRoutes: MetadataRoute.Sitemap = services.map((s) => ({
-    url: absoluteUrl(`/hizmetler/${s.slug}`),
-    lastModified: SITE_CONTENT_UPDATED_AT,
-    changeFrequency: "weekly",
-    priority: 0.85,
-  }));
+  const serviceEnRoutes: MetadataRoute.Sitemap = servicesEn.map((s) => {
+    const enPath = getLocalizedPath(`/hizmetler/${s.slug}`, "en");
+    const trPath = `/hizmetler/${s.slug}`;
+    return {
+      url: absoluteUrl(enPath),
+      lastModified: SITE_CONTENT_UPDATED_AT,
+      changeFrequency: "weekly",
+      priority: 0.85,
+      alternates: {
+        languages: {
+          tr: absoluteUrl(trPath),
+          en: absoluteUrl(enPath),
+          "x-default": absoluteUrl(trPath),
+        },
+      },
+    };
+  });
 
-  const serviceEnRoutes: MetadataRoute.Sitemap = servicesEn.map((s) => ({
-    url: absoluteUrl(`/en/services/${s.slug}`),
-    lastModified: SITE_CONTENT_UPDATED_AT,
-    changeFrequency: "weekly",
-    priority: 0.85,
-  }));
+  // Turkish Blog Articles (with reciprocal alternates)
+  const blogRoutes: MetadataRoute.Sitemap = blogPosts.map((post) => {
+    const trPath = `/blog/${post.slug}`;
+    const enPath = getLocalizedPath(trPath, "en");
+    return {
+      url: absoluteUrl(trPath),
+      lastModified: post.modifiedAt || SITE_CONTENT_UPDATED_AT,
+      changeFrequency: "monthly",
+      priority: 0.75,
+      alternates: {
+        languages: {
+          tr: absoluteUrl(trPath),
+          en: absoluteUrl(enPath),
+          "x-default": absoluteUrl(trPath),
+        },
+      },
+    };
+  });
 
-  // Turkish Blog Articles (103 items)
-  const blogRoutes: MetadataRoute.Sitemap = blogPosts.map((post) => ({
-    url: absoluteUrl(`/blog/${post.slug}`),
-    lastModified: post.modifiedAt || SITE_CONTENT_UPDATED_AT,
-    changeFrequency: "monthly",
-    priority: 0.75,
-  }));
-
-  // English Blog Articles (103 items)
-  const blogEnRoutes: MetadataRoute.Sitemap = blogPostsEn.map((post) => ({
-    url: absoluteUrl(`/en/blog/${post.slug}`),
-    lastModified: post.modifiedAt || SITE_CONTENT_UPDATED_AT,
-    changeFrequency: "monthly",
-    priority: 0.75,
-  }));
+  // English Blog Articles (with reciprocal alternates)
+  const blogEnRoutes: MetadataRoute.Sitemap = blogPostsEn.map((post) => {
+    const enPath = `/en/blog/${post.slug}`;
+    const trPath = getLocalizedPath(enPath, "tr");
+    return {
+      url: absoluteUrl(enPath),
+      lastModified: post.modifiedAt || SITE_CONTENT_UPDATED_AT,
+      changeFrequency: "monthly",
+      priority: 0.75,
+      alternates: {
+        languages: {
+          tr: absoluteUrl(trPath),
+          en: absoluteUrl(enPath),
+          "x-default": absoluteUrl(trPath),
+        },
+      },
+    };
+  });
 
   return [
     ...staticRoutes,
