@@ -11,6 +11,10 @@ import { translations } from "@/lib/translations";
 import { trackEvent } from "@/lib/analytics";
 import { SiteFooter } from "@/components/site-footer";
 import { getLocalizedPath, localizedServicePath } from "@/lib/i18n";
+import {
+  ProjectEngineeringCaseStudy,
+  HABER_PORTALI_ENGINEERING_DATA,
+} from "@/components/project-engineering-case-study";
 
 function GithubIcon({ className }: { className?: string }) {
   return (
@@ -354,26 +358,33 @@ export default function ProjeDetayPage() {
 
         <div className="max-w-5xl mx-auto px-6 space-y-16">
 
-          <ScrollReveal className="grid gap-5 md:grid-cols-2">
-            <section className="rounded-2xl border border-zinc-200/50 bg-zinc-50/60 p-6 dark:border-zinc-800/50 dark:bg-zinc-900/30">
-              <p className="mb-2 text-xs font-bold uppercase tracking-[0.2em] text-brand-red dark:text-rose-400">{t({ tr: "Problem", en: "Problem" })}</p>
-              <h2 className="font-jakarta text-xl font-bold text-foreground">{t({ tr: "Çözülmesi gereken ihtiyaç", en: "The challenge" })}</h2>
-              <p className="mt-4 leading-7 text-muted-foreground">{t(project.caseStudy.problem)}</p>
-            </section>
-            <section className="rounded-2xl border border-zinc-200/50 bg-zinc-50/60 p-6 dark:border-zinc-800/50 dark:bg-zinc-900/30">
-              <p className="mb-2 text-xs font-bold uppercase tracking-[0.2em] text-brand-red dark:text-rose-400">{t({ tr: "Çözüm", en: "Solution" })}</p>
-              <h2 className="font-jakarta text-xl font-bold text-foreground">{t({ tr: "Uygulanan yaklaşım", en: "Implemented approach" })}</h2>
-              <p className="mt-4 leading-7 text-muted-foreground">{t(project.caseStudy.solution)}</p>
-            </section>
-            <section className="rounded-2xl border border-zinc-200/50 bg-zinc-50/60 p-6 dark:border-zinc-800/50 dark:bg-zinc-900/30">
-              <h2 className="font-jakarta text-xl font-bold text-foreground">{t({ tr: "Teknik mimari", en: "Technical architecture" })}</h2>
-              <p className="mt-4 leading-7 text-muted-foreground">{t(project.caseStudy.architecture)}</p>
-            </section>
-            <section className="rounded-2xl border border-zinc-200/50 bg-zinc-50/60 p-6 dark:border-zinc-800/50 dark:bg-zinc-900/30">
-              <h2 className="font-jakarta text-xl font-bold text-foreground">{t({ tr: "Veri akışı", en: "Data flow" })}</h2>
-              <p className="mt-4 leading-7 text-muted-foreground">{t(project.caseStudy.dataFlow)}</p>
-            </section>
-          </ScrollReveal>
+          {project.slug === "haber-portali" ? (
+            <ProjectEngineeringCaseStudy
+              data={HABER_PORTALI_ENGINEERING_DATA}
+              locale={locale}
+            />
+          ) : (
+            <ScrollReveal className="grid gap-5 md:grid-cols-2">
+              <section className="rounded-2xl border border-zinc-200/50 bg-zinc-50/60 p-6 dark:border-zinc-800/50 dark:bg-zinc-900/30">
+                <p className="mb-2 text-xs font-bold uppercase tracking-[0.2em] text-brand-red dark:text-rose-400">{t({ tr: "Problem", en: "Problem" })}</p>
+                <h2 className="font-jakarta text-xl font-bold text-foreground">{t({ tr: "Çözülmesi gereken ihtiyaç", en: "The challenge" })}</h2>
+                <p className="mt-4 leading-7 text-muted-foreground">{t(project.caseStudy.problem)}</p>
+              </section>
+              <section className="rounded-2xl border border-zinc-200/50 bg-zinc-50/60 p-6 dark:border-zinc-800/50 dark:bg-zinc-900/30">
+                <p className="mb-2 text-xs font-bold uppercase tracking-[0.2em] text-brand-red dark:text-rose-400">{t({ tr: "Çözüm", en: "Solution" })}</p>
+                <h2 className="font-jakarta text-xl font-bold text-foreground">{t({ tr: "Uygulanan yaklaşım", en: "Implemented approach" })}</h2>
+                <p className="mt-4 leading-7 text-muted-foreground">{t(project.caseStudy.solution)}</p>
+              </section>
+              <section className="rounded-2xl border border-zinc-200/50 bg-zinc-50/60 p-6 dark:border-zinc-800/50 dark:bg-zinc-900/30">
+                <h2 className="font-jakarta text-xl font-bold text-foreground">{t({ tr: "Teknik mimari", en: "Technical architecture" })}</h2>
+                <p className="mt-4 leading-7 text-muted-foreground">{t(project.caseStudy.architecture)}</p>
+              </section>
+              <section className="rounded-2xl border border-zinc-200/50 bg-zinc-50/60 p-6 dark:border-zinc-800/50 dark:bg-zinc-900/30">
+                <h2 className="font-jakarta text-xl font-bold text-foreground">{t({ tr: "Veri akışı", en: "Data flow" })}</h2>
+                <p className="mt-4 leading-7 text-muted-foreground">{t(project.caseStudy.dataFlow)}</p>
+              </section>
+            </ScrollReveal>
+          )}
 
           {/* Özellikler ve Görseller (Alternatif Düzen) */}
           {project.features && project.features.length > 0 && (

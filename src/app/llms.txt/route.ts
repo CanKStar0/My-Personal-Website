@@ -29,7 +29,7 @@ ${services
   .join("\n")}
 
 ## Featured Projects
-- [Haber Portalı](${SITE_URL}/projeler/haber-portali): Autonomous multi-source news gathering, automated content classification, Redis caching, and real-time feed distribution.
+- [Haber Portalı](${SITE_URL}/projeler/haber-portali): Autonomous DaaS news scraping engine monitoring 150+ concurrent publishers. Stored 60,000+ rich articles in an ultra-lean 200MB MongoDB footprint with compound full-text indexing (<50ms lookups), pre-hydration protocol interception, self-healing workers, and automated Telegram JSON archival.
 - [BİST AI Finans Terminali](${SITE_URL}/projeler/bist-ai): AI-powered financial data processing, stock technical analysis, balance sheet scoring, and real-time visualization.
 - [Free API Projeleri](${SITE_URL}/projeler/free-api): High-performance, open developer APIs with rate limiting, caching, and comprehensive OpenAPI/Swagger documentation.
 

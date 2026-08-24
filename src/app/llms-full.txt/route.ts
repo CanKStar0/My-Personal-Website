@@ -53,11 +53,16 @@ ${s.sections.map((sec) => `  - **${sec.title}**: ${sec.body}`).join("\n")}
 ---
 
 ## 3. Projects (Turkish & English)
-### Haber Portalı
+### Haber Portalı (Autonomous News Scraping & DaaS Platform)
 - URL (TR): ${SITE_URL}/projeler/haber-portali
 - URL (EN): ${SITE_URL}/en/projects/haber-portali
-- Tech: Next.js, Node.js, Playwright, Redis, MongoDB, Tailwind CSS
-- Scope: Autonomous multi-source news scraper, automated data normalization, deduplication, caching, and real-time feed publishing.
+- Tech: Next.js 15, React 19, TypeScript, Playwright Stealth, Cheerio, MongoDB Atlas (Lean BSON), Telegram Bot API, Tailwind CSS v4, Vercel Serverless
+- Production Engineering Benchmarks:
+  - 150+ Concurrent News Outlets: Monitored simultaneously with zero-downtime multi-worker architecture.
+  - 60,000+ Rich Articles in 200MB: Lean BSON schema design and compound indexing storing tens of thousands of full-page articles in an ultra-compact footprint.
+  - <50ms Full-Text Search: Single-keyword regex & compound reverse index lookups executing in sub-50ms without expensive dedicated search clusters.
+  - Pre-Hydration Interception: Ingests publisher data streams at the network protocol layer, processing articles before target websites finish client-side DOM hydration.
+  - Zero Extra Infrastructure Bloat: Self-healing worker queues and automated Telegram JSON archival pruning aged data to keep database operations 100% cost-efficient.
 
 ### BİST AI Finans Terminali
 - URL (TR): ${SITE_URL}/projeler/bist-ai
