@@ -6,6 +6,7 @@ import { Breadcrumbs } from "@/components/breadcrumbs";
 import { JsonLd } from "@/components/json-ld";
 import { Navbar } from "@/components/navbar";
 import { SiteFooter } from "@/components/site-footer";
+import { CareerTimeline } from "@/components/career-timeline";
 import { createMetadata } from "@/lib/seo";
 import { SITE_NAME, SITE_URL, SOCIAL_LINKS } from "@/lib/site";
 
@@ -29,6 +30,18 @@ export default function EnglishAboutPage() {
       url: SITE_URL,
       image: `${SITE_URL}/images/canpolat-kaya.jpg`,
       jobTitle: "Full-Stack Developer & AI Automation Specialist",
+      worksFor: {
+        "@type": "Organization",
+        name: "Dotcom Media (DCM)",
+      },
+      alumniOf: {
+        "@type": "EducationalOrganization",
+        name: "Tokat Gaziosmanpasa University",
+      },
+      homeLocation: {
+        "@type": "Place",
+        name: "Fethiye, Mugla, Turkey",
+      },
       description:
         "Full-Stack Developer specializing in autonomous web scraping architectures, custom AI automations, scalable REST APIs, and Next.js applications.",
       sameAs: [SOCIAL_LINKS.github, SOCIAL_LINKS.linkedin],
@@ -82,6 +95,9 @@ export default function EnglishAboutPage() {
               </div>
             </div>
           </header>
+
+          {/* Animated Career & Education Timeline */}
+          <CareerTimeline locale="en" />
 
           <div className="mt-16 grid gap-6 md:grid-cols-2">
             <section className="rounded-3xl border border-border/70 bg-card/40 p-8">
