@@ -360,47 +360,9 @@ export default function ProjeDetayPage() {
 
         <div className="max-w-5xl mx-auto px-6 space-y-16">
 
-          {project.slug === "haber-portali" ? (
-            <ProjectEngineeringCaseStudy
-              data={HABER_PORTALI_ENGINEERING_DATA}
-              locale={locale}
-            />
-          ) : project.slug === "bist-ai" ? (
-            <ProjectEngineeringCaseStudy
-              data={BIST_AI_ENGINEERING_DATA}
-              locale={locale}
-            />
-          ) : project.slug === "free-api" ? (
-            <ProjectEngineeringCaseStudy
-              data={FREE_API_ENGINEERING_DATA}
-              locale={locale}
-            />
-          ) : (
-            <ScrollReveal className="grid gap-5 md:grid-cols-2">
-              <section className="rounded-2xl border border-zinc-200/50 bg-zinc-50/60 p-6 dark:border-zinc-800/50 dark:bg-zinc-900/30">
-                <p className="mb-2 text-xs font-bold uppercase tracking-[0.2em] text-brand-red dark:text-rose-400">{t({ tr: "Problem", en: "Problem" })}</p>
-                <h2 className="font-jakarta text-xl font-bold text-foreground">{t({ tr: "Çözülmesi gereken ihtiyaç", en: "The challenge" })}</h2>
-                <p className="mt-4 leading-7 text-muted-foreground">{t(project.caseStudy.problem)}</p>
-              </section>
-              <section className="rounded-2xl border border-zinc-200/50 bg-zinc-50/60 p-6 dark:border-zinc-800/50 dark:bg-zinc-900/30">
-                <p className="mb-2 text-xs font-bold uppercase tracking-[0.2em] text-brand-red dark:text-rose-400">{t({ tr: "Çözüm", en: "Solution" })}</p>
-                <h2 className="font-jakarta text-xl font-bold text-foreground">{t({ tr: "Uygulanan yaklaşım", en: "Implemented approach" })}</h2>
-                <p className="mt-4 leading-7 text-muted-foreground">{t(project.caseStudy.solution)}</p>
-              </section>
-              <section className="rounded-2xl border border-zinc-200/50 bg-zinc-50/60 p-6 dark:border-zinc-800/50 dark:bg-zinc-900/30">
-                <h2 className="font-jakarta text-xl font-bold text-foreground">{t({ tr: "Teknik mimari", en: "Technical architecture" })}</h2>
-                <p className="mt-4 leading-7 text-muted-foreground">{t(project.caseStudy.architecture)}</p>
-              </section>
-              <section className="rounded-2xl border border-zinc-200/50 bg-zinc-50/60 p-6 dark:border-zinc-800/50 dark:bg-zinc-900/30">
-                <h2 className="font-jakarta text-xl font-bold text-foreground">{t({ tr: "Veri akışı", en: "Data flow" })}</h2>
-                <p className="mt-4 leading-7 text-muted-foreground">{t(project.caseStudy.dataFlow)}</p>
-              </section>
-            </ScrollReveal>
-          )}
-
-          {/* Özellikler ve Görseller (Alternatif Düzen) */}
+          {/* Özellikler ve Görseller (Üst Vitrin) */}
           {project.features && project.features.length > 0 && (
-            <div className="space-y-32 py-10 max-w-6xl mx-auto">
+            <div className="space-y-32 py-6 max-w-6xl mx-auto">
               {project.features.map((feature, index) => {
                 const isEven = index % 2 === 0;
                 return (
@@ -440,6 +402,45 @@ export default function ProjeDetayPage() {
                 );
               })}
             </div>
+          )}
+
+          {/* Mühendislik Başarısı, Metrikler & Mimari Vaka Analizi */}
+          {project.slug === "haber-portali" ? (
+            <ProjectEngineeringCaseStudy
+              data={HABER_PORTALI_ENGINEERING_DATA}
+              locale={locale}
+            />
+          ) : project.slug === "bist-ai" ? (
+            <ProjectEngineeringCaseStudy
+              data={BIST_AI_ENGINEERING_DATA}
+              locale={locale}
+            />
+          ) : project.slug === "free-api" ? (
+            <ProjectEngineeringCaseStudy
+              data={FREE_API_ENGINEERING_DATA}
+              locale={locale}
+            />
+          ) : (
+            <ScrollReveal className="grid gap-5 md:grid-cols-2">
+              <section className="rounded-2xl border border-zinc-200/50 bg-zinc-50/60 p-6 dark:border-zinc-800/50 dark:bg-zinc-900/30">
+                <p className="mb-2 text-xs font-bold uppercase tracking-[0.2em] text-brand-red dark:text-rose-400">{t({ tr: "Problem", en: "Problem" })}</p>
+                <h2 className="font-jakarta text-xl font-bold text-foreground">{t({ tr: "Çözülmesi gereken ihtiyaç", en: "The challenge" })}</h2>
+                <p className="mt-4 leading-7 text-muted-foreground">{t(project.caseStudy.problem)}</p>
+              </section>
+              <section className="rounded-2xl border border-zinc-200/50 bg-zinc-50/60 p-6 dark:border-zinc-800/50 dark:bg-zinc-900/30">
+                <p className="mb-2 text-xs font-bold uppercase tracking-[0.2em] text-brand-red dark:text-rose-400">{t({ tr: "Çözüm", en: "Solution" })}</p>
+                <h2 className="font-jakarta text-xl font-bold text-foreground">{t({ tr: "Uygulanan yaklaşım", en: "Implemented approach" })}</h2>
+                <p className="mt-4 leading-7 text-muted-foreground">{t(project.caseStudy.solution)}</p>
+              </section>
+              <section className="rounded-2xl border border-zinc-200/50 bg-zinc-50/60 p-6 dark:border-zinc-800/50 dark:bg-zinc-900/30">
+                <h2 className="font-jakarta text-xl font-bold text-foreground">{t({ tr: "Teknik mimari", en: "Technical architecture" })}</h2>
+                <p className="mt-4 leading-7 text-muted-foreground">{t(project.caseStudy.architecture)}</p>
+              </section>
+              <section className="rounded-2xl border border-zinc-200/50 bg-zinc-50/60 p-6 dark:border-zinc-800/50 dark:bg-zinc-900/30">
+                <h2 className="font-jakarta text-xl font-bold text-foreground">{t({ tr: "Veri akışı", en: "Data flow" })}</h2>
+                <p className="mt-4 leading-7 text-muted-foreground">{t(project.caseStudy.dataFlow)}</p>
+              </section>
+            </ScrollReveal>
           )}
 
           {/* Teknoloji Yığını */}
