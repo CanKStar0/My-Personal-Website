@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { Breadcrumbs } from "@/components/breadcrumbs";
@@ -14,6 +15,7 @@ export const metadata: Metadata = createMetadata({
     "Learn about Full-Stack Developer Canpolat Kaya's approach to custom software, web scraping, AI automation, backend systems, and modern web development.",
   path: "/en/about",
   locale: "en",
+  image: "/images/canpolat-kaya.jpg",
 });
 
 export default function EnglishAboutPage() {
@@ -25,6 +27,7 @@ export default function EnglishAboutPage() {
       "@id": `${SITE_URL}/#person`,
       name: SITE_NAME,
       url: SITE_URL,
+      image: `${SITE_URL}/images/canpolat-kaya.jpg`,
       jobTitle: "Full-Stack Developer & AI Automation Specialist",
       description:
         "Full-Stack Developer specializing in autonomous web scraping architectures, custom AI automations, scalable REST APIs, and Next.js applications.",
@@ -54,17 +57,32 @@ export default function EnglishAboutPage() {
               { label: "About", href: "/en/about" },
             ]}
           />
-          <header className="max-w-4xl">
-            <p className="text-xs font-bold uppercase tracking-[0.25em] text-brand-red dark:text-rose-400">
-              Canpolat Kaya / Full-Stack Developer
-            </p>
-            <h1 className="mt-5 font-jakarta text-4xl font-extrabold tracking-tight text-foreground sm:text-5xl md:text-6xl">
-              I build systems that can operate beyond the code itself.
-            </h1>
-            <p className="mt-7 max-w-3xl text-lg font-light leading-8 text-muted-foreground">
-              I turn ideas into working digital products across custom software, data collection, AI automation, backend systems, and modern web development.
-            </p>
+          <header className="grid gap-10 lg:grid-cols-12 lg:items-center">
+            <div className="lg:col-span-8">
+              <p className="text-xs font-bold uppercase tracking-[0.25em] text-brand-red dark:text-rose-400">
+                Canpolat Kaya / Full-Stack Developer
+              </p>
+              <h1 className="mt-5 font-jakarta text-4xl font-extrabold tracking-tight text-foreground sm:text-5xl md:text-6xl">
+                I build systems that can operate beyond the code itself.
+              </h1>
+              <p className="mt-7 max-w-3xl text-lg font-light leading-8 text-muted-foreground">
+                I turn ideas into working digital products across custom software, data collection, AI automation, backend systems, and modern web development.
+              </p>
+            </div>
+
+            <div className="lg:col-span-4 flex justify-center lg:justify-end">
+              <div className="relative w-56 h-72 sm:w-64 sm:h-80 overflow-hidden rounded-3xl border border-brand-red/30 bg-card/60 p-2 shadow-2xl shadow-brand-red/10 backdrop-blur-md">
+                <Image
+                  src="/images/canpolat-kaya.jpg"
+                  alt="Canpolat Kaya - Full-Stack Developer & AI Automation Specialist"
+                  fill
+                  priority
+                  className="rounded-2xl object-cover"
+                />
+              </div>
+            </div>
           </header>
+
           <div className="mt-16 grid gap-6 md:grid-cols-2">
             <section className="rounded-3xl border border-border/70 bg-card/40 p-8">
               <h2 className="font-jakarta text-2xl font-bold">Product-oriented approach</h2>

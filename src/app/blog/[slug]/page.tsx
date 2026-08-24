@@ -53,12 +53,14 @@ export default async function BlogPostPage({ params }: Props) {
         "@id": `${SITE_URL}/#person`,
         name: SITE_NAME,
         url: SITE_URL,
+        image: `${SITE_URL}/images/canpolat-kaya.jpg`,
       },
       publisher: {
         "@type": "Person",
         "@id": `${SITE_URL}/#person`,
         name: SITE_NAME,
         url: SITE_URL,
+        image: `${SITE_URL}/images/canpolat-kaya.jpg`,
       },
       inLanguage: "tr-TR",
     }

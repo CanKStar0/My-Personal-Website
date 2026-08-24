@@ -14,6 +14,7 @@ Canpolat Kaya is a product-oriented Full-Stack Developer & AI Automation Special
 
 - Primary Site (Turkish): ${SITE_URL}
 - English Site: ${SITE_URL}/en
+- Profile Photo: ${SITE_URL}/images/canpolat-kaya.jpg
 - Contact: ${CONTACT_EMAIL}
 - GitHub: ${SOCIAL_LINKS.github}
 - LinkedIn: ${SOCIAL_LINKS.linkedin}

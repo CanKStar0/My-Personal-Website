@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { Breadcrumbs } from "@/components/breadcrumbs";
@@ -13,6 +14,7 @@ export const metadata: Metadata = createMetadata({
   description:
     "Full-Stack Developer Canpolat Kaya'nın özel yazılım, web scraping, AI otomasyon, backend ve modern web geliştirme yaklaşımı.",
   path: "/hakkimda",
+  image: "/images/canpolat-kaya.jpg",
 });
 
 export default function AboutPage() {
@@ -24,6 +26,7 @@ export default function AboutPage() {
       "@id": `${SITE_URL}/#person`,
       name: SITE_NAME,
       url: SITE_URL,
+      image: `${SITE_URL}/images/canpolat-kaya.jpg`,
       jobTitle: "Full-Stack Developer & AI Automation Specialist",
       description:
         "Özel yazılım, otonom web scraping, yapay zekâ otomasyonu, REST API ve Next.js geliştirme alanlarında uzmanlaşmış Full-Stack Developer.",
@@ -53,17 +56,32 @@ export default function AboutPage() {
               { label: "Hakkımda", href: "/hakkimda" },
             ]}
           />
-          <header className="max-w-4xl">
-            <p className="text-xs font-bold uppercase tracking-[0.25em] text-brand-red dark:text-rose-400">
-              Canpolat Kaya / Full-Stack Developer
-            </p>
-            <h1 className="mt-5 font-jakarta text-4xl font-extrabold tracking-tight text-foreground sm:text-5xl md:text-6xl">
-              Sadece kod değil, kendi başına çalışabilen sistemler inşa ediyorum.
-            </h1>
-            <p className="mt-7 max-w-3xl text-lg font-light leading-8 text-muted-foreground">
-              Özel yazılım, veri toplama, yapay zekâ otomasyonu, backend ve modern web geliştirme alanlarında fikirleri çalışan dijital ürünlere dönüştürüyorum.
-            </p>
+          <header className="grid gap-10 lg:grid-cols-12 lg:items-center">
+            <div className="lg:col-span-8">
+              <p className="text-xs font-bold uppercase tracking-[0.25em] text-brand-red dark:text-rose-400">
+                Canpolat Kaya / Full-Stack Developer
+              </p>
+              <h1 className="mt-5 font-jakarta text-4xl font-extrabold tracking-tight text-foreground sm:text-5xl md:text-6xl">
+                Sadece kod değil, kendi başına çalışabilen sistemler inşa ediyorum.
+              </h1>
+              <p className="mt-7 max-w-3xl text-lg font-light leading-8 text-muted-foreground">
+                Özel yazılım, veri toplama, yapay zekâ otomasyonu, backend ve modern web geliştirme alanlarında fikirleri çalışan dijital ürünlere dönüştürüyorum.
+              </p>
+            </div>
+
+            <div className="lg:col-span-4 flex justify-center lg:justify-end">
+              <div className="relative w-56 h-72 sm:w-64 sm:h-80 overflow-hidden rounded-3xl border border-brand-red/30 bg-card/60 p-2 shadow-2xl shadow-brand-red/10 backdrop-blur-md">
+                <Image
+                  src="/images/canpolat-kaya.jpg"
+                  alt="Canpolat Kaya - Full-Stack Developer & AI Automation Specialist"
+                  fill
+                  priority
+                  className="rounded-2xl object-cover"
+                />
+              </div>
+            </div>
           </header>
+
           <div className="mt-16 grid gap-6 md:grid-cols-2">
             <section className="rounded-3xl border border-border/70 bg-card/40 p-8">
               <h2 className="font-jakarta text-2xl font-bold">Ürün odaklı yaklaşım</h2>

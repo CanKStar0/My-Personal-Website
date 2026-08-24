@@ -13,6 +13,7 @@ Canpolat Kaya is a product-oriented Full-Stack Developer based in Turkey, workin
 
 - Website: ${SITE_URL}
 - English Version: ${SITE_URL}/en
+- Profile Photo: ${SITE_URL}/images/canpolat-kaya.jpg
 - Contact Email: ${CONTACT_EMAIL}
 - GitHub: ${SOCIAL_LINKS.github}
 - LinkedIn: ${SOCIAL_LINKS.linkedin}

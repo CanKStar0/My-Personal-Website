@@ -46,6 +46,7 @@ export function HomeContent({ locale: propLocale }: { locale?: Locale } = {}) {
           name: "Canpolat Kaya",
           jobTitle: isEnglish ? "Full-Stack Developer & AI Automation Specialist" : "Full-Stack Developer & Yapay Zekâ Otomasyon Uzmanı",
           url: SITE_URL,
+          image: `${SITE_URL}/images/canpolat-kaya.jpg`,
           sameAs: [SOCIAL_LINKS.github, SOCIAL_LINKS.linkedin],
           description: isEnglish
             ? "Full-Stack Developer specializing in autonomous web scraping architectures, custom AI automations, scalable REST APIs, and Next.js applications."
