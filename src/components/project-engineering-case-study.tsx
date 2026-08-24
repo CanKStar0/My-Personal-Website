@@ -387,6 +387,183 @@ export const BIST_AI_ENGINEERING_DATA: EngineeringCaseStudyData = {
   ],
 };
 
+export const FREE_API_ENGINEERING_DATA: EngineeringCaseStudyData = {
+  metrics: [
+    {
+      value: "500+",
+      label: { tr: "Doğrulanmış REST API", en: "Verified REST APIs" },
+      subtext: { tr: "46 Dikey Kategoride 7/24 İzlenen Dizin", en: "Continuously Monitored Across 46 Categories" },
+      icon: Layers,
+      color: "blue",
+    },
+    {
+      value: "<30 ms",
+      label: { tr: "Canlı Sandbox Yanıtı", en: "Sandbox Execution Latency" },
+      subtext: { tr: "İnteraktif Terminal & Canlı JSON Konsolu", en: "In-Browser Interactive Terminal & JSON Viewer" },
+      icon: Zap,
+      color: "emerald",
+    },
+    {
+      value: "46",
+      label: { tr: "Çift Dilli Kategori", en: "Bilingual Categories" },
+      subtext: { tr: "Finans, AI, Siber Güvenlik, Hava Durumu, Kripto", en: "Finance, AI, Cybersecurity, Weather, Crypto" },
+      icon: Database,
+      color: "purple",
+    },
+    {
+      value: "100%",
+      label: { tr: "SSRF & Bot Koruması", en: "SSRF & Bot Shielding" },
+      subtext: { tr: "İzole Sunucu Tarafı Güvenlik Duvarı", en: "Isolated Serverless Edge Security Firewall" },
+      icon: ShieldCheck,
+      color: "red",
+    },
+    {
+      value: "3 Dilde",
+      label: { tr: "Anlık Kod Üretimi", en: "Multi-Language Snippets" },
+      subtext: { tr: "Tek Tıkla cURL, TypeScript, Python Kod Blokları", en: "One-Click Copyable cURL, JS/TS & Python Code" },
+      icon: Cpu,
+      color: "amber",
+    },
+  ],
+  architectureSteps: [
+    {
+      step: "01",
+      title: { tr: "500+ API Otomasyonu & Sağlık Kontrolü", en: "500+ API Health & Ingestion Engine" },
+      desc: {
+        tr: "46 kategorideki yüzlerce endpoint'in erişilebilirliği, auth tipleri ve yanıt kodları periyodik olarak doğrulanır.",
+        en: "Periodic automated validation checking uptime, authentication headers, and response formats across hundreds of endpoints.",
+      },
+      badge: { tr: "Sağlık Takibi", en: "Health Check" },
+    },
+    {
+      step: "02",
+      title: { tr: "Güvenli Edge Sandbox & SSRF Kalkanı", en: "Secure Edge Sandbox & SSRF Guard" },
+      desc: {
+        tr: "Kullanıcı istekleri yerel ağ erişimlerini (127.0.0.1, 10.0.0.0/8) engelleyen izole serverless proxy katmanından geçirilir.",
+        en: "User-triggered API test runs are routed through an isolated serverless proxy with strict CIDR IP blacklists preventing SSRF attacks.",
+      },
+      badge: { tr: "Güvenlik Duvarı", en: "SSRF Guard" },
+    },
+    {
+      step: "03",
+      title: { tr: "46 Dikey Kategori & Çift Dilli Taksonomi", en: "46 Bilingual Categories & Search Matrix" },
+      desc: {
+        tr: "Hava durumu, yapay zekâ, finans ve kripto gibi dikey kategorilerde yay mekanizmalı hızlı dil değişimi ve anlık arama senkronizasyonu.",
+        en: "Instant category filtering and search synchronization across 46 vertical categories with seamless TR/EN parity.",
+      },
+      badge: { tr: "Dizinleme", en: "Taxonomy" },
+    },
+    {
+      step: "04",
+      title: { tr: "Dinamik Çoklu Dil Kod Sentezi", en: "Dynamic Polyglot Code Synthesis" },
+      desc: {
+        tr: "Kullanıcının girdiği parametreler ve header bilgileri anında cURL, JavaScript/Fetch ve Python/Requests kod bloklarına dönüştürülür.",
+        en: "Parameters, query strings, and headers are dynamically compiled into production-ready cURL, JS/TS Fetch, and Python snippets.",
+      },
+      badge: { tr: "Kod Üretimi", en: "Code Generator" },
+    },
+    {
+      step: "05",
+      title: { tr: "Canlı macOS/Linux Terminal Konsolu", en: "Live macOS/Linux Terminal Console" },
+      desc: {
+        tr: "Renkli syntax highlighting, durum kodları ve kopyalanabilir JSON yanıtları ile sayfadan çıkmadan test imkânı.",
+        en: "In-browser terminal interface rendering colored syntax highlighting, status indicators, and formatted JSON in sub-30ms.",
+      },
+      badge: { tr: "Geliştirici UI", en: "Terminal UI" },
+    },
+  ],
+  warStories: [
+    {
+      title: {
+        tr: "Edge Sandbox Mimarisi & SSRF Güvenlik Duvarı",
+        en: "Edge Sandbox Architecture & SSRF Security Firewall",
+      },
+      subtitle: {
+        tr: "Kullanıcı İsteklerini Yerel Ağdan İzole Eden Güvenli Proxy",
+        en: "Zero-Trust Outbound Request Routing & IP Blacklisting",
+      },
+      problem: {
+        tr: "Kullanıcıların tarayıcı üzerinden diledikleri rastgele bir API'ye istek atmasına izin vermek; yerel sunucu ağını tarama (SSRF), IP karalisteye girme ve CORS engelleri doğurur.",
+        en: "Permitting users to execute arbitrary HTTP requests directly from an in-browser sandbox opens severe SSRF risks, local IP probing, and CORS blocking.",
+      },
+      solution: {
+        tr: "Yerel IP aralıklarını (127.0.0.1, 10.0.0.0/8, 192.168.0.0/16) ve AWS/Cloud meta veri adreslerini (169.254.169.254) kesin olarak engelleyen, hız sınırlamalı (Rate-Limiting) izole bir Edge Proxy kurgulandı.",
+        en: "Built a hardened serverless edge proxy enforcing strict CIDR IP blacklisting, blocking all internal loopbacks, private subnets, and cloud metadata endpoints.",
+      },
+      impact: {
+        tr: "Kullanıcılar tüm harici API'leri CORS hatası almadan test edebilirken, sunucu altyapısı %100 siber güvenlik standartlarında korundu.",
+        en: "Developers test external APIs with zero CORS friction while server infrastructure maintains 100% immunity against SSRF exploits.",
+      },
+    },
+    {
+      title: {
+        tr: "Canlı macOS/Linux Terminal Sandbox & <30ms JSON Çıktısı",
+        en: "Live Terminal Sandbox & Sub-30ms Formatted JSON Response",
+      },
+      subtitle: {
+        tr: "Geliştiriciyi Sayfada Tutan İnteraktif IDE Deneyimi",
+        en: "In-Browser IDE Terminal Eliminating Context Switching",
+      },
+      problem: {
+        tr: "Geliştiriciler bir API'yi test etmek için sayfayı terk edip Postman veya yerel terminale geçmek zorunda kalır; büyük JSON çıktılarında arayüz kilitlenir.",
+        en: "Developers typically abandon documentation to test endpoints in external tools like Postman, while large JSON payloads frequently freeze web interfaces.",
+      },
+      solution: {
+        tr: "Sözdizimi vurgulamalı (Syntax Highlighting), renk kodlu HTTP durum rozetlerine sahip ve tek tıkla kopyalanabilen hafif, sanallaştırılmış bir terminal emülatörü geliştirildi.",
+        en: "Engineered a lightweight, virtualized terminal component featuring color-coded HTTP status badges, collapsible JSON nodes, and sub-30ms render velocity.",
+      },
+      impact: {
+        tr: "Kullanıcılar 500'den fazla API'yi sayfadan ayrılmadan, 30 milisaniyenin altında akıcı bir terminal deneyimiyle anında test edebilir hale geldi.",
+        en: "Developers test and debug any endpoint directly within the browser in under 30 milliseconds with zero context switching.",
+      },
+    },
+    {
+      title: {
+        tr: "46 Dikey Kategori & Çift Dilli Anlık Taksonomi",
+        en: "46 Bilingual Categories & Instant Reactive Search",
+      },
+      subtitle: {
+        tr: "Yüzlerce API'yi Yük Süresi Olmadan Sınıflandıran Hafif Şema",
+        en: "Zero-Latency Client-Side Taxonomy with Complete TR/EN Parity",
+      },
+      problem: {
+        tr: "500'den fazla API'yi Hava Durumu, Kripto, Finans ve Yapay Zekâ gibi 46 kategoride çift dilli (TR/EN) sunmak yüksek bundle boyutuna ve filtreleme yavaşlığına yol açabilir.",
+        en: "Categorizing 500+ diverse APIs across 46 bilingual domains can bloat client JavaScript bundles and introduce search latency.",
+      },
+      solution: {
+        tr: "Sıkıştırılmış taksonomi veri modelleri, yay fiziğine sahip dinamik dil anahtarı (Spring-physics Language Toggle) ve istemci tarafında çalışan milisaniyelik bulanık arama (Fuzzy Search) inşa edildi.",
+        en: "Engineered a compressed metadata taxonomy with a fluid spring-physics language toggle and instant client-side fuzzy search across all endpoints.",
+      },
+      impact: {
+        tr: "Kategoriler arasında sıfır gecikmeyle geçiş yapılırken Türkçe ve İngilizce rotalar arasında %100 içerik eşitliği sağlandı.",
+        en: "Instant zero-lag category filtering with complete reciprocal SEO parity between Turkish and English routes.",
+      },
+    },
+    {
+      title: {
+        tr: "Tek Tıkla Çoklu Dilde (cURL, JS, Python) Üretime Hazır Kod",
+        en: "One-Click Polyglot Code Synthesis (cURL, JS/TS, Python)",
+      },
+      subtitle: {
+        tr: "Entegrasyon Süresini Dakikalardan Saniyelere İndiren Kod Üretimi",
+        en: "Slashing Third-Party API Integration Friction to Zero",
+      },
+      problem: {
+        tr: "Farklı programlama dillerinde API çağrısı yaparken header, query parametresi ve JSON gövde formatlarını manuel yazmak geliştirici hatasına ve zaman kaybına sebep olur.",
+        en: "Manually formatting HTTP headers, authentication tokens, and payload bodies across different programming languages causes integration bugs and wasted time.",
+      },
+      solution: {
+        tr: "Kullanıcının terminalde girdiği tüm parametreleri otomatik olarak cURL komutuna, TypeScript/Fetch bloğuna ve Python/Requests betiğine dönüştüren reaktif bir kod sentezleyici yazıldı.",
+        en: "Built a dynamic code synthesis engine that compiles live user inputs into copy-pasteable cURL, TypeScript Fetch, and Python Requests snippets.",
+      },
+      impact: {
+        tr: "Geliştiriciler test ettikleri çalışan bir API'nin kodunu tek tıkla kopyalayıp kendi projelerine saniyeler içinde entegre edebilir hale geldi.",
+        en: "Slashed API adoption time from minutes of manual boilerplate coding to a single one-click copy-paste action.",
+      },
+    },
+  ],
+};
+
 interface Props {
   data: EngineeringCaseStudyData;
   locale?: Locale;

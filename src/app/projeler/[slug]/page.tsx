@@ -15,6 +15,7 @@ import {
   ProjectEngineeringCaseStudy,
   HABER_PORTALI_ENGINEERING_DATA,
   BIST_AI_ENGINEERING_DATA,
+  FREE_API_ENGINEERING_DATA,
 } from "@/components/project-engineering-case-study";
 
 function GithubIcon({ className }: { className?: string }) {
@@ -367,6 +368,11 @@ export default function ProjeDetayPage() {
           ) : project.slug === "bist-ai" ? (
             <ProjectEngineeringCaseStudy
               data={BIST_AI_ENGINEERING_DATA}
+              locale={locale}
+            />
+          ) : project.slug === "free-api" ? (
+            <ProjectEngineeringCaseStudy
+              data={FREE_API_ENGINEERING_DATA}
               locale={locale}
             />
           ) : (

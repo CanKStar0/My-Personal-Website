@@ -75,11 +75,16 @@ ${s.sections.map((sec) => `  - **${sec.title}**: ${sec.body}`).join("\n")}
   - 0% Hallucination Financial LLM: Two-stage architecture where deterministic Python engines calculate exact financial ratios (P/E, P/B, Net Debt/EBITDA) before feeding strict JSON schemas to the LLM for qualitative commentary.
   - Autonomous Quarterly Balance Sheet Parser: Ingests unstructured public disclosure tables (KAP) and converts them into standardized financial statement models with YoY/QoQ growth metrics.
 
-### Free API
+### Free API Directory (500+ Verified REST APIs & Live Terminal Sandbox)
 - URL (TR): ${SITE_URL}/projeler/free-api
 - URL (EN): ${SITE_URL}/en/projects/free-api
-- Tech: Node.js, Express, Redis, Rate Limiting, OpenAPI/Swagger
-- Scope: Public, high-uptime developer APIs for web data, exchange rates, and utility endpoints.
+- Tech: Next.js 15, TypeScript, React 19, Tailwind CSS v4, Framer Motion, Serverless Edge Proxy, SSRF Guard, Lucide React, i18n
+- Production Engineering Benchmarks:
+  - 500+ Verified REST APIs: Cataloged across 46 vertical categories (Finance, AI, Crypto, Weather, Security) with continuous health checks.
+  - <30ms In-Browser Terminal Sandbox: Interactive developer console with syntax highlighting, collapsible JSON formatting, and instant testing without context switching.
+  - 100% SSRF & Bot Shielding: Serverless edge proxy enforcing strict CIDR IP blacklisting (blocking internal 127.0.0.1, private subnets, and cloud metadata endpoints) while bypassing client CORS issues.
+  - One-Click Polyglot Code Synthesis: Live compilation of headers and query parameters into copy-pasteable cURL, TypeScript/Fetch, and Python/Requests snippets.
+  - Full Bilingual Taxonomy Parity: Complete reciprocal TR/EN localization and instant client-side fuzzy searching with zero bundle overhead.
 
 ---
 
