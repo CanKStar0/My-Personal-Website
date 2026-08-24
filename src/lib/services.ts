@@ -4,6 +4,11 @@ export type ServiceSection = {
   items?: string[];
 };
 
+export type ServiceFaq = {
+  question: string;
+  answer: string;
+};
+
 export type Service = {
   slug: string;
   shortTitle: string;
@@ -15,6 +20,7 @@ export type Service = {
   sections: ServiceSection[];
   technologies: string[];
   relatedServices: string[];
+  faqs?: ServiceFaq[];
   project?: {
     title: string;
     description: string;
@@ -63,6 +69,24 @@ export const services: Service[] = [
       href: "/projeler/haber-portali",
       anchor: "Haber Portalı web scraping mimarisini inceleyin",
     },
+    faqs: [
+      {
+        question: "Web scraping sistemleri Cloudflare veya anti-bot korumalı sitelerde çalışır mı?",
+        answer: "Evet, Playwright/Puppeteer tabanlı stealth tarayıcı otomasyonları, IP ve residential proxy rotasyonu ve insan davranışlarını taklit eden istek mimarisi ile anti-bot mekanizmalarını aşacak dayanıklı botlar kurulur.",
+      },
+      {
+        question: "Çekilen veriler hangi formatta ve nereye teslim edilir?",
+        answer: "İhtiyacınıza göre PostgreSQL, MongoDB, MySQL veritabanlarına doğrudan yazılabilir, REST API veya webhook endpoint'lerine iletilebilir ya da JSON, CSV, Excel formatında periyodik olarak sunulabilir.",
+      },
+      {
+        question: "Hedef web sitesinin tasarımı veya HTML yapısı değişirse ne olur?",
+        answer: "Geliştirdiğim scraping sistemleri hata yakalama, loglama ve anlık bildirim mekanizmalarıyla donatılır. Seçici (selector) veya DOM değişikliklerinde anında tespit edilerek kolayca güncellenir.",
+      },
+      {
+        question: "Veri çekme işlemleri ne sıklıkla çalıştırılabilir?",
+        answer: "CRON görevleri ve Redis kuyrukları sayesinde veriler ihtiyacınıza göre dakikalık, saatlik, günlük veya gerçek zamanlı event tetiklemeli olarak zamanlanabilir.",
+      },
+    ],
   },
   {
     slug: "yapay-zeka-otomasyon",
@@ -87,6 +111,20 @@ export const services: Service[] = [
       href: "/projeler/bist-ai",
       anchor: "BIST AI veri ve analiz mimarisini inceleyin",
     },
+    faqs: [
+      {
+        question: "Hangi LLM modelleri ve sağlayıcıları ile çalışıyorsunuz?",
+        answer: "OpenAI (GPT-4o), Anthropic (Claude 3.5), Google (Gemini 1.5/2.0), DeepSeek ve yerel açık kaynak modelleri (Ollama / Llama 3 / Mistral) ile kurumsal ihtiyaç ve veri gizliliği standartlarına göre çalışıyorum.",
+      },
+      {
+        question: "Şirketimizin özel verileri ve belgeleri yapay zekaya nasıl entegre edilir?",
+        answer: "RAG (Retrieval-Augmented Generation) mimarisi ve vektör veritabanları (Pinecone, PGVector, Qdrant) kullanarak verileriniz dışarı sızmadan, güncel şirket belgeleriniz üzerinden yanıt veren sistemler kurguluyorum.",
+      },
+      {
+        question: "AI modellerinin halüsinasyon (yanlış bilgi) üretmesi nasıl engellenir?",
+        answer: "Sıkı sistem promptları, şema doğrulaması (Zod / Pydantic), çıktı denetim katmanları (Guardrails) ve gerektiğinde insan onay adımları (Human-in-the-loop) eklenerek hata riski minimize edilir.",
+      },
+    ],
   },
   {
     slug: "ozel-yazilim-gelistirme",
@@ -111,6 +149,20 @@ export const services: Service[] = [
       href: "/projeler",
       anchor: "Öne çıkan özel yazılım projelerini inceleyin",
     },
+    faqs: [
+      {
+        question: "Özel yazılım geliştirme süreci ne kadar sürer?",
+        answer: "Projenin kapsamına bağlı olarak MVP (Minimum Uygulanabilir Ürün) veya odaklanmış otomasyonlar genellikle 2 ila 4 hafta içinde canlıya alınır; daha büyük ölçekli SaaS sistemleri aşamalı teslim edilir.",
+      },
+      {
+        question: "Geliştirilen yazılımın kaynak kodları kime ait olur?",
+        answer: "Teslim edilen tüm kaynak kodları, mimari dokümanlar ve veritabanı şemaları tamamen müşteriye aittir. Vendor lock-in (bağımlılık) olmadan başka geliştiricilerin de devralabileceği temiz bir kod tabanı sunulur.",
+      },
+      {
+        question: "Proje teslim edildikten sonra bakım ve destek sağlanıyor mu?",
+        answer: "Evet, sunucu yönetimi, güvenlik güncellemeleri, performans takibi ve yeni özellik geliştirmeleri için periyodik bakım ve teknik destek hizmeti sağlanmaktadır.",
+      },
+    ],
   },
   {
     slug: "api-gelistirme",
@@ -135,6 +187,20 @@ export const services: Service[] = [
       href: "/projeler/bist-ai",
       anchor: "BIST AI backend mimarisini inceleyin",
     },
+    faqs: [
+      {
+        question: "API'lerde hangi güvenlik ve kimlik doğrulama standartları kullanılıyor?",
+        answer: "JWT (JSON Web Tokens), API Key rotasyonu, OAuth2, Rate Limiting (istek sınırlandırma), CORS ve OWASP API güvenlik yönergelerine uygun yetkilendirme katmanları uygulanır.",
+      },
+      {
+        question: "API dokümantasyonu nasıl sağlanıyor?",
+        answer: "FastAPI veya OpenAPI (Swagger) ve Postman koleksiyonları ile interaktif, test edilebilir ve her endpoint'in request/response modellerini açıkça gösteren dokümantasyon üretilir.",
+      },
+      {
+        question: "Yüksek trafik altında API performansı nasıl korunur?",
+        answer: "Redis önbellek (caching) katmanları, veritabanı indeksleme, connection pooling ve asenkron (async/await) mimari ile milisaniye seviyesinde yanıt süreleri elde edilir.",
+      },
+    ],
   },
   {
     slug: "nextjs-gelistirme",
@@ -159,10 +225,23 @@ export const services: Service[] = [
       href: "/projeler",
       anchor: "Next.js ile geliştirilen projeleri inceleyin",
     },
+    faqs: [
+      {
+        question: "Next.js App Router ve React 19 mimarisi ne gibi avantajlar sunar?",
+        answer: "React Server Components (RSC) ile istemciye gönderilen JavaScript boyutu minimuma iner, sayfa yükleme hızları (LCP) artar ve arama motorları içeriği anında eksiksiz indeksler.",
+      },
+      {
+        question: "Core Web Vitals ve sayfa hızı garantisi veriyor musunuz?",
+        answer: "Evet, Tailwind CSS v4, optimize font yüklemeleri, lazy load ve modern resim formatları (WebP/AVIF) ile Google PageSpeed ve Core Web Vitals metriklerinde yeşil (90+) skorlar hedeflenir.",
+      },
+      {
+        question: "Çok dilli (i18n) Next.js yapılandırması nasıl çalışıyor?",
+        answer: "URL tabanlı dinamik rota yönetimi, hreflang etiketleri, eşleştirilmiş meta etiketleri ve çeviri paritesi ile uluslararası SEO kurallarına %100 uyumlu çok dilli altyapı kurulur.",
+      },
+    ],
   },
 ];
 
 export const serviceBySlug = Object.fromEntries(
   services.map((service) => [service.slug, service]),
 ) as Record<string, Service>;
-

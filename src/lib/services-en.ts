@@ -19,6 +19,24 @@ export const servicesEn: Service[] = [
     technologies: ["Playwright", "Node.js", "Python", "MongoDB", "Redis", "PostgreSQL", "REST API"],
     relatedServices: ["api-gelistirme", "ozel-yazilim-gelistirme"],
     project: { title: "News Portal", description: "Explore a real product combining autonomous news collection, caching, data cleaning, and delivery layers.", href: "/en/projects/haber-portali", anchor: "Explore the News Portal web scraping architecture" },
+    faqs: [
+      {
+        question: "Can your web scraping systems handle Cloudflare or anti-bot protections?",
+        answer: "Yes. Using stealth browser automation (Playwright/Puppeteer), residential proxy rotation, realistic browser fingerprint emulation, and human-like request patterns, systems are designed to bypass modern anti-bot hurdles sustainably.",
+      },
+      {
+        question: "In what format and where is the collected data delivered?",
+        answer: "Data can be stored directly in PostgreSQL, MongoDB, or MySQL databases, published to custom REST API endpoints or webhooks, or exported to scheduled JSON, CSV, and Excel reports.",
+      },
+      {
+        question: "What happens if the target website updates its DOM or layout?",
+        answer: "All scrapers are built with structured error handling, health checks, and alerting. When layout modifications occur, alerts are triggered immediately for quick selector adaptation.",
+      },
+      {
+        question: "How frequently can data collection tasks run?",
+        answer: "Using CRON schedulers and Redis-backed message queues, scrapers can execute on minutely, hourly, daily, or event-driven real-time intervals.",
+      },
+    ],
   },
   {
     slug: "yapay-zeka-otomasyon",
@@ -38,6 +56,20 @@ export const servicesEn: Service[] = [
     technologies: ["Python", "FastAPI", "Node.js", "LLM APIs", "Redis", "PostgreSQL", "Next.js"],
     relatedServices: ["ozel-yazilim-gelistirme", "api-gelistirme"],
     project: { title: "BIST AI", description: "See how data processing, backend services, and analytics layers come together in a real product.", href: "/en/projects/bist-ai", anchor: "Explore the BIST AI data and analytics architecture" },
+    faqs: [
+      {
+        question: "Which LLM models and API providers do you support?",
+        answer: "I integrate OpenAI (GPT-4o), Anthropic (Claude 3.5), Google (Gemini 1.5/2.0), DeepSeek, as well as local open-weight models (Ollama, Llama 3, Mistral) based on client privacy and latency needs.",
+      },
+      {
+        question: "How can our proprietary business documents be connected securely to AI?",
+        answer: "Through RAG (Retrieval-Augmented Generation) architectures and vector embeddings (PGVector, Pinecone, Qdrant), allowing the AI to query company documents without data leaks or public exposure.",
+      },
+      {
+        question: "How do you mitigate AI hallucinations and ensure output reliability?",
+        answer: "By applying strict prompt engineering, schema validation (Zod / Pydantic), deterministic post-processing guardrails, and human-in-the-loop approval stages where critical.",
+      },
+    ],
   },
   {
     slug: "ozel-yazilim-gelistirme",
@@ -57,6 +89,20 @@ export const servicesEn: Service[] = [
     technologies: ["Next.js", "React", "TypeScript", "Node.js", "Python", "FastAPI", "PostgreSQL", "MongoDB", "Redis"],
     relatedServices: ["web-scraping", "yapay-zeka-otomasyon", "api-gelistirme", "nextjs-gelistirme"],
     project: { title: "Real project evidence", description: "Review the engineering approach used in data collection and financial analytics systems.", href: "/en/projects", anchor: "Explore selected custom software projects" },
+    faqs: [
+      {
+        question: "How long does a typical custom software project take to deliver?",
+        answer: "MVPs and focused automations are generally deployed within 2 to 4 weeks, while larger full-scale SaaS platforms are delivered in iterative milestone phases.",
+      },
+      {
+        question: "Who owns the intellectual property and source code?",
+        answer: "You retain 100% full ownership of all source code, architecture designs, and database schemas. The project is delivered clean and documented without vendor lock-in.",
+      },
+      {
+        question: "Do you offer post-launch maintenance and technical support?",
+        answer: "Yes, ongoing server monitoring, security patching, performance optimization, and incremental feature development agreements are available.",
+      },
+    ],
   },
   {
     slug: "api-gelistirme",
@@ -76,6 +122,20 @@ export const servicesEn: Service[] = [
     technologies: ["FastAPI", "Node.js", "REST", "PostgreSQL", "MongoDB", "Redis", "Supabase"],
     relatedServices: ["yapay-zeka-otomasyon", "ozel-yazilim-gelistirme"],
     project: { title: "BIST AI", description: "Explore how Python, FastAPI, Redis, and PostgreSQL support a data-oriented product.", href: "/en/projects/bist-ai", anchor: "Explore the BIST AI backend architecture" },
+    faqs: [
+      {
+        question: "What security and authorization standards are implemented for APIs?",
+        answer: "Standard implementations include JWT authentication, OAuth2, granular API key rate limiting, strict CORS policies, and compliance with OWASP API Security Top 10 guidelines.",
+      },
+      {
+        question: "How is API documentation generated and maintained?",
+        answer: "Interactive OpenAPI/Swagger documentation is automatically generated, accompanied by ready-to-test Postman collections and comprehensive schema models.",
+      },
+      {
+        question: "How do you guarantee high throughput and low response times?",
+        answer: "Through Redis caching layers, async I/O handlers, database index optimization, and connection pooling to achieve sub-50ms endpoint latencies.",
+      },
+    ],
   },
   {
     slug: "nextjs-gelistirme",
@@ -95,6 +155,20 @@ export const servicesEn: Service[] = [
     technologies: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Node.js", "REST API"],
     relatedServices: ["ozel-yazilim-gelistirme", "api-gelistirme"],
     project: { title: "Next.js project examples", description: "Explore the product approach used in the News Portal and BIST AI interfaces.", href: "/en/projects", anchor: "Explore projects developed with Next.js" },
+    faqs: [
+      {
+        question: "What benefits does Next.js 16 App Router & React 19 provide?",
+        answer: "React Server Components (RSC) drastically reduce client bundle sizes, improve first load speed (LCP), and allow search engine crawlers to immediately index fully-rendered HTML.",
+      },
+      {
+        question: "Do you guarantee 90+ Core Web Vitals scores?",
+        answer: "Yes, via modern Tailwind CSS v4 styling, optimized image pipelines, font display swap, and minimal client execution, pages achieve top Google PageSpeed ratings.",
+      },
+      {
+        question: "How is multi-language (i18n) configured in Next.js?",
+        answer: "Using clean URL routing (/en), hreflang alternate tags, metadata synchronization, and translation structures without messy client redirections.",
+      },
+    ],
   },
 ];
 
