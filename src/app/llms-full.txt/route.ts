@@ -53,6 +53,17 @@ ${s.sections.map((sec) => `  - **${sec.title}**: ${sec.body}`).join("\n")}
 ---
 
 ## 3. Projects (Turkish & English)
+### MyBusinessBoss (All-in-One Enterprise B2B ERP & CRM SaaS Platform)
+- URL (TR): ${SITE_URL}/projeler/mybusinessboss
+- URL (EN): ${SITE_URL}/en/projects/mybusinessboss
+- Tech: PHP MVC, MySQL Enterprise, TypeScript, Progressive Web App (PWA), Service Worker, Redis Caching, ZXing Optical Barcode Engine, CalDAV/ICS Mobile Feed, RBAC Zero-Trust Matrix, Dynamic PDF Engine
+- Production Engineering Benchmarks:
+  - 10+ Enterprise Modules in 1 Platform: Unifies POS, stock management, CRM, repair work orders, appointment scheduling, and cashflow.
+  - <30ms Public Storefront via ETag 304: Redis payload hashing delivering instant responses and absorbing 90%+ redundant queries.
+  - 100% PWA Offline Shell: Service Worker cache allowing operational navigation during connectivity interruptions.
+  - Zero Hardware Cost Barcode POS: In-browser ZXing camera decoding transforming any smartphone into a commercial barcode terminal.
+  - Live Mobile Calendar Synchronization: Native CalDAV/ICS feeds allowing staff to view work orders in Apple/Google Calendars in real-time.
+
 ### Haber Portalı (Autonomous News Scraping & DaaS Platform)
 - URL (TR): ${SITE_URL}/projeler/haber-portali
 - URL (EN): ${SITE_URL}/en/projects/haber-portali

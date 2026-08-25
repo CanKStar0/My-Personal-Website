@@ -4,6 +4,12 @@ import { createMetadata } from "@/lib/seo";
 import { SITE_NAME, SITE_URL } from "@/lib/site";
 
 const projects: Record<string, { title: string; description: string; image: string; category: string }> = {
+  "mybusinessboss": {
+    title: "MyBusinessBoss - All-in-One Enterprise B2B ERP & CRM SaaS Platform",
+    description: "A high-performance cloud ERP & CRM SaaS platform unifying POS, multi-variant inventory, camera barcode scanner, repair work orders, smart calendar, and cashflow.",
+    image: "/images/mybusinessboss-cover-en.png",
+    category: "BusinessApplication",
+  },
   "free-api": {
     title: "FreeAPI Directory - 500+ Public REST APIs & Live Sandbox",
     description: "A global developer directory featuring 500+ curated public REST APIs, live terminal sandbox playground, and edge anti-scraping shield.",

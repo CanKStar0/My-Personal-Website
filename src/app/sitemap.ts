@@ -173,6 +173,32 @@ export default function sitemap(): MetadataRoute.Sitemap {
   // Project items
   const projectRoutes: MetadataRoute.Sitemap = [
     {
+      url: absoluteUrl("/projeler/mybusinessboss"),
+      lastModified: SITE_CONTENT_UPDATED_AT,
+      changeFrequency: "monthly",
+      priority: 0.8,
+      alternates: {
+        languages: {
+          tr: absoluteUrl("/projeler/mybusinessboss"),
+          en: absoluteUrl("/en/projects/mybusinessboss"),
+          "x-default": absoluteUrl("/projeler/mybusinessboss"),
+        },
+      },
+    },
+    {
+      url: absoluteUrl("/en/projects/mybusinessboss"),
+      lastModified: SITE_CONTENT_UPDATED_AT,
+      changeFrequency: "monthly",
+      priority: 0.8,
+      alternates: {
+        languages: {
+          tr: absoluteUrl("/projeler/mybusinessboss"),
+          en: absoluteUrl("/en/projects/mybusinessboss"),
+          "x-default": absoluteUrl("/projeler/mybusinessboss"),
+        },
+      },
+    },
+    {
       url: absoluteUrl("/projeler/haber-portali"),
       lastModified: SITE_CONTENT_UPDATED_AT,
       changeFrequency: "monthly",

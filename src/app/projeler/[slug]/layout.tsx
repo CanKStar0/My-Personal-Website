@@ -4,6 +4,12 @@ import { createMetadata } from "@/lib/seo";
 import { SITE_NAME, SITE_URL } from "@/lib/site";
 
 const PROJECTS_METADATA: Record<string, { title: string; description: string; image: string; category: string }> = {
+  "mybusinessboss": {
+    title: "MyBusinessBoss - All-in-One Kurumsal B2B ERP & CRM SaaS Platformu",
+    description: "POS terminali, stok yönetimi, kamera barkod okuyucu, tamirhane servis iş emirleri, akıllı randevu ve nakit akışını tek çatı altında toplayan bulut ERP SaaS sistemi.",
+    image: "/images/mybusinessboss-cover.png",
+    category: "BusinessApplication",
+  },
   "free-api": {
     title: "FreeAPI Directory - 500+ Açık REST API & Canlı Sandbox Platformu",
     description: "500+ doğrulanmış ücretsiz REST API, canlı terminal sandbox konsolu ve askeri düzeyde anti-scraping koruması sunan küresel geliştirici platformu.",

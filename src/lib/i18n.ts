@@ -10,6 +10,7 @@ const routePairs = [
   ["/hizmetler/api-gelistirme", "/en/services/api-development"],
   ["/hizmetler/nextjs-gelistirme", "/en/services/nextjs-development"],
   ["/projeler", "/en/projects"],
+  ["/projeler/mybusinessboss", "/en/projects/mybusinessboss"],
   ["/projeler/free-api", "/en/projects/free-api"],
   ["/projeler/haber-portali", "/en/projects/haber-portali"],
   ["/projeler/bist-ai", "/en/projects/bist-ai"],

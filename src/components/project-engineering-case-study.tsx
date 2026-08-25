@@ -564,6 +564,161 @@ export const FREE_API_ENGINEERING_DATA: EngineeringCaseStudyData = {
   ],
 };
 
+export const MY_BUSINESS_BOSS_ENGINEERING_DATA: EngineeringCaseStudyData = {
+  metrics: [
+    {
+      value: "10+ Modül",
+      label: { tr: "All-in-One SaaS Çözümü", en: "Unified SaaS Architecture" },
+      subtext: { tr: "POS, CRM, Stok, Servis & Kasa", en: "POS, CRM, Stock, Repairs & Finance" },
+      icon: Layers,
+      color: "red",
+    },
+    {
+      value: "<30 ms",
+      label: { tr: "Sunucu & ETag 304 Yanıtı", en: "Server & ETag 304 Latency" },
+      subtext: { tr: "Redis Destekli Sıfır DB Yükü", en: "Redis In-Memory Cache Optimization" },
+      icon: Zap,
+      color: "emerald",
+    },
+    {
+      value: "%100 PWA",
+      label: { tr: "Çevrimdışı Çalışma Kabiliyeti", en: "Offline Progressive Shell" },
+      subtext: { tr: "Service Worker Shell Cache", en: "Service Worker In-Browser Cache" },
+      icon: RefreshCw,
+      color: "blue",
+    },
+    {
+      value: "0 Veri Kaybı",
+      label: { tr: "Tam Denetim & İşlem Güvencesi", en: "Zero Data Loss & Audit Trail" },
+      subtext: { tr: "ACID Uyumlu MySQL & Audit Logger", en: "ACID MySQL + Enterprise Audit Log" },
+      icon: ShieldCheck,
+      color: "amber",
+    },
+    {
+      value: "3 Dil",
+      label: { tr: "Dinamik Çoklu Dil Sistemi", en: "Dynamic Tri-Lingual Support" },
+      subtext: { tr: "TR / EN / NL Eşzamanlı Parite", en: "TR / EN / NL Real-Time Parity" },
+      icon: Cpu,
+      color: "purple",
+    },
+  ],
+  architectureSteps: [
+    {
+      step: "01",
+      title: { tr: "Modüler SaaS Çekirdeği & RBAC İzin Matrisi", en: "Modular SaaS Core & Granular RBAC Matrix" },
+      desc: {
+        tr: "Rol ve yetki matrisiyle izole edilen kullanıcı oturumları; yönetici, muhasebe, usta ve kasiyer için güvenli veri erişim duvarı sağlar.",
+        en: "Session isolation and fine-grained permissions protect every route, securing sensitive actions across admins, cashiers, and technicians.",
+      },
+      badge: { tr: "Yetkilendirme", en: "Security & RBAC" },
+    },
+    {
+      step: "02",
+      title: { tr: "Hızlı POS & Kamera Barkod Tarama Motoru", en: "High-Speed POS & Camera Barcode Scanner" },
+      desc: {
+        tr: "ZXing web kamera entegrasyonu ve optik barkod okuyucu desteği ile donanım bağımsız anlık sepet ve stok düşümü.",
+        en: "Hardware-free barcode recognition using camera feeds, instant cart calculations, and atomic inventory reduction.",
+      },
+      badge: { tr: "Satış & POS", en: "POS Engine" },
+    },
+    {
+      step: "03",
+      title: { tr: "Servis & Tamirhane İş Emri Durum Makinesi", en: "Repair & Service Work Order State Machine" },
+      desc: {
+        tr: "Müşteri cihaz/varlık kaydı, yedek parça maliyetleri ve aşamalı iş emri durum geçişleriyle tamir süreçlerinin takibi.",
+        en: "Customer asset registry, spare parts costing, and deterministic state transitions tracking the entire repair lifecycle.",
+      },
+      badge: { tr: "Servis Operasyonu", en: "Work Orders" },
+    },
+    {
+      step: "04",
+      title: { tr: "Akıllı Randevu & CalDAV/ICS Mobil Takvim", en: "Smart Calendar & CalDAV/ICS Mobile Sync" },
+      desc: {
+        tr: "İnteraktif randevu ajandası ve saha personelinin cep telefonundaki Apple/Google takvimine canlı akan ICS aboneliği.",
+        en: "Interactive appointment grid and real-time ICS subscription feeds streaming directly to field staff's mobile calendars.",
+      },
+      badge: { tr: "Planlama", en: "Calendar Sync" },
+    },
+    {
+      step: "05",
+      title: { tr: "ETag & Redis Destekli Müşteri Online Kataloğu", en: "ETag & Redis-Backed Customer Online Catalogue" },
+      desc: {
+        tr: "Müşterilerin şifresiz eriştiği dijital vitrin; ETag ve Redis önbellekleme sayesinde 304 Not Modified dönerek ana DB yükünü sıfırlar.",
+        en: "Public-facing digital storefront leveraging ETag conditional headers and Redis caching to return 304 Not Modified responses with zero DB load.",
+      },
+      badge: { tr: "Önbellek & Vitrin", en: "Public Delivery" },
+    },
+  ],
+  warStories: [
+    {
+      title: {
+        tr: "5 Farklı Dağınık Yazılımı Tek Bir SaaS Ekosisteminde Birleştirme",
+        en: "Unifying 5 Fragmented Tools into One Enterprise SaaS Ecosystem",
+      },
+      subtitle: {
+        tr: "Operasyonel Körlüğü Bitiren All-in-One ERP & CRM Mimarisi",
+        en: "Eliminating Data Silos via a Unified Progressive Cloud Panel",
+      },
+      problem: {
+        tr: "İşletmeler ve servis merkezleri; stok için ayrı Excel tabloları, randevu için kağıt ajanda, satış için eski tip hantal POS ve müşteri takibi için bağımsız yazılımlar kullanarak devasa bir veri karmaşası, müşteri kaybı ve operasyonel verimsizlik yaşıyordu.",
+        en: "Businesses struggled with severe operational blind spots and lost revenue by juggling disjointed tools: Excel sheets for stock, paper agendas for appointments, outdated POS terminals, and isolated CRM software.",
+      },
+      solution: {
+        tr: "Tüm operasyonel iş akışlarını (POS, CRM, Stok, Servis İş Emirleri, Kasa/Nakit Akışı, Randevular ve Personel) tek bir çatı altında toplayan, Progressive Enhancement mimarisiyle sıfır bekleme süresi sunan modüler bir ERP SaaS platformu inşa edildi.",
+        en: "Engineered a unified, progressive server-rendered ERP SaaS platform consolidating POS, CRM, multi-variant inventory, repair work orders, cashflow, and appointments into a single cohesive cockpit.",
+      },
+      impact: {
+        tr: "İşletmelerin operasyonel işlem süreleri %65 kısaldı, çift kayıt ve veri kaybı riski sıfırlandı ve tüm ekip tek bir platformdan anlık senkronize çalışır hale geldi.",
+        en: "Reduced business administrative overhead by 65%, eliminated duplicate entry errors, and empowered cross-functional teams with real-time operational synchronization.",
+      },
+    },
+    {
+      title: {
+        tr: "Donanım Bağımsız Web Kamera Barkod Tarama & Kesintisiz POS Terminali",
+        en: "Hardware-Free Camera Barcode Scanning & Instant POS Checkout",
+      },
+      subtitle: {
+        tr: "Pahalı El Terminallerini Tarihe Karıştıran Tarayıcı İçi Görüntü İşleme",
+        en: "Browser-Based ZXing Optical Recognition Slashing Hardware Costs",
+      },
+      problem: {
+        tr: "Geleneksel POS ve stok sistemleri pahalı el terminalleri ve özel donanım sürücüleri gerektirir. Donanım arızalandığında veya personelin yanında olmadığında satış ve stok sayımı tamamen kilitlenir.",
+        en: "Traditional inventory systems rely on expensive handheld hardware scanners and custom driver setups. Any hardware failure halts sales operations and stock counts.",
+      },
+      solution: {
+        tr: "Tarayıcı üzerinde çalışan ZXing optik barkod motoru entegre edildi. Herhangi bir akıllı telefon veya dizüstü kamerası üzerinden anlık EAN-13/Code-128 barkod taraması, otomatik sepet hesaplaması ve anlık stok düşümü sağlandı.",
+        en: "Integrated in-browser ZXing optical decoding allowing any standard smartphone or webcam to scan barcodes instantly with zero driver configuration, executing atomic inventory deductions.",
+      },
+      impact: {
+        tr: "İşletmeler binlerce dolarlık donanım maliyetinden kurtuldu; herhangi bir telefon veya tablet 2 saniyede tam donanımlı bir POS terminaline dönüştü.",
+        en: "Eliminated thousands of dollars in hardware scanner investments, turning any tablet or mobile device into a high-speed POS terminal.",
+      },
+    },
+    {
+      title: {
+        tr: "ETag & Redis Destekli Sıfır Yüklü Herkese Açık Online Katalog",
+        en: "Zero-Database-Load Public Catalogue via ETag & Redis Caching",
+      },
+      subtitle: {
+        tr: "Binlerce Müşteri Ziyaretinde Ana Veritabanını Koruyan Akıllı Önbellek",
+        en: "Conditional 304 Not Modified Caching Absorbing High Traffic Spikes",
+      },
+      problem: {
+        tr: "Müşterilerin işletmenin ürün ve hizmetlerini incelediği herkese açık online katalog yüksek trafik aldığında, ana ERP veritabanı yorulur ve yönetim panelinde çalışan personelin işlemleri yavaşlar.",
+        en: "Public customer catalogues experiencing sudden traffic surges frequently bottleneck primary ERP databases, degrading internal staff operational speed.",
+      },
+      solution: {
+        tr: "Katalog verisi için içerik özetine (payload hash) dayalı ETag ve Redis önbellek katmanı inşa edildi. Değişiklik olmayan tüm isteklerde sunucu veritabanına hiç dokunmadan HTTP 304 (Not Modified) dönecek şekilde optimize edildi.",
+        en: "Designed a payload hash-based ETag and Redis caching architecture. Unaltered requests return instant HTTP 304 Not Modified responses without touching the underlying MySQL database.",
+      },
+      impact: {
+        tr: "Kamuya açık katalog isteklerinde yanıt süresi <30 ms seviyesine indirildi ve veritabanı okuma yükü %90 oranında hafifletildi.",
+        en: "Achieved sub-30ms public catalog response latency and absorbed over 90% of redundant database read queries.",
+      },
+    },
+  ],
+};
+
 interface Props {
   data: EngineeringCaseStudyData;
   locale?: Locale;

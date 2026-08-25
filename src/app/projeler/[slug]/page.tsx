@@ -16,6 +16,7 @@ import {
   HABER_PORTALI_ENGINEERING_DATA,
   BIST_AI_ENGINEERING_DATA,
   FREE_API_ENGINEERING_DATA,
+  MY_BUSINESS_BOSS_ENGINEERING_DATA,
 } from "@/components/project-engineering-case-study";
 
 function GithubIcon({ className }: { className?: string }) {
@@ -60,6 +61,87 @@ interface ProjectData {
 }
 
 const PROJECTS_DATA: ProjectData[] = [
+  {
+    slug: "mybusinessboss",
+    titleKey: translations.projects.mybusinessbossTitle,
+    summaryKey: translations.projects.mybusinessbossDesc,
+    techStack: [
+      "PHP MVC Architecture",
+      "MySQL Enterprise",
+      "Progressive Web App (PWA)",
+      "Service Worker Cache",
+      "Redis Caching (ETag 304)",
+      "ZXing Camera Barcode",
+      "CalDAV / ICS Calendar Feed",
+      "RBAC Zero-Trust Matrix",
+      "Dynamic PDF Document Engine",
+      "i18n (TR / EN / NL)",
+      "Audit Trail & Logging",
+      "RESTful API Endpoints"
+    ],
+    liveUrl: "/canli-yok",
+    githubUrl: "/gizli-repo",
+    features: [
+      {
+        titleKey: translations.projectDetail.mybusinessbossFeature1Title,
+        descKey: translations.projectDetail.mybusinessbossFeature1Desc,
+        imagePath: {
+          tr: "/images/mybusinessboss-1.png",
+          en: "/images/mybusinessboss-1-en.png",
+        },
+      },
+      {
+        titleKey: translations.projectDetail.mybusinessbossFeature2Title,
+        descKey: translations.projectDetail.mybusinessbossFeature2Desc,
+        imagePath: {
+          tr: "/images/mybusinessboss-2.png",
+          en: "/images/mybusinessboss-2-en.png",
+        },
+      },
+      {
+        titleKey: translations.projectDetail.mybusinessbossFeature3Title,
+        descKey: translations.projectDetail.mybusinessbossFeature3Desc,
+        imagePath: {
+          tr: "/images/mybusinessboss-3.png",
+          en: "/images/mybusinessboss-3-en.png",
+        },
+      },
+      {
+        titleKey: translations.projectDetail.mybusinessbossFeature4Title,
+        descKey: translations.projectDetail.mybusinessbossFeature4Desc,
+        imagePath: {
+          tr: "/images/mybusinessboss-4.png",
+          en: "/images/mybusinessboss-4-en.png",
+        },
+      },
+    ],
+    caseStudy: {
+      problem: translations.projectDetail.mybusinessbossProblem,
+      solution: translations.projectDetail.mybusinessbossSolution,
+      architecture: {
+        tr: "PHP MVC sunucu tabanlı render omurgası, MySQL ACID veri tabanı, istemci tarafında progressive enhancement (Vanilla JS / Server UI packs), donanım bağımsız ZXing barkod motoru ve Redis önbellek katmanı.",
+        en: "Server-rendered PHP MVC backbone, MySQL ACID transaction store, lightweight client-side progressive enhancement (Vanilla JS / Server UI packs), hardware-free ZXing barcode engine, and Redis caching layer.",
+      },
+      dataFlow: {
+        tr: "Kullanıcı/Kasiyer Girişi -> RBAC İzin Doğrulama -> POS/İş Emri/Stok Hareketleri -> Atomik MySQL İşlemi -> ICS Akıllı Takvim & Audit Trail Kaydı -> ETag/Redis Önbellek Güncellemesi.",
+        en: "User/Operator Auth -> RBAC Policy Enforcement -> POS/Work Order/Stock Mutation -> Atomic MySQL Commit -> Live ICS Calendar & Audit Trail Stream -> ETag/Redis Invalidation.",
+      },
+    },
+    relatedServices: [
+      {
+        label: { tr: "Özel Yazılım Geliştirme", en: "Custom Software Development" },
+        href: "/hizmetler/ozel-yazilim-gelistirme",
+      },
+      {
+        label: { tr: "API Geliştirme ve Entegrasyon", en: "API Development & Integration" },
+        href: "/hizmetler/api-gelistirme",
+      },
+      {
+        label: { tr: "Yapay Zekâ Otomasyon", en: "AI Automation Solutions" },
+        href: "/hizmetler/yapay-zeka-otomasyon",
+      },
+    ],
+  },
   {
     slug: "free-api",
     titleKey: translations.projects.freeapiTitle,
@@ -405,7 +487,12 @@ export default function ProjeDetayPage() {
           )}
 
           {/* Mühendislik Başarısı, Metrikler & Mimari Vaka Analizi */}
-          {project.slug === "haber-portali" ? (
+          {project.slug === "mybusinessboss" ? (
+            <ProjectEngineeringCaseStudy
+              data={MY_BUSINESS_BOSS_ENGINEERING_DATA}
+              locale={locale}
+            />
+          ) : project.slug === "haber-portali" ? (
             <ProjectEngineeringCaseStudy
               data={HABER_PORTALI_ENGINEERING_DATA}
               locale={locale}

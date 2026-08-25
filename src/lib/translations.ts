@@ -1,4 +1,4 @@
-﻿export type Locale = "tr" | "en";
+export type Locale = "tr" | "en";
 
 type TranslationValue = { tr: string; en: string };
 
@@ -63,6 +63,11 @@ export const translations = {
     } as TranslationValue,
     imagePreparing: { tr: "Görsel Hazırlanıyor", en: "Image Preparing" } as TranslationValue,
     // Project cards
+    mybusinessbossTitle: { tr: "MyBusinessBoss SaaS ERP & CRM", en: "MyBusinessBoss SaaS ERP & CRM" } as TranslationValue,
+    mybusinessbossDesc: {
+      tr: "POS, stok, barkod, CRM, tamirhane servis takibi, akıllı randevu ve finans süreçlerini tek çatı altında toplayan devasa All-in-One Kurumsal SaaS platformu.",
+      en: "A massive All-in-One Enterprise SaaS platform unifying POS, inventory, barcode, CRM, repair work orders, smart calendar, and cashflow under one roof.",
+    } as TranslationValue,
     freeapiTitle: { tr: "FreeAPI Directory", en: "FreeAPI Directory" } as TranslationValue,
     freeapiDesc: {
       tr: "500+ doğrulanmış ücretsiz REST API, canlı terminal sandbox konsolu ve askeri düzeyde anti-scraping koruması sunan küresel geliştirici platformu.",
@@ -164,6 +169,35 @@ export const translations = {
     bistFeature4Desc: {
       tr: "Bu sadece bir arayüz değil; Supabase ve TypeScript tabanlı sağlam bir abonelik ekosistemi. Farklı kullanıcı profillerinin API limitlerini, veritabanı yükünü ve arka plan işlem güçlerini pürüzsüzce yöneten tam teşekküllü bir B2B/B2C altyapısı.",
       en: "This is not just an interface; it's a robust subscription ecosystem based on Supabase and TypeScript. A full-fledged B2B/B2C infrastructure that seamlessly manages API limits, database loads, and background processing power for different user profiles.",
+    } as TranslationValue,
+    // MyBusinessBoss ERP & CRM features
+    mybusinessbossFeature1Title: { tr: "01 - Ürün & Stok Yönetimi ve Dinamik Hareket Takibi", en: "01 - Inventory & Stock Movement Analytics" } as TranslationValue,
+    mybusinessbossFeature1Desc: {
+      tr: "Stok girişleri, çıkışları, kritik stok uyarıları, kategori ve tedarikçi bazlı filtreleme ile işletmenin tüm envanter hareketlerini anlık denetleyen akıllı stok motoru.",
+      en: "Smart inventory engine monitoring stock entries, exits, threshold alerts, supplier workflows, and multi-category filtering in real time.",
+    } as TranslationValue,
+    mybusinessbossFeature2Title: { tr: "02 - Tamirhane & Servis İş Emirleri Yönetimi", en: "02 - Repair & Service Work Order Engine" } as TranslationValue,
+    mybusinessbossFeature2Desc: {
+      tr: "Müşteri cihaz/varlık kaydı, servis kabul, arıza teşhisi, parça/işçilik maliyetlendirmesi ve teslim durumunu aşama aşama yöneten tam teşekküllü tamirhane modülü.",
+      en: "Full-lifecycle repair management tracking customer assets, service intake, diagnostics, spare parts/labor costing, and dispatch readiness.",
+    } as TranslationValue,
+    mybusinessbossFeature3Title: { tr: "03 - Operasyonel Planlama & Akıllı Randevu Takvimi", en: "03 - Operations Planning & Smart Appointment Calendar" } as TranslationValue,
+    mybusinessbossFeature3Desc: {
+      tr: "Aylık, haftalık ve günlük dinamik takvim ızgarası, saha randevuları planlaması ve personelin mobil cihazlarıyla canlı senkronize olan Akıllı Takvim (ICS) altyapısı.",
+      en: "Dynamic monthly, weekly, and daily scheduling grid for field appointments with live ICS calendar sync across staff mobile devices.",
+    } as TranslationValue,
+    mybusinessbossFeature4Title: { tr: "04 - Kurumsal Sistem Yönetimi & Performans İzleme", en: "04 - Enterprise System Manager & Performance Diagnostics" } as TranslationValue,
+    mybusinessbossFeature4Desc: {
+      tr: "Veritabanı migration motoru, tek tıkla otomatik SQL yedekleme, sürüm önbelleği ve OPcache performans analizleriyle kesintisiz SaaS operasyon kontrol merkezi.",
+      en: "Comprehensive SaaS operations cockpit offering database schema migrations, automated SQL backups, cache versioning, and OPcache performance diagnostics.",
+    } as TranslationValue,
+    mybusinessbossProblem: {
+      tr: "İşletmeler ve servisler; stok için ayrı Excel, randevu için kağıt defter, satış için eski tip hantal POS ve müşteri takibi için bağımsız programlar kullanarak devasa bir veri karmaşası, müşteri kaybı ve operasyonel verimsizlik yaşıyordu.",
+      en: "Businesses and repair centers suffered from severe operational chaos and lost revenue by juggling fragmented tools: Excel for stock, paper planners for appointments, legacy POS terminals, and disconnected CRMs.",
+    } as TranslationValue,
+    mybusinessbossSolution: {
+      tr: "Tüm bu karmaşayı tek bir yüksek performanslı mimaride birleştiren MyBusinessBoss SaaS platformunu geliştirdim. Donanım bağımsız barkod tarama, akıllı mobil takvim akışı, RBAC güvenlik duvarı ve PWA çevrimdışı çalışma kabiliyetiyle işletmelere eksiksiz bir dijital omurga kazandırdım.",
+      en: "I engineered MyBusinessBoss, an all-in-one high-performance SaaS platform unifying every workflow. With hardware-independent barcode scanning, live mobile calendar feeds, RBAC security, and PWA offline capabilities, it delivers an enterprise-grade digital backbone.",
     } as TranslationValue,
     // BIST AI specific
     bistProblem: {

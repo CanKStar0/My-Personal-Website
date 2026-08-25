@@ -47,6 +47,12 @@ export function CommandPalette({ isOpen, onClose }: { isOpen: boolean; onClose: 
     const projectsList = isEn
       ? [
           {
+            id: "proj-mbb",
+            title: "MyBusinessBoss - All-in-One ERP & CRM SaaS Platform",
+            description: "High-performance modular enterprise ERP, POS, inventory, barcode, and calendar sync.",
+            href: "/en/projects/mybusinessboss",
+          },
+          {
             id: "proj-haber",
             title: "News Portal - Autonomous Web Scraping Engine",
             description: "Distributed scraper, Redis caching, and real-time news delivery platform.",
@@ -66,6 +72,12 @@ export function CommandPalette({ isOpen, onClose }: { isOpen: boolean; onClose: 
           },
         ]
       : [
+          {
+            id: "proj-mbb",
+            title: "MyBusinessBoss - All-in-One Kurumsal ERP & CRM SaaS",
+            description: "POS, stok, barkod, servis iş emirleri, akıllı randevu ve nakit akışını yöneten SaaS platformu.",
+            href: "/projeler/mybusinessboss",
+          },
           {
             id: "proj-haber",
             title: "Haber Portalı - Otonom Web Kazıma Motoru",

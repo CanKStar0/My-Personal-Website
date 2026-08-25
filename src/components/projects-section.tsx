@@ -25,6 +25,16 @@ export function ProjectsSection({ githubReposNode }: ProjectsSectionProps = {}) 
 
   const projects: Project[] = [
     {
+      titleKey: translations.projects.mybusinessbossTitle,
+      descriptionKey: translations.projects.mybusinessbossDesc,
+      technologies: ["PHP MVC", "MySQL Enterprise", "TypeScript", "Progressive Web App (PWA)", "Redis Caching", "ZXing Barcode Engine", "CalDAV / ICS Feed", "RBAC Security", "Audit Trail"],
+      slug: "mybusinessboss",
+      imagePath: {
+        tr: "/images/mybusinessboss-cover.png",
+        en: "/images/mybusinessboss-cover-en.png",
+      },
+    },
+    {
       titleKey: translations.projects.freeapiTitle,
       descriptionKey: translations.projects.freeapiDesc,
       technologies: ["Next.js 15", "TypeScript", "Tailwind CSS v4", "Framer Motion", "Serverless Edge", "Anti-Scraping Shield", "REST API", "Lucide React"],
