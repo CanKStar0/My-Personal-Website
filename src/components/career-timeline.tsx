@@ -56,7 +56,7 @@ export function CareerTimeline({ locale = "tr" }: CareerTimelineProps) {
   ];
 
   return (
-    <section className="my-16">
+    <section className="my-16 overflow-x-clip">
       <div className="flex items-center gap-3">
         <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-brand-red/10 text-brand-red dark:bg-rose-500/10 dark:text-rose-400">
           <Sparkles className="h-5 w-5" />
@@ -73,7 +73,7 @@ export function CareerTimeline({ locale = "tr" }: CareerTimelineProps) {
         </div>
       </div>
 
-      <div className="relative mt-12 space-y-8 pl-6 sm:pl-8 before:absolute before:left-2 sm:before:left-3 before:top-2 before:bottom-2 before:w-[2px] before:bg-gradient-to-b before:from-brand-red before:via-brand-red/40 before:to-transparent">
+      <div className="relative mt-12 space-y-8 pl-6 sm:pl-8 before:absolute before:left-[11px] sm:before:left-[15px] before:top-2 before:bottom-2 before:w-[2px] before:bg-gradient-to-b before:from-brand-red before:via-brand-red/40 before:to-transparent">
         {timelineItems.map((item, index) => {
           const Icon = item.icon;
           return (
@@ -86,7 +86,7 @@ export function CareerTimeline({ locale = "tr" }: CareerTimelineProps) {
               className="relative group"
             >
               {/* Pulsing Node */}
-              <div className="absolute -left-[30px] sm:-left-[39px] top-5 flex h-6 w-6 items-center justify-center rounded-full border border-brand-red/50 bg-background shadow-[0_0_12px_rgba(220,38,38,0.3)] transition-transform duration-300 group-hover:scale-125">
+              <div className="absolute -left-[22px] sm:-left-[26px] top-5 flex h-6 w-6 items-center justify-center rounded-full border border-brand-red/50 bg-background shadow-[0_0_12px_rgba(220,38,38,0.3)] transition-transform duration-300 group-hover:scale-125">
                 <div className="h-2 w-2 rounded-full bg-brand-red" />
               </div>
 
@@ -162,7 +162,7 @@ export function CareerTimeline({ locale = "tr" }: CareerTimelineProps) {
           transition={{ duration: 0.5, delay: 0.45 }}
           className="relative group"
         >
-          <div className="absolute -left-[30px] sm:-left-[39px] top-5 flex h-6 w-6 items-center justify-center rounded-full border border-blue-500/50 bg-background shadow-[0_0_12px_rgba(59,130,246,0.3)] transition-transform duration-300 group-hover:scale-125">
+          <div className="absolute -left-[22px] sm:-left-[26px] top-5 flex h-6 w-6 items-center justify-center rounded-full border border-blue-500/50 bg-background shadow-[0_0_12px_rgba(59,130,246,0.3)] transition-transform duration-300 group-hover:scale-125">
             <div className="h-2 w-2 rounded-full bg-blue-500" />
           </div>
 

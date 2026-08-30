@@ -20,6 +20,12 @@ export const translations = {
   hero: {
     subtitle: { tr: "Fullstack Developer & AI Otomasyon Uzmanı", en: "Fullstack Developer & AI Automation Expert" } as TranslationValue,
     cta: { tr: "Çalışmaları Keşfet", en: "Explore My Work" } as TranslationValue,
+    ctaSecondary: { tr: "Hizmetleri İncele", en: "Explore Services" } as TranslationValue,
+    tagScraping: { tr: "Web Scraping", en: "Web Scraping" } as TranslationValue,
+    tagAi: { tr: "AI Otomasyon", en: "AI Automation" } as TranslationValue,
+    tagSaas: { tr: "SaaS & ERP", en: "SaaS & ERP" } as TranslationValue,
+    tagApi: { tr: "Yüksek Hızlı API", en: "High-Speed APIs" } as TranslationValue,
+    tagNextjs: { tr: "Next.js 16 & React 19", en: "Next.js 16 & React 19" } as TranslationValue,
   },
 
   // ─── Manifesto ───────────────────────────────────────
@@ -208,6 +214,18 @@ export const translations = {
       tr: "Python ve FastAPI ile bir veri hattı kurdum. İşlenen kayıtlar Redis ile önbelleğe alınarak frontend tarafına kontrollü API yanıtlarıyla aktarıldı; analiz katmanında trend sinyallerini değerlendiren modeller kullanıldı.",
       en: "I built a data pipeline with Python and FastAPI. Processed records were cached with Redis and delivered to the frontend through controlled API responses, with models evaluating trend signals in the analytics layer.",
     } as TranslationValue,
+    // High-converting CRO Lead Card
+    leadCardBadge: { tr: "Özel Yazılım & Mühendislik", en: "Custom Software & Engineering" } as TranslationValue,
+    leadCardTitle: {
+      tr: "Benzer Bir Mimari veya Sistem mi Geliştirmek İstiyorsunuz?",
+      en: "Looking to Build a Similar Architecture or System?",
+    } as TranslationValue,
+    leadCardSubtitle: {
+      tr: "Fikrinizi yüksek performanslı ve sürdürülebilir bir dijital ürüne dönüştürelim; otonom scraping sistemleri, ölçeklenebilir SaaS platformları ve sağlam API mimarileri için hemen görüşelim.",
+      en: "Let's turn your idea into a high-performance, sustainable digital product; get in touch for autonomous scraping pipelines, scalable SaaS platforms, and resilient API architectures.",
+    } as TranslationValue,
+    leadCardCtaPrimary: { tr: "Projenizi Başlatın & Teklif Alın", en: "Start Your Project & Request a Quote" } as TranslationValue,
+    leadCardCtaSecondary: { tr: "Tüm Hizmetleri İncele", en: "Explore All Services" } as TranslationValue,
   },
 
   // ─── Footer ──────────────────────────────────────────

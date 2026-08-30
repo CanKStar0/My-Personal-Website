@@ -1,35 +1,45 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef } from "react";
 
 export function ReadingProgress() {
-  const [progress, setProgress] = useState(0);
+  const barRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    let ticking = false;
+
     const updateProgress = () => {
       const currentScroll = window.scrollY;
       const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
-      if (scrollHeight > 0) {
-        setProgress(Number((currentScroll / scrollHeight).toFixed(4)) * 100);
+      const ratio = scrollHeight > 0 ? Math.min(Math.max(currentScroll / scrollHeight, 0), 1) : 0;
+      
+      if (barRef.current) {
+        barRef.current.style.transform = `scaleX(${ratio})`;
+      }
+      ticking = false;
+    };
+
+    const handleScroll = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(updateProgress);
+        ticking = true;
       }
     };
 
-    window.addEventListener("scroll", updateProgress, { passive: true });
+    window.addEventListener("scroll", handleScroll, { passive: true });
     updateProgress();
-    return () => window.removeEventListener("scroll", updateProgress);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (
     <div
-      className="fixed left-0 top-0 z-50 h-1 w-full bg-transparent"
+      className="fixed left-0 top-0 z-50 h-1 w-full bg-transparent pointer-events-none"
       role="progressbar"
-      aria-valuenow={Math.round(progress)}
-      aria-valuemin={0}
-      aria-valuemax={100}
     >
       <div
-        className="h-full bg-gradient-to-r from-brand-red via-rose-500 to-amber-500 transition-all duration-75 ease-out shadow-[0_0_8px_rgba(220,38,38,0.6)]"
-        style={{ width: `${progress}%` }}
+        ref={barRef}
+        className="h-full w-full origin-left bg-gradient-to-r from-brand-red via-rose-500 to-amber-500 will-change-transform shadow-[0_0_8px_rgba(220,38,38,0.6)]"
+        style={{ transform: "scaleX(0)" }}
       />
     </div>
   );

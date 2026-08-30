@@ -128,13 +128,31 @@ export function ProjectsSection({ githubReposNode }: ProjectsSectionProps = {}) 
           })}
         </div>
 
-        <ScrollReveal className="mt-12 rounded-2xl border border-brand-red/20 bg-brand-red/[0.04] p-7 md:p-9">
-          <h2 className="font-jakarta text-2xl font-bold text-foreground">{locale === "en" ? "The service approach behind the projects" : "Projelerin arkasındaki hizmet yaklaşımı"}</h2>
-          <p className="mt-3 max-w-3xl leading-7 text-muted-foreground">{locale === "en" ? "The News Portal provides technical context for data collection and web scraping, while BIST AI demonstrates API, backend, and AI-assisted analytics systems." : "Haber Portalı veri toplama ve web scraping; BIST AI ise API, backend ve AI destekli analiz sistemleri için gerçek teknik bağlam sunuyor."}</p>
-          <div className="mt-6 flex flex-wrap gap-x-6 gap-y-3 text-sm font-semibold">
-            <Link href={localizedServicePath("web-scraping", locale)} className="inline-flex items-center gap-2 hover:text-brand-red">{locale === "en" ? "Web Scraping Services" : "Web Scraping Hizmeti"} <ArrowRight className="h-4 w-4" /></Link>
-            <Link href={localizedServicePath("api-gelistirme", locale)} className="inline-flex items-center gap-2 hover:text-brand-red">{locale === "en" ? "API Development" : "API Geliştirme"} <ArrowRight className="h-4 w-4" /></Link>
-            <Link href={localizedServicePath("yapay-zeka-otomasyon", locale)} className="inline-flex items-center gap-2 hover:text-brand-red">{locale === "en" ? "AI Automation" : "AI Otomasyon"} <ArrowRight className="h-4 w-4" /></Link>
+        <ScrollReveal className="mt-12 overflow-hidden rounded-3xl border border-brand-red/30 bg-gradient-to-br from-brand-red/[0.08] via-card/70 to-background p-8 md:p-10 backdrop-blur-md relative shadow-lg">
+          <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
+            <div className="space-y-2 max-w-2xl">
+              <h2 className="font-jakarta text-2xl font-bold text-foreground">
+                {locale === "en" ? "Need a Tailored System or Architecture?" : "Özel Bir Sistem veya Mimariye mi İhtiyacınız Var?"}
+              </h2>
+              <p className="text-sm md:text-base leading-relaxed text-muted-foreground">
+                {locale === "en"
+                  ? "From high-throughput web scraping to autonomous AI workflows and enterprise SaaS architectures, explore dedicated services designed for scale."
+                  : "Yüksek hacimli web kazımadan otonom yapay zekâ iş akışlarına ve kurumsal SaaS mimarilerine kadar projelerinize özel mühendislik çözümleri."}
+              </p>
+            </div>
+            <Link
+              href={locale === "en" ? "/en/contact" : "/iletisim"}
+              className="inline-flex shrink-0 items-center gap-2 rounded-full bg-brand-red px-6 py-3.5 text-xs sm:text-sm font-bold uppercase tracking-wider text-white shadow-md shadow-brand-red/20 transition-all duration-300 hover:bg-red-700 hover:shadow-brand-red/35"
+            >
+              {locale === "en" ? "Request a Proposal" : "Teklif Alın & Danışın"}
+              <ArrowRight className="h-4 w-4" />
+            </Link>
+          </div>
+          <div className="mt-8 border-t border-zinc-200/50 dark:border-zinc-800/60 pt-6 flex flex-wrap gap-x-6 gap-y-3 text-sm font-semibold">
+            <Link href={localizedServicePath("web-scraping", locale)} className="inline-flex items-center gap-1.5 text-zinc-700 dark:text-zinc-300 hover:text-brand-red transition-colors">{locale === "en" ? "Web Scraping" : "Web Scraping Hizmeti"} <ArrowRight className="h-3.5 w-3.5" /></Link>
+            <Link href={localizedServicePath("api-gelistirme", locale)} className="inline-flex items-center gap-1.5 text-zinc-700 dark:text-zinc-300 hover:text-brand-red transition-colors">{locale === "en" ? "API Development" : "API Geliştirme"} <ArrowRight className="h-3.5 w-3.5" /></Link>
+            <Link href={localizedServicePath("yapay-zeka-otomasyon", locale)} className="inline-flex items-center gap-1.5 text-zinc-700 dark:text-zinc-300 hover:text-brand-red transition-colors">{locale === "en" ? "AI Automation" : "AI Otomasyon"} <ArrowRight className="h-3.5 w-3.5" /></Link>
+            <Link href={localizedServicePath("ozel-yazilim-gelistirme", locale)} className="inline-flex items-center gap-1.5 text-zinc-700 dark:text-zinc-300 hover:text-brand-red transition-colors">{locale === "en" ? "Custom Software" : "Özel Yazılım"} <ArrowRight className="h-3.5 w-3.5" /></Link>
           </div>
         </ScrollReveal>
 

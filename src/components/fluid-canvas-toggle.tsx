@@ -16,6 +16,7 @@ export function FluidCanvasToggle() {
       const originalDocOverflow = document.documentElement.style.overflow;
       const originalTouchAction = document.body.style.touchAction;
 
+      document.body.classList.add("canvas-mode-active");
       document.body.style.overflow = "hidden";
       document.documentElement.style.overflow = "hidden";
       document.body.style.touchAction = "none";
@@ -26,6 +27,7 @@ export function FluidCanvasToggle() {
       window.addEventListener("keydown", handleKeyDown);
 
       return () => {
+        document.body.classList.remove("canvas-mode-active");
         document.body.style.overflow = originalBodyOverflow;
         document.documentElement.style.overflow = originalDocOverflow;
         document.body.style.touchAction = originalTouchAction;

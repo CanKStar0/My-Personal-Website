@@ -13,7 +13,12 @@ export function AnalyticsTracker() {
       return;
     }
 
-    if (process.env.NODE_ENV !== "production" || typeof window.gtag !== "function") return;
+    if (
+      process.env.NODE_ENV !== "production" ||
+      typeof window.gtag !== "function" ||
+      window.location.hostname === "localhost" ||
+      window.location.hostname === "127.0.0.1"
+    ) return;
     window.gtag("event", "page_view", {
       page_path: pathname,
       page_location: window.location.href,

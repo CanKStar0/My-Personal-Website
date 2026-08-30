@@ -89,10 +89,18 @@ export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
 
-  // Monitor scroll to add deeper styling on scroll
+  // Monitor scroll with RAF throttling
   useEffect(() => {
+    let ticking = false;
     const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          const isScrolled = window.scrollY > 20;
+          setScrolled((prev) => (prev !== isScrolled ? isScrolled : prev));
+          ticking = false;
+        });
+        ticking = true;
+      }
     };
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
@@ -155,11 +163,11 @@ export function Navbar() {
             : "bg-transparent"
         }`}
       >
-        <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-6 sm:px-8">
+        <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
           {/* Logo / Brand Name */}
           <Link
             href={homeHref}
-            className="group flex items-center space-x-2 font-jakarta text-lg font-bold tracking-tight text-foreground transition-all duration-200"
+            className="group flex items-center space-x-2 font-jakarta text-base sm:text-lg font-bold tracking-tight text-foreground transition-all duration-200 shrink-0"
           >
             <span className="bg-linear-to-r from-foreground via-foreground/90 to-foreground/75 bg-clip-text text-transparent group-hover:opacity-90">
               Canpolat Kaya
@@ -184,39 +192,39 @@ export function Navbar() {
           </nav>
 
           {/* Controls: Search, Socials, Language, Theme, Mobile Toggle */}
-          <div className="flex items-center space-x-1 sm:space-x-2">
-            {/* Quick Search Button */}
+          <div className="flex items-center space-x-1 sm:space-x-2 shrink-0">
+            {/* Quick Search Button (Desktop / Tablet) */}
             <button
               type="button"
               onClick={() => setSearchOpen(true)}
               aria-label="Arama yap (Cmd+K)"
-              className="flex h-9 items-center gap-2 rounded-full border border-border/20 bg-background/50 px-3 text-xs text-muted-foreground transition-all duration-200 hover:border-border hover:bg-muted/60 hover:text-foreground cursor-pointer"
+              className="hidden sm:flex h-9 items-center gap-2 rounded-full border border-border/20 bg-background/50 px-3 text-xs text-muted-foreground transition-all duration-200 hover:border-border hover:bg-muted/60 hover:text-foreground cursor-pointer"
             >
               <Search className="h-3.5 w-3.5" />
-              <span className="hidden sm:inline-block">{locale === "en" ? "Search..." : "Ara..."}</span>
-              <kbd className="hidden rounded border border-border/60 bg-muted/60 px-1.5 py-0.2 text-[10px] font-mono sm:inline-block">
+              <span>{locale === "en" ? "Search..." : "Ara..."}</span>
+              <kbd className="rounded border border-border/60 bg-muted/60 px-1.5 py-0.2 text-[10px] font-mono">
                 ⌘K
               </kbd>
             </button>
 
-            {/* GitHub */}
+            {/* GitHub (Hidden on extra small navbar, visible on sm+) */}
             <a
               href="https://github.com/CanKStar0"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="GitHub"
-              className="flex h-9 w-9 items-center justify-center rounded-full text-foreground/60 hover:text-foreground transition-colors duration-200"
+              className="hidden sm:flex h-9 w-9 items-center justify-center rounded-full text-foreground/60 hover:text-foreground transition-colors duration-200"
             >
               <GithubIcon className="h-[18px] w-[18px]" />
             </a>
 
-            {/* LinkedIn */}
+            {/* LinkedIn (Hidden on extra small navbar, visible on sm+) */}
             <a
               href="https://www.linkedin.com/in/canpolat-kaya/"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="LinkedIn"
-              className="flex h-9 w-9 items-center justify-center rounded-full text-foreground/60 hover:text-foreground transition-colors duration-200"
+              className="hidden sm:flex h-9 w-9 items-center justify-center rounded-full text-foreground/60 hover:text-foreground transition-colors duration-200"
             >
               <LinkedInIcon className="h-[18px] w-[18px]" />
             </a>
@@ -264,20 +272,64 @@ export function Navbar() {
             id="mobile-navigation"
             className="absolute top-16 left-0 w-full border-b border-border/20 bg-background/95 backdrop-blur-lg transition-all duration-300 lg:hidden animate-in fade-in slide-in-from-top-4 duration-200 z-50 shadow-xl"
           >
-            <nav className="flex flex-col space-y-4 px-6 py-8">
-              {navLinks.map((link) => (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  onClick={() => {
-                    setMobileMenuOpen(false);
-                  }}
-                  className="text-base font-medium text-foreground/80 hover:text-brand-red transition-colors duration-200 block w-full"
+            <div className="flex flex-col px-6 py-6 space-y-6">
+              {/* Mobile Search Button */}
+              <button
+                type="button"
+                onClick={() => {
+                  setMobileMenuOpen(false);
+                  setSearchOpen(true);
+                }}
+                aria-label="Arama yap"
+                className="flex w-full h-10 items-center justify-between rounded-xl border border-border/60 bg-muted/40 px-3.5 text-xs text-muted-foreground transition-all hover:border-brand-red/40 hover:bg-muted/70 hover:text-foreground cursor-pointer"
+              >
+                <div className="flex items-center gap-2">
+                  <Search className="h-4 w-4 text-brand-red" />
+                  <span>{locale === "en" ? "Search portfolio & blog..." : "Portfolyo ve blogda ara..."}</span>
+                </div>
+                <kbd className="rounded border border-border/60 bg-background/80 px-1.5 py-0.5 text-[10px] font-mono">
+                  ⌘K
+                </kbd>
+              </button>
+
+              {/* Nav links */}
+              <nav className="flex flex-col space-y-3">
+                {navLinks.map((link) => (
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    onClick={() => {
+                      setMobileMenuOpen(false);
+                    }}
+                    className="text-base font-semibold text-foreground/85 hover:text-brand-red transition-colors duration-200 block py-1"
+                  >
+                    {link.name}
+                  </Link>
+                ))}
+              </nav>
+
+              {/* Social Icons inside Mobile Drawer */}
+              <div className="pt-4 border-t border-border/30 flex items-center gap-6">
+                <a
+                  href="https://github.com/CanKStar0"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 text-xs font-medium text-muted-foreground hover:text-foreground transition-colors"
                 >
-                  {link.name}
-                </Link>
-              ))}
-            </nav>
+                  <GithubIcon className="h-4 w-4" />
+                  <span>GitHub</span>
+                </a>
+                <a
+                  href="https://www.linkedin.com/in/canpolat-kaya/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 text-xs font-medium text-muted-foreground hover:text-foreground transition-colors"
+                >
+                  <LinkedInIcon className="h-4 w-4" />
+                  <span>LinkedIn</span>
+                </a>
+              </div>
+            </div>
           </div>
         )}
       </header>

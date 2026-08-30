@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import Script from "next/script";
 import { Inter, Plus_Jakarta_Sans } from "next/font/google";
 import { ThemeProvider } from "@/components/theme-provider";
@@ -24,6 +24,16 @@ const plusJakartaSans = Plus_Jakarta_Sans({
 const siteUrl = "https://canpolatkaya.com";
 const gaId = process.env.NEXT_PUBLIC_GA_ID ?? "G-JLWJFQ732B";
 const googleSiteVerification = process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION;
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#F9F9F6" },
+    { media: "(prefers-color-scheme: dark)", color: "#09090b" },
+  ],
+};
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -85,8 +95,7 @@ export default function RootLayout({
   return (
     <html
       lang="tr"
-      data-scroll-behavior="smooth"
-      className={`${inter.variable} ${plusJakartaSans.variable}`}
+      className={`${inter.variable} ${plusJakartaSans.variable} overflow-x-clip w-full`}
       suppressHydrationWarning
     >
       <head>
@@ -107,7 +116,7 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className="min-h-screen antialiased bg-background text-foreground transition-colors duration-300" suppressHydrationWarning>
+      <body className="min-h-screen w-full overflow-x-clip antialiased bg-background text-foreground transition-colors duration-300" suppressHydrationWarning>
         {process.env.NODE_ENV === "production" && (
           <>
             <Script strategy="lazyOnload" src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`} />
@@ -116,10 +125,12 @@ export default function RootLayout({
               strategy="lazyOnload"
               dangerouslySetInnerHTML={{
                 __html: `
-                  window.dataLayer = window.dataLayer || [];
-                  function gtag(){dataLayer.push(arguments);}
-                  gtag('js', new Date());
-                  gtag('config', '${gaId}');
+                  if (typeof window !== 'undefined' && window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1') {
+                    window.dataLayer = window.dataLayer || [];
+                    function gtag(){dataLayer.push(arguments);}
+                    gtag('js', new Date());
+                    gtag('config', '${gaId}');
+                  }
                 `,
               }}
             />
@@ -130,7 +141,7 @@ export default function RootLayout({
           <LanguageProvider>
             <SiteEffects />
             <FluidCanvasToggle />
-            <div className="relative z-10 flex min-h-screen flex-col">
+            <div className="relative z-10 flex min-h-screen w-full flex-col overflow-x-clip">
               {children}
             </div>
             <Toaster 

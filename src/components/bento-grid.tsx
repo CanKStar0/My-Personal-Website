@@ -5,8 +5,6 @@ import { ScrollReveal } from "./scroll-reveal";
 import { useLanguage } from "./language-context";
 import { translations } from "@/lib/translations";
 
-const CDN = "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons";
-
 interface Tech {
   name: string;
   icon: string;
@@ -14,26 +12,26 @@ interface Tech {
 }
 
 const FRONTEND: Tech[] = [
-  { name: "TypeScript", icon: `${CDN}/typescript/typescript-original.svg` },
-  { name: "React", icon: `${CDN}/react/react-original.svg` },
-  { name: "Next.js", icon: `${CDN}/nextjs/nextjs-original.svg`, invert: true },
-  { name: "Tailwind CSS", icon: `${CDN}/tailwindcss/tailwindcss-original.svg` },
-  { name: "Framer Motion", icon: `${CDN}/framermotion/framermotion-original.svg` },
+  { name: "TypeScript", icon: "/icons/tech/typescript.svg" },
+  { name: "React", icon: "/icons/tech/react.svg" },
+  { name: "Next.js", icon: "/icons/tech/nextjs.svg", invert: true },
+  { name: "Tailwind CSS", icon: "/icons/tech/tailwindcss.svg" },
+  { name: "Framer Motion", icon: "/icons/tech/framermotion.svg" },
 ];
 
 const BACKEND: Tech[] = [
-  { name: "Python", icon: `${CDN}/python/python-original.svg` },
-  { name: "Node.js", icon: `${CDN}/nodejs/nodejs-original.svg` },
-  { name: "FastAPI", icon: `${CDN}/fastapi/fastapi-original.svg` },
-  { name: "Playwright", icon: `${CDN}/playwright/playwright-original.svg` },
-  { name: "Redis", icon: `${CDN}/redis/redis-original.svg` },
+  { name: "Python", icon: "/icons/tech/python.svg" },
+  { name: "Node.js", icon: "/icons/tech/nodejs.svg" },
+  { name: "FastAPI", icon: "/icons/tech/fastapi.svg" },
+  { name: "Playwright", icon: "/icons/tech/playwright.svg" },
+  { name: "Redis", icon: "/icons/tech/redis.svg" },
 ];
 
 const DATA: Tech[] = [
-  { name: "PostgreSQL", icon: `${CDN}/postgresql/postgresql-original.svg` },
-  { name: "MongoDB", icon: `${CDN}/mongodb/mongodb-original.svg` },
-  { name: "MySQL", icon: `${CDN}/mysql/mysql-original.svg` },
-  { name: "Supabase", icon: `${CDN}/supabase/supabase-original.svg` },
+  { name: "PostgreSQL", icon: "/icons/tech/postgresql.svg" },
+  { name: "MongoDB", icon: "/icons/tech/mongodb.svg" },
+  { name: "MySQL", icon: "/icons/tech/mysql.svg" },
+  { name: "Supabase", icon: "/icons/tech/supabase.svg" },
 ];
 
 /** Frontend / Backend: Icons stacked vertically, name appears as tooltip on hover */

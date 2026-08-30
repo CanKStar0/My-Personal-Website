@@ -96,8 +96,11 @@
     border-color: var(--border);
   }
   
-  html {
-    scroll-behavior: smooth;
+  html,
+  body {
+    overflow-x: clip;
+    max-width: 100%;
+    -webkit-overflow-scrolling: touch;
   }
 
   body {

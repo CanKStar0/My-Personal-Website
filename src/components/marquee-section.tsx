@@ -25,10 +25,10 @@ export function MarqueeSection() {
         animate={{ x: ["-50%", "0%"] }}
         transition={{
           ease: "linear",
-          duration: 10,
+          duration: 12,
           repeat: Infinity,
         }}
-        className="flex whitespace-nowrap gap-8 text-lg md:text-xl font-semibold text-zinc-400 dark:text-zinc-300 uppercase tracking-widest"
+        className="flex whitespace-nowrap gap-8 text-lg md:text-xl font-semibold text-zinc-400 dark:text-zinc-300 uppercase tracking-widest will-change-transform transform-gpu"
       >
         {doubledSkills.map((skill, i) => (
           <span key={i} className="flex items-center gap-8 group cursor-default">

@@ -4,6 +4,10 @@ const nextConfig: NextConfig = {
   trailingSlash: false,
   allowedDevOrigins: ["localhost", "127.0.0.1"],
   poweredByHeader: false,
+  compress: true,
+  experimental: {
+    optimizePackageImports: ["lucide-react", "framer-motion", "sonner"],
+  },
   async headers() {
     const contentSecurityPolicy = [
       "default-src 'self'",
@@ -31,6 +35,12 @@ const nextConfig: NextConfig = {
           { key: "Permissions-Policy", value: "camera=(), microphone=(), geolocation=(), payment=(), usb=()" },
         ],
       },
+      {
+        source: "/(images|icons)/:path*",
+        headers: [
+          { key: "Cache-Control", value: "public, max-age=31536000, immutable" },
+        ],
+      },
     ];
   },
   async redirects() {
@@ -44,6 +54,8 @@ const nextConfig: NextConfig = {
     ];
   },
   images: {
+    formats: ["image/avif", "image/webp"],
+    minimumCacheTTL: 31536000,
     remotePatterns: [
       {
         protocol: "https",

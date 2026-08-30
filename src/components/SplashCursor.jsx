@@ -1060,6 +1060,9 @@ function SplashCursor({
     }
 
     function handleTouchStart(e) {
+      if (typeof window !== 'undefined' && window.matchMedia && !window.matchMedia('(pointer: fine)').matches && !document.body.classList.contains('canvas-mode-active')) {
+        return;
+      }
       registerInteraction();
       const touches = e.targetTouches;
       let pointer = pointers[0];
@@ -1071,6 +1074,9 @@ function SplashCursor({
     }
 
     function handleTouchMove(e) {
+      if (typeof window !== 'undefined' && window.matchMedia && !window.matchMedia('(pointer: fine)').matches && !document.body.classList.contains('canvas-mode-active')) {
+        return;
+      }
       registerInteraction();
       const touches = e.targetTouches;
       let pointer = pointers[0];
@@ -1082,6 +1088,9 @@ function SplashCursor({
     }
 
     function handleTouchEnd(e) {
+      if (typeof window !== 'undefined' && window.matchMedia && !window.matchMedia('(pointer: fine)').matches && !document.body.classList.contains('canvas-mode-active')) {
+        return;
+      }
       const touches = e.changedTouches;
       let pointer = pointers[0];
       for (let i = 0; i < touches.length; i++) {

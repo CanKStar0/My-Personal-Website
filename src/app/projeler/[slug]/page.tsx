@@ -4,7 +4,7 @@ import { Navbar } from "@/components/navbar";
 import Image from "next/image";
 import { notFound, useParams } from "next/navigation";
 import { ScrollReveal } from "@/components/scroll-reveal";
-import { ArrowLeft, ExternalLink } from "lucide-react";
+import { ArrowLeft, ExternalLink, ArrowRight, Sparkles } from "lucide-react";
 import Link from "next/link";
 import { useLanguage } from "@/components/language-context";
 import { translations } from "@/lib/translations";
@@ -159,7 +159,7 @@ const PROJECTS_DATA: ProjectData[] = [
       "i18n Multi-Language",
       "SSRF Guard"
     ],
-    liveUrl: "https://api.canpolatkaya.com",
+    liveUrl: "/canli-yok",
     githubUrl: "https://github.com/CanKStar0/Free-API",
     features: [
       {
@@ -576,17 +576,43 @@ export default function ProjeDetayPage() {
             )}
           </ScrollReveal>
 
-          {/* Bottom CTA */}
-          <ScrollReveal className="pt-16 pb-8 text-center flex flex-col items-center">
-            <p className="text-muted-foreground mb-6 font-light">
-              {t({ tr: "Bu proje ilginizi çekti mi? Birlikte çalışalım.", en: "Interested in this project? Let's work together." })}
-            </p>
-            <Link
-              href={locale === "en" ? "/en/contact" : "/iletisim"}
-              className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-brand-red text-white font-bold hover:bg-red-700 transition-colors shadow-lg hover:shadow-brand-red/25 relative z-10 cursor-pointer"
-            >
-              {t(translations.navbar.contact)}
-            </Link>
+          {/* High-Converting Engineering & Lead Generation Card */}
+          <ScrollReveal className="my-16 overflow-hidden rounded-3xl border border-brand-red/30 bg-gradient-to-br from-brand-red/[0.08] via-card/80 to-background p-8 md:p-12 backdrop-blur-md relative shadow-xl dark:shadow-[0_0_50px_rgba(220,38,38,0.1)]">
+            <div className="absolute -right-16 -top-16 h-48 w-48 rounded-full bg-brand-red/10 blur-3xl pointer-events-none" />
+            
+            <div className="relative z-10 flex flex-col items-start md:items-center text-left md:text-center max-w-3xl mx-auto space-y-6">
+              <div className="inline-flex items-center gap-2 rounded-full border border-brand-red/30 bg-brand-red/10 px-4 py-1.5 text-xs font-bold text-brand-red dark:text-rose-400 uppercase tracking-widest">
+                <Sparkles className="w-3.5 h-3.5" />
+                {t(translations.projectDetail.leadCardBadge)}
+              </div>
+
+              <h2 className="text-2xl md:text-4xl font-extrabold font-jakarta text-foreground tracking-tight leading-tight">
+                {t(translations.projectDetail.leadCardTitle)}
+              </h2>
+
+              <p className="text-sm md:text-base text-muted-foreground leading-relaxed font-light">
+                {t(translations.projectDetail.leadCardSubtitle)}
+              </p>
+
+              <div className="flex flex-wrap items-center justify-start md:justify-center gap-4 pt-2 w-full">
+                <Link
+                  href={locale === "en" ? "/en/contact" : "/iletisim"}
+                  onClick={() => trackEvent("project_lead_cta_click", { project: project.slug, type: "primary" })}
+                  className="inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-full bg-brand-red text-white font-bold text-sm tracking-wider uppercase hover:bg-red-700 transition-all duration-300 shadow-lg shadow-brand-red/25 hover:shadow-brand-red/40 hover:-translate-y-0.5 cursor-pointer"
+                >
+                  <span>{t(translations.projectDetail.leadCardCtaPrimary)}</span>
+                  <ArrowRight className="w-4 h-4" />
+                </Link>
+
+                <Link
+                  href={locale === "en" ? "/en/services" : "/hizmetler"}
+                  onClick={() => trackEvent("project_lead_services_click", { project: project.slug, type: "secondary" })}
+                  className="inline-flex items-center justify-center gap-2 px-6 py-4 rounded-full border border-zinc-300 dark:border-zinc-800 bg-background/60 text-foreground font-semibold text-sm hover:bg-zinc-100 dark:hover:bg-zinc-800/80 transition-colors cursor-pointer"
+                >
+                  <span>{t(translations.projectDetail.leadCardCtaSecondary)}</span>
+                </Link>
+              </div>
+            </div>
           </ScrollReveal>
 
         </div>
