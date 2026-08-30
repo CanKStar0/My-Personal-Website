@@ -115,3 +115,29 @@
     outline-offset: 3px;
   }
 }
+
+@keyframes marquee {
+  0% {
+    transform: translate3d(-50%, 0, 0);
+  }
+  100% {
+    transform: translate3d(0%, 0, 0);
+  }
+}
+
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  will-change: transform;
+  animation: marquee 6s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+@media (min-width: 768px) {
+  .animate-marquee {
+    animation-duration: 12s;
+  }
+}
