@@ -22,15 +22,12 @@ Bu projede çalışırken tüm temel kurallar ve uzmanlıklar aşağıdaki merke
 - **Global Yetenekler:** `C:\Users\canpo\OneDrive\Desktop\GUIDELINES\skills\`
 
 ### Proje İhtiyacına Göre Devreye Alınacak Başlıca Global Yetenekler:
-- **👑 Yetenek Dağıtımı & Orkestrasyon** ➔ `C:\Users\canpo\OneDrive\Desktop\GUIDELINES\skills\skill-router\SKILL.md`
-- **🎨 Frontend & Modern UI/UX** ➔ `C:\Users\canpo\OneDrive\Desktop\GUIDELINES\skills\frontend-design-master\SKILL.md`
-- **🔍 Teknik SEO & JSON-LD & OG Görselleri** ➔ `C:\Users\canpo\OneDrive\Desktop\GUIDELINES\skills\seo-specialist\SKILL.md`
-- **🌍 Çoklu Dil (i18n) & Çeviri Eşitliği** ➔ `C:\Users\canpo\OneDrive\Desktop\GUIDELINES\skills\i18n-sync-validator\SKILL.md`
-- **📈 CRO, Analitik (GA4) & İkna Edici İçerik** ➔ `C:\Users\canpo\OneDrive\Desktop\GUIDELINES\skills\marketing-growth-strategist\SKILL.md`
-- **🛡️ Güvenlik Denetimi & OWASP** ➔ `C:\Users\canpo\OneDrive\Desktop\GUIDELINES\skills\security-auditor\SKILL.md`
-- **👁️ Görsel Denetim & Web App QA** ➔ `C:\Users\canpo\OneDrive\Desktop\GUIDELINES\skills\web-app-audit\SKILL.md`
-- **🚀 Sıfır Tahmin & Doğrulama Standartları** ➔ `C:\Users\canpo\OneDrive\Desktop\GUIDELINES\skills\superpowers\SKILL.md`
-- **🧠 Hermes Hata Belleği** ➔ `C:\Users\canpo\OneDrive\Desktop\GUIDELINES\skills\hermes-agent\SKILL.md`
+- **👑 Yetenek Dağıtımı & Orkestrasyon** ➔ `C:\Users\canpo\OneDrive\Desktop\GUIDELINES\skills\master-orchestrator\SKILL.md`
+- **🧠 Dinamik Görev Denetimi & Self-Healing** ➔ `C:\Users\canpo\OneDrive\Desktop\GUIDELINES\skills\autonomous-task-auditor\SKILL.md`
+- **🎨 Bespoke Frontend & Modern UI/UX (Next.js 16, React 19)** ➔ `C:\Users\canpo\OneDrive\Desktop\GUIDELINES\skills\bespoke-frontend-master\SKILL.md`
+- **🔍 SEO & Growth Architect (JSON-LD, Dynamic OG, Core Web Vitals)** ➔ `C:\Users\canpo\OneDrive\Desktop\GUIDELINES\skills\seo-growth-architect\SKILL.md`
+- **🛡️ Fullstack Güvenlik & OWASP** ➔ `C:\Users\canpo\OneDrive\Desktop\GUIDELINES\skills\fullstack-security-auditor\SKILL.md`
+- **🚀 Superpowers Harness (i18n Paritesi, Sıfır Tahmin, QA, Bellek)** ➔ `C:\Users\canpo\OneDrive\Desktop\GUIDELINES\skills\superpowers-execution-harness\SKILL.md`
 
 ---
 
