@@ -13,7 +13,6 @@ import { Rocket, Mouse, Box, ArrowRight, Bot, Cpu, Database, Layers, Sparkles } 
 export function HeroAnimation() {
   const { locale, t } = useLanguage();
   const name = "CANPOLAT KAYA";
-  const nameLetters = name.split("");
 
   useEffect(() => {
     // Force browser to scroll to top on page refresh and ignore cached scroll positions
@@ -72,15 +71,15 @@ export function HeroAnimation() {
       <div className="relative flex flex-col items-center justify-center w-full max-w-5xl mx-auto pt-8">
         
         {/* Name Header (Stagger Reveal) */}
-        <div className="relative py-4 px-2 sm:px-6 md:px-8 flex items-center justify-center w-fit max-w-full">
-          <h1 className="relative text-xl sm:text-4xl md:text-6xl font-extrabold tracking-wider font-jakarta text-foreground flex whitespace-nowrap leading-none">
+        <div className="relative py-4 px-3 sm:px-6 md:px-8 flex items-center justify-center max-w-full">
+          <h1 className="relative text-2xl sm:text-4xl md:text-6xl font-extrabold tracking-wider font-jakarta text-foreground flex flex-wrap items-center justify-center gap-x-2.5 sm:gap-x-4 gap-y-1 leading-none text-center">
             {/* 3D Spinning Red Cube */}
             <motion.div
-              className="absolute top-1/2 -mt-2.5 sm:-mt-4 md:-mt-5 w-5 h-5 sm:w-8 sm:h-8 md:w-10 md:h-10 z-20 text-brand-red drop-shadow-[0_0_12px_rgba(220,38,38,0.8)]"
+              className="absolute top-1/2 -mt-3 sm:-mt-4 md:-mt-5 w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10 z-20 text-brand-red drop-shadow-[0_0_12px_rgba(220,38,38,0.8)] pointer-events-none"
               initial={{ left: "0%", opacity: 0, rotate: 0 }}
               animate={{ left: "100%", opacity: [0, 1, 1, 0], rotate: 360 }}
               transition={{
-                left: { duration: lineSweepDuration * 0.45, delay: lineDelay, ease: "easeOut" },
+                left: { duration: lineSweepDuration * 0.5, delay: lineDelay, ease: "easeOut" },
                 rotate: { duration: lineSweepDuration * 0.9, delay: lineDelay, ease: "linear" },
                 opacity: { duration: lineSweepDuration * 0.9, delay: lineDelay, times: [0, 0.05, 0.95, 1] }
               }}
@@ -88,26 +87,49 @@ export function HeroAnimation() {
               <Box className="w-full h-full" strokeWidth={1} />
             </motion.div>
 
-            {nameLetters.map((char, index) => {
-              const progress = index / nameLetters.length;
-              const letterDelay = lineDelay + progress * (lineSweepDuration * 0.7);
+            {/* Word: CANPOLAT */}
+            <span className="inline-flex whitespace-nowrap">
+              {"CANPOLAT".split("").map((char, index) => {
+                const progress = index / name.length;
+                const letterDelay = lineDelay + progress * (lineSweepDuration * 0.7);
+                return (
+                  <motion.span
+                    key={`first-${index}`}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{
+                      delay: letterDelay,
+                      duration: 0.12,
+                      ease: "easeOut",
+                    }}
+                  >
+                    {char}
+                  </motion.span>
+                );
+              })}
+            </span>
 
-              return (
-                <motion.span
-                  key={index}
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{
-                    delay: letterDelay,
-                    duration: 0.12,
-                    ease: "easeOut",
-                  }}
-                  className={char === " " ? "w-[0.25em]" : ""}
-                >
-                  {char === " " ? "\u00A0" : char}
-                </motion.span>
-              );
-            })}
+            {/* Word: KAYA */}
+            <span className="inline-flex whitespace-nowrap">
+              {"KAYA".split("").map((char, index) => {
+                const progress = (index + 9) / name.length;
+                const letterDelay = lineDelay + progress * (lineSweepDuration * 0.7);
+                return (
+                  <motion.span
+                    key={`last-${index}`}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{
+                      delay: letterDelay,
+                      duration: 0.12,
+                      ease: "easeOut",
+                    }}
+                  >
+                    {char}
+                  </motion.span>
+                );
+              })}
+            </span>
           </h1>
         </div>
 
@@ -120,20 +142,20 @@ export function HeroAnimation() {
             duration: 0.8,
             ease: "easeOut",
           }}
-          className="w-12 h-[2px] bg-brand-red/40 rounded-full mt-6"
+          className="w-12 h-[2px] bg-brand-red/40 rounded-full mt-4 sm:mt-6"
         />
 
-        {/* Subtitle / Title Description */}
-        <div className="h-10 mt-4 overflow-hidden flex items-center justify-center">
+        {/* Subtitle / Title Description (No vertical clipping) */}
+        <div className="mt-4 flex items-center justify-center overflow-hidden min-h-[2.5rem]">
           <motion.p
-            initial={{ opacity: 1, y: 12 }}
+            initial={{ opacity: 0, y: 14 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{
               delay: lineDelay + lineSweepDuration + 0.2,
               duration: 0.8,
               ease: "easeOut",
             }}
-            className="text-xs font-light tracking-[0.1em] sm:tracking-[0.2em] md:tracking-[0.4em] sm:text-sm md:text-base text-muted-foreground font-sans text-center px-4 uppercase"
+            className="text-xs sm:text-sm md:text-base font-light tracking-wide sm:tracking-[0.2em] md:tracking-[0.3em] text-muted-foreground font-sans text-center px-4 uppercase leading-relaxed max-w-2xl"
           >
             {t(translations.hero.subtitle)}
           </motion.p>
@@ -148,7 +170,7 @@ export function HeroAnimation() {
             duration: 0.8,
             ease: "easeOut",
           }}
-          className="mt-10 flex flex-wrap items-center justify-center gap-4"
+          className="mt-8 sm:mt-10 flex flex-wrap items-center justify-center gap-3 sm:gap-4"
         >
           <SpotlightButton
             href={locale === "en" ? "/en/projects" : "/projeler"}
