@@ -126,6 +126,8 @@ export const translations = {
   github: {
     noDescription: { tr: "Açıklama bulunmuyor.", en: "No description available." } as TranslationValue,
     fetchError: { tr: "Şu an GitHub repolarına ulaşılamıyor.", en: "Unable to reach GitHub repos at this time." } as TranslationValue,
+    viewAll: { tr: "Tüm Repoları GitHub'da Gör", en: "View All Repositories on GitHub" } as TranslationValue,
+    liveBadge: { tr: "Canlı GitHub Senkronizasyonu", en: "Live GitHub Sync" } as TranslationValue,
   },
 
   // ─── Project Detail Page ─────────────────────────────

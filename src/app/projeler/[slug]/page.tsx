@@ -48,8 +48,8 @@ interface ProjectData {
   titleKey: { tr: string; en: string };
   summaryKey: { tr: string; en: string };
   techStack: string[];
-  liveUrl: string;
-  githubUrl: string;
+  liveUrl?: string;
+  githubUrl?: string;
   features: ProjectFeature[];
   caseStudy: {
     problem: { tr: string; en: string };
@@ -159,8 +159,7 @@ const PROJECTS_DATA: ProjectData[] = [
       "i18n Multi-Language",
       "SSRF Guard"
     ],
-    liveUrl: "/canli-yok",
-    githubUrl: "https://github.com/CanKStar0/Free-API",
+    liveUrl: "https://freeapi.website",
     features: [
       {
         titleKey: {

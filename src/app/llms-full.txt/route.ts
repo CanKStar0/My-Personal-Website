@@ -89,6 +89,7 @@ ${s.sections.map((sec) => `  - **${sec.title}**: ${sec.body}`).join("\n")}
 ### Free API Directory (500+ Verified REST APIs & Live Terminal Sandbox)
 - URL (TR): ${SITE_URL}/projeler/free-api
 - URL (EN): ${SITE_URL}/en/projects/free-api
+- Live Demo: https://freeapi.website
 - Tech: Next.js 15, TypeScript, React 19, Tailwind CSS v4, Framer Motion, Serverless Edge Proxy, SSRF Guard, Lucide React, i18n
 - Production Engineering Benchmarks:
   - 500+ Verified REST APIs: Cataloged across 46 vertical categories (Finance, AI, Crypto, Weather, Security) with continuous health checks.
