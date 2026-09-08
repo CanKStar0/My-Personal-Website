@@ -2,7 +2,104 @@ import type { BlogPost } from "@/lib/blog";
 
 export const blogPostsEn: BlogPost[] = [
   {
-    "slug": "claude-code-cli-guide",
+    slug: "generative-engine-optimization-geo-guide",
+    title: "Generative Engine Optimization (GEO) Guide: Complete AI Search Readiness Checklist & Best Practices",
+    description: "A comprehensive guide to ranking, getting cited, and becoming a primary authoritative source on ChatGPT, Perplexity, and Google AI Overviews through modern GEO architecture and schemas.",
+    publishedAt: "2026-09-08",
+    modifiedAt: "2026-09-08",
+    category: "Artificial Intelligence",
+    readingTime: "5 min",
+    serviceHref: "/en/services/ai-automation",
+    serviceAnchor: "Explore AI automation and GEO engineering services",
+    directAnswer: "Generative Engine Optimization (GEO) is the technical and semantic engineering practice of structuring websites, content, and entity graphs so that generative AI engines—such as ChatGPT, Perplexity, Claude, and Google AI Overviews—can effortlessly parse, synthesize, and cite the domain as a primary authoritative source.",
+    keyTakeaways: [
+      "Shift from SEO to GEO: Prioritizes entity knowledge graphs, empirical data, and direct answer blocks over traditional keyword density.",
+      "llms.txt and Schema Integration: Standards like llms.txt and Schema.org JSON-LD (HowTo, TechArticle, Citation) ensure hallucination-free AI citations.",
+      "Platform-Specific Tactics: Real-time source verification for Perplexity, comprehensive conversational context for ChatGPT, and structured FAQ/HowTo for Google AI Overviews.",
+      "E-E-A-T and First-Party Benchmarks: Primary data, case studies, and verifiable metrics directly boost algorithmic trust scores."
+    ],
+    sourcesCited: [
+      { name: "GEO: Generative Engine Optimization (Princeton University, Georgia Tech, IIT Delhi Research)", url: "https://arxiv.org/abs/2311.09735" },
+      { name: "Google Search Central: Structured Data and AI Integration", url: "https://developers.google.com/search/docs/appearance/structured-data/search-gallery" },
+      { name: "Search Engine Land: Generative Engine Optimization Comprehensive Guide", url: "https://searchengineland.com/what-is-generative-engine-optimization-geo-444418" },
+      { name: "LLMs.txt Standard Specification", url: "https://llmstxt.org" }
+    ],
+    sections: [
+      {
+        title: "1. What is Generative Engine Optimization (GEO) and How Does It Differ from SEO?",
+        paragraphs: [
+          "Traditional SEO focuses on getting indexed by web search engines like Google, ranking on keywords, and generating blue link clicks from Search Engine Results Pages (SERPs).",
+          "Generative Engine Optimization (GEO) focuses on how large language models (ChatGPT, Perplexity, Claude, Google AI Overviews) synthesize answers, verify sources, and select citations. Winning in GEO means becoming the primary authoritative citation rather than just capturing a link click."
+        ],
+        callout: {
+          type: "tip",
+          title: "Core Paradigm Shift",
+          text: "While traditional SEO asks users to click, GEO directly answers the user's intent and integrates your domain into the generative synthesis as a verified source."
+        }
+      },
+      {
+        title: "2. How Generative Engines Select and Cite Content",
+        paragraphs: [
+          "Groundbreaking empirical research published by Princeton University, Georgia Tech, and IIT Delhi highlights key levers that statistically increase citation probability in generative engines.",
+          "First is the presence of crisp, front-loaded direct answer paragraphs. Second is the inclusion of verifiable quantitative statistics and benchmark metrics. Third is explicit citation of authoritative documentation and open-source repositories."
+        ],
+        items: [
+          "Direct Answer Blocks: Unambiguous 2-3 sentence summaries answering the core query immediately.",
+          "Quantitative Metrics: Using empirical numbers ('<30ms latency') instead of generic adjectives ('fast').",
+          "External Citations: Clear links to official technical docs, GitHub repos, and peer-reviewed research.",
+          "Modular Hierarchy: Scannable bullet points, tables, and logical H2-H6 structures."
+        ]
+      },
+      {
+        title: "3. Technical GEO Architecture: llms.txt, Robots.txt, and Schema.org",
+        paragraphs: [
+          "A robust technical infrastructure forms the bedrock of GEO readiness. Robots.txt must explicitly grant permissions to major AI crawlers (GPTBot, ClaudeBot, PerplexityBot, Applebot) while strictly guarding private endpoints.",
+          "Furthermore, standard llms.txt and llms-full.txt files allow AI models to ingest your domain's taxonomy in clean, structured Markdown. Schema.org JSON-LD (TechArticle, HowTo, FAQPage, Citation) connects entity relationships for zero-ambiguity knowledge graphing."
+        ]
+      },
+      {
+        title: "4. Platform-Specific Optimization Strategies",
+        paragraphs: [
+          "Each AI platform employs distinct retrieval and synthesis mechanics:",
+          "Perplexity AI prioritizes real-time live web indexing, factual precision, and source links. ChatGPT/SearchGPT values deep context, rich conversational guidance, and comprehensive explanations. Google AI Overviews relies on traditional search authority, featured snippets, and structured FAQ/HowTo schemas."
+        ]
+      },
+      {
+        title: "5. Measuring GEO Impact with GA4 and Referral Attribution",
+        paragraphs: [
+          "GEO ROI extends beyond keyword tracking into actual conversions driven by AI platforms. By implementing custom GA4 referral filters and UTM tracking for chatgpt.com and perplexity.ai, engineering teams can measure high-intent inbound inquiries directly originating from generative engine answers."
+        ]
+      }
+    ],
+    faqs: [
+      {
+        question: "What is GEO readiness and why is it essential?",
+        answer: "GEO readiness is the process of structuring your content and website architecture so generative AI models can effortlessly crawl, understand, and cite your domain as an authoritative source in synthesized answers."
+      },
+      {
+        question: "How do I know if my website is ready for AI search engines?",
+        answer: "Key indicators include explicit AI crawler permissions in robots.txt, the presence of an llms.txt standard file, rich Schema.org JSON-LD, and modular, direct-answer content formats across your articles."
+      },
+      {
+        question: "What are the most critical elements in a GEO checklist?",
+        answer: "The most vital elements are AI-accessible robots.txt, llms.txt documentation, rich Schema.org JSON-LD (HowTo, FAQPage, TechArticle, Citation), direct answer blocks, primary case study data, and GA4 AI referral tracking."
+      },
+      {
+        question: "How long does it take to achieve full GEO readiness?",
+        answer: "Technical infrastructure (robots.txt, llms.txt, schemas, analytics) can be implemented in a few days. Consistently winning AI citations across competitive queries typically takes 1 to 3 months of continuous publishing and schema refinement."
+      },
+      {
+        question: "What is the difference between GEO for ChatGPT vs Perplexity vs Google AI?",
+        answer: "Perplexity emphasizes real-time web verification and direct citation links. ChatGPT prioritizes conversational depth and comprehensive context. Google AI Overviews relies on existing SEO authority, featured snippet formats, and structured data schemas."
+      },
+      {
+        question: "How can I measure and monitor GEO progress?",
+        answer: "Track incoming AI referral traffic via GA4 (chatgpt.com, perplexity.ai), run standardized prompt benchmarks across target queries to monitor Share of Voice, and evaluate conversion rates from AI-referred sessions."
+      }
+    ]
+  },
+  {
+    slug: "claude-code-cli-guide",
     "title": "Claude Code CLI & Terminal-First Agentic Coding: Setup and Best Practices",
     "description": "Discover how Anthropic's next-gen terminal agent Claude Code operates, analyzes local codebases autonomously, and supercharges developer productivity.",
     "publishedAt": "2026-08-17",

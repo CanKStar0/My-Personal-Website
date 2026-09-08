@@ -168,6 +168,32 @@ export default function sitemap(): MetadataRoute.Sitemap {
         },
       },
     },
+    {
+      url: absoluteUrl("/gizlilik"),
+      lastModified: SITE_CONTENT_UPDATED_AT,
+      changeFrequency: "monthly",
+      priority: 0.5,
+      alternates: {
+        languages: {
+          tr: absoluteUrl("/gizlilik"),
+          en: absoluteUrl("/en/privacy"),
+          "x-default": absoluteUrl("/gizlilik"),
+        },
+      },
+    },
+    {
+      url: absoluteUrl("/en/privacy"),
+      lastModified: SITE_CONTENT_UPDATED_AT,
+      changeFrequency: "monthly",
+      priority: 0.5,
+      alternates: {
+        languages: {
+          tr: absoluteUrl("/gizlilik"),
+          en: absoluteUrl("/en/privacy"),
+          "x-default": absoluteUrl("/gizlilik"),
+        },
+      },
+    },
   ];
 
   // Project items

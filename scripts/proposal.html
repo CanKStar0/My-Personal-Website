@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <title>AUTO PROFIT AI - Yazılım Teklifi</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>
+    @page {
+      size: A4 portrait;
+      margin: 0;
+    }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      color: #1e293b;
+      background-color: #f8fafc;
+      font-size: 11px;
+      line-height: 1.5;
+    }
+    .page {
+      width: 210mm;
+      height: 297mm;
+      padding: 16mm 18mm;
+      background: #ffffff;
+      position: relative;
+      page-break-after: always;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      overflow: hidden;
+    }
+    .page:last-child {
+      page-break-after: avoid;
+    }
+    
+    /* Header */
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      border-bottom: 2px solid #0f172a;
+      padding-bottom: 12px;
+      margin-bottom: 14px;
+    }
+    .brand-title {
+      font-size: 20px;
+      font-weight: 800;
+      color: #0f172a;
+      letter-spacing: -0.5px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .brand-subtitle {
+      font-size: 11px;
+      font-weight: 600;
+      color: #2563eb;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      margin-top: 2px;
+    }
+    .doc-meta {
+      text-align: right;
+      font-size: 10px;
+      color: #64748b;
+    }
+    .doc-meta strong {
+      color: #0f172a;
+      font-size: 11px;
+    }
+
+    /* Section Styles */
+    .section-title {
+      font-size: 12px;
+      font-weight: 700;
+      color: #0f172a;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      border-left: 3px solid #2563eb;
+      padding-left: 8px;
+    }
+    .section-title i {
+      color: #2563eb;
+      font-size: 11px;
+    }
+
+    /* Executive Box */
+    .exec-box {
+      background: #f1f5f9;
+      border: 1px solid #e2e8f0;
+      border-radius: 6px;
+      padding: 10px 12px;
+      margin-bottom: 14px;
+      font-size: 10.5px;
+      color: #334155;
+      line-height: 1.55;
+    }
+
+    /* Core Features Grid */
+    .core-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+    .core-card {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 6px;
+      padding: 9px;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.03);
+    }
+    .core-card-header {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-weight: 700;
+      font-size: 10.5px;
+      color: #0f172a;
+      margin-bottom: 4px;
+    }
+    .core-card-header i {
+      color: #2563eb;
+      font-size: 11px;
+    }
+    .core-card p {
+      font-size: 9.5px;
+      color: #64748b;
+      line-height: 1.4;
+    }
+
+    /* 3 Packages Cards */
+    .packages-container {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+    .pkg-card {
+      border: 1px solid #cbd5e1;
+      border-radius: 8px;
+      padding: 12px;
+      background: #ffffff;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+    }
+    .pkg-card.featured {
+      border: 2px solid #2563eb;
+      background: #f8faff;
+      box-shadow: 0 4px 12px rgba(37,99,235,0.08);
+    }
+    .pkg-badge {
+      position: absolute;
+      top: -9px;
+      right: 12px;
+      background: #2563eb;
+      color: #ffffff;
+      font-size: 8.5px;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .pkg-title {
+      font-size: 13px;
+      font-weight: 800;
+      color: #0f172a;
+      margin-bottom: 2px;
+    }
+    .pkg-subtitle {
+      font-size: 9.5px;
+      color: #64748b;
+      margin-bottom: 8px;
+    }
+    .pkg-price {
+      font-size: 18px;
+      font-weight: 800;
+      color: #0f172a;
+      margin-bottom: 2px;
+    }
+    .pkg-price-desc {
+      font-size: 9px;
+      color: #64748b;
+      margin-bottom: 10px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid #e2e8f0;
+    }
+    .pkg-features {
+      list-style: none;
+      font-size: 9.5px;
+      color: #334155;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      margin-bottom: 10px;
+    }
+    .pkg-features li {
+      display: flex;
+      align-items: flex-start;
+      gap: 6px;
+      line-height: 1.35;
+    }
+    .pkg-features li i {
+      color: #10b981;
+      font-size: 10px;
+      margin-top: 2px;
+    }
+    .pkg-features li i.warn {
+      color: #f59e0b;
+    }
+    .pkg-footer-meta {
+      background: #f1f5f9;
+      border-radius: 4px;
+      padding: 6px 8px;
+      font-size: 9px;
+      color: #475569;
+      line-height: 1.35;
+    }
+
+    /* Table Styles */
+    .table-responsive {
+      margin-bottom: 14px;
+    }
+    table.spec-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 9.5px;
+    }
+    table.spec-table th, table.spec-table td {
+      padding: 6px 8px;
+      border: 1px solid #cbd5e1;
+      text-align: left;
+    }
+    table.spec-table th {
+      background: #0f172a;
+      color: #ffffff;
+      font-weight: 700;
+      font-size: 9.5px;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+    }
+    table.spec-table tr:nth-child(even) td {
+      background: #f8fafc;
+    }
+    table.spec-table td.col-label {
+      font-weight: 700;
+      color: #0f172a;
+      width: 30%;
+    }
+    table.spec-table td.col-val {
+      color: #334155;
+    }
+
+    /* Workflow Steps */
+    .workflow-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px;
+      margin-bottom: 14px;
+    }
+    .wf-step {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 6px;
+      padding: 8px 10px;
+    }
+    .wf-step-num {
+      font-size: 9px;
+      font-weight: 800;
+      color: #2563eb;
+      text-transform: uppercase;
+      margin-bottom: 2px;
+    }
+    .wf-step-title {
+      font-size: 10.5px;
+      font-weight: 700;
+      color: #0f172a;
+      margin-bottom: 3px;
+    }
+    .wf-step p {
+      font-size: 9px;
+      color: #64748b;
+      line-height: 1.35;
+    }
+
+    /* Footer & Signature */
+    .footer {
+      border-top: 1px solid #cbd5e1;
+      padding-top: 8px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 8.5px;
+      color: #64748b;
+    }
+    .sig-area {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin-top: 10px;
+      padding-top: 8px;
+      border-top: 1px dashed #cbd5e1;
+    }
+    .sig-block {
+      font-size: 9.5px;
+      color: #334155;
+    }
+    .sig-block strong {
+      color: #0f172a;
+      display: block;
+      font-size: 10.5px;
+      margin-bottom: 2px;
+    }
+    .sig-line {
+      height: 32px;
+      border-bottom: 1px solid #94a3b8;
+      margin-top: 8px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- SAYFA 1 -->
+  <div class="page">
+    <div>
+      <!-- Header -->
+      <div class="header">
+        <div>
+          <div class="brand-title">
+            <i class="fa-solid fa-calculator"></i> AUTO PROFIT AI
+          </div>
+          <div class="brand-subtitle">Araç İhale Kârlılık Analiz Sistemi — V1 Yazılım Teklifi</div>
+        </div>
+        <div class="doc-meta">
+          <strong>Teklif Kodu:</strong> RFP-2026-APA-V1<br>
+          <strong>Tarih:</strong> 08 Eylül 2026<br>
+          <strong>Geçerlilik:</strong> 30 Gün
+        </div>
+      </div>
+
+      <!-- Yönetici Özeti -->
+      <div class="section-title">
+        <i class="fa-solid fa-file-lines"></i> 1. Yönetici Özeti & Mimari Yaklaşım
+      </div>
+      <div class="exec-box">
+        İlgili teknik şartname dokümanınız doğrultusunda, Avrupa online araç ihalelerinden Fas pazarına yönelik hasarlı araç tedarik ve ticaret sürecini uçtan uca dijitalleştiren <strong>AUTO PROFIT AI (V1)</strong> karar destek motoru için teknik mimari ve bütçe planlaması hazırlanmıştır. Sistem; çoklu para birimi (EUR/MAD), dinamik lojistik ve gümrük matrahları, onarım marjları ve sermaye riski optimizasyonunu tek merkezde toplayarak <strong>MAX BID (Maksimum Teklif)</strong> değerini ve kârlılık potansiyelini anlık olarak üretecektir.
+      </div>
+
+      <!-- Çekirdek Sistem Yetkinlikleri -->
+      <div class="section-title">
+        <i class="fa-solid fa-layer-group"></i> 2. V1 Çekirdek Sistem Yetkinlikleri (Tüm Paketlerde Ortak)
+      </div>
+      <div class="core-grid">
+        <div class="core-card">
+          <div class="core-card-header"><i class="fa-solid fa-coins"></i> 4 Katmanlı Maliyet</div>
+          <p>Avrupa ihale bedeli + komisyonlar, deniz nakliyesi/liman, Fas ithalat/gümrük vergileri ve tamir masrafları dinamik hesaplanır.</p>
+        </div>
+        <div class="core-card">
+          <div class="core-card-header"><i class="fa-solid fa-bullseye"></i> MAX BID Motoru</div>
+          <p>Fas satış fiyatı ve hedeflenen net kâr üzerinden ihalede verilebilecek azami teklifi matematiksel olarak anlık belirler.</p>
+        </div>
+        <div class="core-card">
+          <div class="core-card-header"><i class="fa-solid fa-traffic-light"></i> AL / DİKKAT / ALMA</div>
+          <p>İhale teklifine göre anlık marj kontrolü ve 0-100 kâr/risk puanlaması ile yanlış teklif verilmesini engeller.</p>
+        </div>
+        <div class="core-card">
+          <div class="core-card-header"><i class="fa-solid fa-vault"></i> Sermaye & Likidite</div>
+          <p>200.000 DH sermaye için alım, gümrük, tamir ve kriz tampon rezervlerini paylaştırarak nakit akışını korur.</p>
+        </div>
+      </div>
+
+      <!-- 3 Farklı Paket / Entegrasyon Seçeneği -->
+      <div class="section-title">
+        <i class="fa-solid fa-sliders"></i> 3. Veri Entegrasyonu & Mimari Seçenekleri (3 Paket Modeli)
+      </div>
+      <p style="font-size: 9.5px; color: #64748b; margin-bottom: 8px;">
+        İhale platformlarındaki bot koruma yapıları (Cloudflare, WAF) ve operasyonel tercihleriniz doğrultusunda 3 alternatif mimari kurgulanmıştır:
+      </p>
+
+      <div class="packages-container">
+        <!-- Paket 1 -->
+        <div class="pkg-card">
+          <div>
+            <div class="pkg-title">Paket 1: Lite</div>
+            <div class="pkg-subtitle">Tarayıcı Entegrasyonu (Eklenti)</div>
+            <div class="pkg-price">50.000 TL</div>
+            <div class="pkg-price-desc">Geliştirme: 18 – 22 İş Günü</div>
+            <ul class="pkg-features">
+              <li><i class="fa-solid fa-check"></i> <strong>Tek Tıkla Aktarım:</strong> Chrome eklentisi üzerinden sayfa verisini panele anında fırlatır.</li>
+              <li><i class="fa-solid fa-check"></i> <strong>Sıfır Cloudflare Riski:</strong> Kullanıcının kendi oturumu kullanıldığı için bot korumasına takılmaz.</li>
+              <li><i class="fa-solid fa-check"></i> <strong>Sıfır Ek Maliyet:</strong> Üçüncü parti API veya proxy gideri gerektirmez.</li>
+              <li><i class="fa-solid fa-circle-exclamation warn"></i> Yarı otomatik model (Kullanıcı ihale sayfasına girip tek tuşla aktarır).</li>
+            </ul>
+          </div>
+          <div class="pkg-footer-meta">
+            <strong>İdeal Profil:</strong> Bütçe dostu, sıfır aylık masraf ve %100 kesintisiz erişim isteyen operasyonlar.
+          </div>
+        </div>
+
+        <!-- Paket 2 -->
+        <div class="pkg-card featured">
+          <div class="pkg-badge">Önerilen</div>
+          <div>
+            <div class="pkg-title">Paket 2: Pro</div>
+            <div class="pkg-subtitle">Otonom Scraper (Anti-Bot API)</div>
+            <div class="pkg-price">65.000 TL</div>
+            <div class="pkg-price-desc">Geliştirme: 24 – 28 İş Günü</div>
+            <ul class="pkg-features">
+              <li><i class="fa-solid fa-check"></i> <strong>Tam Otonom Çekim:</strong> Sunucu tabanlı arka plan botu verileri düzenli tarar.</li>
+              <li><i class="fa-solid fa-check"></i> <strong>Garantili Bypass:</strong> ZenRows / ScrapingBee API ile Cloudflare koruması aşılır.</li>
+              <li><i class="fa-solid fa-check"></i> <strong>Kesintisiz Takip:</strong> İhale sayacı ve pey değişimleri otomatik güncellenir.</li>
+              <li><i class="fa-solid fa-circle-exclamation warn"></i> Kullanıma bağlı aylık ~$20 - $35 üçüncü parti API gideri oluşur.</li>
+            </ul>
+          </div>
+          <div class="pkg-footer-meta">
+            <strong>İdeal Profil:</strong> Kullanıcı müdahalesi olmadan tam otomatik ihale takibi hedefleyen işletmeler.
+          </div>
+        </div>
+
+        <!-- Paket 3 -->
+        <div class="pkg-card">
+          <div>
+            <div class="pkg-title">Paket 3: Enterprise</div>
+            <div class="pkg-subtitle">Sıfır Bağımlılık (In-House Engine)</div>
+            <div class="pkg-price">100.000 TL</div>
+            <div class="pkg-price-desc">Geliştirme: 32 – 36 İş Günü</div>
+            <ul class="pkg-features">
+              <li><i class="fa-solid fa-check"></i> <strong>Özel Anti-Bot Çekirdeği:</strong> Camoufox & curl_cffi ile tarayıcı parmak izi spoofing.</li>
+              <li><i class="fa-solid fa-check"></i> <strong>Sıfır Dış Bağımlılık:</strong> Harici hiçbir ücretli API veya servise abone olunmaz.</li>
+              <li><i class="fa-solid fa-check"></i> <strong>Tam Mülkiyet:</strong> İleri seviye scraping algoritmaları tamamen size aittir.</li>
+              <li><i class="fa-solid fa-circle-exclamation warn"></i> Platform koruma güncellemelerinde periyodik motor bakımı gerekir.</li>
+            </ul>
+          </div>
+          <div class="pkg-footer-meta">
+            <strong>İdeal Profil:</strong> Aylık abonelik istemeyen, tüm altyapıyı kendi sunucusunda tutmak isteyenler.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer Sayfa 1 -->
+    <div class="footer">
+      <div>AUTO PROFIT AI — Araç İhale Kârlılık Analiz Sistemi | V1 Yazılım Teklifi</div>
+      <div>Sayfa 1 / 2</div>
+    </div>
+  </div>
+
+  <!-- SAYFA 2 -->
+  <div class="page">
+    <div>
+      <!-- Header 2 -->
+      <div class="header">
+        <div>
+          <div class="brand-title">
+            <i class="fa-solid fa-file-contract"></i> Şartname Yanıt Matrisi & Süreç
+          </div>
+          <div class="brand-subtitle">AUTO PROFIT AI — Detaylı Şartname Karşılıkları</div>
+        </div>
+        <div class="doc-meta">
+          <strong>Referans:</strong> RFP-2026-APA-V1<br>
+          <strong>Tarih:</strong> 08 Eylül 2026
+        </div>
+      </div>
+
+      <!-- Şartname Yanıt Matrisi Tablosu -->
+      <div class="section-title">
+        <i class="fa-solid fa-table-list"></i> 4. Şartname Yanıt Matrisi (Madde 13 Birebir Karşılıkları)
+      </div>
+      <div class="table-responsive">
+        <table class="spec-table">
+          <thead>
+            <tr>
+              <th style="width: 28%;">Şartname Kalemi</th>
+              <th>Teklif & Teknik Karşılık</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="col-label">V1 Toplam Proje Bedeli</td>
+              <td class="col-val"><strong>Paket 1 (Lite):</strong> 50.000 TL | <strong>Paket 2 (Pro):</strong> 65.000 TL | <strong>Paket 3 (Enterprise):</strong> 100.000 TL</td>
+            </tr>
+            <tr>
+              <td class="col-label">Tahmini Geliştirme Süresi</td>
+              <td class="col-val">Seçilen pakete göre <strong>18 ile 36 İş Günü</strong> (Geliştirme, entegrasyon ve kullanıcı testleri dahil)</td>
+            </tr>
+            <tr>
+              <td class="col-label">Teknoloji Yığını</td>
+              <td class="col-val"><strong>Frontend & Web Panel:</strong> Next.js 16 (App Router), React 19, TypeScript, Tailwind CSS<br><strong>Backend & Servisler:</strong> Node.js, Python (FastAPI / Playwright / Camoufox), PostgreSQL (Supabase/Neon)</td>
+            </tr>
+            <tr>
+              <td class="col-label">Veri Entegrasyonu Yöntemi</td>
+              <td class="col-val">Paket seçimine bağlı olarak: <strong>Tarayıcı Eklentisi (Chrome)</strong>, <strong>Scraping API Ağ Geçidi</strong> veya <strong>Özel TLS/Fingerprint Motoru</strong> + Tüm paketlerde <strong>Manuel URL/VIN Import</strong></td>
+            </tr>
+            <tr>
+              <td class="col-label">Sunucu / Cloud Maliyeti</td>
+              <td class="col-val"><strong>Aylık ~400 – 650 TL</strong> (Vercel + Supabase Serverless PostgreSQL altyapısı ile optimize ölçeklendirme)</td>
+            </tr>
+            <tr>
+              <td class="col-label">API / AI Maliyeti</td>
+              <td class="col-val"><strong>Paket 1 ve 3 için 0 TL</strong> | <strong>Paket 2 için:</strong> Kullanıma bağlı yaklaşık ~$20 – $35 / ay (Anti-bot proxy kotası)</td>
+            </tr>
+            <tr>
+              <td class="col-label">Bakım ve Teknik Destek</td>
+              <td class="col-val"><strong>Paket 1:</strong> 3.500 TL/ay | <strong>Paket 2:</strong> 4.500 TL/ay | <strong>Paket 3:</strong> 6.500 TL/ay (Opsiyonel periyodik bakım anlaşması)</td>
+            </tr>
+            <tr>
+              <td class="col-label">V2 Tahmini Maliyeti</td>
+              <td class="col-val"><strong>45.000 TL – 55.000 TL</strong> (OpenAI GPT-4o Vision ile hasar/tamir maliyeti tespiti ve çoklu ihale platform mimarisi)</td>
+            </tr>
+            <tr>
+              <td class="col-label">Benzer Proje / Portföy</td>
+              <td class="col-val">Web scraping mimarileri, finansal hesaplama motorları ve Next.js dashboard referansları: <strong>canpolatkaya.com</strong></td>
+            </tr>
+            <tr>
+              <td class="col-label">Kaynak Kodlarının Teslimi</td>
+              <td class="col-val"><strong>EVET</strong> (Özel GitHub / GitLab deposu üzerinden eksiksiz ve temiz dokümante edilmiş teslim)</td>
+            </tr>
+            <tr>
+              <td class="col-label">Proje Haklarının Teslimi</td>
+              <td class="col-val"><strong>EVET</strong> (Yazılımın tüm fikri, ticari ve mülki kullanım hakları süresiz olarak tarafınıza devredilir)</td>
+            </tr>
+            <tr>
+              <td class="col-label">Garanti / Bug-Fix Süresi</td>
+              <td class="col-val"><strong>30 Gün</strong> (Canlı kullanıma geçiş sonrasında oluşabilecek teknik hatalar için ücretsiz düzeltme garantisi)</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Süreç & Metodoloji -->
+      <div class="section-title">
+        <i class="fa-solid fa-diagram-project"></i> 5. Çalışma Metodolojisi & Kilometre Taşları
+      </div>
+      <div class="workflow-grid">
+        <div class="wf-step">
+          <div class="wf-step-num">Aşama 1</div>
+          <div class="wf-step-title">Hesaplama Motoru</div>
+          <p>Fas gümrük matrahları, EUR/MAD kur çeviricisi, MAX BID ve 200.000 DH sermaye algoritmasının kodlanması.</p>
+        </div>
+        <div class="wf-step">
+          <div class="wf-step-num">Aşama 2</div>
+          <div class="wf-step-title">Veri Entegrasyonu</div>
+          <p>Seçilen paket yöntemiyle ihale verilerinin (araç özellikleri, pey, sayaç) sisteme entegre edilmesi.</p>
+        </div>
+        <div class="wf-step">
+          <div class="wf-step-num">Aşama 3</div>
+          <div class="wf-step-title">Web & Mobil Panel</div>
+          <p>Next.js 16 & Node.js ile masaüstü ve mobil uyumlu, AL/DİKKAT/ALMA göstergeli kullanıcı arayüzünün inşası.</p>
+        </div>
+        <div class="wf-step">
+          <div class="wf-step-num">Aşama 4</div>
+          <div class="wf-step-title">Test & Canlı Teslim</div>
+          <p>Gerçek araç simülasyonları, kullanıcı eğitim dokümantasyonu, kaynak kod ve hak devri teslimatı.</p>
+        </div>
+      </div>
+
+      <!-- Değerlendirme & İletişim -->
+      <div class="section-title">
+        <i class="fa-solid fa-handshake"></i> 6. Değerlendirme & İletişim
+      </div>
+      <div style="font-size: 10px; color: #334155; line-height: 1.55; margin-bottom: 14px; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 6px; padding: 12px 14px;">
+        Teklifimizde yer alan 3 farklı paket seçeneği, projenizin V1 aşamasındaki operasyonel ihtiyaçlarını ve bütçesini en verimli şekilde optimize etmek üzere kurgulanmıştır. Süreci başlatmak, hedef ihale platformunun parametrelerini netleştirmek ve teknik yol haritasını konuşmak üzere dilediğiniz zaman online toplantı organize edebiliriz.
+      </div>
+
+      <div style="display: flex; justify-content: space-between; align-items: center; background: #0f172a; color: #ffffff; border-radius: 6px; padding: 12px 16px;">
+        <div>
+          <div style="font-size: 12px; font-weight: 800; letter-spacing: -0.3px;">Canpolat Kaya</div>
+          <div style="font-size: 9.5px; color: #94a3b8; margin-top: 2px;">Full-Stack Developer & Yazılım Mimarı</div>
+        </div>
+        <div style="text-align: right; font-size: 10px;">
+          <div><i class="fa-solid fa-envelope" style="color: #38bdf8; margin-right: 6px;"></i> canpolatkaya4@gmail.com</div>
+          <div style="margin-top: 3px;"><i class="fa-solid fa-globe" style="color: #38bdf8; margin-right: 6px;"></i> canpolatkaya.com</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer Sayfa 2 -->
+    <div class="footer">
+      <div>AUTO PROFIT AI — Araç İhale Kârlılık Analiz Sistemi | V1 Yazılım Teklifi</div>
+      <div>Sayfa 2 / 2</div>
+    </div>
+  </div>
+
+</body>
+</html>

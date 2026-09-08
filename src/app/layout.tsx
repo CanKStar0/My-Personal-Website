@@ -99,6 +99,8 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <head>
+        <link rel="alternate" type="text/plain" href="https://canpolatkaya.com/llms.txt" title="LLM Knowledge Graph" />
+        <link rel="alternate" type="text/plain" href="https://canpolatkaya.com/llms-full.txt" title="LLM Full Documentation" />
         <script
           dangerouslySetInnerHTML={{
             __html: `

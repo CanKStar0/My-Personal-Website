@@ -43,12 +43,18 @@ export default async function EnglishBlogPostPage({ params }: Props) {
   const schemas: Record<string, unknown>[] = [
     {
       "@context": "https://schema.org",
-      "@type": "BlogPosting",
+      "@type": ["BlogPosting", "TechArticle"],
       headline: post.title,
       description: post.description,
+      abstract: post.directAnswer || post.description,
+      image: [`${SITE_URL}/en/blog/${post.slug}/opengraph-image`],
       datePublished: post.publishedAt,
       dateModified: post.modifiedAt,
       mainEntityOfPage: `${SITE_URL}/en/blog/${post.slug}`,
+      inLanguage: "en",
+      articleSection: post.category,
+      keywords: [post.category, "AI Automation", "Web Scraping", "Next.js", "Full-Stack"],
+      about: [{ "@type": "Thing", name: post.category }],
       author: {
         "@type": "Person",
         "@id": `${SITE_URL}/#person`,
@@ -63,7 +69,15 @@ export default async function EnglishBlogPostPage({ params }: Props) {
         url: SITE_URL,
         image: `${SITE_URL}/images/canpolat-kaya.jpg`,
       },
-      inLanguage: "en",
+      ...(post.sourcesCited && post.sourcesCited.length > 0
+        ? {
+            citation: post.sourcesCited.map((s) => ({
+              "@type": "CreativeWork",
+              name: s.name,
+              url: s.url,
+            })),
+          }
+        : {}),
     },
   ];
 
@@ -78,6 +92,22 @@ export default async function EnglishBlogPostPage({ params }: Props) {
           "@type": "Answer",
           text: faq.answer,
         },
+      })),
+    });
+  }
+
+  const isHowTo = /guide|how|setup|step|tutorial/i.test(post.title) || /guide|tutorial/i.test(post.category);
+  if (isHowTo && post.sections && post.sections.length > 1) {
+    schemas.push({
+      "@context": "https://schema.org",
+      "@type": "HowTo",
+      name: post.title,
+      description: post.description,
+      step: post.sections.map((sec, idx) => ({
+        "@type": "HowToStep",
+        position: idx + 1,
+        name: sec.title,
+        text: sec.paragraphs.join(" ") || sec.title,
       })),
     });
   }

@@ -18,7 +18,9 @@ const routePairs = [
   ["/blog/web-scraping-nedir", "/en/blog/what-is-web-scraping"],
   ["/blog/ai-otomasyon-nedir", "/en/blog/what-is-ai-automation"],
   ["/blog/rest-api-nedir", "/en/blog/what-is-rest-api"],
+  ["/blog/uretken-motor-optimizasyonu-geo-rehberi", "/en/blog/generative-engine-optimization-geo-guide"],
   ["/iletisim", "/en/contact"],
+  ["/gizlilik", "/en/privacy"],
   ["/gizli-repo", "/en/private-repository"],
   ["/canli-yok", "/en/demo-unavailable"],
 ] as const;

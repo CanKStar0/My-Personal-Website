@@ -42,12 +42,18 @@ export default async function BlogPostPage({ params }: Props) {
   const schemas: Record<string, unknown>[] = [
     {
       "@context": "https://schema.org",
-      "@type": "BlogPosting",
+      "@type": ["BlogPosting", "TechArticle"],
       headline: post.title,
       description: post.description,
+      abstract: post.directAnswer || post.description,
+      image: [`${SITE_URL}/blog/${post.slug}/opengraph-image`],
       datePublished: post.publishedAt,
       dateModified: post.modifiedAt,
       mainEntityOfPage: `${SITE_URL}/blog/${post.slug}`,
+      inLanguage: "tr-TR",
+      articleSection: post.category,
+      keywords: [post.category, "Yapay Zeka", "Web Scraping", "Next.js", "Full-Stack"],
+      about: [{ "@type": "Thing", name: post.category }],
       author: {
         "@type": "Person",
         "@id": `${SITE_URL}/#person`,
@@ -62,8 +68,16 @@ export default async function BlogPostPage({ params }: Props) {
         url: SITE_URL,
         image: `${SITE_URL}/images/canpolat-kaya.jpg`,
       },
-      inLanguage: "tr-TR",
-    }
+      ...(post.sourcesCited && post.sourcesCited.length > 0
+        ? {
+            citation: post.sourcesCited.map((s) => ({
+              "@type": "CreativeWork",
+              name: s.name,
+              url: s.url,
+            })),
+          }
+        : {}),
+    },
   ];
 
   if (post.faqs && post.faqs.length > 0) {
@@ -77,6 +91,22 @@ export default async function BlogPostPage({ params }: Props) {
           "@type": "Answer",
           text: faq.answer,
         },
+      })),
+    });
+  }
+
+  const isHowTo = /rehber|nasıl|kurulum|guide|step|adım|taktik/i.test(post.title) || /rehber|guide/i.test(post.category);
+  if (isHowTo && post.sections && post.sections.length > 1) {
+    schemas.push({
+      "@context": "https://schema.org",
+      "@type": "HowTo",
+      name: post.title,
+      description: post.description,
+      step: post.sections.map((sec, idx) => ({
+        "@type": "HowToStep",
+        position: idx + 1,
+        name: sec.title,
+        text: sec.paragraphs.join(" ") || sec.title,
       })),
     });
   }

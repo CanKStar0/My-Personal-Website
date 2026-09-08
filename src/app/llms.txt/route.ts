@@ -36,7 +36,7 @@ ${services
 
 ## Technical Expertise & Knowledge Graph
 - Web Scraping & Automation: Playwright, Puppeteer, Scrapy, BeautifulSoup, Selenium, Cloudflare/WAF bypass architectures, Residential/Datacenter Proxy rotation, Anti-bot detection mitigation.
-- AI & LLM Systems: Large Language Models, RAG (Retrieval-Augmented Generation), Prompt Engineering, Autonomous AI Agents, Vector Databases, OpenAI/Anthropic/Gemini APIs.
+- AI & LLM Systems: Generative Engine Optimization (GEO), Large Language Models, RAG (Retrieval-Augmented Generation), Prompt Engineering, Autonomous AI Agents, Vector Databases, OpenAI/Anthropic/Gemini APIs.
 - Backend & Data: Node.js, TypeScript, Python, FastAPI, Express, PostgreSQL, MongoDB, Redis, RESTful API Design, Microservices, Caching Strategies.
 - Frontend & UI: Next.js (App Router), React 19, Tailwind CSS v4, TypeScript, Responsive & Accessible UI, Glassmorphism, Core Web Vitals Optimization.
 

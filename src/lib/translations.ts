@@ -233,6 +233,7 @@ export const translations = {
   // ─── Footer ──────────────────────────────────────────
   footer: {
     rights: { tr: "Tüm Hakları Saklıdır.", en: "All Rights Reserved." } as TranslationValue,
+    privacy: { tr: "Gizlilik ve Şartlar", en: "Privacy & Terms" } as TranslationValue,
   },
 };
 

@@ -12,12 +12,14 @@ export function SiteFooter() {
         ["Projects", "/en/projects"],
         ["Blog", "/en/blog"],
         ["Contact", "/en/contact"],
+        [t(translations.footer.privacy), "/en/privacy"],
       ]
     : [
         ["Hizmetler", "/hizmetler"],
         ["Projeler", "/projeler"],
         ["Blog", "/blog"],
         ["İletişim", "/iletisim"],
+        [t(translations.footer.privacy), "/gizlilik"],
       ];
 
   return (

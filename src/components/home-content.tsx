@@ -10,7 +10,7 @@ import { HomeServicesSection } from "@/components/home-services-section";
 import { SiteFooter } from "@/components/site-footer";
 import { JsonLd } from "@/components/json-ld";
 import { ScrollToQuery } from "@/components/scroll-to-query";
-import { SITE_NAME, SITE_URL, SOCIAL_LINKS } from "@/lib/site";
+import { SITE_NAME, SITE_URL, SOCIAL_LINKS, CONTACT_EMAIL } from "@/lib/site";
 
 import type { Locale } from "@/lib/translations";
 
@@ -29,7 +29,8 @@ export function HomeContent({ locale: propLocale }: { locale?: Locale } = {}) {
           "@id": `${SITE_URL}/#website-schema`,
           name: SITE_NAME,
           url: SITE_URL,
-          publisher: { "@id": `${SITE_URL}/#person` },
+          publisher: { "@id": `${SITE_URL}/#organization` },
+          creator: { "@id": `${SITE_URL}/#person` },
           potentialAction: {
             "@type": "SearchAction",
             target: {
@@ -48,6 +49,11 @@ export function HomeContent({ locale: propLocale }: { locale?: Locale } = {}) {
           url: SITE_URL,
           image: `${SITE_URL}/images/canpolat-kaya.jpg`,
           sameAs: [SOCIAL_LINKS.github, SOCIAL_LINKS.linkedin],
+          worksFor: { "@id": `${SITE_URL}/#organization` },
+          alumniOf: {
+            "@type": "EducationalOrganization",
+            name: "Tokat Gaziosmanpaşa Üniversitesi",
+          },
           description: isEnglish
             ? "Full-Stack Developer specializing in autonomous web scraping architectures, custom AI automations, scalable REST APIs, and Next.js applications."
             : "Özel yazılım, otonom web scraping, yapay zekâ otomasyonu, API ve Next.js geliştirme alanlarında uzmanlaşmış Full-Stack Developer.",
@@ -81,13 +87,23 @@ export function HomeContent({ locale: propLocale }: { locale?: Locale } = {}) {
         },
         {
           "@context": "https://schema.org",
-          "@type": "ProfessionalService",
-          "@id": `${SITE_URL}/#professionalservice`,
-          name: "Canpolat Kaya Dev Services",
+          "@type": ["Organization", "ProfessionalService"],
+          "@id": `${SITE_URL}/#organization`,
+          name: "Canpolat Kaya Tech & Automation",
+          legalName: "Canpolat Kaya",
           url: SITE_URL,
+          logo: `${SITE_URL}/images/canpolat-kaya.jpg`,
+          founder: { "@id": `${SITE_URL}/#person` },
           provider: { "@id": `${SITE_URL}/#person` },
           areaServed: "Global",
           inLanguage: ["tr", "en"],
+          sameAs: [SOCIAL_LINKS.github, SOCIAL_LINKS.linkedin],
+          contactPoint: {
+            "@type": "ContactPoint",
+            email: CONTACT_EMAIL,
+            contactType: "customer service",
+            availableLanguage: ["Turkish", "English"],
+          },
           hasOfferCatalog: {
             "@type": "OfferCatalog",
             name: isEnglish ? "Software & Automation Services" : "Yazılım ve Otomasyon Hizmetleri",

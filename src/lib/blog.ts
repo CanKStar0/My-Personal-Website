@@ -45,6 +45,103 @@ export type BlogPost = {
 };
 
 export const blogPosts: BlogPost[] = [
+  {
+    slug: "uretken-motor-optimizasyonu-geo-rehberi",
+    title: "Üretken Motor Optimizasyonu (GEO) Rehberi: AI Arama Motorları İçin Hazırlık Kontrol Listesi ve Best Practices",
+    description: "ChatGPT, Perplexity ve Google AI Overviews gibi yapay zeka arama motorlarında öne çıkmak, atıf almak ve doğrudan kaynak olarak alıntılanmak için kapsamlı GEO mimarisi, teknik şema ve strateji rehberi.",
+    publishedAt: "2026-09-08",
+    modifiedAt: "2026-09-08",
+    category: "Yapay Zeka",
+    readingTime: "5 dk",
+    serviceHref: "/hizmetler/yapay-zeka-otomasyon",
+    serviceAnchor: "Yapay zekâ otomasyonu ve GEO danışmanlık hizmetlerini inceleyin",
+    directAnswer: "Üretken Motor Optimizasyonu (GEO); web sitelerinin ve içeriklerin ChatGPT, Perplexity, Claude ve Google AI Overviews gibi üretken yapay zeka motorları tarafından kolayca taranmasını, anlaşılmasını ve kullanıcı sorularına doğrudan atıf yapılan güvenilir kaynak olarak seçilmesini sağlayan yeni nesil semantik optimizasyon disiplinidir.",
+    keyTakeaways: [
+      "Klasik SEO'dan GEO'ya Geçiş: Anahtar kelime yoğunluğu yerine semantik varlık grafiği (Entity Knowledge Graph), doğrulanabilir veri ve doğrudan yanıt blokları esastır.",
+      "llms.txt ve Yapısal Şemalar: llms.txt dosyası ve Schema.org JSON-LD (HowTo, TechArticle, Citation) yapay zeka motorlarının sayfayı halüsinasyonsuz alıntılamasını sağlar.",
+      "Platforma Özgü Taktikler: Perplexity için gerçek zamanlı kaynak atıfları ve istatistikler, ChatGPT için derin bağlam ve rehberlik, Google AI Overviews için net H2/H3 soru blokları gerekir.",
+      "E-E-A-T ve Birincil Veri: Birinci elden deneyimler, vaka çalışmaları ve doğrulanabilir metrikler AI algoritmalarının güven skorunu doğrudan artırır."
+    ],
+    sourcesCited: [
+      { name: "GEO: Generative Engine Optimization (Princeton University, Georgia Tech, IIT Delhi Research)", url: "https://arxiv.org/abs/2311.09735" },
+      { name: "Google Search Central: Structured Data and AI Integration", url: "https://developers.google.com/search/docs/appearance/structured-data/search-gallery" },
+      { name: "Search Engine Land: Generative Engine Optimization Comprehensive Guide", url: "https://searchengineland.com/what-is-generative-engine-optimization-geo-444418" },
+      { name: "LLMs.txt Standard Specification", url: "https://llmstxt.org" }
+    ],
+    sections: [
+      {
+        title: "1. GEO (Generative Engine Optimization) Nedir ve SEO'dan Nasıl Farklıdır?",
+        paragraphs: [
+          "Geleneksel SEO, web sitelerini Google gibi klasik arama motorlarının dizinine sokmak, anahtar kelime sıralamalarında yükselmek ve arama sonuçları sayfasından (SERP) tıklama almak üzerine odaklanır.",
+          "Üretken Motor Optimizasyonu (GEO) ise arama yapan kullanıcıya doğrudan sentezlenmiş bir yanıt üreten yapay zeka modellerinin (ChatGPT, Perplexity, Google AI Overviews) içerikleri nasıl okuduğunu, doğruladığını ve atıf yaptığını hedefler. Tıklama sayısından ziyade doğrudan güvenilir kaynak (primary source citation) olarak önerilmek esastır."
+        ],
+        callout: {
+          type: "tip",
+          title: "Temel Fark",
+          text: "SEO 'Mavi bağlantıya tıkla' derken, GEO 'Kullanıcının sorusuna doğrudan cevap ver ve doğrulanabilir kaynak olarak senteze gir' mantığıyla çalışır."
+        }
+      },
+      {
+        title: "2. Yapay Zeka Motorları İçeriği Nasıl Seçer ve Atıf Yapar?",
+        paragraphs: [
+          "Princeton Üniversitesi ve önde gelen araştırmacıların yayımladığı ampirik GEO araştırmaları, yapay zeka modellerinin alıntı yapma ihtimalini artıran en kritik faktörlerin şunlar olduğunu ortaya koymuştur:",
+          "Birincisi, içeriğin başında doğrudan yanıt veren kristal netlikte özet paragrafların bulunması. İkincisi, istatistiki ve nicel verilerin somut sayılarla verilmesi. Üçüncüsü ise resmi teknik kaynaklara açık atıf yapılmasıdır."
+        ],
+        items: [
+          "Doğrudan Yanıt Blokları (directAnswer): Soruyu ilk 2-3 cümlede eksiksiz özetleyen cevaplar.",
+          "Nicel Kanıtlar ve İstatistikler: 'Hızlı' demek yerine '<30ms gecikme süresi' gibi ampirik veriler.",
+          "Dış Kaynak Atıfları: Resmî dokümantasyon, GitHub repoları ve akademik araştırmalara açık linkler.",
+          "Modüler Yapı: Madde işaretleri, tablolar ve taranabilir hiyerarşik başlıklar."
+        ]
+      },
+      {
+        title: "3. Teknik GEO Mimarisi: llms.txt, Robots.txt ve Schema.org",
+        paragraphs: [
+          "Teknik altyapı bir sitenin GEO hazırlığının temel taşıdır. Robots.txt dosyasında GPTBot, ClaudeBot, PerplexityBot ve Applebot gibi AI tarayıcılarına açık izin verilmeli, aynı zamanda özel rotalar sınırlandırılmalıdır.",
+          "Ayrıca sitenin kök dizininde yer alan llms.txt ve llms-full.txt dosyaları, LLM'lerin web sitesini devasa HTML karmaşası yerine saf ve yapılandırılmış Markdown formatında anlamasını sağlar. Schema.org JSON-LD (TechArticle, HowTo, FAQPage, Citation) ise yapay zekanın varlık grafiğini (Entity Graph) kesinleştirmesine yardımcı olur."
+        ]
+      },
+      {
+        title: "4. Platforma Özgü Optimizasyon Stratejileri",
+        paragraphs: [
+          "Her yapay zeka platformunun bilgi işleme ve kaynak gösterme mimarisi farklıdır:",
+          "Perplexity AI gerçek zamanlı web araması yapar; güncel tarihlere, doğrulanabilir sayılara ve resmi atıflara en yüksek ağırlığı verir. ChatGPT/SearchGPT konuşma diline, derin bağlama ve kapsamlı rehberliğe odaklanır. Google AI Overviews ise geleneksel SEO sinyalleri, öne çıkan snippet'lar ve FAQ/HowTo şemalarıyla doğrudan beslenir."
+        ]
+      },
+      {
+        title: "5. İzleme, Analitik ve Dönüşüm Takibi",
+        paragraphs: [
+          "GEO çalışmalarının başarısı yalnızca sıralamayla değil, AI trafik kaynaklarından gelen dönüşümlerle ölçülür. Google Analytics 4 üzerinde özel referans filtreleri (chatgpt.com, perplexity.ai, claude.ai) ve UTM etiketleri kurularak AI ziyaretçilerinin dönüşüm oranları (CRO) adım adım takip edilmelidir."
+        ]
+      }
+    ],
+    faqs: [
+      {
+        question: "GEO hazırlığı nedir ve içeriğim için neden önemlidir?",
+        answer: "GEO hazırlığı, içeriğinizin ve sitenizin yapay zeka modelleri tarafından kolayca taranabilir, anlaşılabilir ve yanıt motorlarında birincil kaynak olarak atıf yapılabilir hale getirilmesi sürecidir. Klasik arama tıklamaları yapay zeka özetleriyle dönüşürken, marka bilinirliği ve organik lead kazanımı için GEO hazırlığı kritik bir zorunluluktur."
+      },
+      {
+        question: "Web sitemin yapay zeka arama optimizasyonuna hazır olup olmadığını nasıl anlarım?",
+        answer: "Web sitenizin robots.txt dosyasında AI botlarına izin verilmesi, llms.txt standardının bulunması, JSON-LD yapısal şemalarının eksiksiz olması ve blog içeriklerinizin soru-cevap formatında doğrudan yanıtlar (directAnswer) içermesi sitenizin GEO'ya hazır olduğunun temel göstergeleridir."
+      },
+      {
+        question: "GEO hazırlık kontrol listesindeki en kritik unsurlar nelerdir?",
+        answer: "En kritik unsurlar: AI botlarına açık robots.txt, llms.txt dosyası, zenginleştirilmiş Schema.org JSON-LD (HowTo, FAQPage, TechArticle, Citation), doğrudan yanıt blokları, birinci elden vaka verileri ve GA4 AI trafik izleme mekanizmasıdır."
+      },
+      {
+        question: "Tam GEO hazırlığına ulaşmak ne kadar sürer?",
+        answer: "Teknik altyapı (robots.txt, llms.txt, şemalar, analitik) birkaç gün içinde kurulabilir. İçeriklerin optimize edilmesi ve AI arama motorlarında tutarlı atıflar alınması ise genellikle 1 ila 3 aylık düzenli yayın ve veri beslemesi gerektirir."
+      },
+      {
+        question: "ChatGPT vs Perplexity vs Google AI için GEO hazırlığı arasındaki fark nedir?",
+        answer: "Perplexity gerçek zamanlı canlı web indeksine ve resmi alıntı bağlantılarına odaklanır. ChatGPT konuşma derinliğine ve kapsamlı bağlama önem verir. Google AI Overviews ise geleneksel SEO otoritesi, öne çıkan snippet'lar ve yapısal şema etiketlerini birincil sinyal kabul eder."
+      },
+      {
+        question: "GEO hazırlık ilerlememi nasıl ölçer ve takip ederim?",
+        answer: "GA4 üzerinden chatgpt.com ve perplexity.ai yönlendirme trafiği takip edilerek, hedefli 20+ sorguluk test prompt kütüphanesiyle AI modellerinde marka ses payı (Share of Voice) ölçülerek ve AI ziyaretçilerinin form/iletişim dönüşümleri analiz edilerek takip edilir."
+      }
+    ]
+  },
 
   // ==========================================
   // ADIM 1: AGENTIC CODING & TERMINAL AJANLARI
