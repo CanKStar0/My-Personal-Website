@@ -10,6 +10,9 @@ import { ReadingProgress } from "@/components/reading-progress";
 import { TableOfContents } from "@/components/table-of-contents";
 import { slugify } from "@/lib/slug";
 import { BlogContextualCTA } from "@/components/blog-contextual-cta";
+import { ShareButtons } from "@/components/share-buttons";
+import { RelatedPosts } from "@/components/related-posts";
+import { formatBlogDate } from "@/lib/date";
 import { blogPostEnBySlug, blogPostsEn } from "@/lib/blog-en";
 import { createMetadata } from "@/lib/seo";
 import { SITE_NAME, SITE_URL } from "@/lib/site";
@@ -132,13 +135,30 @@ export default async function EnglishBlogPostPage({ params }: Props) {
             </p>
             <h1 className="mt-5 font-jakarta text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl md:text-5xl md:leading-[1.15]">{post.title}</h1>
             <p className="mt-6 max-w-3xl text-lg font-light leading-8 text-muted-foreground">{post.description}</p>
-            <div className="mt-6 flex flex-wrap items-center gap-4 text-sm text-muted-foreground">
-              <time dateTime={post.publishedAt}>August 17, 2026</time>
-              <span aria-hidden="true">•</span>
-              <span className="inline-flex items-center gap-1.5">
-                <Clock className="h-4 w-4" />
-                {post.readingTime}
-              </span>
+            <div className="mt-6 flex flex-wrap items-center justify-between gap-4 text-sm text-muted-foreground">
+              <div className="flex flex-wrap items-center gap-3">
+                <time dateTime={post.publishedAt} className="font-medium text-foreground/80">
+                  {formatBlogDate(post.publishedAt, "en")}
+                </time>
+                {post.modifiedAt && post.modifiedAt !== post.publishedAt && (
+                  <>
+                    <span aria-hidden="true">•</span>
+                    <span className="text-xs text-brand-red dark:text-rose-400">
+                      Updated: {formatBlogDate(post.modifiedAt, "en")}
+                    </span>
+                  </>
+                )}
+                <span aria-hidden="true">•</span>
+                <span className="inline-flex items-center gap-1.5">
+                  <Clock className="h-4 w-4" />
+                  {post.readingTime}
+                </span>
+              </div>
+              <ShareButtons
+                title={post.title}
+                url={`${SITE_URL}/en/blog/${post.slug}`}
+                locale="en"
+              />
             </div>
           </header>
 
@@ -291,6 +311,14 @@ export default async function EnglishBlogPostPage({ params }: Props) {
               {post.serviceAnchor} <ArrowRight className="h-4 w-4" />
             </TrackedLink>
           </aside>
+
+          {/* Related Technical Articles & Prev/Next Navigation (Topic Cluster) */}
+          <RelatedPosts
+            currentSlug={post.slug}
+            currentCategory={post.category}
+            allPosts={blogPostsEn}
+            locale="en"
+          />
         </article>
       </main>
       <SiteFooter />
