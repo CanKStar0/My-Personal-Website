@@ -143,6 +143,553 @@ export const blogPosts: BlogPost[] = [
     ]
   },
 
+  // ==============================================================
+  // 2026 FRONTIER MODELLERİ VE PRODUCTION-GRADE MİMARİLER
+  // ==============================================================
+  {
+    slug: "gpt-6-astra-ve-responses-api-rehberi",
+    title: "GPT-6 Astra ve Responses API: 1.05M Context, xhigh Reasoning ve Production-Grade Ajan Mimarisi",
+    description: "OpenAI'nin 2026 amiral gemisi GPT-6 Astra, 1.05M token bağlamı, yeni Responses API standardı, xhigh reasoning effort ve DAG refactoring mimarisi rehberi.",
+    publishedAt: "2026-09-09",
+    modifiedAt: "2026-09-09",
+    category: "LLM & AI Modelleri",
+    readingTime: "6 dk",
+    serviceHref: "/hizmetler/yapay-zeka-otomasyon",
+    serviceAnchor: "GPT-6 Astra ve kurumsal ajan mimarisi çözümlerimizi inceleyin",
+    directAnswer: "OpenAI'nin 3 Eylül 2026'da yayımladığı GPT-6 Astra (gpt-6-astra); 1.050.000 token bağlam penceresi, 128.000 maksimum çıktı kapasitesi ve yeni Responses API standardı ile çalışan en üst seviye frontier modeldir. Eski ChatCompletions yerine gelen client.responses.create mimarisi; dinamik reasoning={'effort': 'high'|'xhigh'|'max'} bütçelemesi, yerel JSON Schema yapılandırılmış çıktıları ve çok adımlı kod tabanı refactor süreçlerinde DAG (Directed Acyclic Graph) tabanlı deterministik ajan döngülerini destekler.",
+    keyTakeaways: [
+      "Responses API Standardı: Eski ChatCompletions yerine gelen text.format = {type: 'json_schema', ...} ve native streaming altyapısı.",
+      "Reasoning Effort Politikası: Basit veri çıkarmada low; belirsiz çoklu dosya refactoring ve araç doğrulamada high/xhigh; kritik görevlerde max.",
+      "Benchmark Değişimi: SWE-bench Verified kontamine olduğu için DeepSWE v1.1 (%74.1 Astra) ve Terminal-Bench 4.0 (%57.9 Astra) yeni standarttır.",
+      "DAG Refactoring Deseni: Model akıl yürütmesi geçicidir; kalıcı durum bağımlılık DAG'ı, git diff'leri ve test kanıtlarıdır."
+    ],
+    sourcesCited: [
+      { name: "OpenAI — GPT-6 Astra Model Specification", url: "https://developers.openai.com/api/docs/models/gpt-6-astra" },
+      { name: "OpenAI — GPT-6 Astra: A New Generation of Intelligence", url: "https://openai.com/index/gpt-6-astra/" },
+      { name: "OpenAI — Responses API & Structured Outputs Reference", url: "https://developers.openai.com/api/reference/cli/resources/beta/subresources/responses" },
+      { name: "OpenAI — Why SWE-bench Verified No Longer Measures Frontier Coding Well", url: "https://openai.com/index/why-we-no-longer-evaluate-swe-bench-verified/" }
+    ],
+    sections: [
+      {
+        title: "1. GPT-6 Astra ve GPT-5.6 Sol Frontier Katmanı",
+        paragraphs: [
+          "OpenAI'nin 2026 frontier hattında GPT-6 Astra, yüksek test-time compute, otonom araç kullanımı ve uzun-horizon görevlerde en üst katmandır. GPT-5.6 Sol ise 1.05M bağlam ile daha düşük maliyetli ($4/M input, $20/M output) bir frontier alternatifi olarak konumlanır. o3 ve o4 serisi, görünür zincirleme düşünce (chain-of-thought) yerine API tarafından yönetilen gizli reasoning token'ları ve effort kontrolünün ürünleştiği geçiş nesli olmuştur.",
+          "GPT-6 Astra, özellikle 272K token üzerindeki uzun bağlamlarda yüksek verim sağlarken, önbelleğe alınmış girdilerde (cached input) $1/M seviyesinde %90 indirim sunar. Ancak üretim mimarisinde model seçimi kadar görev başına reasoning effort kontrolü ve prompt caching katmanı da zorunludur."
+        ]
+      },
+      {
+        title: "2. OpenAI Responses API: Structured Outputs ve Streaming",
+        paragraphs: [
+          "Güncel OpenAI SDK'sında 'response_format' şeklindeki eski Chat Completions sözdizimi yerini doğrudan Responses API'ye bırakmıştır. Aşağıdaki betik, GPT-6 Astra ile tip güvenli Pydantic çıktısı ve canlı akış (streaming) entegrasyonunu göstermektedir:"
+        ],
+        codeSnippet: {
+          language: "python",
+          filename: "gpt6_responses_api.py",
+          code: `import json
+from typing import Literal
+from openai import OpenAI
+from pydantic import BaseModel, Field
+
+client = OpenAI()
+
+class RefactorFinding(BaseModel):
+    file: str
+    severity: Literal["low", "medium", "high"]
+    issue: str
+    fix: str
+
+schema = RefactorFinding.model_json_schema()
+
+stream = client.responses.create(
+    model="gpt-6-astra",
+    input=[
+        {"role": "developer", "content": "Return one concrete refactor finding."},
+        {"role": "user", "content": "Analyze retry logic in payments/service.py for race risk."},
+    ],
+    reasoning={"effort": "high"},
+    text={
+        "format": {
+            "type": "json_schema",
+            "name": "refactor_finding",
+            "schema": schema,
+            "strict": True,
+        }
+    },
+    stream=True,
+)
+
+parts: list[str] = []
+for event in stream:
+    if event.type == "response.output_text.delta":
+        parts.append(event.delta)
+        print(event.delta, end="", flush=True)
+
+finding = RefactorFinding.model_validate(json.loads("".join(parts)))
+print("\\nValidated:", finding)`
+        }
+      },
+      {
+        title: "3. Büyük Kod Tabanlarında DAG Refactoring Üretim Deseni",
+        paragraphs: [
+          "500.000 satırı aşan kurumsal kod tabanlarında tüm depoyu tek bir prompta doldurmak yerine bağımlılık grafı (DAG) üzerinden parçalama uygulanmalıdır.",
+          "Modelin dahili akıl yürütmesi (hidden reasoning) geçici bir çalışma belleğidir. Üretim sistemlerinde asıl kalıcı durum; bağımlılık DAG'ı, SCC (Strongly Connected Components) tespitiyle ayrıştırılmış iş paketleri, git diff'leri ve entegrasyon testlerinin log kanıtlarıdır."
+        ]
+      }
+    ],
+    faqs: [
+      {
+        question: "GPT-6 için 'kaç parametre?' sorusuna göre kapasite planlanabilir mi?",
+        answer: "Hayır. API tabanlı GPT-6 Astra ve GPT-5 için resmi parametre sayısı açıklanmamıştır. Kapasite kararları parametre spekülasyonu yerine context penceresi, output limitleri, SLA gecikmesi ve kurum içi eval testleri üzerinden verilmelidir."
+      },
+      {
+        question: "Reasoning effort'i bütün isteklerde high veya max yapmak mantıklı mıdır?",
+        answer: "Genellikle hayır. Sınıflandırma, basit veri çıkarma ve deterministik araç yönlendirmede düşük (low) effort yeterlidir. Yüksek effort; belirsiz çoklu dosya refactor, araştırma ve hata yapmanın maliyetinin hesaplama maliyetinden yüksek olduğu işlere ayrılmalıdır."
+      }
+    ]
+  },
+  {
+    slug: "gemini-3-8-flash-ve-project-astra-live-api",
+    title: "Gemini 3.8 Flash ve Project Astra: thinking_level Mimarisi ve WebSocket Canlı Ses/Video Ajanları",
+    description: "Google Gemini 3.8 Flash'ın yeni thinking_level kontrolü, Project Astra araştırma hattı ve Gemini Live API ile WebSocket tabanlı gerçek zamanlı medya streaming rehberi.",
+    publishedAt: "2026-09-09",
+    modifiedAt: "2026-09-09",
+    category: "LLM & AI Modelleri",
+    readingTime: "6 dk",
+    serviceHref: "/hizmetler/yapay-zeka-otomasyon",
+    serviceAnchor: "Gemini 3.8 Flash ve gerçek zamanlı sesli ajan çözümlerimiz",
+    directAnswer: "Google DeepMind'ın Gemini 3.8 Flash modeli, 1M token bağlam penceresi ve 64K çıktı sınırı ile üretim seviyesi yazılım mühendisliği ve ajan iş akışları için optimize edilmiş genel erişim (GA) modelidir. Modelde eski sayısal thinking_budget parametresi yerini thinking_level='low'|'medium'|'high' yapısına bırakmıştır. Eşzamanlı olarak Project Astra araştırma hattının üretim çıktısı olan Gemini Live API, WebSocket üzerinden çift yönlü (bidirectional) 16 kHz PCM16 ses ve gerçek zamanlı video karelerini işleyerek sesli/görsel ajan etkileşimleri sağlar.",
+    keyTakeaways: [
+      "thinking_level Standardı: Gemini 3.8 Flash'ta sayısal token bütçesi yerine low, medium (varsayılan) ve high kategorik seviyeleri.",
+      "WebSocket Tabanlı Live API: Tarayıcı tarafında WebRTC, backend/media edge ile Google Live API arasında WebSocket bağlantısı.",
+      "Gerçek Zamanlı Medya Sınırları: 16 kHz PCM16 mono ses parçacıkları ve yaklaşık 1 fps ayrık video kareleri ile düşük gecikmeli etkileşim.",
+      "DeepSWE Performansı: DeepSWE v1.1'de %73.7, Terminal-bench 2.1'de %89.4 başarı ile Flash sınıfında en güçlü kodlama/ajan performansı."
+    ],
+    sourcesCited: [
+      { name: "Google DeepMind — Gemini 3.8 Flash Model Card", url: "https://deepmind.google/models/model-cards/gemini-3-8-flash/" },
+      { name: "Google AI Developers — What’s New in Gemini 3.8 Flash", url: "https://ai.google.dev/gemini-api/docs/generate-content/latest-model" },
+      { name: "Google AI Developers — Gemini Live API Capabilities", url: "https://ai.google.dev/gemini-api/docs/live-api/capabilities" },
+      { name: "Google AI Developers — Live API SDK Quickstart", url: "https://ai.google.dev/gemini-api/docs/live-api/get-started-sdk" }
+    ],
+    sections: [
+      {
+        title: "1. Gemini 3.8 Flash ve thinking_level Paradigması",
+        paragraphs: [
+          "Google DeepMind'ın Gemini 3.8 Flash modelinde en önemli mimari değişiklik, akıl yürütme bütçesinin sayısal token bütçesi (thinking_budget) yerine kategorik thinking_level ile yapılandırılmasıdır. Desteklenen seviyeler low, medium (varsayılan) ve high olarak belirlenmiştir.",
+          "Google'ın resmi üretim tavsiyelerinde, dağıtık sistemlerdeki yarış durumları (race conditions) ve kilitlenme analizleri için doğrudan thinking_level='medium' önerilmektedir. Sadece derin matematiksel ispat ve uç karmaşıklıktaki güvenlik denetimlerinde high seviyesine çıkılmalıdır."
+        ]
+      },
+      {
+        title: "2. Gemini 3.8 Flash Akıl Yürütme ve Yarış Durumu Analizi",
+        paragraphs: [
+          "Aşağıdaki Python kodu, ödeme yeniden deneme hattındaki yarış durumlarını analiz eden resmi Google GenAI SDK uygulamasını göstermektedir:"
+        ],
+        codeSnippet: {
+          language: "python",
+          filename: "gemini_38_flash_reasoning.py",
+          code: `from google import genai
+from google.genai import types
+
+client = genai.Client()
+
+response = client.models.generate_content(
+    model="gemini-3.8-flash",
+    contents=(
+        "Analyze a payment retry pipeline for race conditions. "
+        "Return: invariant violations, minimal repro timeline, and a safe locking/idempotency redesign."
+    ),
+    config=types.GenerateContentConfig(
+        thinking_config=types.ThinkingConfig(thinking_level="medium")
+    ),
+)
+
+print(response.text)`
+        }
+      },
+      {
+        title: "3. Project Astra ve Gemini Live API: WebRTC Nerede, WebSocket Nerede?",
+        paragraphs: [
+          "Project Astra tek bir model adı değil; kesintisiz çok modlu algı, araç kullanımı ve düşük gecikmeli etkileşim araştırma hattıdır. Üretim API'sinde gerçek zamanlı medya Gemini Live API üzerinden WebSocket ile taşınır.",
+          "Tarayıcı veya mobil cihaz kullanıcıdan mikron/kamera verisini WebRTC ile uygulamanızın Media Edge/SFU sunucusuna iletir. Media Edge ise PCM16 16 kHz mono ses bloklarını Google GenAI Live API WebSocket oturumuna besler. Bu ayrım kimlik doğrulama, oran sınırlama (rate limiting) ve VAD (Voice Activity Detection) güvenliği için zorunludur."
+        ],
+        codeSnippet: {
+          language: "python",
+          filename: "gemini_live_audio.py",
+          code: `import asyncio
+from pathlib import Path
+from google import genai
+from google.genai import types
+
+MODEL = "gemini-3.1-flash-live-preview"
+client = genai.Client()
+
+async def main() -> None:
+    config = {
+        "response_modalities": ["AUDIO"],
+        "input_audio_transcription": {},
+    }
+    async with client.aio.live.connect(model=MODEL, config=config) as session:
+        pcm = Path("input.pcm").read_bytes()
+        chunk_bytes = 3200  # ~100 ms @ 16kHz PCM16 mono
+        for i in range(0, len(pcm), chunk_bytes):
+            await session.send_realtime_input(
+                audio=types.Blob(
+                    data=pcm[i:i + chunk_bytes],
+                    mime_type="audio/pcm;rate=16000",
+                )
+            )
+        await session.send_realtime_input(audio_stream_end=True)
+        async for msg in session.receive():
+            content = msg.server_content
+            if content and content.model_turn:
+                for part in content.model_turn.parts:
+                    if part.inline_data:
+                        Path("output.pcm").open("ab").write(part.inline_data.data)
+
+if __name__ == "__main__":
+    asyncio.run(main())`
+        }
+      }
+    ],
+    faqs: [
+      {
+        question: "Gemini 3.8 Flash'ta 16K thinking budget atanabilir mi?",
+        answer: "Hayır; Gemini 3.8 Flash'ta thinking_budget yerine thinking_level kullanılmalıdır. Medium iyi bir varsayılandır; yalnızca kıyaslamalarda anlamlı kalite artışı görülen görevlerde high seviyesine çıkılmalıdır."
+      },
+      {
+        question: "Tarayıcıdan kamerayı doğrudan Gemini Live WebSocket'e bağlamak güvenli midir?",
+        answer: "Üretimde istemciden doğrudan Google API'sine bağlanmak yerine backend veya media edge üzerinden kimlik doğrulama, kota denetimi ve ses yeniden örnekleme (resampling) uygulamak güvenlik açısından en doğru yaklaşımdır."
+      }
+    ]
+  },
+  {
+    slug: "claude-fable-5-1-ve-opus-5-kurumsal-ajan-rehberi",
+    title: "Claude Fable 5.1 & Claude Opus 5: 1M Token, Güvenli Tool Sandbox ve Subagent Koordinasyonu",
+    description: "Anthropic'in Eylül 2026'da sunduğu Claude Fable 5.1, Opus 5 ve Sonnet 5 modelleri ile 1M bağlam, allowlist subprocess sandbox'ı ve prompt caching rehberi.",
+    publishedAt: "2026-09-09",
+    modifiedAt: "2026-09-09",
+    category: "AI Otomasyon",
+    readingTime: "6 dk",
+    serviceHref: "/hizmetler/yapay-zeka-otomasyon",
+    serviceAnchor: "Claude 5 ailesi ve kurumsal otonom ajan çözümlerimiz",
+    directAnswer: "Anthropic'in 1 Eylül 2026'da kullanıma sunduğu Claude Fable 5.1, Claude Opus 5 ve Claude Sonnet 5 modelleri; 1M token bağlam penceresi ve 128K maksimum çıktı kapasitesi sunan üç katmanlı frontier ajan ailesidir. Sonnet 5 yüksek hızlı günlük kodlama için, Opus 5 karmaşık kurumsal mimari tasarım için, Fable 5.1 ise güvenlik sınırları katı olan en zorlu uzun soluklu (long-horizon) akıl yürütme görevleri için konumlandırılmıştır. Sistem, prompt caching (cache_control: {type: 'ephemeral'}) ve allowlist'e bağlı güvenli terminal araç kullanımını (shell=False) merkezine alır.",
+    keyTakeaways: [
+      "1M Bağlam Gerçeği: Opus 5 ve Fable 5.1 1M bağlama sahiptir; devasa monolitleri tek pencereye yığmak yerine indeksli erişim ve alt ajanlar esastır.",
+      "Adaptive Thinking Standardı: Sonnet 5 ve Opus 5'te manuel budget_tokens kaldırılmış olup, adaptive thinking ve effort kontrolü devrededir.",
+      "Güvenli Tool Sandbox: Modelin keyfi shell string'i çalıştırmasını engellemek için allowlist enum (ruff, pytest, mypy) ve shell=False izolasyonu.",
+      "Ephemeral Tool Caching: Araç şemalarında cache_control: {type: 'ephemeral'} kullanarak cache-read maliyetlerinde %90-%97.5 tasarruf."
+    ],
+    sourcesCited: [
+      { name: "Anthropic — Claude Fable 5.1 Overview (2026-09-01)", url: "https://platform.claude.com/docs/en/models/fable-5-1/overview" },
+      { name: "Anthropic — What’s New in Claude Opus 5 (2026)", url: "https://platform.claude.com/docs/en/models/opus-5/whats-new-opus-5" },
+      { name: "Anthropic — Sonnet 5 Migration Guide (2026)", url: "https://platform.claude.com/docs/en/models/sonnet-5/migration-guide" },
+      { name: "Anthropic — Tool Use with Prompt Caching (2026)", url: "https://platform.claude.com/docs/en/agents-and-tools/tool-use/tool-use-with-prompt-caching" }
+    ],
+    sections: [
+      {
+        title: "1. Claude 5 Üçlü Katman Mimarisi (Sonnet 5 vs Opus 5 vs Fable 5.1)",
+        paragraphs: [
+          "Anthropic'in 2026 frontier portföyü üç farklı çalışma katmanına ayrılmıştır: Sonnet 5 hızlı agentic coding ($2 in / $10 out), Opus 5 karmaşık kurumsal mimari analiz ($5 in / $25 out), Fable 5.1 ise en zorlu long-horizon reasoning ve güvenlik sınırları katı görevler ($10 in / $50 out) içindir.",
+          "Her üç model de 1M bağlam ve 128K maksimum çıktı desteği sunar. Bu nedenle model seçimi bağlam boyutundan ziyade gecikme, maliyet, adaptif akıl yürütme bütçesi ve eval başarısına göre yapılmalıdır."
+        ]
+      },
+      {
+        title: "2. Güvenli Subprocess Tool Use ve Ephemeral Caching (Python SDK)",
+        paragraphs: [
+          "Modelin doğrudan rastgele terminal komutları yürütmesine izin vermek büyük bir güvenlik zafiyetidir. Aşağıdaki üretim örneğinde izin verilen araçlar bir allowlist sözlüğüne (ALLOWED) bağlanmış, shell=False ile güvenli çalıştırılmış ve araç şemaları cache_control={'type': 'ephemeral'} ile önbelleğe alınmıştır:"
+        ],
+        codeSnippet: {
+          language: "python",
+          filename: "claude_secure_agent.py",
+          code: `import json
+import subprocess
+from typing import Any
+import anthropic
+
+client = anthropic.Anthropic()
+ALLOWED: dict[str, list[str]] = {
+    "ruff": ["ruff", "check", "."],
+    "pytest": ["pytest", "-q", "--disable-warnings", "--maxfail=1"],
+    "mypy": ["mypy", "."],
+}
+
+def run_check(name: str) -> dict[str, Any]:
+    if name not in ALLOWED:
+        return {"ok": False, "error": "tool not allowlisted"}
+    cp = subprocess.run(
+        ALLOWED[name], capture_output=True, text=True, timeout=120, shell=False
+    )
+    return {
+        "ok": cp.returncode == 0,
+        "returncode": cp.returncode,
+        "stdout": cp.stdout[-12000:],
+        "stderr": cp.stderr[-12000:],
+    }
+
+tools = [{
+    "name": "run_check",
+    "description": "Run an allowlisted repository quality check.",
+    "input_schema": {
+        "type": "object",
+        "properties": {"name": {"type": "string", "enum": list(ALLOWED)}},
+        "required": ["name"],
+        "additionalProperties": False,
+    },
+    "strict": True,
+    "cache_control": {"type": "ephemeral"},
+}]
+
+messages: list[dict[str, Any]] = [{
+    "role": "user",
+    "content": "Inspect the repository quality. Call the smallest useful check, then explain the result.",
+}]
+
+while True:
+    msg = client.messages.create(
+        model="claude-opus-5",
+        max_tokens=1800,
+        cache_control={"type": "ephemeral"},
+        system="You are a senior refactoring verifier. Never claim a check passed unless the tool says so.",
+        tools=tools,
+        messages=messages,
+    )
+    messages.append({"role": "assistant", "content": msg.content})
+    calls = [b for b in msg.content if b.type == "tool_use"]
+    if not calls:
+        print("".join(b.text for b in msg.content if b.type == "text"))
+        break
+    results = []
+    for call in calls:
+        result = run_check(str(call.input["name"]))
+        results.append({
+            "type": "tool_result",
+            "tool_use_id": call.id,
+            "content": json.dumps(result),
+            "cache_control": {"type": "ephemeral"},
+        })
+    messages.append({"role": "user", "content": results})`
+        }
+      },
+      {
+        title: "3. 500K+ Satırlık Monolitlerde Subagent ve DAG Bölümleme Deseni",
+        paragraphs: [
+          "Büyük kod depolarında 'Opus 5 1M bağlama sahip, tüm kodları tek seferde yollayalım' yaklaşımı dikkat dağınıklığına ve yüksek hata yüzeyine yol açar.",
+          "Önerilen kurumsal desende Koordinatör (Opus 5 veya Fable 5.1) bağımlılık haritasını ve göç DAG'ını çıkarır; Refactor alt ajanları (Sonnet 5) sınırlı çalışma ağaçlarında (worktree) paralel kod yazar; Doğrulayıcı ajan ise birim testleri ve linter'ı çalıştırarak nihai kanıtı üretir."
+        ]
+      }
+    ],
+    faqs: [
+      {
+        question: "500K satırlık bir monolit projeyi 1M context'e tek seferde koymak doğru mudur?",
+        answer: "Hayır. Token olarak sığsa bile model dikkati dağılır ve gereksiz dosyalar hata payını artırır. Bağımlılık grafiği, indeksli arama ve sınırlandırılmış alt ajanlar ile çalışmak çok daha güvenilirdir."
+      },
+      {
+        question: "Fable 5.1'i her kodlama işinde Opus 5 yerine seçmeli miyiz?",
+        answer: "Hayır. Fable 5.1 en zorlu güvenlik ve biçimsel doğrulama görevleri için tasarlanmıştır ve maliyeti Opus 5'in 2 katıdır. Standart kurumsal refactoring için Opus 5 veya Sonnet 5 maliyet-hız dengesinde üstündür."
+      }
+    ]
+  },
+  {
+    slug: "llama-4-moe-ve-deepseek-r1-yerel-gpu-dagitim",
+    title: "Llama 4 MoE ve DeepSeek-R1: 24GB GPU Donanım Sınırları, vLLM PagedAttention ve think Filtreleme",
+    description: "DeepSeek-R1 damıtılmış modelleri, Meta Llama 4 Scout/Maverick MoE mimarisi, tek 24GB GPU (RTX 4090/A5000) donanım matrisi ve vLLM dağıtımı.",
+    publishedAt: "2026-09-09",
+    modifiedAt: "2026-09-09",
+    category: "AI Altyapısı",
+    readingTime: "6 dk",
+    serviceHref: "/hizmetler/ozel-yazilim-gelistirme",
+    serviceAnchor: "Özel AI donanımı ve yerel vLLM sunucu kurulumu hizmetlerimiz",
+    directAnswer: "Açık ağırlıklı akıl yürütme ekosisteminde DeepSeek-R1 (671B MoE / 37B aktif) saf RL ile eğitilmiş öncü mimariyken, damıtılmış (distilled) 14B ve 32B modelleri tek bir 24GB VRAM GPU'da (RTX 4090 / RTX A5000) çalışabilen en pratik yerel motorlardır. Meta'nın Llama 4 Scout (109B / 17B aktif) ve Maverick (400B / 17B aktif) MoE modellerinde ise aktif parametre düşük olsa da tüm expert ağırlıklarının bellekte tutulması gerektiğinden tek 24GB GPU'ya sığmazlar. Üretimde vLLM PagedAttention ve FastAPI middleware ile think bloklarının filtrelenmesi esastır.",
+    keyTakeaways: [
+      "24GB GPU Gerçeği: DeepSeek-R1 Distill 14B Q4 (~9GB) ve Q8 (~16GB) rahat sığar; 32B Q4 (~20GB) sınırda kalır; Llama 4 Scout (109B) tek 24GB GPU'ya sığmaz.",
+      "Aktif Parametre Yanılgısı: MoE mimarilerinde token başına 17B aktif parametre işlense de model ağırlıklarının tamamı (109B) VRAM'de resident kalmak zorundadır.",
+      "vLLM PagedAttention: Mantıksal KV sayfalarını ardışık olmayan fiziksel bloklara bölerek bellek parçalanmasını sıfırlar.",
+      "Stateful think Filtreleme: Streaming SSE yanıtlarında düşünce etiketlerini regex yerine durum bilgisine sahip parser veya gateway seviyesinde filtreleme kuralı."
+    ],
+    sourcesCited: [
+      { name: "DeepSeek-AI — DeepSeek-R1 Official Repository", url: "https://github.com/deepseek-ai/DeepSeek-R1" },
+      { name: "DeepSeek-AI — DeepSeek-R1 Paper (arXiv:2501.12948)", url: "https://arxiv.org/abs/2501.12948" },
+      { name: "Meta AI — Llama 4 Multimodal Intelligence Announcement", url: "https://ai.meta.com/blog/llama-4-multimodal-intelligence/" },
+      { name: "vLLM — OpenAI-Compatible Server Documentation", url: "https://docs.vllm.ai/en/latest/serving/openai_compatible_server/" }
+    ],
+    sections: [
+      {
+        title: "1. 24GB GPU (RTX 4090 ve A5000) Donanım ve Kuantizasyon Matrisi",
+        paragraphs: [
+          "Kurumsal yerel yapay zeka dağıtımlarında en sık karşılaşılan donanım 24GB VRAM kapasiteli NVIDIA RTX 4090 (Ada) ve RTX A5000 (Ampere) kartlarıdır. Ancak 'model sığıyor mu?' sorusu sadece model ağırlık boyutuyla cevaplanamaz; KV cache, CUDA graphs ve eşzamanlı istekler de VRAM tüketir:",
+          "• DeepSeek-R1 Distill 14B Q4 (~9 GB): Hem 4090 hem A5000'de son derece rahat çalışır; uzun bağlamlar ve yüksek eşzamanlılık için en güvenli tercihtir.",
+          "• DeepSeek-R1 Distill 32B Q4 (~20 GB): 24GB kartta sınırda kalır; uzun context veya concurrency durumunda OOM (Out of Memory) riski yüksektir.",
+          "• Llama 4 Scout (109B total / 17B active): Token başına yalnızca 17B çalışsa da tüm expert ağırlıklarının GPU belleğinde yerleşik olması gerektiğinden tek bir 24GB GPU'ya sığmaz; çoklu GPU kümesi gerektirir."
+        ]
+      },
+      {
+        title: "2. vLLM ile OpenAI Uyumlu Yerel Sunucu Başlatma",
+        paragraphs: [
+          "vLLM PagedAttention motoru, KV belleğindeki parçalanmayı (fragmentation) engelleyerek throughput'u katlar. Aşağıdaki komut 14B modelini tek GPU'da üretime hazırlar:"
+        ],
+        codeSnippet: {
+          language: "bash",
+          filename: "vllm_server.sh",
+          code: `# vLLM servisini 24GB GPU üzerinde başlatma
+vllm serve deepseek-ai/DeepSeek-R1-Distill-Qwen-14B \\
+  --host 0.0.0.0 \\
+  --port 8000 \\
+  --dtype auto \\
+  --max-model-len 16384 \\
+  --gpu-memory-utilization 0.90 \\
+  --api-key "$VLLM_API_KEY"
+
+# Test isteği
+curl http://127.0.0.1:8000/v1/chat/completions \\
+  -H "Authorization: Bearer $VLLM_API_KEY" \\
+  -H "Content-Type: application/json" \\
+  -d '{"model":"deepseek-ai/DeepSeek-R1-Distill-Qwen-14B","messages":[{"role":"user","content":"Give a concise answer: 17*19?"}]}'`
+        }
+      },
+      {
+        title: "3. FastAPI Gateway ile think Bloklarını Temizleme",
+        paragraphs: [
+          "Akıl yürütme modelleri kullanıcıya yanıt vermeden önce <think> etiketleri arasında yüzlerce satırlık dahili düşünce döngüsü üretir. Bu blokların son kullanıcı arayüzüne sızmasını engellemek için kurumsal bir API Gateway kullanılır:"
+        ],
+        codeSnippet: {
+          language: "python",
+          filename: "fastapi_think_filter.py",
+          code: `import re
+from typing import Any
+import httpx
+from fastapi import FastAPI, Header, HTTPException
+from pydantic import BaseModel
+
+VLLM = "http://127.0.0.1:8000"
+THINK_RE = re.compile(r"<think>.*?</think>\\s*", re.DOTALL | re.IGNORECASE)
+app = FastAPI()
+
+class ChatRequest(BaseModel):
+    model: str
+    messages: list[dict[str, Any]]
+    max_tokens: int | None = None
+
+@app.post("/v1/chat/completions")
+async def chat(req: ChatRequest, authorization: str | None = Header(default=None)) -> dict[str, Any]:
+    if not authorization:
+        raise HTTPException(401, "missing Authorization")
+    payload = req.model_dump(exclude_none=True)
+    payload["stream"] = False
+    async with httpx.AsyncClient(timeout=180) as client:
+        r = await client.post(
+            f"{VLLM}/v1/chat/completions",
+            json=payload,
+            headers={"Authorization": authorization},
+        )
+        r.raise_for_status()
+        data = r.json()
+        for choice in data.get("choices", []):
+            msg = choice.get("message") or {}
+            if isinstance(msg.get("content"), str):
+                msg["content"] = THINK_RE.sub("", msg["content"]).strip()
+        return data`
+        }
+      }
+    ],
+    faqs: [
+      {
+        question: "32B Q4 modeli 20GB dosya boyutuna sahipken 24GB RTX 4090'da neden 'rahat' değildir?",
+        answer: "Model ağırlıkları dışında KV önbelleği, CUDA çekirdekleri, bellek ayırıcı ek yükü ve eşzamanlı sorgular da VRAM tüketir. 20GB ağırlık teorik olarak sığsa da uzun bağlamlarda OOM riski hızla yükselir."
+      },
+      {
+        question: "Llama 4 Scout 17B aktif parametreye sahipse neden 24GB GPU'da çalışmaz?",
+        answer: "MoE (Mixture of Experts) mimarilerinde token başına sadece 17B aktif uzman çalıştırılsa bile 109B toplam model ağırlıklarının tamamı VRAM'de yerleşik olmak zorundadır. Bu nedenle çoklu GPU şarttır."
+      }
+    ]
+  },
+  {
+    slug: "2026-frontier-agent-stack-mem0-langgraph-caching",
+    title: "2026 Frontier Stack: LangGraph Checkpointing, Mem0 Bellek ve Prefix Caching ile FinOps Mimarisi",
+    description: "Üretim seviyesi yapay zeka ajanlarında üçlü yaşam döngüsü: KV-cache optimizasyonu (%90 tasarruf), LangGraph durum yönetimi ve Mem0 uzun dönem bellek entegrasyonu.",
+    publishedAt: "2026-09-09",
+    modifiedAt: "2026-09-09",
+    category: "AI Mimarisi",
+    readingTime: "6 dk",
+    serviceHref: "/hizmetler/yapay-zeka-otomasyon",
+    serviceAnchor: "LangGraph ve kurumsal ajan bellek mimarisi danışmanlığımız",
+    directAnswer: "2026 üretim seviyesi frontier yapay zekâ yığını (Production Stack); prompt önbellekleme (KV caching), iş akışı durumu (workflow state) ve uzun dönem kullanıcı belleğini (agent memory) birbirinden bağımsız üç ayrı yaşam döngüsü olarak yönetir. Değişmeyen prefix'ler sağlayıcı KV-cache'ine (%90 maliyet indirimi), thread bazlı yürütme adımları LangGraph Checkpointer'a (Postgres/DB-backed snapshot), kullanıcıya özgü scoped bilgiler ise Mem0 veya Zep semantik bellek katmanına yönlendirilir.",
+    keyTakeaways: [
+      "Üç Ayrı Yaşam Döngüsü: Immutable prefix -> prompt cache; thread_id -> LangGraph checkpoint; user_id + namespace -> Mem0 / Zep.",
+      "Prefix Sıralaması (Prefix Ordering): tools -> system -> messages sırasını bozmamak ve dinamik timestamp'leri başa koymamak cache-hit oranını %90'a çıkarır.",
+      "FinOps Gerçekliği: %90 cache indirimi yalnızca girdi token'larında geçerlidir; modelin reasoning ve çıktı token tüketimi faturayı şişirebilir.",
+      "Checkpoint vs Memory: Checkpoint iş akışının kaldığı yerden devam etmesi ve hata toleransıdır; Mem0 ise oturumlar arası kalıcı bilgidir."
+    ],
+    sourcesCited: [
+      { name: "Anthropic — Prompt Caching Architectural Guide", url: "https://platform.claude.com/docs/en/build-with-claude/prompt-caching" },
+      { name: "Google AI Developers — Context Caching Documentation", url: "https://ai.google.dev/gemini-api/docs/caching" },
+      { name: "LangGraph — Persistence and Checkpointers Reference", url: "https://docs.langchain.com/oss/python/langgraph/persistence" },
+      { name: "Mem0 — Memory Concepts and Scoping Guide", url: "https://docs.mem0.ai/" }
+    ],
+    sections: [
+      {
+        title: "1. Prompt Caching, İş Akışı Durumu ve Ajan Belleği Ayrımı",
+        paragraphs: [
+          "Geliştiricilerin en sık düştüğü hata; prompt önbellekleme ile kullanıcı belleğini aynı şey zannetmektir. Prompt caching sadece transformatör GPU katmanında matris çarpımını atlayarak faturayı düşürür; kalıcı bellek görevi üstlenemez.",
+          "Üretim mimarisinde üç katman birbirinden ayrılmalıdır: Değişmeyen sistem talimatları ve araç tanımları 'Prompt Cache' katmanına ($1/M vs $10/M); belirli bir görevin adım adım ilerleme kaydı ve insan onay kapısı 'LangGraph Checkpointer' katmanına; kullanıcının şirket kuralları veya geçmiş tercihleri ise 'Mem0 / Zep' semantik bellek katmanına yazılmalıdır."
+        ]
+      },
+      {
+        title: "2. LangGraph Checkpoint Temel Deseni (Python SDK)",
+        paragraphs: [
+          "Aşağıdaki kod, LangGraph StateGraph üzerinde deterministik karar kaydı tutan ve iş akışını kaldığı yerden sürdüren temel deseni göstermektedir:"
+        ],
+        codeSnippet: {
+          language: "python",
+          filename: "langgraph_checkpoint_pattern.py",
+          code: `from typing import TypedDict
+from langgraph.graph import StateGraph, START, END
+from langgraph.checkpoint.memory import InMemorySaver
+
+class State(TypedDict):
+    messages: list[str]
+    decisions: list[str]
+
+def decide(state: State) -> State:
+    last = state["messages"][-1]
+    decision = f"reviewed:{last[:40]}"
+    return {**state, "decisions": [*state["decisions"], decision]}
+
+builder = StateGraph(State)
+builder.add_node("decide", decide)
+builder.add_edge(START, "decide")
+builder.add_edge("decide", END)
+
+# Üretimde InMemorySaver yerine PostgresSaver kullanılır
+graph = builder.compile(checkpointer=InMemorySaver())
+config = {"configurable": {"thread_id": "order-42"}}
+
+result = graph.invoke(
+    {"messages": ["retry payment once"], "decisions": []},
+    config=config,
+)
+
+print(result)`
+        }
+      },
+      {
+        title: "3. Prefix Sıralaması ve FinOps Maliyet Yönetimi",
+        paragraphs: [
+          "Prompt Caching indiriminden tam faydalanmak için ön ek sıralaması (prefix ordering) hayati önem taşır: tools -> system -> messages. Değişmeyen büyük dokümantasyon blokları her zaman en başa yerleştirilmelidir. Araya dinamik bir request_id veya timestamp eklemek sonraki tüm blokların cache'ini geçersiz kılar.",
+          "FinOps kontrol panelinde girdi (input), önbellekten okunan (cached input), önbelleğe yazma (cache write), akıl yürütme (reasoning) ve araç çağrısı maliyetleri ayrı ayrı izlenmelidir."
+        ]
+      }
+    ],
+    faqs: [
+      {
+        question: "%90 prompt cache indirimi toplam API faturasını %90 düşürür mü?",
+        answer: "Hayır. Bu indirim yalnızca önbelleğe isabet eden (cache-hit) girdi token'larına uygulanır. Çıktı, reasoning token'ları ve cache-miss durumundaki ilk yazma ücretleri genel maliyeti belirler."
+      },
+      {
+        question: "Mem0 veya Zep kullanırken LangGraph checkpoint'e ihtiyaç var mıdır?",
+        answer: "Evet. Mem0 uzun dönemli anlamsal bilgi geri çağırma (retrieval) aracıdır; LangGraph checkpoint ise o anki işlem adımlarının hata toleransı, geri sarma (time-travel) ve kurtarma mekanizmasıdır. Birbirlerinin tamamlayıcısıdırlar."
+      }
+    ]
+  },
+
   // ==========================================
   // ADIM 1: AGENTIC CODING & TERMINAL AJANLARI
   // ==========================================
@@ -1037,11 +1584,10 @@ Timestamp 14:02:03: Node-A network restored, writes balance USD 310.00 with old 
 """
 
 response = client.models.generate_content(
-    model="gemini-3.7-flash",
+    model="gemini-3.8-flash",
     contents=f"Aşağıdaki loglardaki yarış durumunu analiz et ve fencing token eksikliğini kanıtla:\\n{distributed_trace}",
     config=types.GenerateContentConfig(
-        thinking_config=types.ThinkingConfig(thinking_budget=4096),
-        temperature=0.7
+        thinking_config=types.ThinkingConfig(thinking_level="medium")
     )
 )
 
@@ -1052,8 +1598,8 @@ print(response.text)`
       {
         title: "3. Akıl Yürütme Bütçesi ve Gecikme Optimizasyonu Stratejisi",
         paragraphs: [
-          "Thinking budget parametresi bir üst sınır (upper bound) belirler; problem daha az token ile çözülebilirse model gereksiz yere bütçeyi tüketmez. Ancak üretim hattınızda SLA (Service Level Agreement) gereksinimleri varsa doğru bütçe dağılımı kritik önem taşır:",
-          "Özetleme, sentiment analizi ve basit REST veri dönüştürme işlerinde bütçeyi 0 olarak ayarlamak ilk token süresini (TTFT) milisaniye seviyesine çeker. Yüksek hassasiyetli güvenlik denetimleri, finansal mutabakat analizleri ve mimari kod doğrulamalarında ise 2048 - 8192 token aralığı halüsinasyon riskini neredeyse sıfırlar."
+          "Gemini 3.8 Flash ile birlikte eski sayısal thinking_budget parametresi yerini low, medium ve high kategorik thinking_level seçeneklerine bırakmıştır:",
+          "Özetleme, sentiment analizi ve basit REST veri dönüştürme işlerinde thinking_level='low' ilk token süresini (TTFT) milisaniye seviyesine çeker. Yüksek hassasiyetli güvenlik denetimleri, finansal mutabakat ve mimari yarış durumu analizlerinde ise varsayılan 'medium' ve derin analizlerde 'high' halüsinasyon riskini neredeyse sıfırlar."
         ]
       }
     ],

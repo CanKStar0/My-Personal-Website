@@ -1,6 +1,11 @@
 // Auto-generated bilingual blog slug mapping for zero-bundle-overhead i18n
 export const blogSlugPairs: [string, string][] = [
   ["uretken-motor-optimizasyonu-geo-rehberi", "generative-engine-optimization-geo-guide"],
+  ["gpt-6-astra-ve-responses-api-rehberi", "gpt-6-astra-and-responses-api-guide"],
+  ["gemini-3-8-flash-ve-project-astra-live-api", "gemini-3-8-flash-and-project-astra-live-api"],
+  ["claude-fable-5-1-ve-opus-5-kurumsal-ajan-rehberi", "claude-fable-5-1-and-opus-5-enterprise-agent-guide"],
+  ["llama-4-moe-ve-deepseek-r1-yerel-gpu-dagitim", "llama-4-moe-and-deepseek-r1-local-gpu-deployment"],
+  ["2026-frontier-agent-stack-mem0-langgraph-caching", "2026-frontier-agent-stack-mem0-langgraph-caching"],
   ["claude-code-cli-rehberi", "claude-code-cli-guide"],
   ["gemini-flash-3-7-ozellikleri-ve-projeler", "gemini-3-7-flash-features-and-architecture"],
   ["model-context-protocol-mcp-nedir", "model-context-protocol-mcp-guide"],
