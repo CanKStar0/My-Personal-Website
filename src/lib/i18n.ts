@@ -1,4 +1,5 @@
 import type { Locale } from "@/lib/translations";
+import { blogSlugPairs } from "@/lib/blog-slug-map";
 
 const routePairs = [
   ["/", "/en"],
@@ -29,6 +30,12 @@ export const localizedRoutePairs = routePairs.map(([tr, en]) => ({ tr, en }));
 
 const trToEn = new Map<string, string>(routePairs);
 const enToTr = new Map<string, string>(routePairs.map(([tr, en]) => [en, tr]));
+
+// Bilateral mapping for all 104 blog post slugs
+for (const [trSlug, enSlug] of blogSlugPairs) {
+  trToEn.set(`/blog/${trSlug}`, `/en/blog/${enSlug}`);
+  enToTr.set(`/en/blog/${enSlug}`, `/blog/${trSlug}`);
+}
 
 export function localeFromPathname(pathname: string): Locale {
   return pathname === "/en" || pathname.startsWith("/en/") ? "en" : "tr";
