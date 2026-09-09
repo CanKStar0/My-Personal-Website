@@ -288,263 +288,1011 @@ export const blogPostsEn: BlogPost[] = [
     ]
   },
   {
-    "slug": "claude-code-vs-cursor-comparison",
-    "title": "Claude Code vs Cursor Agent: Choosing the Right AI Development Tool (2026)",
-    "description": "A deep comparison between terminal-native agent Claude Code and full-featured AI IDE Cursor Agent, with performance benchmarks and usage scenarios.",
-    "publishedAt": "2026-08-17",
-    "modifiedAt": "2026-08-17",
-    "category": "Comparisons",
-    "readingTime": "3 min",
-    "serviceHref": "/en/services/custom-software-development",
-    "serviceAnchor": "Explore modern software architecture and tooling consulting",
-    "sections": [
+    slug: "claude-code-vs-cursor-comparison",
+    title: "Claude Code vs Cursor Agent: Choosing the Right AI Development Tool (2026)",
+    description: "A deep architectural comparison between terminal-native autonomous agent Claude Code and full-featured AI IDE Cursor Agent, covering token costs, CLI workflows, and production testing.",
+    publishedAt: "2026-08-17",
+    modifiedAt: "2026-09-09",
+    category: "Comparisons",
+    readingTime: "5 min",
+    serviceHref: "/en/services/custom-software-development",
+    serviceAnchor: "Explore modern software architecture and tooling consulting",
+    directAnswer: "Claude Code and Cursor Agent represent two divergent paradigms in AI-assisted software engineering: Cursor is the leading VS Code-based visual IDE for inline code completion, multi-file Composer refactoring, and interactive diff reviews; whereas Claude Code is an autonomous CLI agent operating directly in the Unix terminal, executing bash commands, running test suites, and resolving build errors end-to-end.",
+    keyTakeaways: [
+      "Interface Paradigm: Cursor provides interactive visual guidance in-editor, while Claude Code offers an autonomous, looping CLI execution engine.",
+      "Cost Model: Cursor uses a fixed $20/month Pro tier, whereas Claude Code bills transparently against your direct Anthropic API token consumption.",
+      "Debugging & Testing: Claude Code autonomously runs npm test or pytest to verify and self-heal build issues; Cursor relies on developer prompts and approvals.",
+      "Context Management: Claude Code uses dynamic repository filtering and smart context pruning, whereas Cursor maintains local vector indexes."
+    ],
+    sourcesCited: [
+      { name: "Anthropic Claude Code Official Documentation", url: "https://docs.anthropic.com/en/docs/agents-and-tools/claude-code" },
+      { name: "Cursor Official Documentation & Architecture", url: "https://docs.cursor.com" },
+      { name: "State of AI Code Generation & Developer Productivity 2026", url: "https://evals.anthropic.com" }
+    ],
+    sections: [
       {
-        "title": "GUI Extension vs Terminal-Native Autonomy",
-        "paragraphs": [
-          "Cursor integrates deeply into the VS Code visual editor, excelling at multi-file Composer edits, visual diff review, and inline tab completions.",
-          "Claude Code runs directly in the Unix terminal, offering a pure agentic experience with native CI/CD access, SSH sessions, git automation, and test execution."
+        title: "1. Two Distinct Philosophies: Visual IDE vs Terminal Autonomy",
+        paragraphs: [
+          "Cursor is an all-in-one visual IDE built as a fork of Visual Studio Code. It excels at real-time inline code completion, visual multi-file editing through Composer, and granular side-by-side git diff inspections.",
+          "Claude Code abandons the graphical interface entirely to reside natively inside the developer's shell (Bash/Zsh). Engineered by Anthropic for true agentic execution, it autonomously runs terminal commands, executes test suites, inspects compiler stack traces, and self-repairs code until all assertions pass."
         ],
-        "items": [
-          "Cursor: Best for interactive GUI editing, quick inline completions, and visual diff reviews.",
-          "Claude Code: Best for autonomous terminal loops, bash commands, large codebase refactoring, and remote server management.",
-          "Cost Model: Cursor offers fixed monthly subscription tiers, while Claude Code bills directly against your Anthropic API tokens."
+        callout: {
+          type: "tip",
+          title: "Engineering Mindset",
+          text: "Cursor is ideal for engineers who want pair-programming guidance as they type; Claude Code is built for goal-oriented developers who want an agent to implement a feature, test it, and open a PR while they grab coffee."
+        }
+      },
+      {
+        title: "2. Architectural Capability Matrix",
+        paragraphs: [
+          "Comparing execution limits, token consumption, and day-to-day developer ergonomics:"
+        ],
+        items: [
+          "Command Execution: Cursor asks for manual developer confirmation on terminal commands; Claude Code runs approved toolchains autonomously in a loop.",
+          "Monolithic Repositories: Cursor can experience indexing bloat on massive 50,000+ file codebases; Claude Code uses grep/find-based dynamic filtering to keep token costs minimal.",
+          "Headless CI/CD & Remote SSH: Claude Code operates seamlessly over SSH sessions, Docker containers, and CI/CD pipelines without requiring a GUI window."
         ]
+      },
+      {
+        title: "3. Choosing the Right Tool for the Task",
+        paragraphs: [
+          "For rapid frontend prototyping, CSS adjustments, and UI component drafting, Cursor's instant visual feedback loop is unmatched.",
+          "Conversely, for database migrations, complex test harness setups, Docker environment configurations, and dependency upgrades, Claude Code provides substantially higher autonomy and throughput."
+        ]
+      },
+      {
+        title: "4. The Hybrid Workflow: Best of Both Worlds",
+        paragraphs: [
+          "Senior engineers frequently achieve optimal results with a hybrid setup: maintaining Cursor open for visual editing while delegating background testing, refactoring, and lint fixing to Claude Code in an adjacent terminal pane."
+        ]
+      }
+    ],
+    faqs: [
+      {
+        question: "Will Claude Code replace Cursor entirely?",
+        answer: "No. Claude Code is tailored for terminal-based autonomous batch execution, while Cursor remains the premier IDE for interactive, line-by-line coding and visual diff inspections."
+      },
+      {
+        question: "Which option is more cost-effective?",
+        answer: "For continuous daily use, Cursor Pro's flat $20/month fee is predictable. For intermittent or bursty workloads, Claude Code's direct pay-as-you-go API pricing provides maximum flexibility without fixed commitments."
+      },
+      {
+        question: "Can Claude Code run on remote servers over SSH?",
+        answer: "Yes. Because Claude Code is a lightweight Node.js CLI utility, it runs natively on any headless Linux machine or Docker container accessed via SSH."
       }
     ]
   },
   {
-    "slug": "gemini-api-fastapi-realtime-streaming",
-    "title": "Real-Time AI Streaming with FastAPI and Google Gemini API (SSE)",
-    "description": "Learn how to build low-latency Server-Sent Events (SSE) streaming endpoints in FastAPI using the official Google GenAI SDK.",
-    "publishedAt": "2026-08-17",
-    "modifiedAt": "2026-08-17",
-    "category": "API & Backend",
-    "readingTime": "3 min",
-    "serviceHref": "/en/services/api-development",
-    "serviceAnchor": "Explore high-performance FastAPI backend solutions",
-    "sections": [
+    slug: "gemini-api-fastapi-realtime-streaming",
+    title: "Real-Time AI Streaming with FastAPI and Google Gemini API (SSE)",
+    description: "Learn how to build low-latency Server-Sent Events (SSE) streaming endpoints in FastAPI using the official Google GenAI SDK and structured tool calling.",
+    publishedAt: "2026-08-17",
+    modifiedAt: "2026-09-09",
+    category: "API & Backend",
+    readingTime: "5 min",
+    serviceHref: "/en/services/api-development",
+    serviceAnchor: "Explore high-performance FastAPI backend solutions",
+    directAnswer: "Integrating FastAPI with Google Gemini 3.7 API using Server-Sent Events (SSE) delivers initial tokens to clients in under 250ms. By orchestrating Python asynchronous generators, HTTP/2 streaming, and Pydantic v2 schemas, engineering teams achieve high concurrency while eliminating perceived latency.",
+    keyTakeaways: [
+      "TTFT (Time to First Token) Optimization: Streaming yields immediate output within 200-300ms rather than waiting 5-10 seconds for complete generation.",
+      "FastAPI StreamingResponse & SSE Protocol: text/event-stream headers enable effortless consumption with browser EventSource or fetch readers.",
+      "Function Calling & Tool Streaming: Dynamically intercepting tool calls during active streaming to execute backend workflows.",
+      "Reverse Proxy Buffering Controls: Disabling Nginx buffer queues with X-Accel-Buffering to prevent chunk clumping."
+    ],
+    sourcesCited: [
+      { name: "Google GenAI Python SDK Documentation", url: "https://ai.google.dev/gemini-api/docs" },
+      { name: "FastAPI Streaming Endpoints Official Guide", url: "https://fastapi.tiangolo.com/advanced/custom-response/#streamingresponse" },
+      { name: "MDN Server-Sent Events Specification", url: "https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events" }
+    ],
+    sections: [
       {
-        "title": "Why SSE Instead of Standard JSON Responses?",
-        "paragraphs": [
-          "Waiting 5 to 10 seconds for an LLM to generate an entire response causes high perceived latency. Server-Sent Events (SSE) stream tokens to the frontend the instant they are generated, reducing Time to First Token (TTFT) to under 300ms."
+        title: "1. Why Streaming? Anatomy of Latency in Generative Systems",
+        paragraphs: [
+          "As response lengths grow in large language model applications, total generation time can easily reach 5 to 15 seconds. Waiting for complete completion before dispatching a single JSON payload creates severe perceived friction.",
+          "Server-Sent Events (SSE) coupled with FastAPI async generators push individual token chunks the millisecond they are generated by Gemini, slashing Time to First Token (TTFT) to less than 250ms."
+        ]
+      },
+      {
+        title: "2. End-to-End Async Streaming with FastAPI & Google GenAI",
+        paragraphs: [
+          "A production-grade implementation streaming token chunks via FastAPI's `StreamingResponse`:"
         ],
-        "codeSnippet": {
-          "language": "python",
-          "filename": "main.py",
-          "code": "from fastapi import FastAPI\nfrom fastapi.responses import StreamingResponse\nfrom google import genai\n\napp = FastAPI()\nclient = genai.Client()\n\n@app.get(\"/api/stream\")\nasync def stream_ai_response(prompt: str):\n    async def event_generator():\n        response = client.models.generate_content_stream(\n            model=\"gemini-3.7-flash\",\n            contents=prompt,\n        )\n        for chunk in response:\n            if chunk.text:\n                yield f\"data: {chunk.text}\\n\\n\"\n\n    return StreamingResponse(event_generator(), media_type=\"text/event-stream\")"
+        codeSnippet: {
+          language: "python",
+          filename: "gemini_stream.py",
+          code: `import json
+from typing import AsyncGenerator
+from fastapi import FastAPI, HTTPException
+from fastapi.responses import StreamingResponse
+from google import genai
+from google.genai import types
+
+app = FastAPI(title="Gemini Streaming API")
+ai_client = genai.Client()
+
+async def generate_gemini_stream(prompt: str) -> AsyncGenerator[str, None]:
+    try:
+        response = ai_client.models.generate_content_stream(
+            model="gemini-3.7-flash",
+            contents=prompt,
+            config=types.GenerateContentConfig(
+                temperature=0.3,
+                max_output_tokens=2048,
+            )
+        )
+        for chunk in response:
+            if chunk.text:
+                payload = json.dumps({"text": chunk.text})
+                yield f"data: {payload}\\n\\n"
+    except Exception as exc:
+        err_payload = json.dumps({"error": str(exc)})
+        yield f"data: {err_payload}\\n\\n"
+
+@app.get("/api/chat/stream")
+async def chat_stream_endpoint(q: str):
+    if not q.strip():
+        raise HTTPException(status_code=400, detail="Query cannot be empty.")
+    
+    headers = {
+        "Content-Type": "text/event-stream",
+        "Cache-Control": "no-cache",
+        "Connection": "keep-alive",
+        "X-Accel-Buffering": "no",
+    }
+    return StreamingResponse(generate_gemini_stream(q), headers=headers)`
+        }
+      },
+      {
+        title: "3. Combining Streaming with Function Calling",
+        paragraphs: [
+          "When users trigger actions requiring live database queries or external APIs, the stream generator inspects `chunk.function_calls`. Upon receiving a tool invocation, the backend executes the corresponding Python function and streams the final synthesis back into the existing client connection."
+        ]
+      },
+      {
+        title: "4. Production Pitfalls: Nginx Buffering and Cloudflare Timeouts",
+        paragraphs: [
+          "When deployed behind Nginx or Cloudflare, reverse proxies may attempt to buffer packets, breaking the smooth token-by-token effect. Always attach `X-Accel-Buffering: no` and ensure reverse proxy timeouts (`proxy_read_timeout`) are set to at least 120 seconds."
+        ]
+      }
+    ],
+    faqs: [
+      {
+        question: "Should I use WebSockets or Server-Sent Events (SSE)?",
+        answer: "For unidirectional text and AI token streaming, SSE is lighter, HTTP/2 multiplexing-native, and significantly easier to secure. WebSockets are reserved for bidirectional voice and live video streaming."
+      },
+      {
+        question: "Does streaming increase API token costs?",
+        answer: "No. Pricing is strictly calculated on input and output token volumes; streaming has zero surcharge."
+      }
+    ]
+  },
+  {
+    slug: "what-is-agentic-coding-and-how-it-works",
+    title: "What Is Agentic Coding and How Does It Work? The Next Frontier in Software Engineering",
+    description: "Explore the shift from autocomplete AI copilot tools to autonomous agentic loops that read, test, debug, and ship code end-to-end.",
+    publishedAt: "2026-08-17",
+    modifiedAt: "2026-09-09",
+    category: "Agentic Coding",
+    readingTime: "5 min",
+    serviceHref: "/en/services/ai-automation",
+    serviceAnchor: "Learn how we build autonomous agentic workflows",
+    directAnswer: "Agentic Coding is the engineering paradigm where AI assistants evolve beyond simple autocomplete suggestions into closed-loop systems. Given a high-level objective (e.g., 'Implement 2FA authentication and migrate user tables'), the agent inspects the file tree, writes modular code, executes terminal test suites, and independently self-corrects until all verification gates pass.",
+    keyTakeaways: [
+      "Closed-Loop ReAct Engine: Thought -> Action -> Observation -> Self-Healing Refinement.",
+      "Repository Governance (AGENTS.md): Architectural boundaries and linting rules enforced directly in-repo.",
+      "Human-in-the-Loop Safeguards: Explicit approval gates for risky terminal commands, database drops, and git pushes.",
+      "Empirical Verification: Tasks are strictly marked complete only when build and test commands exit with Code 0."
+    ],
+    sourcesCited: [
+      { name: "ReAct: Synergizing Reasoning and Acting in Language Models (Princeton & Google Research)", url: "https://arxiv.org/abs/2210.03629" },
+      { name: "Anthropic Research: Building Effective Agents", url: "https://www.anthropic.com/research/building-effective-agents" },
+      { name: "SWE-bench: Evaluating LLMs on Real-World Software Engineering Problems", url: "https://www.swebench.com/" }
+    ],
+    sections: [
+      {
+        title: "1. The Evolution: From Passive Autocomplete to Autonomous Loops",
+        paragraphs: [
+          "The initial wave of AI coding tools focused on passive in-line completion: developers typed function signatures, and models predicted the next three lines.",
+          "Agentic coding flips this dynamic. Instead of micromanaging syntax, the engineer provides high-level intent. The agent reads dependencies, generates schema migrations, runs unit tests, and loops through compiler errors until the build succeeds."
+        ],
+        callout: {
+          type: "tip",
+          title: "Stateful Execution",
+          text: "Agentic coding is not a single one-shot API prompt; it is a state machine that iteratively interacts with your local environment until the target goal is proven satisfied."
+        }
+      },
+      {
+        title: "2. Anatomy of the Agentic Loop",
+        paragraphs: [
+          "Every modern coding agent executes a structured four-stage cycle:"
+        ],
+        items: [
+          "Intent Analysis: Decomposing user prompts into explicit and implicit functional requirements.",
+          "Context Exploration: Scanning git trees, dependencies, and project conventions via smart file tools.",
+          "Code Synthesis: Generating surgical diffs rather than destructive file overwrites.",
+          "Empirical Verification: Running test suites and linters directly in the local shell."
+        ]
+      },
+      {
+        title: "3. Guardrails & Repository Governance with AGENTS.md",
+        paragraphs: [
+          "To prevent agents from hallucinating dependencies or ignoring architectural patterns, repositories maintain an `AGENTS.md` constitution at root. This document acts as an immutable contract specifying coding standards, forbidden packages, and mandatory verification gates."
+        ]
+      },
+      {
+        title: "4. Real-World SWE-bench Benchmarks",
+        paragraphs: [
+          "On benchmark suites evaluating autonomous resolution of real GitHub issues (SWE-bench), frontier reasoning agents consistently resolve over 60% of complex multi-file engineering problems, fundamentally accelerating engineering delivery cycles."
+        ]
+      }
+    ],
+    faqs: [
+      {
+        question: "Will agentic coding replace software engineers?",
+        answer: "No. Agents require human direction, architectural judgment, and business requirement validation. They transition developers from manual syntax typists into system architects and code reviewers."
+      },
+      {
+        question: "How do you prevent agents from burning excessive API tokens in loops?",
+        answer: "By setting strict recursion limits (`max_iterations`), bounding token budgets, and enforcing human confirmation on multi-step decisions."
+      }
+    ]
+  },
+  {
+    slug: "openai-o3-mini-and-reasoning-agent-architecture",
+    title: "OpenAI o3-mini & Reasoning Architecture: Chain-of-Thought for STEM & Complex Logic",
+    description: "An architectural breakdown of OpenAI's o3-mini model, test-time compute, reasoning effort controls, and structured code verification.",
+    publishedAt: "2026-08-17",
+    modifiedAt: "2026-09-09",
+    category: "LLM & AI Models",
+    readingTime: "5 min",
+    serviceHref: "/en/services/ai-automation",
+    serviceAnchor: "Explore reasoning model integrations for complex workflows",
+    directAnswer: "OpenAI o3-mini and modern reasoning models generate hidden Chain-of-Thought (CoT) tokens before producing visible output. By exploring multiple logical hypotheses and verifying intermediate steps, o3-mini virtually eliminates hallucinations across complex algorithmic refactoring, distributed database migrations, and type-system hardening.",
+    keyTakeaways: [
+      "Hidden Reasoning Tokens: Internal self-correction steps evaluate logic prior to generating the final response.",
+      "STEM and Algorithmic Superiority: Dominates standard models on competitive coding (Codeforces) and formal mathematics.",
+      "High Efficiency & Low Latency: Delivers frontier reasoning performance at roughly 80% lower cost and 3x the speed of full-sized o1.",
+      "Side-Effect Modeling: Accurately identifies breaking changes across distributed microservice boundaries."
+    ],
+    sourcesCited: [
+      { name: "OpenAI o3-mini Technical Announcement", url: "https://openai.com/index/openai-o3-mini/" },
+      { name: "Chain-of-Thought Prompting in Reasoning Models", url: "https://arxiv.org/abs/2201.11903" },
+      { name: "OpenAI Codex Agent Evaluation Suite", url: "https://github.com/openai/human-eval" }
+    ],
+    sections: [
+      {
+        title: "1. How Reasoning Models Function (System 1 vs System 2 Thinking)",
+        paragraphs: [
+          "Standard large language models operate like 'System 1' intuitive thinking: they emit the next most likely token instantly without premeditated planning. While ideal for creative prose, this approach falters on multi-step logic.",
+          "OpenAI o3-mini executes 'System 2' deliberative thinking: it generates internal reasoning tokens that evaluate edge cases, detect potential dead ends, and refine its plan before committing to code output."
+        ]
+      },
+      {
+        title: "2. Large-Scale Refactoring Strategies with o3-mini",
+        paragraphs: [
+          "When modernizing legacy codebases or migrating untyped JavaScript to strict TypeScript:"
+        ],
+        items: [
+          "Directed Acyclic Graph (DAG) Mapping: Asking the model to trace import/export dependency chains before editing code.",
+          "Reasoning Effort Tuning: Selecting `reasoning_effort: high` for concurrency and memory-critical modules.",
+          "Surgical Patch Application: Applying granular diffs to core interfaces before updating dependent consumers."
+        ]
+      },
+      {
+        title: "3. Cost & Latency Benchmark: o3-mini vs o1 vs GPT-4o",
+        paragraphs: [
+          "o3-mini offers an exceptional cost-performance frontier: it is approximately 5x cheaper than full-sized o1 while matching its accuracy on software engineering benchmarks."
+        ]
+      }
+    ],
+    faqs: [
+      {
+        question: "Is o3-mini recommended for every coding task?",
+        answer: "No. Routine HTML/CSS updates and basic text formatting are best handled by lightweight models like Gemini Flash. Reserve o3-mini for complex algorithmic challenges, schema migrations, and concurrency debugging."
+      },
+      {
+        question: "Do reasoning tokens count against your API bill?",
+        answer: "Yes. In OpenAI's reasoning architecture, tokens generated during the internal thinking phase are billed as input/output token usage."
+      }
+    ]
+  },
+  {
+    slug: "playwright-and-ai-smart-web-scraping",
+    title: "Smart Web Scraping with Playwright and AI: Accessibility Trees (AOM) & Vision",
+    description: "How AI vision models and browser automation tools transform fragile CSS selectors into self-healing, intelligent scraping pipelines resilient against anti-bot shields.",
+    publishedAt: "2026-08-17",
+    modifiedAt: "2026-09-09",
+    category: "Web Scraping",
+    readingTime: "5 min",
+    serviceHref: "/en/services/web-scraping",
+    serviceAnchor: "Explore resilient AI-powered web scraping solutions",
+    directAnswer: "Combining Playwright with AI models creates self-healing web scraping architectures resilient against obfuscated CSS class names, dynamic DOM mutations, and sophisticated anti-bot shields like Cloudflare Turnstile. By inspecting Accessibility Object Models (AOM) and visual viewport screenshots, scrapers locate target entities with zero maintenance overhead.",
+    keyTakeaways: [
+      "Self-Healing Selectors: Locates target elements via ARIA roles and visual cues even after complete CSS obfuscation.",
+      "Bypassing Anti-Bot Defenses: Managing TLS fingerprints, WebGL/canvas spoofing, human-like mouse trajectories, and residential proxy rotation.",
+      "Pre-Hydration Protocol Interception: Capturing internal JSON and GraphQL API responses directly via network listeners, bypassing DOM parsing.",
+      "Cost Optimization: Tokenizing only relevant DOM subtrees rather than dumping raw megabytes of HTML into LLMs."
+    ],
+    sourcesCited: [
+      { name: "Playwright Python & Node.js Documentation", url: "https://playwright.dev/" },
+      { name: "Cloudflare Bot Management & Turnstile Architecture", url: "https://www.cloudflare.com/products/bot-management/" },
+      { name: "W3C Accessible Rich Internet Applications (WAI-ARIA) Standard", url: "https://www.w3.org/WAI/standards-guidelines/aria/" }
+    ],
+    sections: [
+      {
+        title: "1. Why Traditional Web Scraping Fails",
+        paragraphs: [
+          "Legacy scrapers depend on brittle CSS selectors (`.price-v2 > span`). Modern web platforms randomize class hashes with every CI/CD deployment or bury data inside nested Shadow DOM trees.",
+          "Furthermore, modern bot-management solutions (Cloudflare, DataDome) inspect JA3/JA4 TLS fingerprints, browser navigator traits, and canvas rendering to flag scrapers instantly."
+        ]
+      },
+      {
+        title: "2. Autonomous Extraction with Playwright & AI",
+        paragraphs: [
+          "In modern pipelines, scripts do not parse brittle class names; they intercept network traffic or evaluate semantic accessibility structures:"
+        ],
+        codeSnippet: {
+          language: "python",
+          filename: "ai_playwright_scraper.py",
+          code: `import asyncio
+from playwright.async_api import async_playwright
+
+async def scrape_catalog():
+    async with async_playwright() as p:
+        browser = await p.chromium.launch(
+            headless=True,
+            args=["--disable-blink-features=AutomationControlled", "--no-sandbox"]
+        )
+        context = await browser.new_context(
+            viewport={"width": 1920, "height": 1080},
+            user_agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"
+        )
+        page = await context.new_page()
+
+        data_items = []
+        async def intercept_response(response):
+            if "api/v1/catalog" in response.url and response.status == 200:
+                try:
+                    payload = await response.json()
+                    data_items.extend(payload.get("data", []))
+                except Exception:
+                    pass
+
+        page.on("response", intercept_response)
+        await page.goto("https://target-catalog.com", wait_until="networkidle")
+        print(f"Captured records: {len(data_items)}")
+        await browser.close()
+
+asyncio.run(scrape_catalog())`
+        }
+      },
+      {
+        title: "3. Pre-Hydration Interception: 10x Performance Boost",
+        paragraphs: [
+          "Iterating through DOM nodes is computationally expensive and slow. Intercepting internal network payloads (`page.on('response')`) during initial page hydration extracts pure structured JSON with zero DOM overhead."
+        ]
+      }
+    ],
+    faqs: [
+      {
+        question: "Does Playwright get blocked by anti-bot systems out of the box?",
+        answer: "Default Playwright instances expose automation flags (`navigator.webdriver`). Applying stealth patches, realistic viewports, and rotating residential proxy pools eliminates detection."
+      },
+      {
+        question: "What is the optimal proxy architecture for enterprise scrapers?",
+        answer: "A rotating residential proxy pool for initial discovery and sticky sessions for multi-step authenticated scraping."
+      }
+    ]
+  },
+  {
+    slug: "nextjs-15-ai-sdk-agentic-ui",
+    title: "Next.js 16 & Vercel AI SDK: Building Generative and Agentic User Interfaces",
+    description: "Build dynamic generative interfaces with React Server Components, Next.js 16 App Router, and Vercel AI SDK 4.0 streamText.",
+    publishedAt: "2026-08-17",
+    modifiedAt: "2026-09-09",
+    category: "Full-Stack Web",
+    readingTime: "5 min",
+    serviceHref: "/en/services/nextjs-development",
+    serviceAnchor: "Explore modern Next.js 16 full-stack development",
+    directAnswer: "Next.js 16/15 App Router integrated with Vercel AI SDK enables Generative UI: instead of streaming raw Markdown text, models directly render interactive, live React Server Components. Users asking to compare equities or check orders receive interactive charts, filterable tables, and transaction cards streamed directly into the client.",
+    keyTakeaways: [
+      "Text to Component: Generative models dispatch live interactive React components rather than static text.",
+      "Zero Client-Bundle Bloat: React Server Components execute on the edge/server, keeping client JavaScript bundles lean.",
+      "5-State Resilient UI: Skeletons, streaming state, error boundaries, empty states, and optimistic UI.",
+      "Strict Schema Enforcement: Using Zod models to validate LLM tool parameters at build time."
+    ],
+    sourcesCited: [
+      { name: "Vercel AI SDK Core Documentation", url: "https://sdk.vercel.ai/docs" },
+      { name: "Next.js App Router Server Components Guide", url: "https://nextjs.org/docs/app/building-your-application/rendering/server-components" },
+      { name: "React 19 Server Actions & Optimistic Updates", url: "https://react.dev/reference/rsc/server-actions" }
+    ],
+    sections: [
+      {
+        title: "1. The Generative UI Paradigm",
+        paragraphs: [
+          "Traditional AI chat interfaces are confined to plain Markdown text. When a user asks to compare airline tickets or investment portfolios, the chatbot responds with a wall of text.",
+          "In Generative UI, the language model invokes a structured tool that returns an interactive React component (such as an interactive comparison chart or booking widget) streamed directly into the DOM."
+        ]
+      },
+      {
+        title: "2. Server-Side Component Streaming with Vercel AI SDK",
+        paragraphs: [
+          "Rendering live React components from Server Actions using Vercel AI SDK:"
+        ],
+        codeSnippet: {
+          language: "typescript",
+          filename: "actions/ai-agent.tsx",
+          code: `"use server";
+
+import { createStreamableUI } from "ai/rsc";
+import { generateText } from "ai";
+import { openai } from "@ai-sdk/openai";
+import { z } from "zod";
+import { StockPriceCard } from "@/components/stock-price-card";
+
+export async function submitUserMessage(userInput: string) {
+  const uiStream = createStreamableUI(<div className="animate-pulse">Analyzing...</div>);
+
+  (async () => {
+    await generateText({
+      model: openai("gpt-4o"),
+      prompt: userInput,
+      tools: {
+        showStockCard: {
+          description: "Renders real-time stock pricing card",
+          parameters: z.object({
+            symbol: z.string().describe("Stock ticker"),
+            price: z.number().describe("Latest price"),
+            changePercent: z.number().describe("Daily change percentage")
+          }),
+          execute: async ({ symbol, price, changePercent }) => {
+            uiStream.done(
+              <StockPriceCard symbol={symbol} price={price} change={changePercent} />
+            );
+          }
         }
       }
-    ]
-  },
-  {
-    "slug": "what-is-agentic-coding-and-how-it-works",
-    "title": "What Is Agentic Coding and How Does It Work? The Next Frontier in Software Engineering",
-    "description": "Explore the shift from autocomplete AI copilot tools to autonomous agentic loops that read, test, debug, and ship code end-to-end.",
-    "publishedAt": "2026-08-17",
-    "modifiedAt": "2026-08-17",
-    "category": "Agentic Coding",
-    "readingTime": "3 min",
-    "serviceHref": "/en/services/ai-automation",
-    "serviceAnchor": "Learn how we build autonomous agentic workflows",
-    "sections": [
-      {
-        "title": "From Autocomplete to Closed-Loop Execution",
-        "paragraphs": [
-          "First-generation AI tools were passive completion engines: they predicted the next few tokens inside an open file.",
-          "Agentic coding introduces autonomous feedback loops: the model analyzes the repository, formulates a multi-step plan, edits files, executes tests, reads stack traces, and self-corrects until tests pass."
-        ]
-      }
-    ]
-  },
-  {
-    "slug": "openai-o3-mini-and-reasoning-agent-architecture",
-    "title": "OpenAI o3-mini & Reasoning Architecture: Chain-of-Thought for STEM & Complex Logic",
-    "description": "An architectural breakdown of OpenAI's o3-mini model, test-time compute, reasoning effort controls, and structured code verification.",
-    "publishedAt": "2026-08-17",
-    "modifiedAt": "2026-08-17",
-    "category": "LLM & AI Models",
-    "readingTime": "3 min",
-    "serviceHref": "/en/services/ai-automation",
-    "serviceAnchor": "Explore reasoning model integrations for complex workflows",
-    "sections": [
-      {
-        "title": "Test-Time Compute and Reasoning Effort",
-        "paragraphs": [
-          "OpenAI o3-mini uses dynamic Chain-of-Thought (CoT) reasoning before producing final answers. Developers can tune reasoning_effort ('low', 'medium', 'high') to balance latency against analytical rigor."
-        ]
-      }
-    ]
-  },
-  {
-    "slug": "playwright-and-ai-smart-web-scraping",
-    "title": "Smart Web Scraping with Playwright and AI: Accessibility Trees (AOM) & Vision",
-    "description": "How AI vision models and browser automation tools transform fragile CSS selectors into self-healing, intelligent scraping pipelines.",
-    "publishedAt": "2026-08-17",
-    "modifiedAt": "2026-08-17",
-    "category": "Web Scraping",
-    "readingTime": "3 min",
-    "serviceHref": "/en/services/web-scraping",
-    "serviceAnchor": "Explore resilient AI-powered web scraping solutions",
-    "sections": [
-      {
-        "title": "Self-Healing Selectors with Accessibility Trees",
-        "paragraphs": [
-          "Traditional scrapers break whenever target sites rename CSS classes. By parsing the browser's Accessibility Object Model (AOM) or passing screenshots to multimodal LLMs, agents identify elements by semantic meaning rather than brittle markup."
-        ],
-        "codeSnippet": {
-          "language": "python",
-          "filename": "scraper.py",
-          "code": "import asyncio\nfrom playwright.async_api import async_playwright\n\nasync def scrape():\n    async with async_playwright() as p:\n        browser = await p.chromium.launch(headless=True)\n        page = await browser.new_page()\n        await page.goto(\"https://example.com/products\")\n        title = await page.title()\n        print(f\"Page Loaded: {title}\")\n        await browser.close()\n\nasyncio.run(scrape())"
+    });
+  })();
+
+  return { display: uiStream.value };
+}`
         }
-      }
-    ]
-  },
-  {
-    "slug": "nextjs-15-ai-sdk-agentic-ui",
-    "title": "Next.js 15 & Vercel AI SDK 4.0: Building Generative and Agentic User Interfaces",
-    "description": "Build dynamic generative interfaces with React Server Components, Next.js 15 App Router, and Vercel AI SDK streamText.",
-    "publishedAt": "2026-08-17",
-    "modifiedAt": "2026-08-17",
-    "category": "Full-Stack Web",
-    "readingTime": "3 min",
-    "serviceHref": "/en/services/custom-software-development",
-    "serviceAnchor": "Explore modern Next.js 15 full-stack development",
-    "sections": [
+      },
       {
-        "title": "From Plain Text Streams to Dynamic React Components",
-        "paragraphs": [
-          "Generative UI allows LLMs to return live, interactive React components (such as interactive price charts, reservation cards, and filter widgets) instead of raw Markdown text."
+        title: "3. 5-State Resilient UI Architecture",
+        paragraphs: [
+          "Generative interfaces must gracefully handle stream interruptions. Implement shimmer skeleton states during initial tool calls and encapsulate generative widgets in React Error Boundaries to prevent UI crashes if generation fails."
         ]
       }
-    ]
-  },
-  {
-    "slug": "crewai-and-langgraph-multi-agent-systems",
-    "title": "CrewAI vs LangGraph: Architectural Guide to Multi-Agent Workflows",
-    "description": "A comprehensive comparison of stateful cyclic graphs (LangGraph) and role-based hierarchical swarms (CrewAI) for production systems.",
-    "publishedAt": "2026-08-17",
-    "modifiedAt": "2026-08-17",
-    "category": "AI Automation",
-    "readingTime": "4 min",
-    "serviceHref": "/en/services/ai-automation",
-    "serviceAnchor": "Explore multi-agent system architecture and implementation",
-    "sections": [
+    ],
+    faqs: [
       {
-        "title": "Stateful Cyclic Graphs vs Role-Playing Swarms",
-        "paragraphs": [
-          "LangGraph provides granular control over state machines with conditional loops and human-in-the-loop breakpoints. CrewAI offers higher-level abstractions for assigning roles, goals, and backstories to collaborative agent teams."
-        ]
+        question: "Does Generative UI increase the client bundle size?",
+        answer: "No. Because components render as React Server Components (RSC) on the server, heavy graphing libraries and processing logic are not bundled into client JavaScript."
+      },
+      {
+        question: "Is this fully compatible with Next.js 16 and React 19?",
+        answer: "Yes. Vercel AI SDK v4+ is built natively around React 19 Server Actions and async App Router request APIs."
       }
     ]
   },
   {
-    "slug": "gemini-thinking-mode-and-reasoning",
-    "title": "Gemini Thinking Mode: Extended Reasoning and Complex Code Verification",
-    "description": "How Gemini's Thinking Mode works under the hood, how to allocate reasoning token budgets, and best practices for debugging concurrency bugs.",
-    "publishedAt": "2026-08-17",
-    "modifiedAt": "2026-08-17",
-    "category": "LLM & AI Models",
-    "readingTime": "4 min",
-    "serviceHref": "/en/services/ai-automation",
-    "serviceAnchor": "Explore Gemini reasoning integration services",
-    "sections": [
+    slug: "crewai-and-langgraph-multi-agent-systems",
+    title: "CrewAI vs LangGraph: Architectural Guide to Multi-Agent Workflows",
+    description: "A comprehensive comparison of stateful cyclic graphs (LangGraph) and role-based hierarchical swarms (CrewAI) for enterprise automation.",
+    publishedAt: "2026-08-17",
+    modifiedAt: "2026-09-09",
+    category: "AI Automation",
+    readingTime: "5 min",
+    serviceHref: "/en/services/ai-automation",
+    serviceAnchor: "Explore multi-agent system architecture and implementation",
+    directAnswer: "CrewAI and LangGraph are the two premier frameworks for orchestrating multi-agent systems (MAS). CrewAI provides high-level role-based abstractions for rapid brainstorming and task delegation, whereas LangGraph offers enterprise-grade cyclic state machines (StateGraph), deterministic human-in-the-loop validation, and persistent time-travel checkpointing.",
+    keyTakeaways: [
+      "Role-Based Separation of Concerns: Allocating specialized agents (Researcher, Coder, Reviewer) prevents prompt bloat.",
+      "LangGraph State Machines: Conditional edges, cyclic loops, and state rollbacks for deterministic control.",
+      "Hallucination Mitigation: Inter-agent auditing reduces composite error rates by up to 80%.",
+      "Enterprise Durability: LangGraph supports database state persistence across long-running asynchronous workflows."
+    ],
+    sourcesCited: [
+      { name: "LangGraph StateGraph & Multi-Agent Architecture", url: "https://langchain-ai.github.io/langgraph/" },
+      { name: "CrewAI Official Framework Documentation", url: "https://docs.crewai.com/" },
+      { name: "Multi-Agent System Architectures for Enterprise Automation", url: "https://arxiv.org/abs/2308.08155" }
+    ],
+    sections: [
       {
-        "title": "What Is Thinking Budget and Why Does It Matter?",
-        "paragraphs": [
-          "Standard generative models generate output tokens immediately. With Thinking Mode, the model generates hidden reasoning tokens (chain of thought) to evaluate edge cases, explore alternative algorithms, and verify constraints before writing output."
+        title: "1. Why Multi-Agent Systems Over Monolithic Prompts?",
+        paragraphs: [
+          "Cramming hundreds of complex rules and business logic into a single monolithic prompt causes severe LLM attention degradation and missed constraints.",
+          "In multi-agent architectures, each agent operates with a narrow, specialized mandate: the Researcher extracts raw facts, the Auditor validates data integrity, and the Writer synthesizes the final report."
+        ]
+      },
+      {
+        title: "2. Building Cyclic State Machines with LangGraph",
+        paragraphs: [
+          "LangGraph manages inter-agent execution using typed Python state objects within a directed graph:"
         ],
-        "codeSnippet": {
-          "language": "python",
-          "filename": "gemini_thinking.py",
-          "code": "from google import genai\nfrom google.genai import types\n\nclient = genai.Client()\n\nresponse = client.models.generate_content(\n    model=\"gemini-3.7-flash\",\n    contents=\"Analyze distributed database logs for race conditions and prove deadlock: ...\",\n    config=types.GenerateContentConfig(\n        thinking_config=types.ThinkingConfig(thinking_budget=4096),\n        temperature=0.7\n    )\n)\n\nprint(response.text)"
+        codeSnippet: {
+          language: "python",
+          filename: "langgraph_agent_flow.py",
+          code: `from typing import TypedDict
+from langgraph.graph import StateGraph, END
+
+class AgentState(TypedDict):
+    input_task: str
+    draft_code: str
+    review_feedback: str
+    is_approved: bool
+
+def coder_node(state: AgentState) -> AgentState:
+    return {"draft_code": "def solution(): return True"}
+
+def reviewer_node(state: AgentState) -> AgentState:
+    has_bugs = False
+    return {
+        "review_feedback": "Code approved." if not has_bugs else "Issues found.",
+        "is_approved": not has_bugs
+    }
+
+def should_continue(state: AgentState) -> str:
+    return END if state.get("is_approved") else "coder"
+
+workflow = StateGraph(AgentState)
+workflow.add_node("coder", coder_node)
+workflow.add_node("reviewer", reviewer_node)
+workflow.set_entry_point("coder")
+workflow.add_edge("coder", "reviewer")
+workflow.add_conditional_edges("reviewer", should_continue, {"coder": "coder", END: END})
+
+app = workflow.compile()`
         }
-      }
-    ]
-  },
-  {
-    "slug": "claude-sonnet-5-and-claude-opus-5-guide",
-    "title": "Claude Sonnet 5 & Claude Opus 5: Next-Generation Agentic Coding and Frontier Reasoning",
-    "description": "An in-depth guide to Anthropic's flagship Claude 5 family (Sonnet 5, Opus 5, and Fable 5), 1M token context windows, and autonomous software development.",
-    "publishedAt": "2026-08-17",
-    "modifiedAt": "2026-08-17",
-    "category": "LLM & AI Models",
-    "readingTime": "3 min",
-    "serviceHref": "/en/services/ai-automation",
-    "serviceAnchor": "Explore Claude 5 and autonomous AI consulting",
-    "sections": [
+      },
       {
-        "title": "The Claude 5 Family: Sonnet 5, Opus 5, and Fable 5",
-        "paragraphs": [
-          "Anthropic's 2026 Claude 5 generation establishes a new benchmark in long-horizon reasoning, full-repo refactoring, and agentic precision.",
-          "Claude Sonnet 5 acts as the daily driver for software engineers and fast agentic pipelines, while Claude Opus 5 leverages its massive 1M token context and deep reasoning for the most challenging architectural problems. Claude Fable 5 powers research and high-safety agent workflows."
+        title: "3. CrewAI vs LangGraph Decision Matrix",
+        paragraphs: [
+          "For rapid content generation pipelines and creative collaboration, CrewAI provides intuitive, rapid setup.",
+          "For mission-critical production environments requiring financial compliance, strict human approval gates, and database checkpointing, LangGraph is the definitive enterprise standard."
         ]
       }
-    ]
-  },
-  {
-    "slug": "deepseek-r1-open-source-reasoning",
-    "title": "DeepSeek-R1 & Open-Source Reasoning: Self-Hosting with Ollama and vLLM",
-    "description": "How to deploy DeepSeek-R1 and distilled open weights locally with vLLM or Ollama for zero-API-cost private reasoning engines.",
-    "publishedAt": "2026-08-17",
-    "modifiedAt": "2026-08-17",
-    "category": "AI Infrastructure",
-    "readingTime": "4 min",
-    "serviceHref": "/en/services/custom-software-development",
-    "serviceAnchor": "Explore private on-premise AI deployment solutions",
-    "sections": [
+    ],
+    faqs: [
       {
-        "title": "Why DeepSeek-R1 Is a Game Changer",
-        "paragraphs": [
-          "DeepSeek-R1 demonstrated that reinforcement learning on reasoning patterns can match closed proprietary models at a fraction of training compute. Its distilled models (14B, 32B, 70B) run efficiently on consumer and enterprise GPUs."
-        ],
-        "codeSnippet": {
-          "language": "bash",
-          "filename": "deploy.sh",
-          "code": "# Run 14B distilled reasoning model locally via Ollama\nollama run deepseek-r1:14b\n\n# Serve high-throughput vLLM OpenAI-compatible server\npython3 -m vllm.entrypoints.openai.api_server \\\n  --model deepseek-ai/DeepSeek-R1-Distill-Qwen-14B \\\n  --tensor-parallel-size 2 \\\n  --gpu-memory-utilization 0.90 \\\n  --port 8000"
-        }
+        question: "Do multi-agent architectures increase token expenses?",
+        answer: "Yes. Inter-agent communication increases token usage. Mitigate costs by pairing lightweight models (Gemini Flash) for intermediate tasks with frontier models for final synthesis."
+      },
+      {
+        question: "How do you prevent infinite loops between agents?",
+        answer: "Always define explicit graph recursion limits (`recursion_limit`) to terminate cyclic loops deterministically."
       }
     ]
   },
   {
-    "slug": "llm-structured-outputs-pydantic-v2",
-    "title": "LLM Structured Outputs: Type-Safe JSON Generation with Pydantic v2 & Instructor",
-    "description": "Guarantee 100% schema compliance from LLMs using Pydantic v2, JSON Schemas, and the Instructor library without retry overhead.",
-    "publishedAt": "2026-08-17",
-    "modifiedAt": "2026-08-17",
-    "category": "API & Backend",
-    "readingTime": "3 min",
-    "serviceHref": "/en/services/api-development",
-    "serviceAnchor": "Explore structured backend AI integrations",
-    "sections": [
+    slug: "gemini-thinking-mode-and-reasoning",
+    title: "Gemini Thinking Mode: Thinking Budget Allocation & Complex Distributed System Debugging",
+    description: "How Gemini 2.0 Flash Thinking and 3.7 models utilize reasoning budgets to debug distributed race conditions, verify algorithms, and scale test-time compute.",
+    publishedAt: "2026-08-17",
+    modifiedAt: "2026-09-09",
+    category: "LLM & AI Models",
+    readingTime: "5 min",
+    serviceHref: "/en/services/ai-automation",
+    serviceAnchor: "Explore Gemini reasoning integration services",
+    directAnswer: "Gemini Thinking Mode is an inference architecture that allows models to generate hidden reasoning tokens (chain of thought) to formulate hypotheses, test alternative algorithms, and catch logical errors before delivering the final response. Developers explicitly allocate a thinking_budget (0 to 8,192 tokens) via the Google GenAI SDK to tune the trade-off between sub-second latency and deep analytical verification.",
+    keyTakeaways: [
+      "Test-Time Compute Scaling: Eliminates hallucination cascades by running System 2 cognitive simulations in the background before output generation.",
+      "Dynamic Budget Tuning: Set thinking_budget=0 for instant classification; allocate 4,096–8,192 tokens for deep distributed system and security audits.",
+      "Inspectable Thought Traces: Developers can monitor step-by-step reasoning sequences in dev consoles to debug model assumptions.",
+      "Distributed Deadlock & Lock Verification: Mathematically evaluates split-brain scenarios, lease expiration, and missing fencing tokens in distributed logs."
+    ],
+    sourcesCited: [
+      { name: "Google DeepMind Gemini 2.0 & 3.7 Technical Documentation", url: "https://ai.google.dev/gemini-api/docs/thinking" },
+      { name: "Scaling LLM Test-Time Compute Optimally (arXiv:2408.03314)", url: "https://arxiv.org/abs/2408.03314" },
+      { name: "Google GenAI Python SDK Reference", url: "https://github.com/google-gemini/generative-ai-python" }
+    ],
+    sections: [
       {
-        "title": "The Problem with Raw JSON Strings",
-        "paragraphs": [
-          "Prompting LLMs to 'return JSON only' frequently fails in production due to markdown wrappers, trailing commas, or missing fields. Structured Outputs enforce the schema directly at the token decoding layer."
-        ],
-        "codeSnippet": {
-          "language": "python",
-          "filename": "extractor.py",
-          "code": "import instructor\nfrom openai import OpenAI\nfrom pydantic import BaseModel\n\nclass InvoiceExtraction(BaseModel):\n    vendor: str\n    total_amount: float\n    currency: str\n    items: list[str]\n\nclient = instructor.from_openai(OpenAI())\n\nextracted = client.chat.completions.create(\n    model=\"gpt-4o-mini\",\n    response_model=InvoiceExtraction,\n    messages=[{\"role\": \"user\", \"content\": \"Invoice from Acme Corp for $450.00: 2x Cloud Licenses\"}]\n)\n\nprint(f\"Vendor: {extracted.vendor}, Total: {extracted.total_amount} {extracted.currency}\")"
-        }
-      }
-    ]
-  },
-  {
-    "slug": "prompt-caching-cost-optimization",
-    "title": "Prompt Caching & KV-Cache Reuse: Cutting LLM Costs by up to 90%",
-    "description": "Master Anthropic and Gemini Prompt Caching to slash API bills and reduce latency on long documents, system instructions, and multi-turn chats.",
-    "publishedAt": "2026-08-17",
-    "modifiedAt": "2026-08-17",
-    "category": "AI Architecture",
-    "readingTime": "3 min",
-    "serviceHref": "/en/services/ai-automation",
-    "serviceAnchor": "Explore enterprise LLM FinOps and cost optimization",
-    "sections": [
-      {
-        "title": "How Prompt Caching Works",
-        "paragraphs": [
-          "When sending repeated large contexts (e.g. 50,000-token system instructions or legal documents), providers cache the Key-Value (KV) activations on GPU memory. Subsequent requests reuse cached tokens at up to 90% discount with sub-second response times."
+        title: "1. Under the Hood: Hidden Thinking Tokens vs Immediate Greedy Output",
+        paragraphs: [
+          "Traditional autoregressive models generate tokens greedily or via nucleus sampling, committing to words sequentially. A subtle logical error made in early tokens cascades into hallucinations in subsequent paragraphs.",
+          "Gemini Thinking Mode introduces a hidden reasoning scratchpad. Before returning a single character to the user, the model explores alternative reasoning paths, verifies edge cases, and self-corrects invalid assumptions. This architecture mirrors human System 1 (fast, intuitive) versus System 2 (slow, analytical) cognition."
         ]
+      },
+      {
+        title: "2. Configuring Thinking Budget with the Google GenAI Python SDK",
+        paragraphs: [
+          "In the latest Google GenAI SDK, developers allocate reasoning capacity using `thinking_config`. The following example audits distributed lease logs to verify race conditions:"
+        ],
+        codeSnippet: {
+          language: "python",
+          filename: "gemini_thinking_audit.py",
+          code: `from google import genai
+from google.genai import types
+
+client = genai.Client()
+
+distributed_trace = """
+Timestamp 14:02:01: Node-A acquired lease on resource 'user:9482:balance' (TTL: 500ms)
+Timestamp 14:02:02: Node-B network partition detected, assumed lock expired
+Timestamp 14:02:02: Node-B writes balance USD 420.00 without fencing token
+Timestamp 14:02:03: Node-A network restored, writes balance USD 310.00 with old lease
+"""
+
+response = client.models.generate_content(
+    model="gemini-3.7-flash",
+    contents=f"Analyze the race condition in the following logs and prove missing fencing tokens:\\n{distributed_trace}",
+    config=types.GenerateContentConfig(
+        thinking_config=types.ThinkingConfig(thinking_budget=4096),
+        temperature=0.7
+    )
+)
+
+print(response.text)`
+        }
+      },
+      {
+        title: "3. Budget Tuning & Latency Trade-offs for Production",
+        paragraphs: [
+          "The thinking budget acts as an upper bound: if a problem is resolved with fewer tokens, the model terminates reasoning early. However, SLA constraints require intentional budget allocation:",
+          "For rapid classification, translation, or simple JSON transforms, setting the budget to 0 yields near-instant time-to-first-token (TTFT). For mission-critical security audits, financial reconciliation, and concurrent bug localization, allocating 2,048–8,192 tokens reduces hallucination risk to near zero."
+        ]
+      }
+    ],
+    faqs: [
+      {
+        question: "Do thinking tokens count against rate limits and token billing?",
+        answer: "Yes. Generated thinking tokens are counted toward total usage and billed at input/output rates. However, the final text returned to the client is clean, concise, and stripped of scratchpad tokens."
+      },
+      {
+        question: "What temperature setting is recommended when Thinking Mode is enabled?",
+        answer: "Google recommends keeping the temperature at the default 0.7 or 1.0. Lowering temperature to 0.0 can restrict exploratory reasoning trees and reduce reasoning effectiveness."
+      }
+    ]
+  },
+  {
+    slug: "claude-sonnet-5-and-claude-opus-5-guide",
+    title: "Claude Sonnet 5 & Claude Opus 5 Architectural Guide: 1M Token Context, Agentic Coding & Model Selection",
+    description: "Explore Anthropic's flagship Claude 5 family (Sonnet 5, Opus 5, and Fable 5), 1M token context windows, cost optimization, and autonomous multi-file refactoring.",
+    publishedAt: "2026-08-17",
+    modifiedAt: "2026-09-09",
+    category: "LLM & AI Models",
+    readingTime: "5 min",
+    serviceHref: "/en/services/ai-automation",
+    serviceAnchor: "Explore Claude 5 and autonomous AI consulting",
+    directAnswer: "The Claude 5 generation (Sonnet 5, Opus 5, and Fable 5) represents frontier agentic software engineering. Sonnet 5 serves as the high-speed workhorse for interactive developer tools, CLI workflows, and multi-file refactoring with top-tier SWE-bench scores; Opus 5 provides a massive 1-million-token context window and deep architectural synthesis for legacy migrations and high-complexity system design.",
+    keyTakeaways: [
+      "Model Specialization: Sonnet 5 drives fast agentic loops; Opus 5 acts as the master reasoning engine for enterprise architecture and compliance.",
+      "1M Token Context & Prompt Caching: Ingest entire enterprise repositories in a single prompt with up to 90% cost savings via KV-cache reuse.",
+      "Industry-Leading SWE-bench Verification: Autonomous bug localization, multi-file code patching, and self-healing test execution.",
+      "Advanced Tool Use & OS Control: Executes shell diagnostics, file manipulations, and multi-step CI/CD validation without schema hallucination."
+    ],
+    sourcesCited: [
+      { name: "Anthropic Claude 5 Architecture & Model Card", url: "https://www.anthropic.com/claude" },
+      { name: "SWE-bench Verified Software Engineering Benchmark", url: "https://www.swebench.com/" },
+      { name: "Anthropic Python SDK & Tool Use Documentation", url: "https://docs.anthropic.com/claude/docs" }
+    ],
+    sections: [
+      {
+        title: "1. The Claude 5 Family: Sonnet 5 vs Opus 5 vs Fable 5",
+        paragraphs: [
+          "Anthropic's Claude 5 generation positions models not merely as code-completion helpers, but as autonomous senior software engineers capable of planning and executing multi-step workflows.",
+          "Claude Sonnet 5 combines sub-second token generation with high SWE-bench scores, making it the premier engine for tools like Claude Code and Cursor. Claude Opus 5 processes up to 1 million tokens in a single context, evaluating full repository dependency graphs simultaneously. Claude Fable 5 focuses on strict formal verification, safety compliance, and policy-governed workflows."
+        ]
+      },
+      {
+        title: "2. Autonomous Multi-File Refactoring & Tool Use with Anthropic Python SDK",
+        paragraphs: [
+          "Claude 5 exhibits near-zero parameter hallucination during tool calling. The following example demonstrates an automated code quality audit loop:"
+        ],
+        codeSnippet: {
+          language: "python",
+          filename: "claude_agentic_refactor.py",
+          code: `import anthropic
+
+client = anthropic.Anthropic()
+
+tools = [
+    {
+        "name": "run_linter",
+        "description": "Executes ESLint or Flake8 on target directory and returns findings.",
+        "input_schema": {
+            "type": "object",
+            "properties": {
+                "target_directory": {"type": "string", "description": "Target folder path"}
+            },
+            "required": ["target_directory"]
+        }
+    }
+]
+
+response = client.messages.create(
+    model="claude-3-7-sonnet-20250219",
+    max_tokens=4096,
+    tools=tools,
+    messages=[{
+        "role": "user",
+        "content": "Audit code quality in src/api and propose a refactoring roadmap."
+    }]
+)
+
+print(response.content)`
+        }
+      },
+      {
+        title: "3. Hybrid Orchestration Strategy in Production",
+        paragraphs: [
+          "Enterprise production systems maximize efficiency through tiered model orchestration:",
+          "Opus 5 is invoked during the initial discovery and high-level architectural planning phase. Once the change specification is finalized, parallelized subagents powered by Sonnet 5 handle file writes, unit tests, and linter runs. This hybrid topology reduces operational costs by up to 60% while accelerating delivery."
+        ]
+      }
+    ],
+    faqs: [
+      {
+        question: "Does the 1M token context suffer from needle-in-a-haystack attention degradation?",
+        answer: "Anthropic's Claude 5 architecture maintains over 99.8% retrieval accuracy across 1-million-token contexts, reliably recalling specific statements and schema definitions regardless of position."
+      },
+      {
+        question: "What is the pricing differential between Claude Sonnet 5 and Opus 5?",
+        answer: "Opus 5 is priced approximately 3 to 5 times higher than Sonnet 5 due to its expanded reasoning capacity and memory footprint. For routine engineering tasks, Sonnet 5 provides the optimal cost-to-performance ratio."
+      }
+    ]
+  },
+  {
+    slug: "deepseek-r1-open-source-reasoning",
+    title: "DeepSeek-R1 & Open-Source Reasoning: Self-Hosting with Ollama, vLLM, and Enterprise GPU Deployment",
+    description: "Deploy DeepSeek-R1 and distilled open-weight reasoning models locally with vLLM or Ollama for zero-API-cost private reasoning engines and air-gapped data privacy.",
+    publishedAt: "2026-08-17",
+    modifiedAt: "2026-09-09",
+    category: "AI Infrastructure",
+    readingTime: "5 min",
+    serviceHref: "/en/services/custom-software-development",
+    serviceAnchor: "Explore private on-premise AI deployment solutions",
+    directAnswer: "DeepSeek-R1 is an open-weights reasoning model trained directly via pure reinforcement learning and Group Relative Policy Optimization (GRPO) without cold-start supervised fine-tuning. Its distilled models (14B and 32B based on Qwen/Llama) allow organizations to run private, high-accuracy reasoning engines on local workstations or on-premise clusters using Ollama or vLLM with zero cloud API leakage and complete data sovereignty.",
+    keyTakeaways: [
+      "GRPO Architecture: Eliminates separate critic models, cutting GPU memory overhead and training compute significantly.",
+      "Distilled Precision: Qwen-based 14B and 32B models achieve GPT-4o level reasoning on a single consumer GPU (RTX 4090).",
+      "<think> Tag Anatomy: Full visibility into chain-of-thought verification steps before streaming cleansed answers to end users.",
+      "Air-Gapped Compliance: Process sensitive healthcare, financial, and proprietary enterprise codebase data locally with zero cloud retention."
+    ],
+    sourcesCited: [
+      { name: "DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via Reinforcement Learning (arXiv:2501.12948)", url: "https://arxiv.org/abs/2501.12948" },
+      { name: "vLLM Production High-Throughput Inference Engine", url: "https://docs.vllm.ai/" },
+      { name: "Ollama Model Hub & Local Runner", url: "https://ollama.com/library/deepseek-r1" }
+    ],
+    sections: [
+      {
+        title: "1. The Open-Source Reasoning Breakthrough: Understanding GRPO",
+        paragraphs: [
+          "Traditional Reinforcement Learning from Human Feedback (RLHF) requires training a separate 'Critic' model matching the primary model's scale to score outputs, doubling VRAM requirements.",
+          "DeepSeek-R1 introduces Group Relative Policy Optimization (GRPO). For each query, the model generates a group of candidate responses, scores them against the group average, and updates its policy directly. This enabled the model to develop emergent reasoning steps inside <think> tags without human demonstration."
+        ]
+      },
+      {
+        title: "2. Production Deployment: Ollama & High-Throughput vLLM Server",
+        paragraphs: [
+          "Use Ollama for rapid local developer workflows, and vLLM with PagedAttention for high-throughput enterprise APIs:"
+        ],
+        codeSnippet: {
+          language: "bash",
+          filename: "deploy_deepseek.sh",
+          code: `# Run distilled 14B model locally on developer workstation
+ollama run deepseek-r1:14b
+
+# Launch production-grade OpenAI-compatible server via vLLM
+python3 -m vllm.entrypoints.openai.api_server \\
+  --model deepseek-ai/DeepSeek-R1-Distill-Qwen-14B \\
+  --tensor-parallel-size 1 \\
+  --gpu-memory-utilization 0.90 \\
+  --max-model-len 16384 \\
+  --port 8000`
+        }
+      },
+      {
+        title: "3. Hardware Requirements & VRAM Allocation Matrix",
+        paragraphs: [
+          "Minimum VRAM requirements based on model parameter count and quantization (AWQ/FP8/GGUF):",
+          "• DeepSeek-R1-Distill-Qwen-7B (Q4): ~6 GB VRAM — Entry-level GPUs and Apple Silicon.",
+          "• DeepSeek-R1-Distill-Qwen-14B (Q4/FP8): ~10–14 GB VRAM — Single RTX 3060, RTX 4070, or RTX 4080.",
+          "• DeepSeek-R1-Distill-Qwen-32B (Q4): ~20–24 GB VRAM — Single RTX 4090 or RTX 3090.",
+          "• DeepSeek-R1 Full Model (671B MoE): Requires an 8x A100/H100 80GB GPU cluster."
+        ]
+      }
+    ],
+    faqs: [
+      {
+        question: "How do you strip the <think> blocks before delivering responses to end users?",
+        answer: "In FastAPI or vLLM middleware, apply a stream sanitizer or regular expression (e.g., re.sub(r'<think>.*?</think>', '', text, flags=re.DOTALL)) to remove thought traces before rendering in user-facing UIs."
+      },
+      {
+        question: "Is the distilled 14B model sufficient for complex enterprise backend coding?",
+        answer: "Yes. The Qwen-14B distilled variant scores competitively against closed frontier models on HumanEval and MATH benchmarks, providing ample reasoning capability for API development and algorithm generation."
+      }
+    ]
+  },
+  {
+    slug: "llm-structured-outputs-pydantic-v2",
+    title: "LLM Structured Outputs: Zero-Error JSON Extraction with Pydantic v2, JSON Schema & Instructor",
+    description: "Guarantee 100% schema compliance from LLMs using Pydantic v2, grammar-constrained decoding, and the Instructor library without retry overhead.",
+    publishedAt: "2026-08-17",
+    modifiedAt: "2026-09-09",
+    category: "API & Backend",
+    readingTime: "5 min",
+    serviceHref: "/en/services/api-development",
+    serviceAnchor: "Explore structured backend AI integrations",
+    directAnswer: "LLM Structured Outputs utilize grammar-constrained decoding (CFG) to force language models to adhere strictly to a JSON Schema or Pydantic v2 model. By dynamically masking out-of-schema token logits during generation, inference engines mathematically eliminate malformed JSON, trailing commas, and incorrect types with 100% deterministic reliability.",
+    keyTakeaways: [
+      "Grammar-Constrained Decoding: Models cannot physically sample invalid tokens; zero syntax errors in production.",
+      "Pydantic v2 Speed: Powered by Rust-based pydantic-core for microsecond validation and zero serialization bottlenecks.",
+      "Instructor Library: Integrates seamlessly across OpenAI, Anthropic, and Gemini with automated validation retries.",
+      "Nested Schemas & Custom Validators: Enforces regex patterns, numeric boundaries (gt=0), and cross-field consistency at the LLM level."
+    ],
+    sourcesCited: [
+      { name: "OpenAI Structured Outputs Guide & JSON Schema Spec", url: "https://platform.openai.com/docs/guides/structured-outputs" },
+      { name: "Pydantic v2 Documentation & Performance Benchmarks", url: "https://docs.pydantic.dev/latest/" },
+      { name: "Instructor: Structured LLM Outputs in Python", url: "https://python.useinstructor.com/" }
+    ],
+    sections: [
+      {
+        title: "1. Why Naive JSON Prompting Fails in Production",
+        paragraphs: [
+          "Instructing models to 'return valid JSON only without markdown formatting' invariably breaks at scale. Under heavy loads or novel edge cases, models introduce conversational preambles, trailing commas, or string values where numbers are required.",
+          "Structured Outputs solve this at the decoding layer: the inference engine calculates valid JSON grammar state transitions and masks the logits of illegal tokens to negative infinity. Only valid schema characters can physically be sampled."
+        ]
+      },
+      {
+        title: "2. Production Implementation with Pydantic v2 and Instructor",
+        paragraphs: [
+          "The following complete Python implementation parses raw OCR invoice text into validated, nested data structures with cross-field consistency validation:"
+        ],
+        codeSnippet: {
+          language: "python",
+          filename: "structured_invoice_parser.py",
+          code: `from typing import List
+from pydantic import BaseModel, Field, field_validator
+import instructor
+from openai import OpenAI
+
+class InvoiceItem(BaseModel):
+    description: str = Field(description="Service or product description")
+    unit_price: float = Field(gt=0, description="Unit price (positive float)")
+    quantity: int = Field(gt=0, default=1, description="Quantity")
+    total: float = Field(gt=0, description="Line total")
+
+class InvoiceExtraction(BaseModel):
+    vendor_name: str = Field(min_length=2, description="Issuing vendor name")
+    tax_id: str = Field(description="Tax identification number")
+    items: List[InvoiceItem]
+    grand_total: float = Field(gt=0, description="Total invoice amount")
+
+    @field_validator("grand_total")
+    @classmethod
+    def validate_total(cls, v, values):
+        items = values.data.get("items", [])
+        calculated = sum(item.total for item in items)
+        if abs(v - calculated) > 1.0:
+            raise ValueError(f"Grand total does not match line items sum: {v} != {calculated}")
+        return v
+
+client = instructor.from_openai(OpenAI())
+
+raw_ocr_text = """
+TAX INVOICE: Cloud Hosting Corp Tax ID: US-92837461
+1. Dedicated Server (Annual) - 12 x $150.00 = $1800.00
+2. Managed Firewall & SSL - 1 x $200.00 = $200.00
+TOTAL AMOUNT: $2000.00
+"""
+
+invoice = client.chat.completions.create(
+    model="gpt-4o-mini",
+    response_model=InvoiceExtraction,
+    max_retries=3,
+    messages=[{"role": "user", "content": raw_ocr_text}]
+)
+
+print(f"Parsed Vendor: {invoice.vendor_name} | Items: {len(invoice.items)}")`
+        }
+      },
+      {
+        title: "3. Error Handling and Autonomous Self-Healing Retries",
+        paragraphs: [
+          "The core value of Instructor is its automated self-correction loop. If a Pydantic validator fails (e.g., line items do not sum up to the invoice grand total), Instructor automatically feeds the Python traceback back into the model prompt, requesting a targeted correction without human intervention."
+        ]
+      }
+    ],
+    faqs: [
+      {
+        question: "Does grammar-constrained sampling increase Time to First Token (TTFT)?",
+        answer: "Providers compile and cache the context-free grammar upon the first request. The initial invocation incurs a negligible 100–200ms overhead, after which subsequent requests run at native inference speed."
+      },
+      {
+        question: "Why choose Instructor over heavy orchestrators like LangChain for structured extraction?",
+        answer: "Instructor focuses strictly on Pydantic models and clean Pythonic interfaces without deep abstractions, reducing debugging complexity and package overhead in production microservices."
+      }
+    ]
+  },
+  {
+    slug: "prompt-caching-cost-optimization",
+    title: "Prompt Caching Architecture: Slashing LLM API Costs and Latency by 90% via KV-Cache Reuse",
+    description: "Master Anthropic and Gemini Prompt Caching to slash API bills and reduce latency on long documents, system instructions, and multi-turn chats.",
+    publishedAt: "2026-08-17",
+    modifiedAt: "2026-09-09",
+    category: "AI Architecture",
+    readingTime: "5 min",
+    serviceHref: "/en/services/ai-automation",
+    serviceAnchor: "Explore enterprise LLM FinOps and cost optimization",
+    directAnswer: "Prompt Caching is an inference architecture that stores precomputed Key-Value (KV) attention tensors for static prompt prefixes (such as system instructions, enterprise documentation, or full repositories) directly in GPU VRAM. Subsequent requests matching the prefix reuse cached activations, cutting token costs by up to 90% and reducing time-to-first-token (TTFT) from seconds to milliseconds.",
+    keyTakeaways: [
+      "Transformer KV-Cache Mechanism: Skips redundant GPU matrix multiplications for identical prefix tokens.",
+      "90% Cost Reduction: Read tokens are billed at a fraction of baseline input pricing across major frontier providers.",
+      "Sub-Second Latency: 50,000-token prompt latencies plummet from 15 seconds down to under 800 milliseconds.",
+      "Prefix Ordering Rule: Static content (documentation, guidelines) must always precede dynamic content (user query, timestamps)."
+    ],
+    sourcesCited: [
+      { name: "Anthropic Prompt Caching Developer Documentation", url: "https://docs.anthropic.com/claude/docs/prompt-caching" },
+      { name: "Google Cloud Gemini Context Caching Overview", url: "https://cloud.google.com/vertex-ai/generative-ai/docs/context-cache/context-cache-overview" },
+      { name: "Efficient Memory Management for Large Language Model Serving (vLLM PagedAttention)", url: "https://arxiv.org/abs/2309.06180" }
+    ],
+    sections: [
+      {
+        title: "1. How KV-Cache Reuse Works in Transformer Self-Attention",
+        paragraphs: [
+          "In transformer attention layers, computing Query, Key, and Value (Q, K, V) matrices accounts for the majority of prompt processing computation. When the first 10,000 tokens of an incoming request are identical to earlier queries, recomputing their Key and Value tensors is computationally wasteful.",
+          "Prompt Caching persists these KV activation matrices in GPU memory or high-speed NVMe storage. When a matching prefix is detected, the inference engine loads the cached tensors instantly, skipping matrix multiplications entirely."
+        ]
+      },
+      {
+        title: "2. Implementing Cache Control with Anthropic Python SDK",
+        paragraphs: [
+          "In the Anthropic API, developers define cache breakpoints by attaching `cache_control: {'type': 'ephemeral'}` to static prompt blocks:"
+        ],
+        codeSnippet: {
+          language: "python",
+          filename: "prompt_caching_client.py",
+          code: `import anthropic
+
+client = anthropic.Anthropic()
+
+with open("massive_api_docs.md", "r", encoding="utf-8") as f:
+    knowledge_base = f.read()
+
+response = client.messages.create(
+    model="claude-3-7-sonnet-20250219",
+    max_tokens=2048,
+    system=[
+        {
+            "type": "text",
+            "text": "You are an enterprise API support assistant. Answer strictly according to documentation:"
+        },
+        {
+            "type": "text",
+            "text": knowledge_base,
+            "cache_control": {"type": "ephemeral"}
+        }
+    ],
+    messages=[
+        {"role": "user", "content": "How do I verify payment webhook signatures?"}
+    ]
+)
+
+usage = response.usage
+print(f"Tokens Cached: {getattr(usage, 'cache_creation_input_tokens', 0)}")
+print(f"Tokens Read from Cache: {getattr(usage, 'cache_read_input_tokens', 0)}")`
+        }
+      },
+      {
+        title: "3. Architectural Best Practice: Prefix Ordering and FinOps ROI",
+        paragraphs: [
+          "Prompt Caching functions strictly via forward prefix matching. Inserting dynamic data (e.g. `Current Timestamp: 2026-09-09 14:32`) at the top of a prompt shifts token alignment and completely invalidates cached blocks downstream.",
+          "To maximize cache hit rates, structure prompts hierarchically: static system instructions first, followed by static domain documentation, then session history, and finally the user query. For an enterprise bot serving 5,000 queries daily, this architecture slashes monthly API expenditure from $3,000 to under $350."
+        ]
+      }
+    ],
+    faqs: [
+      {
+        question: "How long does the ephemeral cache persist in memory?",
+        answer: "Anthropic's ephemeral cache persists for 5 minutes after the last request, with each matching query refreshing the TTL counter. Gemini supports configurable explicit TTL durations."
+      },
+      {
+        question: "What is the minimum token threshold required for prompt caching?",
+        answer: "Anthropic requires a minimum prefix length of 1,024 tokens. Gemini requires 32,768 tokens for explicit context caching."
       }
     ]
   },

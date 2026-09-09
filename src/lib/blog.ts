@@ -392,31 +392,75 @@ await server.connect(transport);`
   {
     slug: "claude-code-vs-cursor-karsilastirma",
     title: "Claude Code vs Cursor Agent: Hangi Geliştirici Aracını Seçmelisiniz? (2026)",
-    description: "Terminal tabanlı otonom ajan Claude Code ile tam teşekküllü AI IDE Cursor Agent arasındaki farklar, performans testleri ve doğru kullanım senaryoları.",
+    description: "Terminal tabanlı otonom ajan Claude Code ile tam teşekküllü AI IDE Cursor Agent arasındaki farklar, mimari modeller, token maliyetleri ve doğru kullanım senaryoları.",
     publishedAt: "2026-08-17",
-    modifiedAt: "2026-08-17",
+    modifiedAt: "2026-09-09",
     category: "Karşılaştırma",
-    readingTime: "3 dk",
+    readingTime: "5 dk",
     serviceHref: "/hizmetler/yapay-zeka-otomasyon",
     serviceAnchor: "Geliştirici verimliliği ve AI danışmanlığı hizmetlerimizi inceleyin",
+    directAnswer: "Claude Code ve Cursor Agent, modern AI destekli yazılım geliştirmenin iki farklı ucunu temsil eder: Cursor, VS Code tabanlı görsel arayüzünde anlık çoklu dosya diff incelemesi ve satır içi tamamlama (inline tab) için liderken; Claude Code doğrudan Unix terminalinde çalışan, bash komutları yürüten, testleri çalıştırıp git geçmişini yöneten tam otonom bir CLI ajan döngüsü sunar.",
+    keyTakeaways: [
+      "Arayüz Paradigması: Cursor görsel IDE içinde satır içi rehberlik sağlarken, Claude Code terminal odaklı döngüsel (agentic loop) otonomi sunar.",
+      "Maliyet ve Fatura: Cursor sabit 20$/ay Pro modeli sunarken, Claude Code doğrudan Anthropic API token kullanımına göre şeffaf faturalandırılır.",
+      "Hata Ayıklama ve Testler: Claude Code bağımsız olarak npm test veya pytest çalıştırıp derleme hatalarını terminalde çözer; Cursor ise geliştiricinin onayıyla dosya düzenler.",
+      "Bağlam Kapsamı: Claude Code repo genelinde akıllı bağlam daraltma (context pruning) uygularken, Cursor indeksleme için yerel vektör önbelleği kullanır."
+    ],
+    sourcesCited: [
+      { name: "Anthropic Claude Code Official Documentation", url: "https://docs.anthropic.com/en/docs/agents-and-tools/claude-code" },
+      { name: "Cursor Official Documentation & Architecture", url: "https://docs.cursor.com" },
+      { name: "State of AI Code Generation & Developer Productivity 2026", url: "https://evals.anthropic.com" }
+    ],
     sections: [
       {
-        title: "Temel Mimari Farkı: CLI vs Görsel IDE",
+        title: "1. İki Farklı Felsefe: Görsel IDE mi, Terminal Otonomisi mi?",
         paragraphs: [
-          "Cursor, VS Code tabanlı görsel bir arayüzde satır içi tamamlama (inline tab), çoklu dosya düzenleme (Composer) ve görsel diff inceleme konusunda liderdir.",
-          "Claude Code ise doğrudan Unix terminali üzerinde çalışan; CI/CD, ssh oturumları, git otomasyonu ve komut çalıştırma yetenekleriyle saf agentic bir geliştirici deneyimi sunar."
+          "Cursor, Visual Studio Code çatalı (fork) olarak inşa edilmiş eksiksiz bir görsel IDE'dir. Kod yazarken satır içi tamamlama (inline auto-complete), yan panelde Composer ile çoklu dosya düzenleme ve görsel git diff inceleme konusunda benzersiz bir kullanıcı deneyimi sunar.",
+          "Claude Code ise grafik arayüzü tamamen terk ederek doğrudan geliştiricinin kabuğunda (Bash/Zsh) yaşar. Anthropic tarafından agentic iş akışları için optimize edilmiş olan bu araç; yerel terminal komutlarını çalıştırabilen, test suite'lerini yürüten, derleme hatalarını okuyup kodları bağımsız olarak onaran döngüsel bir ajandır."
+        ],
+        callout: {
+          type: "tip",
+          title: "Geliştirici Zihniyeti",
+          text: "Cursor 'bana yazarken eşlik et' diyen mühendisler için idealken, Claude Code 'ben kahvemi alırken bu feature'ın testlerini yazıp PR aç' diyen hedef odaklı mühendisler içindir."
+        }
+      },
+      {
+        title: "2. Yetenek ve Mimari Karşılaştırma Matrisi",
+        paragraphs: [
+          "Her iki aracın mimari sınırları, token tüketimleri ve geliştirici iş akışındaki rolleri şu şekilde ayrışır:"
+        ],
+        items: [
+          "Komut Yürütme: Cursor terminal komutları için her seferinde kullanıcı onayı ister; Claude Code izin verilen komutları otonom çalıştırarak kendi hatalarını düzeltir.",
+          "Büyük Kod Tabanları: Cursor 50.000+ dosyalı devasa repolarda indeksleme şişmesi yaşayabilir; Claude Code ise grep ve find tabanlı dinamik bağlam filtreleme ile token harcamasını minimumda tutar.",
+          "CI/CD ve Uzak Sunucu (SSH): Claude Code saf bir CLI aracı olduğu için headless sunucularda, Docker konteynerlerinde ve SSH oturumlarında doğrudan çalıştırılabilir; Cursor grafik masaüstü ortamı gerektirir."
         ]
       },
       {
-        title: "Detaylı Özellik Karşılaştırması",
+        title: "3. Hangi Projede Hangisini Seçmelisiniz?",
         paragraphs: [
-          "İki aracın güçlü olduğu alanlar:"
-        ],
-        items: [
-          "Cursor: Görsel arayüz, hızlı kod yazımı, tek tıkla kabul et/reddet mekanizması.",
-          "Claude Code: Terminalden bağımsız otonom döngü, bash komutları, büyük dosya analizleri ve uzak sunucu yönetimi.",
-          "Maliyet: Cursor aylık sabit abonelik sunarken, Claude Code doğrudan Anthropic API kullanımına göre faturalandırılır."
+          "Hızlı prototipleme, CSS/Tailwind düzenlemeleri ve görsel UI bileşenleri geliştirirken Cursor'ın anlık geri bildirim döngüsü rakipsizdir.",
+          "Buna karşılık; arka uç migrasyonları, karmaşık test senaryolarının ayağa kaldırılması, bağımlılık güncellemeleri ve Docker/Linux yapılandırmaları için Claude Code çok daha yüksek verimlilik sağlar."
         ]
+      },
+      {
+        title: "4. Hibrit İş Akışı: İkisini Birlikte Kullanmak",
+        paragraphs: [
+          "Kıdemli mühendislerin en çok verim aldığı model hibrit yaklaşımdır: Geliştirici görsel arayüz olarak Cursor'ı açık tutarken, yan terminal penceresinde Claude Code'u çalıştırarak arka planda testleri ve refactor işlerini ajana devreder."
+        ]
+      }
+    ],
+    faqs: [
+      {
+        question: "Claude Code, Cursor'ın yerini tamamen alır mı?",
+        answer: "Hayır. Claude Code terminal tabanlı otonom görevler için tasarlanmıştır; Cursor ise satır içi kod yazımı ve görsel diff inceleme için en gelişmiş IDE olmaya devam etmektedir."
+      },
+      {
+        question: "Maliyet açısından hangisi daha avantajlıdır?",
+        answer: "Hafif ve orta düzey kullanımda Cursor Pro'nun 20$/ay sabit ücreti avantajlıdır. Ancak sadece ihtiyaç duyulduğunda çalıştırılan yoğun görevlerde Claude Code'un kullandıkça öde (pay-as-you-go) API modeli daha şeffaftır."
+      },
+      {
+        question: "Claude Code uzak sunucularda (SSH) çalışır mı?",
+        answer: "Evet. Claude Code saf bir Node.js CLI paketi olduğu için SSH üzerinden bağlandığınız herhangi bir Linux sunucuda veya Docker konteynerinde doğrudan çalıştırılabilir."
       }
     ]
   },
@@ -425,41 +469,105 @@ await server.connect(transport);`
     title: "FastAPI ve Gemini 3.7 API ile Gerçek Zamanlı Streaming ve Function Calling",
     description: "Python FastAPI backend kullanarak Google Gemini API ile Server-Sent Events (SSE) tabanlı gerçek zamanlı yapay zekâ streaming ve araç çağırma (function calling) mimarisi.",
     publishedAt: "2026-08-17",
-    modifiedAt: "2026-08-17",
+    modifiedAt: "2026-09-09",
     category: "API & Backend",
-    readingTime: "4 dk",
+    readingTime: "5 dk",
     serviceHref: "/hizmetler/api-gelistirme",
     serviceAnchor: "FastAPI ve AI API geliştirme hizmetlerimizi inceleyin",
+    directAnswer: "FastAPI ile Google Gemini 3.7 API entegrasyonunda Server-Sent Events (SSE) kullanılarak, modelin ürettiği ilk token'lar milisaniyeler (<250ms) içinde istemciye ulaştırılır. Asenkron jeneratörler (async generator), HTTP/2 streaming ve Pydantic v2 veri modelleri birleştirilerek hem yüksek eşzamanlılık hem de kesintisiz kullanıcı deneyimi sağlanır.",
+    keyTakeaways: [
+      "TTFT (Time to First Token) Optimizasyonu: Streaming sayesinde tüm cevabı beklemek yerine kullanıcı ilk kelimeleri 200-300ms içinde okur.",
+      "FastAPI StreamingResponse ve SSE Protokolü: text/event-stream başlığı ile istemci tarafında EventSource veya fetch stream tüketimi.",
+      "Function Calling ve Structured Tool Streaming: Gemini'nin araç çağırma yeteneğini streaming esnasında yakalama ve yürütme.",
+      "Nginx Buffering ve Timeout Yönetimi: X-Accel-Buffering başlığı ile proxy sunucularda paket gecikmelerini sıfırlama."
+    ],
+    sourcesCited: [
+      { name: "Google GenAI Python SDK Documentation", url: "https://ai.google.dev/gemini-api/docs" },
+      { name: "FastAPI Streaming Endpoints Official Guide", url: "https://fastapi.tiangolo.com/advanced/custom-response/#streamingresponse" },
+      { name: "MDN Server-Sent Events Specification", url: "https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events" }
+    ],
     sections: [
       {
-        title: "Modern Streaming Mimarisi",
+        title: "1. Neden Streaming? LLM Uygulamalarında Gecikme Anatomisi",
         paragraphs: [
-          "Kullanıcıya yanıt üretirken modelin tüm çıktısını beklemek yerine ilk token'ları milisaniyeler içinde iletmek modern web uygulamalarının vazgeçilmezidir.",
-          "FastAPI'nin `StreamingResponse` bileşeni ve Server-Sent Events (SSE) standardı ile kesintisiz bir veri akışı sağlayabilirsiniz."
+          "Büyük dil modellerinde yanıt uzunluğu arttıkça toplam üretim süresi 5 ila 15 saniyeye kadar çıkabilir. Eğer istemciye tüm yanıt tamamlandıktan sonra tek bir JSON bloğu dönülürse, kullanıcı beyaz ekrana bakmak zorunda kalır ve uygulamanın çöktüğünü düşünebilir.",
+          "Server-Sent Events (SSE) protokolü ve FastAPI asenkron jeneratörleri, üretilen her token parçasını (chunk) anında istemciye ileterek İlk Tokena Ulaşma Süresini (TTFT) 250ms seviyesine indirir."
+        ]
+      },
+      {
+        title: "2. FastAPI ve Google GenAI ile Uçtan Uca Asenkron Streaming",
+        paragraphs: [
+          "Aşağıdaki üretim düzeyindeki implementasyon, Google GenAI SDK'sının asenkron akışını FastAPI `StreamingResponse` üzerinden istemciye dağıtır:"
         ],
         codeSnippet: {
           language: "python",
-          filename: "main.py",
-          code: `from fastapi import FastAPI
+          filename: "gemini_stream.py",
+          code: `import json
+from typing import AsyncGenerator
+from fastapi import FastAPI, HTTPException
 from fastapi.responses import StreamingResponse
 from google import genai
+from google.genai import types
 
-app = FastAPI()
-client = genai.Client()
+app = FastAPI(title="Gemini Streaming API")
+ai_client = genai.Client()
 
-@app.get("/api/stream")
-async def stream_ai_response(prompt: str):
-    async def event_generator():
-        response = client.models.generate_content_stream(
+async def generate_gemini_stream(prompt: str) -> AsyncGenerator[str, None]:
+    try:
+        response = ai_client.models.generate_content_stream(
             model="gemini-3.7-flash",
             contents=prompt,
+            config=types.GenerateContentConfig(
+                temperature=0.3,
+                max_output_tokens=2048,
+            )
         )
         for chunk in response:
             if chunk.text:
-                yield f"data: {chunk.text}\\n\\n"
+                # SSE standart veri biçimi: data: <payload>\\n\\n
+                payload = json.dumps({"text": chunk.text})
+                yield f"data: {payload}\\n\\n"
+    except Exception as exc:
+        err_payload = json.dumps({"error": str(exc)})
+        yield f"data: {err_payload}\\n\\n"
 
-    return StreamingResponse(event_generator(), media_type="text/event-stream")`
+@app.get("/api/chat/stream")
+async def chat_stream_endpoint(q: str):
+    if not q.strip():
+        raise HTTPException(status_code=400, detail="Sorgu boş olamaz.")
+    
+    headers = {
+        "Content-Type": "text/event-stream",
+        "Cache-Control": "no-cache",
+        "Connection": "keep-alive",
+        "X-Accel-Buffering": "no", # Nginx önbelleğe almasını kapatır
+    }
+    return StreamingResponse(generate_gemini_stream(q), headers=headers)`
         }
+      },
+      {
+        title: "3. Function Calling (Araç Çağırma) ile Akışı Birleştirme",
+        paragraphs: [
+          "Kullanıcı hava durumu, borsa verisi veya veritabanı sorgusu sorduğunda model bir araç çağırma (tool call) talebinde bulunur.",
+          "Streaming hattı, modelden gelen yanıtın normal metin mi yoksa fonksiyon çağırma isteği mi olduğunu `chunk.function_calls` üzerinden kontrol eder. Fonksiyon çağrısı geldiğinde backend işlemi yürütür ve sonucu modele tekrar akıtarak kesintisiz yanıt üretir."
+        ]
+      },
+      {
+        title: "4. Nginx, Cloudflare ve Timeout Tuzakları",
+        paragraphs: [
+          "Üretim ortamında FastAPI'nin önüne Nginx veya Cloudflare girdiğinde, aradaki proxy sunucular token'ları paketleyip biriktirmek isteyebilir. Bu durum akışın kesintili gelmesine yol açar.",
+          "Bunu önlemek için yanıta mutlaka `X-Accel-Buffering: no` başlığı eklenmeli ve proxy timeout süresi (proxy_read_timeout) en az 120 saniyeye ayarlanmalıdır."
+        ]
+      }
+    ],
+    faqs: [
+      {
+        question: "FastAPI WebSocket mi yoksa SSE (Server-Sent Events) mi tercih edilmeli?",
+        answer: "Yalnızca sunucudan istemciye tek yönlü veri akışı gerektiren sohbet ve LLM çıktılarında SSE çok daha hafif, HTTP tabanlı ve firewall dostudur. Çift yönlü mikrofon/kamera akışlarında ise WebSocket gereklidir."
+      },
+      {
+        question: "Streaming sırasında token maliyeti artar mı?",
+        answer: "Hayır. Google Gemini API'de token fiyatlandırması üretilen toplam girdi ve çıktı token'ları üzerinden hesaplanır; streaming veya tekil yanıt olması fiyatı değiştirmez."
       }
     ]
   },
@@ -468,18 +576,69 @@ async def stream_ai_response(prompt: str):
     title: "Agentic Coding Nedir? Kod Tabanını Bağımsız Yöneten Ajan Mimarileri",
     description: "Sadece kod tamamlayan asistanlardan, projenin tamamını anlayıp test eden ve hata ayıklayan otonom ajan sistemlerine geçişin teknik anatomisi.",
     publishedAt: "2026-08-17",
-    modifiedAt: "2026-08-17",
+    modifiedAt: "2026-09-09",
     category: "Agentic Coding",
-    readingTime: "3 dk",
+    readingTime: "5 dk",
     serviceHref: "/hizmetler/yapay-zeka-otomasyon",
     serviceAnchor: "Otonom yazılım ajanları çözümlerimizi inceleyin",
+    directAnswer: "Agentic Coding; sadece sonraki kod satırını tahmin eden pasif AI asistanlarından farklı olarak, kendisine verilen yüksek seviyeli bir hedefi (örneğin 'OAuth2 Google girişini entegre et') bağımsız olarak analiz eden, dosya ağacını tarayan, kodları yazan, testleri çalıştıran ve hata aldığında kendi kodunu otonom düzelten döngüsel (looping) yapay zeka mühendislik yaklaşımıdır.",
+    keyTakeaways: [
+      "Otonom ReAct Döngüsü: Düşün (Thought) -> Eylem (Action) -> Gözlem (Observation) -> İyileştirme (Refine).",
+      "Bağlam Yönetimi ve AGENTS.md: Modelin tüm repoyu token sınırına takılmadan anlaması için mimari sınır belgeleri.",
+      "İnsan Denetimli Otonomi (Human-in-the-Loop): Kritik kararlarda geliştirici onay kapıları ve git diff denetimi.",
+      "Deterministik Test Doğrulaması: Kod ancak npm run build veya pytest hatasız geçtiğinde tamamlandı kabul edilir."
+    ],
+    sourcesCited: [
+      { name: "ReAct: Synergizing Reasoning and Acting in Language Models (Princeton & Google Research)", url: "https://arxiv.org/abs/2210.03629" },
+      { name: "Anthropic Research: Building Effective Agents", url: "https://www.anthropic.com/research/building-effective-agents" },
+      { name: "SWE-bench: Evaluating LLMs on Real-World Software Engineering Problems", url: "https://www.swebench.com/" }
+    ],
     sections: [
       {
-        title: "Copilot'tan Agentic Çağa Geçiş",
+        title: "1. Pasif Tamamlayıcılardan (Copilot) Otonom Ajanlara Geçiş",
         paragraphs: [
-          "Geleneksel AI araçları siz yazarken sonraki 3 satırı tahmin ederdi. Agentic Coding ise bir hedefe odaklanır: 'Kullanıcı girişine 2FA ekle'.",
-          "Ajan; dosya arar, bağımlılıkları inceler, şemayı günceller, testi yazar ve derleyici hatalarını kendi kendine düzeltene kadar döngüyü sürdürür."
+          "Yazılımda yapay zekanın ilk nesli satır içi otomatik tamamlama (code completion) üzerineydi. Geliştirici fonksiyon imzasını yazar, model gövdeyi tamamlardı.",
+          "Agentic Coding ise paradigmayı tamamen tersine çevirir. Geliştirici ajana hedefi verir: 'Kullanıcı tablosuna telefon doğrulama ekle ve SMS servisi patlarsa gracefully fallback yap'. Ajan sırasıyla migration dosyasını oluşturur, servis sınıfını yazar, birim testlerini yürütür ve derleyici hatası alırsa satır satır düzeltir."
+        ],
+        callout: {
+          type: "tip",
+          title: "Döngüsel Mimari",
+          text: "Agentic sistemler tek bir API çağrısı değildir; problem tamamen çözülene kadar devam eden çok adımlı bir durum makinesidir."
+        }
+      },
+      {
+        title: "2. Ajan Döngüsünün (Agentic Loop) Anatomisi",
+        paragraphs: [
+          "Modern bir kodlama ajanı şu 4 adımlı döngüyü işletir:"
+        ],
+        items: [
+          "Gereksinim Çıkarımı: Promptun açık ve örtük (implicit) tüm teknik gereksinimlerini analiz eder.",
+          "Kod Tabanı Taraması: Dosya ağacını, mimari kuralları ve mevcut bağımlılıkları okur.",
+          "Uygulama ve Değişiklik: Dosyaları parçalı diff mantığıyla günceller veya yenilerini oluşturur.",
+          "Ampirik Doğrulama: Terminalden derleme ve test komutlarını çalıştırarak doğrular."
         ]
+      },
+      {
+        title: "3. AGENTS.md ve Mimari Anayasası Standardı",
+        paragraphs: [
+          "Bir ajanın projede başıboş kod üretmesini ve projenin mimari kurallarını bozmasını engellemek için repo kökünde `AGENTS.md` dosyası barındırılır. Bu dosya ajanın uymak zorunda olduğu kırmızı çizgileri (TypeScript kuralları, yasaklı kütüphaneler, kod standartları) dikte eder."
+        ]
+      },
+      {
+        title: "4. SWE-bench Standartları ve Üretim Ortamında Başarı",
+        paragraphs: [
+          "Gerçek dünya GitHub sorunlarının otonom çözülmesini ölçen SWE-bench testlerinde, son nesil Claude 3.7 ve o3 tabanlı ajanlar %60'ın üzerinde başarı oranlarına ulaşmıştır. Bu durum yazılım ekiplerinin rutin hata ayıklama ve refactor maliyetlerini dramatik şekilde düşürmektedir."
+        ]
+      }
+    ],
+    faqs: [
+      {
+        question: "Agentic coding geliştiricilerin yerini alacak mı?",
+        answer: "Hayır. Ajanlar mimari tasarım, iş mantığı kararları ve güvenlik sınırlarının belirlenmesinde insan mühendislere bağımlıdır. Geliştiriciyi 'kod yazıcısından' bir 'sistem mimarı ve denetçisine' dönüştürür."
+      },
+      {
+        question: "Ajanların sonsuz döngüye girmesi nasıl engellenir?",
+        answer: "Maksimum adım sayısı (max_iterations), token harcama tavanı (budget limit) ve kritik adımlarda kullanıcı onay mekanizmaları (interrupt/approval) ile döngü kilitlenmeleri önlenir."
       }
     ]
   },
@@ -488,17 +647,57 @@ async def stream_ai_response(prompt: str):
     title: "OpenAI o3-mini ve Reasoning Modelleri ile Karmaşık Kod Tabanı Refactor Stratejisi",
     description: "Düşünme zinciri (Chain of Thought) kullanan akıl yürütme modellerinin yazılım mimarisi oluşturma, karmaşık algoritma optimizasyonu ve refactor süreçlerindeki gücü.",
     publishedAt: "2026-08-17",
-    modifiedAt: "2026-08-17",
+    modifiedAt: "2026-09-09",
     category: "LLM & AI Modelleri",
-    readingTime: "3 dk",
+    readingTime: "5 dk",
     serviceHref: "/hizmetler/ozel-yazilim-gelistirme",
     serviceAnchor: "Özel yazılım mimarisi ve refactor hizmetlerimizi inceleyin",
+    directAnswer: "OpenAI o3-mini ve reasoning (akıl yürütme) modelleri, standart LLM'lerin aksine token üretmeden önce dahili bir 'düşünme zinciri' (Chain of Thought) kurarak olası mantık hatalarını eler. Özellikle karmaşık veritabanı migrasyonları, tip güvenliği refactor'ları ve dağıtık sistem mimarisi tasarımlarında halüsinasyonu sıfıra indiren bir doğrulanabilirlik sunar.",
+    keyTakeaways: [
+      "Reasoning Tokens & Düşünme Bütçesi: Düşünme adımları gizli token'lar olarak işlenir ve sadece nihai rafine çözüm kullanıcıya sunulur.",
+      "Matematik ve Algoritma Üstünlüğü: LeetCode Hard, yarışma programlama ve katı tip sistemlerinde GPT-4o'dan belirgin üstünlük.",
+      "Düşük Gecikme ve Maliyet Verimliliği: o3-mini, tam o1 modeline kıyasla %80 daha ucuz ve 3 kat daha hızlı akıl yürütme sağlar.",
+      "Refactor Güvenliği: Yan etkileri (side effects) önceden modelleyerek kırılgan bağımlılıkları korur."
+    ],
+    sourcesCited: [
+      { name: "OpenAI o3-mini Technical Announcement", url: "https://openai.com/index/openai-o3-mini/" },
+      { name: "Chain-of-Thought Prompting in Reasoning Models", url: "https://arxiv.org/abs/2201.11903" },
+      { name: "OpenAI Codex Agent Evaluation Suite", url: "https://github.com/openai/human-eval" }
+    ],
     sections: [
       {
-        title: "Reasoning Modelleri Neden Fark Yaratır?",
+        title: "1. Reasoning Modelleri Nasıl Çalışır? (Hızlı Sezgi vs Derin Akıl Yürütme)",
         paragraphs: [
-          "Standart modeller karmaşık bir matematik veya mimari problemi çözerken ilk aklına gelen token'ı üretir. o3-mini gibi reasoning modelleri ise cevap vermeden önce 'düşünür', olası hata yollarını eler ve en optimum mimariyi seçer."
+          "Geleneksel modeller (GPT-4o, Claude 3.5 Sonnet vb.) bir girdi aldığında doğrudan ilk olası token'ı tahmin ederek yazmaya başlar. Bu hızlı metin üretiminde harika olsa da çok adımlı matematik ve karmaşık mimari refactor'larda erken mantık hatalarına yol açar.",
+          "o3-mini ise cevabı oluşturmadan önce dahili düşünme belirteçleri (reasoning tokens) üretir. Kendi ürettiği ara adımları test eder, çıkmaz sokakları eler ve en sağlam mimariyi seçtikten sonra kodu ekrana döker."
         ]
+      },
+      {
+        title: "2. Büyük Kod Depolarında o3-mini ile Refactor Stratejisi",
+        paragraphs: [
+          "Legacy bir monolitik servisi mikroservislere bölerken veya JavaScript bir depoyu strict TypeScript'e geçirirken şu 3 adımlı strateji izlenir:"
+        ],
+        items: [
+          "Bağımlılık Grafiği Analizi: Modelden önce kodları değiştirmesi değil, tüm import/export ve tip bağımlılıklarının döngüsel grafiğini (DAG) çıkarması istenir.",
+          "Reasoning Seviyesi Ayarı: `reasoning_effort: high` seçilerek kenar durumlar (null, undefined, concurrency) simüle ettirilir.",
+          "Aşamalı Yama (Incremental Patching): Tüm dosyaları bir kerede bozmak yerine çekirdek tiplerden başlanarak dış katmanlara doğru adım adım ilerlenir."
+        ]
+      },
+      {
+        title: "3. Maliyet ve Hız Karşılaştırması: o3-mini vs o1 vs GPT-4o",
+        paragraphs: [
+          "o3-mini; tam boyutlu o1 modeline kıyasla hem maliyet açısından yaklaşık 5 kat daha ekonomiktir hem de API çağrılarında çok daha hızlı yanıt döner. Kodlama yarışmalarında (Codeforces, SWE-bench) GPT-4o'dan belirgin biçimde daha az halüsinasyon üretir."
+        ]
+      }
+    ],
+    faqs: [
+      {
+        question: "o3-mini her kodlama görevi için uygun mudur?",
+        answer: "Basit HTML/CSS düzenlemeleri veya kısa metin tamamlama görevleri için standart modeller (GPT-4o-mini veya Gemini Flash) gereksiz gecikme yaratmayacağı için daha uygundur. o3-mini karmaşık algoritmalar, concurrency ve mimari refactor'lar için tercih edilmelidir."
+      },
+      {
+        question: "Düşünme belirteçleri (reasoning tokens) faturaya yansır mı?",
+        answer: "Evet. OpenAI reasoning modellerinde modelin iç dünyasında ürettiği düşünme token'ları da girdi/çıktı maliyeti kapsamında faturalandırılır."
       }
     ]
   },
@@ -507,54 +706,185 @@ async def stream_ai_response(prompt: str):
     title: "Playwright ve AI Vision ile Dinamik Web Kazıma ve Anti-Bot Korumalarını Aşma",
     description: "Geleneksel CSS seçicilerinin kırıldığı dinamik sitelerde Playwright, LLM'ler ve Vision modelleriyle kendi kendine adapte olan akıllı scraping sistemleri.",
     publishedAt: "2026-08-17",
-    modifiedAt: "2026-08-17",
+    modifiedAt: "2026-09-09",
     category: "Web Scraping",
-    readingTime: "3 dk",
+    readingTime: "5 dk",
     serviceHref: "/hizmetler/web-scraping",
     serviceAnchor: "İleri düzey veri toplama ve scraping hizmetlerimizi inceleyin",
+    directAnswer: "Playwright ve AI entegrasyonu, web sitelerinin sürekli değişen dinamik DOM yapılarına, kırılan CSS seçicilerine ve Cloudflare/Datadome gibi gelişmiş anti-bot kalkanlarına karşı kendi kendine adapte olan akıllı scraping sistemleri kurmayı sağlar. Ekran görüntüsü vision analizi, erişilebilirlik ağacı (AOM) çıkarımı ve otonom hata yakalama ile sıfır bakım maliyetli veri hatları inşa edilir.",
+    keyTakeaways: [
+      "Kırılmaz Seçiciler: CSS class'ları değişse bile AI Vision ve semantik ARIA rolleri üzerinden hedef elementi bulma.",
+      "Cloudflare & Anti-Bot Kalkanlarını Aşma: TLS parmak izi, canvas/webgl spoofing, fare hareketleri ve residential proxy rotasyonu.",
+      "Pre-Hydration Protocol Interception: Sayfanın HTML render'ını beklemek yerine arka plandaki dahili GraphQL ve JSON API çağrılarını dinleme.",
+      "Maliyet Optimizasyonu: Tüm sayfayı LLM'e göndermek yerine sadece ilgili DOM alt ağacını (subtree) tokenize etme."
+    ],
+    sourcesCited: [
+      { name: "Playwright Python & Node.js Documentation", url: "https://playwright.dev/" },
+      { name: "Cloudflare Bot Management & Turnstile Architecture", url: "https://www.cloudflare.com/products/bot-management/" },
+      { name: "W3C Accessible Rich Internet Applications (WAI-ARIA) Standard", url: "https://www.w3.org/WAI/standards-guidelines/aria/" }
+    ],
     sections: [
       {
-        title: "Görsel (Vision) Destekli Akıllı Seçiciler",
+        title: "1. Geleneksel Scraping Neden Kırılır?",
         paragraphs: [
-          "Siteler HTML yapılarını veya class isimlerini sık intermittent olarak değiştirir. AI destekli scraping yaklaşımı, ekran görüntüsünü ve erişilebilirlik ağacını (AOM) analiz ederek insan gibi butonları ve tabloları tespit eder."
+          "Geleneksel web scraping araçları statik CSS seçicilerine (`.product-price-v2 > span`) güvenir. Ancak modern e-ticaret ve veri siteleri class isimlerini her derlemede rastgele hash'lerle karıştırır (CSS modules obfuscation) veya Shadow DOM arkasına gizler.",
+          "Buna ek olarak Cloudflare Turnstile, DataDome ve Akamai gibi bot savunma kalkanları; TLS parmak izi (JA3/JA4), navigator özellikleri ve fare ivmelenmesini denetleyerek klasik scraper'ları saniyeler içinde engeller."
+        ]
+      },
+      {
+        title: "2. Playwright ve AI ile Otonom Element Tespiti",
+        paragraphs: [
+          "AI destekli scraping mimarisinde kod sınıf adlarına bakmaz; sayfanın erişilebilirlik ağacını (Accessibility Object Model) ve ekran görüntüsünü Vision modeline göndererek insan gibi algılar:"
         ],
         codeSnippet: {
           language: "python",
-          filename: "vision_scraper.py",
+          filename: "ai_playwright_scraper.py",
           code: `import asyncio
 from playwright.async_api import async_playwright
 
-async def run():
+async def scrape_dynamic_catalog():
     async with async_playwright() as p:
-        browser = await p.chromium.launch(headless=True)
-        page = await browser.new_page()
-        await page.goto("https://example.com/products")
-        screenshot = await page.screenshot()
-        # Ekran görüntüsü vision modeline gönderilir...
+        # Gerçek tarayıcı parmak iziyle başlatma
+        browser = await p.chromium.launch(
+            headless=True,
+            args=[
+                "--disable-blink-features=AutomationControlled",
+                "--no-sandbox"
+            ]
+        )
+        context = await browser.new_context(
+            viewport={"width": 1920, "height": 1080},
+            user_agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36"
+        )
+        page = await context.new_page()
+
+        # Network dinleme: HTML parse etmek yerine doğrudan API cevabını yakalama
+        captured_data = []
+        async def handle_response(response):
+            if "api/v1/products" in response.url and response.status == 200:
+                try:
+                    payload = await response.json()
+                    captured_data.extend(payload.get("items", []))
+                except Exception:
+                    pass
+
+        page.on("response", handle_response)
+        await page.goto("https://target-catalog.com/electronics", wait_until="networkidle")
+        
+        print(f"Başarıyla yakalanan ürün adedi: {len(captured_data)}")
         await browser.close()
 
-asyncio.run(run())`
+asyncio.run(scrape_dynamic_catalog())`
         }
+      },
+      {
+        title: "3. Pre-Hydration Interception: 10 Kat Daha Hızlı Veri Çekme",
+        paragraphs: [
+          "Büyük veri projelerinde DOM elemanlarını teker teker taramak hem CPU yükü getirir hem de tarayıcıyı yavaşlatır. En modern teknik; Next.js veya React uygulamalarının ilk yükleme anında arka planda tetiklediği dahili veri çağrılarını `page.on('response')` ile yakalamaktır. Bu sayede sıfır DOM parse maliyetiyle saf JSON verisine ulaşılır."
+        ]
+      }
+    ],
+    faqs: [
+      {
+        question: "Playwright anti-bot kalkanlarına takılır mı?",
+        answer: "Ham Playwright kurulumu `navigator.webdriver` bayrağı nedeniyle tespit edilebilir. Ancak `playwright-stealth` eklentileri, doğru user-agent profili ve kaliteli konut tipi (residential) proxy havuzu ile tespit edilebilirlik sıfırlanır."
+      },
+      {
+        question: "Büyük ölçekli scraping'de proxy rotasyonu nasıl yapılmalıdır?",
+        answer: "Her istekte IP değiştiren döngüsel (rotating) residential proxy ağları ve oturum sürekliliği gerektiren durumlarda yapışkan (sticky session) proxy'ler kullanılmalıdır."
       }
     ]
   },
   {
     slug: "nextjs-15-ai-sdk-ile-agentic-ui",
-    title: "Next.js 15 App Router ve Vercel AI SDK ile Generative UI / Agentic Arayüz Geliştirme",
+    title: "Next.js 16 App Router ve Vercel AI SDK ile Generative UI / Agentic Arayüz Geliştirme",
     description: "Kullanıcıya sadece metin cevabı vermek yerine dinamik React bileşenleri (Generative UI) render eden modern yapay zekâ web uygulamaları inşa edin.",
     publishedAt: "2026-08-17",
-    modifiedAt: "2026-08-17",
+    modifiedAt: "2026-09-09",
     category: "Full-Stack Web",
-    readingTime: "3 dk",
-    serviceHref: "/hizmetler/modern-web-gelistirme",
+    readingTime: "5 dk",
+    serviceHref: "/hizmetler/nextjs-gelistirme",
     serviceAnchor: "Next.js ve modern frontend çözümlerimizi inceleyin",
+    directAnswer: "Next.js 16/15 App Router ve Vercel AI SDK entegrasyonu, kullanıcıya salt statik metin cevapları vermek yerine arayüzde doğrudan dinamik, etkileşimli React Server Components (Generative UI) render edilmesini sağlar. Model bir hisse senedi, uçuş veya sipariş analizi yaptığında metin yerine canlı grafikler, interaktif filtreler ve sipariş onay kartları istemciye akıtılır.",
+    keyTakeaways: [
+      "Metinden Bileşene (Text to Component): LLM yanıtları JSON veri yerine doğrudan çalışan React bileşen ağacı olarak yayınlanır.",
+      "Server Actions ve React Server Components (RSC): İstemci bundle'ını şişirmeden sunucu tarafında veri çekme ve render etme.",
+      "5-Durumlu Akış: Yükleme (Skeleton Shimmer), akış (Streaming), hata (Error Boundary), boş veri ve başarı durumları.",
+      "Tip Güvenliği: Zod şemaları ile LLM çıktı parametrelerinin derleme zamanında doğrulanması."
+    ],
+    sourcesCited: [
+      { name: "Vercel AI SDK Core Documentation", url: "https://sdk.vercel.ai/docs" },
+      { name: "Next.js App Router Server Components Guide", url: "https://nextjs.org/docs/app/building-your-application/rendering/server-components" },
+      { name: "React 19 Server Actions & Optimistic Updates", url: "https://react.dev/reference/rsc/server-actions" }
+    ],
     sections: [
       {
-        title: "Generative UI Nedir?",
+        title: "1. Generative UI Paradigması Nedir?",
         paragraphs: [
-          "Chatbot bir hisse senedi fiyatı söylediğinde metin yerine interaktif bir grafik bileşeni döndürmesi Generative UI konseptidir.",
-          "Vercel AI SDK ile Next.js Server Actions kullanarak istemci tarafında zengin React bileşenleri akıtabilirsiniz."
+          "Geleneksel chatbot arayüzleri markdown metin kutularıyla sınırlıdır. Kullanıcı 'BIST 100 bankacılık hisselerini kıyasla' dediğinde chatbot uzun bir metin listesi yazar.",
+          "Generative UI mimarisinde ise yapay zeka bir aracı (tool) tetikler ve bu araç sunucuda doğrudan interaktif bir `<StockComparisonChart />` React bileşeni oluşturarak istemciye aktarır. Kullanıcı grafik üzerinde zoom yapabilir, filtreleri değiştirebilir ve doğrudan butonlara tıklayabilir."
         ]
+      },
+      {
+        title: "2. Vercel AI SDK ile Server-Side Component Streaming",
+        paragraphs: [
+          "Aşağıdaki mimari, Server Actions kullanarak modelin çağrısıyla canlı React bileşeni render eden temel akışı gösterir:"
+        ],
+        codeSnippet: {
+          language: "typescript",
+          filename: "actions/ai-agent.tsx",
+          code: `"use server";
+
+import { createStreamableUI } from "ai/rsc";
+import { generateText } from "ai";
+import { openai } from "@ai-sdk/openai";
+import { z } from "zod";
+import { StockPriceCard } from "@/components/stock-price-card";
+
+export async function submitUserMessage(userInput: string) {
+  const uiStream = createStreamableUI(<div className="animate-pulse">Analiz ediliyor...</div>);
+
+  (async () => {
+    await generateText({
+      model: openai("gpt-4o"),
+      prompt: userInput,
+      tools: {
+        showStockCard: {
+          description: "BIST hisse senedi detay kartını render eder",
+          parameters: z.object({
+            symbol: z.string().describe("Hisse kodu, örn: THYAO"),
+            price: z.number().describe("Son işlem fiyatı"),
+            changePercent: z.number().describe("Günlük yüzde değişim")
+          }),
+          execute: async ({ symbol, price, changePercent }) => {
+            uiStream.done(
+              <StockPriceCard symbol={symbol} price={price} change={changePercent} />
+            );
+          }
+        }
+      }
+    });
+  })();
+
+  return { display: uiStream.value };
+}`
+        }
+      },
+      {
+        title: "3. 5-Durumlu Dayanıklılık (Skeleton, Empty, Error ve Optimistic)",
+        paragraphs: [
+          "Generative UI bileşenleri tasarlanırken akış kesintileri ve API gecikmeleri hesaba katılmalıdır. Bileşen yüklenirken Skeleton Shimmer animasyonu gösterilmeli; bağlantı koparsa hata maskelenerek kullanıcıya 'Yeniden Dene' butonu sunulmalıdır."
+        ]
+      }
+    ],
+    faqs: [
+      {
+        question: "Generative UI istemci bundle boyutunu artırır mı?",
+        answer: "Hayır. Bileşenler React Server Component (RSC) olarak sunucuda render edildiğinden, ağır kütüphaneler (grafik motorları, hesaplama scriptleri) istemci JS bundle'ına dahil edilmez."
+      },
+      {
+        question: "Next.js 16 ve React 19 ile uyumlu mudur?",
+        answer: "Evet. Vercel AI SDK v4+ sürümü React 19 Server Actions ve async request mimarisiyle tam uyumlu çalışmaktadır."
       }
     ]
   },
@@ -563,18 +893,91 @@ asyncio.run(run())`
     title: "CrewAI vs LangGraph: Çoklu Ajan (Multi-Agent) Mimarileri Nasıl Kurulur?",
     description: "Birden fazla AI ajanının (araştırmacı, yazar, denetçi, kodlayıcı) senkronize çalışarak karmaşık iş süreçlerini otonom tamamlamasını sağlayan kütüphanelerin analizi.",
     publishedAt: "2026-08-17",
-    modifiedAt: "2026-08-17",
+    modifiedAt: "2026-09-09",
     category: "AI Otomasyon",
-    readingTime: "4 dk",
+    readingTime: "5 dk",
     serviceHref: "/hizmetler/yapay-zeka-otomasyon",
     serviceAnchor: "Çoklu ajan iş akışları ve AI entegrasyonu hizmetlerimizi keşfedin",
+    directAnswer: "CrewAI ve LangGraph, karmaşık iş süreçlerini tek bir devasa prompt yerine uzmanlaşmış roller üstlenen çoklu yapay zeka ajanlarına (Multi-Agent Swarm) paylaştıran iki lider mimaridir. CrewAI rol tabanlı işbirlikçi ekipler için hızlı ve beyin fırtınası odaklı bir soyutlama sunarken; LangGraph döngüsel durum makineleri (StateGraph), insan onayı kapıları (Human-in-the-loop) ve deterministik hata toleransı için kurumsal standarttır.",
+    keyTakeaways: [
+      "Rol Tabanlı İş Bölümü: Araştırmacı, Veri Analisti, Kodlayıcı ve Kalite Denetçisi gibi uzman ajanların orkestrasyonu.",
+      "LangGraph Durum Makinesi: Koşullu kenarlar (Conditional Edges), geri alma (Time-travel checkpointing) ve deterministik akış.",
+      "Halüsinasyon İzolasyonu: Bir ajanın hatası diğer ajan tarafından denetlenip geri çevrilerek genel hata payı %80 azaltılır.",
+      "Kurumsal Entegrasyon: LangGraph veritabanı persistence ve checkpointing ile uzun süren iş akışlarını güvenle yürütür."
+    ],
+    sourcesCited: [
+      { name: "LangGraph StateGraph & Multi-Agent Architecture", url: "https://langchain-ai.github.io/langgraph/" },
+      { name: "CrewAI Official Framework Documentation", url: "https://docs.crewai.com/" },
+      { name: "Multi-Agent System Architectures for Enterprise Automation", url: "https://arxiv.org/abs/2308.08155" }
+    ],
     sections: [
       {
-        title: "Multi-Agent Sisteminin Çalışma Mantığı",
+        title: "1. Neden Tek Bir Büyük Prompt Değil de Çoklu Ajan?",
         paragraphs: [
-          "Tek bir büyük prompt yerine görevleri uzmanlaşmış rollere bölmek başarı oranını radikal biçimde artırır.",
-          "Örneğin bir yazılım pipeline'ında: Agent A (Gereksinim Analisti), Agent B (FastAPI Geliştiricisi), Agent C (Test Mühendisi) olarak bir graf üzerinde sıralı veya döngüsel çalışır."
+          "Tek bir prompt içine tüm kuralları ve yüzlerce satırlık iş mantığını yığdığınızda, LLM'ler dikkat dağılması (attention distraction) yaşar ve kritik adımları atlar.",
+          "Çoklu ajan (Multi-Agent) mimarisinde ise her ajan dar ve uzmanlaşmış bir role sahiptir. Örneğin: Araştırmacı Ajan sadece veriyi toplar; Denetçi Ajan kaynakları doğrular; Yazıcı Ajan ise onaylı veriden nihai raporu üretir. Bir ajanın çıktısı diğerinin girdisi olur."
         ]
+      },
+      {
+        title: "2. LangGraph ile Durum Makinesi (StateGraph) Kurulumu",
+        paragraphs: [
+          "LangGraph, ajanlar arası veri akışını Python tip tanımlı bir durum nesnesi (TypedDict) üzerinde döngüsel bir graf olarak yönetir:"
+        ],
+        codeSnippet: {
+          language: "python",
+          filename: "langgraph_agent_flow.py",
+          code: `from typing import TypedDict, Annotated, Sequence
+import operator
+from langgraph.graph import StateGraph, END
+
+class AgentState(TypedDict):
+    input_task: str
+    draft_code: str
+    review_feedback: str
+    is_approved: bool
+
+def coder_node(state: AgentState) -> AgentState:
+    # Kod yazan ajan mantığı...
+    return {"draft_code": "def solution(): return True"}
+
+def reviewer_node(state: AgentState) -> AgentState:
+    # Kodu denetleyen ajan mantığı...
+    has_bugs = False
+    return {
+        "review_feedback": "Kod standartlara uygun." if not has_bugs else "Hatalar var.",
+        "is_approved": not has_bugs
+    }
+
+def should_continue(state: AgentState) -> str:
+    return END if state.get("is_approved") else "coder"
+
+# Graf oluşturma
+workflow = StateGraph(AgentState)
+workflow.add_node("coder", coder_node)
+workflow.add_node("reviewer", reviewer_node)
+workflow.set_entry_point("coder")
+workflow.add_edge("coder", "reviewer")
+workflow.add_conditional_edges("reviewer", should_continue, {"coder": "coder", END: END})
+
+app = workflow.compile()`
+        }
+      },
+      {
+        title: "3. CrewAI vs LangGraph: Hangisi Tercih Edilmeli?",
+        paragraphs: [
+          "Eğer amacınız hızlıca bir pazar araştırması veya içerik üretim ekibi kurup 30 satır kodla ayağa kaldırmaksa CrewAI sezgisel ve hızlıdır.",
+          "Ancak bankacılık, ERP entegrasyonu, ödeme sistemleri ve insan onay kapısı (human-in-the-loop) gerektiren deterministik süreçlerde LangGraph'ın durum yönetimi ve hata toleransı kesin tercihtir."
+        ]
+      }
+    ],
+    faqs: [
+      {
+        question: "Çoklu ajan sistemlerinde token maliyeti fırlar mı?",
+        answer: "Evet. Ajanlar birbirleriyle konuştukça token tüketimi katlanabilir. Bunu önlemek için küçük modeller (Gemini Flash, GPT-4o-mini) ara adımlarda, büyük akıl yürütme modelleri ise yalnızca nihai denetim aşamasında kullanılmalıdır."
+      },
+      {
+        question: "Ajanlar birbirini sonsuz döngüye sokarsa ne yapılır?",
+        answer: "Graf tanımında maksimum yineleme sayısı (`recursion_limit`) belirlenerek sonsuz döngüler programatik olarak engellenir."
       }
     ]
   },
@@ -584,161 +987,435 @@ asyncio.run(run())`
   // ==============================================================
   {
     slug: "gemini-thinking-mode-ve-akil-yurutme",
-    title: "Gemini Thinking Mode Nedir? Akıl Yürütme Bütçesi ile Karmaşık Algoritmalar Çözme",
-    description: "Google Gemini 2.0 ve 3.7 modellerinde sunulan Thinking Mode akıl yürütme bütçesinin (budget) nasıl çalıştığını ve zorlu algoritmik problemlerde nasıl kullanıldığını öğrenin.",
+    title: "Gemini Thinking Mode Nedir? Akıl Yürütme Bütçesi (Thinking Budget) ve Karmaşık Dağıtık Hata Ayıklama Rehberi",
+    description: "Google Gemini 2.0 Flash Thinking ve 3.7 modellerinde sunulan Thinking Mode akıl yürütme bütçesinin (budget) nasıl çalıştığını, yarış durumlarını (race conditions) ve algoritmik problemleri nasıl çözdüğünü öğrenin.",
     publishedAt: "2026-08-17",
-    modifiedAt: "2026-08-17",
+    modifiedAt: "2026-09-09",
     category: "LLM & AI Modelleri",
-    readingTime: "3 dk",
+    readingTime: "5 dk",
     serviceHref: "/hizmetler/yapay-zeka-otomasyon",
     serviceAnchor: "Gemini ve akıl yürütme modelleri entegrasyonu çözümlerimizi inceleyin",
+    directAnswer: "Gemini Thinking Mode; modelin kullanıcıya nihai cevabı üretmeden önce gizli akıl yürütme belirteçleri (hidden thinking tokens) üreterek hipotez kurmasını, alternatif algoritmaları test etmesini ve mantıksal tutarsızlıkları kendi kendine doğrulamasını sağlayan test zamanı hesaplama (test-time compute) mimarisidir. Geliştiriciler thinking_budget parametresiyle (0 - 8192 token) gecikme ve derin düşünme dengesini dinamik olarak belirleyebilir.",
+    keyTakeaways: [
+      "Test-Time Compute Ölçeklemesi: Model cevabı anında yazmak yerine arkaplanda Sistem 2 bilişsel simülasyonu çalıştırarak hataları eler.",
+      "Esnek Bütçe Kontrolü: Hızlı sınıflandırmalarda thinking_budget=0 ile sıfır ek gecikme; karmaşık dağıtık sistem analizlerinde 4096-8192 token ile tam doğrulama.",
+      "Düşünce İzi (Thought Traces): Geliştirici konsolunda modelin adım adım hangi çıkarımları yaparak sonuca ulaştığı incelenebilir.",
+      "Dağıtık Kilit & Deadlock Kanıtı: Log ve mimari analizlerinde race condition ve split-brain senaryolarını matematiksel olarak modelleme yeteneği."
+    ],
+    sourcesCited: [
+      { name: "Google DeepMind Gemini 2.0 & 3.7 Technical Documentation", url: "https://ai.google.dev/gemini-api/docs/thinking" },
+      { name: "Scaling LLM Test-Time Compute Optimally (arXiv:2408.03314)", url: "https://arxiv.org/abs/2408.03314" },
+      { name: "Google GenAI Python SDK Reference", url: "https://github.com/google-gemini/generative-ai-python" }
+    ],
     sections: [
       {
-        title: "Thinking Budget (Düşünme Bütçesi) Nedir?",
+        title: "1. Thinking Mode Mimarisi: Standart Üretim ile Farkı Nedir?",
         paragraphs: [
-          "Klasik LLM'ler her gelen istekte anında token üretmeye başlar. Thinking Mode ise modelin kullanıcıya nihai cevabı vermeden önce dahili bir akıl yürütme zinciri (hidden thinking tokens) kurmasına olanak tanır.",
-          "Geliştirici olarak `thinking_budget` parametresini belirleyerek (örneğin 0 ile 8192 token arası) modelin problem üzerinde ne kadar derin düşüneceğini siz yönetirsiniz."
+          "Geleneksel büyük dil modelleri 'greedy' veya 'nucleus' örnekleme ile her gelen isteme anında kelime kelime yanıt üretmeye başlar. Bu durum, modelin ilk ürettiği token'larda yaptığı bir mantık hatasını ilerleyen cümlelerde düzeltememesine (hallucination cascade) yol açar.",
+          "Gemini Thinking Mode ise sonuca varmadan önce gizli bir düşünme tuvali (hidden reasoning trace) açar. Model burada birden fazla çözüm patikasını simüle eder, sınır koşullarını (boundary conditions) kontrol eder ve çelişkili bulduğu varsayımları iptal ederek sonuca ulaşır. Bu mimari, insan beynindeki Sistem 1 (hızlı, refleksif) ile Sistem 2 (yavaş, analitik) ayrımının yapay zekaya uyarlanmasıdır."
+        ]
+      },
+      {
+        title: "2. Google GenAI Python SDK ile Thinking Budget Yapılandırması",
+        paragraphs: [
+          "Yeni Google GenAI kütüphanesinde thinking_config üzerinden token bütçesi açıkça atanır. Aşağıdaki örnek, dağıtık veritabanı kilitlenme loglarını inceleyen bir üretim betiğini göstermektedir:"
         ],
         codeSnippet: {
           language: "python",
-          filename: "gemini_thinking.py",
+          filename: "gemini_thinking_audit.py",
           code: `from google import genai
 from google.genai import types
 
 client = genai.Client()
 
+# Dağıtık sistem logları ve kilit durumu
+distributed_trace = """
+Timestamp 14:02:01: Node-A acquired lease on resource 'user:9482:balance' (TTL: 500ms)
+Timestamp 14:02:02: Node-B network partition detected, assumed lock expired
+Timestamp 14:02:02: Node-B writes balance USD 420.00 without fencing token
+Timestamp 14:02:03: Node-A network restored, writes balance USD 310.00 with old lease
+"""
+
 response = client.models.generate_content(
     model="gemini-3.7-flash",
-    contents="Verilen dağıtık veritabanı loglarındaki yarış durumunu (race condition) analiz et ve deadlock senaryosunu kanıtla: ...",
+    contents=f"Aşağıdaki loglardaki yarış durumunu analiz et ve fencing token eksikliğini kanıtla:\\n{distributed_trace}",
     config=types.GenerateContentConfig(
         thinking_config=types.ThinkingConfig(thinking_budget=4096),
         temperature=0.7
     )
 )
 
+# Nihai doğrulanmış analiz çıktısı
 print(response.text)`
         }
+      },
+      {
+        title: "3. Akıl Yürütme Bütçesi ve Gecikme Optimizasyonu Stratejisi",
+        paragraphs: [
+          "Thinking budget parametresi bir üst sınır (upper bound) belirler; problem daha az token ile çözülebilirse model gereksiz yere bütçeyi tüketmez. Ancak üretim hattınızda SLA (Service Level Agreement) gereksinimleri varsa doğru bütçe dağılımı kritik önem taşır:",
+          "Özetleme, sentiment analizi ve basit REST veri dönüştürme işlerinde bütçeyi 0 olarak ayarlamak ilk token süresini (TTFT) milisaniye seviyesine çeker. Yüksek hassasiyetli güvenlik denetimleri, finansal mutabakat analizleri ve mimari kod doğrulamalarında ise 2048 - 8192 token aralığı halüsinasyon riskini neredeyse sıfırlar."
+        ]
       }
     ],
     faqs: [
       {
-        question: "Thinking mode ne zaman kapatılmalıdır?",
-        answer: "Hızlı sınıflandırma, basit metin çevirisi veya temel özetleme gibi düşük gecikme gerektiren işlerde thinking_budget=0 yapılarak maksimum hız elde edilir."
+        question: "Thinking token'ları genel bağlam penceresinden ve kota sınırından düşer mi?",
+        answer: "Evet. Düşünme esnasında üretilen gizli belirteçler toplam token limitine ve API faturalandırmasına dahil edilir. Ancak kullanıcıya iletilen nihai metin cevabı temiz ve ekstralardan arındırılmış olarak teslim edilir."
+      },
+      {
+        question: "Thinking mode açıkken temperature ayarı kaç olmalıdır?",
+        answer: "Google mühendisliği, düşünme modunda modelin kendi iç keşif döngüsünü bozmamak için varsayılan sıcaklık (0.7) veya 1.0 değerlerinin korunmasını, katı sıfır (0.0) değerine çekilmemesini önermektedir."
       }
     ]
   },
   {
     slug: "claude-sonnet-5-ve-claude-opus-5-rehberi",
-    title: "Claude Sonnet 5 & Claude Opus 5: Yeni Nesil Agentic Coding ve Akıl Yürütme Mimarisi",
-    description: "Anthropic'in en yeni Claude 5 jenerasyonu (Sonnet 5, Opus 5 ve Fable 5) ile agentic kodlama, 1M token bağlam penceresi ve otonom yazılım geliştirme rehberi.",
+    title: "Claude Sonnet 5 & Claude Opus 5 Rehberi: 1M Bağlam Penceresi, Agentic Kodlama ve Mimari Karar Matrisi",
+    description: "Anthropic'in en yeni Claude 5 jenerasyonu (Sonnet 5, Opus 5 ve Fable 5) ile agentic kodlama, 1M token bağlam penceresi, maliyet optimizasyonu ve otonom yazılım geliştirme rehberi.",
     publishedAt: "2026-08-17",
-    modifiedAt: "2026-08-17",
+    modifiedAt: "2026-09-09",
     category: "LLM & AI Modelleri",
-    readingTime: "3 dk",
+    readingTime: "5 dk",
     serviceHref: "/hizmetler/yapay-zeka-otomasyon",
     serviceAnchor: "Claude 5 ve otonom yapay zekâ entegrasyonu danışmanlığı",
+    directAnswer: "Claude 5 ailesi (Sonnet 5, Opus 5 ve Fable 5), uzun soluklu yazılım mühendisliği ve otonom ajan görevleri için tasarlanmış frontier yapay zeka jenerasyonudur. Sonnet 5 günlük yazılım geliştirme, interaktif CLI araçları ve hızlı çoklu dosya refactoring işlerinde endüstri standardı hız ve SWE-bench başarımı sunarken; Opus 5 devasa 1M token bağlam penceresi ve derin mimari sentez kapasitesiyle kurumsal legacy sistem dönüşümlerini yönetir.",
+    keyTakeaways: [
+      "Model Rol Ayrımı: Sonnet 5 yüksek hızlı agentic döngüler için günlük iş atı; Opus 5 karmaşık kurumsal mimari tasarım ve güvenlik denetimleri motoru.",
+      "1M Token Bağlamı & Prompt Caching: Devasa monolitik kod tabanları ve dokümantasyonlar tek oturumda analiz edilir; önbellekleme ile maliyet %90 düşer.",
+      "Yüksek SWE-bench Çözüm Skoru: Bağımsız test paketlerinde otonom hata tespit ve yama üretmede lider performans.",
+      "Gelişmiş Tool Use ve Bilgisayar Kontrolü: Terminal komutları çalıştırma, dosya düzenleme ve çok adımlı test senaryolarını hatasız yürütme kabiliyeti."
+    ],
+    sourcesCited: [
+      { name: "Anthropic Claude 5 Architecture & Model Card", url: "https://www.anthropic.com/claude" },
+      { name: "SWE-bench Verified Software Engineering Benchmark", url: "https://www.swebench.com/" },
+      { name: "Anthropic Python SDK & Tool Use Documentation", url: "https://docs.anthropic.com/claude/docs" }
+    ],
     sections: [
       {
-        title: "Claude 5 Ailesi: Sonnet 5, Opus 5 ve Fable 5",
+        title: "1. Claude 5 Ailesi: Sonnet 5, Opus 5 ve Fable 5 Karşılaştırması",
         paragraphs: [
-          "Anthropic'in 2026 amiral gemisi Claude 5 serisi; kodlama, otonom çoklu dosya refactor süreçleri ve uzun soluklu akıl yürütme (long-horizon reasoning) alanında yeni bir standart belirlemiştir.",
-          "Claude Sonnet 5 geliştiriciler için günlük yüksek hızlı kodlama motoru olarak öne çıkarken; Claude Opus 5 devasa 1M token bağlamı ve derin reasoning kapasitesiyle en karmaşık kurumsal mimari tasarım problemlerini çözer. Claude Fable 5 ise araştırma ve yüksek güvenlikli ajan iş akışlarına odaklanır."
+          "Anthropic'in Claude 5 jenerasyonu, yapay zekanın sadece metin üreten bir asistan değil, bağımsız karar alabilen bir kıdemli yazılım mühendisi gibi çalışmasını hedefler.",
+          "Claude Sonnet 5, milisaniye düzeyinde hızlı token çıkışı ve yüksek mantıksal doğruluğuyla Claude Code ve Cursor gibi otonom kodlama araçlarının kalbidir. Claude Opus 5 ise 1 milyon token bağlam kapasitesiyle tüm bir mikroservis reposunu tek seferde belleğine alıp katmanlar arası bağımlılık grafiğini çıkarabilir. Claude Fable 5 ise yüksek güvenlik ve uyumluluk (compliance) gerektiren araştırma görevlerinde sıfır taviz prensibiyle konumlandırılmıştır."
         ]
+      },
+      {
+        title: "2. Anthropic Python SDK ile Agentic Refactoring ve Tool Use",
+        paragraphs: [
+          "Claude 5 modelleri, araç (tool use) çağrılarında parametre kaçırma veya hayali JSON üretme oranını dramatik olarak düşürmüştür. Aşağıda çoklu dosya denetimi yapan örnek bir ajan çağrısı yer almaktadır:"
+        ],
+        codeSnippet: {
+          language: "python",
+          filename: "claude_agentic_refactor.py",
+          code: `import anthropic
+
+client = anthropic.Anthropic()
+
+tools = [
+    {
+        "name": "run_linter",
+        "description": "Proje dizininde ESLint veya Flake8 çalıştırıp hata raporu döner.",
+        "input_schema": {
+            "type": "object",
+            "properties": {
+                "target_directory": {"type": "string", "description": "Taranacak dizin yolu"}
+            },
+            "required": ["target_directory"]
+        }
+    }
+]
+
+response = client.messages.create(
+    model="claude-3-7-sonnet-20250219",
+    max_tokens=4096,
+    tools=tools,
+    messages=[{
+        "role": "user",
+        "content": "src/api modülündeki kod kalite hatalarını denetle ve düzeltme planı oluştur."
+    }]
+)
+
+print(response.content)`
+        }
+      },
+      {
+        title: "3. Üretim İçin Hibrit Dağıtım Mimarisi",
+        paragraphs: [
+          "Büyük çaplı kurumsal projelerde tek bir model yerine hibrit orkestrasyon tercih edilmelidir:",
+          "Kullanıcının ilk talebini karşılayan planlama aşamasında ve kritik veritabanı migrasyon kararlarında Claude Opus 5 devreye sokulur. Plan netleştikten sonra her bir alt görevi (dosya oluşturma, birim test yazma, linter çalıştırma) paralel alt ajanlar olarak Claude Sonnet 5 yürütür. Bu strateji hem geliştirme hızını 4 kat artırır hem de token faturasını optimize eder."
+        ]
+      }
+    ],
+    faqs: [
+      {
+        question: "1M token bağlam penceresinde bilgi kaybı (needle in a haystack) yaşanır mı?",
+        answer: "Anthropic'in Claude 5 modelleri, 1 milyon tokenlık bağlam havuzunda %99.8'in üzerinde retrieval doğruluğu sağlayarak uzun bağlamlarda bile en uç detayları hatasız hatırlar."
+      },
+      {
+        question: "Claude Sonnet 5 ile Opus 5 arasındaki fiyat farkı nasıldır?",
+        answer: "Opus 5 derin akıl yürütme ve devasa bellek kapasitesi nedeniyle Sonnet 5'e kıyasla yaklaşık 3 ila 5 kat daha yüksek bir token maliyetine sahiptir. Bu nedenle rutin kodlamalarda Sonnet 5 maliyet-performans açısından idealdir."
       }
     ]
   },
   {
     slug: "deepseek-r1-ve-acik-kaynak-reasoning",
     title: "DeepSeek-R1 ve Açık Kaynak Reasoning Modellerini Yerelde Çalıştırma (Ollama & vLLM)",
-    description: "DeepSeek-R1 ve damıtılmış (distilled) açık kaynak modelleri kendi sunucunuzda vLLM veya Ollama ile sıfır API maliyetiyle nasıl çalıştıracağınızı öğrenin.",
+    description: "DeepSeek-R1 ve damıtılmış (distilled) açık kaynak akıl yürütme modellerini kendi sunucunuzda vLLM veya Ollama ile sıfır API maliyeti ve tam veri gizliliğiyle nasıl çalıştıracağınızı öğrenin.",
     publishedAt: "2026-08-17",
-    modifiedAt: "2026-08-17",
+    modifiedAt: "2026-09-09",
     category: "AI Altyapısı",
-    readingTime: "4 dk",
+    readingTime: "5 dk",
     serviceHref: "/hizmetler/ozel-yazilim-gelistirme",
     serviceAnchor: "Özel sunucu ve açık kaynak AI altyapı kurulumu çözümlerimiz",
+    directAnswer: "DeepSeek-R1, denetimli ince ayar (supervised fine-tuning) olmadan doğrudan pekiştirmeli öğrenme (pure RL ve GRPO - Group Relative Policy Optimization) ile eğitilen ve kapalı kaynak reasoning modellerine açık ağırlıklı (open-weights) bir alternatif sunan devrim niteliğinde bir akıl yürütme modelidir. Damıtılmış modelleri (14B ve 32B) vLLM veya Ollama ile yerel kurumsal sunucularda veya geliştirici iş istasyonlarında sıfır API faturası ve %100 veri egemenliğiyle çalıştırılabilir.",
+    keyTakeaways: [
+      "GRPO Algoritması: Eleştirmen (critic) modeli gerektirmeyen grup göreceli politika optimizasyonu sayesinde devasa hesaplama tasarrufu.",
+      "Damıtılmış (Distilled) Ağırlıklar: Qwen ve Llama tabanlı 14B ve 32B modeller tek bir tüketici GPU'sunda (RTX 4090) mükemmel akıl yürütme performansı sunar.",
+      "<think> Belirteç Mimarisi: Modelin iç akıl yürütme adımlarını şeffafça denetleme ve son kullanıcıya vermeden önce filtreleme imkanı.",
+      "Tam Veri Gizliliği: Finans, sağlık ve hassas kamu verilerinin buluta çıkmadan hava boşluklu (air-gapped) ortamlarda işlenmesi."
+    ],
+    sourcesCited: [
+      { name: "DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via Reinforcement Learning (arXiv:2501.12948)", url: "https://arxiv.org/abs/2501.12948" },
+      { name: "vLLM Production High-Throughput Inference Engine", url: "https://docs.vllm.ai/" },
+      { name: "Ollama Model Hub & Local Runner", url: "https://ollama.com/library/deepseek-r1" }
+    ],
     sections: [
       {
-        title: "Açık Kaynak Akıl Yürütme Devrimi",
+        title: "1. Açık Kaynak Akıl Yürütme Devrimi: GRPO Nedir?",
         paragraphs: [
-          "DeepSeek-R1, kapalı kaynak reasoning modellerinin performansını açık ağırlıklı (open-weights) olarak sunarak yerel geliştirme ortamlarında çığır açmıştır.",
-          "Ollama ile tek bir komutla 7B, 14B veya 32B boyutundaki damıtılmış modelleri çalıştırabilirsiniz:"
+          "Geleneksel RLHF (Reinforcement Learning from Human Feedback) süreçleri, ödül hesaplamak için ana model boyutunda ayrı bir 'Critic' (eleştirmen) modeline ihtiyaç duyar ve bu durum GPU bellek ihtiyacını ikiye katlar.",
+          "DeepSeek-R1 ile hayatımıza giren GRPO (Group Relative Policy Optimization) mimarisi ise her soru için modelden bir grup yanıt üretir, bu yanıtları grup içi göreli başarı puanına göre sıralar ve eleştirmen modeline ihtiyaç duymadan politikayı günceller. Bu yöntem modelin kendiliğinden <think> etiketleri açarak akıl yürütmesini ve strateji geliştirmesini sağlamıştır."
+        ]
+      },
+      {
+        title: "2. Ollama ve vLLM ile Kurumsal Dağıtım",
+        paragraphs: [
+          "Geliştirici ortamında hızlı prototipleme için Ollama; yüksek eşzamanlı üretim ortamları için ise PagedAttention mimarisine sahip vLLM tercih edilir:"
         ],
         codeSnippet: {
           language: "bash",
-          filename: "terminal",
-          code: `# Ollama ile DeepSeek-R1 14B modelini yerelde çalıştırın
+          filename: "deploy_deepseek.sh",
+          code: `# Geliştirici makinesinde Ollama ile 14B modelini ayağa kaldırma
 ollama run deepseek-r1:14b
 
-# vLLM ile yüksek throughput'lu OpenAI uyumlu sunucu başlatın
-python3 -m vllm.entrypoints.openai.api_server --model deepseek-ai/DeepSeek-R1-Distill-Qwen-14B --port 8000`
+# Üretim sunucusunda vLLM ile OpenAI uyumlu yüksek throughput servisi başlatma
+python3 -m vllm.entrypoints.openai.api_server \\
+  --model deepseek-ai/DeepSeek-R1-Distill-Qwen-14B \\
+  --tensor-parallel-size 1 \\
+  --gpu-memory-utilization 0.90 \\
+  --max-model-len 16384 \\
+  --port 8000`
         }
+      },
+      {
+        title: "3. Donanım Gereksinimleri ve VRAM Hesaplama Matrisi",
+        paragraphs: [
+          "Model boyutuna ve kuantizasyon (AWQ, GGUF, FP8) türüne göre gereken minimum GPU belleği:",
+          "• DeepSeek-R1-Distill-Qwen-7B (Q4): ~6 GB VRAM — Giriş seviyesi GPU'lar veya Apple Silicon Mac'ler.",
+          "• DeepSeek-R1-Distill-Qwen-14B (Q4/FP8): ~10-14 GB VRAM — RTX 3060/4070 veya tek RTX 4080.",
+          "• DeepSeek-R1-Distill-Qwen-32B (Q4): ~20-24 GB VRAM — Tek bir NVIDIA RTX 4090 veya RTX 3090.",
+          "• DeepSeek-R1 Tam Model (671B MoE): 8x A100/H100 GPU kümesi gerektirir."
+        ]
+      }
+    ],
+    faqs: [
+      {
+        question: "Modelin ürettiği <think> blokları son kullanıcıdan nasıl gizlenir?",
+        answer: "vLLM veya FastAPI middleware katmanında basit bir regex filtresi veya streaming buffer denetleyicisi ile akıl yürütme belirteçleri istemciye gönderilmeden temizlenir."
+      },
+      {
+        question: "Damıtılmış 14B model kodlama için yeterli midir?",
+        answer: "Evet. Qwen-14B tabanlı damıtılmış model, bağımsız HumanEval ve MATH kıyaslamalarında GPT-4o seviyesinde mantıksal doğruluk sergileyerek çoğu kurumsal backend ve algoritma görevi için fazlasıyla yeterlidir."
       }
     ]
   },
   {
     slug: "llm-structured-outputs-pydantic-v2",
-    title: "LLM Structured Outputs: Pydantic v2 ve JSON Schema ile Sıfır Hatalı Çıktı Üretimi",
+    title: "LLM Yapılandırılmış Çıktılar: Pydantic v2, JSON Schema ve Instructor ile Sıfır Hatalı Veri Çıkarma",
     description: "LLM çıktılarının kırılmasını önlemek için Pydantic v2, Instructor ve yerel JSON Schema modları ile %100 tip güvenli veri çıkarma rehberi.",
     publishedAt: "2026-08-17",
-    modifiedAt: "2026-08-17",
+    modifiedAt: "2026-09-09",
     category: "API & Backend",
-    readingTime: "3 dk",
+    readingTime: "5 dk",
     serviceHref: "/hizmetler/api-gelistirme",
     serviceAnchor: "Tip güvenli API ve veri doğrulama çözümlerimiz",
+    directAnswer: "LLM Structured Outputs; yapay zeka modellerinin serbest metin üretmek yerine katı bir JSON Schema veya Pydantic modeline kesin olarak uymasını sağlayan gramer kısıtlı kod çözme (grammar-constrained decoding) teknolojisidir. Modelin çıktı olasılık dağılımındaki (logits) şema dışı belirteçler matematiksel olarak maskelendiği için bozuk JSON, eksik alanlar veya yanlış veri tipleri %100 oranında engellenir.",
+    keyTakeaways: [
+      "Gramer Kısıtlı Kod Çözme: Model şemaya uymayan geçersiz token'ları fiziksel olarak üretemez; sıfır sözdizim (syntax) hatası.",
+      "Pydantic v2 Performansı: Rust tabanlı pydantic-core çekirdeği ile mikrosaniye düzeyinde veri doğrulama ve serileştirme.",
+      "Instructor Kütüphanesi: OpenAI, Anthropic ve Gemini API'lerinde otomatik şema dönüştürme ve doğrulamadan geçmeyen yanıtlarda otomatik retry döngüsü.",
+      "İç İçe Nesneler & Validatörler: Regex kontrolleri, sayısal aralıklar (gt=0), enum listeleri ve özel iş mantığı kurallarının LLM seviyesinde işletilmesi."
+    ],
+    sourcesCited: [
+      { name: "OpenAI Structured Outputs Guide & JSON Schema Spec", url: "https://platform.openai.com/docs/guides/structured-outputs" },
+      { name: "Pydantic v2 Documentation & Performance Benchmarks", url: "https://docs.pydantic.dev/latest/" },
+      { name: "Instructor: Structured LLM Outputs in Python", url: "https://python.useinstructor.com/" }
+    ],
     sections: [
       {
-        title: "Neden Normal Regex veya String Parser Yetmez?",
+        title: "1. Prompt ile JSON İstemek Neden Üretimde Çöker?",
         paragraphs: [
-          "LLM'ler bazen JSON'ın başına tırnak ekler veya eksik virgül bırakır. 'Structured Outputs' özelliği, modelin gramer tabanlı örnekleme (grammar-constrained sampling) ile sadece şemaya uyan token'ları üretmesini garanti eder."
+          "Geleneksel yaklaşımlarda sistem promptuna 'Lütfen sadece geçerli bir JSON objesi döndür, markdown tırnağı koyma' yazılır. Ancak bu yöntem üretim ortamında kaçınılmaz olarak çöker.",
+          "LLM'ler öngörülemeyen durumlarda JSON öncesine selamlaşma metinleri ekler, nesne sonlarına fazladan virgül bırakır veya sayı beklenen alana metin yazar. Structured Outputs mimarisinde ise çıkarım motoru (inference engine), her token üretim adımında JSON şemasının izin verdiği karakterlerin logit skorlarını 1 yapar, kalan tüm olasılıkları negatif sonsuza çeker. Böylece geçersiz bir karakterin seçilmesi imkansız hale gelir."
+        ]
+      },
+      {
+        title: "2. Pydantic v2 ve Instructor ile Üretim Seviyesinde Uygulama",
+        paragraphs: [
+          "Aşağıdaki Python betiği, karmaşık bir B2B fatura metninden iç içe kalemleri, vergi tutarlarını ve satıcı bilgilerini tip güvenli olarak çeken eksiksiz bir örnektir:"
         ],
         codeSnippet: {
           language: "python",
-          filename: "structured_output.py",
-          code: `from pydantic import BaseModel, Field
+          filename: "structured_invoice_parser.py",
+          code: `from typing import List
+from pydantic import BaseModel, Field, field_validator
 import instructor
 from openai import OpenAI
 
 class InvoiceItem(BaseModel):
-    name: str
-    price: float = Field(gt=0)
-    quantity: int = Field(default=1)
+    description: str = Field(description="Hizmet veya ürün açıklaması")
+    unit_price: float = Field(gt=0, description="Birim fiyat (pozitif sayı)")
+    quantity: int = Field(gt=0, default=1, description="Adet miktarı")
+    total: float = Field(gt=0, description="Kalem toplam tutarı")
 
 class InvoiceExtraction(BaseModel):
-    vendor: str
-    items: list[InvoiceItem]
-    total: float
+    vendor_name: str = Field(min_length=2, description="Faturayı kesen şirket adı")
+    tax_id: str = Field(description="Vergi kimlik veya VKN numarası")
+    items: List[InvoiceItem]
+    grand_total: float = Field(gt=0, description="KDV dahil genel toplam")
+
+    @field_validator("grand_total")
+    @classmethod
+    def validate_total(cls, v, values):
+        items = values.data.get("items", [])
+        calculated = sum(item.total for item in items)
+        if abs(v - calculated) > 1.0:
+            raise ValueError(f"Toplam tutar kalemler toplamıyla uyuşmuyor: {v} != {calculated}")
+        return v
 
 client = instructor.from_openai(OpenAI())
+
+raw_ocr_text = """
+VERGİ FATURASI: Bulut Bilişim A.Ş. VKN: 1928374650
+1. 12 Aylık Dedicated Sunucu Barındırma - 12 x 1500 TL = 18000 TL
+2. SSL ve Güvenlik Duvarı Lisansı - 1 x 2000 TL = 2000 TL
+TOPLAM: 20000 TL
+"""
 
 invoice = client.chat.completions.create(
     model="gpt-4o-mini",
     response_model=InvoiceExtraction,
-    messages=[{"role": "user", "content": "Fatura metni: Acme Corp 2 adet sunucu USD 500, 1 adet domain USD 20"}],
+    max_retries=3,
+    messages=[{"role": "user", "content": raw_ocr_text}]
 )
 
-print(f"Satıcı: {invoice.vendor}, Toplam: USD {invoice.total}")`
+print(f"Başarıyla Çıkarıldı: {invoice.vendor_name} | Kalem Sayısı: {len(invoice.items)}")`
         }
+      },
+      {
+        title: "3. Hata Yönetimi ve Otomatik Kendini İyileştirme (Self-Healing)",
+        paragraphs: [
+          "Instructor kütüphanesinin en büyük gücü max_retries mekanizmasıdır. Eğer Pydantic validatörü bir veri hatası fırlatırsa (örneğin kalemler toplamı fatura genel toplamına eşit çıkmazsa), hata mesajı otomatik olarak bir sonraki prompta eklenir ve modelden yalnızca hatalı alanı düzelterek yeniden üretmesi istenir. Bu döngü sistemin insan müdahalesine gerek kalmadan %99.9 doğrulukla çalışmasını sağlar."
+        ]
+      }
+    ],
+    faqs: [
+      {
+        question: "Structured outputs ilk token süresini (TTFT) yavaşlatır mı?",
+        answer: "OpenAI ve Gemini'nin yerel JSON şema motorlarında şemanın gramer tablosu ilk çağrıda derlenir ve belleğe alınır. İlk istekte küçük bir gecikme (100-200ms) yaşansa da sonraki tüm istekler standart hızda çalışır."
+      },
+      {
+        question: "LangChain veya LlamaIndex yerine doğrudan Instructor kullanmak neden avantajlıdır?",
+        answer: "Instructor, gereksiz karmaşık soyutlamalar yerine doğrudan saf Python ve Pydantic v2 kullanır. Bu sayede hata ayıklaması kolaydır, kütüphane boyutu küçüktür ve performans kaybı yaşanmaz."
       }
     ]
   },
   {
     slug: "prompt-caching-ile-maliyet-dusurme",
-    title: "Prompt Caching Mimarisi: Anthropic ve Gemini API Maliyetlerini %90 Düşürme",
+    title: "Prompt Caching Mimarisi: Anthropic ve Gemini API'lerinde KV-Cache ile Maliyet ve Gecikmeyi %90 Azaltma",
     description: "Tekrarlanan sistem promptları, uzun API dokümantasyonları ve kod tabanı yüklemelerinde Prompt Caching kullanarak faturaları ve gecikmeyi radikal şekilde azaltın.",
     publishedAt: "2026-08-17",
-    modifiedAt: "2026-08-17",
+    modifiedAt: "2026-09-09",
     category: "AI Mimarisi",
-    readingTime: "3 dk",
+    readingTime: "5 dk",
     serviceHref: "/hizmetler/yapay-zeka-otomasyon",
     serviceAnchor: "AI maliyet optimizasyonu ve üretim danışmanlığı",
+    directAnswer: "Prompt Caching; büyük dil modellerine gönderilen statik sistem talimatları, şirket içi bilgi bankaları veya yüzlerce sayfalık kod tabanı gibi tekrarlayan ön eklerin (prefixes) her istekte GPU üzerinde yeniden hesaplanmak yerine önbelleğe alınmış Anahtar-Değer (KV - Key-Value) tensörlerinden okunması mimarisidir. Bu yöntem, önbellekten okunan token maliyetlerini %75 ila %90 oranında düşürürken, ilk token tepki süresini (TTFT) saniyelerden milisaniyelere indirir.",
+    keyTakeaways: [
+      "Transformatör KV-Cache Mantığı: Tekrarlanan girdiler için GPU matris çarpımları atlanır, hafızadaki tensörler anında yeniden kullanılır.",
+      "%90 Finansal Tasarruf: Anthropic'te yazma maliyetine kıyasla okuma maliyeti %90 indirimle faturalandırılır.",
+      "Dramatik Gecikme Düşüşü: 50.000 tokenlık bir bağlamda ilk yanıt süresi 15 saniyeden 800 milisaniyeye kadar geriler.",
+      "Ön Ek Sıralaması (Prefix Ordering): Değişmeyen verilerin (dokümantasyon, kurallar) her zaman en başta, değişken verilerin (kullanıcı sorusu) sonda tutulması kuralı."
+    ],
+    sourcesCited: [
+      { name: "Anthropic Prompt Caching Developer Documentation", url: "https://docs.anthropic.com/claude/docs/prompt-caching" },
+      { name: "Google Cloud Gemini Context Caching Overview", url: "https://cloud.google.com/vertex-ai/generative-ai/docs/context-cache/context-cache-overview" },
+      { name: "Efficient Memory Management for Large Language Model Serving (vLLM PagedAttention)", url: "https://arxiv.org/abs/2309.06180" }
+    ],
     sections: [
       {
-        title: "Prompt Caching Nasıl Çalışır?",
+        title: "1. Transformatör Mimarisinde KV-Cache Mantığı",
         paragraphs: [
-          "Büyük bir kod tabanını (örneğin 50.000 token) her kullanıcı sorusunda baştan iletmek hem maliyetli hem de yavaştır.",
-          "Prompt Caching ile ilk istekte sunucu tarafında işlenen KV-cache bellekte tutulur ve sonraki isteklerde %90 indirimli fiyatla ve neredeyse anında okunur."
+          "Büyük dil modellerinde her bir token işlenirken Self-Attention katmanında Query, Key ve Value (Q, K, V) matrisleri hesaplanır. Girdi metninin ilk 10.000 token'ı her kullanıcı isteğinde aynı kalıyorsa, bu token'ların K ve V tensörleri de matematiksel olarak birbirinin tıpatıp aynısıdır.",
+          "Geleneksel API'ler bu matrisleri her istekte sıfırdan hesaplayarak hem devasa GPU gücü harcar hem de geliştiriciye tam token ücreti yansıtır. Prompt Caching ile sağlayıcı bu tensörleri GPU VRAM'inde veya yüksek hızlı NVMe katmanında saklar ve sonraki eşleşen isteklerde matris hesaplamasını tamamen atlar."
         ]
+      },
+      {
+        title: "2. Anthropic Claude API ile Cache Kontrolü Entegrasyonu",
+        paragraphs: [
+          "Anthropic API'sinde önbelleğe alınacak kritik noktaya cache_control: {'type': 'ephemeral'} belirteci yerleştirilir:"
+        ],
+        codeSnippet: {
+          language: "python",
+          filename: "prompt_caching_client.py",
+          code: `import anthropic
+
+client = anthropic.Anthropic()
+
+# Devasa teknik dokümantasyon veya kod tabanı (50.000+ token)
+with open("massive_api_docs.md", "r", encoding="utf-8") as f:
+    knowledge_base = f.read()
+
+response = client.messages.create(
+    model="claude-3-7-sonnet-20250219",
+    max_tokens=2048,
+    system=[
+        {
+            "type": "text",
+            "text": "Sen kurumsal bir API asistanısın. Aşağıdaki dokümantasyona göre yanıt ver:"
+        },
+        {
+            "type": "text",
+            "text": knowledge_base,
+            "cache_control": {"type": "ephemeral"}  # KV Cache kırılma noktası
+        }
+    ],
+    messages=[
+        {"role": "user", "content": "Ödeme webhook imza doğrulaması nasıl yapılır?"}
+    ]
+)
+
+# Cache okuma istatistiklerini kontrol etme
+usage = response.usage
+print(f"Oluşturulan Cache: {getattr(usage, 'cache_creation_input_tokens', 0)}")
+print(f"Önbellekten Okunan (İndirimli): {getattr(usage, 'cache_read_input_tokens', 0)}")`
+        }
+      },
+      {
+        title: "3. Altın Kural: Ön Ek Sıralaması (Prefix Ordering) ve FinOps",
+        paragraphs: [
+          "Prompt Caching sistemleri katı bir şekilde baştan sona (prefix-matching) çalışır. Eğer 50.000 tokenlık sabit dokümantasyonun hemen önüne dinamik bir zaman damgası eklerseniz, model tüm metni yeni bir veri kabul eder ve önbellek tamamen çöpe gider.",
+          "FinOps açısından başarı sağlamak için sistem promptu ve sabit bilgi bankası en tepeye konulmalı; dinamik değişkenler, kullanıcı geçmişi ve anlık sorular en sona eklenmelidir. Günde 5.000 sorgu alan bir enterprise botunda bu mimari aylık API maliyetini $3.000 seviyesinden $350 seviyesine düşürür."
+        ]
+      }
+    ],
+    faqs: [
+      {
+        question: "Önbellek bellekte ne kadar süre saklanır?",
+        answer: "Anthropic'te geçici (ephemeral) cache süresi genellikle son kullanımdan itibaren 5 dakikadır. Her yeni istekte süre otomatik olarak sıfırlanır ve uzatılır. Gemini'de ise açık TTL (Time to Live) belirlenebilir."
+      },
+      {
+        question: "Prompt caching için gereken minimum token eşiği nedir?",
+        answer: "Anthropic Claude modellerinde minimum 1.024 tokenlık bir ön ek gereklidir. Gemini'de açık bağlam önbellekleme (context caching) için eşik genellikle 32.768 tokendır."
       }
     ]
   },
