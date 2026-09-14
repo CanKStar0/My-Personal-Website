@@ -60,16 +60,16 @@ export function ServiceCalculator({ locale = "tr", defaultCategory }: ServiceCal
       },
       advanced: {
         time: isEn ? "1 - 2 Weeks" : "1 - 2 Hafta",
-        level: isEn ? "Advanced Stealth & Anti-Bot" : "İleri Seviye Stealth & Anti-Bot",
-        tech: ["Playwright Stealth", "Residential Proxy Rotation", "Redis Queue", "MongoDB / Postgres"],
+        level: isEn ? "Resilient Pipeline & Session Mgmt" : "Dayanıklı Veri Hattı & Oturum Yönetimi",
+        tech: ["Playwright Automation", "Smart Proxy & Session Rotation", "Redis Queue", "MongoDB / Postgres"],
         summary: isEn
-          ? "Cloudflare bypass, dynamic JavaScript rendering, high-frequency continuous queues."
-          : "Cloudflare aşımı, dinamik JS rendering, yüksek frekanslı kuyruk yönetimi.",
+          ? "Dynamic JavaScript rendering, protected web sources, continuous high-frequency queues."
+          : "Dinamik JS rendering, korumalı web kaynakları, kesintisiz yüksek frekanslı kuyruk yönetimi.",
       },
       enterprise: {
         time: isEn ? "2 - 4 Weeks" : "2 - 4 Hafta",
         level: isEn ? "High-Scale Multi-Source Pipeline" : "Büyük Ölçekli Çoklu Kaynak Hattı",
-        tech: ["Distributed Cluster", "WAF Bypass", "Redis / Celery", "Real-Time API & Webhooks"],
+        tech: ["Distributed Cluster", "Resilient Scraping Architecture", "Redis / Celery", "Real-Time API & Webhooks"],
         summary: isEn
           ? "Tens of target platforms, real-time change detection, continuous health monitoring."
           : "Onlarca hedef platform, anlık değişiklik tespiti, otomatik alarm mekanizmaları.",

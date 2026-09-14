@@ -115,7 +115,7 @@ export function ServicePage({
               <TrackedLink
                 eventName="service_cta_click"
                 eventParams={{ service: service.slug, location: "service_hero" }}
-                href={isEnglish ? "/en/contact" : "/iletisim"}
+                href={isEnglish ? `/en/contact?service=${service.slug}` : `/iletisim?service=${service.slug}`}
                 className="inline-flex items-center gap-2 rounded-full bg-brand-red px-6 py-3 font-semibold text-white transition-colors hover:bg-red-700"
               >
                 {labels.discuss} <ArrowRight className="h-4 w-4" />
@@ -232,7 +232,7 @@ export function ServicePage({
           <TrackedLink
             eventName="service_cta_click"
             eventParams={{ service: service.slug, location: "service_footer" }}
-            href={isEnglish ? "/en/contact" : "/iletisim"}
+            href={isEnglish ? `/en/contact?service=${service.slug}` : `/iletisim?service=${service.slug}`}
             className="mt-8 inline-flex items-center gap-2 rounded-full bg-foreground px-7 py-3.5 font-semibold text-background"
           >
             {labels.contact} <ArrowRight className="h-4 w-4" />

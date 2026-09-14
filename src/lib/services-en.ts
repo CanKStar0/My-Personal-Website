@@ -21,8 +21,8 @@ export const servicesEn: Service[] = [
     project: { title: "News Portal", description: "Explore a real product combining autonomous news collection, caching, data cleaning, and delivery layers.", href: "/en/projects/haber-portali", anchor: "Explore the News Portal web scraping architecture" },
     faqs: [
       {
-        question: "Can your web scraping systems handle Cloudflare or anti-bot protections?",
-        answer: "Yes. Using stealth browser automation (Playwright/Puppeteer), residential proxy rotation, realistic browser fingerprint emulation, and human-like request patterns, systems are designed to bypass modern anti-bot hurdles sustainably.",
+        question: "Can your web scraping systems reliably extract data from protected and dynamic corporate websites?",
+        answer: "Yes. By leveraging Playwright browser automation, intelligent session and proxy orchestration, adaptive rate-limiting, and resilient error recovery, pipelines maintain consistent, uninterrupted data flow even from complex, guarded web sources.",
       },
       {
         question: "In what format and where is the collected data delivered?",
@@ -170,6 +170,132 @@ export const servicesEn: Service[] = [
       },
     ],
   },
+  {
+    slug: "rakip-fiyat-takip-sistemi",
+    shortTitle: "Competitor Price Tracking",
+    title: "Automated Competitor Price & Stock Tracking Systems",
+    metadataTitle: "Competitor Price Tracking Software & Stock Alerts",
+    description: "24/7 automated competitor price, stock, and discount monitoring for e-commerce and marketplace merchants. Instant WhatsApp/Email alerts and margin protection.",
+    eyebrow: "E-Commerce Data Automation",
+    intro: "Stop losing hours and sales by manually checking competitor prices. I develop custom price monitoring architectures that periodically crawl targeted e-commerce platforms and marketplaces, alerting you immediately on price drops and protecting your dynamic profit margins.",
+    sections: [
+      {
+        title: "The hidden cost of manual price checks",
+        body: "Manually tracking hundreds of SKU prices across multiple competitors is unsustainable. Discovering a competitor's price drop hours or days later results in lost Buybox opportunities and diminished revenue.",
+      },
+      {
+        title: "Which platforms can be monitored?",
+        body: "All of your digital target channels can be crawled and unified in a single dashboard.",
+        items: [
+          "Major marketplaces (Amazon, Trendyol, Hepsiburada)",
+          "Price comparison engines and aggregator portals",
+          "Direct competitor e-commerce websites",
+          "Authorized distributor and wholesale B2B portals",
+        ],
+      },
+      {
+        title: "Instant price alerts and dispatch channels",
+        body: "Get notified the moment a competitor cuts prices or runs out of stock. Alerts are dispatched via Telegram bots, WhatsApp API notifications, priority emails, or webhooks directly into your internal systems.",
+      },
+      {
+        title: "Data delivery and integration options",
+        body: "Historical and real-time pricing feeds can be delivered to Google Sheets, live Excel workbooks, REST APIs, or connected directly to your WooCommerce/Shopify store for automated repricing.",
+      },
+      {
+        title: "Resilient and uninterrupted architecture",
+        body: "Equipped with intelligent session orchestration, distributed proxy rotation, and DOM change detection, the pipeline operates continuously without breaking even when source layouts evolve.",
+      },
+    ],
+    technologies: ["Node.js", "Playwright", "PostgreSQL", "Redis", "Telegram/WhatsApp API", "REST API", "Google Sheets API"],
+    relatedServices: ["web-scraping", "e-ticaret-urun-veri-aktarimi", "api-gelistirme"],
+    project: {
+      title: "Akakce Price Tracker & Scraper Engine",
+      description: "Explore the open-source e-commerce price history and product data scraper engine built for high-frequency price tracking.",
+      href: "/en/projects/haber-portali",
+      anchor: "Review the price tracking and scraping architecture",
+    },
+    faqs: [
+      {
+        question: "Will the system break if target sites change their layout?",
+        answer: "Every system includes anomaly detection and health monitoring. If selector or DOM changes occur, automated alerts trigger rapid adaptation without data pipeline blackout.",
+      },
+      {
+        question: "How quickly are price drop notifications delivered?",
+        answer: "Depending on your requirements, crawling runs on minutely, hourly, or periodic cycles. Alerts are dispatched via WhatsApp or Telegram within seconds of price shift detection.",
+      },
+      {
+        question: "Can this automatically update prices in our own store?",
+        answer: "Yes. Using predefined business rules (e.g., 'price \$1 below the lowest competitor but never below \$50 threshold'), automated repricing can synchronize with your WooCommerce, Shopify, or custom ERP via REST API.",
+      },
+      {
+        question: "Is automated competitor price tracking compliant?",
+        answer: "Yes. Collecting publicly visible catalog and pricing information is standard market research practice and is conducted responsibly without overloading source infrastructure.",
+      },
+    ],
+  },
+  {
+    slug: "e-ticaret-urun-veri-aktarimi",
+    shortTitle: "Product Data Extraction",
+    title: "E-Commerce Bulk Product Extraction & Catalog Migration",
+    metadataTitle: "E-Commerce Product Scraping & WooCommerce / Shopify Sync",
+    description: "Extract tens of thousands of products with variants, high-res images, descriptions, and stock from suppliers and migrate them directly to WooCommerce or Shopify.",
+    eyebrow: "Catalog & Integration Solutions",
+    intro: "Does your supplier lack an XML feed, or is the available data incomplete and messy? I build custom extraction pipelines that collect products, category hierarchies, option variants, and high-resolution images from source sites, cleanly importing them into your online store with ongoing sync.",
+    sections: [
+      {
+        title: "Eliminate manual product entry",
+        body: "Manually adding thousands of catalog items requires weeks of tedious effort and high overhead. Automated migration engines populate your entire store accurately within hours.",
+      },
+      {
+        title: "Variant, media, and description standardization",
+        body: "Complex variants like size, color, and technical specifications are mapped into proper hierarchies. Product images are optimized and hosted on your infrastructure, while HTML descriptions are cleaned for SEO.",
+      },
+      {
+        title: "Supported e-commerce platforms",
+        body: "Direct integrations are built for all leading e-commerce engines.",
+        items: [
+          "WooCommerce (WordPress) REST API & WP-CLI bulk imports",
+          "Shopify REST & GraphQL catalog sync",
+          "Custom Headless Next.js e-commerce databases",
+          "Structured XML/CSV feeds for marketplace aggregators",
+        ],
+      },
+      {
+        title: "Periodic stock and price synchronization",
+        body: "Migration is not just a one-time event; background worker services continuously monitor source changes to ensure out-of-stock items and price increases are mirrored on your store.",
+      },
+      {
+        title: "Dynamic profit margins and currency conversion",
+        body: "Automatic markup formulas, VAT calculations, and live currency conversions are applied to supplier cost figures before pushing final retail prices to your storefront.",
+      },
+    ],
+    technologies: ["Node.js", "Python", "WooCommerce REST API", "Shopify API", "PostgreSQL", "Playwright", "Sharp (Image Processing)"],
+    relatedServices: ["rakip-fiyat-takip-sistemi", "web-scraping", "api-gelistirme"],
+    project: {
+      title: "Automated Content & News Pipeline",
+      description: "High-volume multi-source data ingestion, normalization, and structured delivery pipeline architecture.",
+      href: "/en/projects/haber-portali",
+      anchor: "Explore the large-scale data ingestion architecture",
+    },
+    faqs: [
+      {
+        question: "Can products be extracted from suppliers that do not provide an XML feed?",
+        answer: "Yes. Having a public website or B2B dealer portal is sufficient. Automation tools crawl the catalog and convert raw pages into clean, structured product data.",
+      },
+      {
+        question: "Are product images downloaded and optimized locally?",
+        answer: "Yes. Rather than hotlinking to external hosts, images are downloaded, converted to WebP/AVIF, resized, and uploaded to your media library for top page speed.",
+      },
+      {
+        question: "Will the import overwrite existing products in our store?",
+        answer: "No. The system validates SKUs and barcodes. Existing products receive updated prices and stock levels without altering your custom copy or SEO meta tags.",
+      },
+      {
+        question: "How long does a full catalog migration take?",
+        answer: "Depending on product count and image assets, a 10,000-item catalog is typically parsed, processed, and uploaded within just a few hours.",
+      },
+    ],
+  },
 ];
 
 const routeSlugToServiceSlug: Record<string, string> = {
@@ -178,6 +304,8 @@ const routeSlugToServiceSlug: Record<string, string> = {
   "ai-automation": "yapay-zeka-otomasyon",
   "api-development": "api-gelistirme",
   "nextjs-development": "nextjs-gelistirme",
+  "competitor-price-tracking": "rakip-fiyat-takip-sistemi",
+  "ecommerce-product-data-extraction": "e-ticaret-urun-veri-aktarimi",
 };
 
 export const englishServiceByRouteSlug = Object.fromEntries(

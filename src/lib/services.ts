@@ -71,8 +71,8 @@ export const services: Service[] = [
     },
     faqs: [
       {
-        question: "Web scraping sistemleri Cloudflare veya anti-bot korumalı sitelerde çalışır mı?",
-        answer: "Evet, Playwright/Puppeteer tabanlı stealth tarayıcı otomasyonları, IP ve residential proxy rotasyonu ve insan davranışlarını taklit eden istek mimarisi ile anti-bot mekanizmalarını aşacak dayanıklı botlar kurulur.",
+        question: "Web scraping sistemleri dinamik ve korumalı kaynaklarda kesintisiz çalışır mı?",
+        answer: "Evet; Playwright tabanlı tarayıcı otomasyonu, akıllı oturum ve proxy yönetimi, rate-limit dengelemesi ve otomatik hata kurtarma katmanları sayesinde dinamik koruma mekanizmalarına sahip web kaynaklarından sürdürülebilir ve kesintisiz veri akışı sağlanır.",
       },
       {
         question: "Çekilen veriler hangi formatta ve nereye teslim edilir?",
@@ -237,6 +237,132 @@ export const services: Service[] = [
       {
         question: "Çok dilli (i18n) Next.js yapılandırması nasıl çalışıyor?",
         answer: "URL tabanlı dinamik rota yönetimi, hreflang etiketleri, eşleştirilmiş meta etiketleri ve çeviri paritesi ile uluslararası SEO kurallarına %100 uyumlu çok dilli altyapı kurulur.",
+      },
+    ],
+  },
+  {
+    slug: "rakip-fiyat-takip-sistemi",
+    shortTitle: "Rakip Fiyat Takibi",
+    title: "Otomatik Rakip Fiyat ve Stok Takip Sistemi",
+    metadataTitle: "Rakip Fiyat Takip Sistemi ve Fiyat Alarm Yazılımı",
+    description: "E-ticaret ve pazaryeri satıcıları için 7/24 otomatik rakip fiyat, stok ve indirim takibi. Fiyat kırılmalarında anında WhatsApp/E-posta alarmı ve kâr marjı koruma.",
+    eyebrow: "E-Ticaret Veri Otomasyonu",
+    intro: "Rakiplerinizin fiyat hamlelerini manuel takip ederek saatlerinizi ve satışlarınızı kaybetmeyin. Hedef pazar yerlerini ve rakip e-ticaret sitelerini periyodik tarayan, fiyat değişikliklerini anında bildiren ve dinamik kâr marjınızı koruyan özel fiyat takip altyapıları kuruyorum.",
+    sections: [
+      {
+        title: "Manuel fiyat takibinin maliyeti nedir?",
+        body: "Günde yüzlerce ürünün rakip fiyatlarını elle kontrol etmek sürdürülemez. Rakipler gece veya hafta sonu fiyat kırdığında saatlerce geç fark etmek, Buybox kayıplarına ve ciro erimesine yol açar.",
+      },
+      {
+        title: "Hangi platformlardan fiyat ve stok çekilebilir?",
+        body: "Hedeflediğiniz tüm dijital satış kanalları taranabilir ve tek bir merkezde konsolide edilir.",
+        items: [
+          "Trendyol, Hepsiburada, Amazon TR pazaryerleri",
+          "Akakçe, Cimri gibi fiyat karşılaştırma motorları",
+          "Rakiplerinizin doğrudan kendi e-ticaret siteleri",
+          "Yetkili satıcı ve toptancı B2B bayi portalları",
+        ],
+      },
+      {
+        title: "Anlık fiyat alarmları ve bildirim mekanizmaları",
+        body: "Rakibiniz fiyatı düşürdüğünde veya stoku tükendiğinde beklemeden haberdar olun. Telegram botu, WhatsApp API bildirimleri, acil e-posta alarmları veya kendi sisteminize iletilen webhook çağrıları kurulur.",
+      },
+      {
+        title: "Veri teslimi ve entegrasyon seçenekleri",
+        body: "Toplanan fiyat geçmişi ve anlık veriler; Google Sheets, canlı Excel, REST API veya doğrudan WooCommerce/Shopify mağazanıza bağlanarak otomatik fiyat güncellemesi (repricing) sağlayabilir.",
+      },
+      {
+        title: "Kesintisiz çalışma ve dayanıklı mimari",
+        body: "Akıllı oturum yönetimi, dağıtık proxy dengelemesi ve DOM değişiklik tespit altyapısıyla sistem kaynak güncellense bile aksamadan çalışmaya devam eder.",
+      },
+    ],
+    technologies: ["Node.js", "Playwright", "PostgreSQL", "Redis", "Telegram/WhatsApp API", "REST API", "Google Sheets API"],
+    relatedServices: ["web-scraping", "e-ticaret-urun-veri-aktarimi", "api-gelistirme"],
+    project: {
+      title: "Akakçe Fiyat Takip & Scraper Motoru",
+      description: "E-ticaret fiyat geçmişi ve ürün verilerini yüksek frekansla toplayan açık kaynaklı fiyat takip mimarisini inceleyin.",
+      href: "/projeler/haber-portali",
+      anchor: "Fiyat takip ve scraping mimarisi detaylarını inceleyin",
+    },
+    faqs: [
+      {
+        question: "Rakip web siteleri yapısını değiştirdiğinde sistem bozulur mu?",
+        answer: "Geliştirdiğim sistem otomatik anomali tespiti ve loglama katmanıyla donatılır. Seçici (selector) veya DOM değişikliklerinde anında alarm üretilerek sistem kesintiye uğramadan güncellenir.",
+      },
+      {
+        question: "Fiyat bildirimleri ne kadar hızlı gelir?",
+        answer: "İhtiyacınıza göre dakikalık, saatlik veya belirli periyotlarda tarama yapılır. Fiyat eşiği aşıldığında veya değişim tespit edildiğinde saniyeler içinde WhatsApp veya Telegram mesajı iletilir.",
+      },
+      {
+        question: "Kendi e-ticaret panelimizdeki fiyatları otomatik güncelleyebilir mi?",
+        answer: "Evet, belirlediğiniz kâr marjı kurallarına göre (örneğin 'Rakibin 2 TL altına in ama 250 TL'nin altına düşme') WooCommerce, Shopify veya özel ERP sisteminize REST API ile dinamik fiyatlama bağlanabilir.",
+      },
+      {
+        question: "Fiyat takibi yapmak hukuki açıdan uygun mudur?",
+        answer: "Kamuya açık olan fiyat ve stok verilerinin toplanması ve analiz edilmesi genel piyasa araştırması kapsamında yasal standartlara uygun biçimde, hedef sitelerin sunucu yükünü zorlamayan kurumsal kurallarla yürütülür.",
+      },
+    ],
+  },
+  {
+    slug: "e-ticaret-urun-veri-aktarimi",
+    shortTitle: "Ürün Veri Aktarımı",
+    title: "E-Ticaret Toplu Ürün ve Katalog Veri Aktarımı",
+    metadataTitle: "E-Ticaret Ürün Çekme ve WooCommerce / Shopify Aktarımı",
+    description: "Tedarikçi ve rakip sitelerden on binlerce ürünü varyantları, görselleri, açıklamaları ve stoklarıyla toplayıp WooCommerce, Shopify veya özel sisteminize hatasız aktarma.",
+    eyebrow: "Katalog & Entegrasyon Çözümleri",
+    intro: "Tedarikçiniz XML vermiyor mu ya da mevcut veri kaynağınız eksik ve biçimsiz mi? Kaynak sitelerdeki ürünleri, kategorileri, varyant seçeneklerini ve yüksek çözünürlüklü görselleri temizleyerek mağazanıza eksiksiz aktarıyor ve stok senkronizasyonu kuruyorum.",
+    sections: [
+      {
+        title: "Manuel ürün girişine son verin",
+        body: "Binlerce ürünü elle sitenize eklemek haftalarca iş gücü ve yüksek personel maliyeti demektir. Otomatik aktarım motorları ile tüm katalog dakikalar içinde mağazanıza yüklenir.",
+      },
+      {
+        title: "Varyant, görsel ve açıklama standardizasyonu",
+        body: "Renk, beden, model gibi karmaşık varyant yapıları doğru hiyerarşiyle eşleştirilir. Görseller optimize edilerek kendi sunucunuza aktarılır, HTML açıklamaları SEO uyumlu şekilde temizlenir.",
+      },
+      {
+        title: "Desteklenen e-ticaret altyapıları",
+        body: "Mağazanız hangi teknolojiyi kullanırsa kullansın doğrudan entegrasyon sağlanır.",
+        items: [
+          "WooCommerce (WordPress) REST API & CLI aktarımı",
+          "Shopify REST & GraphQL katalog aktarımı",
+          "Ticimax, İdeaSoft, İkas veya özel yazılım veri tabanları",
+          "Pazaryeri entegratörleri için özel XML/CSV çıktısı",
+        ],
+      },
+      {
+        title: "Periyodik stok ve fiyat senkronizasyonu",
+        body: "Yalnızca bir defalık ürün yüklemek yetmez; kaynak sitedeki stok tükenmelerini ve fiyat artışlarını düzenli aralıklarla kontrol eden ve mağazanızı güncel tutan arka plan servisleri kurulur.",
+      },
+      {
+        title: "Kâr marjı ve kur dönüştürme kuralları",
+        body: "Tedarikçiden gelen alış fiyatlarının üzerine otomatik kâr marjı, KDV oranı veya döviz kuru formülleri uygulanarak satış fiyatları otomatik hesaplanır.",
+      },
+    ],
+    technologies: ["Node.js", "Python", "WooCommerce REST API", "Shopify API", "PostgreSQL", "Playwright", "Sharp (Image Processing)"],
+    relatedServices: ["rakip-fiyat-takip-sistemi", "web-scraping", "api-gelistirme"],
+    project: {
+      title: "Otomatik Haber & İçerik Portalı",
+      description: "Çoklu kaynaktan yüksek hacimli veriyi ayrıştırıp yapılandırılmış olarak sunan içerik ve veri hattı mimarisi.",
+      href: "/projeler/haber-portali",
+      anchor: "Büyük ölçekli veri toplama ve aktarma mimarisini inceleyin",
+    },
+    faqs: [
+      {
+        question: "XML feed vermeyen tedarikçilerden ürün çekilebilir mi?",
+        answer: "Evet, tedarikçinizin yalnızca web sitesi veya B2B bayilik ekranı olması yeterlidir. Otomasyon araçlarıyla sayfalar taranarak tüm ürün ve stok verileri yapılandırılmış kataloğa dönüştürülür.",
+      },
+      {
+        question: "Ürün resimleri kendi sunucumuza optimize edilerek indirilir mi?",
+        answer: "Evet, harici link vermek yerine tüm ürün görselleri indirilir, WebP/AVIF formatına optimize edilir ve kendi medya kütüphanenize yüklenerek sitenizin hızlı açılması sağlanır.",
+      },
+      {
+        question: "Mevcut ürünlerimizin veya kategorilerimizin üzerine yazılır mı?",
+        answer: "Hayır. Sistem SKU (Stok Kodu) veya barkod kontrolüyle çalışır. Mağazanızda zaten var olan ürünlerin yalnızca stok ve fiyatı güncellenir, açıklama ve görselleriniz korunur.",
+      },
+      {
+        question: "Aktarım ne kadar sürer?",
+        answer: "Ürün hacmine ve görsel sayısına bağlı olarak 10.000 ürünlük bir katalog genellikle birkaç saat içinde temizlenip mağazanıza eksiksiz yüklenir.",
       },
     ],
   },

@@ -51,6 +51,86 @@ const nextConfig: NextConfig = {
         destination: "https://canpolatkaya.com/:path*",
         permanent: true,
       },
+      {
+        source: "/rakip-fiyat-takip-sistemi",
+        destination: "/hizmetler/rakip-fiyat-takip-sistemi",
+        permanent: true,
+      },
+      {
+        source: "/e-ticaret-fiyat-takibi",
+        destination: "/hizmetler/rakip-fiyat-takip-sistemi",
+        permanent: true,
+      },
+      {
+        source: "/e-ticaret-urun-veri-aktarimi",
+        destination: "/hizmetler/e-ticaret-urun-veri-aktarimi",
+        permanent: true,
+      },
+      {
+        source: "/urun-verisi-cekme",
+        destination: "/hizmetler/e-ticaret-urun-veri-aktarimi",
+        permanent: true,
+      },
+      {
+        source: "/woocommerce-veri-aktarimi",
+        destination: "/hizmetler/e-ticaret-urun-veri-aktarimi",
+        permanent: true,
+      },
+      {
+        source: "/web-scraping-hizmeti",
+        destination: "/hizmetler/web-scraping",
+        permanent: true,
+      },
+      {
+        source: "/web-scraping-api",
+        destination: "/hizmetler/web-scraping",
+        permanent: true,
+      },
+      {
+        source: "/veri-toplama-hizmeti",
+        destination: "/hizmetler/web-scraping",
+        permanent: true,
+      },
+      {
+        source: "/en/competitor-price-tracking",
+        destination: "/en/services/competitor-price-tracking",
+        permanent: true,
+      },
+      {
+        source: "/en/ecommerce-price-tracking",
+        destination: "/en/services/competitor-price-tracking",
+        permanent: true,
+      },
+      {
+        source: "/en/ecommerce-product-data-extraction",
+        destination: "/en/services/ecommerce-product-data-extraction",
+        permanent: true,
+      },
+      {
+        source: "/en/product-data-extraction",
+        destination: "/en/services/ecommerce-product-data-extraction",
+        permanent: true,
+      },
+      {
+        source: "/en/woocommerce-data-migration",
+        destination: "/en/services/ecommerce-product-data-extraction",
+        permanent: true,
+      },
+      {
+        source: "/en/web-scraping-service",
+        destination: "/en/services/web-scraping",
+        permanent: true,
+      },
+      {
+        source: "/en/web-scraping-api",
+        destination: "/en/services/web-scraping",
+        permanent: true,
+      },
+      {
+        source: "/en/data-collection-service",
+        destination: "/en/services/web-scraping",
+        permanent: true,
+      },
     ];
   },
   images: {

@@ -10,6 +10,8 @@ const routePairs = [
   ["/hizmetler/yapay-zeka-otomasyon", "/en/services/ai-automation"],
   ["/hizmetler/api-gelistirme", "/en/services/api-development"],
   ["/hizmetler/nextjs-gelistirme", "/en/services/nextjs-development"],
+  ["/hizmetler/rakip-fiyat-takip-sistemi", "/en/services/competitor-price-tracking"],
+  ["/hizmetler/e-ticaret-urun-veri-aktarimi", "/en/services/ecommerce-product-data-extraction"],
   ["/projeler", "/en/projects"],
   ["/projeler/mybusinessboss", "/en/projects/mybusinessboss"],
   ["/projeler/free-api", "/en/projects/free-api"],
