@@ -15,310 +15,104 @@ import {
   LayoutDashboard,
 } from "lucide-react";
 import type { Locale } from "@/lib/translations";
+import {
+  getServiceConfig,
+  deliveryMeta,
+  type ComplexityId,
+  type DeliveryId,
+} from "@/lib/calculator-configs";
 
 interface ServiceCalculatorProps {
   locale?: Locale;
+  serviceSlug?: string;
   defaultCategory?: string;
 }
 
-type CategoryId = "scraping" | "ai" | "api" | "fullstack";
-type ComplexityId = "standard" | "advanced" | "enterprise";
-type DeliveryId = "database" | "api" | "dashboard";
-
-export function ServiceCalculator({ locale = "tr", defaultCategory }: ServiceCalculatorProps) {
+export function ServiceCalculator({
+  locale = "tr",
+  serviceSlug,
+  defaultCategory,
+}: ServiceCalculatorProps) {
   const isEn = locale === "en";
 
-  const categories: { id: CategoryId; label: string; sub: string; icon: typeof Layers }[] = [
-    {
-      id: "scraping",
-      label: isEn ? "Web Scraping & Data Pipeline" : "Web Scraping & Veri Toplama",
-      sub: isEn ? "Dynamic extraction, anti-bot & queues" : "Dinamik çekim, anti-bot & kuyruk",
-      icon: Layers,
-    },
-    {
-      id: "ai",
-      label: isEn ? "AI Automation & RAG Workflows" : "Yapay Zekâ & AI Otomasyon",
-      sub: isEn ? "Vector search, LLM agents & guards" : "Vektör arama, LLM ajanları & denetim",
-      icon: Sparkles,
-    },
-    {
-      id: "api",
-      label: isEn ? "Custom API & Backend" : "Özel API & Backend Mimarisi",
-      sub: isEn ? "High-throughput, auth & microservices" : "Yüksek trafik, yetki & mikroservis",
-      icon: Cpu,
-    },
-    {
-      id: "fullstack",
-      label: isEn ? "Next.js Web App / SaaS" : "Next.js Web Uygulaması / SaaS",
-      sub: isEn ? "App Router, SSR, billing & portals" : "App Router, SSR, ödeme & paneller",
-      icon: ShieldCheck,
-    },
-  ];
+  const config = getServiceConfig(serviceSlug || defaultCategory);
+
+  const [selectedMethodId, setSelectedMethodId] = useState<string>(
+    config.methods[0]?.id || "static-api"
+  );
+  const [complexity, setComplexity] = useState<ComplexityId>("standard");
+  const [delivery, setDelivery] = useState<DeliveryId>("database");
+
+  // Keep method valid if service changes
+  const activeMethod =
+    config.methods.find((m) => m.id === selectedMethodId) || config.methods[0];
+
+  const currentDeliveryMeta = deliveryMeta[delivery];
+
+  // Calculate dynamic outputs
+  const time = isEn
+    ? activeMethod.timelines[complexity][delivery].en
+    : activeMethod.timelines[complexity][delivery].tr;
+
+  const levelBadge = isEn
+    ? `${activeMethod.levelEN} + ${currentDeliveryMeta.labelEN}`
+    : `${activeMethod.levelTR} + ${currentDeliveryMeta.labelTR}`;
+
+  const summary = isEn
+    ? `${activeMethod.summaryEN} Integrated with ${currentDeliveryMeta.descEN}`
+    : `${activeMethod.summaryTR} ${currentDeliveryMeta.descTR}`;
+
+  const techStack = Array.from(
+    new Set([...activeMethod.coreTech, ...currentDeliveryMeta.tech])
+  );
+
+  const contactUrl = isEn
+    ? `/en/contact?service=${config.slug}&method=${activeMethod.id}&complexity=${complexity}&delivery=${delivery}`
+    : `/iletisim?service=${config.slug}&method=${activeMethod.id}&complexity=${complexity}&delivery=${delivery}`;
+
+  const methodIcons = [Layers, Cpu, ShieldCheck, Sparkles];
 
   const complexities: { id: ComplexityId; label: string; sub: string }[] = [
     {
       id: "standard",
       label: isEn ? "MVP / Standard" : "MVP / Standart",
-      sub: isEn ? "Rapid Launch & Core Specs" : "Hızlı Çekirdek Başlangıç",
+      sub: isEn ? "Core Fast Scope" : "Hızlı Çekirdek Kapsam",
     },
     {
       id: "advanced",
       label: isEn ? "Advanced" : "İleri Seviye",
-      sub: isEn ? "High Resilience & Queues" : "Yüksek Dayanıklılık & Kuyruk",
+      sub: isEn ? "Resilient & Queues" : "Gelişmiş & Dayanıklı",
     },
     {
       id: "enterprise",
       label: isEn ? "Enterprise" : "Kurumsal",
-      sub: isEn ? "Distributed & High Scale" : "Büyük Ölçek & Dağıtık Yapı",
+      sub: isEn ? "High Scale & Cluster" : "Büyük Ölçek & Dağıtık",
     },
   ];
 
   const deliveries: { id: DeliveryId; label: string; sub: string; icon: typeof Database }[] = [
     {
       id: "database",
-      label: isEn ? "Database & Queue" : "Veritabanı & Kuyruk",
-      sub: isEn ? "PostgreSQL / Redis / Pipeline" : "Postgres / Redis / Pipeline",
+      label: isEn ? deliveryMeta.database.labelEN : deliveryMeta.database.labelTR,
+      sub: isEn ? deliveryMeta.database.subEN : deliveryMeta.database.subTR,
       icon: Database,
     },
     {
       id: "api",
-      label: isEn ? "REST API & Webhooks" : "REST API & Webhook",
-      sub: isEn ? "Secure Endpoints & Events" : "Güvenli Uç Noktalar & Event",
+      label: isEn ? deliveryMeta.api.labelEN : deliveryMeta.api.labelTR,
+      sub: isEn ? deliveryMeta.api.subEN : deliveryMeta.api.subTR,
       icon: Network,
     },
     {
       id: "dashboard",
-      label: isEn ? "Next.js Admin UI" : "Next.js Yönetim Paneli",
-      sub: isEn ? "Control Console & Telemetry" : "Modern Arayüz & Canlı Panel",
+      label: isEn ? deliveryMeta.dashboard.labelEN : deliveryMeta.dashboard.labelTR,
+      sub: isEn ? deliveryMeta.dashboard.subEN : deliveryMeta.dashboard.subTR,
       icon: LayoutDashboard,
     },
   ];
 
-  const [category, setCategory] = useState<CategoryId>(() => {
-    const d = defaultCategory?.toLowerCase() || "";
-    if (d.includes("scraping") || d.includes("fiyat") || d.includes("aktarim")) return "scraping";
-    if (d.includes("zeka") || d.includes("ai")) return "ai";
-    if (d.includes("api")) return "api";
-    if (d.includes("nextjs") || d.includes("yazilim")) return "fullstack";
-    return "scraping";
-  });
-
-  const [complexity, setComplexity] = useState<ComplexityId>("advanced");
-  const [delivery, setDelivery] = useState<DeliveryId>("api");
-
-  // Dynamic calculation reacting to Category + Complexity + Delivery Target
-  const calculateEstimate = (cat: CategoryId, comp: ComplexityId, del: DeliveryId) => {
-    const deliveryMeta = {
-      database: {
-        labelTR: "Veritabanı Hattı",
-        labelEN: "Database Pipeline",
-        tech: ["PostgreSQL / MongoDB", "Redis Queue"],
-        descTR: "veritabanı katmanına doğrudan normalize aktarım ve asenkron kuyruk yönetimi.",
-        descEN: "direct normalized database ingestion and asynchronous queue management.",
-      },
-      api: {
-        labelTR: "REST API & Webhook",
-        labelEN: "REST API & Webhooks",
-        tech: ["FastAPI / Express API", "Webhook Dispatcher", "API Key Auth"],
-        descTR: "güvenli REST uç noktaları, API anahtarı yetkilendirmesi ve anlık olay webhook entegrasyonu.",
-        descEN: "secure REST endpoints, API authentication, and real-time event webhooks.",
-      },
-      dashboard: {
-        labelTR: "Yönetim Paneli",
-        labelEN: "Admin UI Console",
-        tech: ["Next.js 16 App Router", "Tailwind CSS v4", "Admin Control UI"],
-        descTR: "özel Next.js yönetim paneli, operasyonel durum izleme ve yönetim kontrolleri.",
-        descEN: "custom Next.js administrative dashboard with operational telemetry and controls.",
-      },
-    };
-
-    const dInfo = deliveryMeta[del];
-
-    // Timeline calculation based on 3-axis matrix
-    const timelineMatrix: Record<CategoryId, Record<ComplexityId, Record<DeliveryId, { tr: string; en: string }>>> = {
-      scraping: {
-        standard: {
-          database: { tr: "3 - 5 Gün", en: "3 - 5 Days" },
-          api: { tr: "5 - 7 Gün", en: "5 - 7 Days" },
-          dashboard: { tr: "1 - 2 Hafta", en: "1 - 2 Weeks" },
-        },
-        advanced: {
-          database: { tr: "1 - 2 Hafta", en: "1 - 2 Weeks" },
-          api: { tr: "2 Hafta", en: "2 Weeks" },
-          dashboard: { tr: "2 - 3 Hafta", en: "2 - 3 Weeks" },
-        },
-        enterprise: {
-          database: { tr: "2 - 3 Hafta", en: "2 - 3 Weeks" },
-          api: { tr: "3 - 4 Hafta", en: "3 - 4 Weeks" },
-          dashboard: { tr: "4 - 5 Hafta", en: "4 - 5 Weeks" },
-        },
-      },
-      ai: {
-        standard: {
-          database: { tr: "1 Hafta", en: "1 Week" },
-          api: { tr: "1 - 2 Hafta", en: "1 - 2 Weeks" },
-          dashboard: { tr: "2 Hafta", en: "2 Weeks" },
-        },
-        advanced: {
-          database: { tr: "2 Hafta", en: "2 Weeks" },
-          api: { tr: "2 - 3 Hafta", en: "2 - 3 Weeks" },
-          dashboard: { tr: "3 - 4 Hafta", en: "3 - 4 Weeks" },
-        },
-        enterprise: {
-          database: { tr: "3 - 4 Hafta", en: "3 - 4 Weeks" },
-          api: { tr: "4 - 5 Hafta", en: "4 - 5 Weeks" },
-          dashboard: { tr: "5 - 7 Hafta", en: "5 - 7 Weeks" },
-        },
-      },
-      api: {
-        standard: {
-          database: { tr: "4 - 6 Gün", en: "4 - 6 Days" },
-          api: { tr: "1 Hafta", en: "1 Week" },
-          dashboard: { tr: "1.5 - 2 Hafta", en: "1.5 - 2 Weeks" },
-        },
-        advanced: {
-          database: { tr: "1.5 - 2 Hafta", en: "1.5 - 2 Weeks" },
-          api: { tr: "2 - 3 Hafta", en: "2 - 3 Weeks" },
-          dashboard: { tr: "3 - 4 Hafta", en: "3 - 4 Weeks" },
-        },
-        enterprise: {
-          database: { tr: "3 Hafta", en: "3 Weeks" },
-          api: { tr: "3 - 5 Hafta", en: "3 - 5 Weeks" },
-          dashboard: { tr: "5 - 7 Hafta", en: "5 - 7 Weeks" },
-        },
-      },
-      fullstack: {
-        standard: {
-          database: { tr: "1 - 2 Hafta", en: "1 - 2 Weeks" },
-          api: { tr: "2 Hafta", en: "2 Weeks" },
-          dashboard: { tr: "2 - 3 Hafta", en: "2 - 3 Weeks" },
-        },
-        advanced: {
-          database: { tr: "2 - 3 Hafta", en: "2 - 3 Weeks" },
-          api: { tr: "3 Hafta", en: "3 Weeks" },
-          dashboard: { tr: "3 - 5 Hafta", en: "3 - 5 Weeks" },
-        },
-        enterprise: {
-          database: { tr: "4 - 5 Hafta", en: "4 - 5 Weeks" },
-          api: { tr: "5 - 6 Hafta", en: "5 - 6 Weeks" },
-          dashboard: { tr: "6 - 8 Hafta", en: "6 - 8 Weeks" },
-        },
-      },
-    };
-
-    const categoryBase = {
-      scraping: {
-        standard: {
-          levelTR: `Standart Veri Çekimi + ${dInfo.labelTR}`,
-          levelEN: `Standard Extraction + ${dInfo.labelEN}`,
-          coreTech: ["Playwright / Cheerio", "Node.js Automation", "Data Normalization"],
-          summaryTR: `Statik veya hafif dinamik web kaynaklarından zamanlanmış veri toplama ve ${dInfo.descTR}`,
-          summaryEN: `Scheduled data collection from static or lightly dynamic web sources with ${dInfo.descEN}`,
-        },
-        advanced: {
-          levelTR: `Dayanıklı Veri Hattı + ${dInfo.labelTR}`,
-          levelEN: `Resilient Pipeline + ${dInfo.labelEN}`,
-          coreTech: ["Playwright Automation", "Smart Proxy & Rotation", "DOM Change Detection"],
-          summaryTR: `Dinamik JavaScript rendering, korumalı web kaynakları için akıllı proxy rotasyonu ve ${dInfo.descTR}`,
-          summaryEN: `Dynamic JavaScript rendering, anti-bot smart proxy rotation for protected targets, and ${dInfo.descEN}`,
-        },
-        enterprise: {
-          levelTR: `Dağıtık Veri Kümesi + ${dInfo.labelTR}`,
-          levelEN: `Distributed Cluster + ${dInfo.labelEN}`,
-          coreTech: ["Distributed Worker Cluster", "Resilient Scraping Architecture", "Real-Time Health Monitoring"],
-          summaryTR: `Onlarca hedef platformdan yüksek frekanslı eşzamanlı veri çekimi, otomatik anomali alarmları ve ${dInfo.descTR}`,
-          summaryEN: `High-frequency concurrent scraping across dozens of target platforms, anomaly alerts, and ${dInfo.descEN}`,
-        },
-      },
-      ai: {
-        standard: {
-          levelTR: `LLM Görev Otomasyonu + ${dInfo.labelTR}`,
-          levelEN: `LLM Task Automation + ${dInfo.labelEN}`,
-          coreTech: ["OpenAI / Anthropic API", "FastAPI / Node.js", "Zod Validation"],
-          summaryTR: `Doküman özetleme, otomatik sınıflandırma, operasyonel metin işleme akışları ve ${dInfo.descTR}`,
-          summaryEN: `Document summarization, categorization, automated operational text flows, and ${dInfo.descEN}`,
-        },
-        advanced: {
-          levelTR: `Özel RAG & Vektör Arama + ${dInfo.labelTR}`,
-          levelEN: `Custom RAG & Vectors + ${dInfo.labelEN}`,
-          coreTech: ["PGVector / Pinecone", "Hybrid Search", "Guardrails & Anti-Hallucination"],
-          summaryTR: `Şirket içi özel belgeler üzerinden halüsinasyonsuz akıllı soru-cevap asistanı ve ${dInfo.descTR}`,
-          summaryEN: `Hallucination-free Q&A assistant over private company documents, reinforced with ${dInfo.descEN}`,
-        },
-        enterprise: {
-          levelTR: `Otonom Çoklu Ajan + ${dInfo.labelTR}`,
-          levelEN: `Multi-Agent System + ${dInfo.labelEN}`,
-          coreTech: ["LangGraph / Multi-Agent", "Tool Calling & Functions", "Human-in-the-Loop UI"],
-          summaryTR: `Araç çalıştırabilen, onay adımlı ve tam denetlenebilir otonom AI ajan zincirleri ile ${dInfo.descTR}`,
-          summaryEN: `Autonomous AI agent chains with tool execution, approval gates, audit trails, and ${dInfo.descEN}`,
-        },
-      },
-      api: {
-        standard: {
-          levelTR: `REST API & Mikroservis + ${dInfo.labelTR}`,
-          levelEN: `REST API & Service + ${dInfo.labelEN}`,
-          coreTech: ["FastAPI / Express", "PostgreSQL", "Swagger OpenAPI"],
-          summaryTR: `Temel CRUD uç noktaları, JWT kimlik doğrulama, veri şeması doğrulaması ve ${dInfo.descTR}`,
-          summaryEN: `Core CRUD endpoints, JWT authentication, request schema validation, and ${dInfo.descEN}`,
-        },
-        advanced: {
-          levelTR: `Yüksek Trafikli API + ${dInfo.labelTR}`,
-          levelEN: `High-Throughput API + ${dInfo.labelEN}`,
-          coreTech: ["Redis Caching", "PostgreSQL Pooling", "Rate Limiting"],
-          summaryTR: `50ms altı yanıt süreleri, harici servis entegrasyonları, rate limiting korumaları ve ${dInfo.descTR}`,
-          summaryEN: `Sub-50ms response latency, third-party service integrations, rate limiting, and ${dInfo.descEN}`,
-        },
-        enterprise: {
-          levelTR: `Kurumsal Event Backend + ${dInfo.labelTR}`,
-          levelEN: `Enterprise Event Stream + ${dInfo.labelEN}`,
-          coreTech: ["Kafka / Redis Streams", "Microservices", "Role-Based ACL", "Prometheus Metrics"],
-          summaryTR: `Çoklu kiracılı (multi-tenant) yapı, olay güdümlü asenkron veri akışları, yüksek erişilebilirlik ve ${dInfo.descTR}`,
-          summaryEN: `Multi-tenant event-driven architecture, high availability clustering, and ${dInfo.descEN}`,
-        },
-      },
-      fullstack: {
-        standard: {
-          levelTR: `Modern MVP & Platform + ${dInfo.labelTR}`,
-          levelEN: `Modern MVP Platform + ${dInfo.labelEN}`,
-          coreTech: ["Next.js 16 App Router", "Tailwind CSS v4", "Supabase / Postgres", "NextAuth"],
-          summaryTR: `Yüksek performanslı, SEO uyumlu ve responsive arayüzlü web uygulaması ile ${dInfo.descTR}`,
-          summaryEN: `High-performance, SEO-optimized, responsive web application backed by ${dInfo.descEN}`,
-        },
-        advanced: {
-          levelTR: `Kapsamlı SaaS & Portal + ${dInfo.labelTR}`,
-          levelEN: `Full-Featured SaaS + ${dInfo.labelEN}`,
-          coreTech: ["Next.js App Router", "Server Components", "Stripe / Iyzico", "FastAPI / Postgres"],
-          summaryTR: `Abonelik ve ödeme altyapısı, analiz paneli, çoklu dil ve rol bazlı yetkilendirme ile ${dInfo.descTR}`,
-          summaryEN: `Subscription billing, analytics panel, role management, internationalization, and ${dInfo.descEN}`,
-        },
-        enterprise: {
-          levelTR: `Kurumsal Web Platformu + ${dInfo.labelTR}`,
-          levelEN: `Custom Enterprise Platform + ${dInfo.labelEN}`,
-          coreTech: ["Distributed Architecture", "Real-Time WebSockets", "Micro-Frontends", "CI/CD"],
-          summaryTR: `Karmaşık veri görselleştirme, anlık akışlar, şirkete özel iş kuralları ve ${dInfo.descTR}`,
-          summaryEN: `Complex data visualization, real-time telemetry feeds, custom business logic, and ${dInfo.descEN}`,
-        },
-      },
-    };
-
-    const base = categoryBase[cat][comp];
-    const time = isEn ? timelineMatrix[cat][comp][del].en : timelineMatrix[cat][comp][del].tr;
-    const level = isEn ? base.levelEN : base.levelTR;
-    const summary = isEn ? base.summaryEN : base.summaryTR;
-
-    const combinedTech = Array.from(new Set([...base.coreTech, ...dInfo.tech]));
-
-    return { time, level, summary, tech: combinedTech };
-  };
-
-  const currentEst = calculateEstimate(category, complexity, delivery);
-
-  const contactUrl = isEn
-    ? `/en/contact?service=${category}&complexity=${complexity}&delivery=${delivery}`
-    : `/iletisim?service=${category}&complexity=${complexity}&delivery=${delivery}`;
-
   return (
-    <div className="rounded-3xl border border-border/80 bg-card/70 p-6 md:p-10 shadow-sm backdrop-blur-md">
+    <div className="rounded-3xl border border-border/80 bg-card/75 p-6 md:p-10 shadow-sm backdrop-blur-md">
       {/* Header Section */}
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-border/60 pb-6">
         <div className="flex items-center gap-3.5">
@@ -326,55 +120,60 @@ export function ServiceCalculator({ locale = "tr", defaultCategory }: ServiceCal
             <Calculator className="h-5 w-5" />
           </div>
           <div>
-            <h3 className="font-jakarta text-2xl font-bold tracking-tight text-foreground md:text-3xl">
-              {isEn ? "Interactive Scope & Timeline Estimator" : "İnteraktif Kapsam & Süre Hesaplayıcı"}
+            <div className="flex items-center gap-2">
+              <span className="text-[11px] font-bold uppercase tracking-wider text-brand-red dark:text-rose-400">
+                {isEn ? "Interactive Scope Estimator" : "İnteraktif Kapsam Simülatörü"}
+              </span>
+            </div>
+            <h3 className="font-jakarta text-2xl font-bold tracking-tight text-foreground md:text-3xl mt-0.5">
+              {isEn ? `${config.serviceNameEN} Scope & Timeline` : `${config.serviceNameTR} Kapsam & Süre`}
             </h3>
             <p className="mt-1 text-xs text-muted-foreground md:text-sm">
               {isEn
-                ? "Configure project parameters to calculate technical scope, delivery model, and timeline."
-                : "Projenizin özelliklerini seçerek mimari kapsamı, teslimat modelini ve geliştirme süresini hesaplayın."}
+                ? "Select specific technical methods and delivery formats to see realistic turnaround time and architecture."
+                : "Hizmete özel teknik yöntemleri ve teslimat modelini seçerek gerçekçi geliştirme süresini ve mimariyi hesaplayın."}
             </p>
           </div>
         </div>
         <div className="self-start md:self-auto">
-          <span className="inline-flex items-center gap-1.5 rounded-full border border-border/60 bg-background/80 px-3.5 py-1 text-xs font-medium text-muted-foreground">
+          <span className="inline-flex items-center gap-1.5 rounded-full border border-border/60 bg-background/90 px-3.5 py-1 text-xs font-medium text-muted-foreground shadow-xs">
             <span className="h-2 w-2 rounded-full bg-emerald-500 animate-pulse" />
             {isEn ? "Live Architecture Simulator" : "Dinamik Mimari Simülatörü"}
           </span>
         </div>
       </div>
 
-      {/* Grid Layout: Controls (7 cols) & Results Card (5 cols) */}
+      {/* Main Grid: Controls (7 cols) & Live Results (5 cols) */}
       <div className="mt-8 grid gap-8 lg:grid-cols-12 lg:items-start">
         {/* Controls Column */}
         <div className="space-y-7 lg:col-span-7">
-          {/* Step 1: Category */}
+          {/* Step 1: Technical Methods tailored to this service */}
           <div>
             <div className="flex items-center justify-between">
               <label className="text-xs font-bold uppercase tracking-wider text-muted-foreground">
-                {isEn ? "1. Project Category" : "1. Proje Türü"}
+                {isEn ? "1. Technical Method & Architecture" : "1. Yöntem & Mimari Yaklaşım"}
               </label>
               <span className="text-[11px] text-muted-foreground">
-                {isEn ? "Select domain" : "Uzmanlık alanı"}
+                {isEn ? "4 Specialized Methods" : "4 Uzmanlık Yöntemi"}
               </span>
             </div>
             <div className="mt-3 grid grid-cols-1 sm:grid-cols-2 gap-3">
-              {categories.map((c) => {
-                const Icon = c.icon;
-                const active = category === c.id;
+              {config.methods.map((method, idx) => {
+                const Icon = methodIcons[idx % methodIcons.length];
+                const active = activeMethod.id === method.id;
                 return (
                   <button
-                    key={c.id}
+                    key={method.id}
                     type="button"
-                    onClick={() => setCategory(c.id)}
-                    className={`group relative flex items-center gap-3.5 rounded-2xl border p-4 text-left transition-all ${
+                    onClick={() => setSelectedMethodId(method.id)}
+                    className={`group relative flex items-start gap-3.5 rounded-2xl border p-4 text-left transition-all ${
                       active
                         ? "border-brand-red bg-brand-red/[0.08] text-foreground ring-1 ring-brand-red/30 dark:border-rose-500/80 dark:bg-rose-950/25 dark:ring-rose-500/30 shadow-xs"
                         : "border-border/60 bg-background/50 text-muted-foreground hover:border-border hover:bg-card hover:text-foreground"
                     }`}
                   >
                     <div
-                      className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-xl transition-colors ${
+                      className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-xl transition-colors mt-0.5 ${
                         active
                           ? "bg-brand-red text-white dark:bg-rose-500"
                           : "bg-muted text-muted-foreground group-hover:text-foreground"
@@ -384,10 +183,10 @@ export function ServiceCalculator({ locale = "tr", defaultCategory }: ServiceCal
                     </div>
                     <div className="min-w-0">
                       <div className="text-sm font-semibold text-foreground leading-snug">
-                        {c.label}
+                        {isEn ? method.labelEN : method.labelTR}
                       </div>
-                      <div className="text-[11px] text-muted-foreground leading-tight mt-0.5">
-                        {c.sub}
+                      <div className="text-[11px] text-muted-foreground leading-tight mt-1">
+                        {isEn ? method.subEN : method.subTR}
                       </div>
                     </div>
                   </button>
@@ -396,14 +195,14 @@ export function ServiceCalculator({ locale = "tr", defaultCategory }: ServiceCal
             </div>
           </div>
 
-          {/* Step 2: Complexity */}
+          {/* Step 2: Scale & Complexity */}
           <div>
             <div className="flex items-center justify-between">
               <label className="text-xs font-bold uppercase tracking-wider text-muted-foreground">
                 {isEn ? "2. Scale & Complexity" : "2. Ölçek & Karmaşıklık"}
               </label>
               <span className="text-[11px] text-muted-foreground">
-                {isEn ? "Select architectural tier" : "Mimari seviye"}
+                {isEn ? "Tier level" : "Mimari seviye"}
               </span>
             </div>
             <div className="mt-3 grid grid-cols-1 sm:grid-cols-3 gap-3">
@@ -435,7 +234,7 @@ export function ServiceCalculator({ locale = "tr", defaultCategory }: ServiceCal
                 {isEn ? "3. Delivery & Integration Model" : "3. Teslim & Entegrasyon Hedefi"}
               </label>
               <span className="text-[11px] text-muted-foreground">
-                {isEn ? "Select output target" : "Çıktı modeli"}
+                {isEn ? "Output format" : "Çıktı modeli"}
               </span>
             </div>
             <div className="mt-3 grid grid-cols-1 sm:grid-cols-3 gap-3">
@@ -467,7 +266,7 @@ export function ServiceCalculator({ locale = "tr", defaultCategory }: ServiceCal
           </div>
         </div>
 
-        {/* Results Card (Right Column) */}
+        {/* Live Architecture Results Card */}
         <div className="flex flex-col justify-between rounded-2xl border border-border/80 bg-background/95 p-6 md:p-8 backdrop-blur-sm shadow-sm lg:col-span-5">
           <div>
             <div className="flex flex-wrap items-center justify-between gap-3 border-b border-border/60 pb-5">
@@ -475,26 +274,26 @@ export function ServiceCalculator({ locale = "tr", defaultCategory }: ServiceCal
                 {isEn ? "Architecture Spec" : "Mimari Kapsam"}
               </span>
               <span className="inline-flex items-center rounded-full bg-brand-red/10 px-3 py-1 text-xs font-semibold text-brand-red dark:bg-rose-500/15 dark:text-rose-300 max-w-full text-center leading-normal">
-                {currentEst.level}
+                {levelBadge}
               </span>
             </div>
 
             <div className="mt-6">
               <span className="text-xs font-medium text-muted-foreground">
-                {isEn ? "Estimated Timeline:" : "Tahmini Teslim Süresi:"}
+                {isEn ? "Estimated Turnaround:" : "Tahmini Teslim Süresi:"}
               </span>
-              <div className="mt-1 font-jakarta text-3xl font-extrabold text-foreground md:text-4xl tracking-tight">
-                {currentEst.time}
+              <div className="mt-1 font-jakarta text-3xl font-extrabold text-foreground md:text-4xl tracking-tight text-emerald-600 dark:text-emerald-400">
+                {time}
               </div>
               <p className="mt-1 text-[11px] text-muted-foreground">
                 {isEn
-                  ? "Dynamic estimate including selected delivery & integration model"
-                  : "Seçilen teslimat ve entegrasyon modeli dahil dinamik tahmin"}
+                  ? "Turnaround time tailored to selected method, scale, and delivery model"
+                  : "Seçilen yöntem, karmaşıklık ve teslimat formatına göre optimize edilmiş gerçekçi süre"}
               </p>
             </div>
 
             <p className="mt-4 text-xs leading-relaxed text-muted-foreground sm:text-sm">
-              {currentEst.summary}
+              {summary}
             </p>
 
             <div className="mt-6 border-t border-border/50 pt-5">
@@ -502,7 +301,7 @@ export function ServiceCalculator({ locale = "tr", defaultCategory }: ServiceCal
                 {isEn ? "Recommended Stack:" : "Önerilen Teknoloji Yığını:"}
               </span>
               <div className="mt-3 flex flex-wrap gap-1.5">
-                {currentEst.tech.map((t) => (
+                {techStack.map((t) => (
                   <span
                     key={t}
                     className="inline-flex items-center gap-1.5 rounded-lg border border-border/60 bg-card px-2.5 py-1 text-xs font-medium text-foreground"
