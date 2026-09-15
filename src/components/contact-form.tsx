@@ -21,6 +21,7 @@ const SERVICE_OPTIONS = {
     { value: "yapay-zeka-otomasyon", label: "Yapay Zekâ & Süreç Otomasyonu" },
     { value: "api-gelistirme", label: "Özel REST API & Backend Mimarisi" },
     { value: "nextjs-gelistirme", label: "Next.js Web Uygulaması / SaaS" },
+    { value: "ozel-yazilim-gelistirme", label: "İşletmelere Özel Yazılım Geliştirme" },
     { value: "diger", label: "Diğer / Özel Proje Danışmanlığı" },
   ],
   en: [
@@ -30,6 +31,7 @@ const SERVICE_OPTIONS = {
     { value: "yapay-zeka-otomasyon", label: "AI Automation & Workflows" },
     { value: "api-gelistirme", label: "Custom REST API & Backend Architecture" },
     { value: "nextjs-gelistirme", label: "Next.js Web App / SaaS Development" },
+    { value: "ozel-yazilim-gelistirme", label: "Custom Software Development" },
     { value: "diger", label: "Other / Custom Consultation" },
   ],
 };
@@ -45,27 +47,41 @@ function ContactFormInner({ locale = "tr" }: ContactFormInnerProps) {
   const initialServiceQuery = searchParams.get("service") || "";
   const initialService = (() => {
     if (initialServiceQuery.includes("fiyat") || initialServiceQuery.includes("price")) return "rakip-fiyat-takip-sistemi";
-    if (initialServiceQuery.includes("urun") || initialServiceQuery.includes("product") || initialServiceQuery.includes("aktarim")) return "e-ticaret-urun-veri-aktarimi";
+    if (initialServiceQuery.includes("urun") || initialServiceQuery.includes("product") || initialServiceQuery.includes("aktarim") || initialServiceQuery.includes("catalog")) return "e-ticaret-urun-veri-aktarimi";
     if (initialServiceQuery.includes("scraping")) return "web-scraping";
     if (initialServiceQuery.includes("ai") || initialServiceQuery.includes("zeka")) return "yapay-zeka-otomasyon";
     if (initialServiceQuery.includes("api")) return "api-gelistirme";
     if (initialServiceQuery.includes("nextjs") || initialServiceQuery.includes("fullstack")) return "nextjs-gelistirme";
+    if (initialServiceQuery.includes("ozel") || initialServiceQuery.includes("yazilim") || initialServiceQuery.includes("custom")) return "ozel-yazilim-gelistirme";
     return "rakip-fiyat-takip-sistemi";
+  })();
+
+  const initialMethod = searchParams.get("method") || "";
+  const initialComplexity = searchParams.get("complexity") || "";
+  const initialDelivery = searchParams.get("delivery") || "";
+
+  const initialMessage = (() => {
+    if (!initialMethod && !initialComplexity && !initialDelivery) return "";
+    const matchedService = SERVICE_OPTIONS[isEn ? "en" : "tr"].find((s) => s.value === initialService)?.label || initialService;
+    if (isEn) {
+      return `Hello Canpolat, I would like to initiate a project under "${matchedService}" scope with the parameters I selected on your calculator (Method: ${initialMethod}, Scale: ${initialComplexity}, Delivery: ${initialDelivery}). Let's discuss details and kickoff timeline.`;
+    }
+    return `Merhaba Canpolat Bey, hesaplayıcıda seçtiğim mimari kapsam dahilinde ("${matchedService}", Yöntem: ${initialMethod}, Ölçek: ${initialComplexity}, Teslimat: ${initialDelivery}) bir proje başlatmak istiyorum. Detayları ve başlama tarihini görüşebilir miyiz?`;
   })();
 
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
   const [service, setService] = useState(initialService);
-  const [message, setMessage] = useState("");
+  const [message, setMessage] = useState(initialMessage);
   const [honeypot, setHoneypot] = useState("");
 
   const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
   const [errorMessage, setErrorMessage] = useState("");
 
   const whatsappText = isEn
-    ? "Hello%20Canpolat,%20I'm%20reaching%20out%20from%20your%20website%20regarding%20a%20project."
-    : "Merhaba%20Canpolat%20Bey,%20web%20sitenizden%20ula%C5%9F%C4%B1yorum.%20Bir%20proje%20hakk%C4%B1nda%20g%C3%B6r%C3%BC%C5%9Fmek%20istiyorum.";
+    ? `Hello%20Canpolat,%20I'm%20reaching%20out%20from%20your%20website%20regarding%20${encodeURIComponent(initialService)}.`
+    : `Merhaba%20Canpolat%20Bey,%20web%20sitenizden%20${encodeURIComponent(initialService)}%20projesi%20i%C3%A7in%20ula%C5%9F%C4%B1yorum.`;
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
