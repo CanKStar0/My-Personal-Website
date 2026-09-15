@@ -96,10 +96,35 @@ export const translations = {
     eyebrow: { tr: "İletişim", en: "Contact" } as TranslationValue,
     heading: { tr: "Yeni bir projeniz\nmi var?", en: "Have a new\nproject?" } as TranslationValue,
     subtitle: {
-      tr: "Detayları konuşmak, fiyat teklifi almak veya sadece merhaba demek için bana ulaşın.",
-      en: "Reach out to discuss details, get a quote, or simply say hello.",
+      tr: "Detayları konuşmak, fiyat teklifi almak veya doğrudan projenizi başlatmak için formu doldurabilir ya da bana ulaşabilirsiniz.",
+      en: "Fill out the project form to discuss requirements, get a quote, or get in touch directly.",
     } as TranslationValue,
     toast: { tr: "E-posta adresi panoya kopyalandı.", en: "Email address copied to clipboard." } as TranslationValue,
+    formName: { tr: "Adınız Soyadınız", en: "Your Full Name" } as TranslationValue,
+    formNamePlaceholder: { tr: "Örn: Can Kaya", en: "e.g. John Doe" } as TranslationValue,
+    formEmail: { tr: "Kurumsal E-posta Adresiniz", en: "Work Email Address" } as TranslationValue,
+    formEmailPlaceholder: { tr: "adiniz@sirketiniz.com", en: "john@company.com" } as TranslationValue,
+    formPhone: { tr: "Telefon / WhatsApp (Hızlı iletişim için)", en: "Phone / WhatsApp (For faster reach)" } as TranslationValue,
+    formPhonePlaceholder: { tr: "+90 5XX XXX XX XX", en: "+1 (555) 000-0000" } as TranslationValue,
+    formService: { tr: "İhtiyacınız Olan Çözüm", en: "Solution Required" } as TranslationValue,
+    formMessage: { tr: "Proje Detayları & Hedef Kaynaklar", en: "Project Scope & Target Sources" } as TranslationValue,
+    formMessagePlaceholder: {
+      tr: "Hedeflediğiniz kaynaklar, tahmini ürün/veri hacmi ve beklentilerinizi kısaca özetleyin...",
+      en: "Briefly outline target platforms, expected data scale, and desired delivery format...",
+    } as TranslationValue,
+    formSubmit: { tr: "Ücretsiz Proje Analizi & Teklif Alın", en: "Request Free Analysis & Quote" } as TranslationValue,
+    formSubmitting: { tr: "Talebiniz İletiliyor...", en: "Sending Inquiry..." } as TranslationValue,
+    formSuccessTitle: { tr: "Proje Talebiniz Başarıyla Alındı!", en: "Project Inquiry Successfully Received!" } as TranslationValue,
+    formSuccessDesc: {
+      tr: "Talebiniz doğrudan gelen kutuma düştü. İhtiyacınızı inceleyip en geç 24 saat içinde size özel bir analiz ve yol haritasıyla geri döneceğim.",
+      en: "Your inquiry has been delivered directly to my inbox. I will evaluate the requirements and reply within 24 hours with an actionable roadmap.",
+    } as TranslationValue,
+    formErrorDesc: {
+      tr: "Mesaj gönderilirken bir sorun oluştu. Lütfen doğrudan e-posta veya WhatsApp üzerinden ulaşın.",
+      en: "There was an issue sending your message. Please reach out directly via email or WhatsApp.",
+    } as TranslationValue,
+    formSendAnother: { tr: "Yeni Bir Talep Gönder", en: "Submit Another Request" } as TranslationValue,
+    whatsappButton: { tr: "WhatsApp'tan Hızlı Yazın", en: "Quick Chat via WhatsApp" } as TranslationValue,
   },
 
   // ─── Canli Yok Page ──────────────────────────────────

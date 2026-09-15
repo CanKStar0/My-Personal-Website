@@ -178,9 +178,6 @@ export function ServicePage({
               </section>
             )}
 
-            {/* Interactive Scope & Cost Estimator */}
-            <ServiceCalculator locale={locale} defaultCategory={service.slug} />
-
             {/* FAQ Accordion with Schema Markup */}
             {service.faqs && service.faqs.length > 0 && (
               <FAQAccordion faqs={service.faqs} title={labels.faqTitle} />
@@ -225,6 +222,13 @@ export function ServicePage({
             </div>
           </aside>
         </div>
+
+        {/* Interactive Scope & Timeline Estimator - Full Width Dedicated Container */}
+        <section className="border-t border-border/10 bg-card/20 px-6 py-16 md:px-12 md:py-24">
+          <div className="mx-auto max-w-5xl">
+            <ServiceCalculator locale={locale} defaultCategory={service.slug} />
+          </div>
+        </section>
 
         <section className="border-t border-border/10 px-6 py-20 text-center md:px-12">
           <h2 className="font-jakarta text-3xl font-extrabold text-foreground">{labels.closingTitle}</h2>
