@@ -1,6 +1,7 @@
 declare global {
   interface Window {
     gtag?: (...args: unknown[]) => void;
+    dataLayer?: unknown[];
   }
 }
 
@@ -74,34 +75,41 @@ export function detectAIReferrer(): { isAI: boolean; platform?: AIPlatform; sour
   return { isAI: false };
 }
 
-export const trackEvent = (action: string, params?: Record<string, string | number | boolean>) => {
-  if (
-    typeof window !== "undefined" &&
-    typeof window.gtag === "function" &&
-    window.location.hostname !== "localhost" &&
-    window.location.hostname !== "127.0.0.1"
-  ) {
-    let aiAttribution: { platform: string } | null = null;
-    try {
-      const stored = sessionStorage.getItem("geo_ai_attribution");
-      if (stored) {
-        aiAttribution = JSON.parse(stored);
-      }
-    } catch {
-      // sessionStorage unavailable
-    }
+export function safeGtagEvent(action: string, params?: Record<string, unknown>) {
+  if (typeof window === "undefined") return;
+  if (window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1") return;
 
-    const enrichedParams: Record<string, string | number | boolean> = {
-      source_path: window.location.pathname,
-      ...params,
-    };
-
-    if (aiAttribution?.platform) {
-      enrichedParams.geo_ai_referral = true;
-      enrichedParams.geo_ai_platform = aiAttribution.platform;
-    }
-
-    window.gtag("event", action, enrichedParams);
+  if (typeof window.gtag === "function") {
+    window.gtag("event", action, params);
+  } else {
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push(["event", action, params]);
   }
+}
+
+export const trackEvent = (action: string, params?: Record<string, string | number | boolean>) => {
+  if (typeof window === "undefined") return;
+
+  let aiAttribution: { platform: string } | null = null;
+  try {
+    const stored = sessionStorage.getItem("geo_ai_attribution");
+    if (stored) {
+      aiAttribution = JSON.parse(stored);
+    }
+  } catch {
+    // sessionStorage unavailable
+  }
+
+  const enrichedParams: Record<string, unknown> = {
+    source_path: window.location.pathname,
+    ...params,
+  };
+
+  if (aiAttribution?.platform) {
+    enrichedParams.geo_ai_referral = true;
+    enrichedParams.geo_ai_platform = aiAttribution.platform;
+  }
+
+  safeGtagEvent(action, enrichedParams);
 };
 

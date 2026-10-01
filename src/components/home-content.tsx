@@ -57,6 +57,13 @@ export function HomeContent({ locale: propLocale }: { locale?: Locale } = {}) {
           description: isEnglish
             ? "Full-Stack Developer specializing in autonomous web scraping architectures, custom AI automations, scalable REST APIs, and Next.js applications."
             : "Özel yazılım, otonom web scraping, yapay zekâ otomasyonu, API ve Next.js geliştirme alanlarında uzmanlaşmış Full-Stack Developer.",
+          knowsLanguage: ["tr", "en"],
+          address: {
+            "@type": "PostalAddress",
+            addressLocality: "Fethiye",
+            addressRegion: "Muğla",
+            addressCountry: "TR",
+          },
           knowsAbout: isEnglish
             ? [
                 "Web Scraping",
@@ -95,7 +102,19 @@ export function HomeContent({ locale: propLocale }: { locale?: Locale } = {}) {
           logo: `${SITE_URL}/images/canpolat-kaya.jpg`,
           founder: { "@id": `${SITE_URL}/#person` },
           provider: { "@id": `${SITE_URL}/#person` },
-          areaServed: "Global",
+          areaServed: [
+            { "@type": "Place", name: "Global / Remote Worldwide" },
+            { "@type": "Country", name: "Turkey" },
+            { "@type": "Country", name: "United States" },
+            { "@type": "Country", name: "United Kingdom" },
+            { "@type": "Country", name: "Germany" },
+          ],
+          address: {
+            "@type": "PostalAddress",
+            addressLocality: "Fethiye",
+            addressRegion: "Muğla",
+            addressCountry: "TR",
+          },
           inLanguage: ["tr", "en"],
           sameAs: [SOCIAL_LINKS.github, SOCIAL_LINKS.linkedin],
           contactPoint: {

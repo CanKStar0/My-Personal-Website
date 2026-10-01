@@ -121,10 +121,10 @@ export default function RootLayout({
       <body className="min-h-screen w-full overflow-x-clip antialiased bg-background text-foreground transition-colors duration-300" suppressHydrationWarning>
         {process.env.NODE_ENV === "production" && (
           <>
-            <Script strategy="lazyOnload" src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`} />
+            <Script strategy="afterInteractive" src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`} />
             <Script
               id="google-analytics"
-              strategy="lazyOnload"
+              strategy="afterInteractive"
               dangerouslySetInnerHTML={{
                 __html: `
                   if (typeof window !== 'undefined' && window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1') {

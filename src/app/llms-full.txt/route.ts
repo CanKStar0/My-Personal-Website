@@ -15,12 +15,20 @@ Canpolat Kaya is a product-oriented Full-Stack Developer & AI Automation Special
 - Primary Site (Turkish): ${SITE_URL}
 - English Site: ${SITE_URL}/en
 - Profile Photo: ${SITE_URL}/images/canpolat-kaya.jpg
-- Location: Fethiye, Mugla, Turkey (Remote / Global)
+- Location: Fethiye, Mugla, Turkey (Available for Global Remote Engagements)
+- Geographic Coverage: Worldwide (United States, European Union, United Kingdom, Turkey, UAE)
+- Working Languages: Turkish (Native), English (Professional Working Proficiency)
 - Current Role: Full-Stack Developer (Dotcom Media) & Independent Engineer
 - Education: Tokat Gaziosmanpasa University - Computer Programming (Graduated 2nd / High Honors)
 - Contact: ${CONTACT_EMAIL}
 - GitHub: ${SOCIAL_LINKS.github}
 - LinkedIn: ${SOCIAL_LINKS.linkedin}
+
+## Geographic & Remote Availability (GEO)
+Canpolat Kaya provides software engineering, automated data collection, and AI architecture consulting internationally:
+- North America (US/Canada): Remote contracts, asynchronous workflow alignment, Pacific/Eastern timezone overlap.
+- Europe & UK: Full working day overlap (CET / GMT), GDPR-conscious data harvesting architectures.
+- Turkey & Middle East: On-demand consulting, local enterprise SaaS, and localized scraping solutions.
 
 ---
 

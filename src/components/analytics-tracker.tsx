@@ -2,7 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import { usePathname } from "next/navigation";
-import { detectAIReferrer } from "@/lib/analytics";
+import { detectAIReferrer, safeGtagEvent } from "@/lib/analytics";
 
 export function AnalyticsTracker() {
   const pathname = usePathname();
@@ -21,17 +21,11 @@ export function AnalyticsTracker() {
         };
         sessionStorage.setItem("geo_ai_attribution", JSON.stringify(attribution));
 
-        if (
-          typeof window.gtag === "function" &&
-          window.location.hostname !== "localhost" &&
-          window.location.hostname !== "127.0.0.1"
-        ) {
-          window.gtag("event", "ai_referral_visit", {
-            ai_platform: aiDetection.platform,
-            landing_path: window.location.pathname,
-            referrer: document.referrer,
-          });
-        }
+        safeGtagEvent("ai_referral_visit", {
+          ai_platform: aiDetection.platform,
+          landing_path: window.location.pathname,
+          referrer: document.referrer,
+        });
       } catch {
         // Ignore session storage limits or privacy modes
       }
@@ -44,13 +38,9 @@ export function AnalyticsTracker() {
       return;
     }
 
-    if (
-      process.env.NODE_ENV !== "production" ||
-      typeof window.gtag !== "function" ||
-      window.location.hostname === "localhost" ||
-      window.location.hostname === "127.0.0.1"
-    ) return;
-    window.gtag("event", "page_view", {
+    if (process.env.NODE_ENV !== "production") return;
+
+    safeGtagEvent("page_view", {
       page_path: pathname,
       page_location: window.location.href,
       page_title: document.title,
