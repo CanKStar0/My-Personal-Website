@@ -545,13 +545,13 @@ export default function ProjeDetayPage() {
 
           {/* Özellikler ve Görseller (Üst Vitrin) */}
           {project.features && project.features.length > 0 && (
-            <div className="space-y-12 sm:space-y-20 lg:space-y-32 py-4 sm:py-6 max-w-6xl mx-auto">
+            <div className="space-y-10 sm:space-y-20 lg:space-y-32 py-2 sm:py-6 max-w-6xl mx-auto">
               {project.features.map((feature, index) => {
                 const isEven = index % 2 === 0;
                 return (
-                  <ScrollReveal key={index} className={`flex flex-col lg:flex-row gap-6 sm:gap-12 lg:gap-32 items-center ${isEven ? "" : "lg:flex-row-reverse"}`}>
+                  <ScrollReveal key={index} className={`flex flex-col lg:flex-row gap-5 sm:gap-10 lg:gap-24 items-center ${isEven ? "" : "lg:flex-row-reverse"}`}>
                     {/* Görsel Sütunu */}
-                    <div className="w-full lg:w-[60%] flex items-center justify-center relative aspect-[4/3] rounded-xl shadow-[0_8px_30px_rgba(0,0,0,0.12)] border border-zinc-200/40 dark:border-zinc-800/50 overflow-hidden bg-zinc-100 dark:bg-zinc-900/50">
+                    <div className="w-full lg:w-[60%] flex items-center justify-center relative aspect-[16/10] sm:aspect-[4/3] rounded-2xl shadow-[0_8px_30px_rgba(0,0,0,0.12)] border border-zinc-200/40 dark:border-zinc-800/50 overflow-hidden bg-zinc-100 dark:bg-zinc-900/50">
                       {(() => {
                         const currentImagePath = typeof feature.imagePath === "object"
                           ? (feature.imagePath[locale] || feature.imagePath.tr)
@@ -571,13 +571,13 @@ export default function ProjeDetayPage() {
                     </div>
                     {/* Metin Sütunu */}
                     <div className="w-full lg:w-[40%] flex flex-col justify-center text-left">
-                      <span className="text-zinc-500 font-mono text-sm tracking-widest block mb-2">
-                        {String(index + 1).padStart(2, '0')}
+                      <span className="text-brand-red dark:text-rose-400 font-mono text-xs sm:text-sm font-bold tracking-widest block mb-1.5 sm:mb-2">
+                        FEATURE {String(index + 1).padStart(2, '0')}
                       </span>
-                      <h3 className="text-2xl md:text-3xl font-bold font-jakarta text-foreground mb-4">
+                      <h3 className="text-xl sm:text-2xl md:text-3xl font-bold font-jakarta text-foreground mb-2 sm:mb-4 leading-snug break-words">
                         {t(feature.titleKey)}
                       </h3>
-                      <p className="text-base md:text-lg text-zinc-600 dark:text-zinc-400 leading-relaxed font-light">
+                      <p className="text-xs sm:text-base md:text-lg text-zinc-600 dark:text-zinc-400 leading-relaxed font-light break-words">
                         {t(feature.descKey)}
                       </p>
                     </div>
@@ -638,33 +638,33 @@ export default function ProjeDetayPage() {
 
           {/* Teknoloji Yığını */}
           <ScrollReveal>
-            <h2 className="text-xl font-bold font-jakarta text-foreground mb-6">{t(translations.projectDetail.techHeading)}</h2>
-            <div className="flex flex-wrap gap-3">
+            <h2 className="text-lg sm:text-xl font-bold font-jakarta text-foreground mb-4 sm:mb-6">{t(translations.projectDetail.techHeading)}</h2>
+            <div className="flex flex-wrap gap-2 sm:gap-3">
               {project.techStack.map((tech) => (
-                <span key={tech} className="px-4 py-2 rounded-lg text-sm font-medium bg-zinc-100 dark:bg-zinc-900/50 text-zinc-700 dark:text-zinc-300 border border-zinc-200/50 dark:border-zinc-800/50">
+                <span key={tech} className="px-3 py-1.5 sm:px-4 sm:py-2 rounded-lg text-xs sm:text-sm font-medium bg-zinc-100 dark:bg-zinc-900/50 text-zinc-700 dark:text-zinc-300 border border-zinc-200/50 dark:border-zinc-800/50 break-words">
                   {tech}
                 </span>
               ))}
             </div>
           </ScrollReveal>
 
-          <ScrollReveal className="rounded-2xl border border-brand-red/20 bg-brand-red/[0.04] p-7">
-            <h2 className="text-xl font-bold font-jakarta text-foreground">{t({ tr: "İlgili hizmetler", en: "Related services" })}</h2>
-            <p className="mt-3 text-muted-foreground">{t({ tr: "Bu projede kullanılan yaklaşımın hizmet kapsamlarını inceleyin.", en: "Explore the service areas demonstrated by this project." })}</p>
-            <div className="mt-5 flex flex-wrap gap-3">
-              {project.relatedServices.map((service) => <Link key={service.href} href={localizedServicePath(service.href.split("/").pop()!, locale)} className="rounded-full border border-brand-red/30 px-4 py-2 text-sm font-semibold text-foreground hover:bg-brand-red hover:text-white">{t(service.label)}</Link>)}
+          <ScrollReveal className="rounded-2xl sm:rounded-3xl border border-brand-red/20 bg-brand-red/[0.04] p-5 sm:p-7">
+            <h2 className="text-lg sm:text-xl font-bold font-jakarta text-foreground">{t({ tr: "İlgili hizmetler", en: "Related services" })}</h2>
+            <p className="mt-2 sm:mt-3 text-xs sm:text-sm text-muted-foreground">{t({ tr: "Bu projede kullanılan yaklaşımın hizmet kapsamlarını inceleyin.", en: "Explore the service areas demonstrated by this project." })}</p>
+            <div className="mt-4 sm:mt-5 flex flex-wrap gap-2 sm:gap-3">
+              {project.relatedServices.map((service) => <Link key={service.href} href={localizedServicePath(service.href.split("/").pop()!, locale)} className="rounded-full border border-brand-red/30 px-3.5 py-1.5 sm:px-4 sm:py-2 text-xs sm:text-sm font-semibold text-foreground hover:bg-brand-red hover:text-white transition-colors">{t(service.label)}</Link>)}
             </div>
           </ScrollReveal>
 
           {/* Action Links */}
-          <ScrollReveal className="pt-10 sm:pt-12 border-t border-zinc-200/40 dark:border-zinc-800/40 flex flex-col sm:flex-row gap-3 sm:gap-4">
+          <ScrollReveal className="pt-8 sm:pt-12 border-t border-zinc-200/40 dark:border-zinc-800/40 flex flex-col sm:flex-row gap-3 sm:gap-4">
             {project.liveUrl && (
               <Link
                 href={project.liveUrl.startsWith("/") ? getLocalizedPath(project.liveUrl, locale) : project.liveUrl}
                 target={project.liveUrl.startsWith("http") ? "_blank" : undefined}
                 rel={project.liveUrl.startsWith("http") ? "noopener noreferrer" : undefined}
                 onClick={() => trackEvent("project_external_link_click", { type: "live", project: project.slug })}
-                className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-foreground text-background font-semibold hover:bg-foreground/90 transition-colors relative z-10 cursor-pointer w-full sm:w-auto text-center"
+                className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-foreground text-background text-xs sm:text-sm font-semibold hover:bg-foreground/90 transition-colors relative z-10 cursor-pointer w-full sm:w-auto text-center"
               >
                 {t(translations.projectDetail.liveProject)} <ExternalLink className="w-4 h-4" />
               </Link>
@@ -675,7 +675,7 @@ export default function ProjeDetayPage() {
                 target={project.githubUrl.startsWith("http") ? "_blank" : undefined}
                 rel={project.githubUrl.startsWith("http") ? "noopener noreferrer" : undefined}
                 onClick={() => trackEvent("project_external_link_click", { type: "github", project: project.slug })}
-                className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full border border-zinc-200 dark:border-zinc-800 text-foreground font-semibold hover:bg-zinc-100 dark:hover:bg-zinc-900 transition-colors relative z-10 cursor-pointer w-full sm:w-auto text-center"
+                className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full border border-zinc-200 dark:border-zinc-800 text-foreground text-xs sm:text-sm font-semibold hover:bg-zinc-100 dark:hover:bg-zinc-900 transition-colors relative z-10 cursor-pointer w-full sm:w-auto text-center"
               >
                 {t(translations.projectDetail.githubRepo)} <GithubIcon className="w-4 h-4" />
               </Link>
@@ -683,20 +683,20 @@ export default function ProjeDetayPage() {
           </ScrollReveal>
 
           {/* High-Converting Engineering & Lead Generation Card */}
-          <ScrollReveal className="my-12 sm:my-16 overflow-hidden rounded-3xl border border-brand-red/30 bg-gradient-to-br from-brand-red/[0.08] via-card/80 to-background p-6 sm:p-8 md:p-12 backdrop-blur-md relative shadow-xl dark:shadow-[0_0_50px_rgba(220,38,38,0.1)]">
+          <ScrollReveal className="my-10 sm:my-16 overflow-hidden rounded-2xl sm:rounded-3xl border border-brand-red/30 bg-gradient-to-br from-brand-red/[0.08] via-card/80 to-background p-5 sm:p-8 md:p-12 backdrop-blur-md relative shadow-xl dark:shadow-[0_0_50px_rgba(220,38,38,0.1)]">
             <div className="absolute -right-16 -top-16 h-48 w-48 rounded-full bg-brand-red/10 blur-3xl pointer-events-none" />
             
-            <div className="relative z-10 flex flex-col items-start md:items-center text-left md:text-center max-w-3xl mx-auto space-y-5 sm:space-y-6">
-              <div className="inline-flex items-center gap-2 rounded-full border border-brand-red/30 bg-brand-red/10 px-3.5 sm:px-4 py-1.5 text-xs font-bold text-brand-red dark:text-rose-400 uppercase tracking-widest">
+            <div className="relative z-10 flex flex-col items-start md:items-center text-left md:text-center max-w-3xl mx-auto space-y-4 sm:space-y-6">
+              <div className="inline-flex items-center gap-2 rounded-full border border-brand-red/30 bg-brand-red/10 px-3 sm:px-4 py-1.5 text-[11px] sm:text-xs font-bold text-brand-red dark:text-rose-400 uppercase tracking-widest">
                 <Sparkles className="w-3.5 h-3.5" />
                 {t(translations.projectDetail.leadCardBadge)}
               </div>
 
-              <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold font-jakarta text-foreground tracking-tight leading-tight">
+              <h2 className="text-xl sm:text-3xl md:text-4xl font-extrabold font-jakarta text-foreground tracking-tight leading-tight break-words">
                 {t(translations.projectDetail.leadCardTitle)}
               </h2>
 
-              <p className="text-sm md:text-base text-muted-foreground leading-relaxed font-light">
+              <p className="text-xs sm:text-base text-muted-foreground leading-relaxed font-light break-words">
                 {t(translations.projectDetail.leadCardSubtitle)}
               </p>
 
@@ -704,7 +704,7 @@ export default function ProjeDetayPage() {
                 <Link
                   href={locale === "en" ? "/en/contact" : "/iletisim"}
                   onClick={() => trackEvent("project_lead_cta_click", { project: project.slug, type: "primary" })}
-                  className="inline-flex items-center justify-center gap-2.5 px-7 py-3.5 sm:px-8 sm:py-4 rounded-full bg-brand-red text-white font-bold text-sm tracking-wider uppercase hover:bg-red-700 transition-all duration-300 shadow-lg shadow-brand-red/25 hover:shadow-brand-red/40 hover:-translate-y-0.5 cursor-pointer w-full sm:w-auto text-center"
+                  className="inline-flex items-center justify-center gap-2.5 px-6 py-3.5 sm:px-8 sm:py-4 rounded-full bg-brand-red text-white font-bold text-xs sm:text-sm tracking-wider uppercase hover:bg-red-700 transition-all duration-300 shadow-lg shadow-brand-red/25 hover:shadow-brand-red/40 hover:-translate-y-0.5 cursor-pointer w-full sm:w-auto text-center"
                 >
                   <span>{t(translations.projectDetail.leadCardCtaPrimary)}</span>
                   <ArrowRight className="w-4 h-4" />
@@ -713,7 +713,7 @@ export default function ProjeDetayPage() {
                 <Link
                   href={locale === "en" ? "/en/services" : "/hizmetler"}
                   onClick={() => trackEvent("project_lead_services_click", { project: project.slug, type: "secondary" })}
-                  className="inline-flex items-center justify-center gap-2 px-6 py-3.5 sm:py-4 rounded-full border border-zinc-300 dark:border-zinc-800 bg-background/60 text-foreground font-semibold text-sm hover:bg-zinc-100 dark:hover:bg-zinc-800/80 transition-colors cursor-pointer w-full sm:w-auto text-center"
+                  className="inline-flex items-center justify-center gap-2 px-5 py-3.5 sm:py-4 rounded-full border border-zinc-300 dark:border-zinc-800 bg-background/60 text-foreground font-semibold text-xs sm:text-sm hover:bg-zinc-100 dark:hover:bg-zinc-800/80 transition-colors cursor-pointer w-full sm:w-auto text-center"
                 >
                   <span>{t(translations.projectDetail.leadCardCtaSecondary)}</span>
                 </Link>

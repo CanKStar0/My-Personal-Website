@@ -194,28 +194,28 @@ export function GithubRepos() {
                     rel="noopener noreferrer"
                     className="group block h-full relative z-10 cursor-pointer"
                   >
-                    <div className="p-4.5 sm:p-6 rounded-xl border border-zinc-300/80 dark:border-zinc-800/50 bg-[#FAF9F6] dark:bg-zinc-950 flex flex-col justify-between h-full min-h-[190px] shadow-xs transition-all duration-300 hover:-translate-y-1 hover:border-brand-red/50 dark:hover:border-brand-red/40 hover:shadow-md dark:hover:shadow-[0_8px_30px_rgba(0,0,0,0.12)]">
+                    <div className="p-4 sm:p-6 rounded-2xl sm:rounded-xl border border-zinc-300/80 dark:border-zinc-800/50 bg-[#FAF9F6] dark:bg-zinc-950 flex flex-col justify-between h-full min-h-0 sm:min-h-[190px] shadow-xs transition-all duration-300 hover:-translate-y-1 hover:border-brand-red/50 dark:hover:border-brand-red/40 hover:shadow-md dark:hover:shadow-[0_8px_30px_rgba(0,0,0,0.12)]">
 
                       {/* Top Part: Title & Stars */}
                       <div>
-                        <div className="flex items-center justify-between gap-4 mb-3">
+                        <div className="flex items-center justify-between gap-2 sm:gap-4 mb-2.5 sm:mb-3">
                           <div className="flex items-center gap-2 min-w-0">
-                            <h3 className="text-lg font-bold font-jakarta text-foreground group-hover:text-brand-red transition-colors duration-200 leading-tight truncate">
+                            <h3 className="text-base sm:text-lg font-bold font-jakarta text-foreground group-hover:text-brand-red transition-colors duration-200 leading-tight truncate">
                               {repo.name}
                             </h3>
                             <ExternalLink className="w-3.5 h-3.5 text-zinc-400 opacity-0 group-hover:opacity-100 transition-opacity shrink-0" />
                           </div>
 
-                          <div className="flex items-center gap-3 shrink-0">
+                          <div className="flex items-center gap-2.5 sm:gap-3 shrink-0">
                             {typeof repo.forks_count === "number" && repo.forks_count > 0 && (
-                              <div className="flex items-center gap-1 text-zinc-500 dark:text-zinc-400 text-xs font-sans">
+                              <div className="flex items-center gap-1 text-zinc-500 dark:text-zinc-400 text-[11px] sm:text-xs font-sans">
                                 <GitFork className="w-3.5 h-3.5" />
                                 <span>{repo.forks_count}</span>
                               </div>
                             )}
 
                             <div className="flex items-center gap-1.5 text-zinc-600 dark:text-zinc-300 group-hover:text-brand-red dark:group-hover:text-brand-red transition-colors duration-200">
-                              <Star className="w-4 h-4 fill-amber-400/20 text-amber-500 group-hover:fill-amber-400/40 transition-colors stroke-[1.5]" />
+                              <Star className="w-3.5 h-3.5 sm:w-4 sm:h-4 fill-amber-400/20 text-amber-500 group-hover:fill-amber-400/40 transition-colors stroke-[1.5]" />
                               <span className="text-xs font-bold font-mono leading-none">
                                 {repo.stargazers_count}
                               </span>
@@ -223,17 +223,17 @@ export function GithubRepos() {
                           </div>
                         </div>
 
-                        <p className="text-muted-foreground/90 text-xs md:text-sm leading-relaxed font-sans font-light line-clamp-3">
+                        <p className="text-muted-foreground/90 text-xs sm:text-sm leading-relaxed font-sans font-light line-clamp-3 break-words">
                           {repo.description || t(translations.github.noDescription)}
                         </p>
                       </div>
 
                       {/* Tech Badge & Language */}
-                      <div className="border-t border-zinc-200/40 dark:border-zinc-800/40 pt-4 mt-6 flex items-center justify-between">
+                      <div className="border-t border-zinc-200/40 dark:border-zinc-800/40 pt-3.5 sm:pt-4 mt-4 sm:mt-6 flex items-center justify-between">
                         {repo.language ? (
                           <div className="inline-flex items-center gap-2">
                             {langColor && <span className={`w-2 h-2 rounded-full ${langColor}`} />}
-                            <span className="px-2 py-0.5 rounded-md text-[10px] md:text-xs font-medium bg-zinc-100 dark:bg-zinc-900/50 text-zinc-600 dark:text-zinc-400 border border-zinc-200/30 dark:border-zinc-800/40 transition-colors duration-200 group-hover:bg-brand-red/5 dark:group-hover:bg-brand-red/5 group-hover:text-brand-red dark:group-hover:text-brand-red/90 group-hover:border-brand-red/10">
+                            <span className="px-2 py-0.5 rounded-md text-[10px] sm:text-xs font-medium bg-zinc-100 dark:bg-zinc-900/50 text-zinc-600 dark:text-zinc-400 border border-zinc-200/30 dark:border-zinc-800/40 transition-colors duration-200 group-hover:bg-brand-red/5 dark:group-hover:bg-brand-red/5 group-hover:text-brand-red dark:group-hover:text-brand-red/90 group-hover:border-brand-red/10 truncate max-w-[110px] sm:max-w-none">
                               {repo.language}
                             </span>
                           </div>

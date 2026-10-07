@@ -1086,18 +1086,18 @@ export function ProjectEngineeringCaseStudy({ data, locale = "tr" }: Props) {
   const isEn = locale === "en";
 
   return (
-    <section className="space-y-20 my-16">
+    <section className="space-y-12 sm:space-y-20 my-10 sm:my-16">
       {/* 1. Bento Metrics Flex Bar */}
       <div>
-        <div className="flex items-center gap-3 mb-8">
-          <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-brand-red/10 text-brand-red dark:bg-rose-500/10 dark:text-rose-400">
+        <div className="flex items-center gap-3 mb-6 sm:mb-8">
+          <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-brand-red/10 text-brand-red dark:bg-rose-500/10 dark:text-rose-400">
             <Cpu className="h-5 w-5" />
           </div>
           <div>
-            <h2 className="font-jakarta text-2xl font-bold tracking-tight text-foreground md:text-3xl">
+            <h2 className="font-jakarta text-xl sm:text-2xl md:text-3xl font-bold tracking-tight text-foreground break-words">
               {isEn ? "Engineering Flex & Production Metrics" : "Mühendislik Başarısı & Üretim Metrikleri"}
             </h2>
-            <p className="text-xs text-muted-foreground mt-0.5">
+            <p className="text-xs text-muted-foreground mt-0.5 break-words">
               {isEn
                 ? "Empirical benchmark numbers achieved in high-concurrency production."
                 : "Canlı üretim ortamında kanıtlanmış somut performans ve ölçek rakamları."}
@@ -1115,27 +1115,27 @@ export function ProjectEngineeringCaseStudy({ data, locale = "tr" }: Props) {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: idx * 0.1 }}
-                className={`group relative overflow-hidden rounded-3xl border border-border/70 bg-card/40 p-4.5 sm:p-6 backdrop-blur-xs transition-all duration-300 hover:border-brand-red/40 hover:bg-card/70 hover:shadow-[0_0_25px_rgba(220,38,38,0.08)] ${
+                className={`group relative overflow-hidden rounded-2xl sm:rounded-3xl border border-border/70 bg-card/40 p-4 sm:p-5 backdrop-blur-xs transition-all duration-300 hover:border-brand-red/40 hover:bg-card/70 hover:shadow-[0_0_25px_rgba(220,38,38,0.08)] ${
                   idx === 0 ? "sm:col-span-2 lg:col-span-1" : ""
                 }`}
               >
                 <div className="flex items-center justify-between">
-                  <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-brand-red/10 text-brand-red dark:bg-rose-500/10 dark:text-rose-400 group-hover:scale-110 transition-transform">
-                    <Icon className="h-5 w-5" />
+                  <div className="flex h-9 w-9 sm:h-10 sm:w-10 items-center justify-center rounded-xl bg-brand-red/10 text-brand-red dark:bg-rose-500/10 dark:text-rose-400 group-hover:scale-110 transition-transform">
+                    <Icon className="h-4 w-4 sm:h-5 sm:w-5" />
                   </div>
                   <span className="font-mono text-[10px] tracking-widest text-muted-foreground uppercase">
                     METRIC #{idx + 1}
                   </span>
                 </div>
 
-                <div className="mt-4 sm:mt-5">
-                  <div className="font-jakarta text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight text-foreground group-hover:text-brand-red transition-colors">
+                <div className="mt-3.5 sm:mt-5">
+                  <div className="font-jakarta text-2xl sm:text-2xl lg:text-3xl font-extrabold tracking-tight text-foreground group-hover:text-brand-red transition-colors break-words leading-tight">
                     {m.value}
                   </div>
-                  <h3 className="mt-1 font-semibold text-sm text-foreground/90">
+                  <h3 className="mt-1 font-semibold text-xs sm:text-sm text-foreground/90 leading-snug break-words">
                     {isEn ? m.label.en : m.label.tr}
                   </h3>
-                  <p className="mt-1.5 text-xs text-muted-foreground leading-relaxed">
+                  <p className="mt-1 sm:mt-1.5 text-[11px] sm:text-xs text-muted-foreground leading-relaxed break-words">
                     {isEn ? m.subtext.en : m.subtext.tr}
                   </p>
                 </div>
@@ -1152,63 +1152,66 @@ export function ProjectEngineeringCaseStudy({ data, locale = "tr" }: Props) {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="rounded-3xl border border-brand-red/30 bg-gradient-to-b from-brand-red/[0.05] via-card/70 to-card/40 p-4.5 sm:p-6 md:p-10 backdrop-blur-md relative overflow-hidden shadow-xl dark:shadow-[0_0_50px_rgba(220,38,38,0.07)]"
+          className="rounded-2xl sm:rounded-3xl border border-brand-red/30 bg-gradient-to-b from-brand-red/[0.05] via-card/70 to-card/40 p-4 sm:p-6 md:p-10 backdrop-blur-md relative overflow-hidden shadow-xl dark:shadow-[0_0_50px_rgba(220,38,38,0.07)]"
         >
           <div className="absolute -right-24 -top-24 h-64 w-64 rounded-full bg-brand-red/10 blur-3xl pointer-events-none" />
 
-          <div className="relative z-10 space-y-8">
+          <div className="relative z-10 space-y-6 sm:space-y-8">
             {/* Benchmark Section Header */}
             <div>
-              <div className="inline-flex items-center gap-2 rounded-full border border-brand-red/30 bg-brand-red/10 px-3.5 py-1 text-xs font-bold text-brand-red dark:text-rose-400 uppercase tracking-widest mb-3">
+              <div className="inline-flex items-center gap-2 rounded-full border border-brand-red/30 bg-brand-red/10 px-3 py-1 text-[11px] sm:text-xs font-bold text-brand-red dark:text-rose-400 uppercase tracking-widest mb-2 sm:mb-3">
                 <Gauge className="w-3.5 h-3.5" />
                 {isEn ? data.benchmark.badge.en : data.benchmark.badge.tr}
               </div>
-              <h2 className="font-jakarta text-2xl md:text-3xl font-extrabold text-foreground tracking-tight">
+              <h2 className="font-jakarta text-xl sm:text-2xl md:text-3xl font-extrabold text-foreground tracking-tight break-words">
                 {isEn ? data.benchmark.title.en : data.benchmark.title.tr}
               </h2>
-              <p className="mt-2 text-sm md:text-base text-muted-foreground leading-relaxed max-w-3xl">
+              <p className="mt-2 text-xs sm:text-sm md:text-base text-muted-foreground leading-relaxed max-w-3xl break-words">
                 {isEn ? data.benchmark.context.en : data.benchmark.context.tr}
               </p>
             </div>
 
             {/* Terminal Proof Window */}
-            <div className="rounded-2xl border border-zinc-800 bg-zinc-950 p-4 md:p-6 font-mono text-xs text-zinc-300 shadow-2xl overflow-hidden">
+            <div className="rounded-xl sm:rounded-2xl border border-zinc-800 bg-zinc-950 p-3.5 sm:p-4 md:p-6 font-mono text-xs text-zinc-300 shadow-2xl overflow-hidden">
               <div className="flex items-center justify-between pb-3 mb-3 border-b border-zinc-800/80">
                 <div className="flex items-center gap-2">
-                  <div className="h-3 w-3 rounded-full bg-rose-500/80" />
-                  <div className="h-3 w-3 rounded-full bg-amber-500/80" />
-                  <div className="h-3 w-3 rounded-full bg-emerald-500/80" />
-                  <span className="ml-2 text-[11px] text-zinc-400 font-sans font-medium">bash — node:sqlite benchmark runner</span>
+                  <div className="h-2.5 w-2.5 sm:h-3 sm:w-3 rounded-full bg-rose-500/80" />
+                  <div className="h-2.5 w-2.5 sm:h-3 sm:w-3 rounded-full bg-amber-500/80" />
+                  <div className="h-2.5 w-2.5 sm:h-3 sm:w-3 rounded-full bg-emerald-500/80" />
+                  <span className="ml-1 sm:ml-2 text-[10px] sm:text-[11px] text-zinc-400 font-sans font-medium">bash — node:sqlite</span>
                 </div>
-                <span className="text-[10px] text-emerald-400 tracking-wider uppercase font-semibold">Live Empirical Profiling</span>
+                <span className="text-[9px] sm:text-[10px] text-emerald-400 tracking-wider uppercase font-semibold">Live Empirical Profiling</span>
               </div>
-              <div className="space-y-2 text-[11px] md:text-xs">
+              <div className="space-y-1.5 sm:space-y-2 text-[10px] sm:text-xs overflow-x-auto">
                 {data.benchmark.terminalCommands.map((cmd, i) => (
-                  <div key={i} className="flex items-start gap-2">
+                  <div key={i} className="flex items-start gap-2 whitespace-nowrap">
                     <span className="text-brand-red select-none font-bold">$</span>
                     <span className="text-zinc-200">{cmd}</span>
                   </div>
                 ))}
                 <div className="pt-2 text-zinc-400 border-t border-zinc-900/80">
                   <div className="text-emerald-400 font-bold">{data.benchmark.terminalOutputHeader}</div>
-                  <div className="text-zinc-400 font-medium">{isEn ? data.benchmark.datasetInfo.en : data.benchmark.datasetInfo.tr}</div>
+                  <div className="text-zinc-400 font-medium break-words">{isEn ? data.benchmark.datasetInfo.en : data.benchmark.datasetInfo.tr}</div>
                 </div>
               </div>
             </div>
 
             {/* Benchmark Comparison Table */}
-            <div className="overflow-x-auto rounded-2xl border border-border/80 bg-card/70 backdrop-blur-sm -mx-1 sm:mx-0">
+            <div className="overflow-x-auto rounded-xl sm:rounded-2xl border border-border/80 bg-card/70 backdrop-blur-sm -mx-1 sm:mx-0">
+              <div className="sm:hidden flex items-center justify-end px-3 pt-2 text-[10px] font-mono text-muted-foreground">
+                <span>← {isEn ? "Swipe to compare" : "Tablonun devamı için kaydırın"} →</span>
+              </div>
               <table className="w-full text-left text-xs md:text-sm">
                 <thead>
                   <tr className="border-b border-border/70 bg-muted/50 font-jakarta text-foreground">
-                    <th className="p-3 sm:p-4 md:p-5 font-bold whitespace-nowrap">{isEn ? "Metric" : "Metrik"}</th>
-                    <th className="p-3 sm:p-4 md:p-5 font-bold text-rose-500 dark:text-rose-400 whitespace-nowrap">
+                    <th className="p-2.5 sm:p-4 md:p-5 font-bold whitespace-nowrap">{isEn ? "Metric" : "Metrik"}</th>
+                    <th className="p-2.5 sm:p-4 md:p-5 font-bold text-rose-500 dark:text-rose-400 whitespace-nowrap">
                       {isEn ? "🐢 Legacy (JSON Parse + Array.filter())" : "🐢 Eski Yöntem (JSON Parse + Array.filter())"}
                     </th>
-                    <th className="p-3 sm:p-4 md:p-5 font-bold text-emerald-600 dark:text-emerald-400 whitespace-nowrap">
+                    <th className="p-2.5 sm:p-4 md:p-5 font-bold text-emerald-600 dark:text-emerald-400 whitespace-nowrap">
                       {isEn ? "🚀 Optimized (Indexed SQLite B-Tree)" : "🚀 Yeni Yöntem (İndeksli SQLite B-Tree)"}
                     </th>
-                    <th className="p-3 sm:p-4 md:p-5 font-bold text-brand-red dark:text-rose-400 whitespace-nowrap">
+                    <th className="p-2.5 sm:p-4 md:p-5 font-bold text-brand-red dark:text-rose-400 whitespace-nowrap">
                       {isEn ? "Difference / Empirical Gain" : "Fark / Kazanç"}
                     </th>
                   </tr>
@@ -1216,18 +1219,18 @@ export function ProjectEngineeringCaseStudy({ data, locale = "tr" }: Props) {
                 <tbody className="divide-y divide-border/50">
                   {data.benchmark.rows.map((row, rIdx) => (
                     <tr key={rIdx} className="hover:bg-muted/20 transition-colors">
-                      <td className="p-3 sm:p-4 md:p-5 font-semibold text-foreground whitespace-nowrap">
+                      <td className="p-2.5 sm:p-4 md:p-5 font-semibold text-foreground whitespace-nowrap">
                         {isEn ? row.metric.en : row.metric.tr}
                       </td>
-                      <td className="p-3 sm:p-4 md:p-5 text-muted-foreground font-mono whitespace-nowrap">
+                      <td className="p-2.5 sm:p-4 md:p-5 text-muted-foreground font-mono whitespace-nowrap">
                         {isEn ? row.legacy.en : row.legacy.tr}
                       </td>
-                      <td className="p-3 sm:p-4 md:p-5 font-mono font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-500/[0.04] whitespace-nowrap">
+                      <td className="p-2.5 sm:p-4 md:p-5 font-mono font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-500/[0.04] whitespace-nowrap">
                         {isEn ? row.optimized.en : row.optimized.tr}
                       </td>
-                      <td className="p-3 sm:p-4 md:p-5 font-semibold whitespace-nowrap">
-                        <span className="inline-flex items-center gap-1.5 rounded-lg border border-brand-red/30 bg-brand-red/10 px-2.5 py-1 text-xs font-bold text-brand-red dark:text-rose-400">
-                          <TrendingUp className="w-3.5 h-3.5" />
+                      <td className="p-2.5 sm:p-4 md:p-5 font-semibold whitespace-nowrap">
+                        <span className="inline-flex items-center gap-1.5 rounded-lg border border-brand-red/30 bg-brand-red/10 px-2 py-0.5 sm:px-2.5 sm:py-1 text-[11px] sm:text-xs font-bold text-brand-red dark:text-rose-400">
+                          <TrendingUp className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
                           {isEn ? row.gain.en : row.gain.tr}
                         </span>
                       </td>
@@ -1238,24 +1241,24 @@ export function ProjectEngineeringCaseStudy({ data, locale = "tr" }: Props) {
             </div>
 
             {/* Deep Insight Takeaways */}
-            <div className="space-y-4 pt-2">
-              <h3 className="font-jakarta text-lg md:text-xl font-bold text-foreground flex items-center gap-2">
-                <Sparkles className="w-5 h-5 text-brand-red" />
+            <div className="space-y-3 sm:space-y-4 pt-1 sm:pt-2">
+              <h3 className="font-jakarta text-base sm:text-lg md:text-xl font-bold text-foreground flex items-center gap-2 break-words">
+                <Sparkles className="w-4 h-4 sm:w-5 sm:h-5 text-brand-red" />
                 {isEn ? data.benchmark.takeawaysTitle.en : data.benchmark.takeawaysTitle.tr}
               </h3>
-              <div className="grid gap-4 md:grid-cols-2">
+              <div className="grid gap-3 sm:gap-4 grid-cols-1 md:grid-cols-2">
                 {data.benchmark.takeaways.map((takeaway, tIdx) => (
                   <div
                     key={tIdx}
-                    className="rounded-2xl border border-border/80 bg-card/50 p-4.5 sm:p-6 backdrop-blur-xs hover:border-brand-red/30 transition-all space-y-2.5"
+                    className="rounded-xl sm:rounded-2xl border border-border/80 bg-card/50 p-4 sm:p-6 backdrop-blur-xs hover:border-brand-red/30 transition-all space-y-2 sm:space-y-2.5"
                   >
-                    <span className="font-mono text-[11px] font-bold text-brand-red dark:text-rose-400 uppercase tracking-widest">
+                    <span className="font-mono text-[10px] sm:text-[11px] font-bold text-brand-red dark:text-rose-400 uppercase tracking-widest block">
                       {isEn ? takeaway.badge.en : takeaway.badge.tr}
                     </span>
-                    <h4 className="font-jakarta font-bold text-foreground text-sm md:text-base">
+                    <h4 className="font-jakarta font-bold text-foreground text-sm sm:text-base break-words">
                       {isEn ? takeaway.title.en : takeaway.title.tr}
                     </h4>
-                    <p className="text-xs md:text-sm text-muted-foreground leading-relaxed">
+                    <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed break-words">
                       {isEn ? takeaway.desc.en : takeaway.desc.tr}
                     </p>
                   </div>
@@ -1268,15 +1271,15 @@ export function ProjectEngineeringCaseStudy({ data, locale = "tr" }: Props) {
 
       {/* 3. Interactive Architecture Flow */}
       <div>
-        <div className="flex items-center gap-3 mb-8">
-          <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-brand-red/10 text-brand-red dark:bg-rose-500/10 dark:text-rose-400">
+        <div className="flex items-center gap-3 mb-6 sm:mb-8">
+          <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-brand-red/10 text-brand-red dark:bg-rose-500/10 dark:text-rose-400">
             <Layers className="h-5 w-5" />
           </div>
           <div>
-            <h2 className="font-jakarta text-2xl font-bold tracking-tight text-foreground md:text-3xl">
+            <h2 className="font-jakarta text-xl sm:text-2xl md:text-3xl font-bold tracking-tight text-foreground break-words">
               {isEn ? "End-to-End System Architecture Flow" : "Uçtan Uca Sistem Mimarisi & Veri Hattı"}
             </h2>
-            <p className="text-xs text-muted-foreground mt-0.5">
+            <p className="text-xs text-muted-foreground mt-0.5 break-words">
               {isEn
                 ? "From raw target DOMs to sub-50ms reactive delivery."
                 : "Ham hedef kaynaklardan milisaniyelik reaktif sunuma kadar veri yolculuğu."}
@@ -1284,7 +1287,7 @@ export function ProjectEngineeringCaseStudy({ data, locale = "tr" }: Props) {
           </div>
         </div>
 
-        <div className="grid gap-4 md:grid-cols-5 relative">
+        <div className="grid gap-3 sm:gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 relative">
           {data.architectureSteps.map((step, idx) => (
             <motion.div
               key={step.step}
@@ -1292,21 +1295,21 @@ export function ProjectEngineeringCaseStudy({ data, locale = "tr" }: Props) {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: idx * 0.1 }}
-              className="relative rounded-3xl border border-border/70 bg-card/40 p-4.5 sm:p-6 backdrop-blur-xs hover:border-brand-red/40 transition-all flex flex-col justify-between"
+              className="relative rounded-2xl sm:rounded-3xl border border-border/70 bg-card/40 p-4 sm:p-5 lg:p-6 backdrop-blur-xs hover:border-brand-red/40 transition-all flex flex-col justify-between"
             >
               <div>
-                <div className="flex items-center justify-between mb-4">
-                  <span className="font-mono text-xs font-bold text-brand-red dark:text-rose-400">
+                <div className="flex items-center justify-between gap-2 mb-3 sm:mb-4">
+                  <span className="font-mono text-xs font-bold text-brand-red dark:text-rose-400 shrink-0">
                     STEP {step.step}
                   </span>
-                  <span className="rounded-full bg-foreground/5 px-2.5 py-0.5 text-[10px] font-medium text-muted-foreground border border-border/50">
+                  <span className="rounded-full bg-foreground/5 px-2.5 py-0.5 text-[10px] font-medium text-muted-foreground border border-border/50 truncate max-w-[130px]">
                     {isEn ? step.badge.en : step.badge.tr}
                   </span>
                 </div>
-                <h3 className="font-jakarta text-base font-bold text-foreground">
+                <h3 className="font-jakarta text-sm sm:text-base font-bold text-foreground break-words leading-snug">
                   {isEn ? step.title.en : step.title.tr}
                 </h3>
-                <p className="mt-2 text-xs leading-relaxed text-muted-foreground">
+                <p className="mt-2 text-xs leading-relaxed text-muted-foreground break-words">
                   {isEn ? step.desc.en : step.desc.tr}
                 </p>
               </div>
@@ -1323,17 +1326,17 @@ export function ProjectEngineeringCaseStudy({ data, locale = "tr" }: Props) {
         </div>
       </div>
 
-      {/* 3. Deep Engineering War Stories & Challenge Breakdowns */}
+      {/* 4. Deep Engineering War Stories & Challenge Breakdowns */}
       <div>
-        <div className="flex items-center gap-3 mb-8">
-          <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-brand-red/10 text-brand-red dark:bg-rose-500/10 dark:text-rose-400">
+        <div className="flex items-center gap-3 mb-6 sm:mb-8">
+          <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-brand-red/10 text-brand-red dark:bg-rose-500/10 dark:text-rose-400">
             <Server className="h-5 w-5" />
           </div>
           <div>
-            <h2 className="font-jakarta text-2xl font-bold tracking-tight text-foreground md:text-3xl">
+            <h2 className="font-jakarta text-xl sm:text-2xl md:text-3xl font-bold tracking-tight text-foreground break-words">
               {isEn ? "Deep Engineering Case Studies" : "Derinlemesine Mühendislik Vaka Analizleri"}
             </h2>
-            <p className="text-xs text-muted-foreground mt-0.5">
+            <p className="text-xs text-muted-foreground mt-0.5 break-words">
               {isEn
                 ? "How architectural challenges were solved with algorithmic precision."
                 : "Kritik mühendislik problemlerinin algoritma ve mimari düzeyde çözümü."}
@@ -1341,7 +1344,7 @@ export function ProjectEngineeringCaseStudy({ data, locale = "tr" }: Props) {
           </div>
         </div>
 
-        <div className="grid gap-6 md:grid-cols-2">
+        <div className="grid gap-4 sm:gap-6 grid-cols-1 md:grid-cols-2">
           {data.warStories.map((story, idx) => (
             <motion.div
               key={idx}
@@ -1349,42 +1352,42 @@ export function ProjectEngineeringCaseStudy({ data, locale = "tr" }: Props) {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: idx * 0.1 }}
-              className="rounded-3xl border border-border/70 bg-card/40 p-5 sm:p-6 md:p-8 backdrop-blur-xs transition-all hover:border-brand-red/30 hover:bg-card/60 flex flex-col justify-between space-y-6"
+              className="rounded-2xl sm:rounded-3xl border border-border/70 bg-card/40 p-4 sm:p-6 md:p-8 backdrop-blur-xs transition-all hover:border-brand-red/30 hover:bg-card/60 flex flex-col justify-between space-y-4 sm:space-y-6"
             >
               <div>
-                <span className="font-mono text-[11px] font-bold uppercase tracking-widest text-brand-red dark:text-rose-400">
+                <span className="font-mono text-[10px] sm:text-[11px] font-bold uppercase tracking-wider text-brand-red dark:text-rose-400 block break-words">
                   {isEn ? story.subtitle.en : story.subtitle.tr}
                 </span>
-                <h3 className="mt-2 font-jakarta text-xl font-bold text-foreground">
+                <h3 className="mt-1.5 sm:mt-2 font-jakarta text-base sm:text-xl font-bold text-foreground break-words leading-snug">
                   {isEn ? story.title.en : story.title.tr}
                 </h3>
 
-                <div className="mt-6 space-y-4 text-sm">
-                  <div className="rounded-2xl bg-destructive/10 p-4 border border-destructive/20">
-                    <p className="text-xs font-bold text-destructive uppercase tracking-wider mb-1">
+                <div className="mt-4 sm:mt-6 space-y-3 sm:space-y-4 text-xs sm:text-sm">
+                  <div className="rounded-xl sm:rounded-2xl bg-destructive/10 p-3.5 sm:p-4 border border-destructive/20 [overflow-wrap:anywhere]">
+                    <p className="text-[11px] sm:text-xs font-bold text-destructive uppercase tracking-wider mb-1">
                       {isEn ? "The Critical Challenge" : "Kritik Problem & Zorluk"}
                     </p>
-                    <p className="text-muted-foreground leading-relaxed">
+                    <p className="text-muted-foreground leading-relaxed break-words">
                       {isEn ? story.problem.en : story.problem.tr}
                     </p>
                   </div>
 
-                  <div className="rounded-2xl bg-brand-red/5 p-4 border border-brand-red/20">
-                    <p className="text-xs font-bold text-brand-red dark:text-rose-400 uppercase tracking-wider mb-1">
+                  <div className="rounded-xl sm:rounded-2xl bg-brand-red/5 p-3.5 sm:p-4 border border-brand-red/20 [overflow-wrap:anywhere]">
+                    <p className="text-[11px] sm:text-xs font-bold text-brand-red dark:text-rose-400 uppercase tracking-wider mb-1">
                       {isEn ? "Implemented Solution" : "Uygulanan Mimari Çözüm"}
                     </p>
-                    <p className="text-muted-foreground leading-relaxed">
+                    <p className="text-muted-foreground leading-relaxed break-words">
                       {isEn ? story.solution.en : story.solution.tr}
                     </p>
                   </div>
                 </div>
               </div>
 
-              <div className="rounded-2xl bg-emerald-500/10 p-4 border border-emerald-500/20">
-                <p className="text-xs font-bold text-emerald-600 dark:text-emerald-400 uppercase tracking-wider mb-1">
+              <div className="rounded-xl sm:rounded-2xl bg-emerald-500/10 p-3.5 sm:p-4 border border-emerald-500/20 [overflow-wrap:anywhere]">
+                <p className="text-[11px] sm:text-xs font-bold text-emerald-600 dark:text-emerald-400 uppercase tracking-wider mb-1">
                   {isEn ? "Verified Engineering Impact" : "Doğrulanmış Mühendislik Başarısı"}
                 </p>
-                <p className="text-xs text-foreground font-medium leading-relaxed">
+                <p className="text-xs sm:text-sm text-foreground font-medium leading-relaxed break-words">
                   {isEn ? story.impact.en : story.impact.tr}
                 </p>
               </div>
