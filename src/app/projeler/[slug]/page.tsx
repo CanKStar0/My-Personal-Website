@@ -99,12 +99,12 @@ const PROJECTS_DATA: ProjectData[] = [
       },
       {
         titleKey: {
-          tr: "02 - Resmi FanShop & İyzico 3D Secure E-Ticaret",
-          en: "02 - Official FanShop & İyzico 3D Secure Checkout",
+          tr: "02 - A Takımı Kadro & Transfermarkt Senkronizasyonu",
+          en: "02 - First Team Squad & Transfermarkt Valuation Sync",
         },
         descKey: {
-          tr: "Ağır ve hantal harici e-ticaret eklentileri yerine doğrudan çekirdeğe entegre forma mağazası. Varyantlı beden yönetimi, dinamik sepet, kupon indirimleri ve DomPDF ile sunucu taraflı sipariş makbuzu üretimi sağlar.",
-          en: "Directly embedded into the MVC core without heavy CMS dependencies. Features multi-variant size selection, atomic stock holds, promo coupon logic, and automated DomPDF order receipt generation.",
+          tr: "A Takımı kadrosu, oyuncu mevki dağılımları ve Transfermarkt üzerinden otonom senkronize edilen güncel piyasa değerleri. Oyuncu detay kartları, sözleşme süreleri ve kulüp veritabanına otomatik işlenen dinamik sporcu profilleri sunar.",
+          en: "First-team squad roster, positional breakdowns, and live player market valuations synchronized autonomously from Transfermarkt. Features comprehensive player detail profiles, contract terms, and dynamic database-backed player cards.",
         },
         imagePath: {
           tr: "/images/fethiyespor-2.png",
