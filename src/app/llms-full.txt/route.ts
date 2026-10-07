@@ -61,6 +61,18 @@ ${s.sections.map((sec) => `  - **${sec.title}**: ${sec.body}`).join("\n")}
 ---
 
 ## 3. Projects (Turkish & English)
+### Fethiyespor (Autonomous Sports Data Engine & AI Club Ecosystem)
+- URL (TR): ${SITE_URL}/projeler/fethiyespor
+- URL (EN): ${SITE_URL}/en/projects/fethiyespor
+- Live Demo: https://fethiyespor.org
+- Tech: Custom PHP MVC, MySQL Enterprise, Tailwind CSS, DeepL AI Translation Engine, Google Cloud AI, İyzico 3D Secure Gateway, Autonomous Sports Scraper, Mackolik & Transfermarkt API, DomPDF Receipt Engine, Granular RBAC, WebKit Hardening
+- Production Engineering Benchmarks:
+  - 100% Autonomous League & Fixture Sync: Mackolik and Transfermarkt scrapers ingest match scores, standings, and competitor crests with zero manual entry.
+  - Zero Bloated CMS Overhead: Bespoke lightweight PHP MVC core replacing WordPress/WooCommerce with zero plugin vulnerability surface.
+  - Native İyzico 3D Secure FanShop: Multi-variant size selection, atomic inventory holds, promo coupon logic, and automated DomPDF receipt generation.
+  - DeepL AI Bilingual Press Pipeline: Turkish news and announcements automatically translated into soccer-contextual English via background worker queues.
+  - Sub-40ms Server Response (TTFB): Lean PDO abstraction, optimized MySQL schemas, and strict iOS Safari WebKit hardening.
+
 ### MyBusinessBoss (All-in-One Enterprise B2B ERP & CRM SaaS Platform)
 - URL (TR): ${SITE_URL}/projeler/mybusinessboss
 - URL (EN): ${SITE_URL}/en/projects/mybusinessboss

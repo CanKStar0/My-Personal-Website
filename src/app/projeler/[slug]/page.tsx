@@ -17,6 +17,7 @@ import {
   BIST_AI_ENGINEERING_DATA,
   FREE_API_ENGINEERING_DATA,
   MY_BUSINESS_BOSS_ENGINEERING_DATA,
+  FETHIYESPOR_ENGINEERING_DATA,
 } from "@/components/project-engineering-case-study";
 
 function GithubIcon({ className }: { className?: string }) {
@@ -61,6 +62,107 @@ interface ProjectData {
 }
 
 const PROJECTS_DATA: ProjectData[] = [
+  {
+    slug: "fethiyespor",
+    titleKey: translations.projects.fethiyesporTitle,
+    summaryKey: translations.projects.fethiyesporDesc,
+    techStack: [
+      "Custom PHP MVC Architecture",
+      "MySQL Enterprise",
+      "Tailwind CSS",
+      "DeepL AI Translation Engine",
+      "İyzico 3D Secure Gateway",
+      "Autonomous Sports Scraper",
+      "Mackolik & Transfermarkt API",
+      "DomPDF Receipt Engine",
+      "Granular RBAC Security",
+      "Audit Trail & Logging",
+      "WebKit / iOS Safari Hardening",
+      "RESTful API & Caching",
+    ],
+    liveUrl: "https://fethiyespor.org",
+    githubUrl: "/gizli-repo",
+    features: [
+      {
+        titleKey: {
+          tr: "01 - Canlı Maç Merkezi & Otonom Puan Durumu",
+          en: "01 - Live Match Center & Autonomous Standings",
+        },
+        descKey: {
+          tr: "Mackolik ve spor platformlarından maç sonuçlarını, fikstürleri ve lig puan durumunu otomatik çeken akıllı veri hattı. Takım isimlerini ve rakip logolarını yerel depoda normalize ederek sıfır kırık görsel ve anlık canlı skor deneyimi sunar.",
+          en: "Intelligent sports pipeline ingesting match results, upcoming fixtures, and league standings autonomously from Mackolik. Reconciles team identities and caches competitor crests locally with zero broken assets.",
+        },
+        imagePath: {
+          tr: "/images/fethiyespor-1.png",
+          en: "/images/fethiyespor-1-en.png",
+        },
+      },
+      {
+        titleKey: {
+          tr: "02 - Resmi FanShop & İyzico 3D Secure E-Ticaret",
+          en: "02 - Official FanShop & İyzico 3D Secure Checkout",
+        },
+        descKey: {
+          tr: "Ağır ve hantal harici e-ticaret eklentileri yerine doğrudan çekirdeğe entegre forma mağazası. Varyantlı beden yönetimi, dinamik sepet, kupon indirimleri ve DomPDF ile sunucu taraflı sipariş makbuzu üretimi sağlar.",
+          en: "Directly embedded into the MVC core without heavy CMS dependencies. Features multi-variant size selection, atomic stock holds, promo coupon logic, and automated DomPDF order receipt generation.",
+        },
+        imagePath: {
+          tr: "/images/fethiyespor-2.png",
+          en: "/images/fethiyespor-2-en.png",
+        },
+      },
+      {
+        titleKey: {
+          tr: "03 - DeepL Yapay Zekâ Destekli Çift Dilli Basın Portalı",
+          en: "03 - DeepL AI-Powered Bilingual News Hub",
+        },
+        descKey: {
+          tr: "Kulüp duyuruları ve maç haberleri girildiği anda arka plan kuyruğunda DeepL AI ile bağlamsal doğruluğu yüksek profesyonel İngilizceye çevrilir. Yabancı basına ve turist taraftarlara sıfır gecikmeyle global erişim imkanı tanır.",
+          en: "Domestic football articles and press releases are dispatched to background DeepL AI queues for immediate English translation, giving international press and visiting fans instant real-time access.",
+        },
+        imagePath: {
+          tr: "/images/fethiyespor-3.png",
+          en: "/images/fethiyespor-3-en.png",
+        },
+      },
+      {
+        titleKey: {
+          tr: "04 - BenimFethiyem Topluluğu & Dinamik Kulüp Başvuruları",
+          en: "04 - BenimFethiyem Fan Hub & Dynamic Club Applications",
+        },
+        descKey: {
+          tr: "Altyapı seçmeleri, kulüp üyelikleri ve taraftar topluluğu için inşa edilen esnek form motoru. Brute-force kalkanı, matematiksel güvenlik doğrulaması (Captcha) ve iOS Safari WebKit zırhı ile mobilde pürüzsüz başvuru akışı sunar.",
+          en: "Flexible form and application engine powering youth academy registrations, club memberships, and the fan community. Fortified with brute-force rate limiters, anti-bot captchas, and iOS WebKit scroll-lock hardening.",
+        },
+        imagePath: {
+          tr: "/images/fethiyespor-4.png",
+          en: "/images/fethiyespor-4-en.png",
+        },
+      },
+    ],
+    caseStudy: {
+      problem: {
+        tr: "Geleneksel spor kulübü siteleri hantal hazır CMS'ler (WordPress), manuel maç verisi girişi, kopuk harici e-ticaret linkleri ve gecikmeli çeviri süreçleri yüzünden ciddi operasyonel yük ve güvenlik açıkları yaratıyordu.",
+        en: "Traditional sports club portals struggle with bloated CMS platforms (WordPress), manual score entry overhead, disconnected third-party e-commerce stores, and delayed translation workflows.",
+      },
+      solution: {
+        tr: "Mackolik'ten canlı veri toplayan otonom bir scraper, İyzico entegreli resmi FanShop, DeepL destekli AI çeviri kuyruğu ve taraftar topluluğunu bir araya getiren sıfır bağımlılıklı özel bir PHP MVC ekosistemi geliştirdim.",
+        en: "I engineered a custom PHP MVC ecosystem integrating autonomous Mackolik scraping, a native İyzico FanShop, DeepL AI translation jobs, and a unified fan community with zero external CMS bloat.",
+      },
+      architecture: {
+        tr: "Custom PHP MVC Architecture → Autonomous Background Scheduler (Mackolik / Transfermarkt Sync) → DeepL & Google Cloud AI Translation Pipeline → İyzico 3D Secure Gateway & DomPDF → Tailwind CSS & iOS WebKit Hardened UI.",
+        en: "Custom PHP MVC Architecture → Autonomous Background Scheduler (Mackolik / Transfermarkt Sync) → DeepL & Google Cloud AI Translation Pipeline → İyzico 3D Secure Gateway & DomPDF → Tailwind CSS & iOS WebKit Hardened UI.",
+      },
+      dataFlow: {
+        tr: "Maç sonuçları ve fikstürler otonom zamanlayıcıyla çekilip yerel veritabanında normalize edilir; mağaza siparişleri atomik sepet ve İyzico 3D Secure callback'leri üzerinden doğrulanır; Türkçe girilen haberler DeepL API ile anında İngilizceye dönüştürülür.",
+        en: "Match data is collected autonomously and normalized in local MySQL; FanShop orders verify through atomic stock holds and İyzico 3D Secure callbacks; Turkish news translates into publication-ready English via DeepL.",
+      },
+    },
+    relatedServices: [
+      { label: { tr: "Özel Yazılım Geliştirme", en: "Custom Software Development" }, href: "/hizmetler/ozel-yazilim-gelistirme" },
+      { label: { tr: "Web Scraping ve Otomasyon", en: "Web Scraping & Automation" }, href: "/hizmetler/web-scraping-ve-otomasyon" },
+    ],
+  },
   {
     slug: "mybusinessboss",
     titleKey: translations.projects.mybusinessbossTitle,
@@ -486,7 +588,12 @@ export default function ProjeDetayPage() {
           )}
 
           {/* Mühendislik Başarısı, Metrikler & Mimari Vaka Analizi */}
-          {project.slug === "mybusinessboss" ? (
+          {project.slug === "fethiyespor" ? (
+            <ProjectEngineeringCaseStudy
+              data={FETHIYESPOR_ENGINEERING_DATA}
+              locale={locale}
+            />
+          ) : project.slug === "mybusinessboss" ? (
             <ProjectEngineeringCaseStudy
               data={MY_BUSINESS_BOSS_ENGINEERING_DATA}
               locale={locale}

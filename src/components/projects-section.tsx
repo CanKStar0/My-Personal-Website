@@ -25,6 +25,16 @@ export function ProjectsSection({ githubReposNode }: ProjectsSectionProps = {}) 
 
   const projects: Project[] = [
     {
+      titleKey: translations.projects.fethiyesporTitle,
+      descriptionKey: translations.projects.fethiyesporDesc,
+      technologies: ["Custom PHP MVC", "MySQL Enterprise", "Tailwind CSS", "DeepL AI Engine", "İyzico 3D Secure", "Autonomous Scraper", "Mackolik & Transfermarkt Sync", "DomPDF Engine"],
+      slug: "fethiyespor",
+      imagePath: {
+        tr: "/images/fethiyespor-cover.png",
+        en: "/images/fethiyespor-cover-en.png",
+      },
+    },
+    {
       titleKey: translations.projects.mybusinessbossTitle,
       descriptionKey: translations.projects.mybusinessbossDesc,
       technologies: ["PHP MVC", "MySQL Enterprise", "TypeScript", "Progressive Web App (PWA)", "Redis Caching", "ZXing Barcode Engine", "CalDAV / ICS Feed", "RBAC Security", "Audit Trail"],

@@ -47,6 +47,12 @@ export function CommandPalette({ isOpen, onClose }: { isOpen: boolean; onClose: 
     const projectsList = isEn
       ? [
           {
+            id: "proj-fethiyespor",
+            title: "Fethiyespor - Autonomous Sports Data & AI Club Platform",
+            description: "Autonomous Mackolik/Transfermarkt sync, DeepL AI translation, and official İyzico FanShop.",
+            href: "/en/projects/fethiyespor",
+          },
+          {
             id: "proj-mbb",
             title: "MyBusinessBoss - All-in-One ERP & CRM SaaS Platform",
             description: "High-performance modular enterprise ERP, POS, inventory, barcode, and calendar sync.",
@@ -72,6 +78,12 @@ export function CommandPalette({ isOpen, onClose }: { isOpen: boolean; onClose: 
           },
         ]
       : [
+          {
+            id: "proj-fethiyespor",
+            title: "Fethiyespor - Otonom Veri Motorlu & AI Destekli Kulüp Ekosistemi",
+            description: "Mackolik/Transfermarkt otonom veri senkronizasyonu, DeepL AI çeviri hattı ve İyzico FanShop.",
+            href: "/projeler/fethiyespor",
+          },
           {
             id: "proj-mbb",
             title: "MyBusinessBoss - All-in-One Kurumsal ERP & CRM SaaS",

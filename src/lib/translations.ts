@@ -69,6 +69,11 @@ export const translations = {
     } as TranslationValue,
     imagePreparing: { tr: "Görsel Hazırlanıyor", en: "Image Preparing" } as TranslationValue,
     // Project cards
+    fethiyesporTitle: { tr: "Fethiyespor Kulüp & E-Ticaret Ekosistemi", en: "Fethiyespor Club & E-Commerce Ecosystem" } as TranslationValue,
+    fethiyesporDesc: {
+      tr: "Otonom Mackolik/Transfermarkt spor verisi senkronizasyonu, DeepL AI çeviri hattı ve İyzico entegreli resmi FanShop içeren kurumsal dijital platform.",
+      en: "Enterprise sports platform featuring autonomous Mackolik/Transfermarkt sync, DeepL AI translation pipeline, and an İyzico-powered official FanShop.",
+    } as TranslationValue,
     mybusinessbossTitle: { tr: "MyBusinessBoss SaaS ERP & CRM", en: "MyBusinessBoss SaaS ERP & CRM" } as TranslationValue,
     mybusinessbossDesc: {
       tr: "POS, stok, barkod, CRM, tamirhane servis takibi, akıllı randevu ve finans süreçlerini tek çatı altında toplayan devasa All-in-One Kurumsal SaaS platformu.",

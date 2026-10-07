@@ -13,6 +13,7 @@ const routePairs = [
   ["/hizmetler/rakip-fiyat-takip-sistemi", "/en/services/competitor-price-tracking"],
   ["/hizmetler/e-ticaret-urun-veri-aktarimi", "/en/services/ecommerce-product-data-extraction"],
   ["/projeler", "/en/projects"],
+  ["/projeler/fethiyespor", "/en/projects/fethiyespor"],
   ["/projeler/mybusinessboss", "/en/projects/mybusinessboss"],
   ["/projeler/free-api", "/en/projects/free-api"],
   ["/projeler/haber-portali", "/en/projects/haber-portali"],

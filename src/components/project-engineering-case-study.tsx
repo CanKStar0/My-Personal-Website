@@ -900,6 +900,183 @@ export const MY_BUSINESS_BOSS_ENGINEERING_DATA: EngineeringCaseStudyData = {
   ],
 };
 
+export const FETHIYESPOR_ENGINEERING_DATA: EngineeringCaseStudyData = {
+  metrics: [
+    {
+      value: "%100 Otonom",
+      label: { tr: "Canlı Lig & Fikstür Senkronu", en: "Autonomous League & Fixture Sync" },
+      subtext: { tr: "Mackolik & Transfermarkt Otomasyonu", en: "Mackolik & Transfermarkt Automated Scraper" },
+      icon: RefreshCw,
+      color: "red",
+    },
+    {
+      value: "0 Bağımlılık",
+      label: { tr: "Özel PHP MVC Mimarisi", en: "Custom Lightweight PHP MVC Core" },
+      subtext: { tr: "WordPress/WooCommerce Hantallığı Sıfır", en: "Zero Bloated CMS or Plugin Vulnerability" },
+      icon: ShieldCheck,
+      color: "emerald",
+    },
+    {
+      value: "3D Secure",
+      label: { tr: "İyzico FanShop Entegrasyonu", en: "İyzico FanShop Gateway" },
+      subtext: { tr: "Varyantlı Sepet & DomPDF E-Makbuz", en: "Multi-Variant Cart & Server-Side PDF Receipts" },
+      icon: Zap,
+      color: "blue",
+    },
+    {
+      value: "2 Dil (AI)",
+      label: { tr: "Otonom DeepL Basın Hattı", en: "Autonomous DeepL Press Pipeline" },
+      subtext: { tr: "Sıfır Çevirmen Eforuyla Global Haber", en: "Zero-Latency Bilingual News Publishing" },
+      icon: Cpu,
+      color: "purple",
+    },
+    {
+      value: "<40 ms",
+      label: { tr: "Sunucu Yanıt Süresi (TTFB)", en: "Server Response Latency (TTFB)" },
+      subtext: { tr: "Saf PDO & Optimize MySQL Sorguları", en: "Lean PDO Queries & Native WebKit Optimization" },
+      icon: Layers,
+      color: "amber",
+    },
+  ],
+  architectureSteps: [
+    {
+      step: "01",
+      title: { tr: "Otonom Veri Toplama (Mackolik & Transfermarkt)", en: "Autonomous Sports Ingestion" },
+      desc: {
+        tr: "Arka plan zamanlayıcısı lig maçları, anlık puan durumu ve rakip kadro değerlerini harici platformlardan otonom olarak çeker.",
+        en: "Background scheduler extracts league standings, fixture schedules, and squad market values from sports platforms autonomously.",
+      },
+      badge: { tr: "Veri Girişi", en: "Ingestion" },
+    },
+    {
+      step: "02",
+      title: { tr: "Logo & Veri Mutabakat Motoru", en: "Team Logo & Fixture Reconciliation" },
+      desc: {
+        tr: "Farklı kaynaklardaki takım isimleri yerel veritabanıyla eşleştirilir, rakip kulüp logoları otomatik optimize edilip yerel depoda önbelleğe alınır.",
+        en: "Team names across disparate sources are normalized and mapped; competitor club crests are downloaded, optimized, and cached locally.",
+      },
+      badge: { tr: "Normalizasyon", en: "Reconciliation" },
+    },
+    {
+      step: "03",
+      title: { tr: "Özel PHP MVC & RBAC Güvenlik Çekirdeği", en: "Custom PHP MVC & Granular RBAC" },
+      desc: {
+        tr: "Ağır hazır CMS'lerden arındırılmış saf MVC çekirdeği; dinamik form oluşturucu, çöp kutusu revizyonları ve tam denetim loglaması sağlar.",
+        en: "Lean MVC framework free of CMS bloat; provides dynamic form builders, trash/revision safety, and exhaustive admin audit logs.",
+      },
+      badge: { tr: "Çekirdek Motor", en: "Core Framework" },
+    },
+    {
+      step: "04",
+      title: { tr: "Resmi FanShop & İyzico Ödeme Geçidi", en: "Official FanShop & İyzico Gateway" },
+      desc: {
+        tr: "Beden ve renk varyantları, stok rezervasyonu, kupon motoru ve 3D Secure İyzico tahsilatıyla kulübe doğrudan dijital gelir sağlar.",
+        en: "Manages jersey variants, atomic inventory holds, promo coupons, and 3D Secure payment flows generating direct club revenue.",
+      },
+      badge: { tr: "E-Ticaret & Kasa", en: "Checkout" },
+    },
+    {
+      step: "05",
+      title: { tr: "DeepL AI Basın Çevirisi & WebKit Zırhlı Arayüz", en: "DeepL AI Translation & WebKit UI" },
+      desc: {
+        tr: "Haberler DeepL AI kuyruğuyla anında İngilizceye çevrilir; mobil arayüz iOS Safari auto-zoom ve scroll kilitlerine karşı zırhlanmış olarak sunulur.",
+        en: "Club news is dispatched to DeepL AI translation jobs; the mobile interface enforces strict WebKit input and scroll-lock protection.",
+      },
+      badge: { tr: "Canlı Sunum & AI", en: "Delivery" },
+    },
+  ],
+  warStories: [
+    {
+      title: {
+        tr: "Manuel Maç Girişine Son: Mackolik & Transfermarkt Otonom Veri Motoru",
+        en: "Eliminating Manual Score Entry: Autonomous Mackolik & Transfermarkt Sync",
+      },
+      subtitle: {
+        tr: "Her Hafta Sonu Editörlerin Saatlerini Alan Veri Girişini Sıfıra İndirme",
+        en: "Automating Weekend Fixture & Table Updates with Zero Human Intervention",
+      },
+      problem: {
+        tr: "Her lig maçı sonrasında puan tablosunu, gol averajlarını ve bir sonraki haftanın fikstürünü elle girmek saatler sürüyor, rakip takım logolarının boyut ve format farkları arayüzde bozulmalara yol açıyordu.",
+        en: "Manually updating match results, goal differentials, and upcoming fixtures after every matchday consumed hours of editorial time, while inconsistent competitor club crest formats broke UI layouts.",
+      },
+      solution: {
+        tr: "MackolikStandingsStore ve TeamLogoReconciliationService mimarisi kuruldu. Maç bittiği anda veriler arka planda otonom olarak çekildi, takım isimleri akıllı algoritmalarla eşleştirildi ve rakip logoları yerel WebP formatında optimize edilerek önbelleklendi.",
+        en: "Architected MackolikStandingsStore and TeamLogoReconciliationService. Post-match data is scraped autonomously, club names are reconciled deterministically, and competitor crests are converted to optimized WebP in local storage.",
+      },
+      impact: {
+        tr: "Lig maçları bittiği anda puan durumu sıfır saniyede güncellendi; kulüp editörlerinin haftalık 6 saatlik rutin veri ameleliği tamamen ortadan kaldırıldı.",
+        en: "League standings update instantaneously with 100% autonomy; eliminated 6+ hours of weekly manual data entry for club administrators.",
+      },
+    },
+    {
+      title: {
+        tr: "WordPress Hantallığı Olmadan Sıfır Bağımlılıklı İyzico FanShop",
+        en: "Zero-Bloat E-Commerce: Native İyzico FanShop Without WordPress",
+      },
+      subtitle: {
+        tr: "Kulübe Aylık Eklenti Maliyeti Çıkarmayan Özel Sipariş & Ödeme Motoru",
+        en: "Eliminating Recurring Third-Party Platform Subscriptions and Plugin Vulnerabilities",
+      },
+      problem: {
+        tr: "Kulübün lisanslı forma ve ürün satışı için WooCommerce veya Shopify gibi harici platformlar kurmak hem yüksek aylık abonelikler gerektiriyor hem de güvenlik saldırı yüzeyini devasa boyutlara taşıyordu.",
+        en: "Deploying WooCommerce or SaaS e-commerce engines introduced recurring cloud costs, fragmented customer databases, and critical third-party plugin security vulnerabilities.",
+      },
+      solution: {
+        tr: "Doğrudan MVC çekirdeğine entegre çalışan CartService, CheckoutService ve resmi iyzico/iyzipay-php katmanı geliştirildi. Dinamik beden/varyant stok kontrolü, kupon motoru ve DomPDF ile otomatik sipariş makbuzu üretimi tek merkezde birleştirildi.",
+        en: "Engineered a native CartService, CheckoutService, and official iyzico/iyzipay-php integration directly into the MVC core. Combined atomic stock verification, promo coupons, and automated DomPDF receipt generation.",
+      },
+      impact: {
+        tr: "Ekstra sunucu ve lisans maliyeti sıfırlandı; taraftarların mobil cihazlarından 60 saniyede güvenli sipariş verebildiği kesintisiz bir gelir kapısı açıldı.",
+        en: "Zero recurring plugin costs; unlocked a secure, high-conversion revenue channel enabling supporters to order merchandise in under 60 seconds.",
+      },
+    },
+    {
+      title: {
+        tr: "DeepL Yapay Zekâsı ile Sıfır Eforlu İki Dilli Basın Portalı",
+        en: "Zero-Friction Bilingual Press Hub via Autonomous DeepL AI Jobs",
+      },
+      subtitle: {
+        tr: "Türkçe Girilen Haberleri Arka Planda Saniyeler İçinde Global Yayına Hazırlama",
+        en: "Translating Domestic Football News into Publication-Ready English Instantly",
+      },
+      problem: {
+        tr: "Kulüp haberlerinin, transfer gelişmelerinin ve resmi duyuruların yabancı taraftarlar ve uluslararası basın için İngilizceye çevrilmesi ya saatler süren manuel çevirmen süreci gerektiriyor ya da tamamen aksıyordu.",
+        en: "Translating transfer announcements, injury updates, and official club statements for international press and tourists created translation delays and recurring agency expenses.",
+      },
+      solution: {
+        tr: "ContentTranslationJobService ve DeepLTranslationService altyapısı kuruldu. Editör Türkçe haberi kaydettiği anda arka plan kuyruğu devreye girerek futbol terminolojisine uygun bağlamsal İngilizce çeviriyi otomatik üretti ve yayın taslağına bağladı.",
+        en: "Built ContentTranslationJobService powered by DeepLTranslationService. As soon as an article is drafted in Turkish, background queues generate soccer-contextual English translations automatically.",
+      },
+      impact: {
+        tr: "Yerelleştirme süresi saatlerden 3 saniyeye indi; kulübün uluslararası görünürlüğü ve turist taraftarlarla bağı sıfır ek bütçeyle sağlandı.",
+        en: "Slashed localization turnaround from hours to 3 seconds; enhanced global club reach and tourist fan engagement with zero ongoing translation overhead.",
+      },
+    },
+    {
+      title: {
+        tr: "iOS Safari WebKit Zırhı & Kaynak Hijyeni Standartları",
+        en: "iOS Safari WebKit Hardening & Source Hygiene Enforcement",
+      },
+      subtitle: {
+        tr: "Mobilde Form Auto-Zoom ve Modal Scroll Kilitlenmelerini Kökten Çözme",
+        en: "Eliminating Viewport Auto-Zoom and Modal Scroll Bleed Across Mobile Browsers",
+      },
+      problem: {
+        tr: "Taraftarların kulüp başvuruları ve bilet rezervasyonlarında mobil Safari kullanırken inputlara tıklandığında ekranın kontrolsüz büyümesi (auto-zoom) ve modal pencerelerde arka planın kayması ciddi terk oranlarına (drop-off) neden oluyordu.",
+        en: "Mobile Safari users encountering automatic viewport zoom on input focus and modal background scroll bleeding suffered frustrating form abandonment during memberships and ticket bookings.",
+      },
+      solution: {
+        tr: "16px katı font-size kuralı, dinamik fixed-position modal scroll-lock denetleyicisi ve derleme aşamasında çalışan Python tabanlı kaynak hijyeni denetim araçları mimariye entegre edildi.",
+        en: "Implemented strict 16px input font minimums, body fixed-position modal scroll locking, and automated Python source-hygiene verification preventing CSS/JS regressions before deployment.",
+      },
+      impact: {
+        tr: "Mobilde yerel uygulama akıcılığında çalışan form ve ödeme deneyimi; form terk oranlarında %40 düşüş sağlandı.",
+        en: "Delivered a native-app-smooth mobile experience across iOS and Android, dropping form abandonment by 40%.",
+      },
+    },
+  ],
+};
+
 interface Props {
   data: EngineeringCaseStudyData;
   locale?: Locale;

@@ -4,6 +4,12 @@ import { createMetadata } from "@/lib/seo";
 import { SITE_NAME, SITE_URL } from "@/lib/site";
 
 const projects: Record<string, { title: string; description: string; image: string; category: string }> = {
+  "fethiyespor": {
+    title: "Fethiyespor - Autonomous Sports Data Engine & AI Club Platform",
+    description: "Enterprise sports ecosystem featuring autonomous Mackolik/Transfermarkt sync, DeepL AI translation jobs, and an official İyzico FanShop.",
+    image: "/images/fethiyespor-cover-en.png",
+    category: "SportsApplication",
+  },
   "mybusinessboss": {
     title: "MyBusinessBoss - All-in-One Enterprise B2B ERP & CRM SaaS Platform",
     description: "A high-performance cloud ERP & CRM SaaS platform unifying POS, multi-variant inventory, camera barcode scanner, repair work orders, smart calendar, and cashflow.",

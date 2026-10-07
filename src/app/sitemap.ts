@@ -199,6 +199,32 @@ export default function sitemap(): MetadataRoute.Sitemap {
   // Project items
   const projectRoutes: MetadataRoute.Sitemap = [
     {
+      url: absoluteUrl("/projeler/fethiyespor"),
+      lastModified: SITE_CONTENT_UPDATED_AT,
+      changeFrequency: "weekly",
+      priority: 0.9,
+      alternates: {
+        languages: {
+          tr: absoluteUrl("/projeler/fethiyespor"),
+          en: absoluteUrl("/en/projects/fethiyespor"),
+          "x-default": absoluteUrl("/projeler/fethiyespor"),
+        },
+      },
+    },
+    {
+      url: absoluteUrl("/en/projects/fethiyespor"),
+      lastModified: SITE_CONTENT_UPDATED_AT,
+      changeFrequency: "weekly",
+      priority: 0.9,
+      alternates: {
+        languages: {
+          tr: absoluteUrl("/projeler/fethiyespor"),
+          en: absoluteUrl("/en/projects/fethiyespor"),
+          "x-default": absoluteUrl("/projeler/fethiyespor"),
+        },
+      },
+    },
+    {
       url: absoluteUrl("/projeler/mybusinessboss"),
       lastModified: SITE_CONTENT_UPDATED_AT,
       changeFrequency: "monthly",
