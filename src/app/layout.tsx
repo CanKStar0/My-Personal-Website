@@ -6,6 +6,7 @@ import { LanguageProvider } from "@/components/language-context";
 import { FluidCanvasToggle } from "@/components/fluid-canvas-toggle";
 import { SiteEffects } from "@/components/site-effects";
 import { AnalyticsTracker } from "@/components/analytics-tracker";
+import { MobileBottomNav } from "@/components/mobile-bottom-nav";
 import { Toaster } from "sonner";
 import "./globals.css";
 
@@ -146,6 +147,7 @@ export default function RootLayout({
             <div className="relative z-10 flex min-h-screen w-full flex-col overflow-x-clip">
               {children}
             </div>
+            <MobileBottomNav />
             <Toaster 
               theme="dark" 
               position="bottom-center"
