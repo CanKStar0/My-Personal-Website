@@ -53,7 +53,7 @@ function LanguageToggle() {
         aria-current={locale === "tr" ? "page" : undefined}
         aria-label="Türkçe"
         onClick={() => trackEvent("language_switch", { from: locale, to: "tr" })}
-        className={`relative z-10 flex items-center justify-center w-[38px] h-full text-xs font-bold tracking-wide cursor-pointer transition-colors duration-200 ${
+        className={`relative z-10 flex items-center justify-center w-[32px] sm:w-[38px] h-full text-[11px] sm:text-xs font-bold tracking-wide cursor-pointer transition-colors duration-200 ${
           locale === "tr"
             ? "text-white"
             : "text-foreground/60 hover:text-foreground"
@@ -66,7 +66,7 @@ function LanguageToggle() {
         aria-current={locale === "en" ? "page" : undefined}
         aria-label="English"
         onClick={() => trackEvent("language_switch", { from: locale, to: "en" })}
-        className={`relative z-10 flex items-center justify-center w-[38px] h-full text-xs font-bold tracking-wide cursor-pointer transition-colors duration-200 ${
+        className={`relative z-10 flex items-center justify-center w-[32px] sm:w-[38px] h-full text-[11px] sm:text-xs font-bold tracking-wide cursor-pointer transition-colors duration-200 ${
           locale === "en"
             ? "text-white"
             : "text-foreground/60 hover:text-foreground"
@@ -111,6 +111,25 @@ export function Navbar() {
     const timer = setTimeout(() => setHomeVisible(true), 2000);
     return () => clearTimeout(timer);
   }, [homeHref, pathname]);
+
+  // Lock body scroll when mobile menu is active
+  useEffect(() => {
+    if (mobileMenuOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [mobileMenuOpen]);
+
+  // Auto-close mobile menu on route change without cascading effect renders
+  const [prevPathname, setPrevPathname] = useState(pathname);
+  if (prevPathname !== pathname) {
+    setPrevPathname(pathname);
+    setMobileMenuOpen(false);
+  }
 
   // Global Cmd+K / Ctrl+K shortcut listener
   useEffect(() => {
@@ -163,13 +182,13 @@ export function Navbar() {
             : "bg-transparent"
         }`}
       >
-        <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
+        <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-3 sm:px-6 lg:px-8">
           {/* Logo / Brand Name */}
           <Link
             href={homeHref}
-            className="group flex items-center space-x-2 font-jakarta text-base sm:text-lg font-bold tracking-tight text-foreground transition-all duration-200 shrink-0"
+            className="group flex items-center space-x-1.5 sm:space-x-2 font-jakarta text-sm sm:text-base md:text-lg font-bold tracking-tight text-foreground transition-all duration-200 shrink min-w-0"
           >
-            <span className="bg-linear-to-r from-foreground via-foreground/90 to-foreground/75 bg-clip-text text-transparent group-hover:opacity-90">
+            <span className="bg-linear-to-r from-foreground via-foreground/90 to-foreground/75 bg-clip-text text-transparent group-hover:opacity-90 truncate max-w-[135px] xs:max-w-none">
               Canpolat Kaya
             </span>
             <span className="hidden text-xs font-semibold text-muted-foreground sm:inline-block group-hover:text-brand-red transition-colors duration-200">

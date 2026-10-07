@@ -71,7 +71,7 @@ export function HeroAnimation() {
       <div className="relative flex flex-col items-center justify-center w-full max-w-5xl mx-auto pt-8">
         
         {/* Name Header (Stagger Reveal) */}
-        <div className="relative py-4 px-3 sm:px-6 md:px-8 flex items-center justify-center max-w-full">
+        <div className="relative py-4 px-3 sm:px-6 md:px-8 flex items-center justify-center max-w-full overflow-hidden">
           <h1 className="relative text-2xl sm:text-4xl md:text-6xl font-extrabold tracking-wider font-jakarta text-foreground flex flex-wrap items-center justify-center gap-x-2.5 sm:gap-x-4 gap-y-1 leading-none text-center">
             {/* 3D Spinning Red Cube */}
             <motion.div
@@ -170,12 +170,12 @@ export function HeroAnimation() {
             duration: 0.8,
             ease: "easeOut",
           }}
-          className="mt-8 sm:mt-10 flex flex-wrap items-center justify-center gap-3 sm:gap-4"
+          className="mt-8 sm:mt-10 flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3 sm:gap-4 w-full sm:w-auto px-6 sm:px-0"
         >
           <SpotlightButton
             href={locale === "en" ? "/en/projects" : "/projeler"}
             onClick={() => trackEvent("project_case_study_click", { location: "hero" })}
-            className="text-xs sm:text-sm tracking-[0.15em] uppercase"
+            className="text-xs sm:text-sm tracking-[0.15em] uppercase w-full sm:w-auto text-center justify-center"
           >
             <Rocket className="w-4 h-4 transition-transform duration-300 group-hover:-translate-y-1 group-hover:translate-x-1" />
             {t(translations.hero.cta)}
@@ -184,7 +184,7 @@ export function HeroAnimation() {
           <Link
             href={locale === "en" ? "/en/services" : "/hizmetler"}
             onClick={() => trackEvent("hero_services_click", { location: "hero_secondary" })}
-            className="group relative inline-flex items-center gap-2 rounded-full border border-zinc-300/80 dark:border-zinc-800 bg-background/80 dark:bg-zinc-900/50 px-6 py-3 text-xs sm:text-sm font-semibold tracking-[0.15em] uppercase text-foreground backdrop-blur-md transition-all duration-300 hover:border-brand-red/60 hover:bg-zinc-100 dark:hover:bg-zinc-800 hover:shadow-md hover:shadow-brand-red/10"
+            className="group relative inline-flex items-center justify-center gap-2 rounded-full border border-zinc-300/80 dark:border-zinc-800 bg-background/80 dark:bg-zinc-900/50 px-6 py-3 text-xs sm:text-sm font-semibold tracking-[0.15em] uppercase text-foreground backdrop-blur-md transition-all duration-300 hover:border-brand-red/60 hover:bg-zinc-100 dark:hover:bg-zinc-800 hover:shadow-md hover:shadow-brand-red/10 w-full sm:w-auto text-center"
           >
             {t(translations.hero.ctaSecondary)}
             <ArrowRight className="w-4 h-4 text-brand-red transition-transform duration-300 group-hover:translate-x-1" />
@@ -200,7 +200,7 @@ export function HeroAnimation() {
             duration: 0.8,
             ease: "easeOut",
           }}
-          className="mt-8 flex flex-wrap items-center justify-center gap-2 max-w-2xl px-4"
+          className="mt-6 sm:mt-8 flex flex-wrap items-center justify-center gap-2 max-w-2xl px-2 sm:px-4"
         >
           {quickPills.map((pill, i) => {
             const Icon = pill.icon;

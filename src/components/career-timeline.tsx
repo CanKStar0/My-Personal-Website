@@ -91,7 +91,7 @@ export function CareerTimeline({ locale = "tr" }: CareerTimelineProps) {
               </div>
 
               {/* Card */}
-              <div className="rounded-3xl border border-border/70 bg-card/40 p-6 md:p-8 backdrop-blur-xs transition-all duration-300 hover:border-brand-red/40 hover:bg-card/70 hover:shadow-[0_0_30px_rgba(220,38,38,0.06)]">
+              <div className="rounded-3xl border border-border/70 bg-card/40 p-4.5 sm:p-6 md:p-8 backdrop-blur-xs transition-all duration-300 hover:border-brand-red/40 hover:bg-card/70 hover:shadow-[0_0_30px_rgba(220,38,38,0.06)]">
                 <div className="flex flex-wrap items-center justify-between gap-3 border-b border-border/40 pb-4">
                   <div className="flex items-center gap-2.5">
                     <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-brand-red/10 text-brand-red dark:bg-rose-500/10 dark:text-rose-400">

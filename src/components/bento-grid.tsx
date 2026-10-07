@@ -63,7 +63,7 @@ function IconStack({ techs }: { techs: Tech[] }) {
 /** Data card: Icons on top, names below */
 function IconGrid({ techs }: { techs: Tech[] }) {
   return (
-    <div className="flex flex-wrap justify-center sm:justify-start gap-8 sm:gap-10 opacity-90 group-hover:opacity-100 transition-opacity mt-6 lg:mt-0">
+    <div className="flex flex-wrap justify-center sm:justify-start gap-4 sm:gap-8 opacity-90 group-hover:opacity-100 transition-opacity mt-6 lg:mt-0">
       {techs.map((tech) => (
         <div key={tech.name} className="flex flex-col items-center gap-3 group/item cursor-default">
           <div className="w-10 h-10 relative transition-transform duration-300 group-hover/item:scale-110">
@@ -88,13 +88,13 @@ export function BentoGridSection() {
   const { t } = useLanguage();
 
   return (
-    <section id="araclar" className="relative w-full py-20 px-6 md:px-12 bg-background">
+    <section id="araclar" className="relative w-full py-14 sm:py-20 px-4 sm:px-8 md:px-12 bg-background">
       <div className="max-w-6xl mx-auto relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
 
           {/* Card 1: AI & Otomasyon (2 kolon) */}
           <ScrollReveal delay={0} className="md:col-span-2 lg:col-span-2 group">
-            <div className="relative h-full p-8 md:p-10 rounded-3xl border border-zinc-300/80 dark:border-zinc-800/50 bg-zinc-50 dark:bg-zinc-900/40 hover:border-brand-red/50 dark:hover:border-red-900/60 hover:bg-red-50/30 dark:hover:bg-red-950/10 hover:shadow-[0_0_20px_rgba(220,38,38,0.05)] hover:-translate-y-1 transition-all duration-500 overflow-hidden">
+            <div className="relative h-full p-6 sm:p-8 md:p-10 rounded-3xl border border-zinc-300/80 dark:border-zinc-800/50 bg-zinc-50 dark:bg-zinc-900/40 hover:border-brand-red/50 dark:hover:border-red-900/60 hover:bg-red-50/30 dark:hover:bg-red-950/10 hover:shadow-[0_0_20px_rgba(220,38,38,0.05)] hover:-translate-y-1 transition-all duration-500 overflow-hidden">
               <div className="relative z-10">
                 <h3 className="text-xl md:text-2xl font-bold font-jakarta text-foreground mb-4">
                   {t(translations.bento.aiTitle)}
@@ -128,7 +128,7 @@ export function BentoGridSection() {
 
           {/* Card 4: Veri & Altyapı (4 kolon) */}
           <ScrollReveal delay={0.3} className="md:col-span-2 lg:col-span-4 group">
-            <div className="h-full p-8 md:p-10 rounded-3xl border border-zinc-300/80 dark:border-zinc-800/50 bg-zinc-50 dark:bg-zinc-900/40 hover:border-brand-red/50 dark:hover:border-red-900/60 hover:bg-red-50/30 dark:hover:bg-red-950/10 hover:shadow-[0_0_20px_rgba(220,38,38,0.05)] hover:-translate-y-1 transition-all duration-500">
+            <div className="h-full p-6 sm:p-8 md:p-10 rounded-3xl border border-zinc-300/80 dark:border-zinc-800/50 bg-zinc-50 dark:bg-zinc-900/40 hover:border-brand-red/50 dark:hover:border-red-900/60 hover:bg-red-50/30 dark:hover:bg-red-950/10 hover:shadow-[0_0_20px_rgba(220,38,38,0.05)] hover:-translate-y-1 transition-all duration-500">
               <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8">
                 <div className="max-w-2xl">
                   <h3 className="text-2xl md:text-3xl font-bold font-jakarta text-foreground mb-4">

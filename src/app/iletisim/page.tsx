@@ -47,7 +47,7 @@ export default function IletisimPage() {
             <SpotlightButton
               href={`mailto:${email}`}
               onClick={handleMailClick}
-              className="text-base sm:text-lg md:text-xl font-semibold font-jakarta"
+              className="text-xs sm:text-lg md:text-xl font-semibold font-jakarta max-w-full"
             >
               {/* Red accent dot */}
               <span className="relative flex h-2.5 w-2.5 flex-shrink-0">
@@ -56,13 +56,13 @@ export default function IletisimPage() {
               </span>
 
               {/* Mail icon */}
-              <Mail className="w-5 h-5 text-brand-red stroke-[1.5] flex-shrink-0 transition-transform duration-300 group-hover:scale-105" />
+              <Mail className="w-4 h-4 sm:w-5 sm:h-5 text-brand-red stroke-[1.5] flex-shrink-0 transition-transform duration-300 group-hover:scale-105" />
 
               {/* Email text */}
-              <span>{email}</span>
+              <span className="truncate">{email}</span>
 
               {/* Arrow indicator */}
-              <span className="ml-1 text-zinc-500 text-sm transition-all duration-300 group-hover:text-brand-red group-hover:translate-x-0.5">
+              <span className="ml-1 text-zinc-500 text-xs sm:text-sm transition-all duration-300 group-hover:text-brand-red group-hover:translate-x-0.5">
                 ↗
               </span>
             </SpotlightButton>

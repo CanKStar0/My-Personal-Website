@@ -119,7 +119,7 @@ export default async function BlogPostPage({ params }: Props) {
       <ReadingProgress />
       <JsonLd data={schemas} />
       <Navbar />
-      <main className="flex-1 bg-background px-6 pb-24 pt-14 md:px-12 md:pt-20">
+      <main className="flex-1 bg-background px-4 sm:px-6 pb-20 pt-12 md:px-12 md:pt-20">
         <article className="mx-auto max-w-4xl">
           <Breadcrumbs
             items={[

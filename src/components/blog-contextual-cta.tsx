@@ -61,13 +61,13 @@ export function BlogContextualCTA({ category, locale = "tr" }: BlogContextualCTA
   return (
     <aside
       aria-label="Contextual service recommendation"
-      className="my-12 rounded-3xl border border-brand-red/30 bg-gradient-to-br from-brand-red/[0.06] via-card to-background p-6 md:p-8 backdrop-blur-sm shadow-[0_0_30px_rgba(220,38,38,0.05)]"
+      className="my-10 sm:my-12 rounded-3xl border border-brand-red/30 bg-gradient-to-br from-brand-red/[0.06] via-card to-background p-5 sm:p-6 md:p-8 backdrop-blur-sm shadow-[0_0_30px_rgba(220,38,38,0.05)]"
     >
       <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-brand-red dark:text-rose-400">
         <Sparkles className="h-4 w-4" />
         <span>{isEn ? "Recommended Service" : "İlgili Profesyonel Hizmet"}</span>
       </div>
-      <h3 className="mt-3 font-jakarta text-xl font-bold tracking-tight text-foreground sm:text-2xl">
+      <h3 className="mt-3 font-jakarta text-lg sm:text-xl font-bold tracking-tight text-foreground md:text-2xl">
         {target.title}
       </h3>
       <p className="mt-2 text-sm leading-relaxed text-muted-foreground md:text-base">
@@ -76,7 +76,7 @@ export function BlogContextualCTA({ category, locale = "tr" }: BlogContextualCTA
       <div className="mt-6">
         <Link
           href={target.href}
-          className="inline-flex items-center gap-2 rounded-full bg-brand-red px-6 py-2.5 text-xs font-bold text-white shadow-md transition-all hover:bg-red-700 hover:shadow-brand-red/20"
+          className="inline-flex items-center justify-center gap-2 rounded-full bg-brand-red px-6 py-2.5 text-xs font-bold text-white shadow-md transition-all hover:bg-red-700 hover:shadow-brand-red/20 w-full sm:w-auto text-center"
         >
           <span>{target.cta}</span>
           <ArrowRight className="h-3.5 w-3.5" />

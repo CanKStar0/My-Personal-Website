@@ -114,6 +114,17 @@
     outline: 2px solid var(--brand-red);
     outline-offset: 3px;
   }
+
+  /* iOS Safari auto-zoom prevention: ensure all inputs are at least 16px on mobile viewports */
+  @media screen and (max-width: 767px) {
+    input, select, textarea {
+      font-size: 16px !important;
+    }
+  }
+
+  .overflow-x-auto {
+    -webkit-overflow-scrolling: touch;
+  }
 }
 
 @keyframes marquee {

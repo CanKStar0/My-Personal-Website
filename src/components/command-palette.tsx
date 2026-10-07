@@ -187,6 +187,18 @@ export function CommandPalette({ isOpen, onClose }: { isOpen: boolean; onClose: 
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [isOpen, filtered, selectedIndex, handleSelect, onClose]);
 
+  // Lock body scroll when search modal is open
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [isOpen]);
+
   if (!isOpen) return null;
 
   const getTypeIcon = (type: SearchItem["type"]) => {
@@ -205,7 +217,7 @@ export function CommandPalette({ isOpen, onClose }: { isOpen: boolean; onClose: 
       role="dialog"
       aria-modal="true"
       aria-label="Quick search"
-      className="fixed inset-0 z-50 flex items-start justify-center px-4 pt-16 sm:pt-24 bg-background/80 backdrop-blur-md animate-in fade-in duration-150"
+      className="fixed inset-0 z-50 flex items-start justify-center px-2 sm:px-4 pt-8 sm:pt-24 bg-background/80 backdrop-blur-md animate-in fade-in duration-150"
       onClick={onClose}
     >
       <div
@@ -213,7 +225,7 @@ export function CommandPalette({ isOpen, onClose }: { isOpen: boolean; onClose: 
         onClick={(e) => e.stopPropagation()}
       >
         {/* Search Input Bar */}
-        <div className="flex items-center gap-3 border-b border-border/60 px-5 py-4">
+        <div className="flex items-center gap-2.5 sm:gap-3 border-b border-border/60 px-3.5 sm:px-5 py-3 sm:py-4">
           <Search className="h-5 w-5 shrink-0 text-muted-foreground" />
           <input
             type="text"
@@ -224,8 +236,8 @@ export function CommandPalette({ isOpen, onClose }: { isOpen: boolean; onClose: 
             }}
             placeholder={
               isEn
-                ? "Search services, projects, guides, and 100+ articles..."
-                : "Hizmetler, projeler, rehberler ve 100+ makale içinde arayın..."
+                ? "Search services, projects, guides..."
+                : "Hizmetler, projeler, makalelerde ara..."
             }
             autoFocus
             className="flex-1 bg-transparent text-base text-foreground placeholder:text-muted-foreground focus:outline-none"
@@ -245,7 +257,7 @@ export function CommandPalette({ isOpen, onClose }: { isOpen: boolean; onClose: 
         </div>
 
         {/* Results List */}
-        <div className="max-h-[60vh] overflow-y-auto p-2">
+        <div className="max-h-[65vh] sm:max-h-[60vh] overflow-y-auto p-1.5 sm:p-2">
           {filtered.length === 0 ? (
             <div className="p-8 text-center text-sm text-muted-foreground">
               {isEn ? "No matching results found for" : "Eşleşen sonuç bulunamadı:"} &quot;{query}&quot;

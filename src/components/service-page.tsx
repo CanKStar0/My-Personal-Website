@@ -93,7 +93,7 @@ export function ServicePage({
       <JsonLd data={schemas} />
       <Navbar />
       <main className="flex-1 bg-background">
-        <header className="border-b border-border/10 px-6 pb-20 pt-14 md:px-12 md:pb-28 md:pt-20">
+        <header className="border-b border-border/10 px-4 sm:px-6 pb-16 pt-12 md:px-12 md:pb-28 md:pt-20">
           <div className="mx-auto max-w-5xl">
             <Breadcrumbs
               items={[
@@ -105,18 +105,18 @@ export function ServicePage({
             <p className="mb-5 text-xs font-bold uppercase tracking-[0.25em] text-brand-red dark:text-rose-400">
               {service.eyebrow}
             </p>
-            <h1 className="max-w-4xl font-jakarta text-4xl font-extrabold tracking-tight text-foreground sm:text-5xl md:text-6xl md:leading-[1.08]">
+            <h1 className="max-w-4xl font-jakarta text-3xl font-extrabold tracking-tight text-foreground sm:text-5xl md:text-6xl md:leading-[1.08]">
               {service.title}
             </h1>
-            <p className="mt-7 max-w-3xl text-base font-light leading-8 text-muted-foreground md:text-lg">
+            <p className="mt-5 sm:mt-7 max-w-3xl text-base font-light leading-7 sm:leading-8 text-muted-foreground md:text-lg">
               {service.intro}
             </p>
-            <div className="mt-10 flex flex-wrap gap-4">
+            <div className="mt-8 sm:mt-10 flex flex-col sm:flex-row gap-3 sm:gap-4">
               <TrackedLink
                 eventName="service_cta_click"
                 eventParams={{ service: service.slug, location: "service_hero" }}
                 href={isEnglish ? `/en/contact?service=${service.slug}` : `/iletisim?service=${service.slug}`}
-                className="inline-flex items-center gap-2 rounded-full bg-brand-red px-6 py-3 font-semibold text-white transition-colors hover:bg-red-700"
+                className="inline-flex items-center justify-center gap-2 rounded-full bg-brand-red px-6 py-3 font-semibold text-white transition-colors hover:bg-red-700 w-full sm:w-auto text-center"
               >
                 {labels.discuss} <ArrowRight className="h-4 w-4" />
               </TrackedLink>
@@ -125,7 +125,7 @@ export function ServicePage({
                   eventName="project_case_study_click"
                   eventParams={{ service: service.slug }}
                   href={service.project.href}
-                  className="inline-flex items-center gap-2 rounded-full border border-border px-6 py-3 font-semibold text-foreground transition-colors hover:bg-muted"
+                  className="inline-flex items-center justify-center gap-2 rounded-full border border-border px-6 py-3 font-semibold text-foreground transition-colors hover:bg-muted w-full sm:w-auto text-center"
                 >
                   {labels.proof}
                 </TrackedLink>
@@ -135,13 +135,13 @@ export function ServicePage({
         </header>
 
         {/* Interactive Scope & Timeline Estimator - Positioned prominently directly below Hero */}
-        <section className="border-b border-border/10 bg-card/30 px-6 py-12 md:px-12 md:py-16">
+        <section className="border-b border-border/10 bg-card/30 px-4 sm:px-6 py-8 sm:py-12 md:px-12 md:py-16">
           <div className="mx-auto max-w-5xl">
             <ServiceCalculator locale={locale} serviceSlug={service.slug} />
           </div>
         </section>
 
-        <div className="mx-auto grid max-w-5xl gap-16 px-6 py-20 md:px-12 lg:grid-cols-[minmax(0,1fr)_260px] lg:gap-20 lg:py-28">
+        <div className="mx-auto grid max-w-5xl gap-12 sm:gap-16 px-4 sm:px-6 py-14 sm:py-20 md:px-12 lg:grid-cols-[minmax(0,1fr)_260px] lg:gap-20 lg:py-28">
           <article className="space-y-16">
             {service.sections.map((section) => (
               <section key={section.title}>
@@ -230,14 +230,14 @@ export function ServicePage({
           </aside>
         </div>
 
-        <section className="border-t border-border/10 px-6 py-20 text-center md:px-12">
-          <h2 className="font-jakarta text-3xl font-extrabold text-foreground">{labels.closingTitle}</h2>
+        <section className="border-t border-border/10 px-4 sm:px-6 py-14 sm:py-20 text-center md:px-12">
+          <h2 className="font-jakarta text-2xl sm:text-3xl font-extrabold text-foreground">{labels.closingTitle}</h2>
           <p className="mx-auto mt-4 max-w-2xl text-muted-foreground">{labels.closingBody}</p>
           <TrackedLink
             eventName="service_cta_click"
             eventParams={{ service: service.slug, location: "service_footer" }}
             href={isEnglish ? `/en/contact?service=${service.slug}` : `/iletisim?service=${service.slug}`}
-            className="mt-8 inline-flex items-center gap-2 rounded-full bg-foreground px-7 py-3.5 font-semibold text-background"
+            className="mt-8 inline-flex items-center justify-center gap-2 rounded-full bg-foreground px-7 py-3.5 font-semibold text-background w-full sm:w-auto text-center"
           >
             {labels.contact} <ArrowRight className="h-4 w-4" />
           </TrackedLink>

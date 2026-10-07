@@ -521,8 +521,8 @@ export default function ProjeDetayPage() {
       <main className="flex-1 bg-background pt-12 pb-32">
 
         {/* Back Link */}
-        <div className="max-w-4xl mx-auto px-6 mb-12">
-          <nav aria-label={t({ tr: "Sayfa yolu", en: "Breadcrumb" })} className="mb-8 flex flex-wrap items-center gap-2 text-sm text-muted-foreground">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 mb-8 sm:mb-12">
+          <nav aria-label={t({ tr: "Sayfa yolu", en: "Breadcrumb" })} className="mb-6 sm:mb-8 flex flex-wrap items-center gap-2 text-sm text-muted-foreground">
             <Link href={homeHref} className="hover:text-foreground">{t({ tr: "Ana Sayfa", en: "Home" })}</Link><span aria-hidden="true">/</span><Link href={projectsHref} className="hover:text-foreground">{t({ tr: "Projeler", en: "Projects" })}</Link><span aria-hidden="true">/</span><span className="text-foreground" aria-current="page">{t(project.titleKey)}</span>
           </nav>
           <Link href={projectsHref} className="inline-flex items-center text-sm font-medium text-muted-foreground hover:text-foreground transition-colors group">
@@ -532,24 +532,24 @@ export default function ProjeDetayPage() {
         </div>
 
         {/* Hero Section */}
-        <ScrollReveal className="max-w-4xl mx-auto px-6 text-center mb-16">
-          <h1 className="text-3xl md:text-4xl font-extrabold tracking-tight font-jakarta text-foreground mb-4 leading-tight">
+        <ScrollReveal className="max-w-4xl mx-auto px-4 sm:px-6 text-center mb-10 sm:mb-16">
+          <h1 className="text-2xl sm:text-4xl md:text-5xl font-extrabold tracking-tight font-jakarta text-foreground mb-3 sm:mb-4 leading-tight">
             {t(project.titleKey)}
           </h1>
-          <p className="text-base md:text-lg text-muted-foreground/80 font-light font-sans max-w-2xl mx-auto leading-relaxed">
+          <p className="text-sm sm:text-base md:text-lg text-muted-foreground/80 font-light font-sans max-w-2xl mx-auto leading-relaxed">
             {t(project.summaryKey)}
           </p>
         </ScrollReveal>
 
-        <div className="max-w-5xl mx-auto px-6 space-y-16">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 space-y-12 sm:space-y-16">
 
           {/* Özellikler ve Görseller (Üst Vitrin) */}
           {project.features && project.features.length > 0 && (
-            <div className="space-y-32 py-6 max-w-6xl mx-auto">
+            <div className="space-y-12 sm:space-y-20 lg:space-y-32 py-4 sm:py-6 max-w-6xl mx-auto">
               {project.features.map((feature, index) => {
                 const isEven = index % 2 === 0;
                 return (
-                  <ScrollReveal key={index} className={`flex flex-col lg:flex-row gap-16 lg:gap-32 items-center ${isEven ? "" : "lg:flex-row-reverse"}`}>
+                  <ScrollReveal key={index} className={`flex flex-col lg:flex-row gap-6 sm:gap-12 lg:gap-32 items-center ${isEven ? "" : "lg:flex-row-reverse"}`}>
                     {/* Görsel Sütunu */}
                     <div className="w-full lg:w-[60%] flex items-center justify-center relative aspect-[4/3] rounded-xl shadow-[0_8px_30px_rgba(0,0,0,0.12)] border border-zinc-200/40 dark:border-zinc-800/50 overflow-hidden bg-zinc-100 dark:bg-zinc-900/50">
                       {(() => {
@@ -657,14 +657,14 @@ export default function ProjeDetayPage() {
           </ScrollReveal>
 
           {/* Action Links */}
-          <ScrollReveal className="pt-12 border-t border-zinc-200/40 dark:border-zinc-800/40 flex flex-wrap gap-4">
+          <ScrollReveal className="pt-10 sm:pt-12 border-t border-zinc-200/40 dark:border-zinc-800/40 flex flex-col sm:flex-row gap-3 sm:gap-4">
             {project.liveUrl && (
               <Link
                 href={project.liveUrl.startsWith("/") ? getLocalizedPath(project.liveUrl, locale) : project.liveUrl}
                 target={project.liveUrl.startsWith("http") ? "_blank" : undefined}
                 rel={project.liveUrl.startsWith("http") ? "noopener noreferrer" : undefined}
                 onClick={() => trackEvent("project_external_link_click", { type: "live", project: project.slug })}
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-foreground text-background font-semibold hover:bg-foreground/90 transition-colors relative z-10 cursor-pointer"
+                className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-foreground text-background font-semibold hover:bg-foreground/90 transition-colors relative z-10 cursor-pointer w-full sm:w-auto text-center"
               >
                 {t(translations.projectDetail.liveProject)} <ExternalLink className="w-4 h-4" />
               </Link>
@@ -675,7 +675,7 @@ export default function ProjeDetayPage() {
                 target={project.githubUrl.startsWith("http") ? "_blank" : undefined}
                 rel={project.githubUrl.startsWith("http") ? "noopener noreferrer" : undefined}
                 onClick={() => trackEvent("project_external_link_click", { type: "github", project: project.slug })}
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-zinc-200 dark:border-zinc-800 text-foreground font-semibold hover:bg-zinc-100 dark:hover:bg-zinc-900 transition-colors relative z-10 cursor-pointer"
+                className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full border border-zinc-200 dark:border-zinc-800 text-foreground font-semibold hover:bg-zinc-100 dark:hover:bg-zinc-900 transition-colors relative z-10 cursor-pointer w-full sm:w-auto text-center"
               >
                 {t(translations.projectDetail.githubRepo)} <GithubIcon className="w-4 h-4" />
               </Link>
@@ -683,16 +683,16 @@ export default function ProjeDetayPage() {
           </ScrollReveal>
 
           {/* High-Converting Engineering & Lead Generation Card */}
-          <ScrollReveal className="my-16 overflow-hidden rounded-3xl border border-brand-red/30 bg-gradient-to-br from-brand-red/[0.08] via-card/80 to-background p-8 md:p-12 backdrop-blur-md relative shadow-xl dark:shadow-[0_0_50px_rgba(220,38,38,0.1)]">
+          <ScrollReveal className="my-12 sm:my-16 overflow-hidden rounded-3xl border border-brand-red/30 bg-gradient-to-br from-brand-red/[0.08] via-card/80 to-background p-6 sm:p-8 md:p-12 backdrop-blur-md relative shadow-xl dark:shadow-[0_0_50px_rgba(220,38,38,0.1)]">
             <div className="absolute -right-16 -top-16 h-48 w-48 rounded-full bg-brand-red/10 blur-3xl pointer-events-none" />
             
-            <div className="relative z-10 flex flex-col items-start md:items-center text-left md:text-center max-w-3xl mx-auto space-y-6">
-              <div className="inline-flex items-center gap-2 rounded-full border border-brand-red/30 bg-brand-red/10 px-4 py-1.5 text-xs font-bold text-brand-red dark:text-rose-400 uppercase tracking-widest">
+            <div className="relative z-10 flex flex-col items-start md:items-center text-left md:text-center max-w-3xl mx-auto space-y-5 sm:space-y-6">
+              <div className="inline-flex items-center gap-2 rounded-full border border-brand-red/30 bg-brand-red/10 px-3.5 sm:px-4 py-1.5 text-xs font-bold text-brand-red dark:text-rose-400 uppercase tracking-widest">
                 <Sparkles className="w-3.5 h-3.5" />
                 {t(translations.projectDetail.leadCardBadge)}
               </div>
 
-              <h2 className="text-2xl md:text-4xl font-extrabold font-jakarta text-foreground tracking-tight leading-tight">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold font-jakarta text-foreground tracking-tight leading-tight">
                 {t(translations.projectDetail.leadCardTitle)}
               </h2>
 
@@ -700,11 +700,11 @@ export default function ProjeDetayPage() {
                 {t(translations.projectDetail.leadCardSubtitle)}
               </p>
 
-              <div className="flex flex-wrap items-center justify-start md:justify-center gap-4 pt-2 w-full">
+              <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-start md:justify-center gap-3 sm:gap-4 pt-2 w-full">
                 <Link
                   href={locale === "en" ? "/en/contact" : "/iletisim"}
                   onClick={() => trackEvent("project_lead_cta_click", { project: project.slug, type: "primary" })}
-                  className="inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-full bg-brand-red text-white font-bold text-sm tracking-wider uppercase hover:bg-red-700 transition-all duration-300 shadow-lg shadow-brand-red/25 hover:shadow-brand-red/40 hover:-translate-y-0.5 cursor-pointer"
+                  className="inline-flex items-center justify-center gap-2.5 px-7 py-3.5 sm:px-8 sm:py-4 rounded-full bg-brand-red text-white font-bold text-sm tracking-wider uppercase hover:bg-red-700 transition-all duration-300 shadow-lg shadow-brand-red/25 hover:shadow-brand-red/40 hover:-translate-y-0.5 cursor-pointer w-full sm:w-auto text-center"
                 >
                   <span>{t(translations.projectDetail.leadCardCtaPrimary)}</span>
                   <ArrowRight className="w-4 h-4" />
@@ -713,7 +713,7 @@ export default function ProjeDetayPage() {
                 <Link
                   href={locale === "en" ? "/en/services" : "/hizmetler"}
                   onClick={() => trackEvent("project_lead_services_click", { project: project.slug, type: "secondary" })}
-                  className="inline-flex items-center justify-center gap-2 px-6 py-4 rounded-full border border-zinc-300 dark:border-zinc-800 bg-background/60 text-foreground font-semibold text-sm hover:bg-zinc-100 dark:hover:bg-zinc-800/80 transition-colors cursor-pointer"
+                  className="inline-flex items-center justify-center gap-2 px-6 py-3.5 sm:py-4 rounded-full border border-zinc-300 dark:border-zinc-800 bg-background/60 text-foreground font-semibold text-sm hover:bg-zinc-100 dark:hover:bg-zinc-800/80 transition-colors cursor-pointer w-full sm:w-auto text-center"
                 >
                   <span>{t(translations.projectDetail.leadCardCtaSecondary)}</span>
                 </Link>

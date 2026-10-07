@@ -8,10 +8,10 @@ export function ManifestoSection() {
   const { t } = useLanguage();
 
   return (
-    <section id="hakkimda" className="w-full py-24 md:py-32 px-6 md:px-12 bg-background border-t border-border/5 scroll-mt-16">
-      <div className="max-w-4xl mx-auto text-center md:text-left flex flex-col gap-8">
+    <section id="hakkimda" className="w-full py-16 sm:py-24 md:py-32 px-4 sm:px-6 md:px-12 bg-background border-t border-border/5 scroll-mt-16">
+      <div className="max-w-4xl mx-auto text-center md:text-left flex flex-col gap-6 sm:gap-8">
         <ScrollReveal>
-          <h2 className="text-3xl md:text-5xl lg:text-6xl font-extrabold tracking-tight font-jakarta text-foreground leading-tight">
+          <h2 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight font-jakarta text-foreground leading-tight">
             {t(translations.manifesto.headingPart1)} <br className="hidden md:block" /> 
             <span className="text-brand-red">{t(translations.manifesto.headingPart2)}</span>
           </h2>

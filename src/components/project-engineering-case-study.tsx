@@ -1105,7 +1105,7 @@ export function ProjectEngineeringCaseStudy({ data, locale = "tr" }: Props) {
           </div>
         </div>
 
-        <div className="grid grid-cols-2 lg:grid-cols-5 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3 sm:gap-4">
           {data.metrics.map((m, idx) => {
             const Icon = m.icon;
             return (
@@ -1115,8 +1115,8 @@ export function ProjectEngineeringCaseStudy({ data, locale = "tr" }: Props) {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: idx * 0.1 }}
-                className={`group relative overflow-hidden rounded-3xl border border-border/70 bg-card/40 p-6 backdrop-blur-xs transition-all duration-300 hover:border-brand-red/40 hover:bg-card/70 hover:shadow-[0_0_25px_rgba(220,38,38,0.08)] ${
-                  idx === 0 ? "col-span-2 lg:col-span-1" : ""
+                className={`group relative overflow-hidden rounded-3xl border border-border/70 bg-card/40 p-4.5 sm:p-6 backdrop-blur-xs transition-all duration-300 hover:border-brand-red/40 hover:bg-card/70 hover:shadow-[0_0_25px_rgba(220,38,38,0.08)] ${
+                  idx === 0 ? "sm:col-span-2 lg:col-span-1" : ""
                 }`}
               >
                 <div className="flex items-center justify-between">
@@ -1128,8 +1128,8 @@ export function ProjectEngineeringCaseStudy({ data, locale = "tr" }: Props) {
                   </span>
                 </div>
 
-                <div className="mt-5">
-                  <div className="font-jakarta text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl group-hover:text-brand-red transition-colors">
+                <div className="mt-4 sm:mt-5">
+                  <div className="font-jakarta text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight text-foreground group-hover:text-brand-red transition-colors">
                     {m.value}
                   </div>
                   <h3 className="mt-1 font-semibold text-sm text-foreground/90">
@@ -1152,7 +1152,7 @@ export function ProjectEngineeringCaseStudy({ data, locale = "tr" }: Props) {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="rounded-3xl border border-brand-red/30 bg-gradient-to-b from-brand-red/[0.05] via-card/70 to-card/40 p-6 md:p-10 backdrop-blur-md relative overflow-hidden shadow-xl dark:shadow-[0_0_50px_rgba(220,38,38,0.07)]"
+          className="rounded-3xl border border-brand-red/30 bg-gradient-to-b from-brand-red/[0.05] via-card/70 to-card/40 p-4.5 sm:p-6 md:p-10 backdrop-blur-md relative overflow-hidden shadow-xl dark:shadow-[0_0_50px_rgba(220,38,38,0.07)]"
         >
           <div className="absolute -right-24 -top-24 h-64 w-64 rounded-full bg-brand-red/10 blur-3xl pointer-events-none" />
 
@@ -1197,18 +1197,18 @@ export function ProjectEngineeringCaseStudy({ data, locale = "tr" }: Props) {
             </div>
 
             {/* Benchmark Comparison Table */}
-            <div className="overflow-x-auto rounded-2xl border border-border/80 bg-card/70 backdrop-blur-sm">
+            <div className="overflow-x-auto rounded-2xl border border-border/80 bg-card/70 backdrop-blur-sm -mx-1 sm:mx-0">
               <table className="w-full text-left text-xs md:text-sm">
                 <thead>
                   <tr className="border-b border-border/70 bg-muted/50 font-jakarta text-foreground">
-                    <th className="p-4 md:p-5 font-bold">{isEn ? "Metric" : "Metrik"}</th>
-                    <th className="p-4 md:p-5 font-bold text-rose-500 dark:text-rose-400">
+                    <th className="p-3 sm:p-4 md:p-5 font-bold whitespace-nowrap">{isEn ? "Metric" : "Metrik"}</th>
+                    <th className="p-3 sm:p-4 md:p-5 font-bold text-rose-500 dark:text-rose-400 whitespace-nowrap">
                       {isEn ? "🐢 Legacy (JSON Parse + Array.filter())" : "🐢 Eski Yöntem (JSON Parse + Array.filter())"}
                     </th>
-                    <th className="p-4 md:p-5 font-bold text-emerald-600 dark:text-emerald-400">
+                    <th className="p-3 sm:p-4 md:p-5 font-bold text-emerald-600 dark:text-emerald-400 whitespace-nowrap">
                       {isEn ? "🚀 Optimized (Indexed SQLite B-Tree)" : "🚀 Yeni Yöntem (İndeksli SQLite B-Tree)"}
                     </th>
-                    <th className="p-4 md:p-5 font-bold text-brand-red dark:text-rose-400">
+                    <th className="p-3 sm:p-4 md:p-5 font-bold text-brand-red dark:text-rose-400 whitespace-nowrap">
                       {isEn ? "Difference / Empirical Gain" : "Fark / Kazanç"}
                     </th>
                   </tr>
@@ -1216,16 +1216,16 @@ export function ProjectEngineeringCaseStudy({ data, locale = "tr" }: Props) {
                 <tbody className="divide-y divide-border/50">
                   {data.benchmark.rows.map((row, rIdx) => (
                     <tr key={rIdx} className="hover:bg-muted/20 transition-colors">
-                      <td className="p-4 md:p-5 font-semibold text-foreground whitespace-nowrap">
+                      <td className="p-3 sm:p-4 md:p-5 font-semibold text-foreground whitespace-nowrap">
                         {isEn ? row.metric.en : row.metric.tr}
                       </td>
-                      <td className="p-4 md:p-5 text-muted-foreground font-mono">
+                      <td className="p-3 sm:p-4 md:p-5 text-muted-foreground font-mono whitespace-nowrap">
                         {isEn ? row.legacy.en : row.legacy.tr}
                       </td>
-                      <td className="p-4 md:p-5 font-mono font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-500/[0.04]">
+                      <td className="p-3 sm:p-4 md:p-5 font-mono font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-500/[0.04] whitespace-nowrap">
                         {isEn ? row.optimized.en : row.optimized.tr}
                       </td>
-                      <td className="p-4 md:p-5 font-semibold">
+                      <td className="p-3 sm:p-4 md:p-5 font-semibold whitespace-nowrap">
                         <span className="inline-flex items-center gap-1.5 rounded-lg border border-brand-red/30 bg-brand-red/10 px-2.5 py-1 text-xs font-bold text-brand-red dark:text-rose-400">
                           <TrendingUp className="w-3.5 h-3.5" />
                           {isEn ? row.gain.en : row.gain.tr}
@@ -1247,7 +1247,7 @@ export function ProjectEngineeringCaseStudy({ data, locale = "tr" }: Props) {
                 {data.benchmark.takeaways.map((takeaway, tIdx) => (
                   <div
                     key={tIdx}
-                    className="rounded-2xl border border-border/80 bg-card/50 p-5 md:p-6 backdrop-blur-xs hover:border-brand-red/30 transition-all space-y-2.5"
+                    className="rounded-2xl border border-border/80 bg-card/50 p-4.5 sm:p-6 backdrop-blur-xs hover:border-brand-red/30 transition-all space-y-2.5"
                   >
                     <span className="font-mono text-[11px] font-bold text-brand-red dark:text-rose-400 uppercase tracking-widest">
                       {isEn ? takeaway.badge.en : takeaway.badge.tr}
@@ -1292,7 +1292,7 @@ export function ProjectEngineeringCaseStudy({ data, locale = "tr" }: Props) {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: idx * 0.1 }}
-              className="relative rounded-3xl border border-border/70 bg-card/40 p-6 backdrop-blur-xs hover:border-brand-red/40 transition-all flex flex-col justify-between"
+              className="relative rounded-3xl border border-border/70 bg-card/40 p-4.5 sm:p-6 backdrop-blur-xs hover:border-brand-red/40 transition-all flex flex-col justify-between"
             >
               <div>
                 <div className="flex items-center justify-between mb-4">
@@ -1349,7 +1349,7 @@ export function ProjectEngineeringCaseStudy({ data, locale = "tr" }: Props) {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: idx * 0.1 }}
-              className="rounded-3xl border border-border/70 bg-card/40 p-8 backdrop-blur-xs transition-all hover:border-brand-red/30 hover:bg-card/60 flex flex-col justify-between space-y-6"
+              className="rounded-3xl border border-border/70 bg-card/40 p-5 sm:p-6 md:p-8 backdrop-blur-xs transition-all hover:border-brand-red/30 hover:bg-card/60 flex flex-col justify-between space-y-6"
             >
               <div>
                 <span className="font-mono text-[11px] font-bold uppercase tracking-widest text-brand-red dark:text-rose-400">

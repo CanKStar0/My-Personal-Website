@@ -112,7 +112,7 @@ export function ServiceCalculator({
   ];
 
   return (
-    <div className="rounded-3xl border border-border/80 bg-card/75 p-6 md:p-10 shadow-sm backdrop-blur-md">
+    <div className="rounded-3xl border border-border/80 bg-card/75 p-4.5 sm:p-6 md:p-10 shadow-sm backdrop-blur-md">
       {/* Header Section */}
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-border/60 pb-6">
         <div className="flex items-center gap-3.5">

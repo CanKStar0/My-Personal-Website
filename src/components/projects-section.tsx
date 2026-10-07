@@ -78,13 +78,13 @@ export function ProjectsSection({ githubReposNode }: ProjectsSectionProps = {}) 
 
 
   return (
-    <section id="projeler" className="w-full py-24 px-6 md:px-12 bg-background">
+    <section id="projeler" className="w-full py-16 sm:py-24 px-4 sm:px-6 md:px-12 bg-background">
       <div className="max-w-5xl mx-auto">
-        <ScrollReveal className="mb-16 text-center flex flex-col items-center">
+        <ScrollReveal className="mb-12 sm:mb-16 text-center flex flex-col items-center">
           <span className="text-xs font-bold tracking-[0.2em] text-brand-red dark:text-rose-400 uppercase block mb-3 font-sans text-center">
             {t(translations.projects.eyebrow)}
           </span>
-          <h1 className="text-3xl md:text-4xl font-extrabold tracking-tight font-jakarta text-foreground mb-4 text-center">
+          <h1 className="text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight font-jakarta text-foreground mb-3 sm:mb-4 text-center">
             {t(translations.projects.heading)}
           </h1>
           <p className="text-sm md:text-base text-muted-foreground/80 font-sans font-light max-w-xl leading-relaxed text-center">
@@ -92,7 +92,7 @@ export function ProjectsSection({ githubReposNode }: ProjectsSectionProps = {}) 
           </p>
         </ScrollReveal>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
           {projects.map((project, index) => {
             const currentImagePath = typeof project.imagePath === "object"
               ? (project.imagePath[locale] || project.imagePath.tr)
@@ -101,7 +101,7 @@ export function ProjectsSection({ githubReposNode }: ProjectsSectionProps = {}) 
             return (
             <ScrollReveal key={project.slug} delay={index * 0.2} className="h-full">
               <Link href={localizedProjectPath(project.slug, locale)} className="group block h-full relative z-10 cursor-pointer">
-                <div className="p-6 rounded-xl border border-zinc-300/80 dark:border-zinc-800/50 bg-[#FAF9F6] dark:bg-zinc-950 flex flex-col justify-between h-full min-h-[380px] shadow-xs transition-all duration-300 hover:-translate-y-1 hover:border-brand-red/50 dark:hover:border-brand-red/40 hover:shadow-md dark:hover:shadow-[0_8px_30px_rgba(0,0,0,0.12)]">
+                <div className="p-4.5 sm:p-6 rounded-xl border border-zinc-300/80 dark:border-zinc-800/50 bg-[#FAF9F6] dark:bg-zinc-950 flex flex-col justify-between h-full min-h-[360px] sm:min-h-[380px] shadow-xs transition-all duration-300 hover:-translate-y-1 hover:border-brand-red/50 dark:hover:border-brand-red/40 hover:shadow-md dark:hover:shadow-[0_8px_30px_rgba(0,0,0,0.12)]">
                   <div>
                     {currentImagePath ? (
                       <div className="w-full aspect-video rounded-lg bg-zinc-100 dark:bg-zinc-900/50 border border-zinc-300/70 dark:border-zinc-800/40 mb-6 flex items-center justify-center overflow-hidden relative">
