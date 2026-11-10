@@ -254,23 +254,24 @@ const PROJECTS_DATA: ProjectData[] = [
       "Tailwind CSS v4",
       "Framer Motion",
       "Serverless Edge",
+      "SQLite B-Tree (535x)",
       "Anti-Scraping Shield",
       "REST API",
       "Lucide React",
-      "Railway Cloud",
+      "Vercel Cloud",
       "i18n Multi-Language",
       "SSRF Guard"
     ],
-    liveUrl: "https://freeapi.website",
+    liveUrl: "https://findfreeapi.com",
     features: [
       {
         titleKey: {
-          tr: "01 - IDE Syntax Highlighting & Canlı Terminal Sandbox",
-          en: "01 - IDE Syntax Highlighting & Live Terminal Sandbox",
+          tr: "01 - Canlı Test Konsolu & Hızlı İstek Sandbox'ı",
+          en: "01 - Live Test Console & Interactive Sandbox",
         },
         descKey: {
-          tr: "Geliştiricilerin sayfadan ayrılmadan API endpoint'lerini test edebilmesi için macOS/Linux terminal görünümünde inşa edilen interaktif kod konsolu. Renkli sözdizimi vurgulaması (Syntax Highlighting), anlık JSON yanıt gösterimi ve tek tıkla kopyalanabilir cURL, Fetch (JS/TS) ve Python kod blokları sunar.",
-          en: "An interactive code console styled like a macOS/Linux terminal, allowing developers to test API endpoints without leaving the page. Features colored syntax highlighting, instant live JSON response preview, and one-click copyable cURL, Fetch (JS/TS), and Python snippets.",
+          tr: "Geliştiricilerin sayfadan ayrılmadan API endpoint'lerini test edebilmesi için tasarlanan interaktif test alanı. Canlı parametre girişleri, anlık JSON yanıt gösterimi ve tek tıkla kopyalanabilir cURL, JavaScript ve Python kod blokları sunar.",
+          en: "An interactive console allowing developers to test API endpoints directly on the page. Features instant parameter configuration, live JSON response preview, and one-click copyable cURL, JavaScript, and Python code snippets.",
         },
         imagePath: {
           tr: "/images/freeapi-1.png",
@@ -279,12 +280,12 @@ const PROJECTS_DATA: ProjectData[] = [
       },
       {
         titleKey: {
-          tr: "02 - 46 Çift Dilli Kategori & Bento Metrik Matrisi",
-          en: "02 - 46 Bilingual Categories & Bento Metrics Matrix",
+          tr: "02 - 47 Çift Dilli Kategori & API Explorer",
+          en: "02 - 47 Bilingual Categories & API Explorer",
         },
         descKey: {
-          tr: "Hava Durumu, Finans, Kripto, Yapay Zekâ ve Siber Güvenlik dahil 46 farklı kategoride yapılandırılmış kapsamlı dizin. Canlı metrik rozetleri, anlık arama senkronizasyonu ve yaylı kayan kırmızı hap (Language Toggle) anahtarıyla tam TR/EN dil desteği sağlar.",
-          en: "A structured directory spanning 46 distinct categories including Weather, Finance, Crypto, AI, and Cybersecurity. Features live metric badges, instant search synchronization, and seamless TR/EN language switching via a spring-physics red pill toggle.",
+          tr: "Hava Durumu, Finans, Kripto, Yapay Zekâ ve Siber Güvenlik dahil 47 dikey kategoride yapılandırılmış kapsamlı dizin. Canlı metrik rozetleri, anlık arama senkronizasyonu ve yaylı kayan kırmızı hap (Language Toggle) anahtarıyla tam TR/EN dil desteği sağlar.",
+          en: "A structured directory spanning 47 distinct categories including Weather, Finance, Crypto, AI, and Cybersecurity. Features live metric badges, instant search synchronization, and seamless TR/EN language switching.",
         },
         imagePath: {
           tr: "/images/freeapi-2.png",
@@ -293,12 +294,12 @@ const PROJECTS_DATA: ProjectData[] = [
       },
       {
         titleKey: {
-          tr: "03 - 500+ Doğrulanmış REST API & Canlı Sandbox Çekmecesi",
-          en: "03 - 500+ Verified REST APIs & Live Sandbox Drawer",
+          tr: "03 - Özenle Hazırlanmış Geliştirici API Paketleri (Stacks)",
+          en: "03 - Curated Developer API Stacks & Architecture Hub",
         },
         descKey: {
-          tr: "Her API kartı için rate limit rozetleri, Zero-Auth (kayıtsız kullanım) işaretleri ve detaylı dokümantasyon bağlantıları. Kart bazında açılan alt çekmece sayesinde doğrudan çağrılabilir REST endpoint'leriyle hızlı prototipleme imkanı tanır.",
-          en: "Every API card includes rate limit badges, Zero-Auth indicators, and direct documentation links. Slide-out bottom code drawers enable immediate prototyping with live callable REST endpoints.",
+          tr: "Farklı proje tipleri (Fintech, AI Asistan, E-Ticaret, SaaS) için bir araya getirilmiş hazır API demetleri. Mimari uyumluluğu doğrulanmış ve tek çatı altında optimize edilmiş entegrasyon rehberleri sunar.",
+          en: "Pre-bundled API combinations tailored for modern architectures (Fintech, AI Assistant, E-Commerce, SaaS), offering vetted compatibility and streamlined integration blueprints.",
         },
         imagePath: {
           tr: "/images/freeapi-3.png",
@@ -307,12 +308,12 @@ const PROJECTS_DATA: ProjectData[] = [
       },
       {
         titleKey: {
-          tr: "04 - Topluluk API Önerme & 5 Katmanlı Askeri Anti-Scraping Kalkanı",
-          en: "04 - Community API Submission & 5-Layer Military Anti-Scraping Shield",
+          tr: "04 - Topluluk API Önerme & 5 Katmanlı Anti-Scraping Kalkanı",
+          en: "04 - Community API Submission & 5-Layer Anti-Scraping Shield",
         },
         descKey: {
-          tr: "Geliştiricilerin yeni API önerebildiği Discord Webhook entegreli lüks cam modal formu. Veri hırsızlığına karşı; gizli Honeypot tuzakları, Edge Middleware IP rate-limiting, AI bot engelleme (robots.txt noai) ve bot User-Agent filtreleme katmanlarıyla askeri düzeyde koruma sağlar.",
-          en: "A glassmorphism modal with Discord webhook pipeline for community API submissions. Protected by a military-grade 5-layer defense shield including invisible Honeypot traps, Edge Middleware rate limiting, AI crawler blocks, and scraper User-Agent filtering.",
+          tr: "Geliştiricilerin yeni API önerebildiği şeffaf başvuru motoru. Veri hırsızlığına karşı; gizli Honeypot tuzakları, Edge Middleware IP rate-limiting, AI bot engelleme ve bot User-Agent filtreleme katmanlarıyla askeri düzeyde koruma sağlar.",
+          en: "A community pipeline for submitting verified APIs. Protected by a 5-layer defense shield including invisible Honeypot traps, Edge Middleware rate limiting, AI crawler blocks, and scraper User-Agent filtering.",
         },
         imagePath: {
           tr: "/images/freeapi-4.png",
@@ -326,15 +327,15 @@ const PROJECTS_DATA: ProjectData[] = [
         en: "Public and free APIs required by developers during prototyping were scattered, riddled with dead links, and tedious to test. Furthermore, curated catalogs were vulnerable to automated scraper theft.",
       },
       solution: {
-        tr: "500+ doğrulanmış API'yi 46 çift dilli kategoride toplayan, tarayıcı üzerinden doğrudan çağrı yapabilen terminal sandbox konsolu ve veritabanını scraper'lara karşı koruyan 5 katmanlı Anti-Scraping Kalkanı içeren modern bir Next.js 15 platformu inşa ettim.",
-        en: "I built a modern Next.js 15 platform organizing 500+ verified APIs across 46 bilingual categories, equipped with a browser-executable terminal sandbox and a 5-layer Anti-Scraping Shield protecting the data assets.",
+        tr: "1038+ doğrulanmış API'yi 47 çift dilli kategoride toplayan, tarayıcı üzerinden doğrudan çağrı yapabilen canlı sandbox konsolu, SQLite B-Tree indeksleme optimizasyonu ve veritabanını scraper'lara karşı koruyan 5 katmanlı Anti-Scraping Kalkanı içeren modern bir Next.js 15 platformu inşa ettim.",
+        en: "I built a modern Next.js 15 platform organizing 1038+ verified APIs across 47 bilingual categories, equipped with an in-browser live sandbox, SQLite B-Tree indexing optimization, and a 5-layer Anti-Scraping Shield protecting data assets.",
       },
       architecture: {
-        tr: "Next.js 15 App Router → Edge Middleware (Bot & Honeypot Guard) → Serverless Proxy Gateway & Health Checker → Dynamic i18n & Search Engine → Framer Motion Glassmorphism UI.",
-        en: "Next.js 15 App Router → Edge Middleware (Bot & Honeypot Guard) → Serverless Proxy Gateway & Health Checker → Dynamic i18n & Search Engine → Framer Motion Glassmorphism UI.",
+        tr: "Next.js 15 App Router → Edge Middleware (Bot & Honeypot Guard) → Serverless Proxy Gateway & Health Checker → Dynamic i18n & Search Engine → Framer Motion UI.",
+        en: "Next.js 15 App Router → Edge Middleware (Bot & Honeypot Guard) → Serverless Proxy Gateway & Health Checker → Dynamic i18n & Search Engine → Framer Motion UI.",
       },
       dataFlow: {
-        tr: "İstemci istekleri Edge güvenlik süzgecinden geçer, çift dilli arama motoruyla eşleştirilir, terminal üzerinden yapılan canlı testler CORS-free proxy gateway üzerinden güvenle iletilir.",
+        tr: "İstemci istekleri Edge güvenlik süzgecinden geçer, çift dilli arama motoruyla eşleştirilir, terminal ve test konsolu üzerinden yapılan canlı testler CORS-free proxy gateway üzerinden güvenle iletilir.",
         en: "Client requests pass through the Edge security filter, match against the bilingual search engine, and live sandbox calls resolve securely via the CORS-free serverless proxy.",
       },
     },
@@ -349,30 +350,30 @@ const PROJECTS_DATA: ProjectData[] = [
     titleKey: translations.projects.haberTitle,
     summaryKey: translations.projects.haberDesc,
     techStack: [
+      "Data-as-a-Service (DaaS)",
+      "AI Niche Classifier",
+      "Anti-Clickbait Sanitizer",
       "Next.js 15",
-      "TypeScript",
       "React 19",
+      "TypeScript",
       "Tailwind CSS v4",
-      "MongoDB Atlas",
-      "Mongoose Connection Pooling",
-      "Playwright",
-      "Cheerio",
+      "MongoDB Atlas (200MB Lean)",
+      "Playwright Stealth",
       "Telegram Bot API",
       "Vercel Serverless",
-      "Google News JSON-LD SEO",
-      "Lucide React"
+      "Google News JSON-LD SEO"
     ],
-    liveUrl: "https://haber-portali.up.railway.app/",
+    liveUrl: "https://haberportalitr.com",
     githubUrl: "/gizli-repo",
     features: [
       {
         titleKey: {
-          tr: "01 - Asimetrik Bento Grid Vitrini & Crimson Glassmorphism",
-          en: "01 - Asymmetric Bento Grid Showcase & Crimson Glassmorphism",
+          tr: "01 - DaaS Haber Vitrini & Asimetrik Bento Grid",
+          en: "01 - DaaS News Showcase & Asymmetric Bento Grid",
         },
         descKey: {
-          tr: "Next.js 15, React 19 ve Tailwind CSS v4 ile inşa edilen ana sayfa; The Verge tarzı modern asimetrik Bento Grid düzeniyle en sıcak haberleri 2x2 vitrin kartında toplar. Derin antrasit zemin (#080c14) ve asil kırmızı vurgular, kullanıcının görsel hiyerarşide kaybolmadan en önemli gelişmelere odaklanmasını sağlar.",
-          en: "Built with Next.js 15, React 19, and Tailwind CSS v4, the homepage gathers breaking headlines in a modern The Verge-inspired asymmetric 2x2 Bento Grid showcase. Deep anthracite surfaces (#080c14) paired with crimson accents ensure seamless visual hierarchy and high readability.",
+          tr: "Next.js 15, React 19 ve Tailwind CSS v4 ile inşa edilen ana vitrin; yüzlerce kaynaktan eşzamanlı toplanıp tekilleştirilen en sıcak gelişmeleri The Verge tarzı modern asimetrik Bento Grid düzeninde sunar. Canlı piyasa bandı ve sade arayüzüyle gürültüsüz bir bilgi akışı sağlar.",
+          en: "Built with Next.js 15, React 19, and Tailwind CSS v4, the main showcase aggregates breaking news across hundreds of vetted sources in a modern The Verge-inspired asymmetric Bento Grid layout with zero visual clutter.",
         },
         imagePath: {
           tr: "/images/haber-cover-v2.png",
@@ -381,12 +382,12 @@ const PROJECTS_DATA: ProjectData[] = [
       },
       {
         titleKey: {
-          tr: "02 - 30 Saniyelik AI Hap Bilgi & Google News JSON-LD SEO",
-          en: "02 - 30-Second AI Quick Summary & Google News JSON-LD SEO",
+          tr: "02 - 30 Saniyelik AI Hap Bilgi & Anti-Clickbait Motoru",
+          en: "02 - 30-Second AI Quick Summary & Anti-Clickbait Engine",
         },
         descKey: {
-          tr: "Haber detay sayfalarında okuma verimliliğini maksimize etmek için geliştirilen LLM destekli '30 Saniyelik AI Hap Bilgi' kutusu, uzun haber metinlerini 3 kilit maddeye indirger. Sayfa bazında dinamik enjekte edilen Google News NewsArticle ve BreadcrumbList JSON-LD şemaları sayesinde arama motorlarında ve Keşfet panellerinde anında indekslenme kabiliyeti sunar.",
-          en: "Designed to maximize reading efficiency, the LLM-powered '30-Second AI Quick Summary' box distills long news articles into 3 key takeaways. Page-level dynamic Google News NewsArticle and BreadcrumbList JSON-LD schemas enable instantaneous indexing across search engines and Google Discover feeds.",
+          tr: "Haber detay sayfalarında okuma süresini ve verimliliği maksimize eden LLM destekli 30 Saniyelik AI Hap Bilgi kutusu. Tık tuzaklarını (clickbait) ve içi boş magazinel dolguları filtreleyerek uzun haber metinlerini 3 somut maddeye indirger, sesli dinleme ve anında paylaşım olanakları sunar.",
+          en: "An LLM-driven 30-second quick summary engine placed at the top of article details. Eliminates clickbait and fluff by condensing verbose reporting into 3 actionable bullets, accompanied by text-to-speech audio narration and 1-click sharing.",
         },
         imagePath: {
           tr: "/images/haber-1-v2.png",
@@ -395,12 +396,12 @@ const PROJECTS_DATA: ProjectData[] = [
       },
       {
         titleKey: {
-          tr: "03 - Çok Kanallı Kategori Akışı & Serverless SSR",
-          en: "03 - Multi-Channel Category Feed & Serverless SSR",
+          tr: "03 - AI Niş Filtreleme & Dikey Sektörel Akışlar",
+          en: "03 - AI Niche Filtering & Vertical Sector Streams",
         },
         descKey: {
-          tr: "Gündem, Ekonomi, Teknoloji, Kripto ve Spor gibi dikey kategorilerde çalışan veri filtreleme katmanı, Vercel Serverless ve Mongoose Connection Pooling altyapısı ile MongoDB'den sıfır gecikmeyle veri çeker. Sayfalar 60 saniyelik ISR (Incremental Static Regeneration) ile hem sunucu yükünü minimumda tutar hem de anlık güncellik sağlar.",
-          en: "Operating across vertical categories including Politics, Economy, Tech, Crypto, and Sports, the filtering layer fetches data with zero latency from MongoDB Atlas via Vercel Serverless and Mongoose Connection Pooling. 60-second ISR (Incremental Static Regeneration) guarantees near real-time freshness while minimizing server overhead.",
+          tr: "Teknoloji, Kripto, Ekonomi, Savunma ve Küresel Politika gibi niş dikeylerde özelleştirilmiş AI sınıflandırma süzgeci. Ham veri havuzundan sektörel sinyalleri yakalayarak kullanıcı ve işletmeler için temiz, odaklı haber istihbarat akışları üretir.",
+          en: "Specialized AI classification filtering tailored to vertical niches including Technology, Crypto, Finance, Defense, and Global Affairs. Extracts high-signal industry events from raw streams into laser-focused intelligence feeds.",
         },
         imagePath: {
           tr: "/images/haber-2-v2.png",
@@ -409,12 +410,12 @@ const PROJECTS_DATA: ProjectData[] = [
       },
       {
         titleKey: {
-          tr: "04 - Anlık İndeksleme & Reaktif Arama Motoru",
-          en: "04 - Instant Indexing & Reactive Search Engine",
+          tr: "04 - Reaktif Ters İndeksleme & Milisaniyelik Arama İstihbaratı",
+          en: "04 - Reactive Reverse Indexing & Sub-50ms Search Intelligence",
         },
         descKey: {
-          tr: "Regex tabanlı optimize edilmiş MongoDB arama katmanı, binlerce haber metni ve başlığı arasında 30ms'nin altında filtreleme gerçekleştirir. Mobil ve masaüstünde akıcı arama çekmecesi ve 'noindex' SEO kurallarıyla temiz bir dizinleme hiyerarşisi oluşturur.",
-          en: "An optimized regex-powered MongoDB search layer performs sub-30ms filtering across thousands of news articles and headlines. A responsive slide-out search drawer paired with strict 'noindex' SEO rules preserves clean crawl hierarchy.",
+          tr: "Bileşik ters indeksleme ve MongoDB optimizasyonlarıyla desteklenen arama katmanı, on binlerce haber arasında 50ms'nin altında anlık filtreleme yapar. Konu, şirket ve anahtar kelime bazlı hızlı istihbarat sorgulamalarına olanak tanır.",
+          en: "Powered by compound reverse indexing and MongoDB schema tuning, the search pipeline resolves queries across tens of thousands of articles in sub-50ms, enabling instantaneous keyword, topic, and entity intelligence.",
         },
         imagePath: {
           tr: "/images/haber-3-v2.png",
@@ -423,12 +424,12 @@ const PROJECTS_DATA: ProjectData[] = [
       },
       {
         titleKey: {
-          tr: "05 - Otonom Telegram Bot Yedekleme & KVKK/5651 Uyumu",
-          en: "05 - Autonomous Telegram Bot Archival & Legal Compliance",
+          tr: "05 - Data-as-a-Service (DaaS) Dağıtımı & Otonom Arşivleme",
+          en: "05 - Data-as-a-Service (DaaS) Pipeline & Autonomous Archival",
         },
         descKey: {
-          tr: "Sistemin sürdürülebilirliğini korumak için 14 günden eski haberler otomatik olarak .json veri kümesine dönüştürülüp Telegram Bot API (sendDocument) üzerinden geliştiricinin Telegram hesabına arşivlenir ve veritabanı temizlenir. 5651 Sayılı Yer Sağlayıcı Bildirimi ve KVKK aydınlatma metinleriyle kurumsal bir yayıncılık altyapısı sunar.",
-          en: "To maintain sustainable database sizing, news records older than 14 days are automatically converted into .json datasets, backed up to the developer's Telegram account via Telegram Bot API (sendDocument), and pruned from the primary database. Full compliance with data privacy regulations provides enterprise-grade publishing reliability.",
+          tr: "Toplanan, arındırılan ve sınıflandırılan haber verisini dış platformlara, bültenlere ve API tüketicilerine sunan ölçeklenebilir DaaS altyapısı. 14 günden eski kayıtları otomatik JSON kümeleri olarak Telegram Bot API üzerinden arşivleyerek MongoDB boyutunu 200MB bandında sabit tutar.",
+          en: "A scalable DaaS backbone exposing cleansed, classified news streams to third-party platforms, newsletters, and API consumers. Automatically exports articles older than 14 days as JSON archives via Telegram Bot API, maintaining an ultra-lean 200MB database footprint.",
         },
         imagePath: {
           tr: "/images/haber-4-v2.png",
@@ -437,10 +438,22 @@ const PROJECTS_DATA: ProjectData[] = [
       },
     ],
     caseStudy: {
-      problem: { tr: "Farklı haber kaynaklarındaki güncel içeriklerin elle takip edilmesi yavaş, tekrar eden ve tutarsız bir süreçti. Kaynak yapıları değişirken veri akışının sürdürülebilir kalması gerekiyordu.", en: "Manually tracking current content across different news sources was slow, repetitive, and inconsistent. The data flow also needed to remain maintainable as source structures changed." },
-      solution: { tr: "Node.js, Cheerio ve Playwright tabanlı toplama katmanı; zamanlanmış görevler, tekrar kontrolü, MongoDB depolama ve Redis önbellekleme ile tek bir veri hattında birleştirildi.", en: "A Node.js, Cheerio, and Playwright collection layer was combined with scheduled jobs, duplicate checks, MongoDB storage, and Redis caching in one data pipeline." },
-      architecture: { tr: "Kaynak seçimi → scraping katmanı → doğrulama ve temizleme → MongoDB → Redis önbellek → Next.js sunum katmanı.", en: "Source selection → scraping layer → validation and cleaning → MongoDB → Redis cache → Next.js presentation layer." },
-      dataFlow: { tr: "Toplanan kayıtlar normalize edilir, mükerrer URL'ler ayıklanır, kategorize edilir ve arayüzün ya da başka bir API tüketicisinin kullanabileceği yapıya dönüştürülür.", en: "Collected records are normalized, duplicate URLs are removed, records are categorized, and transformed into a structure consumable by the interface or another API client." },
+      problem: {
+        tr: "Geleneksel medya siteleri tık tuzakları, yanıltıcı başlıklar, ağır reklam çöplükleri ve manipülatif içeriklerle dolu; üstelik kurumsal veya sektörel takip yapmak isteyenlerin temiz, filtrelenmiş veriye DaaS formatında erişmesi imkansızdı.",
+        en: "Traditional media platforms suffer from clickbait clutter, deceptive headlines, intrusive ad networks, and repetitive noise, leaving businesses without clean, structured DaaS feeds for vertical news monitoring.",
+      },
+      solution: {
+        tr: "150+ haber kaynağından Playwright Stealth ve akıllı ayrıştırıcılarla otonom veri toplayan, LLM ile tık tuzaklarını arındırıp 3 maddelik özete dönüştüren, sektörel niş filtreleme ve harici sistemler için DaaS veri servis katmanı sunan modern bir ekosistem geliştirdim.",
+        en: "I engineered a modern ecosystem autonomously aggregating 150+ sources via Playwright Stealth, sanitizing clickbait into 3-point LLM summaries, and offering vertical niche filtering alongside a turnkey DaaS delivery layer for external consumers.",
+      },
+      architecture: {
+        tr: "150+ Hedef Kaynak → Playwright Stealth & Protocol Scraper → Anti-Clickbait & AI Niş Filtreleme → 200MB Lean MongoDB BSON Depolama → Next.js 15 Serverless SSR & DaaS API Çıktısı.",
+        en: "150+ Target Sources → Playwright Stealth & Protocol Scraper → Anti-Clickbait & AI Niche Classifier → 200MB Lean MongoDB BSON Storage → Next.js 15 Serverless SSR & DaaS Delivery Pipeline.",
+      },
+      dataFlow: {
+        tr: "Eşzamanlı işçiler kaynakları tarar, mükerrer kayıtlar SHA hash ile elenir; içerikler AI süzgecinden geçirilerek niş kategorilere ayrılır ve 30 saniyelik özet üretilir; temiz veri MongoDB'ye yazılıp hem web portalına hem de DaaS istemcilerine servis edilir.",
+        en: "Concurrent workers scan news feeds, duplicates are filtered via SHA hashes, content passes through AI niche classifiers for 30-second distillation, and cleansed data is stored in MongoDB to power both the web frontend and external DaaS clients.",
+      },
     },
     relatedServices: [
       { label: { tr: "Web Scraping Hizmeti", en: "Web Scraping Service" }, href: "/hizmetler/web-scraping" },

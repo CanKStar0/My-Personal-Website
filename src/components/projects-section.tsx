@@ -47,7 +47,7 @@ export function ProjectsSection({ githubReposNode }: ProjectsSectionProps = {}) 
     {
       titleKey: translations.projects.freeapiTitle,
       descriptionKey: translations.projects.freeapiDesc,
-      technologies: ["Next.js 15", "TypeScript", "Tailwind CSS v4", "Framer Motion", "Serverless Edge", "Anti-Scraping Shield", "REST API", "Lucide React"],
+      technologies: ["1038+ REST APIs", "Next.js 15", "TypeScript", "Tailwind CSS v4", "Serverless Edge", "SQLite B-Tree (535x)", "Anti-Scraping Shield", "Live Terminal Sandbox"],
       slug: "free-api",
       imagePath: {
         tr: "/images/freeapi-cover.png",
@@ -57,7 +57,7 @@ export function ProjectsSection({ githubReposNode }: ProjectsSectionProps = {}) 
     {
       titleKey: translations.projects.haberTitle,
       descriptionKey: translations.projects.haberDesc,
-      technologies: ["Next.js 15", "React 19", "Tailwind CSS v4", "TypeScript", "MongoDB Atlas", "Playwright", "Telegram Bot API", "Google News SEO"],
+      technologies: ["Data-as-a-Service (DaaS)", "Next.js 15", "React 19", "AI Niche Filtering", "Anti-Clickbait Engine", "MongoDB Atlas (200MB Lean)", "Playwright Stealth", "Google News SEO"],
       slug: "haber-portali",
       imagePath: {
         tr: "/images/haber-cover-v2.png",

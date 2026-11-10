@@ -17,14 +17,14 @@ const projects: Record<string, { title: string; description: string; image: stri
     category: "BusinessApplication",
   },
   "free-api": {
-    title: "FreeAPI Directory - 500+ Public REST APIs & Live Sandbox",
-    description: "A global developer directory featuring 500+ curated public REST APIs, live terminal sandbox playground, and edge anti-scraping shield.",
+    title: "FindFreeAPI Directory - 1000+ Public REST APIs & Live Sandbox",
+    description: "A global developer directory featuring 1038+ curated public REST APIs across 47 categories, live terminal sandbox playground, and edge anti-scraping shield.",
     image: "/images/freeapi-cover-en.png",
     category: "DeveloperApplication",
   },
   "haber-portali": {
-    title: "News Portal - Autonomous Web Scraping Engine",
-    description: "A cloud-based news collection engine and maintainable data-delivery platform.",
+    title: "Haber Portali TR - DaaS & AI Niche-Filtered News Intelligence Engine",
+    description: "An autonomous news aggregation platform delivering AI niche filtering, 3-point bullet summaries, and scalable Data-as-a-Service (DaaS) streams.",
     image: "/images/haber-cover-v2-en.png",
     category: "WebApplication",
   },

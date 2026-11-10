@@ -118,6 +118,15 @@ export const HABER_PORTALI_ENGINEERING_DATA: EngineeringCaseStudyData = {
     },
     {
       step: "03",
+      title: { tr: "AI Niş Filtreleme & Anti-Clickbait Süzgeci", en: "AI Niche Filtering & Anti-Clickbait Sanitizer" },
+      desc: {
+        tr: "Gereksiz tık tuzakları ayıklanır, haberler Teknoloji, Kripto ve Finans gibi niş sektörlere LLM ile otomatik sınıflandırılır.",
+        en: "Clickbait clutter is eradicated, classifying streams into domain niches like Tech, Crypto, and Finance via LLM.",
+      },
+      badge: { tr: "AI Filtreleme", en: "AI Engine" },
+    },
+    {
+      step: "04",
       title: { tr: "Arındırma, Hash & Mükerrer Kontrolü", en: "Sanitization & Deduplication Pipeline" },
       desc: {
         tr: "HTML çöplerinden arındırılan veri, URL ve başlık hash'leri üzerinden milisaniyeler içinde tekilleştirilir.",
@@ -126,7 +135,7 @@ export const HABER_PORTALI_ENGINEERING_DATA: EngineeringCaseStudyData = {
       badge: { tr: "Normalizasyon", en: "Sanitization" },
     },
     {
-      step: "04",
+      step: "05",
       title: { tr: "200MB Lean MongoDB & Bileşik İndeks", en: "200MB Lean MongoDB & Compound Index" },
       desc: {
         tr: "Kısaltılmış alan adları ve optimize BSON tipleriyle 60.000 dopdolu haber yalnızca 200MB alanda saklanır.",
@@ -135,13 +144,13 @@ export const HABER_PORTALI_ENGINEERING_DATA: EngineeringCaseStudyData = {
       badge: { tr: "Ultra Sıkıştırma", en: "Storage Opt" },
     },
     {
-      step: "05",
-      title: { tr: "Serverless ISR & Reaktif Arama", en: "Serverless ISR & Reactive Search" },
+      step: "06",
+      title: { tr: "Data-as-a-Service (DaaS) & Reaktif Dağıtım", en: "Data-as-a-Service (DaaS) & Reactive Delivery" },
       desc: {
-        tr: "Tek bir kelimeden <50ms'de sonuç getiren ters tam metin araması ve 60 saniyelik reaktif ISR önbellek sunumu.",
-        en: "Sub-50ms full-text keyword retrieval powered by compound indexes and 60-second Incremental Static Regeneration.",
+        tr: "Web portalı, harici bültenler ve API istemcileri için <50ms ters indeksli sorgulama ve kesintisiz DaaS veri akışı.",
+        en: "Sub-50ms reverse-indexed lookups and continuous DaaS data feeds powering the web UI, newsletters, and API consumers.",
       },
-      badge: { tr: "Canlı Sunum", en: "Delivery" },
+      badge: { tr: "DaaS Sunum", en: "DaaS Feed" },
     },
   ],
   warStories: [
@@ -416,9 +425,9 @@ export const BIST_AI_ENGINEERING_DATA: EngineeringCaseStudyData = {
 export const FREE_API_ENGINEERING_DATA: EngineeringCaseStudyData = {
   metrics: [
     {
-      value: "500+",
+      value: "1038+",
       label: { tr: "Doğrulanmış REST API", en: "Verified REST APIs" },
-      subtext: { tr: "46 Dikey Kategoride 7/24 İzlenen Dizin", en: "Continuously Monitored Across 46 Categories" },
+      subtext: { tr: "47 Dikey Kategoride 7/24 İzlenen Dizin", en: "Continuously Monitored Across 47 Categories" },
       icon: Layers,
       color: "blue",
     },
@@ -444,7 +453,7 @@ export const FREE_API_ENGINEERING_DATA: EngineeringCaseStudyData = {
       color: "red",
     },
     {
-      value: "46",
+      value: "47",
       label: { tr: "Çift Dilli Kategori", en: "Bilingual Categories" },
       subtext: { tr: "Finans, AI, Siber Güvenlik, Hava Durumu, Kripto", en: "Finance, AI, Cybersecurity, Weather, Crypto" },
       icon: Cpu,

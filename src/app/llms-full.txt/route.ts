@@ -84,15 +84,17 @@ ${s.sections.map((sec) => `  - **${sec.title}**: ${sec.body}`).join("\n")}
   - Zero Hardware Cost Barcode POS: In-browser ZXing camera decoding transforming any smartphone into a commercial barcode terminal.
   - Live Mobile Calendar Synchronization: Native CalDAV/ICS feeds allowing staff to view work orders in Apple/Google Calendars in real-time.
 
-### Haber Portalı (Autonomous News Scraping & DaaS Platform)
+### Haber Portalı TR (DaaS & AI Niche News Intelligence Engine)
 - URL (TR): ${SITE_URL}/projeler/haber-portali
 - URL (EN): ${SITE_URL}/en/projects/haber-portali
-- Tech: Next.js 15, React 19, TypeScript, Playwright Stealth, Cheerio, MongoDB Atlas (Lean BSON), Telegram Bot API, Tailwind CSS v4, Vercel Serverless
+- Live Demo: https://haberportalitr.com
+- Tech: Next.js 15, React 19, TypeScript, Data-as-a-Service (DaaS), AI Niche Classifiers, Anti-Clickbait Engine, Playwright Stealth, MongoDB Atlas (Lean BSON), Telegram Bot API, Tailwind CSS v4, Vercel Serverless
 - Production Engineering Benchmarks:
-  - 150+ Concurrent News Outlets: Monitored simultaneously with zero-downtime multi-worker architecture.
+  - 150+ Concurrent News Outlets: Monitored simultaneously with zero-downtime multi-worker architecture and WAF bypass.
+  - Turnkey Data-as-a-Service (DaaS): Structured, noise-free news feeds delivering cleansed articles to external consumer platforms and APIs.
+  - AI Niche Filtering & Anti-Clickbait: Semantic classification across vertical industries (Tech, Crypto, Finance, Defense) and 3-point LLM distillation stripping misleading filler.
   - 60,000+ Rich Articles in 200MB: Lean BSON schema design and compound indexing storing tens of thousands of full-page articles in an ultra-compact footprint.
   - <50ms Full-Text Search: Single-keyword regex & compound reverse index lookups executing in sub-50ms without expensive dedicated search clusters.
-  - Pre-Hydration Interception: Ingests publisher data streams at the network protocol layer, processing articles before target websites finish client-side DOM hydration.
   - Zero Extra Infrastructure Bloat: Self-healing worker queues and automated Telegram JSON archival pruning aged data to keep database operations 100% cost-efficient.
 
 ### BİST AI Finans Terminali (Autonomous Financial Market Terminal & LLM Scoring)
@@ -106,17 +108,18 @@ ${s.sections.map((sec) => `  - **${sec.title}**: ${sec.body}`).join("\n")}
   - 0% Hallucination Financial LLM: Two-stage architecture where deterministic Python engines calculate exact financial ratios (P/E, P/B, Net Debt/EBITDA) before feeding strict JSON schemas to the LLM for qualitative commentary.
   - Autonomous Quarterly Balance Sheet Parser: Ingests unstructured public disclosure tables (KAP) and converts them into standardized financial statement models with YoY/QoQ growth metrics.
 
-### Free API Directory (500+ Verified REST APIs & Live Terminal Sandbox)
+### FindFreeAPI Directory (1038+ Curated REST APIs, Live Sandbox & Architecture Stacks)
 - URL (TR): ${SITE_URL}/projeler/free-api
 - URL (EN): ${SITE_URL}/en/projects/free-api
-- Live Demo: https://freeapi.website
-- Tech: Next.js 15, TypeScript, React 19, Tailwind CSS v4, Framer Motion, Serverless Edge Proxy, SSRF Guard, Lucide React, i18n
+- Live Demo: https://findfreeapi.com
+- Tech: Next.js 15, TypeScript, React 19, Tailwind CSS v4, Framer Motion, SQLite B-Tree Indexing, Serverless Edge Proxy, SSRF Guard, Lucide React, i18n
 - Production Engineering Benchmarks:
-  - 500+ Verified REST APIs: Cataloged across 46 vertical categories (Finance, AI, Crypto, Weather, Security) with continuous health checks.
-  - <30ms In-Browser Terminal Sandbox: Interactive developer console with syntax highlighting, collapsible JSON formatting, and instant testing without context switching.
+  - 1038+ Verified REST APIs: Cataloged across 47 vertical categories (Finance, AI, Crypto, Weather, Security) with continuous health checks.
+  - 535x Faster SQLite B-Tree Queries: Direct in-memory B-Tree index structure accelerating lookup times from 1070ms down to 2ms.
+  - <30ms In-Browser Live Sandbox: Interactive developer console with syntax highlighting, parameter forms, and instant live execution.
   - 100% SSRF & Bot Shielding: Serverless edge proxy enforcing strict CIDR IP blacklisting (blocking internal 127.0.0.1, private subnets, and cloud metadata endpoints) while bypassing client CORS issues.
-  - One-Click Polyglot Code Synthesis: Live compilation of headers and query parameters into copy-pasteable cURL, TypeScript/Fetch, and Python/Requests snippets.
-  - Full Bilingual Taxonomy Parity: Complete reciprocal TR/EN localization and instant client-side fuzzy searching with zero bundle overhead.
+  - One-Click Polyglot Code Synthesis: Live compilation of headers and query parameters into copy-pasteable cURL, TypeScript/Fetch, and Python snippets.
+  - Curated Architecture Stacks: Pre-packaged bundles for specialized domain implementations.
 
 ---
 

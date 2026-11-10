@@ -17,14 +17,14 @@ const PROJECTS_METADATA: Record<string, { title: string; description: string; im
     category: "BusinessApplication",
   },
   "free-api": {
-    title: "FreeAPI Directory - 500+ Açık REST API & Canlı Sandbox Platformu",
-    description: "500+ doğrulanmış ücretsiz REST API, canlı terminal sandbox konsolu ve askeri düzeyde anti-scraping koruması sunan küresel geliştirici platformu.",
+    title: "FindFreeAPI Directory - 1000+ Açık REST API & Canlı Sandbox Platformu",
+    description: "1038+ doğrulanmış ücretsiz REST API, 47 dikey kategori, canlı terminal sandbox konsolu ve askeri düzeyde anti-scraping koruması sunan küresel geliştirici platformu.",
     image: "/images/freeapi-cover.png",
     category: "DeveloperApplication",
   },
   "haber-portali": {
-    title: "Haber Portalı - Otonom Web Kazıma Motoru",
-    description: "Bulut tabanlı otonom haber toplama motoru ve yüksek performanslı veri sunum (DaaS) platformu.",
+    title: "Haber Portalı TR - DaaS & AI Niş Filtreleme Destekli Haber Motoru",
+    description: "150+ kaynaktan otonom veri toplayan, yapay zekâ destekli niş filtreleme ve 3 maddelik özet sunan yüksek performanslı Data-as-a-Service (DaaS) platformu.",
     image: "/images/haber-cover-v2.png",
     category: "WebApplication",
   },
