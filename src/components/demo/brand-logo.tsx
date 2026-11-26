@@ -29,6 +29,8 @@ export function BrandLogo({
     );
   }
 
+  const isSvg = logoPath.toLowerCase().endsWith(".svg");
+
   return (
     <div className={`flex ${sizeClass} items-center justify-center`}>
       <Image
@@ -36,7 +38,9 @@ export function BrandLogo({
         alt={`${displayName} logosu`}
         width={48}
         height={48}
-        className="size-full object-contain opacity-90 transition-opacity dark:invert"
+        className={`size-full object-contain opacity-90 transition-opacity ${
+          isSvg ? "dark:invert" : ""
+        }`}
       />
     </div>
   );

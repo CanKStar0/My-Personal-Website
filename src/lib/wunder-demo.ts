@@ -109,7 +109,7 @@ const BRAND_LOGO_MAP: Record<string, { display: string; logo: string | null }> =
   DACIA: { display: "Dacia", logo: "/images/brands/dacia.svg" },
   FIAT: { display: "Fiat", logo: "/images/brands/fiat.svg" },
   JEEP: { display: "Jeep", logo: "/images/brands/jeep.svg" },
-  LANCIA: { display: "Lancia", logo: null },
+  LANCIA: { display: "Lancia", logo: "/images/brands/lancia.png" },
   "MERCEDES-BENZ": { display: "Mercedes-Benz", logo: "/images/brands/mercedes.svg" },
   MITSUBISHI: { display: "Mitsubishi", logo: "/images/brands/mitsubishi.svg" },
   NISSAN: { display: "Nissan", logo: "/images/brands/nissan.svg" },
@@ -378,6 +378,58 @@ export function getEngineNodeBySlug(
   return (
     getEnginesForModel(brandSlug, modelSlug).find((e) => e.slug === engineSlug) ??
     null
+  );
+}
+
+export interface ModelFilterMatch {
+  summary: WunderProductSummary;
+  topOems: OemNumberRow[];
+  topRivals: RivalNumberRow[];
+  matchingEngines: EngineNode[];
+}
+
+export function getProductsForModel(
+  brandSlug: string,
+  modelSlug: string
+): ModelFilterMatch[] {
+  const engines = getEnginesForModel(brandSlug, modelSlug);
+  const all = loadWunderProducts();
+  const summaries = new Map(getWunderSummaries().map((s) => [s.slug, s]));
+  const priority = ["MANN", "FILTRON", "MAHLE", "BOSCH", "UFI", "PURFLUX", "MOTOEC"];
+
+  const byProductSlug = new Map<string, EngineNode[]>();
+  for (const eng of engines) {
+    for (const slug of eng.productSlugs) {
+      const list = byProductSlug.get(slug) ?? [];
+      list.push(eng);
+      byProductSlug.set(slug, list);
+    }
+  }
+
+  const out: ModelFilterMatch[] = [];
+  for (const [slug, matchedEngines] of byProductSlug.entries()) {
+    const prod = all.find((p) => p.slug === slug);
+    const sum = summaries.get(slug);
+    if (!prod || !sum) continue;
+    const topRivals = [...prod.rival_numbers]
+      .sort((a, b) => {
+        const ai = priority.findIndex((pb) => a.brand.toUpperCase().includes(pb));
+        const bi = priority.findIndex((pb) => b.brand.toUpperCase().includes(pb));
+        return (ai === -1 ? 99 : ai) - (bi === -1 ? 99 : bi);
+      })
+      .filter((r) => !r.brand.toUpperCase().startsWith("WUNDER"))
+      .slice(0, 6);
+
+    out.push({
+      summary: sum,
+      topOems: prod.oem_numbers.slice(0, 6),
+      topRivals,
+      matchingEngines: matchedEngines,
+    });
+  }
+
+  return out.sort((a, b) =>
+    a.summary.wunder_code.localeCompare(b.summary.wunder_code, "tr")
   );
 }
 
