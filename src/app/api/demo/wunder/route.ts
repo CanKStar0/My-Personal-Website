@@ -1,5 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
-import { getWunderProductBySlug, searchByCode } from "@/lib/wunder-demo";
+import {
+  queryB2BVehicleCascade,
+  searchB2BProductsByCode,
+} from "@/lib/wunder-demo";
 
 export async function GET(request: NextRequest) {
   const { searchParams } = new URL(request.url);
@@ -7,17 +10,30 @@ export async function GET(request: NextRequest) {
 
   if (action === "search") {
     const q = searchParams.get("q") ?? "";
-    const hits = searchByCode(q);
-    return NextResponse.json({ query: q, hits });
+    const products = searchB2BProductsByCode(q);
+    return NextResponse.json({ query: q, products });
   }
 
-  if (action === "product") {
-    const slug = searchParams.get("slug") ?? "wy-500";
-    const product = getWunderProductBySlug(slug);
-    if (!product) {
-      return NextResponse.json({ error: "Ürün bulunamadı" }, { status: 404 });
+  if (action === "vehicle-filters") {
+    const make = searchParams.get("make") ?? "";
+    const model = searchParams.get("model") ?? "";
+    const year = searchParams.get("year") ?? "";
+    const engine = searchParams.get("engine") ?? "";
+    if (!make) {
+      return NextResponse.json({
+        models: [],
+        years: [],
+        engines: [],
+        products: [],
+      });
     }
-    return NextResponse.json({ product });
+    const result = queryB2BVehicleCascade(
+      make,
+      model || undefined,
+      year || undefined,
+      engine || undefined
+    );
+    return NextResponse.json(result);
   }
 
   return NextResponse.json({ error: "Geçersiz işlem" }, { status: 400 });
