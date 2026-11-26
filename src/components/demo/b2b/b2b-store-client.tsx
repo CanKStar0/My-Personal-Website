@@ -1,9 +1,7 @@
 "use client";
 
 import React, { useId, useMemo, useState, useSyncExternalStore } from "react";
-import Link from "next/link";
 import {
-  ArrowLeft,
   Car,
   CheckCircle2,
   ClipboardList,
@@ -298,21 +296,18 @@ export function B2BStoreClient({ initialProducts, vehicleMakes }: Props) {
       <header className="sticky top-0 z-30 border-b border-border bg-card/95 backdrop-blur-sm">
         <div className="mx-auto flex max-w-6xl items-center justify-between gap-3 px-4 py-2.5 sm:px-6">
           <div className="flex items-center gap-4">
-            <Link
-              href="/"
-              aria-label="canpolatkaya.com ana sitesine dön"
-              className="inline-flex size-9 items-center justify-center rounded-lg border border-border bg-background text-muted-foreground transition-colors hover:text-foreground"
+            <button
+              type="button"
+              onClick={() => setActiveNav("home")}
+              className="flex items-center gap-2 text-left"
             >
-              <ArrowLeft className="size-4" aria-hidden="true" />
-            </Link>
-            <div className="flex items-center gap-2">
               <span className="font-jakarta text-lg font-black tracking-tight text-brand-red">
                 WUNDER
               </span>
               <span className="hidden text-xs font-semibold text-muted-foreground sm:inline">
                 B2B Bayi Portalı
               </span>
-            </div>
+            </button>
 
             {/* Desktop Navigation Tabs */}
             <nav
@@ -631,7 +626,7 @@ export function B2BStoreClient({ initialProducts, vehicleMakes }: Props) {
 
                 {vehicleResults.length === 0 ? (
                   <p className="text-sm text-muted-foreground">
-                    Bu araç seçimi için demoda ürün bulunamadı.
+                    Bu araç seçimi için eşleşen ürün bulunamadı.
                   </p>
                 ) : (
                   <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
@@ -911,7 +906,7 @@ export function B2BStoreClient({ initialProducts, vehicleMakes }: Props) {
                   onClick={completeDemoOrder}
                   className="min-h-12 w-full rounded-xl bg-brand-red text-sm font-bold text-white transition-opacity hover:opacity-90"
                 >
-                  Siparişi Tamamla (Demo)
+                  Siparişi Onayla
                 </button>
               </div>
             )}

@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "WUNDER Filtre Çapraz Referans & Araç Katalog Demosu",
+  title: {
+    absolute: "WUNDER Filtre | B2B Bayi ve Sipariş Portalı",
+  },
   description:
-    "OEM numarası, rakip filtre kodu veya araç seçimi ile WUNDER filtre karşılıklarını gösteren B2B katalog demosu.",
-  alternates: { canonical: "https://canpolatkaya.com/demo/wunder-filtre" },
+    "WUNDER Filtre yetkili bayi B2B ürün kataloğu, araç filtre arama ve online sipariş sistemi.",
   robots: { index: false, follow: false },
 };
 
