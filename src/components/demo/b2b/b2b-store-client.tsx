@@ -6,15 +6,18 @@ import {
   CheckCircle2,
   ClipboardList,
   CreditCard,
+  Headphones,
   Home,
   Minus,
   Moon,
   Package,
   Plus,
   Search,
+  ShieldCheck,
   ShoppingCart,
   Sun,
   Trash2,
+  Truck,
   X,
 } from "lucide-react";
 import { useTheme } from "next-themes";
@@ -302,10 +305,10 @@ export function B2BStoreClient({ initialProducts, vehicleMakes }: Props) {
               className="flex items-center gap-2 text-left"
             >
               <span className="font-jakarta text-lg font-black tracking-tight text-brand-red">
-                WUNDER
+                GNR Otomotiv
               </span>
               <span className="hidden text-xs font-semibold text-muted-foreground sm:inline">
-                B2B Bayi Portalı
+                · Bayi Portalı
               </span>
             </button>
 
@@ -340,6 +343,17 @@ export function B2BStoreClient({ initialProducts, vehicleMakes }: Props) {
           </div>
 
           <div className="flex items-center gap-2">
+            <button
+              type="button"
+              onClick={() => setActiveNav("account")}
+              className="hidden min-h-10 items-center gap-2 rounded-lg border border-border bg-background px-3 py-1.5 text-xs transition-colors hover:border-brand-red sm:inline-flex"
+            >
+              <span className="text-muted-foreground">Bakiye:</span>
+              <span className="font-bold text-foreground tabular-nums">
+                {formatTRY(14250)}
+              </span>
+            </button>
+
             <button
               type="button"
               onClick={() => setCartOpen(true)}
@@ -761,6 +775,72 @@ export function B2BStoreClient({ initialProducts, vehicleMakes }: Props) {
             </div>
           </section>
         )}
+
+        {/* Bottom Trust Strip & B2B Footer */}
+        <section
+          aria-label="Bayi avantajları"
+          className="grid grid-cols-2 gap-3 border-t border-border pt-6 sm:grid-cols-4"
+        >
+          <div className="flex items-start gap-2.5">
+            <ShieldCheck
+              className="mt-0.5 size-4 shrink-0 text-brand-red"
+              aria-hidden="true"
+            />
+            <div>
+              <div className="text-xs font-bold text-foreground">
+                Orijinal ürünler
+              </div>
+              <div className="text-xs text-muted-foreground">
+                Garantili WUNDER filtreler
+              </div>
+            </div>
+          </div>
+          <div className="flex items-start gap-2.5">
+            <Truck
+              className="mt-0.5 size-4 shrink-0 text-brand-red"
+              aria-hidden="true"
+            />
+            <div>
+              <div className="text-xs font-bold text-foreground">
+                Sipariş takibi
+              </div>
+              <div className="text-xs text-muted-foreground">
+                Anlık sevkiyat durumu
+              </div>
+            </div>
+          </div>
+          <div className="flex items-start gap-2.5">
+            <CreditCard
+              className="mt-0.5 size-4 shrink-0 text-brand-red"
+              aria-hidden="true"
+            />
+            <div>
+              <div className="text-xs font-bold text-foreground">Açık hesap</div>
+              <div className="text-xs text-muted-foreground">
+                Cari limit ile hızlı alım
+              </div>
+            </div>
+          </div>
+          <div className="flex items-start gap-2.5">
+            <Headphones
+              className="mt-0.5 size-4 shrink-0 text-brand-red"
+              aria-hidden="true"
+            />
+            <div>
+              <div className="text-xs font-bold text-foreground">
+                Uzman destek
+              </div>
+              <div className="text-xs text-muted-foreground">
+                Parça eşleştirme desteği
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <footer className="flex flex-col justify-between gap-2 border-t border-border pt-4 text-xs text-muted-foreground sm:flex-row">
+          <span>© 2026 GNR Otomotiv · Tüm hakları saklıdır.</span>
+          <span>Fiyatlara KDV dahil değildir · Stok bilgileri anlık güncellenir</span>
+        </footer>
       </main>
 
       {/* Mobile Bottom Navigation for B2B Portal */}

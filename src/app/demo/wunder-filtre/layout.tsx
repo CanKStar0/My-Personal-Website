@@ -2,10 +2,10 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: {
-    absolute: "WUNDER Filtre | B2B Bayi ve Sipariş Portalı",
+    absolute: "GNR Otomotiv | B2B Filtre Sipariş Portalı",
   },
   description:
-    "WUNDER Filtre yetkili bayi B2B ürün kataloğu, araç filtre arama ve online sipariş sistemi.",
+    "GNR Otomotiv yetkili bayi B2B WUNDER filtre kataloğu, araç filtre arama ve online sipariş sistemi.",
   robots: { index: false, follow: false },
 };
 
