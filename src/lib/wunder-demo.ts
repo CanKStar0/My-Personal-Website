@@ -50,8 +50,6 @@ export interface WunderProductSummary {
   oem_count: number;
   rival_count: number;
   app_count: number;
-  top_makes: string[];
-  top_rivals: string[];
 }
 
 export interface CodeMatchHit {
@@ -67,6 +65,35 @@ export interface CodeMatchHit {
   app_count: number;
 }
 
+export interface BrandNode {
+  make: string;
+  displayName: string;
+  slug: string;
+  logoPath: string | null;
+  modelCount: number;
+  engineCount: number;
+  productCount: number;
+}
+
+export interface ModelSeriesNode {
+  modelSeries: string;
+  slug: string;
+  engineCount: number;
+  productCount: number;
+  yearHints: string;
+}
+
+export interface EngineNode {
+  slug: string;
+  engine: string;
+  engineCode: string;
+  kw: string;
+  hp: string;
+  years: string;
+  productCount: number;
+  productSlugs: string[];
+}
+
 export interface WunderDemoStats {
   total_products: number;
   total_oem_refs: number;
@@ -75,7 +102,64 @@ export interface WunderDemoStats {
   unique_makes: number;
 }
 
+const BRAND_LOGO_MAP: Record<string, { display: string; logo: string | null }> = {
+  AUDI: { display: "Audi", logo: "/images/brands/audi.svg" },
+  "ALFA ROMEO": { display: "Alfa Romeo", logo: "/images/brands/alfaromeo.svg" },
+  CHRYSLER: { display: "Chrysler", logo: "/images/brands/chrysler.svg" },
+  DACIA: { display: "Dacia", logo: "/images/brands/dacia.svg" },
+  FIAT: { display: "Fiat", logo: "/images/brands/fiat.svg" },
+  JEEP: { display: "Jeep", logo: "/images/brands/jeep.svg" },
+  LANCIA: { display: "Lancia", logo: null },
+  "MERCEDES-BENZ": { display: "Mercedes-Benz", logo: "/images/brands/mercedes.svg" },
+  MITSUBISHI: { display: "Mitsubishi", logo: "/images/brands/mitsubishi.svg" },
+  NISSAN: { display: "Nissan", logo: "/images/brands/nissan.svg" },
+  OPEL: { display: "Opel", logo: "/images/brands/opel.svg" },
+  RENAULT: { display: "Renault", logo: "/images/brands/renault.svg" },
+  ROVER: { display: "Rover", logo: "/images/brands/landrover.svg" },
+  SEAT: { display: "SEAT", logo: "/images/brands/seat.svg" },
+  SKODA: { display: "Škoda", logo: "/images/brands/skoda.svg" },
+  "SMART (DAIMLER AG)": { display: "Smart", logo: "/images/brands/smart.svg" },
+  SUZUKI: { display: "Suzuki", logo: "/images/brands/suzuki.svg" },
+  "VW(VOLKSWAGEN)": { display: "Volkswagen", logo: "/images/brands/volkswagen.svg" },
+};
+
 let cachedProducts: RawWunderProduct[] | null = null;
+
+interface VehicleTree {
+  brands: BrandNode[];
+  brandBySlug: Map<string, BrandNode>;
+  modelsByBrandSlug: Map<string, ModelSeriesNode[]>;
+  enginesByBrandModelSlug: Map<string, EngineNode[]>;
+}
+
+let cachedTree: VehicleTree | null = null;
+
+export function slugifySegment(text: string): string {
+  const trMap: Record<string, string> = {
+    ç: "c",
+    ğ: "g",
+    ı: "i",
+    ö: "o",
+    ş: "s",
+    ü: "u",
+    Ç: "c",
+    Ğ: "g",
+    İ: "i",
+    Ö: "o",
+    Ş: "s",
+    Ü: "u",
+  };
+  const replaced = (text || "")
+    .split("")
+    .map((ch) => trMap[ch] ?? ch)
+    .join("");
+  return (
+    replaced
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g, "-")
+      .replace(/^-+|-+$/g, "") || "standart"
+  );
+}
 
 export function normalizeCodeStrict(value: string): string {
   return (value || "").toUpperCase().replace(/[\s\-_.]+/g, "");
@@ -99,6 +183,239 @@ export function loadWunderProducts(): RawWunderProduct[] {
   const raw = fs.readFileSync(jsonPath, "utf-8");
   cachedProducts = JSON.parse(raw) as RawWunderProduct[];
   return cachedProducts;
+}
+
+function buildVehicleTree(): VehicleTree {
+  if (cachedTree) return cachedTree;
+
+  const products = loadWunderProducts();
+  type TempEngine = {
+    engine: string;
+    engineCode: string;
+    kw: string;
+    hp: string;
+    years: string;
+    productSlugs: Set<string>;
+  };
+  type TempModel = {
+    modelSeries: string;
+    engines: Map<string, TempEngine>;
+    productSlugs: Set<string>;
+    yearsList: Set<string>;
+  };
+  type TempBrand = {
+    make: string;
+    models: Map<string, TempModel>;
+    productSlugs: Set<string>;
+  };
+
+  const brandMap = new Map<string, TempBrand>();
+
+  for (const p of products) {
+    for (const app of p.applications) {
+      const make = (app.make || "").trim();
+      const modelSeries = (app.model_series || "Genel Seri").trim();
+      if (!make) continue;
+
+      let bNode = brandMap.get(make);
+      if (!bNode) {
+        bNode = { make, models: new Map(), productSlugs: new Set() };
+        brandMap.set(make, bNode);
+      }
+      bNode.productSlugs.add(p.slug);
+
+      let mNode = bNode.models.get(modelSeries);
+      if (!mNode) {
+        mNode = {
+          modelSeries,
+          engines: new Map(),
+          productSlugs: new Set(),
+          yearsList: new Set(),
+        };
+        bNode.models.set(modelSeries, mNode);
+      }
+      mNode.productSlugs.add(p.slug);
+      if (app.years) mNode.yearsList.add(app.years);
+
+      const engKey = `${app.engine}|${app.engine_code}|${app.kw}|${app.hp}|${app.years}`;
+      let eNode = mNode.engines.get(engKey);
+      if (!eNode) {
+        eNode = {
+          engine: app.engine,
+          engineCode: app.engine_code,
+          kw: app.kw,
+          hp: app.hp,
+          years: app.years,
+          productSlugs: new Set(),
+        };
+        mNode.engines.set(engKey, eNode);
+      }
+      eNode.productSlugs.add(p.slug);
+    }
+  }
+
+  const brands: BrandNode[] = [];
+  const brandBySlug = new Map<string, BrandNode>();
+  const modelsByBrandSlug = new Map<string, ModelSeriesNode[]>();
+  const enginesByBrandModelSlug = new Map<string, EngineNode[]>();
+
+  const usedBrandSlugs = new Set<string>();
+  for (const b of [...brandMap.values()].sort((a, c) =>
+    (BRAND_LOGO_MAP[a.make]?.display ?? a.make).localeCompare(
+      BRAND_LOGO_MAP[c.make]?.display ?? c.make,
+      "tr"
+    )
+  )) {
+    const meta = BRAND_LOGO_MAP[b.make];
+    const displayName = meta?.display ?? b.make;
+    let bSlug = slugifySegment(displayName);
+    if (usedBrandSlugs.has(bSlug)) bSlug = `${bSlug}-${usedBrandSlugs.size}`;
+    usedBrandSlugs.add(bSlug);
+
+    let totalEngines = 0;
+    const modelNodes: ModelSeriesNode[] = [];
+    const usedModelSlugs = new Set<string>();
+
+    for (const m of [...b.models.values()].sort((a, c) =>
+      a.modelSeries.localeCompare(c.modelSeries, "tr")
+    )) {
+      let mSlug = slugifySegment(m.modelSeries);
+      if (usedModelSlugs.has(mSlug)) {
+        mSlug = `${mSlug}-${usedModelSlugs.size}`;
+      }
+      usedModelSlugs.add(mSlug);
+
+      const engineNodes: EngineNode[] = [];
+      const usedEngineSlugs = new Set<string>();
+      for (const e of [...m.engines.values()].sort((a, c) =>
+        a.engine.localeCompare(c.engine, "tr")
+      )) {
+        let eSlug = slugifySegment(`${e.engine}-${e.engineCode}-${e.kw}-${e.years}`);
+        if (usedEngineSlugs.has(eSlug)) {
+          eSlug = `${eSlug}-${usedEngineSlugs.size}`;
+        }
+        usedEngineSlugs.add(eSlug);
+        engineNodes.push({
+          slug: eSlug,
+          engine: e.engine,
+          engineCode: e.engineCode,
+          kw: e.kw,
+          hp: e.hp,
+          years: e.years,
+          productCount: e.productSlugs.size,
+          productSlugs: [...e.productSlugs],
+        });
+      }
+
+      totalEngines += engineNodes.length;
+      enginesByBrandModelSlug.set(`${bSlug}::${mSlug}`, engineNodes);
+
+      const yearsArr = [...m.yearsList].slice(0, 2);
+      modelNodes.push({
+        modelSeries: m.modelSeries,
+        slug: mSlug,
+        engineCount: engineNodes.length,
+        productCount: m.productSlugs.size,
+        yearHints: yearsArr.join(", "),
+      });
+    }
+
+    const brandNode: BrandNode = {
+      make: b.make,
+      displayName,
+      slug: bSlug,
+      logoPath: meta?.logo ?? null,
+      modelCount: modelNodes.length,
+      engineCount: totalEngines,
+      productCount: b.productSlugs.size,
+    };
+
+    brands.push(brandNode);
+    brandBySlug.set(bSlug, brandNode);
+    modelsByBrandSlug.set(bSlug, modelNodes);
+  }
+
+  cachedTree = {
+    brands,
+    brandBySlug,
+    modelsByBrandSlug,
+    enginesByBrandModelSlug,
+  };
+  return cachedTree;
+}
+
+export function getAllBrands(): BrandNode[] {
+  return buildVehicleTree().brands;
+}
+
+export function getBrandBySlug(brandSlug: string): BrandNode | null {
+  return buildVehicleTree().brandBySlug.get(brandSlug) ?? null;
+}
+
+export function getModelsForBrand(brandSlug: string): ModelSeriesNode[] {
+  return buildVehicleTree().modelsByBrandSlug.get(brandSlug) ?? [];
+}
+
+export function getEnginesForModel(
+  brandSlug: string,
+  modelSlug: string
+): EngineNode[] {
+  return buildVehicleTree().enginesByBrandModelSlug.get(`${brandSlug}::${modelSlug}`) ?? [];
+}
+
+export function getModelNodeBySlug(
+  brandSlug: string,
+  modelSlug: string
+): ModelSeriesNode | null {
+  return getModelsForBrand(brandSlug).find((m) => m.slug === modelSlug) ?? null;
+}
+
+export function getEngineNodeBySlug(
+  brandSlug: string,
+  modelSlug: string,
+  engineSlug: string
+): EngineNode | null {
+  return (
+    getEnginesForModel(brandSlug, modelSlug).find((e) => e.slug === engineSlug) ??
+    null
+  );
+}
+
+export function getProductsForEngine(engineNode: EngineNode): {
+  summary: WunderProductSummary;
+  topOems: OemNumberRow[];
+  topRivals: RivalNumberRow[];
+}[] {
+  const all = loadWunderProducts();
+  const summaries = new Map(getWunderSummaries().map((s) => [s.slug, s]));
+  const out: {
+    summary: WunderProductSummary;
+    topOems: OemNumberRow[];
+    topRivals: RivalNumberRow[];
+  }[] = [];
+
+  for (const slug of engineNode.productSlugs) {
+    const prod = all.find((p) => p.slug === slug);
+    const sum = summaries.get(slug);
+    if (!prod || !sum) continue;
+    const priority = ["MANN", "FILTRON", "MAHLE", "BOSCH", "UFI", "PURFLUX", "MOTOEC"];
+    const topRivals = [...prod.rival_numbers]
+      .sort((a, b) => {
+        const ai = priority.findIndex((pb) => a.brand.toUpperCase().includes(pb));
+        const bi = priority.findIndex((pb) => b.brand.toUpperCase().includes(pb));
+        return (ai === -1 ? 99 : ai) - (bi === -1 ? 99 : bi);
+      })
+      .filter((r) => !r.brand.toUpperCase().startsWith("WUNDER"))
+      .slice(0, 6);
+
+    out.push({
+      summary: sum,
+      topOems: prod.oem_numbers.slice(0, 6),
+      topRivals,
+    });
+  }
+
+  return out;
 }
 
 export function getWunderStats(): WunderDemoStats {
@@ -127,41 +444,19 @@ export function getWunderStats(): WunderDemoStats {
 }
 
 export function getWunderSummaries(): WunderProductSummary[] {
-  return loadWunderProducts().map((p) => {
-    const makeCounts = new Map<string, number>();
-    for (const app of p.applications) {
-      makeCounts.set(app.make, (makeCounts.get(app.make) ?? 0) + 1);
-    }
-    const topMakes = [...makeCounts.entries()]
-      .sort((a, b) => b[1] - a[1])
-      .slice(0, 4)
-      .map(([m]) => m);
-
-    const priorityBrands = ["MANN-FILTER", "FILTRON", "MAHLE", "BOSCH", "UFI", "SAMPİYON", "ŞAMPİYON"];
-    const topRivals: string[] = [];
-    for (const pb of priorityBrands) {
-      const hit = p.rival_numbers.find((r) => r.brand.toUpperCase().includes(pb));
-      if (hit && topRivals.length < 4) {
-        topRivals.push(`${hit.brand}: ${hit.rival_code}`);
-      }
-    }
-
-    return {
-      slug: p.slug,
-      wunder_code: p.wunder_code,
-      motoec_code: p.motoec_code,
-      filter_type: p.filter_type,
-      category: classifyFilterType(p.filter_type),
-      local_image: p.local_image,
-      dimensions: p.dimensions,
-      specs: p.specs,
-      oem_count: p.oem_numbers.length,
-      rival_count: p.rival_numbers.length,
-      app_count: p.applications.length,
-      top_makes: topMakes,
-      top_rivals: topRivals,
-    };
-  });
+  return loadWunderProducts().map((p) => ({
+    slug: p.slug,
+    wunder_code: p.wunder_code,
+    motoec_code: p.motoec_code,
+    filter_type: p.filter_type,
+    category: classifyFilterType(p.filter_type),
+    local_image: p.local_image,
+    dimensions: p.dimensions,
+    specs: p.specs,
+    oem_count: p.oem_numbers.length,
+    rival_count: p.rival_numbers.length,
+    app_count: p.applications.length,
+  }));
 }
 
 export function getWunderProductBySlug(slug: string): RawWunderProduct | null {
@@ -169,7 +464,6 @@ export function getWunderProductBySlug(slug: string): RawWunderProduct | null {
   const found = products.find((p) => p.slug === slug);
   if (!found) return null;
 
-  // Sort rivals so WUNDER is always at the very top
   const sortedRivals = [...found.rival_numbers].sort((a, b) => {
     const aWunder = a.brand.toUpperCase().startsWith("WUNDER") ? 0 : 1;
     const bWunder = b.brand.toUpperCase().startsWith("WUNDER") ? 0 : 1;
@@ -194,7 +488,6 @@ export function searchByCode(query: string): CodeMatchHit[] {
   for (const p of products) {
     let bestHit: CodeMatchHit | null = null;
 
-    // 1. Direct WUNDER match
     if (normalizeCodeLoose(p.wunder_code).includes(qLoose)) {
       bestHit = {
         slug: p.slug,
@@ -210,7 +503,6 @@ export function searchByCode(query: string): CodeMatchHit[] {
       };
     }
 
-    // 2. Rival match (check WUNDER vs competitors)
     if (!bestHit) {
       const rivalHit =
         p.rival_numbers.find((r) => normalizeCodeStrict(r.rival_code) === qStrict) ??
@@ -231,7 +523,6 @@ export function searchByCode(query: string): CodeMatchHit[] {
       }
     }
 
-    // 3. OEM match
     if (!bestHit) {
       const oemHit =
         p.oem_numbers.find((o) => normalizeCodeStrict(o.oem_number) === qStrict) ??
@@ -252,7 +543,6 @@ export function searchByCode(query: string): CodeMatchHit[] {
       }
     }
 
-    // 4. MotoEC reference match
     if (!bestHit && normalizeCodeLoose(p.motoec_code).includes(qLoose)) {
       bestHit = {
         slug: p.slug,
@@ -268,72 +558,13 @@ export function searchByCode(query: string): CodeMatchHit[] {
       };
     }
 
-    if (bestHit) {
-      hits.push(bestHit);
-    }
+    if (bestHit) hits.push(bestHit);
   }
 
-  // Prefer exact code matches first, then WUNDER, then OEM, then RAKIP
   return hits.sort((a, b) => {
     const aExact = normalizeCodeLoose(a.matched_code) === qLoose ? 0 : 1;
     const bExact = normalizeCodeLoose(b.matched_code) === qLoose ? 0 : 1;
     if (aExact !== bExact) return aExact - bExact;
     return a.wunder_code.localeCompare(b.wunder_code, "tr");
   });
-}
-
-export function getVehicleMakes(): { make: string; count: number }[] {
-  const counts = new Map<string, number>();
-  for (const p of loadWunderProducts()) {
-    for (const app of p.applications) {
-      if (app.make) counts.set(app.make, (counts.get(app.make) ?? 0) + 1);
-    }
-  }
-  return [...counts.entries()]
-    .map(([make, count]) => ({ make, count }))
-    .sort((a, b) => a.make.localeCompare(b.make, "tr"));
-}
-
-export function getVehicleModelsAndMatches(make: string, modelSeries?: string, engine?: string) {
-  const products = loadWunderProducts();
-  const modelsSet = new Set<string>();
-  const enginesSet = new Set<string>();
-  const matchingProducts: {
-    slug: string;
-    wunder_code: string;
-    filter_type: string;
-    local_image: string | null;
-    matched_apps: VehicleApplicationRow[];
-  }[] = [];
-
-  for (const p of products) {
-    const matchedApps: VehicleApplicationRow[] = [];
-    for (const app of p.applications) {
-      if (app.make !== make) continue;
-      if (app.model_series) modelsSet.add(app.model_series);
-      if (modelSeries && app.model_series !== modelSeries) continue;
-
-      const engineLabel = `${app.engine}${app.engine_code ? ` (${app.engine_code})` : ""}${app.years ? ` · ${app.years}` : ""}`;
-      if (modelSeries) enginesSet.add(engineLabel);
-
-      if (engine && engineLabel !== engine) continue;
-      matchedApps.push(app);
-    }
-
-    if (matchedApps.length > 0) {
-      matchingProducts.push({
-        slug: p.slug,
-        wunder_code: p.wunder_code,
-        filter_type: p.filter_type,
-        local_image: p.local_image,
-        matched_apps: matchedApps.slice(0, 20),
-      });
-    }
-  }
-
-  return {
-    models: [...modelsSet].sort((a, b) => a.localeCompare(b, "tr")),
-    engines: [...enginesSet].sort((a, b) => a.localeCompare(b, "tr")),
-    products: matchingProducts,
-  };
 }
