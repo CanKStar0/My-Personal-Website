@@ -19866,5 +19866,4857 @@
     "source_url": "https://www.motoec.com/Catalog.aspx?rival=W940/25",
     "slug": "wy-102",
     "local_image": "/images/demo/wunder/wy-102.jpg"
+  },
+  {
+    "motoec_code": "OE 682",
+    "wunder_code": "WY 311",
+    "filter_type": "Yağ Filtresi Elemanı",
+    "image_url": "https://www.motoec.com/veriler/Urunler/OE_682.jpg",
+    "dimensions": {
+      "D1": "67,2",
+      "D2": "14,0",
+      "H1": "76,5",
+      "H2": "100,0"
+    },
+    "specs": {
+      "notes": "UFI Gövdeli / Stokta alternatif ürün bulunmaktadır. (iletişime geçebilirsiniz)"
+    },
+    "oem_numbers": [
+      {
+        "oem_number": "55197218",
+        "manufacturer": "FIAT GROUP (ALFA/FIAT/LANCIA)",
+        "motoec_code": "OE 682"
+      },
+      {
+        "oem_number": "55238304",
+        "manufacturer": "FIAT GROUP (ALFA/FIAT/LANCIA)",
+        "motoec_code": "OE 682"
+      },
+      {
+        "oem_number": "73504027",
+        "manufacturer": "FIAT GROUP (ALFA/FIAT/LANCIA)",
+        "motoec_code": "OE 682"
+      },
+      {
+        "oem_number": "1565 249",
+        "manufacturer": "FORD",
+        "motoec_code": "OE 682"
+      },
+      {
+        "oem_number": "93186856",
+        "manufacturer": "GENERAL MOTORS (GM)",
+        "motoec_code": "OE 682"
+      },
+      {
+        "oem_number": "93193573",
+        "manufacturer": "GENERAL MOTORS (GM)",
+        "motoec_code": "OE 682"
+      },
+      {
+        "oem_number": "4708750",
+        "manufacturer": "OPEL",
+        "motoec_code": "OE 682"
+      },
+      {
+        "oem_number": "5650367",
+        "manufacturer": "OPEL",
+        "motoec_code": "OE 682"
+      },
+      {
+        "oem_number": "95517669",
+        "manufacturer": "OPEL",
+        "motoec_code": "OE 682"
+      },
+      {
+        "oem_number": "16510-86J00-000",
+        "manufacturer": "SUZUKI",
+        "motoec_code": "OE 682"
+      },
+      {
+        "oem_number": "16510-86J000",
+        "manufacturer": "SUZUKI",
+        "motoec_code": "OE 682"
+      },
+      {
+        "oem_number": "16510-M86J20",
+        "manufacturer": "SUZUKI",
+        "motoec_code": "OE 682"
+      },
+      {
+        "oem_number": "16510-M86J20-000",
+        "manufacturer": "SUZUKI",
+        "motoec_code": "OE 682"
+      },
+      {
+        "oem_number": "16510N86J00",
+        "manufacturer": "SUZUKI",
+        "motoec_code": "OE 682"
+      },
+      {
+        "oem_number": "16510N86J00000",
+        "manufacturer": "SUZUKI",
+        "motoec_code": "OE 682"
+      },
+      {
+        "oem_number": "16511-85E10",
+        "manufacturer": "SUZUKI",
+        "motoec_code": "OE 682"
+      },
+      {
+        "oem_number": "16511-85E10-000",
+        "manufacturer": "SUZUKI",
+        "motoec_code": "OE 682"
+      }
+    ],
+    "rival_numbers": [
+      {
+        "rival_code": "ALO-8177",
+        "brand": "A.L. FILTER",
+        "motoec_code": "OE 682"
+      },
+      {
+        "rival_code": "AC 6173 E",
+        "brand": "AC DELCO",
+        "motoec_code": "OE 682"
+      },
+      {
+        "rival_code": "MD-547",
+        "brand": "ALCO FILTER",
+        "motoec_code": "OE 682"
+      },
+      {
+        "rival_code": "AS 1580",
+        "brand": "ASAŞ",
+        "motoec_code": "OE 682"
+      },
+      {
+        "rival_code": "ML 1730",
+        "brand": "CLEAN FILTER",
+        "motoec_code": "OE 682"
+      },
+      {
+        "rival_code": "G 1677",
+        "brand": "COOPERS FILTERS",
+        "motoec_code": "OE 682"
+      },
+      {
+        "rival_code": "FA 5766 ECO",
+        "brand": "COOPERSFIAAM FILTER",
+        "motoec_code": "OE 682"
+      },
+      {
+        "rival_code": "26365",
+        "brand": "FEBI BILSTEIN",
+        "motoec_code": "OE 682"
+      },
+      {
+        "rival_code": "MLE 1425",
+        "brand": "FIL",
+        "motoec_code": "OE 682"
+      },
+      {
+        "rival_code": "CH 10047 ECO",
+        "brand": "FRAM",
+        "motoec_code": "OE 682"
+      },
+      {
+        "rival_code": "GYL-2015-EJ",
+        "brand": "GOLD FILTER",
+        "motoec_code": "OE 682"
+      },
+      {
+        "rival_code": "GFO 712/7",
+        "brand": "GUR FILTER",
+        "motoec_code": "OE 682"
+      },
+      {
+        "rival_code": "E107H D166",
+        "brand": "HENGST FILTER",
+        "motoec_code": "OE 682"
+      },
+      {
+        "rival_code": "OX 418",
+        "brand": "MAHLE",
+        "motoec_code": "OE 682"
+      },
+      {
+        "rival_code": "OX 418D",
+        "brand": "MAHLE",
+        "motoec_code": "OE 682"
+      },
+      {
+        "rival_code": "OX 418D ECO",
+        "brand": "MAHLE",
+        "motoec_code": "OE 682"
+      },
+      {
+        "rival_code": "HU 712/7x",
+        "brand": "MANN HUMMEL",
+        "motoec_code": "OE 682"
+      },
+      {
+        "rival_code": "ELH 4351",
+        "brand": "MECA FILTER",
+        "motoec_code": "OE 682"
+      },
+      {
+        "rival_code": "614 322 0007",
+        "brand": "MEYLE",
+        "motoec_code": "OE 682"
+      },
+      {
+        "rival_code": "23 L 3262",
+        "brand": "NET FILTER",
+        "motoec_code": "OE 682"
+      },
+      {
+        "rival_code": "PNT-518",
+        "brand": "OSAKA-PENTA",
+        "motoec_code": "OE 682"
+      },
+      {
+        "rival_code": "AC-8083",
+        "brand": "P.B.R.",
+        "motoec_code": "OE 682"
+      },
+      {
+        "rival_code": "L 377",
+        "brand": "PURFLUX",
+        "motoec_code": "OE 682"
+      },
+      {
+        "rival_code": "EY 5540",
+        "brand": "REAL",
+        "motoec_code": "OE 682"
+      },
+      {
+        "rival_code": "GEO 540",
+        "brand": "RETA",
+        "motoec_code": "OE 682"
+      },
+      {
+        "rival_code": "RXO 3225",
+        "brand": "RIXENBERG",
+        "motoec_code": "OE 682"
+      },
+      {
+        "rival_code": "SO 898",
+        "brand": "SARDES",
+        "motoec_code": "OE 682"
+      },
+      {
+        "rival_code": "SO 4774",
+        "brand": "SCHUPP/SF FILTER",
+        "motoec_code": "OE 682"
+      },
+      {
+        "rival_code": "SH 4797",
+        "brand": "SCT GERMANY",
+        "motoec_code": "OE 682"
+      },
+      {
+        "rival_code": "S 5031 PE",
+        "brand": "SOFIMA",
+        "motoec_code": "OE 682"
+      },
+      {
+        "rival_code": "OL 010047-E",
+        "brand": "TECNECO FILTERS",
+        "motoec_code": "OE 682"
+      },
+      {
+        "rival_code": "OP 269",
+        "brand": "TECNOCAR",
+        "motoec_code": "OE 682"
+      },
+      {
+        "rival_code": "23.25.031.30",
+        "brand": "UFI",
+        "motoec_code": "OE 682"
+      },
+      {
+        "rival_code": "23.250.31",
+        "brand": "UFI",
+        "motoec_code": "OE 682"
+      },
+      {
+        "rival_code": "25.031.00",
+        "brand": "UFI",
+        "motoec_code": "OE 682"
+      },
+      {
+        "rival_code": "WON 1029",
+        "brand": "WAHLEN FILTER",
+        "motoec_code": "OE 682"
+      },
+      {
+        "rival_code": "WON 1070",
+        "brand": "WAHLEN FILTER",
+        "motoec_code": "OE 682"
+      },
+      {
+        "rival_code": "WY 311",
+        "brand": "WUNDER",
+        "motoec_code": "OE 682"
+      },
+      {
+        "rival_code": "Rakip Ürün Numarası",
+        "brand": "Üretici Firma",
+        "motoec_code": "OE 682"
+      },
+      {
+        "rival_code": "CE 1021 E",
+        "brand": "ŞAMPİYON",
+        "motoec_code": "OE 682"
+      },
+      {
+        "rival_code": "HU712/7X",
+        "brand": "MANN-FILTER",
+        "motoec_code": "OE 682"
+      }
+    ],
+    "applications": [
+      {
+        "make": "ALFA ROMEO",
+        "model_series": "MiTo",
+        "engine": "1.3 JTDM 16V",
+        "engine_code": "199 A3.000, 955 B2.000",
+        "kw": "66",
+        "hp": "90",
+        "years": "08.2008 -",
+        "related_motoec_codes": "OE 682"
+      },
+      {
+        "make": "FIAT",
+        "model_series": "Punto II (188/188AX)",
+        "engine": "1.3 JTD",
+        "engine_code": "188 A9.000",
+        "kw": "51",
+        "hp": "70",
+        "years": "07.2003 -",
+        "related_motoec_codes": "OE 682"
+      },
+      {
+        "make": "FIAT",
+        "model_series": "Strada (178E/278)",
+        "engine": "1.3 JTD",
+        "engine_code": "223 A9.000",
+        "kw": "62",
+        "hp": "85",
+        "years": "06.2006 -",
+        "related_motoec_codes": "OE 682"
+      },
+      {
+        "make": "FIAT",
+        "model_series": "DOBLO/DOBLO CARGO",
+        "engine": "1.3 Multijet 16V JTD",
+        "engine_code": "223 A9.000",
+        "kw": "62",
+        "hp": "85",
+        "years": "11.2005 -",
+        "related_motoec_codes": "OE 682"
+      },
+      {
+        "make": "FIAT",
+        "model_series": "DOBLO/DOBLO CARGO",
+        "engine": "1.3 JTD",
+        "engine_code": "188 A8.000, 188 A9.000",
+        "kw": "51",
+        "hp": "70",
+        "years": "04.2004 -",
+        "related_motoec_codes": "OE 682"
+      },
+      {
+        "make": "FIAT",
+        "model_series": "DOBLO/DOBLO CARGO",
+        "engine": "1.3 Multijet 16V JTD",
+        "engine_code": "199 A2.000",
+        "kw": "55",
+        "hp": "75",
+        "years": "11.2005 -",
+        "related_motoec_codes": "OE 682"
+      },
+      {
+        "make": "FIAT",
+        "model_series": "500 / Nuova 500 (150)",
+        "engine": "1.3 JTD 16V",
+        "engine_code": "169.A1.000",
+        "kw": "55",
+        "hp": "75",
+        "years": "07.2007 -",
+        "related_motoec_codes": "OE 682"
+      },
+      {
+        "make": "FIAT",
+        "model_series": "Linea (110)",
+        "engine": "1.3 JTD",
+        "engine_code": "199 A3.000",
+        "kw": "66",
+        "hp": "90",
+        "years": "06.2007 -",
+        "related_motoec_codes": "OE 682"
+      },
+      {
+        "make": "FIAT",
+        "model_series": "Linea (110)",
+        "engine": "1.3 D",
+        "engine_code": "199 A3.000, 199 B1.000",
+        "kw": "68",
+        "hp": "93",
+        "years": "09.2009 -",
+        "related_motoec_codes": "OE 682"
+      },
+      {
+        "make": "FIAT",
+        "model_series": "Panda II (169A)",
+        "engine": "1.3 JTD 16V",
+        "engine_code": "188 A9.000, 188 A8.000",
+        "kw": "51",
+        "hp": "70",
+        "years": "12.2003 -",
+        "related_motoec_codes": "OE 682"
+      },
+      {
+        "make": "FIAT",
+        "model_series": "Albea (172)",
+        "engine": "1.3 JTD 16V",
+        "engine_code": "",
+        "kw": "51",
+        "hp": "70",
+        "years": "03.2004 -",
+        "related_motoec_codes": "OE 682"
+      },
+      {
+        "make": "FIAT",
+        "model_series": "Panda II (169A)",
+        "engine": "1.3 JTD 16V",
+        "engine_code": "169 A1.000, 169 A5.000",
+        "kw": "55",
+        "hp": "75",
+        "years": "06.2006 -",
+        "related_motoec_codes": "OE 682"
+      },
+      {
+        "make": "FIAT",
+        "model_series": "Siena (173)",
+        "engine": "1.3 JTD",
+        "engine_code": "188 A9.000",
+        "kw": "51",
+        "hp": "70",
+        "years": "09.2003 -",
+        "related_motoec_codes": "OE 682"
+      },
+      {
+        "make": "FIAT",
+        "model_series": "Idea (135/235)",
+        "engine": "1.3 JTD 70",
+        "engine_code": "188 A9.000",
+        "kw": "51",
+        "hp": "70",
+        "years": "01.2004 -",
+        "related_motoec_codes": "OE 682"
+      },
+      {
+        "make": "FIAT",
+        "model_series": "Punto III / Grande Punto (199) / Evo",
+        "engine": "1.3 JTD",
+        "engine_code": "199A3.000",
+        "kw": "66",
+        "hp": "90",
+        "years": "10.2005 -",
+        "related_motoec_codes": "OE 682"
+      },
+      {
+        "make": "FIAT",
+        "model_series": "Idea (135/235)",
+        "engine": "1.3 JTD 90",
+        "engine_code": "199 B1.000",
+        "kw": "66",
+        "hp": "90",
+        "years": "10.2005 -",
+        "related_motoec_codes": "OE 682"
+      },
+      {
+        "make": "FIAT",
+        "model_series": "Punto III / Grande Punto (199) / Evo",
+        "engine": "1.3 JTD",
+        "engine_code": "199A2.000",
+        "kw": "55",
+        "hp": "75",
+        "years": "10.2005 -",
+        "related_motoec_codes": "OE 682"
+      },
+      {
+        "make": "FIAT",
+        "model_series": "Punto III / Grande Punto (199) / Evo",
+        "engine": "1.3 JTD",
+        "engine_code": "199 B1.000",
+        "kw": "70",
+        "hp": "95",
+        "years": "01.2010 -",
+        "related_motoec_codes": "OE 682"
+      },
+      {
+        "make": "FIAT",
+        "model_series": "Punto III / Grande Punto (199) / Evo",
+        "engine": "1.3 JTD",
+        "engine_code": "199 B4.000, 223 A9.000",
+        "kw": "63",
+        "hp": "85",
+        "years": "04.2010 -",
+        "related_motoec_codes": "OE 682"
+      },
+      {
+        "make": "FIAT",
+        "model_series": "Punto III / Grande Punto (199) / Evo",
+        "engine": "1.3 16V Multijet",
+        "engine_code": "199A3000",
+        "kw": "66",
+        "hp": "90",
+        "years": "02.2006 -",
+        "related_motoec_codes": "OE 682"
+      },
+      {
+        "make": "FIAT",
+        "model_series": "Bravo (198)",
+        "engine": "1.4 Turbo T-Jet",
+        "engine_code": "198 A1.000",
+        "kw": "110",
+        "hp": "150",
+        "years": "06.2007 -",
+        "related_motoec_codes": "OE 682"
+      },
+      {
+        "make": "FIAT",
+        "model_series": "Bravo (198)",
+        "engine": "1.4 Turbo T-Jet",
+        "engine_code": "198 A4.000",
+        "kw": "88",
+        "hp": "120",
+        "years": "09.2007 -",
+        "related_motoec_codes": "OE 682"
+      },
+      {
+        "make": "FIAT",
+        "model_series": "Fiorino (225)",
+        "engine": "1.3 MultiJet 16V",
+        "engine_code": "199 A2.000, 199 A9.000",
+        "kw": "55",
+        "hp": "75",
+        "years": "02.2008 -",
+        "related_motoec_codes": "OE 682"
+      },
+      {
+        "make": "FIAT",
+        "model_series": "Fiorino (225)",
+        "engine": "1.3 MultiJet 16V",
+        "engine_code": "199B1.000,330A1.000,46345266",
+        "kw": "70",
+        "hp": "95",
+        "years": "08.2010 -",
+        "related_motoec_codes": "OE 682"
+      },
+      {
+        "make": "FIAT",
+        "model_series": "Qubo (300)",
+        "engine": "1.3 MultiJet 16V 75",
+        "engine_code": "199 A2.000, 199 A9.000",
+        "kw": "55",
+        "hp": "75",
+        "years": "11.2008 -",
+        "related_motoec_codes": "OE 682"
+      },
+      {
+        "make": "FIAT",
+        "model_series": "DOBLO/DOBLO CARGO",
+        "engine": "1.3 MTJD",
+        "engine_code": "199 A3.000, 263 A2.000",
+        "kw": "66",
+        "hp": "90",
+        "years": "01.2010 -",
+        "related_motoec_codes": "OE 682"
+      },
+      {
+        "make": "FIAT",
+        "model_series": "Qubo (300)",
+        "engine": "1.3 MultiJet 16V 95",
+        "engine_code": "199B1.000,330A1.000,55283775",
+        "kw": "70",
+        "hp": "95",
+        "years": "07.2010 -",
+        "related_motoec_codes": "OE 682"
+      },
+      {
+        "make": "FIAT",
+        "model_series": "DOBLO/DOBLO CARGO",
+        "engine": "1.3 D Multijet",
+        "engine_code": "263 A6.000",
+        "kw": "55",
+        "hp": "75",
+        "years": "11.2013 -",
+        "related_motoec_codes": "OE 682"
+      },
+      {
+        "make": "FORD",
+        "model_series": "KA II",
+        "engine": "1.3 TDCi",
+        "engine_code": "",
+        "kw": "55",
+        "hp": "75",
+        "years": "12.2008 -",
+        "related_motoec_codes": "OE 682"
+      },
+      {
+        "make": "LANCIA (LANCIA AUTOBIANCHI)",
+        "model_series": "Ypsilon (843)",
+        "engine": "1.3 JTD",
+        "engine_code": "199 A3.000",
+        "kw": "66",
+        "hp": "90",
+        "years": "09.2006 -",
+        "related_motoec_codes": "OE 682"
+      },
+      {
+        "make": "LANCIA (LANCIA AUTOBIANCHI)",
+        "model_series": "Ypsilon (843)",
+        "engine": "1.3 JTD",
+        "engine_code": "188 A9.000",
+        "kw": "51",
+        "hp": "70",
+        "years": "10.2003 -",
+        "related_motoec_codes": "OE 682"
+      },
+      {
+        "make": "LANCIA (LANCIA AUTOBIANCHI)",
+        "model_series": "Ypsilon (843)",
+        "engine": "1.3 JTD",
+        "engine_code": "199 A2.000, 199 A9.000",
+        "kw": "55",
+        "hp": "75",
+        "years": "09.2006 -",
+        "related_motoec_codes": "OE 682"
+      },
+      {
+        "make": "LANCIA (LANCIA AUTOBIANCHI)",
+        "model_series": "Ypsilon (843)",
+        "engine": "1.3 JTD",
+        "engine_code": "199 A3.000",
+        "kw": "77",
+        "hp": "105",
+        "years": "05.2007 -",
+        "related_motoec_codes": "OE 682"
+      },
+      {
+        "make": "LANCIA (LANCIA AUTOBIANCHI)",
+        "model_series": "Musa",
+        "engine": "1.3 JTD",
+        "engine_code": "199 A3.000",
+        "kw": "66",
+        "hp": "90",
+        "years": "09.2004 -",
+        "related_motoec_codes": "OE 682"
+      },
+      {
+        "make": "LANCIA (LANCIA AUTOBIANCHI)",
+        "model_series": "Musa",
+        "engine": "1.3 JTD",
+        "engine_code": "188 A9.000",
+        "kw": "51",
+        "hp": "70",
+        "years": "09.2004 -",
+        "related_motoec_codes": "OE 682"
+      },
+      {
+        "make": "OPEL",
+        "model_series": "Agila",
+        "engine": "1.3 CDTI",
+        "engine_code": "Z13DT",
+        "kw": "51",
+        "hp": "70",
+        "years": "09.2003 -",
+        "related_motoec_codes": "OE 682"
+      },
+      {
+        "make": "OPEL",
+        "model_series": "Meriva A",
+        "engine": "1.3 CDTI",
+        "engine_code": "Z13DTJ",
+        "kw": "55",
+        "hp": "75",
+        "years": "12.2005 -",
+        "related_motoec_codes": "OE 682"
+      },
+      {
+        "make": "OPEL",
+        "model_series": "Meriva A",
+        "engine": "1.3 CDTI",
+        "engine_code": "Y13DT, Z13DT",
+        "kw": "51",
+        "hp": "70",
+        "years": "07.2005 -",
+        "related_motoec_codes": "OE 682"
+      },
+      {
+        "make": "OPEL",
+        "model_series": "Corsa-C",
+        "engine": "1.3 CDTI",
+        "engine_code": "Z 13 DT",
+        "kw": "51",
+        "hp": "70",
+        "years": "09.2003 -",
+        "related_motoec_codes": "OE 682"
+      },
+      {
+        "make": "OPEL",
+        "model_series": "Combo B",
+        "engine": "1.3 CDTI",
+        "engine_code": "Z 13 DT",
+        "kw": "51",
+        "hp": "70",
+        "years": "06.2004 -",
+        "related_motoec_codes": "OE 682"
+      },
+      {
+        "make": "OPEL",
+        "model_series": "Combo B",
+        "engine": "1.3 CDTI",
+        "engine_code": "Z 13 DTJ",
+        "kw": "55",
+        "hp": "75",
+        "years": "12.2005 -",
+        "related_motoec_codes": "OE 682"
+      },
+      {
+        "make": "OPEL",
+        "model_series": "Astra H / Astra H GTC/TwinTop",
+        "engine": "1.3 CDTI",
+        "engine_code": "Z13DTH",
+        "kw": "66",
+        "hp": "90",
+        "years": "04.2005 -",
+        "related_motoec_codes": "OE 682"
+      },
+      {
+        "make": "OPEL",
+        "model_series": "Tigra Twin-Top",
+        "engine": "1.3 CDTI",
+        "engine_code": "Z13DT",
+        "kw": "51",
+        "hp": "70",
+        "years": "12.2004 -",
+        "related_motoec_codes": "OE 682"
+      },
+      {
+        "make": "OPEL",
+        "model_series": "Corsa-D",
+        "engine": "1.3 CDTI",
+        "engine_code": "A13DTC, Z13DTJ",
+        "kw": "55",
+        "hp": "75",
+        "years": "09.2006 -",
+        "related_motoec_codes": "OE 682"
+      },
+      {
+        "make": "OPEL",
+        "model_series": "Corsa-D",
+        "engine": "1.3 CDTI",
+        "engine_code": "Z13DTH",
+        "kw": "66",
+        "hp": "90",
+        "years": "09.2006 -",
+        "related_motoec_codes": "OE 682"
+      },
+      {
+        "make": "OPEL",
+        "model_series": "Agila II",
+        "engine": "1.3 CDTI",
+        "engine_code": "D13A, Z13DTJ",
+        "kw": "55",
+        "hp": "75",
+        "years": "04.2008 -",
+        "related_motoec_codes": "OE 682"
+      },
+      {
+        "make": "SUBARU",
+        "model_series": "Justy III (G3X)",
+        "engine": "1.3 Turbodiesel CR",
+        "engine_code": "Z13DT",
+        "kw": "51",
+        "hp": "70",
+        "years": "12.2003 -",
+        "related_motoec_codes": "OE 682"
+      },
+      {
+        "make": "SUZUKI",
+        "model_series": "Wagon R+",
+        "engine": "1.3 DDiS",
+        "engine_code": "Z13DT",
+        "kw": "51",
+        "hp": "70",
+        "years": "11.2003 -",
+        "related_motoec_codes": "OE 682"
+      },
+      {
+        "make": "SUZUKI",
+        "model_series": "Ignis II",
+        "engine": "1.3 DDiS",
+        "engine_code": "Z13DT",
+        "kw": "51",
+        "hp": "70",
+        "years": "12.2003 -",
+        "related_motoec_codes": "OE 682"
+      },
+      {
+        "make": "SUZUKI",
+        "model_series": "Splash",
+        "engine": "1.3 DDiS",
+        "engine_code": "",
+        "kw": "55",
+        "hp": "75",
+        "years": "05.2008 -",
+        "related_motoec_codes": "OE 682"
+      },
+      {
+        "make": "SUZUKI",
+        "model_series": "Swift III (MZ/EZ/SG)",
+        "engine": "1.3 DDis",
+        "engine_code": "Z13DT / D13A",
+        "kw": "55",
+        "hp": "75",
+        "years": "08.2005 -",
+        "related_motoec_codes": "OE 682"
+      },
+      {
+        "make": "VAUXHALL",
+        "model_series": "Agila",
+        "engine": "1.3 CDTI",
+        "engine_code": "Z13DT",
+        "kw": "51",
+        "hp": "70",
+        "years": "09.2003 -",
+        "related_motoec_codes": "OE 682"
+      },
+      {
+        "make": "VAUXHALL",
+        "model_series": "Corsa Mk II",
+        "engine": "1.3 CDTI",
+        "engine_code": "Z13DT",
+        "kw": "51",
+        "hp": "70",
+        "years": "09.2003 -",
+        "related_motoec_codes": "OE 682"
+      },
+      {
+        "make": "VAUXHALL",
+        "model_series": "Meriva A",
+        "engine": "1.3 CDTI",
+        "engine_code": "Z13DTJ",
+        "kw": "55",
+        "hp": "75",
+        "years": "12.2005 -",
+        "related_motoec_codes": "OE 682"
+      },
+      {
+        "make": "VAUXHALL",
+        "model_series": "Meriva A",
+        "engine": "1.3 CDTI",
+        "engine_code": "Y13DT, Z13DT",
+        "kw": "51",
+        "hp": "70",
+        "years": "07.2005 -",
+        "related_motoec_codes": "OE 682"
+      },
+      {
+        "make": "VAUXHALL",
+        "model_series": "Astra Mk V",
+        "engine": "1.3 CDTI",
+        "engine_code": "Z13DTH",
+        "kw": "66",
+        "hp": "90",
+        "years": "04.2005 -",
+        "related_motoec_codes": "OE 682"
+      },
+      {
+        "make": "VAUXHALL",
+        "model_series": "Tigra Convertible",
+        "engine": "1.3 CDTI",
+        "engine_code": "Z13DT",
+        "kw": "51",
+        "hp": "70",
+        "years": "12.2004 -",
+        "related_motoec_codes": "OE 682"
+      },
+      {
+        "make": "VAUXHALL",
+        "model_series": "Corsa Mk III",
+        "engine": "1.3 CDTI",
+        "engine_code": "A13DTC, Z13DTJ",
+        "kw": "55",
+        "hp": "75",
+        "years": "09.2006 -",
+        "related_motoec_codes": "OE 682"
+      },
+      {
+        "make": "VAUXHALL",
+        "model_series": "Corsa Mk III",
+        "engine": "1.3 CDTI",
+        "engine_code": "Z13DTH",
+        "kw": "66",
+        "hp": "90",
+        "years": "09.2006 -",
+        "related_motoec_codes": "OE 682"
+      },
+      {
+        "make": "VAUXHALL",
+        "model_series": "Agila II",
+        "engine": "1.3 CDTI",
+        "engine_code": "D13A, Z13DTJ",
+        "kw": "55",
+        "hp": "75",
+        "years": "04.2008 -",
+        "related_motoec_codes": "OE 682"
+      },
+      {
+        "make": "VAUXHALL-BEDFORD (LCV)",
+        "model_series": "Combo / Corsa Van MK II",
+        "engine": "1.3 CDTI",
+        "engine_code": "Z 13 DT",
+        "kw": "51",
+        "hp": "70",
+        "years": "06.2004 -",
+        "related_motoec_codes": "OE 682"
+      },
+      {
+        "make": "VAUXHALL-BEDFORD (LCV)",
+        "model_series": "Combo / Corsa Van MK II",
+        "engine": "1.3 CDTI",
+        "engine_code": "Z 13 DT",
+        "kw": "55",
+        "hp": "75",
+        "years": "12.2005 -",
+        "related_motoec_codes": "OE 682"
+      },
+      {
+        "make": "VAUXHALL-BEDFORD (LCV)",
+        "model_series": "Astramax / Astra Van MK V",
+        "engine": "1.3 CDTI",
+        "engine_code": "Z13DTH",
+        "kw": "66",
+        "hp": "90",
+        "years": "08.2005 -",
+        "related_motoec_codes": "OE 682"
+      },
+      {
+        "make": "OPEL",
+        "model_series": "Corsa-C",
+        "engine": "1.3 CDTI",
+        "engine_code": "Z 13 DT",
+        "kw": "59",
+        "hp": "80",
+        "years": "07.2005 -",
+        "related_motoec_codes": "OE 682"
+      }
+    ],
+    "discovered_motoec_codes": [
+      "OE 682"
+    ],
+    "source_url": "https://www.motoec.com/Catalog.aspx?rival=HU712/7X",
+    "slug": "wy-311",
+    "local_image": "/images/demo/wunder/wy-311.jpg"
+  },
+  {
+    "motoec_code": "AP 092/6",
+    "wunder_code": "WH 650",
+    "filter_type": "Hava Filtresi Elemanı",
+    "image_url": "https://www.motoec.com/veriler/Urunler/AP_092-6Y.jpg",
+    "dimensions": {
+      "D1": "374,5",
+      "D2": "148,0",
+      "H1": "47,0"
+    },
+    "specs": {
+      "notes": "ALTERNATİF \" AP 092/6P \" /// Euro 4"
+    },
+    "oem_numbers": [
+      {
+        "oem_number": "51775324",
+        "manufacturer": "FIAT GROUP (ALFA/FIAT/LANCIA)",
+        "motoec_code": "AP 092/6"
+      },
+      {
+        "oem_number": "55183265",
+        "manufacturer": "FIAT GROUP (ALFA/FIAT/LANCIA)",
+        "motoec_code": "AP 092/6"
+      },
+      {
+        "oem_number": "55193849",
+        "manufacturer": "FIAT GROUP (ALFA/FIAT/LANCIA)",
+        "motoec_code": "AP 092/6"
+      },
+      {
+        "oem_number": "6001073218",
+        "manufacturer": "FIAT GROUP (ALFA/FIAT/LANCIA)",
+        "motoec_code": "AP 092/6"
+      },
+      {
+        "oem_number": "71765453",
+        "manufacturer": "FIAT GROUP (ALFA/FIAT/LANCIA)",
+        "motoec_code": "AP 092/6"
+      },
+      {
+        "oem_number": "71773165",
+        "manufacturer": "FIAT GROUP (ALFA/FIAT/LANCIA)",
+        "motoec_code": "AP 092/6"
+      },
+      {
+        "oem_number": "73504666",
+        "manufacturer": "FIAT GROUP (ALFA/FIAT/LANCIA)",
+        "motoec_code": "AP 092/6"
+      },
+      {
+        "oem_number": "1542 778",
+        "manufacturer": "FORD",
+        "motoec_code": "AP 092/6"
+      },
+      {
+        "oem_number": "1706 918",
+        "manufacturer": "FORD",
+        "motoec_code": "AP 092/6"
+      },
+      {
+        "oem_number": "834732",
+        "manufacturer": "OPEL",
+        "motoec_code": "AP 092/6"
+      },
+      {
+        "oem_number": "95513354",
+        "manufacturer": "VAUXHALL",
+        "motoec_code": "AP 092/6"
+      }
+    ],
+    "rival_numbers": [
+      {
+        "rival_code": "PC 2992 E",
+        "brand": "AC DELCO",
+        "motoec_code": "AP 092/6"
+      },
+      {
+        "rival_code": "PC 3056 E",
+        "brand": "AC DELCO",
+        "motoec_code": "AP 092/6"
+      },
+      {
+        "rival_code": "MD-8094",
+        "brand": "ALCO FILTER",
+        "motoec_code": "AP 092/6"
+      },
+      {
+        "rival_code": "HF 8231",
+        "brand": "ASAŞ",
+        "motoec_code": "AP 092/6"
+      },
+      {
+        "rival_code": "HF 8232 F",
+        "brand": "ASAŞ",
+        "motoec_code": "AP 092/6"
+      },
+      {
+        "rival_code": "ADL 142204",
+        "brand": "BLUEPRINT",
+        "motoec_code": "AP 092/6"
+      },
+      {
+        "rival_code": "U 745",
+        "brand": "CHAMPION",
+        "motoec_code": "AP 092/6"
+      },
+      {
+        "rival_code": "U 746",
+        "brand": "CHAMPION",
+        "motoec_code": "AP 092/6"
+      },
+      {
+        "rival_code": "MA 1303",
+        "brand": "CLEAN FILTER",
+        "motoec_code": "AP 092/6"
+      },
+      {
+        "rival_code": "MA 1365",
+        "brand": "CLEAN FILTER",
+        "motoec_code": "AP 092/6"
+      },
+      {
+        "rival_code": "EAF 496",
+        "brand": "COMLINE",
+        "motoec_code": "AP 092/6"
+      },
+      {
+        "rival_code": "EAF 589",
+        "brand": "COMLINE",
+        "motoec_code": "AP 092/6"
+      },
+      {
+        "rival_code": "PA 7506",
+        "brand": "COOPERSFIAAM FILTER",
+        "motoec_code": "AP 092/6"
+      },
+      {
+        "rival_code": "8336",
+        "brand": "CROSLAND",
+        "motoec_code": "AP 092/6"
+      },
+      {
+        "rival_code": "8477",
+        "brand": "CROSLAND",
+        "motoec_code": "AP 092/6"
+      },
+      {
+        "rival_code": "34404",
+        "brand": "FEBI BILSTEIN",
+        "motoec_code": "AP 092/6"
+      },
+      {
+        "rival_code": "PA 7417",
+        "brand": "FIAAM",
+        "motoec_code": "AP 092/6"
+      },
+      {
+        "rival_code": "PA 7506",
+        "brand": "FIAAM",
+        "motoec_code": "AP 092/6"
+      },
+      {
+        "rival_code": "HP 2150",
+        "brand": "FIL",
+        "motoec_code": "AP 092/6"
+      },
+      {
+        "rival_code": "HP 2150A",
+        "brand": "FIL",
+        "motoec_code": "AP 092/6"
+      },
+      {
+        "rival_code": "C 235/1",
+        "brand": "FILTRAK BRANDT",
+        "motoec_code": "AP 092/6"
+      },
+      {
+        "rival_code": "CA 10116",
+        "brand": "FRAM",
+        "motoec_code": "AP 092/6"
+      },
+      {
+        "rival_code": "CA 9628",
+        "brand": "FRAM",
+        "motoec_code": "AP 092/6"
+      },
+      {
+        "rival_code": "GHP-6210-X4Z",
+        "brand": "GOLD FILTER",
+        "motoec_code": "AP 092/6"
+      },
+      {
+        "rival_code": "E704L",
+        "brand": "HENGST FILTER",
+        "motoec_code": "AP 092/6"
+      },
+      {
+        "rival_code": "12-0672",
+        "brand": "KAGER",
+        "motoec_code": "AP 092/6"
+      },
+      {
+        "rival_code": "FA 042 z",
+        "brand": "KLAXCAR FRANCE",
+        "motoec_code": "AP 092/6"
+      },
+      {
+        "rival_code": "LX 1920",
+        "brand": "KNECHT",
+        "motoec_code": "AP 092/6"
+      },
+      {
+        "rival_code": "4131-AP",
+        "brand": "KOLBENSCHMIDT",
+        "motoec_code": "AP 092/6"
+      },
+      {
+        "rival_code": "50014131",
+        "brand": "KOLBENSCHMIDT",
+        "motoec_code": "AP 092/6"
+      },
+      {
+        "rival_code": "153071760186",
+        "brand": "MAGNETI MARELLI",
+        "motoec_code": "AP 092/6"
+      },
+      {
+        "rival_code": "LX 1502",
+        "brand": "MAHLE",
+        "motoec_code": "AP 092/6"
+      },
+      {
+        "rival_code": "LX 1920",
+        "brand": "MAHLE",
+        "motoec_code": "AP 092/6"
+      },
+      {
+        "rival_code": "C 3877",
+        "brand": "MANN HUMMEL",
+        "motoec_code": "AP 092/6"
+      },
+      {
+        "rival_code": "C 3877/1",
+        "brand": "MANN HUMMEL",
+        "motoec_code": "AP 092/6"
+      },
+      {
+        "rival_code": "60432",
+        "brand": "MAPCO",
+        "motoec_code": "AP 092/6"
+      },
+      {
+        "rival_code": "215",
+        "brand": "MECA FILTER",
+        "motoec_code": "AP 092/6"
+      },
+      {
+        "rival_code": "ELP 9067",
+        "brand": "MECA FILTER",
+        "motoec_code": "AP 092/6"
+      },
+      {
+        "rival_code": "ELP 9141",
+        "brand": "MECA FILTER",
+        "motoec_code": "AP 092/6"
+      },
+      {
+        "rival_code": "PA 2107 S",
+        "brand": "MULLER FILTER",
+        "motoec_code": "AP 092/6"
+      },
+      {
+        "rival_code": "12 N 7629 UZ",
+        "brand": "NET FILTER",
+        "motoec_code": "AP 092/6"
+      },
+      {
+        "rival_code": "AI-5347",
+        "brand": "P.B.R.",
+        "motoec_code": "AP 092/6"
+      },
+      {
+        "rival_code": "A 1162",
+        "brand": "PURFLUX",
+        "motoec_code": "AP 092/6"
+      },
+      {
+        "rival_code": "A 1227",
+        "brand": "PURFLUX",
+        "motoec_code": "AP 092/6"
+      },
+      {
+        "rival_code": "A 29117",
+        "brand": "PUROLATOR",
+        "motoec_code": "AP 092/6"
+      },
+      {
+        "rival_code": "WA 9459",
+        "brand": "QH International",
+        "motoec_code": "AP 092/6"
+      },
+      {
+        "rival_code": "EH 6262",
+        "brand": "REAL",
+        "motoec_code": "AP 092/6"
+      },
+      {
+        "rival_code": "GFH 372",
+        "brand": "RETA",
+        "motoec_code": "AP 092/6"
+      },
+      {
+        "rival_code": "SA 414",
+        "brand": "SARDES",
+        "motoec_code": "AP 092/6"
+      },
+      {
+        "rival_code": "SB 2260",
+        "brand": "SCT GERMANY",
+        "motoec_code": "AP 092/6"
+      },
+      {
+        "rival_code": "S 3191 A",
+        "brand": "SOFIMA",
+        "motoec_code": "AP 092/6"
+      },
+      {
+        "rival_code": "S 3265 A",
+        "brand": "SOFIMA",
+        "motoec_code": "AP 092/6"
+      },
+      {
+        "rival_code": "70 93 4404",
+        "brand": "SWAG",
+        "motoec_code": "AP 092/6"
+      },
+      {
+        "rival_code": "AR 9628 PM",
+        "brand": "TECNECO FILTERS",
+        "motoec_code": "AP 092/6"
+      },
+      {
+        "rival_code": "AR 9628 PM-S",
+        "brand": "TECNECO FILTERS",
+        "motoec_code": "AP 092/6"
+      },
+      {
+        "rival_code": "AR 2107",
+        "brand": "TECNOCAR",
+        "motoec_code": "AP 092/6"
+      },
+      {
+        "rival_code": "AR 2186",
+        "brand": "TECNOCAR",
+        "motoec_code": "AP 092/6"
+      },
+      {
+        "rival_code": "30.191.00",
+        "brand": "UFI",
+        "motoec_code": "AP 092/6"
+      },
+      {
+        "rival_code": "30.265.00",
+        "brand": "UFI",
+        "motoec_code": "AP 092/6"
+      },
+      {
+        "rival_code": "V24-0385",
+        "brand": "VAICO",
+        "motoec_code": "AP 092/6"
+      },
+      {
+        "rival_code": "585075",
+        "brand": "VALEO",
+        "motoec_code": "AP 092/6"
+      },
+      {
+        "rival_code": "WA 9459",
+        "brand": "WIX FILTER (EUROPE)",
+        "motoec_code": "AP 092/6"
+      },
+      {
+        "rival_code": "WA 9528",
+        "brand": "WIX FILTER (EUROPE)",
+        "motoec_code": "AP 092/6"
+      },
+      {
+        "rival_code": "WH 650",
+        "brand": "WUNDER",
+        "motoec_code": "AP 092/6"
+      },
+      {
+        "rival_code": "Rakip Ürün Numarası",
+        "brand": "Üretici Firma",
+        "motoec_code": "AP 092/6"
+      },
+      {
+        "rival_code": "CP 0289",
+        "brand": "ŞAMPİYON",
+        "motoec_code": "AP 092/6"
+      },
+      {
+        "rival_code": "CP 0289 F",
+        "brand": "ŞAMPİYON",
+        "motoec_code": "AP 092/6"
+      },
+      {
+        "rival_code": "C3877/1",
+        "brand": "MANN-FILTER",
+        "motoec_code": "AP 092/6"
+      }
+    ],
+    "applications": [
+      {
+        "make": "ALFA ROMEO",
+        "model_series": "MiTo",
+        "engine": "1.3 JTDM 16V",
+        "engine_code": "199 A3.000, 955 B2.000",
+        "kw": "66",
+        "hp": "90",
+        "years": "08.2008 -",
+        "related_motoec_codes": "AP 092/6"
+      },
+      {
+        "make": "ALFA ROMEO",
+        "model_series": "MiTo",
+        "engine": "1.3 JTDM 16V",
+        "engine_code": "199 B1.000, 330 A1.000",
+        "kw": "70",
+        "hp": "95",
+        "years": "09.2009 -",
+        "related_motoec_codes": "AP 092/6"
+      },
+      {
+        "make": "FIAT",
+        "model_series": "Punto II (188/188AX)",
+        "engine": "1.3 JTD",
+        "engine_code": "188 A9.000",
+        "kw": "51",
+        "hp": "70",
+        "years": "07.2003 -",
+        "related_motoec_codes": "AP 092/6"
+      },
+      {
+        "make": "FIAT",
+        "model_series": "Strada (178E/278)",
+        "engine": "1.3 JTD",
+        "engine_code": "223 A9.000",
+        "kw": "62",
+        "hp": "85",
+        "years": "06.2006 -",
+        "related_motoec_codes": "AP 092/6"
+      },
+      {
+        "make": "FIAT",
+        "model_series": "DOBLO/DOBLO CARGO",
+        "engine": "1.3 Multijet 16V JTD",
+        "engine_code": "223 A9.000",
+        "kw": "62",
+        "hp": "85",
+        "years": "11.2005 -",
+        "related_motoec_codes": "AP 092/6"
+      },
+      {
+        "make": "FIAT",
+        "model_series": "DOBLO/DOBLO CARGO",
+        "engine": "1.3 JTD",
+        "engine_code": "188 A8.000, 188 A9.000",
+        "kw": "51",
+        "hp": "70",
+        "years": "04.2004 -",
+        "related_motoec_codes": "AP 092/6"
+      },
+      {
+        "make": "FIAT",
+        "model_series": "DOBLO/DOBLO CARGO",
+        "engine": "1.3 Multijet 16V JTD",
+        "engine_code": "199 A2.000",
+        "kw": "55",
+        "hp": "75",
+        "years": "11.2005 -",
+        "related_motoec_codes": "AP 092/6"
+      },
+      {
+        "make": "FIAT",
+        "model_series": "500 / Nuova 500 (150)",
+        "engine": "1.3 JTD 16V",
+        "engine_code": "169.A1.000",
+        "kw": "55",
+        "hp": "75",
+        "years": "07.2007 -",
+        "related_motoec_codes": "AP 092/6"
+      },
+      {
+        "make": "FIAT",
+        "model_series": "Linea (110)",
+        "engine": "1.3 JTD",
+        "engine_code": "199 A3.000",
+        "kw": "66",
+        "hp": "90",
+        "years": "06.2007 -",
+        "related_motoec_codes": "AP 092/6"
+      },
+      {
+        "make": "FIAT",
+        "model_series": "Panda II (169A)",
+        "engine": "1.3 JTD 16V",
+        "engine_code": "188 A9.000, 188 A8.000",
+        "kw": "51",
+        "hp": "70",
+        "years": "12.2003 -",
+        "related_motoec_codes": "AP 092/6"
+      },
+      {
+        "make": "FIAT",
+        "model_series": "Albea (172)",
+        "engine": "1.3 JTD 16V",
+        "engine_code": "",
+        "kw": "51",
+        "hp": "70",
+        "years": "03.2004 -",
+        "related_motoec_codes": "AP 092/6"
+      },
+      {
+        "make": "FIAT",
+        "model_series": "Panda II (169A)",
+        "engine": "1.3 JTD 16V",
+        "engine_code": "169 A1.000, 169 A5.000",
+        "kw": "55",
+        "hp": "75",
+        "years": "06.2006 -",
+        "related_motoec_codes": "AP 092/6"
+      },
+      {
+        "make": "FIAT",
+        "model_series": "Siena (173)",
+        "engine": "1.3 JTD",
+        "engine_code": "188 A9.000",
+        "kw": "51",
+        "hp": "70",
+        "years": "09.2003 -",
+        "related_motoec_codes": "AP 092/6"
+      },
+      {
+        "make": "FIAT",
+        "model_series": "Idea (135/235)",
+        "engine": "1.3 JTD 70",
+        "engine_code": "188 A9.000",
+        "kw": "51",
+        "hp": "70",
+        "years": "01.2004 -",
+        "related_motoec_codes": "AP 092/6"
+      },
+      {
+        "make": "FIAT",
+        "model_series": "Punto III / Grande Punto (199) / Evo",
+        "engine": "1.3 JTD",
+        "engine_code": "199A3.000",
+        "kw": "66",
+        "hp": "90",
+        "years": "10.2005 -",
+        "related_motoec_codes": "AP 092/6"
+      },
+      {
+        "make": "FIAT",
+        "model_series": "Idea (135/235)",
+        "engine": "1.3 JTD 90",
+        "engine_code": "199 B1.000",
+        "kw": "66",
+        "hp": "90",
+        "years": "10.2005 -",
+        "related_motoec_codes": "AP 092/6"
+      },
+      {
+        "make": "FIAT",
+        "model_series": "Punto III / Grande Punto (199) / Evo",
+        "engine": "1.3 JTD",
+        "engine_code": "199A2.000",
+        "kw": "55",
+        "hp": "75",
+        "years": "10.2005 -",
+        "related_motoec_codes": "AP 092/6"
+      },
+      {
+        "make": "FIAT",
+        "model_series": "Punto III / Grande Punto (199) / Evo",
+        "engine": "1.3 16V Multijet",
+        "engine_code": "199A3000",
+        "kw": "66",
+        "hp": "90",
+        "years": "02.2006 -",
+        "related_motoec_codes": "AP 092/6"
+      },
+      {
+        "make": "FIAT",
+        "model_series": "Fiorino (225)",
+        "engine": "1.3 MultiJet 16V",
+        "engine_code": "199 A2.000, 199 A9.000",
+        "kw": "55",
+        "hp": "75",
+        "years": "02.2008 -",
+        "related_motoec_codes": "AP 092/6"
+      },
+      {
+        "make": "FIAT",
+        "model_series": "Qubo (300)",
+        "engine": "1.3 MultiJet 16V 75",
+        "engine_code": "199 A2.000, 199 A9.000",
+        "kw": "55",
+        "hp": "75",
+        "years": "11.2008 -",
+        "related_motoec_codes": "AP 092/6"
+      },
+      {
+        "make": "FIAT",
+        "model_series": "DOBLO/DOBLO CARGO",
+        "engine": "1.3 MTJD",
+        "engine_code": "199 A3.000, 263 A2.000",
+        "kw": "66",
+        "hp": "90",
+        "years": "01.2010 -",
+        "related_motoec_codes": "AP 092/6"
+      },
+      {
+        "make": "FIAT",
+        "model_series": "DOBLO/DOBLO CARGO",
+        "engine": "1.3 D Multijet",
+        "engine_code": "263 A6.000",
+        "kw": "55",
+        "hp": "75",
+        "years": "11.2013 -",
+        "related_motoec_codes": "AP 092/6"
+      },
+      {
+        "make": "FORD",
+        "model_series": "KA II",
+        "engine": "1.3 TDCi",
+        "engine_code": "",
+        "kw": "55",
+        "hp": "75",
+        "years": "12.2008 -",
+        "related_motoec_codes": "AP 092/6"
+      },
+      {
+        "make": "LANCIA (LANCIA AUTOBIANCHI)",
+        "model_series": "Ypsilon (843)",
+        "engine": "1.3 JTD",
+        "engine_code": "199 A3.000",
+        "kw": "66",
+        "hp": "90",
+        "years": "09.2006 -",
+        "related_motoec_codes": "AP 092/6"
+      },
+      {
+        "make": "LANCIA (LANCIA AUTOBIANCHI)",
+        "model_series": "Ypsilon (843)",
+        "engine": "1.3 JTD",
+        "engine_code": "188 A9.000",
+        "kw": "51",
+        "hp": "70",
+        "years": "10.2003 -",
+        "related_motoec_codes": "AP 092/6"
+      },
+      {
+        "make": "LANCIA (LANCIA AUTOBIANCHI)",
+        "model_series": "Ypsilon (843)",
+        "engine": "1.3 JTD",
+        "engine_code": "199 A2.000, 199 A9.000",
+        "kw": "55",
+        "hp": "75",
+        "years": "09.2006 -",
+        "related_motoec_codes": "AP 092/6"
+      },
+      {
+        "make": "LANCIA (LANCIA AUTOBIANCHI)",
+        "model_series": "Ypsilon (843)",
+        "engine": "1.3 JTD",
+        "engine_code": "199 A3.000",
+        "kw": "77",
+        "hp": "105",
+        "years": "05.2007 -",
+        "related_motoec_codes": "AP 092/6"
+      },
+      {
+        "make": "LANCIA (LANCIA AUTOBIANCHI)",
+        "model_series": "Musa",
+        "engine": "1.3 JTD",
+        "engine_code": "199 A3.000",
+        "kw": "66",
+        "hp": "90",
+        "years": "09.2004 -",
+        "related_motoec_codes": "AP 092/6"
+      },
+      {
+        "make": "LANCIA (LANCIA AUTOBIANCHI)",
+        "model_series": "Musa",
+        "engine": "1.3 JTD",
+        "engine_code": "188 A9.000",
+        "kw": "51",
+        "hp": "70",
+        "years": "09.2004 -",
+        "related_motoec_codes": "AP 092/6"
+      },
+      {
+        "make": "OPEL",
+        "model_series": "Combo D (X12)",
+        "engine": "1.3 CDTi",
+        "engine_code": "A13FD",
+        "kw": "66",
+        "hp": "90",
+        "years": "02.2012 -",
+        "related_motoec_codes": "AP 092/6"
+      },
+      {
+        "make": "OPEL",
+        "model_series": "Combo D (X12)",
+        "engine": "1.3 CDTi",
+        "engine_code": "A13FD",
+        "kw": "70",
+        "hp": "95",
+        "years": "03.2016 -",
+        "related_motoec_codes": "AP 092/6"
+      },
+      {
+        "make": "OPEL",
+        "model_series": "Combo D (X12)",
+        "engine": "1.3 CDTi",
+        "engine_code": "A13FD",
+        "kw": "59",
+        "hp": "80",
+        "years": "02.2012 -",
+        "related_motoec_codes": "AP 092/6"
+      },
+      {
+        "make": "OPEL",
+        "model_series": "Combo D (X12)",
+        "engine": "1.3 CDTi",
+        "engine_code": "A13FD",
+        "kw": "55",
+        "hp": "75",
+        "years": "08.2012 -",
+        "related_motoec_codes": "AP 092/6"
+      },
+      {
+        "make": "VAUXHALL-BEDFORD (LCV)",
+        "model_series": "Combo MK III (X12)",
+        "engine": "1.3 CDTi",
+        "engine_code": "A13FD",
+        "kw": "66",
+        "hp": "90",
+        "years": "02.2012 -",
+        "related_motoec_codes": "AP 092/6"
+      },
+      {
+        "make": "VAUXHALL-BEDFORD (LCV)",
+        "model_series": "Combo MK III (X12)",
+        "engine": "1.3 CDTi",
+        "engine_code": "A13FD",
+        "kw": "59",
+        "hp": "80",
+        "years": "02.2012 -",
+        "related_motoec_codes": "AP 092/6"
+      },
+      {
+        "make": "VAUXHALL-BEDFORD (LCV)",
+        "model_series": "Combo MK III (X12)",
+        "engine": "1.3 CDTi",
+        "engine_code": "A13FD",
+        "kw": "55",
+        "hp": "75",
+        "years": "08.2012 -",
+        "related_motoec_codes": "AP 092/6"
+      },
+      {
+        "make": "VAUXHALL-BEDFORD (LCV)",
+        "model_series": "Combo MK III (X12)",
+        "engine": "1.3 CDTi",
+        "engine_code": "A13FD",
+        "kw": "70",
+        "hp": "95",
+        "years": "03.2016 -",
+        "related_motoec_codes": "AP 092/6"
+      }
+    ],
+    "discovered_motoec_codes": [
+      "AP 092/6"
+    ],
+    "source_url": "https://www.motoec.com/Catalog.aspx?rival=C3877/1",
+    "slug": "wh-650",
+    "local_image": "/images/demo/wunder/wh-650.jpg"
+  },
+  {
+    "motoec_code": "K 1101",
+    "wunder_code": "WP 688",
+    "filter_type": "Kabin Filtresi Elemanı",
+    "image_url": "https://www.motoec.com/veriler/Urunler/K_1101.jpg",
+    "dimensions": {
+      "D1": "215,0",
+      "D2": "163,0",
+      "H1": "25,0"
+    },
+    "specs": {},
+    "oem_numbers": [
+      {
+        "oem_number": "46723331",
+        "manufacturer": "FIAT GROUP (ALFA/FIAT/LANCIA)",
+        "motoec_code": "K 1101"
+      },
+      {
+        "oem_number": "77362394",
+        "manufacturer": "FIAT GROUP (ALFA/FIAT/LANCIA)",
+        "motoec_code": "K 1101"
+      },
+      {
+        "oem_number": "151.1109080",
+        "manufacturer": "UAZ",
+        "motoec_code": "K 1101"
+      }
+    ],
+    "rival_numbers": [
+      {
+        "rival_code": "1601",
+        "brand": "3F QUALITY",
+        "motoec_code": "K 1101"
+      },
+      {
+        "rival_code": "ALC-5358",
+        "brand": "A.L. FILTER",
+        "motoec_code": "K 1101"
+      },
+      {
+        "rival_code": "PU 1009 E",
+        "brand": "AC DELCO",
+        "motoec_code": "K 1101"
+      },
+      {
+        "rival_code": "MS-6178",
+        "brand": "ALCO FILTER",
+        "motoec_code": "K 1101"
+      },
+      {
+        "rival_code": "MS-6245",
+        "brand": "ALCO FILTER",
+        "motoec_code": "K 1101"
+      },
+      {
+        "rival_code": "K-215/160.25",
+        "brand": "ARMAFILT",
+        "motoec_code": "K 1101"
+      },
+      {
+        "rival_code": "HF 6036",
+        "brand": "ASAŞ",
+        "motoec_code": "K 1101"
+      },
+      {
+        "rival_code": "KF-2564",
+        "brand": "ASSO",
+        "motoec_code": "K 1101"
+      },
+      {
+        "rival_code": "ADL 142503",
+        "brand": "BLUEPRINT",
+        "motoec_code": "K 1101"
+      },
+      {
+        "rival_code": "1 987 431 072",
+        "brand": "BOSCH",
+        "motoec_code": "K 1101"
+      },
+      {
+        "rival_code": "1 987 432 072",
+        "brand": "BOSCH",
+        "motoec_code": "K 1101"
+      },
+      {
+        "rival_code": "M 2072",
+        "brand": "BOSCH",
+        "motoec_code": "K 1101"
+      },
+      {
+        "rival_code": "NC 2045",
+        "brand": "CLEAN FILTER",
+        "motoec_code": "K 1101"
+      },
+      {
+        "rival_code": "NC 2104",
+        "brand": "CLEAN FILTER",
+        "motoec_code": "K 1101"
+      },
+      {
+        "rival_code": "EKF 102",
+        "brand": "COMLINE",
+        "motoec_code": "K 1101"
+      },
+      {
+        "rival_code": "PC 8093",
+        "brand": "COOPERSFIAAM FILTER",
+        "motoec_code": "K 1101"
+      },
+      {
+        "rival_code": "21652544",
+        "brand": "CORTECO",
+        "motoec_code": "K 1101"
+      },
+      {
+        "rival_code": "CP 1080",
+        "brand": "CORTECO",
+        "motoec_code": "K 1101"
+      },
+      {
+        "rival_code": "MP 078",
+        "brand": "CORTECO",
+        "motoec_code": "K 1101"
+      },
+      {
+        "rival_code": "TSP 0325079",
+        "brand": "DELPHI",
+        "motoec_code": "K 1101"
+      },
+      {
+        "rival_code": "TSP 0325115",
+        "brand": "DELPHI",
+        "motoec_code": "K 1101"
+      },
+      {
+        "rival_code": "TSP 0325152",
+        "brand": "DELPHI",
+        "motoec_code": "K 1101"
+      },
+      {
+        "rival_code": "TSP 0325152 C",
+        "brand": "DELPHI",
+        "motoec_code": "K 1101"
+      },
+      {
+        "rival_code": "M 110051",
+        "brand": "DENCKERMANN",
+        "motoec_code": "K 1101"
+      },
+      {
+        "rival_code": "DCF 024 P",
+        "brand": "DENSO",
+        "motoec_code": "K 1101"
+      },
+      {
+        "rival_code": "1501",
+        "brand": "ECO",
+        "motoec_code": "K 1101"
+      },
+      {
+        "rival_code": "1601",
+        "brand": "ECO",
+        "motoec_code": "K 1101"
+      },
+      {
+        "rival_code": "P.818",
+        "brand": "EUROCARB",
+        "motoec_code": "K 1101"
+      },
+      {
+        "rival_code": "P 111",
+        "brand": "EUROGIELLE",
+        "motoec_code": "K 1101"
+      },
+      {
+        "rival_code": "P 634",
+        "brand": "EUROGIELLE",
+        "motoec_code": "K 1101"
+      },
+      {
+        "rival_code": "27872",
+        "brand": "FEBI BILSTEIN",
+        "motoec_code": "K 1101"
+      },
+      {
+        "rival_code": "PC 8093",
+        "brand": "FIAAM",
+        "motoec_code": "K 1101"
+      },
+      {
+        "rival_code": "HC 7047",
+        "brand": "FIL",
+        "motoec_code": "K 1101"
+      },
+      {
+        "rival_code": "10.19.24/20",
+        "brand": "FRAD FILTER",
+        "motoec_code": "K 1101"
+      },
+      {
+        "rival_code": "CF 9408",
+        "brand": "FRAM",
+        "motoec_code": "K 1101"
+      },
+      {
+        "rival_code": "CFA 9408",
+        "brand": "FRAM",
+        "motoec_code": "K 1101"
+      },
+      {
+        "rival_code": "1304.5334",
+        "brand": "FRIGAIR",
+        "motoec_code": "K 1101"
+      },
+      {
+        "rival_code": "GKC-9047",
+        "brand": "GOLD FILTER",
+        "motoec_code": "K 1101"
+      },
+      {
+        "rival_code": "E1962LI",
+        "brand": "HENGST FILTER",
+        "motoec_code": "K 1101"
+      },
+      {
+        "rival_code": "17098",
+        "brand": "HOFFER",
+        "motoec_code": "K 1101"
+      },
+      {
+        "rival_code": "17297",
+        "brand": "HOFFER",
+        "motoec_code": "K 1101"
+      },
+      {
+        "rival_code": "8300098",
+        "brand": "HOFFER",
+        "motoec_code": "K 1101"
+      },
+      {
+        "rival_code": "8300100",
+        "brand": "HOFFER",
+        "motoec_code": "K 1101"
+      },
+      {
+        "rival_code": "8300100 F",
+        "brand": "HOFFER",
+        "motoec_code": "K 1101"
+      },
+      {
+        "rival_code": "8300297",
+        "brand": "HOFFER",
+        "motoec_code": "K 1101"
+      },
+      {
+        "rival_code": "3328101209",
+        "brand": "JP GROUP",
+        "motoec_code": "K 1101"
+      },
+      {
+        "rival_code": "WP 9130",
+        "brand": "JP GROUP",
+        "motoec_code": "K 1101"
+      },
+      {
+        "rival_code": "09-0051",
+        "brand": "KAGER",
+        "motoec_code": "K 1101"
+      },
+      {
+        "rival_code": "50013964",
+        "brand": "KOLBENSCHMIDT",
+        "motoec_code": "K 1101"
+      },
+      {
+        "rival_code": "964-AC",
+        "brand": "KOLBENSCHMIDT",
+        "motoec_code": "K 1101"
+      },
+      {
+        "rival_code": "1733017",
+        "brand": "KRAFT AUTOMOTIV",
+        "motoec_code": "K 1101"
+      },
+      {
+        "rival_code": "350203061520",
+        "brand": "MAGNETI MARELLI",
+        "motoec_code": "K 1101"
+      },
+      {
+        "rival_code": "BCF 152",
+        "brand": "MAGNETI MARELLI",
+        "motoec_code": "K 1101"
+      },
+      {
+        "rival_code": "LA 144",
+        "brand": "MAHLE",
+        "motoec_code": "K 1101"
+      },
+      {
+        "rival_code": "CU 2335",
+        "brand": "MANN HUMMEL",
+        "motoec_code": "K 1101"
+      },
+      {
+        "rival_code": "65011",
+        "brand": "MAPCO",
+        "motoec_code": "K 1101"
+      },
+      {
+        "rival_code": "66634",
+        "brand": "MAPCO",
+        "motoec_code": "K 1101"
+      },
+      {
+        "rival_code": "17098",
+        "brand": "MEAT & DORIA",
+        "motoec_code": "K 1101"
+      },
+      {
+        "rival_code": "17100",
+        "brand": "MEAT & DORIA",
+        "motoec_code": "K 1101"
+      },
+      {
+        "rival_code": "17100 F",
+        "brand": "MEAT & DORIA",
+        "motoec_code": "K 1101"
+      },
+      {
+        "rival_code": "17297",
+        "brand": "MEAT & DORIA",
+        "motoec_code": "K 1101"
+      },
+      {
+        "rival_code": "ELR 7120",
+        "brand": "MECA FILTER",
+        "motoec_code": "K 1101"
+      },
+      {
+        "rival_code": "212 319 0006",
+        "brand": "MEYLE",
+        "motoec_code": "K 1101"
+      },
+      {
+        "rival_code": "MP 078",
+        "brand": "MICRONAIR",
+        "motoec_code": "K 1101"
+      },
+      {
+        "rival_code": "HB 152",
+        "brand": "MISFAT FILTRES",
+        "motoec_code": "K 1101"
+      },
+      {
+        "rival_code": "FC 141",
+        "brand": "MULLER FILTER",
+        "motoec_code": "K 1101"
+      },
+      {
+        "rival_code": "11 C 8047 U",
+        "brand": "NET FILTER",
+        "motoec_code": "K 1101"
+      },
+      {
+        "rival_code": "DCF 024 P",
+        "brand": "NPS",
+        "motoec_code": "K 1101"
+      },
+      {
+        "rival_code": "CAF 2076.01",
+        "brand": "OPEN PARTS",
+        "motoec_code": "K 1101"
+      },
+      {
+        "rival_code": "CAF 2258.11",
+        "brand": "OPEN PARTS",
+        "motoec_code": "K 1101"
+      },
+      {
+        "rival_code": "AH 201",
+        "brand": "PURFLUX",
+        "motoec_code": "K 1101"
+      },
+      {
+        "rival_code": "C 28214",
+        "brand": "PUROLATOR",
+        "motoec_code": "K 1101"
+      },
+      {
+        "rival_code": "I 19210",
+        "brand": "PUROLATOR",
+        "motoec_code": "K 1101"
+      },
+      {
+        "rival_code": "QAP 337",
+        "brand": "QUINTON HAZELL",
+        "motoec_code": "K 1101"
+      },
+      {
+        "rival_code": "RXC 6224",
+        "brand": "RIXENBERG",
+        "motoec_code": "K 1101"
+      },
+      {
+        "rival_code": "SC 542",
+        "brand": "SARDES",
+        "motoec_code": "K 1101"
+      },
+      {
+        "rival_code": "SA 1224",
+        "brand": "SCT GERMANY",
+        "motoec_code": "K 1101"
+      },
+      {
+        "rival_code": "S 3043 C",
+        "brand": "SOFIMA",
+        "motoec_code": "K 1101"
+      },
+      {
+        "rival_code": "70 92 7872",
+        "brand": "SWAG",
+        "motoec_code": "K 1101"
+      },
+      {
+        "rival_code": "E 403",
+        "brand": "TECNOCAR",
+        "motoec_code": "K 1101"
+      },
+      {
+        "rival_code": "53.043.00",
+        "brand": "UFI",
+        "motoec_code": "K 1101"
+      },
+      {
+        "rival_code": "AC 2125",
+        "brand": "UNICO FILTER",
+        "motoec_code": "K 1101"
+      },
+      {
+        "rival_code": "698535",
+        "brand": "VALEO",
+        "motoec_code": "K 1101"
+      },
+      {
+        "rival_code": "698867",
+        "brand": "VALEO",
+        "motoec_code": "K 1101"
+      },
+      {
+        "rival_code": "24-30-1105",
+        "brand": "VEMO",
+        "motoec_code": "K 1101"
+      },
+      {
+        "rival_code": "24-30-1106",
+        "brand": "VEMO",
+        "motoec_code": "K 1101"
+      },
+      {
+        "rival_code": "V24-30-1105",
+        "brand": "VEMO",
+        "motoec_code": "K 1101"
+      },
+      {
+        "rival_code": "V24-30-1106",
+        "brand": "VEMO",
+        "motoec_code": "K 1101"
+      },
+      {
+        "rival_code": "WP 9001",
+        "brand": "WIX FILTER (EUROPE)",
+        "motoec_code": "K 1101"
+      },
+      {
+        "rival_code": "WP 9130",
+        "brand": "WIX FILTER (EUROPE)",
+        "motoec_code": "K 1101"
+      },
+      {
+        "rival_code": "WP 688",
+        "brand": "WUNDER",
+        "motoec_code": "K 1101"
+      },
+      {
+        "rival_code": "400 F",
+        "brand": "ZAFFO",
+        "motoec_code": "K 1101"
+      },
+      {
+        "rival_code": "436 F",
+        "brand": "ZAFFO",
+        "motoec_code": "K 1101"
+      },
+      {
+        "rival_code": "Z 436",
+        "brand": "ZAFFO",
+        "motoec_code": "K 1101"
+      },
+      {
+        "rival_code": "ZF 436",
+        "brand": "ZAFFO",
+        "motoec_code": "K 1101"
+      },
+      {
+        "rival_code": "Rakip Ürün Numarası",
+        "brand": "Üretici Firma",
+        "motoec_code": "K 1101"
+      },
+      {
+        "rival_code": "CK 0118",
+        "brand": "ŞAMPİYON",
+        "motoec_code": "K 1101"
+      },
+      {
+        "rival_code": "CU2335",
+        "brand": "MANN-FILTER",
+        "motoec_code": "K 1101"
+      }
+    ],
+    "applications": [
+      {
+        "make": "FIAT",
+        "model_series": "Punto II (188/188AX)",
+        "engine": "1.2 Natural Power",
+        "engine_code": "188 A4.000",
+        "kw": "44",
+        "hp": "60",
+        "years": "09.2003 -",
+        "related_motoec_codes": "K 1101"
+      },
+      {
+        "make": "FIAT",
+        "model_series": "Punto II (188/188AX)",
+        "engine": "1.4 16V",
+        "engine_code": "843 A1.000",
+        "kw": "70",
+        "hp": "95",
+        "years": "07.2003 -",
+        "related_motoec_codes": "K 1101"
+      },
+      {
+        "make": "FIAT",
+        "model_series": "Punto II (188/188AX)",
+        "engine": "1.9 JTD",
+        "engine_code": "188 B2.000",
+        "kw": "74",
+        "hp": "100",
+        "years": "07.2003 -",
+        "related_motoec_codes": "K 1101"
+      },
+      {
+        "make": "FIAT",
+        "model_series": "Punto II (188/188AX)",
+        "engine": "1.2 16V",
+        "engine_code": "176B9.000",
+        "kw": "59",
+        "hp": "80",
+        "years": "09.1999 -",
+        "related_motoec_codes": "K 1101"
+      },
+      {
+        "make": "FIAT",
+        "model_series": "Punto II (188/188AX)",
+        "engine": "1.9 JTD",
+        "engine_code": "188A7.000",
+        "kw": "63",
+        "hp": "85",
+        "years": "11.2001 -",
+        "related_motoec_codes": "K 1101"
+      },
+      {
+        "make": "FIAT",
+        "model_series": "Punto II (188/188AX)",
+        "engine": "1.3 JTD",
+        "engine_code": "188 A9.000",
+        "kw": "51",
+        "hp": "70",
+        "years": "07.2003 -",
+        "related_motoec_codes": "K 1101"
+      },
+      {
+        "make": "FIAT",
+        "model_series": "Punto II (188/188AX)",
+        "engine": "1.8 16V",
+        "engine_code": "183A1.000",
+        "kw": "96",
+        "hp": "130",
+        "years": "09.1999 -",
+        "related_motoec_codes": "K 1101"
+      },
+      {
+        "make": "FIAT",
+        "model_series": "Punto II (188/188AX)",
+        "engine": "1.9 D",
+        "engine_code": "188A3.000",
+        "kw": "44",
+        "hp": "60",
+        "years": "09.1999 -",
+        "related_motoec_codes": "K 1101"
+      },
+      {
+        "make": "FIAT",
+        "model_series": "Punto II (188/188AX)",
+        "engine": "1.9 JTD",
+        "engine_code": "188A2.000",
+        "kw": "59",
+        "hp": "80",
+        "years": "09.1999 -",
+        "related_motoec_codes": "K 1101"
+      },
+      {
+        "make": "FIAT",
+        "model_series": "Punto II (188/188AX)",
+        "engine": "1.2 8V",
+        "engine_code": "188A4.000",
+        "kw": "44",
+        "hp": "60",
+        "years": "09.1999 -",
+        "related_motoec_codes": "K 1101"
+      },
+      {
+        "make": "FIAT",
+        "model_series": "DOBLO/DOBLO CARGO",
+        "engine": "1.9 JTD 120",
+        "engine_code": "186 A9.000",
+        "kw": "88",
+        "hp": "120",
+        "years": "11.2005 -",
+        "related_motoec_codes": "K 1101"
+      },
+      {
+        "make": "FIAT",
+        "model_series": "DOBLO/DOBLO CARGO",
+        "engine": "1.4 8V",
+        "engine_code": "350 A1.000",
+        "kw": "57",
+        "hp": "77",
+        "years": "10.2005 -",
+        "related_motoec_codes": "K 1101"
+      },
+      {
+        "make": "FIAT",
+        "model_series": "DOBLO/DOBLO CARGO",
+        "engine": "1.3 Multijet 16V JTD",
+        "engine_code": "223 A9.000",
+        "kw": "62",
+        "hp": "85",
+        "years": "11.2005 -",
+        "related_motoec_codes": "K 1101"
+      },
+      {
+        "make": "FIAT",
+        "model_series": "DOBLO/DOBLO CARGO",
+        "engine": "1.3 JTD",
+        "engine_code": "188 A8.000, 188 A9.000",
+        "kw": "51",
+        "hp": "70",
+        "years": "04.2004 -",
+        "related_motoec_codes": "K 1101"
+      },
+      {
+        "make": "FIAT",
+        "model_series": "DOBLO/DOBLO CARGO",
+        "engine": "1.9 JTD 105",
+        "engine_code": "223 A7.000, 223 B1.000",
+        "kw": "77",
+        "hp": "105",
+        "years": "07.2003 -",
+        "related_motoec_codes": "K 1101"
+      },
+      {
+        "make": "FIAT",
+        "model_series": "DOBLO/DOBLO CARGO",
+        "engine": "1.2",
+        "engine_code": "223A5.000",
+        "kw": "48",
+        "hp": "65",
+        "years": "11.2000 -",
+        "related_motoec_codes": "K 1101"
+      },
+      {
+        "make": "FIAT",
+        "model_series": "DOBLO/DOBLO CARGO",
+        "engine": "1.9 D",
+        "engine_code": "223 A6.000",
+        "kw": "46",
+        "hp": "63",
+        "years": "11.2000 -",
+        "related_motoec_codes": "K 1101"
+      },
+      {
+        "make": "FIAT",
+        "model_series": "DOBLO/DOBLO CARGO",
+        "engine": "1.6 16V",
+        "engine_code": "182.A4.000 /182.B6.000",
+        "kw": "76",
+        "hp": "103",
+        "years": "01.2001 -",
+        "related_motoec_codes": "K 1101"
+      },
+      {
+        "make": "FIAT",
+        "model_series": "DOBLO/DOBLO CARGO",
+        "engine": "1.3 Multijet 16V JTD",
+        "engine_code": "199 A2.000",
+        "kw": "55",
+        "hp": "75",
+        "years": "11.2005 -",
+        "related_motoec_codes": "K 1101"
+      },
+      {
+        "make": "FIAT",
+        "model_series": "DOBLO/DOBLO CARGO",
+        "engine": "1.9 JTD",
+        "engine_code": "182.B4.000",
+        "kw": "74",
+        "hp": "100",
+        "years": "01.2001 -",
+        "related_motoec_codes": "K 1101"
+      },
+      {
+        "make": "FIAT",
+        "model_series": "Idea (135/235)",
+        "engine": "1.2 16V",
+        "engine_code": "188 A5.000",
+        "kw": "59",
+        "hp": "80",
+        "years": "01.2004 -",
+        "related_motoec_codes": "K 1101"
+      },
+      {
+        "make": "FIAT",
+        "model_series": "Idea (135/235)",
+        "engine": "1.9 JTD",
+        "engine_code": "188 B2.000",
+        "kw": "74",
+        "hp": "100",
+        "years": "01.2004 -",
+        "related_motoec_codes": "K 1101"
+      },
+      {
+        "make": "FIAT",
+        "model_series": "Idea (135/235)",
+        "engine": "1.4 16V",
+        "engine_code": "843 A1.000",
+        "kw": "70",
+        "hp": "95",
+        "years": "01.2004 -",
+        "related_motoec_codes": "K 1101"
+      },
+      {
+        "make": "FIAT",
+        "model_series": "Idea (135/235)",
+        "engine": "1.4 8V",
+        "engine_code": "350 A1.000",
+        "kw": "57",
+        "hp": "77",
+        "years": "10.2005 -",
+        "related_motoec_codes": "K 1101"
+      },
+      {
+        "make": "FIAT",
+        "model_series": "Idea (135/235)",
+        "engine": "1.4 LPG",
+        "engine_code": "350 A1.000",
+        "kw": "57",
+        "hp": "77",
+        "years": "03.2009 -",
+        "related_motoec_codes": "K 1101"
+      },
+      {
+        "make": "FIAT",
+        "model_series": "Idea (135/235)",
+        "engine": "1.4",
+        "engine_code": "192 B2.000",
+        "kw": "66",
+        "hp": "90",
+        "years": "12.2003 -",
+        "related_motoec_codes": "K 1101"
+      },
+      {
+        "make": "FIAT",
+        "model_series": "Idea (135/235)",
+        "engine": "1.3 JTD 70",
+        "engine_code": "188 A9.000",
+        "kw": "51",
+        "hp": "70",
+        "years": "01.2004 -",
+        "related_motoec_codes": "K 1101"
+      },
+      {
+        "make": "FIAT",
+        "model_series": "Idea (135/235)",
+        "engine": "1.6 Multijet MJTD",
+        "engine_code": "350 A2.000",
+        "kw": "88",
+        "hp": "120",
+        "years": "06.2008 -",
+        "related_motoec_codes": "K 1101"
+      },
+      {
+        "make": "FIAT",
+        "model_series": "Idea (135/235)",
+        "engine": "1.3 JTD 90",
+        "engine_code": "199 B1.000",
+        "kw": "66",
+        "hp": "90",
+        "years": "10.2005 -",
+        "related_motoec_codes": "K 1101"
+      },
+      {
+        "make": "LANCIA (LANCIA AUTOBIANCHI)",
+        "model_series": "Ypsilon (843)",
+        "engine": "1.2 16V",
+        "engine_code": "188 A5.000",
+        "kw": "59",
+        "hp": "80",
+        "years": "10.2003 -",
+        "related_motoec_codes": "K 1101"
+      },
+      {
+        "make": "LANCIA (LANCIA AUTOBIANCHI)",
+        "model_series": "Ypsilon (843)",
+        "engine": "1.2",
+        "engine_code": "188 A4.000",
+        "kw": "44",
+        "hp": "60",
+        "years": "10.2003 -",
+        "related_motoec_codes": "K 1101"
+      },
+      {
+        "make": "LANCIA (LANCIA AUTOBIANCHI)",
+        "model_series": "Musa",
+        "engine": "1.4 16V",
+        "engine_code": "843 A1.000",
+        "kw": "70",
+        "hp": "95",
+        "years": "09.2004 -",
+        "related_motoec_codes": "K 1101"
+      },
+      {
+        "make": "LANCIA (LANCIA AUTOBIANCHI)",
+        "model_series": "Ypsilon (843)",
+        "engine": "1.3 JTD",
+        "engine_code": "199 A3.000",
+        "kw": "66",
+        "hp": "90",
+        "years": "09.2006 -",
+        "related_motoec_codes": "K 1101"
+      },
+      {
+        "make": "LANCIA (LANCIA AUTOBIANCHI)",
+        "model_series": "Ypsilon (843)",
+        "engine": "1.3 JTD",
+        "engine_code": "188 A9.000",
+        "kw": "51",
+        "hp": "70",
+        "years": "10.2003 -",
+        "related_motoec_codes": "K 1101"
+      },
+      {
+        "make": "LANCIA (LANCIA AUTOBIANCHI)",
+        "model_series": "Ypsilon (843)",
+        "engine": "1.4 16V",
+        "engine_code": "843 A1.000",
+        "kw": "70",
+        "hp": "95",
+        "years": "10.2003 -",
+        "related_motoec_codes": "K 1101"
+      },
+      {
+        "make": "LANCIA (LANCIA AUTOBIANCHI)",
+        "model_series": "Musa",
+        "engine": "1.4 16V",
+        "engine_code": "192 B2.000",
+        "kw": "66",
+        "hp": "90",
+        "years": "09.2004 -",
+        "related_motoec_codes": "K 1101"
+      },
+      {
+        "make": "LANCIA (LANCIA AUTOBIANCHI)",
+        "model_series": "Ypsilon (843)",
+        "engine": "1.3 JTD",
+        "engine_code": "199 A2.000, 199 A9.000",
+        "kw": "55",
+        "hp": "75",
+        "years": "09.2006 -",
+        "related_motoec_codes": "K 1101"
+      },
+      {
+        "make": "LANCIA (LANCIA AUTOBIANCHI)",
+        "model_series": "Musa",
+        "engine": "1.9 JTD",
+        "engine_code": "188 B2.000",
+        "kw": "74",
+        "hp": "100",
+        "years": "10.2004 -",
+        "related_motoec_codes": "K 1101"
+      },
+      {
+        "make": "LANCIA (LANCIA AUTOBIANCHI)",
+        "model_series": "Ypsilon (843)",
+        "engine": "1.4",
+        "engine_code": "350 A1.000",
+        "kw": "57",
+        "hp": "77",
+        "years": "02.2006 -",
+        "related_motoec_codes": "K 1101"
+      },
+      {
+        "make": "LANCIA (LANCIA AUTOBIANCHI)",
+        "model_series": "Ypsilon (843)",
+        "engine": "1.3 JTD",
+        "engine_code": "199 A3.000",
+        "kw": "77",
+        "hp": "105",
+        "years": "05.2007 -",
+        "related_motoec_codes": "K 1101"
+      },
+      {
+        "make": "LANCIA (LANCIA AUTOBIANCHI)",
+        "model_series": "Musa",
+        "engine": "1.4 8V",
+        "engine_code": "350 A1.000",
+        "kw": "57",
+        "hp": "77",
+        "years": "09.2005 -",
+        "related_motoec_codes": "K 1101"
+      },
+      {
+        "make": "LANCIA (LANCIA AUTOBIANCHI)",
+        "model_series": "Musa",
+        "engine": "1.3 JTD",
+        "engine_code": "199 A3.000",
+        "kw": "66",
+        "hp": "90",
+        "years": "09.2004 -",
+        "related_motoec_codes": "K 1101"
+      },
+      {
+        "make": "LANCIA (LANCIA AUTOBIANCHI)",
+        "model_series": "Musa",
+        "engine": "1.3 JTD",
+        "engine_code": "188 A9.000",
+        "kw": "51",
+        "hp": "70",
+        "years": "09.2004 -",
+        "related_motoec_codes": "K 1101"
+      },
+      {
+        "make": "LANCIA (LANCIA AUTOBIANCHI)",
+        "model_series": "Musa",
+        "engine": "1.3 MJTD",
+        "engine_code": "199 B1.000",
+        "kw": "70",
+        "hp": "95",
+        "years": "03.2009 -",
+        "related_motoec_codes": "K 1101"
+      },
+      {
+        "make": "LANCIA (LANCIA AUTOBIANCHI)",
+        "model_series": "Musa",
+        "engine": "1.4 LPG",
+        "engine_code": "350 A1.000",
+        "kw": "57",
+        "hp": "77",
+        "years": "11.2010 -",
+        "related_motoec_codes": "K 1101"
+      },
+      {
+        "make": "LANCIA (LANCIA AUTOBIANCHI)",
+        "model_series": "Musa",
+        "engine": "1.6 MJTD",
+        "engine_code": "350 A2.000, 350 A3.000",
+        "kw": "88",
+        "hp": "120",
+        "years": "06.2008 -",
+        "related_motoec_codes": "K 1101"
+      },
+      {
+        "make": "UAZ",
+        "model_series": "Hunter",
+        "engine": "2.7",
+        "engine_code": "ZMZ-409.10",
+        "kw": "94",
+        "hp": "128",
+        "years": "07.2004 -",
+        "related_motoec_codes": "K 1101"
+      },
+      {
+        "make": "UAZ",
+        "model_series": "Patriot",
+        "engine": "2.7",
+        "engine_code": "ZMZ-409.10",
+        "kw": "94",
+        "hp": "128",
+        "years": "07.2004 -",
+        "related_motoec_codes": "K 1101"
+      },
+      {
+        "make": "UAZ",
+        "model_series": "Patriot",
+        "engine": "2.7 LPG",
+        "engine_code": "ZMZ-409.04",
+        "kw": "94",
+        "hp": "128",
+        "years": "07.2004 -",
+        "related_motoec_codes": "K 1101"
+      },
+      {
+        "make": "UAZ",
+        "model_series": "Patriot",
+        "engine": "2.3 D",
+        "engine_code": "F1AE0481A",
+        "kw": "85",
+        "hp": "116",
+        "years": "06.2006 -",
+        "related_motoec_codes": "K 1101"
+      },
+      {
+        "make": "UAZ",
+        "model_series": "Patriot",
+        "engine": "2.7",
+        "engine_code": "",
+        "kw": "82",
+        "hp": "112",
+        "years": "07.2004 -",
+        "related_motoec_codes": "K 1101"
+      },
+      {
+        "make": "UAZ",
+        "model_series": "Patriot",
+        "engine": "2.7",
+        "engine_code": "ZMZ-409051",
+        "kw": "110",
+        "hp": "150",
+        "years": "10.2018 -",
+        "related_motoec_codes": "K 1101"
+      },
+      {
+        "make": "UAZ",
+        "model_series": "Patriot",
+        "engine": "2.2 D",
+        "engine_code": "",
+        "kw": "84",
+        "hp": "114",
+        "years": "07.2004 -",
+        "related_motoec_codes": "K 1101"
+      },
+      {
+        "make": "UAZ",
+        "model_series": "Patriot",
+        "engine": "2.6 D",
+        "engine_code": "ADCR",
+        "kw": "85",
+        "hp": "116",
+        "years": "02.2011 -",
+        "related_motoec_codes": "K 1101"
+      },
+      {
+        "make": "FIAT",
+        "model_series": "DOBLO/DOBLO CARGO",
+        "engine": "1.6 Natural Power",
+        "engine_code": "182.A4.000 /182.B6.000",
+        "kw": "68",
+        "hp": "92",
+        "years": "02.2004 -",
+        "related_motoec_codes": "K 1101"
+      }
+    ],
+    "discovered_motoec_codes": [
+      "K 1101"
+    ],
+    "source_url": "https://www.motoec.com/Catalog.aspx?rival=CU2335",
+    "slug": "wp-688",
+    "local_image": "/images/demo/wunder/wp-688.jpg"
+  },
+  {
+    "motoec_code": "PE 982",
+    "wunder_code": "WB 305",
+    "filter_type": "Yakıt Filtresi Elemanı",
+    "image_url": "https://www.motoec.com/veriler/Urunler/PE_982.jpg",
+    "dimensions": {
+      "D1": "67",
+      "D2": "25",
+      "H1": "86",
+      "H2": "99"
+    },
+    "specs": {},
+    "oem_numbers": [
+      {
+        "oem_number": "16 06 26 76 80",
+        "manufacturer": "CITROEN",
+        "motoec_code": "PE 982"
+      },
+      {
+        "oem_number": "1631487880",
+        "manufacturer": "CITROEN",
+        "motoec_code": "PE 982"
+      },
+      {
+        "oem_number": "1901 80",
+        "manufacturer": "CITROEN",
+        "motoec_code": "PE 982"
+      },
+      {
+        "oem_number": "1906 98",
+        "manufacturer": "CITROEN",
+        "motoec_code": "PE 982"
+      },
+      {
+        "oem_number": "1906 C4",
+        "manufacturer": "CITROEN",
+        "motoec_code": "PE 982"
+      },
+      {
+        "oem_number": "51779083",
+        "manufacturer": "FIAT GROUP (ALFA/FIAT/LANCIA)",
+        "motoec_code": "PE 982"
+      },
+      {
+        "oem_number": "6001073287",
+        "manufacturer": "FIAT GROUP (ALFA/FIAT/LANCIA)",
+        "motoec_code": "PE 982"
+      },
+      {
+        "oem_number": "71746975",
+        "manufacturer": "FIAT GROUP (ALFA/FIAT/LANCIA)",
+        "motoec_code": "PE 982"
+      },
+      {
+        "oem_number": "71753841",
+        "manufacturer": "FIAT GROUP (ALFA/FIAT/LANCIA)",
+        "motoec_code": "PE 982"
+      },
+      {
+        "oem_number": "71773193",
+        "manufacturer": "FIAT GROUP (ALFA/FIAT/LANCIA)",
+        "motoec_code": "PE 982"
+      },
+      {
+        "oem_number": "77362340",
+        "manufacturer": "FIAT GROUP (ALFA/FIAT/LANCIA)",
+        "motoec_code": "PE 982"
+      },
+      {
+        "oem_number": "77363600",
+        "manufacturer": "FIAT GROUP (ALFA/FIAT/LANCIA)",
+        "motoec_code": "PE 982"
+      },
+      {
+        "oem_number": "77365864",
+        "manufacturer": "FIAT GROUP (ALFA/FIAT/LANCIA)",
+        "motoec_code": "PE 982"
+      },
+      {
+        "oem_number": "77365902",
+        "manufacturer": "FIAT GROUP (ALFA/FIAT/LANCIA)",
+        "motoec_code": "PE 982"
+      },
+      {
+        "oem_number": "1596 790",
+        "manufacturer": "FORD",
+        "motoec_code": "PE 982"
+      },
+      {
+        "oem_number": "13122587",
+        "manufacturer": "GENERAL MOTORS (GM)",
+        "motoec_code": "PE 982"
+      },
+      {
+        "oem_number": "13179060",
+        "manufacturer": "GENERAL MOTORS (GM)",
+        "motoec_code": "PE 982"
+      },
+      {
+        "oem_number": "93193621",
+        "manufacturer": "GENERAL MOTORS (GM)",
+        "motoec_code": "PE 982"
+      },
+      {
+        "oem_number": "96816473",
+        "manufacturer": "GENERAL MOTORS (GM)",
+        "motoec_code": "PE 982"
+      },
+      {
+        "oem_number": "4708795",
+        "manufacturer": "OPEL",
+        "motoec_code": "PE 982"
+      },
+      {
+        "oem_number": "4807214",
+        "manufacturer": "OPEL",
+        "motoec_code": "PE 982"
+      },
+      {
+        "oem_number": "813035",
+        "manufacturer": "OPEL",
+        "motoec_code": "PE 982"
+      },
+      {
+        "oem_number": "813037",
+        "manufacturer": "OPEL",
+        "motoec_code": "PE 982"
+      },
+      {
+        "oem_number": "813040",
+        "manufacturer": "OPEL",
+        "motoec_code": "PE 982"
+      },
+      {
+        "oem_number": "813569",
+        "manufacturer": "OPEL",
+        "motoec_code": "PE 982"
+      },
+      {
+        "oem_number": "8135690",
+        "manufacturer": "OPEL",
+        "motoec_code": "PE 982"
+      },
+      {
+        "oem_number": "818012",
+        "manufacturer": "OPEL",
+        "motoec_code": "PE 982"
+      },
+      {
+        "oem_number": "818032",
+        "manufacturer": "OPEL",
+        "motoec_code": "PE 982"
+      },
+      {
+        "oem_number": "95599700",
+        "manufacturer": "OPEL",
+        "motoec_code": "PE 982"
+      },
+      {
+        "oem_number": "1606267680",
+        "manufacturer": "PEUGEOT",
+        "motoec_code": "PE 982"
+      },
+      {
+        "oem_number": "1631487880",
+        "manufacturer": "PEUGEOT",
+        "motoec_code": "PE 982"
+      },
+      {
+        "oem_number": "1901 80",
+        "manufacturer": "PEUGEOT",
+        "motoec_code": "PE 982"
+      },
+      {
+        "oem_number": "1906 97",
+        "manufacturer": "PEUGEOT",
+        "motoec_code": "PE 982"
+      },
+      {
+        "oem_number": "1906 C4",
+        "manufacturer": "PEUGEOT",
+        "motoec_code": "PE 982"
+      },
+      {
+        "oem_number": "50 21 192 733",
+        "manufacturer": "RENAULT TRUCKS (OKELIA)",
+        "motoec_code": "PE 982"
+      },
+      {
+        "oem_number": "12762212",
+        "manufacturer": "SAAB",
+        "motoec_code": "PE 982"
+      },
+      {
+        "oem_number": "15411-84E50",
+        "manufacturer": "SUBARU",
+        "motoec_code": "PE 982"
+      },
+      {
+        "oem_number": "15411-84E50",
+        "manufacturer": "SUZUKI",
+        "motoec_code": "PE 982"
+      },
+      {
+        "oem_number": "15411-84E50-000",
+        "manufacturer": "SUZUKI",
+        "motoec_code": "PE 982"
+      },
+      {
+        "oem_number": "15411-84E60",
+        "manufacturer": "SUZUKI",
+        "motoec_code": "PE 982"
+      },
+      {
+        "oem_number": "15411-84E60-000",
+        "manufacturer": "SUZUKI",
+        "motoec_code": "PE 982"
+      },
+      {
+        "oem_number": "15411T84E60",
+        "manufacturer": "SUZUKI",
+        "motoec_code": "PE 982"
+      },
+      {
+        "oem_number": "93181377",
+        "manufacturer": "VAUXHALL",
+        "motoec_code": "PE 982"
+      },
+      {
+        "oem_number": "95599129",
+        "manufacturer": "VAUXHALL",
+        "motoec_code": "PE 982"
+      }
+    ],
+    "rival_numbers": [
+      {
+        "rival_code": "MD-577",
+        "brand": "ALCO FILTER",
+        "motoec_code": "PE 982"
+      },
+      {
+        "rival_code": "SF-9960",
+        "brand": "AMC FILTER",
+        "motoec_code": "PE 982"
+      },
+      {
+        "rival_code": "OBG-67/99.0",
+        "brand": "ARMAFILT",
+        "motoec_code": "PE 982"
+      },
+      {
+        "rival_code": "AS 3529",
+        "brand": "ASAŞ",
+        "motoec_code": "PE 982"
+      },
+      {
+        "rival_code": "30-ECO016",
+        "brand": "ASHIKA",
+        "motoec_code": "PE 982"
+      },
+      {
+        "rival_code": "ADK82327",
+        "brand": "BLUEPRINT",
+        "motoec_code": "PE 982"
+      },
+      {
+        "rival_code": "1 457 070 001",
+        "brand": "BOSCH",
+        "motoec_code": "PE 982"
+      },
+      {
+        "rival_code": "L 409",
+        "brand": "CHAMPION",
+        "motoec_code": "PE 982"
+      },
+      {
+        "rival_code": "MG 1609",
+        "brand": "CLEAN FILTER",
+        "motoec_code": "PE 982"
+      },
+      {
+        "rival_code": "EFF 201",
+        "brand": "COMLINE",
+        "motoec_code": "PE 982"
+      },
+      {
+        "rival_code": "FEM 4238",
+        "brand": "COOPERS FILTERS",
+        "motoec_code": "PE 982"
+      },
+      {
+        "rival_code": "FA 5757",
+        "brand": "COOPERSFIAAM FILTER",
+        "motoec_code": "PE 982"
+      },
+      {
+        "rival_code": "4036",
+        "brand": "CROSLAND",
+        "motoec_code": "PE 982"
+      },
+      {
+        "rival_code": "HDF 608",
+        "brand": "DELPHI",
+        "motoec_code": "PE 982"
+      },
+      {
+        "rival_code": "A 120184",
+        "brand": "DENCKERMANN",
+        "motoec_code": "PE 982"
+      },
+      {
+        "rival_code": "26336",
+        "brand": "FEBI BILSTEIN",
+        "motoec_code": "PE 982"
+      },
+      {
+        "rival_code": "FA 5757",
+        "brand": "FIAAM",
+        "motoec_code": "PE 982"
+      },
+      {
+        "rival_code": "KFE 1460",
+        "brand": "FIL",
+        "motoec_code": "PE 982"
+      },
+      {
+        "rival_code": "MFE 1558MB",
+        "brand": "FIL",
+        "motoec_code": "PE 982"
+      },
+      {
+        "rival_code": "10.26.12/30",
+        "brand": "FRAD FILTER",
+        "motoec_code": "PE 982"
+      },
+      {
+        "rival_code": "C10026",
+        "brand": "FRAM",
+        "motoec_code": "PE 982"
+      },
+      {
+        "rival_code": "GML-5400-EFGJ",
+        "brand": "GOLD FILTER",
+        "motoec_code": "PE 982"
+      },
+      {
+        "rival_code": "GFI 50540",
+        "brand": "GUR FILTER",
+        "motoec_code": "PE 982"
+      },
+      {
+        "rival_code": "E83KP D140",
+        "brand": "HENGST FILTER",
+        "motoec_code": "PE 982"
+      },
+      {
+        "rival_code": "E83KP01",
+        "brand": "HENGST FILTER",
+        "motoec_code": "PE 982"
+      },
+      {
+        "rival_code": "E83KP01 D140",
+        "brand": "HENGST FILTER",
+        "motoec_code": "PE 982"
+      },
+      {
+        "rival_code": "7690499",
+        "brand": "HOFFER",
+        "motoec_code": "PE 982"
+      },
+      {
+        "rival_code": "IFG-3007",
+        "brand": "IPS PARTS",
+        "motoec_code": "PE 982"
+      },
+      {
+        "rival_code": "J 1330905",
+        "brand": "JAKOPARTS (HERTH+BUSS)",
+        "motoec_code": "PE 982"
+      },
+      {
+        "rival_code": "J 1338027",
+        "brand": "JAKOPARTS (HERTH+BUSS)",
+        "motoec_code": "PE 982"
+      },
+      {
+        "rival_code": "FC-ECO016",
+        "brand": "JAPANPARTS",
+        "motoec_code": "PE 982"
+      },
+      {
+        "rival_code": "880813569",
+        "brand": "JP GROUP",
+        "motoec_code": "PE 982"
+      },
+      {
+        "rival_code": "11-0390",
+        "brand": "KAGER",
+        "motoec_code": "PE 982"
+      },
+      {
+        "rival_code": "FC 1181",
+        "brand": "KAISHIN",
+        "motoec_code": "PE 982"
+      },
+      {
+        "rival_code": "FC 1181OE",
+        "brand": "KAISHIN",
+        "motoec_code": "PE 982"
+      },
+      {
+        "rival_code": "KX 208D",
+        "brand": "KNECHT",
+        "motoec_code": "PE 982"
+      },
+      {
+        "rival_code": "4136-FX",
+        "brand": "KOLBENSCHMIDT",
+        "motoec_code": "PE 982"
+      },
+      {
+        "rival_code": "50014136",
+        "brand": "KOLBENSCHMIDT",
+        "motoec_code": "PE 982"
+      },
+      {
+        "rival_code": "HDF 608",
+        "brand": "LUCAS CAV/DELPHI",
+        "motoec_code": "PE 982"
+      },
+      {
+        "rival_code": "MP 44116",
+        "brand": "M-FILTER",
+        "motoec_code": "PE 982"
+      },
+      {
+        "rival_code": "MP 4416",
+        "brand": "M-FILTER",
+        "motoec_code": "PE 982"
+      },
+      {
+        "rival_code": "152071760866",
+        "brand": "MAGNETI MARELLI",
+        "motoec_code": "PE 982"
+      },
+      {
+        "rival_code": "71760866",
+        "brand": "MAGNETI MARELLI",
+        "motoec_code": "PE 982"
+      },
+      {
+        "rival_code": "KX 208D",
+        "brand": "MAHLE",
+        "motoec_code": "PE 982"
+      },
+      {
+        "rival_code": "PU 723x",
+        "brand": "MANN HUMMEL",
+        "motoec_code": "PE 982"
+      },
+      {
+        "rival_code": "63236",
+        "brand": "MAPCO",
+        "motoec_code": "PE 982"
+      },
+      {
+        "rival_code": "4499",
+        "brand": "MEAT & DORIA",
+        "motoec_code": "PE 982"
+      },
+      {
+        "rival_code": "ELG 5322",
+        "brand": "MECA FILTER",
+        "motoec_code": "PE 982"
+      },
+      {
+        "rival_code": "F 116",
+        "brand": "MISFAT FILTRES",
+        "motoec_code": "PE 982"
+      },
+      {
+        "rival_code": "VFF 500",
+        "brand": "MOTAQUIP AAPCO",
+        "motoec_code": "PE 982"
+      },
+      {
+        "rival_code": "FN 148",
+        "brand": "MULLER FILTER",
+        "motoec_code": "PE 982"
+      },
+      {
+        "rival_code": "J 1338031",
+        "brand": "NIPPARTS",
+        "motoec_code": "PE 982"
+      },
+      {
+        "rival_code": "PNT-708",
+        "brand": "OSAKA-PENTA",
+        "motoec_code": "PE 982"
+      },
+      {
+        "rival_code": "AG-3405",
+        "brand": "P.B.R.",
+        "motoec_code": "PE 982"
+      },
+      {
+        "rival_code": "C 507",
+        "brand": "PURFLUX",
+        "motoec_code": "PE 982"
+      },
+      {
+        "rival_code": "F 59250",
+        "brand": "PUROLATOR",
+        "motoec_code": "PE 982"
+      },
+      {
+        "rival_code": "F 90002",
+        "brand": "PUROLATOR",
+        "motoec_code": "PE 982"
+      },
+      {
+        "rival_code": "WF 8366",
+        "brand": "QUINTON HAZELL",
+        "motoec_code": "PE 982"
+      },
+      {
+        "rival_code": "ED 4321 E",
+        "brand": "REAL",
+        "motoec_code": "PE 982"
+      },
+      {
+        "rival_code": "GEF 353",
+        "brand": "RETA",
+        "motoec_code": "PE 982"
+      },
+      {
+        "rival_code": "RXF 2104",
+        "brand": "RIXENBERG",
+        "motoec_code": "PE 982"
+      },
+      {
+        "rival_code": "SF 127",
+        "brand": "SARDES",
+        "motoec_code": "PE 982"
+      },
+      {
+        "rival_code": "SC 7046",
+        "brand": "SCT GERMANY",
+        "motoec_code": "PE 982"
+      },
+      {
+        "rival_code": "S 6H20 NE",
+        "brand": "SOFIMA",
+        "motoec_code": "PE 982"
+      },
+      {
+        "rival_code": "70 92 6336",
+        "brand": "SWAG",
+        "motoec_code": "PE 982"
+      },
+      {
+        "rival_code": "GS 010026-E",
+        "brand": "TECNECO FILTERS",
+        "motoec_code": "PE 982"
+      },
+      {
+        "rival_code": "N 311",
+        "brand": "TECNOCAR",
+        "motoec_code": "PE 982"
+      },
+      {
+        "rival_code": "60.H20.00",
+        "brand": "UFI",
+        "motoec_code": "PE 982"
+      },
+      {
+        "rival_code": "60.H2O.00",
+        "brand": "UFI",
+        "motoec_code": "PE 982"
+      },
+      {
+        "rival_code": "V40-0611",
+        "brand": "VAICO",
+        "motoec_code": "PE 982"
+      },
+      {
+        "rival_code": "587914",
+        "brand": "VALEO",
+        "motoec_code": "PE 982"
+      },
+      {
+        "rival_code": "WFN 1535",
+        "brand": "WAHLEN FILTER",
+        "motoec_code": "PE 982"
+      },
+      {
+        "rival_code": "WFN 1583",
+        "brand": "WAHLEN FILTER",
+        "motoec_code": "PE 982"
+      },
+      {
+        "rival_code": "WFN 1602",
+        "brand": "WAHLEN FILTER",
+        "motoec_code": "PE 982"
+      },
+      {
+        "rival_code": "WF 8366",
+        "brand": "WIX FILTER (EUROPE)",
+        "motoec_code": "PE 982"
+      },
+      {
+        "rival_code": "WB 305",
+        "brand": "WUNDER",
+        "motoec_code": "PE 982"
+      },
+      {
+        "rival_code": "Rakip Ürün Numarası",
+        "brand": "Üretici Firma",
+        "motoec_code": "PE 982"
+      },
+      {
+        "rival_code": "CE 1399 ME",
+        "brand": "ŞAMPİYON",
+        "motoec_code": "PE 982"
+      },
+      {
+        "rival_code": "CE 1399 MK",
+        "brand": "ŞAMPİYON",
+        "motoec_code": "PE 982"
+      },
+      {
+        "rival_code": "PU723X",
+        "brand": "MANN-FILTER",
+        "motoec_code": "PE 982"
+      }
+    ],
+    "applications": [
+      {
+        "make": "CITROEN",
+        "model_series": "Jumper II (Relay II)",
+        "engine": "2.0 HDi",
+        "engine_code": "DW10TD",
+        "kw": "62",
+        "hp": "84",
+        "years": "02.2002 -",
+        "related_motoec_codes": "PE 982"
+      },
+      {
+        "make": "CITROEN",
+        "model_series": "Jumper II (Relay II)",
+        "engine": "2.2 HDi",
+        "engine_code": "DW12TED",
+        "kw": "74",
+        "hp": "100",
+        "years": "02.2002 -",
+        "related_motoec_codes": "PE 982"
+      },
+      {
+        "make": "CITROEN",
+        "model_series": "Jumper II (Relay II)",
+        "engine": "2.8 HDi 146",
+        "engine_code": "Sofim 2800 HDI",
+        "kw": "107",
+        "hp": "146",
+        "years": "04.2004 -",
+        "related_motoec_codes": "PE 982"
+      },
+      {
+        "make": "CITROEN",
+        "model_series": "Jumper II (Relay II)",
+        "engine": "2.8 HDi 127",
+        "engine_code": "Sofim 2800 HDI",
+        "kw": "94",
+        "hp": "127",
+        "years": "02.2002 -",
+        "related_motoec_codes": "PE 982"
+      },
+      {
+        "make": "CITROEN",
+        "model_series": "Jumper III (Relay III)",
+        "engine": "3.0 HDi 160",
+        "engine_code": "F30 DT, F30 DT E5",
+        "kw": "115",
+        "hp": "157",
+        "years": "07.2006 -",
+        "related_motoec_codes": "PE 982"
+      },
+      {
+        "make": "CITROEN",
+        "model_series": "Jumper III (Relay III)",
+        "engine": "2.2 HDi 100",
+        "engine_code": "22 DT PUMA",
+        "kw": "74",
+        "hp": "100",
+        "years": "07.2006 -",
+        "related_motoec_codes": "PE 982"
+      },
+      {
+        "make": "CITROEN",
+        "model_series": "Jumper III (Relay III)",
+        "engine": "2.2 HDi 120",
+        "engine_code": "22 DT PUMA",
+        "kw": "88",
+        "hp": "120",
+        "years": "07.2006 -",
+        "related_motoec_codes": "PE 982"
+      },
+      {
+        "make": "CITROEN",
+        "model_series": "Jumper III (Relay III)",
+        "engine": "3.0 HDi FAP",
+        "engine_code": "F30 DT E5",
+        "kw": "107",
+        "hp": "145",
+        "years": "01.2010 -",
+        "related_motoec_codes": "PE 982"
+      },
+      {
+        "make": "CITROEN",
+        "model_series": "Jumper III (Relay III)",
+        "engine": "2.2 HDi FAP 150",
+        "engine_code": "22 DT PUMA Euro 5",
+        "kw": "110",
+        "hp": "150",
+        "years": "07.2011 -",
+        "related_motoec_codes": "PE 982"
+      },
+      {
+        "make": "CITROEN",
+        "model_series": "Jumper III (Relay III)",
+        "engine": "2.2 HDi FAP 110",
+        "engine_code": "22 DT PUMA Euro 5",
+        "kw": "81",
+        "hp": "110",
+        "years": "07.2011 -",
+        "related_motoec_codes": "PE 982"
+      },
+      {
+        "make": "CITROEN",
+        "model_series": "Jumper III (Relay III)",
+        "engine": "2.2 HDi FAP 130",
+        "engine_code": "22 DT PUMA Euro 5",
+        "kw": "96",
+        "hp": "131",
+        "years": "07.2011 -",
+        "related_motoec_codes": "PE 982"
+      },
+      {
+        "make": "CITROEN",
+        "model_series": "Relay II",
+        "engine": "2.0 HDi",
+        "engine_code": "DW10TD",
+        "kw": "62",
+        "hp": "84",
+        "years": "02.2002 -",
+        "related_motoec_codes": "PE 982"
+      },
+      {
+        "make": "CITROEN",
+        "model_series": "Relay II",
+        "engine": "2.2 HDi",
+        "engine_code": "DW12TED",
+        "kw": "74",
+        "hp": "100",
+        "years": "02.2002 -",
+        "related_motoec_codes": "PE 982"
+      },
+      {
+        "make": "CITROEN",
+        "model_series": "Relay II",
+        "engine": "2.8 HDi 127",
+        "engine_code": "Sofim 2800 HDI",
+        "kw": "94",
+        "hp": "127",
+        "years": "02.2002 -",
+        "related_motoec_codes": "PE 982"
+      },
+      {
+        "make": "CITROEN",
+        "model_series": "Relay II",
+        "engine": "2.8 HDi 146",
+        "engine_code": "Sofim 2800 HDI",
+        "kw": "107",
+        "hp": "146",
+        "years": "04.2004 -",
+        "related_motoec_codes": "PE 982"
+      },
+      {
+        "make": "CITROEN",
+        "model_series": "Relay III",
+        "engine": "2.2 HDi 100",
+        "engine_code": "22 DT PUMA",
+        "kw": "74",
+        "hp": "100",
+        "years": "07.2006 -",
+        "related_motoec_codes": "PE 982"
+      },
+      {
+        "make": "CITROEN",
+        "model_series": "Relay III",
+        "engine": "2.2 HDi 120",
+        "engine_code": "22 DT PUMA",
+        "kw": "88",
+        "hp": "120",
+        "years": "07.2006 -",
+        "related_motoec_codes": "PE 982"
+      },
+      {
+        "make": "CITROEN",
+        "model_series": "Relay III",
+        "engine": "3.0 HDi FAP",
+        "engine_code": "F30 DT E5",
+        "kw": "107",
+        "hp": "145",
+        "years": "01.2010 -",
+        "related_motoec_codes": "PE 982"
+      },
+      {
+        "make": "CITROEN",
+        "model_series": "Relay III",
+        "engine": "3.0 HDi 160",
+        "engine_code": "F30 DT, F30 DT E5",
+        "kw": "115",
+        "hp": "157",
+        "years": "07.2006 -",
+        "related_motoec_codes": "PE 982"
+      },
+      {
+        "make": "CITROEN",
+        "model_series": "Relay III",
+        "engine": "2.2 HDi FAP 110",
+        "engine_code": "22 DT PUMA Euro 5",
+        "kw": "81",
+        "hp": "110",
+        "years": "07.2011 -",
+        "related_motoec_codes": "PE 982"
+      },
+      {
+        "make": "CITROEN",
+        "model_series": "Relay III",
+        "engine": "2.2 HDi FAP 130",
+        "engine_code": "22 DT PUMA Euro 5",
+        "kw": "96",
+        "hp": "131",
+        "years": "07.2011 -",
+        "related_motoec_codes": "PE 982"
+      },
+      {
+        "make": "CITROEN",
+        "model_series": "Relay III",
+        "engine": "2.2 HDi FAP 150",
+        "engine_code": "22 DT PUMA Euro 5",
+        "kw": "110",
+        "hp": "150",
+        "years": "07.2011 -",
+        "related_motoec_codes": "PE 982"
+      },
+      {
+        "make": "CHEVROLET EUROPE / DAEWOO (GM)",
+        "model_series": "Lacetti",
+        "engine": "2.0 D",
+        "engine_code": "",
+        "kw": "89",
+        "hp": "121",
+        "years": "02.2007 -",
+        "related_motoec_codes": "PE 982"
+      },
+      {
+        "make": "CHEVROLET EUROPE / DAEWOO (GM)",
+        "model_series": "Epica",
+        "engine": "2.0 VDCI Diesel",
+        "engine_code": "",
+        "kw": "110",
+        "hp": "150",
+        "years": "02.2007 -",
+        "related_motoec_codes": "PE 982"
+      },
+      {
+        "make": "CHEVROLET EUROPE / DAEWOO (GM)",
+        "model_series": "Captiva",
+        "engine": "2.0 CDTI",
+        "engine_code": "LLW",
+        "kw": "93",
+        "hp": "127",
+        "years": "11.2006 -",
+        "related_motoec_codes": "PE 982"
+      },
+      {
+        "make": "CHEVROLET EUROPE / DAEWOO (GM)",
+        "model_series": "Captiva",
+        "engine": "2.0 CDTI",
+        "engine_code": "LLW",
+        "kw": "110",
+        "hp": "150",
+        "years": "09.2006 -",
+        "related_motoec_codes": "PE 982"
+      },
+      {
+        "make": "FIAT",
+        "model_series": "Multipla (186)",
+        "engine": "1.9 JTD 120",
+        "engine_code": "186 A9.000",
+        "kw": "88",
+        "hp": "120",
+        "years": "07.2002 -",
+        "related_motoec_codes": "PE 982"
+      },
+      {
+        "make": "FIAT",
+        "model_series": "Multipla (186)",
+        "engine": "1.9 JTD 115",
+        "engine_code": "186 A8.000",
+        "kw": "85",
+        "hp": "115",
+        "years": "07.2002 -",
+        "related_motoec_codes": "PE 982"
+      },
+      {
+        "make": "FIAT",
+        "model_series": "Punto II (188/188AX)",
+        "engine": "1.9 JTD",
+        "engine_code": "188 B2.000",
+        "kw": "74",
+        "hp": "100",
+        "years": "07.2003 -",
+        "related_motoec_codes": "PE 982"
+      },
+      {
+        "make": "FIAT",
+        "model_series": "Punto II (188/188AX)",
+        "engine": "1.9 JTD",
+        "engine_code": "188A7.000",
+        "kw": "63",
+        "hp": "85",
+        "years": "11.2001 -",
+        "related_motoec_codes": "PE 982"
+      },
+      {
+        "make": "FIAT",
+        "model_series": "Punto II (188/188AX)",
+        "engine": "1.3 JTD",
+        "engine_code": "188 A9.000",
+        "kw": "51",
+        "hp": "70",
+        "years": "07.2003 -",
+        "related_motoec_codes": "PE 982"
+      },
+      {
+        "make": "FIAT",
+        "model_series": "Strada (178E/278)",
+        "engine": "1.3 JTD",
+        "engine_code": "223 A9.000",
+        "kw": "62",
+        "hp": "85",
+        "years": "06.2006 -",
+        "related_motoec_codes": "PE 982"
+      },
+      {
+        "make": "FIAT",
+        "model_series": "DOBLO/DOBLO CARGO",
+        "engine": "1.3 Multijet 16V JTD",
+        "engine_code": "223 A9.000",
+        "kw": "62",
+        "hp": "85",
+        "years": "11.2005 -",
+        "related_motoec_codes": "PE 982"
+      },
+      {
+        "make": "FIAT",
+        "model_series": "DOBLO/DOBLO CARGO",
+        "engine": "1.3 JTD",
+        "engine_code": "188 A8.000, 188 A9.000",
+        "kw": "51",
+        "hp": "70",
+        "years": "04.2004 -",
+        "related_motoec_codes": "PE 982"
+      },
+      {
+        "make": "FIAT",
+        "model_series": "DOBLO/DOBLO CARGO",
+        "engine": "1.3 Multijet 16V JTD",
+        "engine_code": "199 A2.000",
+        "kw": "55",
+        "hp": "75",
+        "years": "11.2005 -",
+        "related_motoec_codes": "PE 982"
+      },
+      {
+        "make": "FIAT",
+        "model_series": "Ducato 2002 (244)",
+        "engine": "2.8 JTD",
+        "engine_code": "8140.43S",
+        "kw": "94",
+        "hp": "127",
+        "years": "02.2002 -",
+        "related_motoec_codes": "PE 982"
+      },
+      {
+        "make": "FIAT",
+        "model_series": "Ducato 2002 (244)",
+        "engine": "2.8 JTD",
+        "engine_code": "8140.43N",
+        "kw": "107",
+        "hp": "146",
+        "years": "04.2004 -",
+        "related_motoec_codes": "PE 982"
+      },
+      {
+        "make": "FIAT",
+        "model_series": "Ducato 2002 (244)",
+        "engine": "2.0 JTD",
+        "engine_code": "RHV (DW10)",
+        "kw": "62",
+        "hp": "84",
+        "years": "02.2002 -",
+        "related_motoec_codes": "PE 982"
+      },
+      {
+        "make": "FIAT",
+        "model_series": "Ducato 2002 (244)",
+        "engine": "2.3 JTD",
+        "engine_code": "F1AE0481C",
+        "kw": "81",
+        "hp": "110",
+        "years": "02.2002 -",
+        "related_motoec_codes": "PE 982"
+      },
+      {
+        "make": "FIAT",
+        "model_series": "500 / Nuova 500 (150)",
+        "engine": "1.3 JTD 16V",
+        "engine_code": "169.A1.000",
+        "kw": "55",
+        "hp": "75",
+        "years": "07.2007 -",
+        "related_motoec_codes": "PE 982"
+      },
+      {
+        "make": "FIAT",
+        "model_series": "Croma II (194)",
+        "engine": "1.9 JTD",
+        "engine_code": "939A2.000",
+        "kw": "110",
+        "hp": "150",
+        "years": "06.2005 -",
+        "related_motoec_codes": "PE 982"
+      },
+      {
+        "make": "FIAT",
+        "model_series": "Croma II (194)",
+        "engine": "1.9 JTD",
+        "engine_code": "939A1.000",
+        "kw": "88",
+        "hp": "120",
+        "years": "06.2005 -",
+        "related_motoec_codes": "PE 982"
+      },
+      {
+        "make": "FIAT",
+        "model_series": "Panda II (169A)",
+        "engine": "1.3 JTD 16V",
+        "engine_code": "188 A9.000, 188 A8.000",
+        "kw": "51",
+        "hp": "70",
+        "years": "12.2003 -",
+        "related_motoec_codes": "PE 982"
+      },
+      {
+        "make": "FIAT",
+        "model_series": "Albea (172)",
+        "engine": "1.3 JTD 16V",
+        "engine_code": "",
+        "kw": "51",
+        "hp": "70",
+        "years": "03.2004 -",
+        "related_motoec_codes": "PE 982"
+      },
+      {
+        "make": "FIAT",
+        "model_series": "Panda II (169A)",
+        "engine": "1.3 JTD 16V",
+        "engine_code": "169 A1.000, 169 A5.000",
+        "kw": "55",
+        "hp": "75",
+        "years": "06.2006 -",
+        "related_motoec_codes": "PE 982"
+      },
+      {
+        "make": "FIAT",
+        "model_series": "Siena (173)",
+        "engine": "1.3 JTD",
+        "engine_code": "188 A9.000",
+        "kw": "51",
+        "hp": "70",
+        "years": "09.2003 -",
+        "related_motoec_codes": "PE 982"
+      },
+      {
+        "make": "FIAT",
+        "model_series": "Idea (135/235)",
+        "engine": "1.9 JTD",
+        "engine_code": "188 B2.000",
+        "kw": "74",
+        "hp": "100",
+        "years": "01.2004 -",
+        "related_motoec_codes": "PE 982"
+      },
+      {
+        "make": "FIAT",
+        "model_series": "Idea (135/235)",
+        "engine": "1.3 JTD 70",
+        "engine_code": "188 A9.000",
+        "kw": "51",
+        "hp": "70",
+        "years": "01.2004 -",
+        "related_motoec_codes": "PE 982"
+      },
+      {
+        "make": "FIAT",
+        "model_series": "Idea (135/235)",
+        "engine": "1.3 JTD 90",
+        "engine_code": "199 B1.000",
+        "kw": "66",
+        "hp": "90",
+        "years": "10.2005 -",
+        "related_motoec_codes": "PE 982"
+      },
+      {
+        "make": "FIAT",
+        "model_series": "Sedici (189)",
+        "engine": "2.0 JTD",
+        "engine_code": "D20AA",
+        "kw": "99",
+        "hp": "135",
+        "years": "06.2006 -",
+        "related_motoec_codes": "PE 982"
+      },
+      {
+        "make": "FIAT",
+        "model_series": "Sedici (189)",
+        "engine": "1.9 JTD",
+        "engine_code": "D19AA",
+        "kw": "88",
+        "hp": "120",
+        "years": "06.2006 -",
+        "related_motoec_codes": "PE 982"
+      },
+      {
+        "make": "FIAT",
+        "model_series": "Ducato 2007 (250/251/252/254/290)",
+        "engine": "2.2 JTD",
+        "engine_code": "4HV",
+        "kw": "74",
+        "hp": "100",
+        "years": "07.2006 -",
+        "related_motoec_codes": "PE 982"
+      },
+      {
+        "make": "FIAT",
+        "model_series": "Ducato 2007 (250/251/252/254/290)",
+        "engine": "3.0 JTD",
+        "engine_code": "F1CE3481M",
+        "kw": "115",
+        "hp": "156",
+        "years": "07.2006 -",
+        "related_motoec_codes": "PE 982"
+      },
+      {
+        "make": "FIAT",
+        "model_series": "Ducato 2007 (250/251/252/254/290)",
+        "engine": "2.3 JTD 120 Multijet",
+        "engine_code": "F1AE0481C/D, F1AGL4114",
+        "kw": "88",
+        "hp": "120",
+        "years": "07.2006 -",
+        "related_motoec_codes": "PE 982"
+      },
+      {
+        "make": "FIAT",
+        "model_series": "Ducato 2007 (250/251/252/254/290)",
+        "engine": "3.0 JTD",
+        "engine_code": "F1CE3481N",
+        "kw": "107",
+        "hp": "146",
+        "years": "04.2010 -",
+        "related_motoec_codes": "PE 982"
+      },
+      {
+        "make": "FIAT",
+        "model_series": "Ducato 2007 (250/251/252/254/290)",
+        "engine": "2.3 JTD 130 Multijet",
+        "engine_code": "F1AE0481N/T,F1AE3481D,F1AGL4..",
+        "kw": "96",
+        "hp": "130",
+        "years": "07.2006 -",
+        "related_motoec_codes": "PE 982"
+      },
+      {
+        "make": "LANCIA (LANCIA AUTOBIANCHI)",
+        "model_series": "Ypsilon (843)",
+        "engine": "1.3 JTD",
+        "engine_code": "199 A3.000",
+        "kw": "66",
+        "hp": "90",
+        "years": "09.2006 -",
+        "related_motoec_codes": "PE 982"
+      },
+      {
+        "make": "LANCIA (LANCIA AUTOBIANCHI)",
+        "model_series": "Ypsilon (843)",
+        "engine": "1.3 JTD",
+        "engine_code": "188 A9.000",
+        "kw": "51",
+        "hp": "70",
+        "years": "10.2003 -",
+        "related_motoec_codes": "PE 982"
+      },
+      {
+        "make": "LANCIA (LANCIA AUTOBIANCHI)",
+        "model_series": "Ypsilon (843)",
+        "engine": "1.3 JTD",
+        "engine_code": "199 A2.000, 199 A9.000",
+        "kw": "55",
+        "hp": "75",
+        "years": "09.2006 -",
+        "related_motoec_codes": "PE 982"
+      },
+      {
+        "make": "LANCIA (LANCIA AUTOBIANCHI)",
+        "model_series": "Musa",
+        "engine": "1.9 JTD",
+        "engine_code": "188 B2.000",
+        "kw": "74",
+        "hp": "100",
+        "years": "10.2004 -",
+        "related_motoec_codes": "PE 982"
+      },
+      {
+        "make": "LANCIA (LANCIA AUTOBIANCHI)",
+        "model_series": "Ypsilon (843)",
+        "engine": "1.3 JTD",
+        "engine_code": "199 A3.000",
+        "kw": "77",
+        "hp": "105",
+        "years": "05.2007 -",
+        "related_motoec_codes": "PE 982"
+      },
+      {
+        "make": "LANCIA (LANCIA AUTOBIANCHI)",
+        "model_series": "Musa",
+        "engine": "1.3 JTD",
+        "engine_code": "199 A3.000",
+        "kw": "66",
+        "hp": "90",
+        "years": "09.2004 -",
+        "related_motoec_codes": "PE 982"
+      },
+      {
+        "make": "LANCIA (LANCIA AUTOBIANCHI)",
+        "model_series": "Musa",
+        "engine": "1.3 JTD",
+        "engine_code": "188 A9.000",
+        "kw": "51",
+        "hp": "70",
+        "years": "09.2004 -",
+        "related_motoec_codes": "PE 982"
+      },
+      {
+        "make": "OPEL",
+        "model_series": "Agila",
+        "engine": "1.3 CDTI",
+        "engine_code": "Z13DT",
+        "kw": "51",
+        "hp": "70",
+        "years": "09.2003 -",
+        "related_motoec_codes": "PE 982"
+      },
+      {
+        "make": "OPEL",
+        "model_series": "Meriva A",
+        "engine": "1.3 CDTI",
+        "engine_code": "Z13DTJ",
+        "kw": "55",
+        "hp": "75",
+        "years": "12.2005 -",
+        "related_motoec_codes": "PE 982"
+      },
+      {
+        "make": "OPEL",
+        "model_series": "Meriva A",
+        "engine": "1.3 CDTI",
+        "engine_code": "Y13DT, Z13DT",
+        "kw": "51",
+        "hp": "70",
+        "years": "07.2005 -",
+        "related_motoec_codes": "PE 982"
+      },
+      {
+        "make": "OPEL",
+        "model_series": "Corsa-C",
+        "engine": "1.3 CDTI",
+        "engine_code": "Z 13 DT",
+        "kw": "51",
+        "hp": "70",
+        "years": "09.2003 -",
+        "related_motoec_codes": "PE 982"
+      },
+      {
+        "make": "OPEL",
+        "model_series": "Combo B",
+        "engine": "1.3 CDTI",
+        "engine_code": "Z 13 DT",
+        "kw": "51",
+        "hp": "70",
+        "years": "06.2004 -",
+        "related_motoec_codes": "PE 982"
+      },
+      {
+        "make": "OPEL",
+        "model_series": "Combo B",
+        "engine": "1.3 CDTI",
+        "engine_code": "Z 13 DTJ",
+        "kw": "55",
+        "hp": "75",
+        "years": "12.2005 -",
+        "related_motoec_codes": "PE 982"
+      },
+      {
+        "make": "OPEL",
+        "model_series": "Vectra-C",
+        "engine": "1.9 CDTI",
+        "engine_code": "Z19DTH",
+        "kw": "110",
+        "hp": "150",
+        "years": "04.2004 -",
+        "related_motoec_codes": "PE 982"
+      },
+      {
+        "make": "OPEL",
+        "model_series": "Vectra-C",
+        "engine": "1.9 CDTI",
+        "engine_code": "Z19DT/DTJ",
+        "kw": "88",
+        "hp": "120",
+        "years": "04.2004 -",
+        "related_motoec_codes": "PE 982"
+      },
+      {
+        "make": "OPEL",
+        "model_series": "Vectra-C",
+        "engine": "1.9 CDTI",
+        "engine_code": "Z19DTL",
+        "kw": "74",
+        "hp": "100",
+        "years": "09.2005 -",
+        "related_motoec_codes": "PE 982"
+      },
+      {
+        "make": "OPEL",
+        "model_series": "Signum",
+        "engine": "1.9 CDTI",
+        "engine_code": "Z19DTL",
+        "kw": "74",
+        "hp": "100",
+        "years": "09.2005 -",
+        "related_motoec_codes": "PE 982"
+      },
+      {
+        "make": "OPEL",
+        "model_series": "Signum",
+        "engine": "1.9 CDTI",
+        "engine_code": "Z19DTH",
+        "kw": "110",
+        "hp": "150",
+        "years": "04.2004 -",
+        "related_motoec_codes": "PE 982"
+      },
+      {
+        "make": "OPEL",
+        "model_series": "Signum",
+        "engine": "1.9 CDTI",
+        "engine_code": "Z19DT/DTJ",
+        "kw": "88",
+        "hp": "120",
+        "years": "04.2004 -",
+        "related_motoec_codes": "PE 982"
+      },
+      {
+        "make": "OPEL",
+        "model_series": "Astra H / Astra H GTC/TwinTop",
+        "engine": "1.3 CDTI",
+        "engine_code": "Z13DTH",
+        "kw": "66",
+        "hp": "90",
+        "years": "04.2005 -",
+        "related_motoec_codes": "PE 982"
+      },
+      {
+        "make": "OPEL",
+        "model_series": "Astra H / Astra H GTC/TwinTop",
+        "engine": "1.9 CDTI",
+        "engine_code": "Z19DTH",
+        "kw": "110",
+        "hp": "150",
+        "years": "09.2004 -",
+        "related_motoec_codes": "PE 982"
+      },
+      {
+        "make": "OPEL",
+        "model_series": "Astra H / Astra H GTC/TwinTop",
+        "engine": "1.9 CDTI",
+        "engine_code": "Z19DTL",
+        "kw": "74",
+        "hp": "100",
+        "years": "09.2005 -",
+        "related_motoec_codes": "PE 982"
+      },
+      {
+        "make": "OPEL",
+        "model_series": "Astra H / Astra H GTC/TwinTop",
+        "engine": "1.9 CDTI",
+        "engine_code": "Z19DT/DTJ",
+        "kw": "88",
+        "hp": "120",
+        "years": "09.2004 -",
+        "related_motoec_codes": "PE 982"
+      },
+      {
+        "make": "OPEL",
+        "model_series": "Tigra Twin-Top",
+        "engine": "1.3 CDTI",
+        "engine_code": "Z13DT",
+        "kw": "51",
+        "hp": "70",
+        "years": "12.2004 -",
+        "related_motoec_codes": "PE 982"
+      },
+      {
+        "make": "OPEL",
+        "model_series": "Zafira B",
+        "engine": "1.9 CDTI",
+        "engine_code": "Z19DT/DTJ",
+        "kw": "88",
+        "hp": "120",
+        "years": "07.2005 -",
+        "related_motoec_codes": "PE 982"
+      },
+      {
+        "make": "OPEL",
+        "model_series": "Zafira B",
+        "engine": "1.9 CDTI",
+        "engine_code": "Z19DTL",
+        "kw": "74",
+        "hp": "100",
+        "years": "07.2005 -",
+        "related_motoec_codes": "PE 982"
+      },
+      {
+        "make": "OPEL",
+        "model_series": "Zafira B",
+        "engine": "1.9 CDTI",
+        "engine_code": "Z19DTH",
+        "kw": "110",
+        "hp": "150",
+        "years": "07.2005 -",
+        "related_motoec_codes": "PE 982"
+      },
+      {
+        "make": "OPEL",
+        "model_series": "Antara",
+        "engine": "2.0 CDTI",
+        "engine_code": "Z20DMH",
+        "kw": "110",
+        "hp": "150",
+        "years": "11.2006 -",
+        "related_motoec_codes": "PE 982"
+      },
+      {
+        "make": "OPEL",
+        "model_series": "Antara",
+        "engine": "2.0 CDTI",
+        "engine_code": "Z20DM",
+        "kw": "93",
+        "hp": "127",
+        "years": "11.2006 -",
+        "related_motoec_codes": "PE 982"
+      },
+      {
+        "make": "OPEL",
+        "model_series": "Agila II",
+        "engine": "1.3 CDTI",
+        "engine_code": "D13A, Z13DTJ",
+        "kw": "55",
+        "hp": "75",
+        "years": "04.2008 -",
+        "related_motoec_codes": "PE 982"
+      },
+      {
+        "make": "PEUGEOT",
+        "model_series": "Boxer II",
+        "engine": "2.0 HDi",
+        "engine_code": "RHV (DW10UTD)",
+        "kw": "62",
+        "hp": "84",
+        "years": "02.2002 -",
+        "related_motoec_codes": "PE 982"
+      },
+      {
+        "make": "PEUGEOT",
+        "model_series": "Boxer II",
+        "engine": "2.2 HDi",
+        "engine_code": "4HY (DW12UTED)",
+        "kw": "74",
+        "hp": "100",
+        "years": "02.2002 -",
+        "related_motoec_codes": "PE 982"
+      },
+      {
+        "make": "PEUGEOT",
+        "model_series": "Boxer II",
+        "engine": "2.8 HDi 127",
+        "engine_code": "8140.43S",
+        "kw": "94",
+        "hp": "127",
+        "years": "02.2002 -",
+        "related_motoec_codes": "PE 982"
+      },
+      {
+        "make": "PEUGEOT",
+        "model_series": "Boxer II",
+        "engine": "2.8 HDi 146",
+        "engine_code": "8140.43N",
+        "kw": "107",
+        "hp": "146",
+        "years": "04.2004 -",
+        "related_motoec_codes": "PE 982"
+      },
+      {
+        "make": "PEUGEOT",
+        "model_series": "Boxer III",
+        "engine": "2.2 HDi 100",
+        "engine_code": "22 DT PUMA",
+        "kw": "74",
+        "hp": "100",
+        "years": "07.2006 -",
+        "related_motoec_codes": "PE 982"
+      },
+      {
+        "make": "PEUGEOT",
+        "model_series": "Boxer III",
+        "engine": "3.0 HDi 160",
+        "engine_code": "F30DT, F30DTE5",
+        "kw": "115",
+        "hp": "157",
+        "years": "07.2006 -",
+        "related_motoec_codes": "PE 982"
+      },
+      {
+        "make": "PEUGEOT",
+        "model_series": "Boxer III",
+        "engine": "2.2 HDi FAP 110",
+        "engine_code": "22 DT PUMA Euro 5",
+        "kw": "81",
+        "hp": "110",
+        "years": "07.2011 -",
+        "related_motoec_codes": "PE 982"
+      },
+      {
+        "make": "PEUGEOT",
+        "model_series": "Boxer III",
+        "engine": "3.0 HDi FAP",
+        "engine_code": "F30DTE5",
+        "kw": "107",
+        "hp": "145",
+        "years": "01.2010 -",
+        "related_motoec_codes": "PE 982"
+      },
+      {
+        "make": "PEUGEOT",
+        "model_series": "Boxer III",
+        "engine": "2.2 HDi FAP 130",
+        "engine_code": "22 DT PUMA Euro 5",
+        "kw": "96",
+        "hp": "131",
+        "years": "07.2011 -",
+        "related_motoec_codes": "PE 982"
+      },
+      {
+        "make": "PEUGEOT",
+        "model_series": "Boxer III",
+        "engine": "2.2 HDi FAP 150",
+        "engine_code": "22 DT PUMA Euro 5",
+        "kw": "110",
+        "hp": "150",
+        "years": "07.2011 -",
+        "related_motoec_codes": "PE 982"
+      },
+      {
+        "make": "PEUGEOT",
+        "model_series": "Boxer III",
+        "engine": "2.2 HDi 120",
+        "engine_code": "22 DT PUMA",
+        "kw": "88",
+        "hp": "120",
+        "years": "07.2006 -",
+        "related_motoec_codes": "PE 982"
+      },
+      {
+        "make": "SAAB",
+        "model_series": "9-3 / 9-3 x (Serie II/YS3F)",
+        "engine": "1.9 TiD",
+        "engine_code": "Z19DT",
+        "kw": "88",
+        "hp": "120",
+        "years": "08.2004 -",
+        "related_motoec_codes": "PE 982"
+      },
+      {
+        "make": "SAAB",
+        "model_series": "9-3 / 9-3 x (Serie II/YS3F)",
+        "engine": "1.9 TiD",
+        "engine_code": "Z19DTH",
+        "kw": "110",
+        "hp": "150",
+        "years": "08.2004 -",
+        "related_motoec_codes": "PE 982"
+      },
+      {
+        "make": "SUBARU",
+        "model_series": "Justy III (G3X)",
+        "engine": "1.3 Turbodiesel CR",
+        "engine_code": "Z13DT",
+        "kw": "51",
+        "hp": "70",
+        "years": "12.2003 -",
+        "related_motoec_codes": "PE 982"
+      },
+      {
+        "make": "SUZUKI",
+        "model_series": "Wagon R+",
+        "engine": "1.3 DDiS",
+        "engine_code": "Z13DT",
+        "kw": "51",
+        "hp": "70",
+        "years": "11.2003 -",
+        "related_motoec_codes": "PE 982"
+      },
+      {
+        "make": "SUZUKI",
+        "model_series": "Ignis II",
+        "engine": "1.3 DDiS",
+        "engine_code": "Z13DT",
+        "kw": "51",
+        "hp": "70",
+        "years": "12.2003 -",
+        "related_motoec_codes": "PE 982"
+      },
+      {
+        "make": "SUZUKI",
+        "model_series": "SX4",
+        "engine": "1.9 DDiS",
+        "engine_code": "",
+        "kw": "88",
+        "hp": "120",
+        "years": "05.2006 -",
+        "related_motoec_codes": "PE 982"
+      },
+      {
+        "make": "SUZUKI",
+        "model_series": "SX4",
+        "engine": "2.0 DDiS",
+        "engine_code": "",
+        "kw": "99",
+        "hp": "135",
+        "years": "09.2009 -",
+        "related_motoec_codes": "PE 982"
+      },
+      {
+        "make": "SUZUKI",
+        "model_series": "Splash",
+        "engine": "1.3 DDiS",
+        "engine_code": "",
+        "kw": "55",
+        "hp": "75",
+        "years": "05.2008 -",
+        "related_motoec_codes": "PE 982"
+      },
+      {
+        "make": "SUZUKI",
+        "model_series": "Swift III (MZ/EZ/SG)",
+        "engine": "1.3 DDis",
+        "engine_code": "Z13DT / D13A",
+        "kw": "55",
+        "hp": "75",
+        "years": "08.2005 -",
+        "related_motoec_codes": "PE 982"
+      },
+      {
+        "make": "SUZUKI",
+        "model_series": "Swift IV (AZG/AZH)",
+        "engine": "1.3 DDis",
+        "engine_code": "D13A",
+        "kw": "55",
+        "hp": "75",
+        "years": "09.2010 -",
+        "related_motoec_codes": "PE 982"
+      },
+      {
+        "make": "SUZUKI",
+        "model_series": "Vitara II",
+        "engine": "1.6 DDiS",
+        "engine_code": "",
+        "kw": "88",
+        "hp": "120",
+        "years": "02.2015 -",
+        "related_motoec_codes": "PE 982"
+      },
+      {
+        "make": "SUZUKI",
+        "model_series": "S-Cross",
+        "engine": "1.6 DDiS",
+        "engine_code": "",
+        "kw": "88",
+        "hp": "120",
+        "years": "11.2013 -",
+        "related_motoec_codes": "PE 982"
+      },
+      {
+        "make": "VAUXHALL",
+        "model_series": "Vectra Mk II",
+        "engine": "1.9 CDTI",
+        "engine_code": "Z19DT, Z19DTJ",
+        "kw": "88",
+        "hp": "120",
+        "years": "04.2004 -",
+        "related_motoec_codes": "PE 982"
+      },
+      {
+        "make": "VAUXHALL",
+        "model_series": "Vectra Mk II",
+        "engine": "1.9 CDTI",
+        "engine_code": "Z19DTL",
+        "kw": "74",
+        "hp": "100",
+        "years": "09.2005 -",
+        "related_motoec_codes": "PE 982"
+      },
+      {
+        "make": "VAUXHALL",
+        "model_series": "Vectra Mk II",
+        "engine": "1.9 CDTI",
+        "engine_code": "Z19DTH",
+        "kw": "110",
+        "hp": "150",
+        "years": "04.2004 -",
+        "related_motoec_codes": "PE 982"
+      },
+      {
+        "make": "VAUXHALL",
+        "model_series": "Agila",
+        "engine": "1.3 CDTI",
+        "engine_code": "Z13DT",
+        "kw": "51",
+        "hp": "70",
+        "years": "09.2003 -",
+        "related_motoec_codes": "PE 982"
+      },
+      {
+        "make": "VAUXHALL",
+        "model_series": "Corsa Mk II",
+        "engine": "1.3 CDTI",
+        "engine_code": "Z13DT",
+        "kw": "51",
+        "hp": "70",
+        "years": "09.2003 -",
+        "related_motoec_codes": "PE 982"
+      },
+      {
+        "make": "VAUXHALL",
+        "model_series": "Meriva A",
+        "engine": "1.3 CDTI",
+        "engine_code": "Z13DTJ",
+        "kw": "55",
+        "hp": "75",
+        "years": "12.2005 -",
+        "related_motoec_codes": "PE 982"
+      },
+      {
+        "make": "VAUXHALL",
+        "model_series": "Meriva A",
+        "engine": "1.3 CDTI",
+        "engine_code": "Y13DT, Z13DT",
+        "kw": "51",
+        "hp": "70",
+        "years": "07.2005 -",
+        "related_motoec_codes": "PE 982"
+      },
+      {
+        "make": "VAUXHALL",
+        "model_series": "Signum",
+        "engine": "1.9 CDTI",
+        "engine_code": "Z19DT",
+        "kw": "74",
+        "hp": "100",
+        "years": "09.2005 -",
+        "related_motoec_codes": "PE 982"
+      },
+      {
+        "make": "VAUXHALL",
+        "model_series": "Signum",
+        "engine": "1.9 CDTI",
+        "engine_code": "Z19DT/DTJ",
+        "kw": "88",
+        "hp": "120",
+        "years": "04.2004 -",
+        "related_motoec_codes": "PE 982"
+      },
+      {
+        "make": "VAUXHALL",
+        "model_series": "Signum",
+        "engine": "1.9 CDTI",
+        "engine_code": "Z19DTH",
+        "kw": "110",
+        "hp": "150",
+        "years": "04.2004 -",
+        "related_motoec_codes": "PE 982"
+      },
+      {
+        "make": "VAUXHALL",
+        "model_series": "Astra Mk V",
+        "engine": "1.9 CDTI",
+        "engine_code": "Z19DTH",
+        "kw": "110",
+        "hp": "150",
+        "years": "09.2004 -",
+        "related_motoec_codes": "PE 982"
+      },
+      {
+        "make": "VAUXHALL",
+        "model_series": "Astra Mk V",
+        "engine": "1.9 CDTI",
+        "engine_code": "Z19DT/DTJ",
+        "kw": "88",
+        "hp": "120",
+        "years": "09.2004 -",
+        "related_motoec_codes": "PE 982"
+      },
+      {
+        "make": "VAUXHALL",
+        "model_series": "Astra Mk V",
+        "engine": "1.3 CDTI",
+        "engine_code": "Z13DTH",
+        "kw": "66",
+        "hp": "90",
+        "years": "04.2005 -",
+        "related_motoec_codes": "PE 982"
+      },
+      {
+        "make": "VAUXHALL",
+        "model_series": "Astra Mk V",
+        "engine": "1.9 CDTI",
+        "engine_code": "Z19DTL",
+        "kw": "74",
+        "hp": "100",
+        "years": "09.2005 -",
+        "related_motoec_codes": "PE 982"
+      },
+      {
+        "make": "VAUXHALL",
+        "model_series": "Tigra Convertible",
+        "engine": "1.3 CDTI",
+        "engine_code": "Z13DT",
+        "kw": "51",
+        "hp": "70",
+        "years": "12.2004 -",
+        "related_motoec_codes": "PE 982"
+      },
+      {
+        "make": "VAUXHALL",
+        "model_series": "Zafira Mk II",
+        "engine": "1.9 CDTI",
+        "engine_code": "Z19DTL",
+        "kw": "74",
+        "hp": "100",
+        "years": "07.2005 -",
+        "related_motoec_codes": "PE 982"
+      },
+      {
+        "make": "VAUXHALL",
+        "model_series": "Zafira Mk II",
+        "engine": "1.9 CDTI",
+        "engine_code": "Z19DT/DTJ",
+        "kw": "88",
+        "hp": "120",
+        "years": "07.2005 -",
+        "related_motoec_codes": "PE 982"
+      },
+      {
+        "make": "VAUXHALL",
+        "model_series": "Zafira Mk II",
+        "engine": "1.9 CDTI",
+        "engine_code": "Z19DTH",
+        "kw": "110",
+        "hp": "150",
+        "years": "07.2005 -",
+        "related_motoec_codes": "PE 982"
+      },
+      {
+        "make": "VAUXHALL",
+        "model_series": "Antara",
+        "engine": "2.0 CDTI",
+        "engine_code": "Z20DM",
+        "kw": "93",
+        "hp": "127",
+        "years": "11.2006 -",
+        "related_motoec_codes": "PE 982"
+      },
+      {
+        "make": "VAUXHALL",
+        "model_series": "Antara",
+        "engine": "2.0 CDTI",
+        "engine_code": "Z20DMH",
+        "kw": "110",
+        "hp": "150",
+        "years": "11.2006 -",
+        "related_motoec_codes": "PE 982"
+      },
+      {
+        "make": "VAUXHALL",
+        "model_series": "Agila II",
+        "engine": "1.3 CDTI",
+        "engine_code": "D13A, Z13DTJ",
+        "kw": "55",
+        "hp": "75",
+        "years": "04.2008 -",
+        "related_motoec_codes": "PE 982"
+      },
+      {
+        "make": "CHEVROLET",
+        "model_series": "Captiva",
+        "engine": "2.0 LT D SUV AWD",
+        "engine_code": "Z20DMH /LLW",
+        "kw": "110",
+        "hp": "150",
+        "years": "11.2007 -",
+        "related_motoec_codes": "PE 982"
+      },
+      {
+        "make": "CHEVROLET",
+        "model_series": "Optra",
+        "engine": "2.0 D",
+        "engine_code": "",
+        "kw": "89",
+        "hp": "121",
+        "years": "01.2007 -",
+        "related_motoec_codes": "PE 982"
+      },
+      {
+        "make": "VAUXHALL-BEDFORD (LCV)",
+        "model_series": "Combo / Corsa Van MK II",
+        "engine": "1.3 CDTI",
+        "engine_code": "Z 13 DT",
+        "kw": "51",
+        "hp": "70",
+        "years": "06.2004 -",
+        "related_motoec_codes": "PE 982"
+      },
+      {
+        "make": "VAUXHALL-BEDFORD (LCV)",
+        "model_series": "Combo / Corsa Van MK II",
+        "engine": "1.3 CDTI",
+        "engine_code": "Z 13 DT",
+        "kw": "55",
+        "hp": "75",
+        "years": "12.2005 -",
+        "related_motoec_codes": "PE 982"
+      },
+      {
+        "make": "VAUXHALL-BEDFORD (LCV)",
+        "model_series": "Astramax / Astra Van MK V",
+        "engine": "1.9 CDTI",
+        "engine_code": "Z19DTH",
+        "kw": "110",
+        "hp": "150",
+        "years": "03.2005 -",
+        "related_motoec_codes": "PE 982"
+      },
+      {
+        "make": "VAUXHALL-BEDFORD (LCV)",
+        "model_series": "Astramax / Astra Van MK V",
+        "engine": "1.9 CDTI",
+        "engine_code": "Z19DT/DTJ",
+        "kw": "88",
+        "hp": "120",
+        "years": "03.2005 -",
+        "related_motoec_codes": "PE 982"
+      },
+      {
+        "make": "VAUXHALL-BEDFORD (LCV)",
+        "model_series": "Astramax / Astra Van MK V",
+        "engine": "1.3 CDTI",
+        "engine_code": "Z13DTH",
+        "kw": "66",
+        "hp": "90",
+        "years": "08.2005 -",
+        "related_motoec_codes": "PE 982"
+      },
+      {
+        "make": "OPEL",
+        "model_series": "Corsa-C",
+        "engine": "1.3 CDTI",
+        "engine_code": "Z 13 DT",
+        "kw": "59",
+        "hp": "80",
+        "years": "07.2005 -",
+        "related_motoec_codes": "PE 982"
+      }
+    ],
+    "discovered_motoec_codes": [
+      "PE 982"
+    ],
+    "source_url": "https://www.motoec.com/Catalog.aspx?rival=PU723X",
+    "slug": "wb-305",
+    "local_image": "/images/demo/wunder/wb-305.jpg"
   }
 ]
