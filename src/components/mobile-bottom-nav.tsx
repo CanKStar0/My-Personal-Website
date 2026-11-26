@@ -10,11 +10,13 @@ import { translations } from "@/lib/translations";
 
 export function MobileBottomNav() {
   const pathname = usePathname();
+  const isDemoRoute = pathname?.startsWith("/demo") ?? false;
   const { t, locale } = useLanguage();
   const [isInputFocused, setIsInputFocused] = useState(false);
 
   // Hide the floating bar when typing in inputs/textareas to prevent virtual keyboard clipping
   useEffect(() => {
+    if (isDemoRoute) return;
     const handleFocusIn = (e: FocusEvent) => {
       const target = e.target as HTMLElement | null;
       if (
@@ -39,7 +41,9 @@ export function MobileBottomNav() {
       window.removeEventListener("focusin", handleFocusIn);
       window.removeEventListener("focusout", handleFocusOut);
     };
-  }, []);
+  }, [isDemoRoute]);
+
+  if (isDemoRoute) return null;
 
   const isHome = locale === "en" ? pathname === "/en" : pathname === "/";
   const isProjects =

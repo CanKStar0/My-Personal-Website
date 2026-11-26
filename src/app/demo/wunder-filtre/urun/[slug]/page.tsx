@@ -32,7 +32,7 @@ export default async function WunderProductDetailPage({
         backLabel="Markalara Dön"
       />
 
-      <main className="mx-auto max-w-6xl space-y-6 px-4 py-8 sm:px-6">
+      <main className="mx-auto max-w-6xl space-y-5 px-4 py-6 pb-24 sm:space-y-6 sm:px-6 sm:py-8 md:pb-10">
         <nav aria-label="Sayfa konumu" className="flex flex-wrap items-center gap-2 text-sm text-muted-foreground">
           <Link href="/demo/wunder-filtre" className="hover:text-foreground">
             Katalog

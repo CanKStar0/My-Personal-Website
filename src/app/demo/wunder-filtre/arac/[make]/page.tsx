@@ -24,7 +24,7 @@ export default async function BrandModelsPage({ params }: PageProps) {
         backLabel="Markalara Dön"
       />
 
-      <main className="mx-auto max-w-6xl space-y-8 px-4 py-8 sm:px-6">
+      <main className="mx-auto max-w-6xl space-y-6 px-4 py-6 pb-24 sm:space-y-8 sm:px-6 sm:py-8 md:pb-10">
         {/* Breadcrumb Taxonomy */}
         <nav aria-label="Araç seçim adımları" className="flex flex-wrap items-center gap-2 text-sm text-muted-foreground">
           <Link href="/demo/wunder-filtre" className="hover:text-foreground">

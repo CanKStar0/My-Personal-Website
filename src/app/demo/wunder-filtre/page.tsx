@@ -19,22 +19,22 @@ export default function WunderFiltreHomePage() {
     <div className="min-h-dvh bg-background text-foreground">
       <DemoShellHeader />
 
-      <main className="mx-auto max-w-6xl space-y-10 px-4 py-8 sm:px-6 sm:py-10">
+      <main className="mx-auto max-w-6xl space-y-8 px-4 py-6 pb-24 sm:space-y-10 sm:px-6 sm:py-10 md:pb-10">
         {/* Hero Headline + Stats */}
-        <section className="space-y-6">
-          <div className="flex flex-col justify-between gap-6 lg:flex-row lg:items-end">
+        <section className="space-y-5 sm:space-y-6">
+          <div className="flex flex-col justify-between gap-5 lg:flex-row lg:items-end">
             <div className="max-w-2xl space-y-2">
-              <h1 className="font-jakarta text-3xl font-extrabold leading-tight tracking-tight text-foreground text-balance sm:text-4xl">
+              <h1 className="font-jakarta text-2xl font-extrabold leading-tight tracking-tight text-foreground text-balance sm:text-4xl">
                 WUNDER Filtre Çapraz Referans ve Araç Kataloğu
               </h1>
-              <p className="text-base leading-relaxed text-muted-foreground text-pretty">
+              <p className="text-sm leading-relaxed text-muted-foreground text-pretty sm:text-base">
                 OEM veya rakip filtre kodunu yazın ya da araç markası logosuna tıklayıp
-                model ve motor seçerek uyumlu{" "}
+                model seçerek uyumlu{" "}
                 <strong className="text-foreground">WUNDER</strong> filtrelerine ulaşın.
               </p>
             </div>
 
-            <dl className="flex flex-wrap gap-6 border-t border-border pt-4 lg:border-t-0 lg:pt-0">
+            <dl className="grid grid-cols-4 gap-3 border-t border-border pt-4 lg:flex lg:flex-wrap lg:gap-6 lg:border-t-0 lg:pt-0">
               <div>
                 <dt className="text-xs text-muted-foreground">WUNDER Ürünü</dt>
                 <dd className="text-xl font-bold text-brand-red tabular-nums">
@@ -63,7 +63,9 @@ export default function WunderFiltreHomePage() {
           </div>
 
           {/* Code Search Entry Point */}
-          <CodeSearchBar />
+          <div id="kod-ara" className="scroll-mt-20">
+            <CodeSearchBar />
+          </div>
         </section>
 
         {/* Step 1: Brand Logos Grid */}
@@ -71,33 +73,33 @@ export default function WunderFiltreHomePage() {
           <div className="flex flex-wrap items-baseline justify-between gap-2">
             <h2
               id="brands-heading"
-              className="font-jakarta text-xl font-bold tracking-tight text-foreground text-balance sm:text-2xl"
+              className="font-jakarta text-lg font-bold tracking-tight text-foreground text-balance sm:text-2xl"
             >
               Araç Markası Seçin
             </h2>
-            <span className="text-sm text-muted-foreground tabular-nums">
-              {brands.length} marka · Logoya tıklayarak modellere geçin
+            <span className="text-xs text-muted-foreground tabular-nums sm:text-sm">
+              {brands.length} marka · Logoya tıklayın
             </span>
           </div>
 
-          <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
+          <div className="grid grid-cols-3 gap-2.5 sm:grid-cols-4 sm:gap-3 lg:grid-cols-6">
             {brands.map((brand) => (
               <Link
                 key={brand.slug}
                 href={`/demo/wunder-filtre/arac/${brand.slug}`}
-                className="group flex flex-col items-center justify-between gap-3 rounded-xl border border-border bg-card p-5 text-center transition-colors hover:border-brand-red"
+                className="group flex flex-col items-center justify-between gap-2.5 rounded-xl border border-border bg-card p-3.5 text-center transition-colors hover:border-brand-red sm:gap-3 sm:p-5"
               >
                 <BrandLogo
                   displayName={brand.displayName}
                   logoPath={brand.logoPath}
-                  sizeClass="size-12"
+                  sizeClass="size-10 sm:size-12"
                 />
-                <div className="space-y-1">
-                  <div className="font-jakarta text-sm font-bold text-foreground group-hover:text-brand-red">
+                <div className="space-y-0.5 sm:space-y-1">
+                  <div className="font-jakarta text-xs font-bold text-foreground group-hover:text-brand-red sm:text-sm">
                     {brand.displayName}
                   </div>
                   <div className="text-xs text-muted-foreground tabular-nums">
-                    {brand.modelCount} seri · {brand.productCount} filtre
+                    {brand.modelCount} seri
                   </div>
                 </div>
               </Link>

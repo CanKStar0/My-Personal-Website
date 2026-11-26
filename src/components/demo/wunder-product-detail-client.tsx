@@ -152,15 +152,15 @@ export function WunderProductDetailClient({
       )}
 
       {/* Primary Hero Section: WUNDER at the top */}
-      <section className="grid gap-6 rounded-xl border border-border bg-card p-5 sm:p-7 lg:grid-cols-12">
-        <div className="flex items-center justify-center rounded-lg border border-border bg-white p-4 lg:col-span-3">
+      <section className="grid gap-5 rounded-xl border border-border bg-card p-4 sm:gap-6 sm:p-7 lg:grid-cols-12">
+        <div className="flex items-center justify-center rounded-lg border border-border bg-white p-3 sm:p-4 lg:col-span-3">
           {product.local_image ? (
             <Image
               src={product.local_image}
               alt={`WUNDER ${product.wunder_code} - ${product.filter_type}`}
               width={180}
               height={180}
-              className="max-h-44 w-auto object-contain"
+              className="max-h-32 w-auto object-contain sm:max-h-44"
             />
           ) : (
             <div className="flex h-40 flex-col items-center justify-center gap-2 text-muted-foreground">
