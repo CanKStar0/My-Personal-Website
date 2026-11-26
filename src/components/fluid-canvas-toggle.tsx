@@ -1,15 +1,19 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { Sparkles, X, Palette } from "lucide-react";
 import { useLanguage } from "@/components/language-context";
 
 export function FluidCanvasToggle() {
+  const pathname = usePathname();
+  const isDemoRoute = pathname?.startsWith("/demo") ?? false;
   const [isActive, setIsActive] = useState(false);
   const { t } = useLanguage();
 
   useEffect(() => {
+    if (isDemoRoute) return;
     if (isActive) {
       // Prevent scrolling on mobile & touch devices while in canvas mode
       const originalBodyOverflow = document.body.style.overflow;
@@ -34,7 +38,9 @@ export function FluidCanvasToggle() {
         window.removeEventListener("keydown", handleKeyDown);
       };
     }
-  }, [isActive]);
+  }, [isActive, isDemoRoute]);
+
+  if (isDemoRoute) return null;
 
   return (
     <>

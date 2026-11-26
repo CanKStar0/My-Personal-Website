@@ -1,6 +1,7 @@
 "use client";
 
 import dynamic from "next/dynamic";
+import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 
 const SplashCursor = dynamic(() => import("@/components/SplashCursor"), {
@@ -8,9 +9,13 @@ const SplashCursor = dynamic(() => import("@/components/SplashCursor"), {
 });
 
 export function SiteEffects() {
+  const pathname = usePathname();
+  const isDemoRoute = pathname?.startsWith("/demo") ?? false;
   const [enabled, setEnabled] = useState(false);
 
   useEffect(() => {
+    if (isDemoRoute) return;
+
     const enable = () => setEnabled(true);
     const idleWindow = window as Window & {
       requestIdleCallback?: (callback: () => void, options?: { timeout: number }) => number;
@@ -28,9 +33,9 @@ export function SiteEffects() {
       window.removeEventListener("pointermove", enable);
       window.removeEventListener("touchstart", enable);
     };
-  }, []);
+  }, [isDemoRoute]);
 
-  if (!enabled) return null;
+  if (isDemoRoute || !enabled) return null;
 
   return (
     <SplashCursor
