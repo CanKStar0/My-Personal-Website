@@ -38,21 +38,18 @@ export function B2BProductCard({
   }
 
   return (
-    <article className="flex flex-col justify-between rounded-xl border border-border bg-card p-3.5 transition-colors hover:border-brand-red/50 sm:p-4">
+    <article className="flex min-w-0 flex-col justify-between rounded-xl border border-border bg-card p-3 transition-colors hover:border-brand-red/50 sm:p-4">
       {/* Top Row: Brand + Favorite */}
       <div className="mb-2 flex items-center justify-between gap-2">
-        <div className="flex items-center gap-1.5">
-          <span className="text-xs font-bold text-brand-red">WUNDER</span>
-          <span className="text-xs text-muted-foreground">
-            · {product.category_label}
-          </span>
-        </div>
+        <span className="truncate text-xs font-bold text-brand-red">
+          WUNDER
+        </span>
         <button
           type="button"
           onClick={() => onToggleFavorite(product.slug)}
           aria-label={isFavorite ? "Favorilerden çıkar" : "Favorilere ekle"}
           aria-pressed={isFavorite}
-          className="flex size-8 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:bg-muted hover:text-brand-red"
+          className="flex size-8 shrink-0 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:bg-muted hover:text-brand-red"
         >
           <Heart
             className={`size-4 ${isFavorite ? "fill-brand-red text-brand-red" : ""}`}
@@ -62,20 +59,23 @@ export function B2BProductCard({
       </div>
 
       {/* Product Image */}
-      <div className="mb-3 flex h-32 items-center justify-center rounded-lg bg-white p-3 sm:h-36">
+      <div className="mb-3 flex h-28 items-center justify-center rounded-lg bg-white p-2.5 sm:h-36 sm:p-3">
         {product.local_image ? (
           <Image
             src={product.local_image}
             alt={`WUNDER ${product.wunder_code}`}
             width={130}
             height={130}
-            className="max-h-28 w-auto object-contain"
+            className="max-h-24 w-auto object-contain sm:max-h-28"
           />
         ) : null}
       </div>
 
-      {/* Title & Stock */}
-      <div className="space-y-1.5">
+      {/* Title, Category & Stock */}
+      <div className="space-y-1">
+        <div className="text-xs font-medium text-muted-foreground">
+          {product.category_label}
+        </div>
         <h3 className="font-jakarta text-base font-extrabold tracking-tight text-foreground sm:text-lg">
           {product.wunder_code}
         </h3>
@@ -95,30 +95,30 @@ export function B2BProductCard({
       </div>
 
       {/* Pricing & Discount */}
-      <div className="mt-3 space-y-1.5 border-t border-border pt-3 text-xs tabular-nums">
+      <div className="mt-3 space-y-1 border-t border-border pt-2.5 text-xs tabular-nums">
         <div className="flex items-center justify-between gap-2 text-muted-foreground">
-          <span>Liste fiyatı</span>
+          <span>Liste</span>
           <span className="line-through">{formatTRY(product.list_price)}</span>
         </div>
         <div className="flex items-center justify-between gap-2">
-          <span className="text-muted-foreground">Bayi iskontonuz</span>
+          <span className="text-muted-foreground">İskonto</span>
           <span className="rounded bg-brand-red/10 px-1.5 py-0.5 font-bold text-brand-red">
             %{product.discount_percent}
           </span>
         </div>
-        <div className="flex items-baseline justify-between gap-2 pt-1">
+        <div className="flex flex-wrap items-baseline justify-between gap-1 pt-1">
           <span className="text-xs font-medium text-muted-foreground">
-            Size özel fiyat
+            Net fiyat
           </span>
-          <span className="font-jakarta text-lg font-extrabold text-foreground">
+          <span className="font-jakarta text-base font-extrabold text-foreground sm:text-lg">
             {formatTRY(product.net_price)}
           </span>
         </div>
       </div>
 
-      {/* Quantity + Add to Cart */}
-      <div className="mt-3 flex items-center gap-2">
-        <div className="flex items-center rounded-lg border border-border bg-background">
+      {/* Quantity + Add to Cart (stacked cleanly on mobile, inline on sm+) */}
+      <div className="mt-3 flex flex-col gap-2 sm:flex-row sm:items-center">
+        <div className="flex items-center justify-between rounded-lg border border-border bg-background sm:justify-start">
           <button
             type="button"
             disabled={!inStock || qty <= 1}
@@ -128,7 +128,7 @@ export function B2BProductCard({
           >
             <Minus className="size-3.5" aria-hidden="true" />
           </button>
-          <span className="w-7 text-center text-xs font-bold tabular-nums">
+          <span className="w-8 text-center text-xs font-bold tabular-nums">
             {qty}
           </span>
           <button
@@ -146,19 +146,19 @@ export function B2BProductCard({
           type="button"
           disabled={!inStock}
           onClick={handleAdd}
-          className={`flex min-h-9 flex-1 items-center justify-center gap-1.5 rounded-lg px-3 py-2 text-xs font-bold text-white transition-opacity disabled:cursor-not-allowed disabled:opacity-45 ${
+          className={`flex min-h-10 w-full flex-1 items-center justify-center gap-1.5 rounded-lg px-3 py-2 text-xs font-bold text-white transition-opacity disabled:cursor-not-allowed disabled:opacity-45 ${
             justAdded ? "bg-emerald-600" : "bg-brand-red hover:opacity-90"
           }`}
         >
           {justAdded ? (
             <>
-              <Check className="size-3.5" aria-hidden="true" />
+              <Check className="size-3.5 shrink-0" aria-hidden="true" />
               <span>Eklendi</span>
             </>
           ) : (
             <>
-              <ShoppingCart className="size-3.5" aria-hidden="true" />
-              <span>Sepete Ekle</span>
+              <ShoppingCart className="size-3.5 shrink-0" aria-hidden="true" />
+              <span className="whitespace-nowrap">Sepete Ekle</span>
             </>
           )}
         </button>

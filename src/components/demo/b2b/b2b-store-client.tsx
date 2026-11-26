@@ -298,13 +298,13 @@ export function B2BStoreClient({ initialProducts, vehicleMakes }: Props) {
       {/* B2B Dealer Top Bar */}
       <header className="sticky top-0 z-30 border-b border-border bg-card/95 backdrop-blur-sm">
         <div className="mx-auto flex max-w-6xl items-center justify-between gap-3 px-4 py-2.5 sm:px-6">
-          <div className="flex items-center gap-4">
+          <div className="flex min-w-0 items-center gap-4">
             <button
               type="button"
               onClick={() => setActiveNav("home")}
-              className="flex items-center gap-2 text-left"
+              className="flex min-w-0 items-center gap-2 text-left"
             >
-              <span className="font-jakarta text-lg font-black tracking-tight text-brand-red">
+              <span className="truncate font-jakarta text-base font-black tracking-tight text-brand-red sm:text-lg">
                 GNR Otomotiv
               </span>
               <span className="hidden text-xs font-semibold text-muted-foreground sm:inline">
@@ -342,7 +342,7 @@ export function B2BStoreClient({ initialProducts, vehicleMakes }: Props) {
             </nav>
           </div>
 
-          <div className="flex items-center gap-2">
+          <div className="flex shrink-0 items-center gap-2">
             <button
               type="button"
               onClick={() => setActiveNav("account")}
@@ -357,9 +357,9 @@ export function B2BStoreClient({ initialProducts, vehicleMakes }: Props) {
             <button
               type="button"
               onClick={() => setCartOpen(true)}
-              className="inline-flex min-h-10 items-center gap-2 rounded-lg bg-brand-red px-3.5 py-2 text-xs font-bold text-white transition-opacity hover:opacity-90 sm:text-sm"
+              className="inline-flex min-h-10 shrink-0 items-center gap-1.5 rounded-lg bg-brand-red px-3 py-2 text-xs font-bold text-white transition-opacity hover:opacity-90 sm:gap-2 sm:px-3.5 sm:text-sm"
             >
-              <ShoppingCart className="size-4" aria-hidden="true" />
+              <ShoppingCart className="size-4 shrink-0" aria-hidden="true" />
               <span>Sepet</span>
               <span className="rounded bg-white/20 px-1.5 py-0.5 text-xs tabular-nums">
                 {cartCount}
@@ -373,7 +373,7 @@ export function B2BStoreClient({ initialProducts, vehicleMakes }: Props) {
                   setTheme(resolvedTheme === "dark" ? "light" : "dark")
                 }
                 aria-label="Tema değiştir"
-                className="inline-flex size-10 items-center justify-center rounded-lg border border-border bg-background text-foreground transition-colors hover:bg-muted"
+                className="inline-flex size-10 shrink-0 items-center justify-center rounded-lg border border-border bg-background text-foreground transition-colors hover:bg-muted"
               >
                 {resolvedTheme === "dark" ? (
                   <Sun className="size-4" aria-hidden="true" />
