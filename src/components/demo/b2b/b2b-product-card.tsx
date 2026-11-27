@@ -65,6 +65,7 @@ export function B2BProductCard({
             src={product.local_image}
             alt={`WUNDER ${product.wunder_code}`}
             loading="lazy"
+            referrerPolicy="no-referrer"
             className="max-h-24 w-auto object-contain sm:max-h-28"
           />
         ) : (
