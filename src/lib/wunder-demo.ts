@@ -103,6 +103,44 @@ function loadVehicleTree(): CompactVehicleTree {
   return cachedVehicleTree;
 }
 
+export interface B2BCatalogStats {
+  totalProducts: number;
+  totalSearchCodes: number;
+  totalVehicleBrands: number;
+  totalVehicles: number;
+  categoryCounts: {
+    all: number;
+    yag: number;
+    hava: number;
+    kabin: number;
+    yakit: number;
+  };
+}
+
+export function getB2BCatalogStats(): B2BCatalogStats {
+  const all = loadCompactProducts();
+  const tree = loadVehicleTree();
+  let totalVehicles = 0;
+  for (const models of Object.values(tree)) {
+    for (const rows of Object.values(models)) {
+      totalVehicles += rows.length;
+    }
+  }
+  const uniqueTokens = new Set<string>();
+  const counts = { all: all.length, yag: 0, hava: 0, kabin: 0, yakit: 0 };
+  for (const p of all) {
+    counts[p.c] += 1;
+    for (const t of p.t) uniqueTokens.add(t);
+  }
+  return {
+    totalProducts: all.length,
+    totalSearchCodes: uniqueTokens.size,
+    totalVehicleBrands: Object.keys(tree).length,
+    totalVehicles,
+    categoryCounts: counts,
+  };
+}
+
 export function getB2BProducts(limit = 48): B2BWunderProduct[] {
   const all = loadCompactProducts();
   // Prioritize products with dedicated clean studio / local photos first
@@ -113,20 +151,27 @@ export function getB2BProducts(limit = 48): B2BWunderProduct[] {
 
 export function getB2BCategoryProducts(
   category: string,
-  limit = 60
-): { products: B2BWunderProduct[]; total: number } {
+  page = 1,
+  limit = 48
+): { products: B2BWunderProduct[]; total: number; page: number; hasMore: boolean } {
   const all = loadCompactProducts();
   const filtered =
     category && category !== "all"
       ? all.filter((p) => p.c === category)
       : all;
   const prioritized = [
-    ...filtered.filter((p) => p.img && p.stk > 0),
-    ...filtered.filter((p) => !(p.img && p.stk > 0)),
+    ...filtered.filter((p) => p.img?.startsWith("/images/demo/wunder/") && p.stk > 0),
+    ...filtered.filter((p) => !p.img?.startsWith("/images/demo/wunder/") && p.stk > 0),
+    ...filtered.filter((p) => p.stk === 0),
   ];
+  const safePage = Math.max(1, page);
+  const start = (safePage - 1) * limit;
+  const end = start + limit;
   return {
-    products: prioritized.slice(0, limit).map(toB2B),
+    products: prioritized.slice(start, end).map(toB2B),
     total: filtered.length,
+    page: safePage,
+    hasMore: end < filtered.length,
   };
 }
 

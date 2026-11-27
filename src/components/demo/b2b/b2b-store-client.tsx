@@ -21,12 +21,17 @@ import {
   X,
 } from "lucide-react";
 import { useTheme } from "next-themes";
-import type { B2BWunderProduct } from "@/lib/wunder-demo";
+import type {
+  B2BCatalogStats,
+  B2BProductDetail,
+  B2BWunderProduct,
+} from "@/lib/wunder-demo";
 import { B2BProductCard } from "./b2b-product-card";
 
 interface Props {
   initialProducts: B2BWunderProduct[];
   vehicleMakes: { make: string; displayName: string }[];
+  stats: B2BCatalogStats;
 }
 
 type NavSection = "home" | "products" | "orders" | "account";
@@ -74,7 +79,7 @@ function formatTRY(amount: number): string {
   }).format(amount);
 }
 
-export function B2BStoreClient({ initialProducts, vehicleMakes }: Props) {
+export function B2BStoreClient({ initialProducts, vehicleMakes, stats }: Props) {
   const { resolvedTheme, setTheme } = useTheme();
   const mounted = useSyncExternalStore(
     emptySubscribe,
@@ -108,8 +113,21 @@ export function B2BStoreClient({ initialProducts, vehicleMakes }: Props) {
   );
   const [searchingVehicle, setSearchingVehicle] = useState(false);
 
-  // Product catalog category filter
+  // Product catalog category filter & full pagination
   const [categoryTab, setCategoryTab] = useState<CategoryTab>("all");
+  const [catalogItems, setCatalogItems] =
+    useState<B2BWunderProduct[]>(initialProducts);
+  const [catalogTotal, setCatalogTotal] = useState<number>(stats.totalProducts);
+  const [catalogPage, setCatalogPage] = useState<number>(1);
+  const [catalogHasMore, setCatalogHasMore] = useState<boolean>(
+    stats.totalProducts > initialProducts.length
+  );
+  const [loadingCatalog, setLoadingCatalog] = useState(false);
+
+  // OEM & Rival Cross-Reference Detail Modal
+  const [detailModal, setDetailModal] = useState<B2BProductDetail | null>(null);
+  const [detailTab, setDetailTab] = useState<"oem" | "rival">("rival");
+  const [loadingDetail, setLoadingDetail] = useState(false);
 
   const codeInputId = useId();
   const makeId = useId();
@@ -288,10 +306,68 @@ export function B2BStoreClient({ initialProducts, vehicleMakes }: Props) {
     [cart]
   );
 
-  const catalogProducts = useMemo(() => {
-    if (categoryTab === "all") return initialProducts;
-    return initialProducts.filter((p) => p.category === categoryTab);
-  }, [initialProducts, categoryTab]);
+  async function onCategoryChange(nextCat: CategoryTab) {
+    setCategoryTab(nextCat);
+    setLoadingCatalog(true);
+    try {
+      const res = await fetch(
+        `/api/demo/wunder?action=catalog&category=${nextCat}&page=1&limit=48`
+      );
+      if (res.ok) {
+        const data = await res.json();
+        setCatalogItems(data.products ?? []);
+        setCatalogTotal(data.total ?? 0);
+        setCatalogPage(1);
+        setCatalogHasMore(Boolean(data.hasMore));
+      }
+    } finally {
+      setLoadingCatalog(false);
+    }
+  }
+
+  async function loadMoreCatalog() {
+    if (loadingCatalog || !catalogHasMore) return;
+    const nextPage = catalogPage + 1;
+    setLoadingCatalog(true);
+    try {
+      const res = await fetch(
+        `/api/demo/wunder?action=catalog&category=${categoryTab}&page=${nextPage}&limit=48`
+      );
+      if (res.ok) {
+        const data = await res.json();
+        setCatalogItems((prev) => {
+          const seen = new Set(prev.map((p) => p.slug));
+          const extra = (data.products ?? []).filter(
+            (p: B2BWunderProduct) => !seen.has(p.slug)
+          );
+          return [...prev, ...extra];
+        });
+        setCatalogPage(nextPage);
+        setCatalogHasMore(Boolean(data.hasMore));
+      }
+    } finally {
+      setLoadingCatalog(false);
+    }
+  }
+
+  async function openProductDetail(product: B2BWunderProduct) {
+    setLoadingDetail(true);
+    setDetailTab("rival");
+    setDetailModal({ product, oems: [], rivals: [] });
+    try {
+      const res = await fetch(
+        `/api/demo/wunder?action=detail&slug=${encodeURIComponent(product.slug)}`
+      );
+      if (res.ok) {
+        const data = (await res.json()) as B2BProductDetail;
+        setDetailModal(data);
+      }
+    } finally {
+      setLoadingDetail(false);
+    }
+  }
+
+  const catalogProducts = catalogItems;
 
   return (
     <div className="min-h-dvh bg-background text-foreground">
@@ -616,6 +692,7 @@ export function B2BStoreClient({ initialProducts, vehicleMakes }: Props) {
                         isFavorite={favorites.includes(p.slug)}
                         onToggleFavorite={toggleFavorite}
                         onAddToCart={addToCart}
+                        onOpenDetail={openProductDetail}
                       />
                     ))}
                   </div>
@@ -651,6 +728,7 @@ export function B2BStoreClient({ initialProducts, vehicleMakes }: Props) {
                         isFavorite={favorites.includes(p.slug)}
                         onToggleFavorite={toggleFavorite}
                         onAddToCart={addToCart}
+                        onOpenDetail={openProductDetail}
                       />
                     ))}
                   </div>
@@ -660,30 +738,49 @@ export function B2BStoreClient({ initialProducts, vehicleMakes }: Props) {
 
             {/* Main Product Catalog Grid */}
             <section className="space-y-4">
+              <div className="flex flex-wrap items-center gap-2 rounded-xl border border-border bg-card px-4 py-2.5 text-xs font-semibold text-muted-foreground tabular-nums">
+                <span className="text-foreground">
+                  {stats.totalProducts.toLocaleString("tr-TR")} WUNDER Ürünü
+                </span>
+                <span>·</span>
+                <span>
+                  {stats.totalSearchCodes.toLocaleString("tr-TR")} OEM &amp; Rakip Çapraz Kodu
+                </span>
+                <span>·</span>
+                <span>
+                  {stats.totalVehicleBrands.toLocaleString("tr-TR")} Araç Markası
+                </span>
+                <span>·</span>
+                <span>
+                  {stats.totalVehicles.toLocaleString("tr-TR")} Araç
+                </span>
+              </div>
+
               <div className="flex flex-col justify-between gap-3 sm:flex-row sm:items-center">
                 <div>
                   <h1 className="font-jakarta text-xl font-extrabold tracking-tight text-foreground text-balance sm:text-2xl">
                     Ürün Kataloğu
                   </h1>
                   <p className="text-xs text-muted-foreground tabular-nums sm:text-sm">
-                    {catalogProducts.length} WUNDER ürünü listeleniyor
+                    {catalogProducts.length.toLocaleString("tr-TR")} / {catalogTotal.toLocaleString("tr-TR")} WUNDER ürünü listeleniyor
                   </p>
                 </div>
 
                 <div className="flex flex-wrap gap-1.5">
                   {(
                     [
-                      ["all", "Tümü"],
-                      ["yag", "Yağ"],
-                      ["hava", "Hava"],
-                      ["kabin", "Polen"],
-                      ["yakit", "Yakıt"],
+                      ["all", `Tümü (${stats.categoryCounts.all.toLocaleString("tr-TR")})`],
+                      ["yag", `Yağ (${stats.categoryCounts.yag.toLocaleString("tr-TR")})`],
+                      ["hava", `Hava (${stats.categoryCounts.hava.toLocaleString("tr-TR")})`],
+                      ["kabin", `Polen (${stats.categoryCounts.kabin.toLocaleString("tr-TR")})`],
+                      ["yakit", `Yakıt (${stats.categoryCounts.yakit.toLocaleString("tr-TR")})`],
                     ] as const
                   ).map(([key, label]) => (
                     <button
                       key={key}
                       type="button"
-                      onClick={() => setCategoryTab(key)}
+                      disabled={loadingCatalog}
+                      onClick={() => onCategoryChange(key)}
                       className={`min-h-9 rounded-lg border px-3 py-1.5 text-xs font-semibold transition-colors ${
                         categoryTab === key
                           ? "border-foreground bg-foreground text-background"
@@ -704,9 +801,25 @@ export function B2BStoreClient({ initialProducts, vehicleMakes }: Props) {
                     isFavorite={favorites.includes(product.slug)}
                     onToggleFavorite={toggleFavorite}
                     onAddToCart={addToCart}
+                    onOpenDetail={openProductDetail}
                   />
                 ))}
               </div>
+
+              {catalogHasMore && (
+                <div className="flex justify-center pt-2">
+                  <button
+                    type="button"
+                    disabled={loadingCatalog}
+                    onClick={loadMoreCatalog}
+                    className="inline-flex min-h-11 items-center justify-center rounded-xl border border-border bg-card px-6 text-sm font-bold text-foreground transition-colors hover:border-brand-red hover:text-brand-red disabled:opacity-50"
+                  >
+                    {loadingCatalog
+                      ? "Yükleniyor..."
+                      : `Daha Fazla Göster (${(catalogTotal - catalogProducts.length).toLocaleString("tr-TR")} ürün daha)`}
+                  </button>
+                </div>
+              )}
             </section>
           </>
         )}
@@ -990,6 +1103,129 @@ export function B2BStoreClient({ initialProducts, vehicleMakes }: Props) {
                 </button>
               </div>
             )}
+          </div>
+        </div>
+      )}
+      {/* OEM & Rival Cross-Reference Modal */}
+      {detailModal && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4 backdrop-blur-xs"
+          onClick={() => setDetailModal(null)}
+        >
+          <div
+            role="dialog"
+            aria-modal="true"
+            aria-label={`${detailModal.product.wunder_code} OEM ve Çapraz Kodlar`}
+            className="flex max-h-[85dvh] w-full max-w-2xl flex-col overflow-hidden rounded-2xl border border-border bg-card shadow-xl"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="flex items-start justify-between gap-4 border-b border-border p-4 sm:p-5">
+              <div className="flex items-center gap-3">
+                {detailModal.product.local_image && (
+                  // eslint-disable-next-line @next/next/no-img-element
+                  <img
+                    src={detailModal.product.local_image}
+                    alt={detailModal.product.wunder_code}
+                    referrerPolicy="no-referrer"
+                    className="size-16 rounded-lg border border-border bg-white object-contain p-1.5"
+                  />
+                )}
+                <div>
+                  <span className="text-xs font-bold text-brand-red">
+                    WUNDER · {detailModal.product.category_label}
+                  </span>
+                  <h2 className="font-jakarta text-xl font-extrabold text-foreground">
+                    {detailModal.product.wunder_code}
+                  </h2>
+                  <p className="line-clamp-1 text-xs text-muted-foreground">
+                    {detailModal.product.subtitle}
+                  </p>
+                </div>
+              </div>
+              <button
+                type="button"
+                onClick={() => setDetailModal(null)}
+                aria-label="Kapat"
+                className="flex size-9 items-center justify-center rounded-lg border border-border text-muted-foreground hover:text-foreground"
+              >
+                <X className="size-4" aria-hidden="true" />
+              </button>
+            </div>
+
+            <div className="flex gap-2 border-b border-border px-4 py-2.5 sm:px-5">
+              <button
+                type="button"
+                onClick={() => setDetailTab("rival")}
+                className={`rounded-lg px-3.5 py-1.5 text-xs font-bold transition-colors ${
+                  detailTab === "rival"
+                    ? "bg-brand-red text-white"
+                    : "bg-muted text-muted-foreground hover:text-foreground"
+                }`}
+              >
+                Rakip / Muadil Kodlar ({detailModal.rivals.length})
+              </button>
+              <button
+                type="button"
+                onClick={() => setDetailTab("oem")}
+                className={`rounded-lg px-3.5 py-1.5 text-xs font-bold transition-colors ${
+                  detailTab === "oem"
+                    ? "bg-brand-red text-white"
+                    : "bg-muted text-muted-foreground hover:text-foreground"
+                }`}
+              >
+                OEM Numaraları ({detailModal.oems.length})
+              </button>
+            </div>
+
+            <div className="flex-1 overflow-y-auto p-4 sm:p-5">
+              {loadingDetail ? (
+                <p className="py-8 text-center text-sm text-muted-foreground">
+                  Çapraz referanslar yükleniyor...
+                </p>
+              ) : detailTab === "rival" ? (
+                detailModal.rivals.length === 0 ? (
+                  <p className="py-8 text-center text-sm text-muted-foreground">
+                    Kayıtlı rakip kod bulunamadı.
+                  </p>
+                ) : (
+                  <div className="grid grid-cols-1 gap-2 sm:grid-cols-2">
+                    {detailModal.rivals.map((r, i) => (
+                      <div
+                        key={`${r.brand}-${r.code}-${i}`}
+                        className="flex items-center justify-between rounded-lg border border-border bg-background px-3 py-2 text-xs"
+                      >
+                        <span className="font-bold text-muted-foreground">
+                          {r.brand}
+                        </span>
+                        <span className="font-mono font-bold text-foreground">
+                          {r.code}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+                )
+              ) : detailModal.oems.length === 0 ? (
+                <p className="py-8 text-center text-sm text-muted-foreground">
+                  Kayıtlı OEM numarası bulunamadı.
+                </p>
+              ) : (
+                <div className="grid grid-cols-1 gap-2 sm:grid-cols-2">
+                  {detailModal.oems.map((o, i) => (
+                    <div
+                      key={`${o.brand}-${o.code}-${i}`}
+                      className="flex items-center justify-between rounded-lg border border-border bg-background px-3 py-2 text-xs"
+                    >
+                      <span className="font-bold text-muted-foreground">
+                        {o.brand}
+                      </span>
+                      <span className="font-mono font-bold text-foreground">
+                        {o.code}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
           </div>
         </div>
       )}

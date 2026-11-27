@@ -9,6 +9,7 @@ interface B2BProductCardProps {
   isFavorite: boolean;
   onToggleFavorite: (slug: string) => void;
   onAddToCart: (product: B2BWunderProduct, qty: number) => void;
+  onOpenDetail?: (product: B2BWunderProduct) => void;
 }
 
 function formatTRY(amount: number): string {
@@ -24,6 +25,7 @@ export function B2BProductCard({
   isFavorite,
   onToggleFavorite,
   onAddToCart,
+  onOpenDetail,
 }: B2BProductCardProps) {
   const [qty, setQty] = useState(1);
   const [justAdded, setJustAdded] = useState(false);
@@ -86,6 +88,16 @@ export function B2BProductCard({
         <p className="line-clamp-1 text-xs text-muted-foreground">
           {product.subtitle}
         </p>
+
+        {onOpenDetail && (
+          <button
+            type="button"
+            onClick={() => onOpenDetail(product)}
+            className="mt-1 inline-flex items-center rounded-md border border-border bg-muted/60 px-2 py-0.5 text-[11px] font-semibold text-foreground transition-colors hover:border-brand-red hover:text-brand-red"
+          >
+            OEM &amp; Çapraz Kodlar
+          </button>
+        )}
 
         <div className="pt-0.5 text-xs font-semibold tabular-nums">
           {inStock ? (

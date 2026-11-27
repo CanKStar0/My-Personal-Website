@@ -18,8 +18,9 @@ export async function GET(request: NextRequest) {
 
   if (action === "catalog") {
     const category = searchParams.get("category") ?? "all";
-    const limit = Math.min(Number(searchParams.get("limit") ?? 60) || 60, 120);
-    return NextResponse.json(getB2BCategoryProducts(category, limit));
+    const page = Math.max(1, Number(searchParams.get("page") ?? 1) || 1);
+    const limit = Math.min(Number(searchParams.get("limit") ?? 48) || 48, 96);
+    return NextResponse.json(getB2BCategoryProducts(category, page, limit));
   }
 
   if (action === "detail") {
