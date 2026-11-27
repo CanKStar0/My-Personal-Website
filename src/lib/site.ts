@@ -10,4 +10,4 @@ export const SOCIAL_LINKS = {
 export const CONTACT_EMAIL = "canpolatkaya4@gmail.com";
 
 // Update this only when shared site content changes; it must not change on every build.
-export const SITE_CONTENT_UPDATED_AT = "2026-08-13";
+export const SITE_CONTENT_UPDATED_AT = "2026-11-26";

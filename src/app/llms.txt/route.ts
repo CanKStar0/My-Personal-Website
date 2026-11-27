@@ -9,7 +9,7 @@ export async function GET() {
 > Full-Stack Developer & AI Automation Specialist specializing in autonomous web scraping, AI workflows, scalable REST APIs, and Next.js applications.
 
 ## About
-Canpolat Kaya is a product-oriented Full-Stack Developer & AI Automation Specialist based in Fethiye / Mugla, Turkey, working with global and local clients. He graduated 2nd in his department from Tokat Gaziosmanpasa University (Computer Programming) and works as a Full-Stack Developer at Dotcom Media (DCM) alongside independent client projects. He builds robust, autonomous systems ranging from high-scale web scraping pipelines and custom AI agents/workflows to enterprise REST APIs and modern Next.js/React web applications.
+Canpolat Kaya is a full-time independent Full-Stack Developer & AI Automation Specialist based in Fethiye / Mugla, Turkey, working with global and local clients. He graduated 2nd in his department from Tokat Gaziosmanpasa University (Computer Programming) and previously worked as a Full-Stack Developer at Dotcom Media (DCM). He builds autonomous systems ranging from high-scale web scraping pipelines and custom AI agents/workflows to enterprise REST APIs and modern Next.js/React web applications.
 
 - Website: ${SITE_URL}
 - English Version: ${SITE_URL}/en
@@ -17,7 +17,7 @@ Canpolat Kaya is a product-oriented Full-Stack Developer & AI Automation Special
 - Location: Fethiye, Mugla, Turkey (Available for Global Remote Engagements)
 - Geographic Coverage: Worldwide (United States, European Union, United Kingdom, Turkey, UAE)
 - Working Languages: Turkish (Native), English (Professional Working Proficiency)
-- Current Role: Full-Stack Developer (Dotcom Media) & Independent Engineer
+- Current Role: Independent Full-Stack Developer & Freelance Automation Consultant (Available for New Projects)
 - Education: Tokat Gaziosmanpasa University - Computer Programming (Graduated 2nd / High Honors)
 - Contact Email: ${CONTACT_EMAIL}
 - GitHub: ${SOCIAL_LINKS.github}

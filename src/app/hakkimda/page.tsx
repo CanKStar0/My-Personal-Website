@@ -28,10 +28,11 @@ export default function AboutPage() {
       name: SITE_NAME,
       url: SITE_URL,
       image: `${SITE_URL}/images/canpolat-kaya.jpg`,
-      jobTitle: "Full-Stack Developer & AI Automation Specialist",
+      jobTitle: "Freelance Full-Stack Developer & Yapay Zekâ Otomasyon Uzmanı",
       worksFor: {
         "@type": "Organization",
-        name: "Dotcom Media (DCM)",
+        "@id": `${SITE_URL}/#organization`,
+        name: "Canpolat Kaya Tech & Automation",
       },
       alumniOf: {
         "@type": "EducationalOrganization",

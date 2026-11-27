@@ -13,30 +13,30 @@ export function CareerTimeline({ locale = "tr" }: CareerTimelineProps) {
 
   const timelineItems = [
     {
-      id: "dcm",
-      period: isEn ? "2026 — Present" : "2026 — Günümüz",
-      title: isEn ? "Full-Stack Developer" : "Full-Stack Developer",
-      organization: "Dotcom Media (DCM)",
-      badge: isEn ? "Active Role" : "Aktif Rol",
-      badgeType: "active" as const,
-      icon: Briefcase,
-      description: isEn
-        ? "Engineering high-performance web applications, scalable API integrations, and robust data-driven system architectures."
-        : "Yüksek performanslı modern web uygulamaları, ölçeklenebilir API entegrasyonları ve veri odaklı sistem mimarilerinin geliştirilmesi.",
-      skills: ["Next.js", "React 19", "TypeScript", "Node.js", "Tailwind CSS", "REST APIs"],
-    },
-    {
       id: "freelance",
       period: isEn ? "2025 — Present" : "2025 — Günümüz",
-      title: isEn ? "Independent Software Engineer" : "Bağımsız & Freelance Yazılım Geliştirici",
-      organization: isEn ? "Autonomous Solutions & Consulting" : "Özel Projeler & Danışmanlık",
-      badge: isEn ? "Specialized" : "Uzmanlık",
-      badgeType: "highlight" as const,
+      title: isEn ? "Independent Software Engineer & Consultant" : "Freelance Full-Stack Developer & Otomasyon Danışmanı",
+      organization: isEn ? "Canpolat Kaya Tech & Automation" : "Bağımsız Projeler & Özel Yazılım",
+      badge: isEn ? "Available for Projects" : "Yeni Projelere Açık",
+      badgeType: "active" as const,
       icon: Code2,
       description: isEn
-        ? "Building stealth web scraping pipelines, anti-bot bypass architectures, custom AI agent workflows, and tailored backend systems."
-        : "Anti-bot korumalarına dayanıklı otonom web scraping sistemleri, özel AI iş akışları, Redis kuyrukları ve işletmelere özel backend sistemleri.",
-      skills: ["Playwright", "FastAPI", "Python", "Redis", "MongoDB", "AI Workflows"],
+        ? "Full-time independent engineering partner delivering stealth web scraping pipelines, custom AI automation workflows, scalable APIs, and production Next.js applications."
+        : "Tam zamanlı bağımsız yazılım mühendisi olarak anti-bot korumalarına dayanıklı web scraping sistemleri, özel AI otomasyon akışları, REST API'ler ve Next.js ürünleri geliştiriyorum.",
+      skills: ["Playwright", "FastAPI", "Next.js 16", "Python", "Redis", "AI Workflows"],
+    },
+    {
+      id: "dcm",
+      period: "2026",
+      title: isEn ? "Full-Stack Developer" : "Full-Stack Developer",
+      organization: "Dotcom Media (DCM)",
+      badge: isEn ? "Completed" : "Tamamlandı",
+      badgeType: "highlight" as const,
+      icon: Briefcase,
+      description: isEn
+        ? "Engineered high-performance web applications, scalable API integrations, and data-driven system architectures in a fast-paced agency environment."
+        : "Ajans bünyesinde yüksek performanslı modern web uygulamaları, ölçeklenebilir API entegrasyonları ve veri odaklı sistem mimarilerinin geliştirilmesi.",
+      skills: ["Next.js", "React 19", "TypeScript", "Node.js", "Tailwind CSS", "REST APIs"],
     },
     {
       id: "university",

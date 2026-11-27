@@ -45,7 +45,7 @@ export function HomeContent({ locale: propLocale }: { locale?: Locale } = {}) {
           "@type": "Person",
           "@id": `${SITE_URL}/#person`,
           name: "Canpolat Kaya",
-          jobTitle: isEnglish ? "Full-Stack Developer & AI Automation Specialist" : "Full-Stack Developer & Yapay Zekâ Otomasyon Uzmanı",
+          jobTitle: isEnglish ? "Freelance Full-Stack Developer & AI Automation Specialist" : "Freelance Full-Stack Developer & Yapay Zekâ Otomasyon Uzmanı",
           url: SITE_URL,
           image: `${SITE_URL}/images/canpolat-kaya.jpg`,
           sameAs: [SOCIAL_LINKS.github, SOCIAL_LINKS.linkedin],

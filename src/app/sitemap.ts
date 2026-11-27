@@ -4,7 +4,7 @@ import { blogPostsEn } from "@/lib/blog-en";
 import { services } from "@/lib/services";
 import { servicesEn } from "@/lib/services-en";
 import { SITE_CONTENT_UPDATED_AT, SITE_URL } from "@/lib/site";
-import { getLocalizedPath } from "@/lib/i18n";
+import { alternatePathFor, getLocalizedPath } from "@/lib/i18n";
 
 function absoluteUrl(path: string) {
   return path === "/" ? SITE_URL : new URL(path, SITE_URL).toString();
@@ -367,41 +367,49 @@ export default function sitemap(): MetadataRoute.Sitemap {
     };
   });
 
-  // Turkish Blog Articles (with reciprocal alternates)
+  // Turkish Blog Articles (with reciprocal alternates only when EN exists)
   const blogRoutes: MetadataRoute.Sitemap = blogPosts.map((post) => {
     const trPath = `/blog/${post.slug}`;
-    const enPath = getLocalizedPath(trPath, "en");
+    const enPath = alternatePathFor(trPath);
     return {
       url: absoluteUrl(trPath),
       lastModified: post.modifiedAt || SITE_CONTENT_UPDATED_AT,
       changeFrequency: "monthly",
       priority: 0.75,
-      alternates: {
-        languages: {
-          tr: absoluteUrl(trPath),
-          en: absoluteUrl(enPath),
-          "x-default": absoluteUrl(trPath),
-        },
-      },
+      ...(enPath
+        ? {
+            alternates: {
+              languages: {
+                tr: absoluteUrl(trPath),
+                en: absoluteUrl(enPath),
+                "x-default": absoluteUrl(trPath),
+              },
+            },
+          }
+        : {}),
     };
   });
 
-  // English Blog Articles (with reciprocal alternates)
+  // English Blog Articles (with reciprocal alternates only when TR exists)
   const blogEnRoutes: MetadataRoute.Sitemap = blogPostsEn.map((post) => {
     const enPath = `/en/blog/${post.slug}`;
-    const trPath = getLocalizedPath(enPath, "tr");
+    const trPath = alternatePathFor(enPath);
     return {
       url: absoluteUrl(enPath),
       lastModified: post.modifiedAt || SITE_CONTENT_UPDATED_AT,
       changeFrequency: "monthly",
       priority: 0.75,
-      alternates: {
-        languages: {
-          tr: absoluteUrl(trPath),
-          en: absoluteUrl(enPath),
-          "x-default": absoluteUrl(trPath),
-        },
-      },
+      ...(trPath
+        ? {
+            alternates: {
+              languages: {
+                tr: absoluteUrl(trPath),
+                en: absoluteUrl(enPath),
+                "x-default": absoluteUrl(trPath),
+              },
+            },
+          }
+        : {}),
     };
   });
 

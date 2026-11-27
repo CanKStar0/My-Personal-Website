@@ -70,6 +70,23 @@ export function HeroAnimation() {
 
       <div className="relative flex flex-col items-center justify-center w-full max-w-5xl mx-auto pt-8">
         
+        {/* Freelance Availability Badge */}
+        <motion.div
+          initial={{ opacity: 0, y: -8 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.15, duration: 0.5, ease: "easeOut" }}
+          className="mb-4"
+        >
+          <Link
+            href={locale === "en" ? "/en/contact" : "/iletisim"}
+            onClick={() => trackEvent("hero_availability_click", { location: "hero" })}
+            className="inline-flex items-center gap-2 rounded-full border border-emerald-500/25 bg-emerald-500/5 px-3.5 py-1.5 text-[11px] sm:text-xs font-medium text-emerald-700 dark:text-emerald-400 backdrop-blur-sm transition-colors hover:border-emerald-500/50 hover:bg-emerald-500/10"
+          >
+            <span className="size-2 rounded-full bg-emerald-500" aria-hidden="true" />
+            <span>{t(translations.hero.availability)}</span>
+          </Link>
+        </motion.div>
+
         {/* Name Header (Stagger Reveal) */}
         <div className="relative py-4 px-3 sm:px-6 md:px-8 flex items-center justify-center max-w-full overflow-hidden">
           <h1 className="relative text-2xl sm:text-4xl md:text-6xl font-extrabold tracking-wider font-jakarta text-foreground flex flex-wrap items-center justify-center gap-x-2.5 sm:gap-x-4 gap-y-1 leading-none text-center">

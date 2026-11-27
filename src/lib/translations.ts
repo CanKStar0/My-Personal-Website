@@ -18,6 +18,7 @@ export const translations = {
 
   // ─── Hero ────────────────────────────────────────────
   hero: {
+    availability: { tr: "Freelance & Özel Projeler İçin Müsait", en: "Available for Freelance & Custom Projects" } as TranslationValue,
     subtitle: { tr: "Fullstack Developer & AI Otomasyon Uzmanı", en: "Fullstack Developer & AI Automation Expert" } as TranslationValue,
     cta: { tr: "Çalışmaları Keşfet", en: "Explore My Work" } as TranslationValue,
     ctaSecondary: { tr: "Hizmetleri İncele", en: "Explore Services" } as TranslationValue,
@@ -99,12 +100,15 @@ export const translations = {
   // ─── Contact Page ────────────────────────────────────
   contact: {
     eyebrow: { tr: "İletişim", en: "Contact" } as TranslationValue,
-    heading: { tr: "Yeni bir projeniz\nmi var?", en: "Have a new\nproject?" } as TranslationValue,
+    heading: { tr: "Projenizi birlikte hayata geçirelim.", en: "Let's build your next system." } as TranslationValue,
     subtitle: {
-      tr: "Benimle iletişime geçmek için e-posta gönderebilirsiniz.",
-      en: "Feel free to reach out via email to discuss new projects or opportunities.",
+      tr: "Tam zamanlı freelance olarak özel yazılım, web scraping, AI otomasyon ve Next.js projeleri alıyorum. Kısa proje özetinizi paylaşın, 24 saat içinde teknik yaklaşım ve tahmini takvimle dönüş yapayım.",
+      en: "I take on full-time freelance work in custom software, web scraping, AI automation, and Next.js. Share a short project brief and I will reply within 24 hours with a technical approach and timeline.",
     } as TranslationValue,
     toast: { tr: "E-posta adresi panoya kopyalandı.", en: "Email address copied to clipboard." } as TranslationValue,
+    briefCopiedToast: { tr: "Proje özeti panoya kopyalandı.", en: "Project brief copied to clipboard." } as TranslationValue,
+    availabilityLabel: { tr: "Yeni freelance projeler için müsait", en: "Available for new freelance projects" } as TranslationValue,
+    responseTimeLabel: { tr: "Ortalama yanıt süresi: 24 saat içi", en: "Typical response time: within 24 hours" } as TranslationValue,
   },
 
   // ─── Canli Yok Page ──────────────────────────────────

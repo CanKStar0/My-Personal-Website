@@ -46,6 +46,132 @@ export type BlogPost = {
 
 export const blogPosts: BlogPost[] = [
   {
+    slug: "e-ticaret-rakip-fiyat-takip-sistemi-rehberi",
+    title: "E-Ticaret İçin Rakip Fiyat ve Stok Takip Sistemi Nasıl Kurulur? (Mimari ve Maliyet Rehberi)",
+    description: "Trendyol, Hepsiburada, Akakçe ve rakip e-ticaret sitelerinden otomatik fiyat ve stok verisi çekme, Buybox alarmı kurma ve kâr marjı koruyan scraper mimarisi rehberi.",
+    publishedAt: "2026-11-26",
+    modifiedAt: "2026-11-26",
+    category: "Web Scraping",
+    readingTime: "6 dk",
+    serviceHref: "/hizmetler/rakip-fiyat-takip-sistemi",
+    serviceAnchor: "Otomatik rakip fiyat ve stok takip sistemi hizmetini inceleyin",
+    directAnswer: "E-ticaret için otomatik rakip fiyat takip sistemi; Playwright/HTTP istemcileri, proxy rotasyonu, SKU eşleştirme veritabanı ve kâr marjı kurallarıyla çalışan bir veri boru hattıdır. Manuel Excel takibini ortadan kaldırarak Buybox kaybını ve zararına satış riskini önler.",
+    keyTakeaways: [
+      "Manuel Takip Maliyeti: Yüzlerce SKU'yu elle kontrol etmek hem geç kalmaya hem de fiyat değişimlerini saatler sonra fark etmeye yol açar.",
+      "Hibrit Çekim Mimarisi: Statik sayfalar için hızlı HTTP/TLS istemcileri, dinamik JS ve anti-bot korumalı sayfalar için Playwright havuzu kullanılmalıdır.",
+      "Kâr Marjı Koruması: Sadece en ucuz fiyatı değil, taban maliyet + komisyon + kargo eşiklerini hesaplayan alarm ve otomatik güncelleme kuralları kurulmalıdır.",
+      "Doğrudan Entegrasyon: Çekilen veriler Google Sheets, Telegram/Slack bildirimleri veya WooCommerce/Shopify/ERP API'lerine aktarılabilir."
+    ],
+    sourcesCited: [
+      { name: "Playwright Official Documentation", url: "https://playwright.dev/docs/intro" },
+      { name: "FastAPI Background & Async Architecture", url: "https://fastapi.tiangolo.com/" }
+    ],
+    sections: [
+      {
+        title: "1. E-Ticarette Neden Özel Fiyat Takip Sistemi Gereklidir?",
+        paragraphs: [
+          "Pazaryerlerinde ve dikey e-ticaret sitelerinde fiyatlar gün içinde defalarca değişir. Bir rakibin stok bitirmesi veya kampanya açması, sizin kâr marjınızı doğrudan etkiler.",
+          "Hazır SaaS takip araçları genellikle yüksek aylık abonelik ücretleri ister, özel varyant eşleştirmelerinde esneklik sunmaz ve kendi ERP/stok yazılımınıza doğrudan bağlanmakta zorlanır. İşletmeye özel kurulan bir sistem ise tek seferlik geliştirme maliyetiyle tamamen size ait olur."
+        ],
+        callout: {
+          type: "tip",
+          title: "Gerçek Senaryo",
+          text: "Rakip stoktan düştüğünde fiyatı sabit tutmak yerine otomatik olarak normal marja çekmek, tek başına bir fiyat takip sisteminin maliyetini ilk ayda çıkarabilir."
+        }
+      },
+      {
+        title: "2. Teknik Mimari: Kesintisiz Veri Çekme Katmanları",
+        paragraphs: [
+          "Sağlam bir fiyat ve stok takip motoru tek bir scriptten ibaret değildir; zamanlayıcı, kuyruk, ayrıştırıcı ve doğrulama katmanlarından oluşur.",
+          "Özellikle anti-bot önlemleri olan sitelerde istek hızı kontrolü, sticky residential proxy rotasyonu ve HTML yapısı değiştiğinde sessizce yanlış fiyat yazmayı önleyen şema doğrulama (Pydantic) kritik rol oynar."
+        ],
+        items: [
+          "Zamanlayıcı ve Kuyruk: Öncelikli ürünler 15-30 dakikada bir, uzun kuyruk ürünler günde 1-2 kez taranır.",
+          "SKU & Barkod Eşleştirme: Farklı sitelerdeki aynı ürünü başlık benzerliği yerine barkod/GTIN veya kurallı eşleştirme tablosuyla bağlama.",
+          "Fiyat & Stok Doğrulama: 0 TL, NaN veya hatalı para birimi okumalarını veritabanına yazmadan önce filtreleme.",
+          "Anlık Bildirimler: Belirlenen yüzde eşiğinin üzerinde düşüş veya stok değişimi olduğunda Telegram, Slack veya e-posta alarmı."
+        ]
+      },
+      {
+        title: "3. Proje Kapsamı ve Maliyeti Belirleyen Faktörler",
+        paragraphs: [
+          "Bir fiyat takip sisteminin geliştirme süresi ve bütçesi; izlenecek hedef site sayısına, sitelerin anti-bot zorluğuna, ürün adedine ve verinin nereye aktarılacağına göre değişir.",
+          "Yalnızca 2-3 rakipten fiyat çekip Google Sheets ve Telegram'a alarm atan hafif bir sistem 1-2 haftada devreye alınabilirken; WooCommerce/Shopify veya özel ERP ile çift yönlü otomatik fiyat güncelleyen tam ölçekli bir sistem daha kapsamlı test ve izleme gerektirir."
+        ]
+      }
+    ],
+    faqs: [
+      {
+        question: "Hazır fiyat takip yazılımları yerine özel sistem kurdurmak ne zaman mantıklıdır?",
+        answer: "Özel varyant kurallarınız varsa, aylık yüksek SaaS lisansları ödemek istemiyorsanız veya verinin doğrudan kendi ERP, WooCommerce ya da Shopify altyapınıza akmasını istiyorsanız özel sistem çok daha verimlidir."
+      },
+      {
+        question: "Hedef site tasarımını değiştirirse sistem bozulur mu?",
+        answer: "İyi kurgulanmış bir sistemde CSS seçiciler izole modüllerde tutulur ve şema doğrulama katmanı hata aldığında anında geliştiriciye/yöneticiye uyarı gönderir; böylece sessiz veri kaybı yaşanmaz."
+      }
+    ]
+  },
+  {
+    slug: "isletmeler-icin-ai-otomasyon-ve-maliyet-rehberi",
+    title: "İşletmeler İçin Yapay Zekâ Otomasyonu: Hangi Süreçler Otomatize Edilmeli ve Nasıl Başlanır?",
+    description: "KOBİ'ler ve büyüyen ekipler için WhatsApp/CRM botları, fatura/PDF veri çıkarımı, otomatik raporlama ve özel LLM iş akışlarında ROI odaklı uygulama rehberi.",
+    publishedAt: "2026-11-26",
+    modifiedAt: "2026-11-26",
+    category: "Yapay Zeka",
+    readingTime: "5 dk",
+    serviceHref: "/hizmetler/yapay-zeka-otomasyon",
+    serviceAnchor: "İşletmenize özel AI otomasyon hizmetlerini inceleyin",
+    directAnswer: "İşletmeler için en yüksek getirili yapay zekâ otomasyonları; tekrarlayan müşteri ön eleme süreçleri, PDF/fatura gibi yapılandırılmamış belgelerden veri çıkarımı ve dağınık kanallardan gelen taleplerin CRM veya Google Sheets'e otomatik işlenmesidir.",
+    keyTakeaways: [
+      "Önce Süreç, Sonra Model: Her işe büyük ve pahalı LLM bağlamak yerine deterministik kurallar + küçük/hızlı modellerle maliyet düşürülür.",
+      "Hızlı Kazanım Alanları: Fatura/sipariş PDF ayrıştırma, WhatsApp/Web form ön eleme, otomatik günlük özet raporları.",
+      "İnsan Onayı (HITL): Kritik finansal veya müşteri yanıtı adımlarında yapay zekâ taslak üretir, son onayı ekip verir.",
+      "Ölçülebilir ROI: Başarılı bir otomasyon haftalık harcanan manuel saatleri ve hatalı veri girişini net biçimde azaltmalıdır."
+    ],
+    sourcesCited: [
+      { name: "Anthropic: Building Effective Agents", url: "https://www.anthropic.com/research/building-effective-agents" },
+      { name: "OpenAI Structured Outputs Guide", url: "https://platform.openai.com/docs/guides/structured-outputs" }
+    ],
+    sections: [
+      {
+        title: "1. Yapay Zekâ Otomasyonunda En Sık Yapılan Hata",
+        paragraphs: [
+          "Birçok işletme 'her şeyi çözen otonom bir yapay zekâ' hayaliyle yola çıkıp bütçesini karmaşık ve kontrolsüz sistemlere harcıyor. Oysa üretim ortamında en iyi çalışan otomasyonlar, sınırları net çizilmiş, belirli bir darboğazı çözen modüler iş akışlarıdır.",
+          "Doğru yaklaşım; ekibin her hafta saatlerini alan, kopyala-yapıştır gerektiren ve kuralı tarif edilebilen tek bir süreci seçip önce onu otomatize etmektir."
+        ]
+      },
+      {
+        title: "2. İlk Aşamada En Çok Kazandıran 4 Otomasyon Senaryosu",
+        paragraphs: [
+          "Freelance ve kurumsal projelerde en hızlı geri dönüş alınan dört temel alan öne çıkar:"
+        ],
+        items: [
+          "Belge ve Fatura Okuma: E-posta veya WhatsApp'tan gelen PDF/görsel faturaları, irsaliyeleri veya teklifleri okuyup JSON'a çevirerek muhasebe/ERP tablosuna aktarma.",
+          "Müşteri Talep Sınıflandırma & Ön Eleme: Web formu, Instagram veya WhatsApp'tan gelen mesajları niyetine göre etiketleyip uygun ekip üyesine özetle yönlendirme.",
+          "İç Bilgi Tabanı (RAG) Asistanı: Şirketin teknik dokümanları, fiyat listeleri veya prosedürleri üzerinden ekibe saniyeler içinde kaynaklı yanıt veren dahili asistan.",
+          "Otomatik Günlük/Haftalık Raporlama: Veritabanı, Google Analytics ve satış kanallarından veriyi çekip yönetici özetini Telegram veya e-posta ile iletme."
+        ]
+      },
+      {
+        title: "3. Güvenlik, Maliyet Kontrolü ve Devreye Alma",
+        paragraphs: [
+          "Müşteri verilerinin üçüncü parti modellere kontrolsüz gönderilmemesi için PII maskeleme, şema doğrulama (Structured Outputs) ve token bütçe limitleri baştan kurgulanmalıdır.",
+          "Küçük bir pilot otomasyon genellikle 1-2 haftada canlıya alınabilir; ölçülebilir zaman tasarrufu kanıtlandıktan sonra diğer departmanlara genişletilir."
+        ]
+      }
+    ],
+    faqs: [
+      {
+        question: "Yapay zekâ otomasyonu için aylık yüksek API faturası çıkar mı?",
+        answer: "Doğru model seçimi (örneğin sınıflandırma ve çıkarım işlerinde Flash/Mini sınıfı modeller) ve prompt caching ile tipik bir KOBİ iş akışının aylık API maliyeti çoğu zaman birkaç dolar seviyesinde kalır."
+      },
+      {
+        question: "Mevcut kullandığımız Excel, Google Sheets veya CRM ile entegre olur mu?",
+        answer: "Evet. FastAPI/Node.js servisleri üzerinden Google Sheets, Notion, Slack, Telegram, WooCommerce, HubSpot veya özel veritabanlarınıza doğrudan bağlanabilir."
+      }
+    ]
+  },
+  {
     slug: "uretken-motor-optimizasyonu-geo-rehberi",
     title: "Üretken Motor Optimizasyonu (GEO) Rehberi: AI Arama Motorları İçin Hazırlık Kontrol Listesi ve Best Practices",
     description: "ChatGPT, Perplexity ve Google AI Overviews gibi yapay zeka arama motorlarında öne çıkmak, atıf almak ve doğrudan kaynak olarak alıntılanmak için kapsamlı GEO mimarisi, teknik şema ve strateji rehberi.",

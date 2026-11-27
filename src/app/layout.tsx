@@ -130,9 +130,9 @@ export default function RootLayout({
                 __html: `
                   if (typeof window !== 'undefined' && window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1') {
                     window.dataLayer = window.dataLayer || [];
-                    function gtag(){dataLayer.push(arguments);}
-                    gtag('js', new Date());
-                    gtag('config', '${gaId}');
+                    window.gtag = function gtag(){window.dataLayer.push(arguments);};
+                    window.gtag('js', new Date());
+                    window.gtag('config', '${gaId}');
                   }
                 `,
               }}

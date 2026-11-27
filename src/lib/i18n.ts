@@ -50,7 +50,7 @@ export function getLocalizedPath(pathname: string, targetLocale: Locale): string
     if (direct) return direct;
     if (pathname.startsWith("/projeler/")) return `/en/projects/${pathname.slice(10)}`;
     if (pathname.startsWith("/hizmetler/")) return `/en/services/${pathname.slice(11)}`;
-    if (pathname.startsWith("/blog/")) return `/en/blog/${pathname.slice(6)}`;
+    if (pathname.startsWith("/blog/")) return "/en/blog";
     if (pathname === "/projeler") return "/en/projects";
     if (pathname === "/hizmetler") return "/en/services";
     if (pathname === "/hakkimda") return "/en/about";
@@ -62,7 +62,7 @@ export function getLocalizedPath(pathname: string, targetLocale: Locale): string
     if (direct) return direct;
     if (pathname.startsWith("/en/projects/")) return `/projeler/${pathname.slice(13)}`;
     if (pathname.startsWith("/en/services/")) return `/hizmetler/${pathname.slice(13)}`;
-    if (pathname.startsWith("/en/blog/")) return `/blog/${pathname.slice(9)}`;
+    if (pathname.startsWith("/en/blog/")) return "/blog";
     if (pathname === "/en/projects") return "/projeler";
     if (pathname === "/en/services") return "/hizmetler";
     if (pathname === "/en/about") return "/hakkimda";

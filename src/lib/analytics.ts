@@ -79,12 +79,16 @@ export function safeGtagEvent(action: string, params?: Record<string, unknown>) 
   if (typeof window === "undefined") return;
   if (window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1") return;
 
-  if (typeof window.gtag === "function") {
-    window.gtag("event", action, params);
-  } else {
+  if (typeof window.gtag !== "function") {
     window.dataLayer = window.dataLayer || [];
-    window.dataLayer.push(["event", action, params]);
+    window.gtag = function gtag() {
+      // gtag.js requires Arguments objects rather than plain arrays in dataLayer
+      // eslint-disable-next-line prefer-rest-params
+      window.dataLayer?.push(arguments);
+    };
   }
+
+  window.gtag("event", action, params);
 }
 
 export const trackEvent = (action: string, params?: Record<string, string | number | boolean>) => {

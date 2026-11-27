@@ -10,7 +10,7 @@ export async function GET() {
   const content = `# ${SITE_NAME} — Full Technical Knowledge Graph & Sitemap for LLMs
 
 ## Overview
-Canpolat Kaya is a product-oriented Full-Stack Developer & AI Automation Specialist based in Fethiye / Mugla, Turkey, working with global and local clients. He graduated 2nd in his department from Tokat Gaziosmanpasa University (Computer Programming) and works as a Full-Stack Developer at Dotcom Media (DCM) alongside independent engineering projects.
+Canpolat Kaya is a full-time independent Full-Stack Developer & AI Automation Specialist based in Fethiye / Mugla, Turkey, working with global and local clients. He graduated 2nd in his department from Tokat Gaziosmanpasa University (Computer Programming) and previously worked as a Full-Stack Developer at Dotcom Media (DCM).
 
 - Primary Site (Turkish): ${SITE_URL}
 - English Site: ${SITE_URL}/en
@@ -18,7 +18,7 @@ Canpolat Kaya is a product-oriented Full-Stack Developer & AI Automation Special
 - Location: Fethiye, Mugla, Turkey (Available for Global Remote Engagements)
 - Geographic Coverage: Worldwide (United States, European Union, United Kingdom, Turkey, UAE)
 - Working Languages: Turkish (Native), English (Professional Working Proficiency)
-- Current Role: Full-Stack Developer (Dotcom Media) & Independent Engineer
+- Current Role: Independent Full-Stack Developer & Freelance Automation Consultant (Available for New Projects)
 - Education: Tokat Gaziosmanpasa University - Computer Programming (Graduated 2nd / High Honors)
 - Contact: ${CONTACT_EMAIL}
 - GitHub: ${SOCIAL_LINKS.github}

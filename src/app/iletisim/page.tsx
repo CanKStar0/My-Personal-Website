@@ -1,73 +1,232 @@
 "use client";
 
-import { Navbar } from "@/components/navbar";
-import { Mail } from "lucide-react";
-import { ScrollReveal } from "@/components/scroll-reveal";
-import { SpotlightButton } from "@/components/spotlight-button";
+import { Suspense, useState } from "react";
+import Link from "next/link";
+import { ArrowUpRight, Check, Clock, Copy, Mail } from "lucide-react";
+import { toast } from "sonner";
+import { Breadcrumbs } from "@/components/breadcrumbs";
+import { ContactIntake } from "@/components/contact-intake";
+import { JsonLd } from "@/components/json-ld";
 import { useLanguage } from "@/components/language-context";
-import { translations } from "@/lib/translations";
-import { trackEvent } from "@/lib/analytics";
+import { Navbar } from "@/components/navbar";
 import { SiteFooter } from "@/components/site-footer";
+import { trackEvent } from "@/lib/analytics";
+import { CONTACT_EMAIL, SITE_NAME, SITE_URL, SOCIAL_LINKS } from "@/lib/site";
+import { translations } from "@/lib/translations";
+
+function ContactIntakeFallback() {
+  return (
+    <div
+      className="h-[540px] rounded-2xl border border-border bg-card p-6 sm:p-8"
+      aria-busy="true"
+      aria-label="Loading form"
+    >
+      <div className="h-6 w-48 animate-pulse rounded bg-muted" />
+      <div className="mt-6 grid gap-4 sm:grid-cols-2">
+        <div className="h-11 animate-pulse rounded-xl bg-muted" />
+        <div className="h-11 animate-pulse rounded-xl bg-muted" />
+      </div>
+      <div className="mt-4 h-11 animate-pulse rounded-xl bg-muted" />
+      <div className="mt-4 h-32 animate-pulse rounded-xl bg-muted" />
+    </div>
+  );
+}
 
 export default function IletisimPage() {
-  const email = "canpolatkaya4@gmail.com";
-  const { t } = useLanguage();
+  const { locale, t } = useLanguage();
+  const isEn = locale === "en";
+  const [copiedEmail, setCopiedEmail] = useState(false);
 
-  const handleMailClick = () => {
-    trackEvent("contact_email_click", { location: "contact_page" });
+  const handleCopyEmail = async () => {
+    try {
+      await navigator.clipboard.writeText(CONTACT_EMAIL);
+      setCopiedEmail(true);
+      trackEvent("contact_email_copy", { location: "contact_page" });
+      toast.success(t(translations.contact.toast));
+      setTimeout(() => setCopiedEmail(false), 2500);
+    } catch {
+      toast.error(isEn ? "Could not copy email." : "E-posta kopyalanamadı.");
+    }
   };
+
+  const contactSchema = {
+    "@context": "https://schema.org",
+    "@type": "ContactPage",
+    name: isEn ? `Contact | ${SITE_NAME}` : `İletişim | ${SITE_NAME}`,
+    url: isEn ? `${SITE_URL}/en/contact` : `${SITE_URL}/iletisim`,
+    inLanguage: isEn ? "en" : "tr-TR",
+    mainEntity: {
+      "@type": "Person",
+      "@id": `${SITE_URL}/#person`,
+      name: SITE_NAME,
+      email: CONTACT_EMAIL,
+      url: SITE_URL,
+      contactPoint: {
+        "@type": "ContactPoint",
+        email: CONTACT_EMAIL,
+        contactType: "sales",
+        availableLanguage: ["Turkish", "English"],
+      },
+    },
+  };
+
+  const processSteps = isEn
+    ? [
+        {
+          title: "Scope & Feasibility",
+          desc: "I review your goals, target systems, and edge cases within 24 hours.",
+        },
+        {
+          title: "Architecture & Quote",
+          desc: "You get a clear technical plan, fixed milestone estimate, and delivery schedule.",
+        },
+        {
+          title: "Build & Handover",
+          desc: "Iterative delivery with clean TypeScript/Python code, documentation, and deployment.",
+        },
+      ]
+    : [
+        {
+          title: "Kapsam & Fizibilite",
+          desc: "Hedeflerinizi, entegre edilecek sistemleri ve riskleri 24 saat içinde incelerim.",
+        },
+        {
+          title: "Mimari & Net Teklif",
+          desc: "Size teknik yaklaşım, kilometre taşları ve net teslimat takvimi sunarım.",
+        },
+        {
+          title: "Geliştirme & Teslimat",
+          desc: "Temiz kod, dokümantasyon ve canlı ortam kurulumu ile projeyi teslim ederim.",
+        },
+      ];
 
   return (
     <>
+      <JsonLd data={contactSchema} />
       <Navbar />
-      <main className="flex-1 flex flex-col items-center justify-center min-h-[calc(100vh-4rem)] bg-background px-6 text-center">
-        {/* Eyebrow */}
-        <span className="uppercase tracking-[0.3em] text-[10px] sm:text-xs font-semibold text-zinc-600 dark:text-zinc-400 select-none mb-5">
-          {t(translations.contact.eyebrow)}
-        </span>
+      <main className="flex-1 bg-background px-4 sm:px-6 pb-24 pt-12 md:px-12 md:pt-16">
+        <div className="mx-auto max-w-6xl">
+          <Breadcrumbs
+            items={
+              isEn
+                ? [
+                    { label: "Home", href: "/en" },
+                    { label: "Contact", href: "/en/contact" },
+                  ]
+                : [
+                    { label: "Ana Sayfa", href: "/" },
+                    { label: "İletişim", href: "/iletisim" },
+                  ]
+            }
+          />
 
-        {/* Heading */}
-        <h1 className="text-3xl sm:text-5xl md:text-6xl font-extrabold tracking-tight font-jakarta text-foreground leading-tight max-w-2xl">
-          {t(translations.contact.heading).split("\n").map((line, i) => (
-            <span key={i}>
-              {line}
-              {i === 0 && <br />}
-            </span>
-          ))}
-        </h1>
+          <div className="mt-4 grid gap-10 lg:grid-cols-12 lg:items-start lg:gap-12">
+            {/* Left Editorial & Direct Channels Column */}
+            <div className="lg:col-span-5">
+              <div className="inline-flex items-center gap-2 rounded-full border border-emerald-500/25 bg-emerald-500/5 px-3.5 py-1.5 text-xs font-medium text-emerald-700 dark:text-emerald-400">
+                <span className="size-2 rounded-full bg-emerald-500" aria-hidden="true" />
+                <span>{t(translations.contact.availabilityLabel)}</span>
+              </div>
 
-        {/* Subtitle */}
-        <p className="mt-5 text-sm md:text-base text-muted-foreground/80 font-sans font-light leading-relaxed max-w-md">
-          {t(translations.contact.subtitle)}
-        </p>
+              <h1 className="mt-5 font-jakarta text-3xl font-extrabold tracking-tight text-foreground text-balance sm:text-4xl md:text-5xl">
+                {t(translations.contact.heading)}
+              </h1>
 
-        {/* Direct Email Spotlight Button */}
-        <ScrollReveal>
-          <div className="mt-12 flex justify-center cursor-pointer">
-            <SpotlightButton
-              href={`mailto:${email}`}
-              onClick={handleMailClick}
-              className="text-xs sm:text-lg md:text-xl font-semibold font-jakarta max-w-full"
-            >
-              {/* Red accent dot */}
-              <span className="relative flex h-2.5 w-2.5 flex-shrink-0">
-                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-brand-red opacity-50" />
-                <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-brand-red" />
-              </span>
+              <p className="mt-4 max-w-prose text-base leading-relaxed text-muted-foreground text-pretty">
+                {t(translations.contact.subtitle)}
+              </p>
 
-              {/* Mail icon */}
-              <Mail className="w-4 h-4 sm:w-5 sm:h-5 text-brand-red stroke-[1.5] flex-shrink-0 transition-transform duration-300 group-hover:scale-105" />
+              {/* Direct Channels */}
+              <div className="mt-8 space-y-3 border-t border-border pt-6">
+                <div className="flex flex-wrap items-center gap-2">
+                  <a
+                    href={`mailto:${CONTACT_EMAIL}`}
+                    onClick={() => trackEvent("contact_email_click", { location: "contact_page" })}
+                    className="inline-flex min-h-11 items-center gap-2.5 rounded-xl border border-border bg-card px-4 py-2.5 text-sm font-semibold text-foreground transition-colors hover:border-brand-red/50"
+                  >
+                    <Mail className="size-4 text-brand-red" aria-hidden="true" />
+                    <span>{CONTACT_EMAIL}</span>
+                  </a>
 
-              {/* Email text */}
-              <span className="truncate">{email}</span>
+                  <button
+                    type="button"
+                    onClick={handleCopyEmail}
+                    aria-label={isEn ? "Copy email address" : "E-posta adresini kopyala"}
+                    className="inline-flex min-h-11 min-w-11 items-center justify-center rounded-xl border border-border bg-card px-3 text-muted-foreground transition-colors hover:text-foreground"
+                  >
+                    {copiedEmail ? (
+                      <Check className="size-4 text-emerald-600 dark:text-emerald-400" aria-hidden="true" />
+                    ) : (
+                      <Copy className="size-4" aria-hidden="true" />
+                    )}
+                  </button>
+                </div>
 
-              {/* Arrow indicator */}
-              <span className="ml-1 text-zinc-500 text-xs sm:text-sm transition-all duration-300 group-hover:text-brand-red group-hover:translate-x-0.5">
-                ↗
-              </span>
-            </SpotlightButton>
+                <div className="flex items-center gap-2 text-xs text-muted-foreground">
+                  <Clock className="size-3.5 shrink-0" aria-hidden="true" />
+                  <span>{t(translations.contact.responseTimeLabel)}</span>
+                </div>
+
+                <div className="flex flex-wrap gap-4 pt-2 text-sm font-medium">
+                  <a
+                    href={SOCIAL_LINKS.linkedin}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex min-h-9 items-center gap-1 text-muted-foreground transition-colors hover:text-foreground"
+                  >
+                    <span>LinkedIn</span>
+                    <ArrowUpRight className="size-3.5" aria-hidden="true" />
+                  </a>
+                  <a
+                    href={SOCIAL_LINKS.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex min-h-9 items-center gap-1 text-muted-foreground transition-colors hover:text-foreground"
+                  >
+                    <span>GitHub</span>
+                    <ArrowUpRight className="size-3.5" aria-hidden="true" />
+                  </a>
+                  <Link
+                    href={isEn ? "/en/services" : "/hizmetler"}
+                    className="inline-flex min-h-9 items-center gap-1 text-muted-foreground transition-colors hover:text-foreground"
+                  >
+                    <span>{isEn ? "Services & Scope Calculator" : "Hizmetler & Kapsam Hesaplayıcı"}</span>
+                    <ArrowUpRight className="size-3.5" aria-hidden="true" />
+                  </Link>
+                </div>
+              </div>
+
+              {/* Clean Sequential Process List (no nested cards) */}
+              <div className="mt-8 border-t border-border pt-6">
+                <h2 className="font-jakarta text-base font-bold text-foreground">
+                  {isEn ? "How we work together" : "Çalışma süreci"}
+                </h2>
+                <ol className="mt-4 space-y-4">
+                  {processSteps.map((step, index) => (
+                    <li key={step.title} className="flex gap-3">
+                      <span className="mt-0.5 flex size-6 shrink-0 items-center justify-center rounded-full border border-border bg-card text-xs font-bold text-foreground tabular-nums">
+                        {index + 1}
+                      </span>
+                      <div>
+                        <p className="text-sm font-semibold text-foreground">{step.title}</p>
+                        <p className="mt-0.5 text-sm leading-relaxed text-muted-foreground text-pretty">
+                          {step.desc}
+                        </p>
+                      </div>
+                    </li>
+                  ))}
+                </ol>
+              </div>
+            </div>
+
+            {/* Right Interactive Scope Intake Form */}
+            <div className="lg:col-span-7">
+              <Suspense fallback={<ContactIntakeFallback />}>
+                <ContactIntake locale={locale} />
+              </Suspense>
+            </div>
           </div>
-        </ScrollReveal>
+        </div>
       </main>
       <SiteFooter />
     </>
