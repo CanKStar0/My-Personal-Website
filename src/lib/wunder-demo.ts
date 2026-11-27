@@ -105,10 +105,10 @@ function loadVehicleTree(): CompactVehicleTree {
 
 export function getB2BProducts(limit = 48): B2BWunderProduct[] {
   const all = loadCompactProducts();
-  // Prioritize featured/popular items with real images & stock for initial render
-  const withImages = all.filter((p) => p.img && p.stk > 0);
-  const pool = withImages.length >= limit ? withImages : all;
-  return pool.slice(0, limit).map(toB2B);
+  // Prioritize products with dedicated clean studio / local photos first
+  const localStudio = all.filter((p) => p.img?.startsWith("/images/demo/wunder/") && p.stk > 0);
+  const rest = all.filter((p) => !(p.img?.startsWith("/images/demo/wunder/") && p.stk > 0));
+  return [...localStudio, ...rest].slice(0, limit).map(toB2B);
 }
 
 export function getB2BCategoryProducts(
