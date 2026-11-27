@@ -27,6 +27,7 @@ import type {
   B2BWunderProduct,
 } from "@/lib/wunder-demo";
 import { B2BProductCard } from "./b2b-product-card";
+import { SearchableSelect } from "./searchable-select";
 
 interface Props {
   initialProducts: B2BWunderProduct[];
@@ -553,96 +554,56 @@ export function B2BStoreClient({ initialProducts, vehicleMakes, stats }: Props) 
                     </div>
 
                     <div className="grid grid-cols-2 gap-2.5 sm:grid-cols-4">
-                      <div>
-                        <label
-                          htmlFor={makeId}
-                          className="mb-1 block text-xs font-medium text-muted-foreground"
-                        >
-                          Marka
-                        </label>
-                        <select
-                          id={makeId}
-                          value={make}
-                          onChange={(e) => onMakeChange(e.target.value)}
-                          className="min-h-11 w-full rounded-lg border border-input bg-background px-2.5 text-sm font-medium text-foreground"
-                        >
-                          <option value="">Seçin</option>
-                          {vehicleMakes.map((m) => (
-                            <option key={m.make} value={m.make}>
-                              {m.displayName}
-                            </option>
-                          ))}
-                        </select>
-                      </div>
+                      <SearchableSelect
+                        id={makeId}
+                        label="Marka"
+                        value={make}
+                        placeholder="Seçin"
+                        options={vehicleMakes.map((m) => ({
+                          value: m.make,
+                          label: m.displayName,
+                        }))}
+                        onChange={onMakeChange}
+                      />
 
-                      <div>
-                        <label
-                          htmlFor={modelId}
-                          className="mb-1 block text-xs font-medium text-muted-foreground"
-                        >
-                          Model
-                        </label>
-                        <select
-                          id={modelId}
-                          value={model}
-                          disabled={!make}
-                          onChange={(e) => onModelChange(e.target.value)}
-                          className="min-h-11 w-full rounded-lg border border-input bg-background px-2.5 text-sm font-medium text-foreground disabled:opacity-50"
-                        >
-                          <option value="">Seçin</option>
-                          {models.map((mod) => (
-                            <option key={mod} value={mod}>
-                              {mod}
-                            </option>
-                          ))}
-                        </select>
-                      </div>
+                      <SearchableSelect
+                        id={modelId}
+                        label="Model"
+                        value={model}
+                        placeholder="Seçin"
+                        disabled={!make}
+                        options={models.map((mod) => ({
+                          value: mod,
+                          label: mod,
+                        }))}
+                        onChange={onModelChange}
+                      />
 
-                      <div>
-                        <label
-                          htmlFor={yearId}
-                          className="mb-1 block text-xs font-medium text-muted-foreground"
-                        >
-                          Yıl
-                        </label>
-                        <select
-                          id={yearId}
-                          value={year}
-                          disabled={!model}
-                          onChange={(e) => onYearChange(e.target.value)}
-                          className="min-h-11 w-full rounded-lg border border-input bg-background px-2.5 text-sm font-medium text-foreground disabled:opacity-50"
-                        >
-                          <option value="">Tümü</option>
-                          {years.map((y) => (
-                            <option key={y} value={y}>
-                              {y}
-                            </option>
-                          ))}
-                        </select>
-                      </div>
+                      <SearchableSelect
+                        id={yearId}
+                        label="Yıl"
+                        value={year}
+                        placeholder="Tümü"
+                        disabled={!model}
+                        options={[
+                          { value: "", label: "Tümü" },
+                          ...years.map((y) => ({ value: y, label: y })),
+                        ]}
+                        onChange={onYearChange}
+                      />
 
-                      <div>
-                        <label
-                          htmlFor={engineId}
-                          className="mb-1 block text-xs font-medium text-muted-foreground"
-                        >
-                          Motor
-                        </label>
-                        <select
-                          id={engineId}
-                          value={engine}
-                          disabled={!model}
-                          onChange={(e) => setEngine(e.target.value)}
-                          className="min-h-11 w-full rounded-lg border border-input bg-background px-2.5 text-sm font-medium text-foreground disabled:opacity-50"
-                        >
-                          <option value="">Tümü</option>
-                          {engines.map((eng) => (
-                            <option key={eng} value={eng}>
-                              {eng}
-                            </option>
-                          ))}
-                        </select>
-                      </div>
+                      <SearchableSelect
+                        id={engineId}
+                        label="Motor"
+                        value={engine}
+                        placeholder="Tümü"
+                        disabled={!model}
+                        options={[
+                          { value: "", label: "Tümü" },
+                          ...engines.map((eng) => ({ value: eng, label: eng })),
+                        ]}
+                        onChange={(val) => setEngine(val)}
+                      />
                     </div>
 
                     <div className="flex justify-end">

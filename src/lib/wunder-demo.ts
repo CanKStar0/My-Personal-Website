@@ -289,6 +289,27 @@ export function getB2BVehiclesIndex(): {
   return { makes };
 }
 
+function formatVehicleYearRange(raw: string): string {
+  const trimmed = (raw || "").trim();
+  if (!trimmed || trimmed === "Tüm Yıllar") return "Tüm Yıllar";
+  const parts = trimmed.split(/\s+-\s+/);
+  const extractYear = (d: string) => {
+    const m = d.match(/^(\d{4})/);
+    return m ? Number(m[1]) : null;
+  };
+  const yFrom = extractYear(parts[0] ?? "");
+  const yTo = extractYear(parts[1] ?? "");
+
+  const fromOpen = !yFrom || yFrom <= 1905;
+  const toOpen = !yTo || yTo >= 2999;
+
+  if (fromOpen && toOpen) return "Tüm Yıllar";
+  if (fromOpen && yTo) return `${yTo} Öncesi`;
+  if (yFrom && toOpen) return `${yFrom} - Günümüz`;
+  if (yFrom && yTo) return yFrom === yTo ? `${yFrom}` : `${yFrom} - ${yTo}`;
+  return trimmed;
+}
+
 export function queryB2BVehicleCascade(
   make: string,
   model?: string,
@@ -312,9 +333,10 @@ export function queryB2BVehicleCascade(
   const matchedSlugs = new Set<string>();
 
   if (model && makeNode[model]) {
-    for (const [appYear, engLabel, slugs] of makeNode[model]) {
-      yearsSet.add(appYear);
-      if (year && appYear !== year) continue;
+    for (const [rawYear, engLabel, slugs] of makeNode[model]) {
+      const cleanYear = formatVehicleYearRange(rawYear);
+      yearsSet.add(cleanYear);
+      if (year && cleanYear !== year) continue;
       enginesSet.add(engLabel);
       if (engine && engLabel !== engine) continue;
       for (const s of slugs) matchedSlugs.add(s);
