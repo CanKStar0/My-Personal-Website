@@ -1,5 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import {
+  getB2BCategoryProducts,
+  getB2BProductDetail,
   queryB2BVehicleCascade,
   searchB2BProductsByCode,
 } from "@/lib/wunder-demo";
@@ -12,6 +14,21 @@ export async function GET(request: NextRequest) {
     const q = searchParams.get("q") ?? "";
     const products = searchB2BProductsByCode(q);
     return NextResponse.json({ query: q, products });
+  }
+
+  if (action === "catalog") {
+    const category = searchParams.get("category") ?? "all";
+    const limit = Math.min(Number(searchParams.get("limit") ?? 60) || 60, 120);
+    return NextResponse.json(getB2BCategoryProducts(category, limit));
+  }
+
+  if (action === "detail") {
+    const slug = searchParams.get("slug") ?? "";
+    const detail = getB2BProductDetail(slug);
+    if (!detail) {
+      return NextResponse.json({ error: "Ürün bulunamadı" }, { status: 404 });
+    }
+    return NextResponse.json(detail);
   }
 
   if (action === "vehicle-filters") {

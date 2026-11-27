@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useState } from "react";
-import Image from "next/image";
 import { Check, Heart, Minus, Plus, ShoppingCart } from "lucide-react";
 import type { B2BWunderProduct } from "@/lib/wunder-demo";
 
@@ -61,14 +60,18 @@ export function B2BProductCard({
       {/* Product Image */}
       <div className="mb-3 flex h-28 items-center justify-center rounded-lg bg-white p-2.5 sm:h-36 sm:p-3">
         {product.local_image ? (
-          <Image
+          // eslint-disable-next-line @next/next/no-img-element
+          <img
             src={product.local_image}
             alt={`WUNDER ${product.wunder_code}`}
-            width={130}
-            height={130}
+            loading="lazy"
             className="max-h-24 w-auto object-contain sm:max-h-28"
           />
-        ) : null}
+        ) : (
+          <span className="font-jakarta text-xs font-bold tracking-wider text-zinc-400">
+            WUNDER {product.wunder_code}
+          </span>
+        )}
       </div>
 
       {/* Title, Category & Stock */}
