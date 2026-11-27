@@ -281,7 +281,7 @@ export function B2BStoreClient({ initialProducts, vehicleMakes, stats }: Props) 
     setOrders((prev) => [
       {
         id: newId,
-        date: "26.11.2026",
+        date: new Date().toLocaleDateString("tr-TR"),
         itemCount: totalCount,
         total: totalPrice * 1.2,
         status: "Hazırlanıyor",
@@ -882,7 +882,7 @@ export function B2BStoreClient({ initialProducts, vehicleMakes, stats }: Props) 
               <div className="rounded-xl border border-border bg-card p-5">
                 <div className="text-xs text-muted-foreground">Tanımlı Bayi İskontosu</div>
                 <div className="mt-1 font-jakarta text-2xl font-extrabold text-brand-red tabular-nums">
-                  %45
+                  %53,2
                 </div>
               </div>
             </div>

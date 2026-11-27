@@ -20,6 +20,13 @@ function formatTRY(amount: number): string {
   }).format(amount);
 }
 
+const CATEGORY_FALLBACK_IMG: Record<B2BWunderProduct["category"], string> = {
+  yag: "/images/demo/wunder/wy-800.png",
+  hava: "/images/demo/wunder/wh-303.jpg",
+  kabin: "/images/demo/wunder/wpk-109.jpg",
+  yakit: "/images/demo/wunder/wb-708.jpg",
+};
+
 export function B2BProductCard({
   product,
   isFavorite,
@@ -29,6 +36,7 @@ export function B2BProductCard({
 }: B2BProductCardProps) {
   const [qty, setQty] = useState(1);
   const [justAdded, setJustAdded] = useState(false);
+  const [imgSrc, setImgSrc] = useState<string | null>(product.local_image);
   const inStock = product.stock_count > 0;
 
   function handleAdd() {
@@ -61,13 +69,17 @@ export function B2BProductCard({
 
       {/* Product Image */}
       <div className="mb-3 flex h-28 items-center justify-center rounded-lg bg-white p-2.5 sm:h-36 sm:p-3">
-        {product.local_image ? (
+        {imgSrc ? (
           // eslint-disable-next-line @next/next/no-img-element
           <img
-            src={product.local_image}
+            src={imgSrc}
             alt={`WUNDER ${product.wunder_code}`}
             loading="lazy"
             referrerPolicy="no-referrer"
+            onError={() => {
+              const fb = CATEGORY_FALLBACK_IMG[product.category];
+              if (imgSrc !== fb) setImgSrc(fb);
+            }}
             className="max-h-24 w-auto object-contain sm:max-h-28"
           />
         ) : (

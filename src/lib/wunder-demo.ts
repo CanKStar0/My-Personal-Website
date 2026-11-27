@@ -251,12 +251,40 @@ export function searchB2BProductsByCode(query: string): B2BWunderProduct[] {
   return out;
 }
 
+const MAKE_DISPLAY_OVERRIDES: Record<string, string> = {
+  "VW (VOLKSWAGEN)": "Volkswagen",
+  "MERCEDES-BENZ": "Mercedes-Benz",
+  "DACIA (RENAULT GROUP)": "Dacia",
+  "MINI (BMW GROUP)": "Mini",
+  "CHEVROLET EUROPE / DAEWOO (GM)": "Chevrolet",
+  "LADA (SHIGULI)": "Lada",
+  "LANCIA (LANCIA AUTOBIANCHI)": "Lancia",
+  "MG (SAIC)": "MG",
+  "GWM (GREAT WALL)": "Great Wall",
+  "EXEED (CHERY)": "Exeed (Chery)",
+  "ALFA ROMEO": "Alfa Romeo",
+  "ASTON MARTIN": "Aston Martin",
+  "LAND ROVER": "Land Rover",
+  "SSANGYONG": "SsangYong",
+  "ROLLS-ROYCE": "Rolls-Royce",
+};
+
+function formatMakeDisplayName(raw: string): string {
+  const upper = raw.trim().toUpperCase();
+  if (MAKE_DISPLAY_OVERRIDES[upper]) return MAKE_DISPLAY_OVERRIDES[upper];
+  const noParens = raw.replace(/\s*\([^)]*\)/g, "").trim();
+  if (noParens.length <= 4 && noParens === noParens.toUpperCase()) return noParens;
+  return noParens
+    .toLowerCase()
+    .replace(/\b\w/g, (c) => c.toUpperCase());
+}
+
 export function getB2BVehiclesIndex(): {
   makes: { make: string; displayName: string }[];
 } {
   const tree = loadVehicleTree();
   const makes = Object.keys(tree)
-    .map((make) => ({ make, displayName: make }))
+    .map((make) => ({ make, displayName: formatMakeDisplayName(make) }))
     .sort((a, b) => a.displayName.localeCompare(b.displayName, "tr"));
   return { makes };
 }
@@ -294,11 +322,22 @@ export function queryB2BVehicleCascade(
   }
 
   const { b2bMap } = getMaps();
+  const catOrder: Record<B2BWunderProduct["category"], number> = {
+    yag: 0,
+    hava: 1,
+    kabin: 2,
+    yakit: 3,
+  };
   const products: B2BWunderProduct[] = [];
   for (const slug of matchedSlugs) {
     const p = b2bMap.get(slug);
     if (p) products.push(p);
   }
+  products.sort(
+    (a, b) =>
+      catOrder[a.category] - catOrder[b.category] ||
+      a.wunder_code.localeCompare(b.wunder_code, "tr")
+  );
 
   return {
     models,
