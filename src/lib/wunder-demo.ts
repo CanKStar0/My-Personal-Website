@@ -141,12 +141,34 @@ export function getB2BCatalogStats(): B2BCatalogStats {
   };
 }
 
+function isUniquePhoto(p: CompactProduct): boolean {
+  if (!p.img) return false;
+  if (p.img.includes("motoec.com")) return true;
+  // Local studio photo specific to this product (not one of the 4 category fallbacks unless it's that product itself)
+  const fallbackMap: Record<string, string> = {
+    "wy-800": "/images/demo/wunder/wy-800.png",
+    "wh-303": "/images/demo/wunder/wh-303.jpg",
+    "wpk-109": "/images/demo/wunder/wpk-109.jpg",
+    "wb-708": "/images/demo/wunder/wb-708.jpg",
+  };
+  if (p.img.startsWith("/images/demo/wunder/")) {
+    const isFallbackImg = Object.values(fallbackMap).includes(p.img);
+    return !isFallbackImg || fallbackMap[p.s] === p.img;
+  }
+  return false;
+}
+
+function sortByPhotoAndStock(list: CompactProduct[]): CompactProduct[] {
+  return [...list].sort((a, b) => {
+    const aScore = (isUniquePhoto(a) ? 2 : 0) + (a.stk > 0 ? 1 : 0);
+    const bScore = (isUniquePhoto(b) ? 2 : 0) + (b.stk > 0 ? 1 : 0);
+    return bScore - aScore;
+  });
+}
+
 export function getB2BProducts(limit = 48): B2BWunderProduct[] {
   const all = loadCompactProducts();
-  // Prioritize products with dedicated clean studio / local photos first
-  const localStudio = all.filter((p) => p.img?.startsWith("/images/demo/wunder/") && p.stk > 0);
-  const rest = all.filter((p) => !(p.img?.startsWith("/images/demo/wunder/") && p.stk > 0));
-  return [...localStudio, ...rest].slice(0, limit).map(toB2B);
+  return sortByPhotoAndStock(all).slice(0, limit).map(toB2B);
 }
 
 export function getB2BCategoryProducts(
@@ -159,11 +181,7 @@ export function getB2BCategoryProducts(
     category && category !== "all"
       ? all.filter((p) => p.c === category)
       : all;
-  const prioritized = [
-    ...filtered.filter((p) => p.img?.startsWith("/images/demo/wunder/") && p.stk > 0),
-    ...filtered.filter((p) => !p.img?.startsWith("/images/demo/wunder/") && p.stk > 0),
-    ...filtered.filter((p) => p.stk === 0),
-  ];
+  const prioritized = sortByPhotoAndStock(filtered);
   const safePage = Math.max(1, page);
   const start = (safePage - 1) * limit;
   const end = start + limit;
