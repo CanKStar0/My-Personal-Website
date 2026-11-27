@@ -143,7 +143,7 @@ export function getB2BCatalogStats(): B2BCatalogStats {
 
 function isUniquePhoto(p: CompactProduct): boolean {
   if (!p.img) return false;
-  if (p.img.includes("motoec.com")) return true;
+  if (p.img.includes("supabase.co") || p.img.includes("motoec.com")) return true;
   // Local studio photo specific to this product (not one of the 4 category fallbacks unless it's that product itself)
   const fallbackMap: Record<string, string> = {
     "wy-800": "/images/demo/wunder/wy-800.png",
